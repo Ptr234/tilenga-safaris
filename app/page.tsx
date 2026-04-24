@@ -4,6 +4,8 @@ import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import AnimatedCounter from "@/components/motion/AnimatedCounter";
 import ParallaxSection from "@/components/motion/ParallaxSection";
+import ImageReveal from "@/components/motion/ImageReveal";
+import SplitText from "@/components/motion/SplitText";
 
 const lodges = [
   {
@@ -80,7 +82,9 @@ export default function HomePage() {
       <section className="py-28 px-6 md:px-16 bg-forest-dark">
         <FadeIn direction="up" className="text-center mb-16 max-w-2xl mx-auto">
           <p className="section-label text-gold mb-3">Where You Stay</p>
-          <h2 className="font-serif text-4xl md:text-5xl text-cream leading-tight">Our Lodges in Uganda</h2>
+          <h2 className="font-serif text-4xl md:text-5xl text-cream leading-tight">
+            <SplitText text="Our Lodges in Uganda" by="word" stagger={0.06} />
+          </h2>
           <div className="w-12 h-px bg-gold mx-auto mt-6" />
           <p className="text-cream/50 max-w-xl mx-auto mt-6 font-sans leading-relaxed text-sm">
             Each lodge sits at the gateway of Uganda&apos;s most spectacular national parks —
@@ -129,7 +133,9 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <FadeIn direction="up" className="text-center mb-14">
             <p className="section-label mb-3">Africa &amp; Beyond</p>
-            <h2 className="section-heading">Our Destinations</h2>
+            <h2 className="section-heading">
+              <SplitText text="Our Destinations" by="word" stagger={0.07} />
+            </h2>
             <div className="w-12 h-px bg-gold mx-auto mt-5" />
           </FadeIn>
 
@@ -164,7 +170,9 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <FadeIn direction="up" className="text-center mb-14">
             <p className="section-label mb-3">What We Offer</p>
-            <h2 className="section-heading">Extraordinary Experiences</h2>
+            <h2 className="section-heading">
+              <SplitText text="Extraordinary Experiences" by="word" stagger={0.06} />
+            </h2>
             <div className="w-12 h-px bg-gold mx-auto mt-5" />
             <p className="text-stone max-w-xl mx-auto mt-6 font-sans leading-relaxed text-sm">
               Each journey is thoughtfully tailored — gorilla trekking at dawn, boat safaris,
@@ -274,14 +282,20 @@ export default function HomePage() {
             <Link href="/about" className="btn-primary">Learn More</Link>
           </FadeIn>
 
-          <FadeIn direction="right">
-            <div className="grid grid-cols-2 gap-2">
-              <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&q=80" alt="Conservation" className="w-full h-56 object-cover hover:scale-[1.03] transition-transform duration-700" />
-              <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" alt="Landscape" className="w-full h-56 object-cover mt-8 hover:scale-[1.03] transition-transform duration-700" />
-              <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&q=80" alt="Wildlife" className="w-full h-56 object-cover -mt-8 hover:scale-[1.03] transition-transform duration-700" />
-              <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&q=80" alt="Community" className="w-full h-56 object-cover hover:scale-[1.03] transition-transform duration-700" />
-            </div>
-          </FadeIn>
+          <div className="grid grid-cols-2 gap-2">
+            <ImageReveal direction="top" delay={0} className="overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&q=80" alt="Conservation" className="w-full h-56 object-cover hover:scale-[1.05] transition-transform duration-700" />
+            </ImageReveal>
+            <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-8">
+              <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" alt="Landscape" className="w-full h-56 object-cover hover:scale-[1.05] transition-transform duration-700" />
+            </ImageReveal>
+            <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-8">
+              <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&q=80" alt="Wildlife" className="w-full h-56 object-cover hover:scale-[1.05] transition-transform duration-700" />
+            </ImageReveal>
+            <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&q=80" alt="Community" className="w-full h-56 object-cover hover:scale-[1.05] transition-transform duration-700" />
+            </ImageReveal>
+          </div>
         </div>
       </section>
 
