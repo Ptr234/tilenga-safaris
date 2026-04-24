@@ -1,0 +1,202 @@
+import Link from "next/link";
+
+const packages = [
+  {
+    name: "Lake Mburo National Park",
+    duration: "2 days",
+    price: "From $500 / person",
+    description: "A compact gem offering zebra, impala, hippo, and over 300 bird species in one intimate park — perfect for a short escape.",
+    activities: ["Game drives", "Boat cruise", "Nature walks", "Bird watching"],
+  },
+  {
+    name: "Murchison Falls & Queen Elizabeth",
+    duration: "5 days",
+    price: "From $2,000 / person",
+    description: "Experience the sheer power of Murchison Falls and the prolific wildlife of Queen Elizabeth National Park — elephants, lions, and the famous tree-climbing lions of Ishasha.",
+    activities: ["Game drives", "Murchison Falls hike", "Kazinga Channel cruise", "Night drives"],
+  },
+  {
+    name: "Gorilla Trekking Experience",
+    duration: "3 days",
+    price: "From $2,800 (2+ pax)",
+    description: "Journey into Bwindi Impenetrable National Park for a life-changing hour with mountain gorilla families — the most sought-after wildlife encounter in Africa.",
+    activities: ["Gorilla trekking permit", "Forest walk", "Community visit", "Batwa experience"],
+  },
+  {
+    name: "8-Day Uganda Discovery",
+    duration: "8 days",
+    price: "From $3,000+",
+    description: "The complete Uganda experience — gorillas in Bwindi, chimps in Kibale, the Big Five in Queen Elizabeth, and the thundering beauty of Murchison Falls.",
+    activities: ["Gorilla trekking", "Chimp tracking", "Game drives", "Boat safari", "Cultural visits"],
+  },
+  {
+    name: "Rwenzori Mountains Trekking",
+    duration: "10 days",
+    price: "From $2,000+",
+    description: "Summit the legendary Mountains of the Moon — Africa's third-highest peak, with glaciers, giant heathers, and breathtaking Albertine Rift Valley views.",
+    activities: ["Mountain trekking", "Alpine glacier visit", "Equatorial forest walk", "Village visit"],
+  },
+  {
+    name: "4-Day Gorilla Trekking",
+    duration: "4 days",
+    price: "From $3,000 / person",
+    description: "An extended gorilla experience with time to explore Bwindi's forest trails, visit the Batwa pygmies, and acclimate to the montane environment.",
+    activities: ["2x gorilla trek options", "Batwa trail", "Lake Bunyonyi excursion", "Bird watching"],
+  },
+];
+
+const highlights = [
+  { icon: "🦍", label: "Mountain Gorillas" },
+  { icon: "💧", label: "Murchison Falls" },
+  { icon: "🦁", label: "Big Five" },
+  { icon: "🐦", label: "1,000+ Bird Species" },
+  { icon: "🏔️", label: "Mt. Rwenzori" },
+  { icon: "🚣", label: "Source of the Nile" },
+];
+
+export default function UgandaPage() {
+  return (
+    <>
+      {/* Hero */}
+      <section className="relative h-[70vh] min-h-[500px] overflow-hidden flex items-end">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "url(https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1800&q=80)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-forest-dark/30 to-forest-dark/90" />
+        <div className="relative z-10 px-6 md:px-16 pb-16 max-w-3xl">
+          <p className="section-label text-gold mb-3">East Africa</p>
+          <h1 className="font-serif text-5xl md:text-7xl text-cream mb-3">Uganda</h1>
+          <p className="font-serif italic text-2xl text-gold">The Pearl of Africa</p>
+        </div>
+      </section>
+
+      {/* Quick info */}
+      <section className="bg-forest py-6">
+        <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-cream/70 text-sm font-sans">
+          <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Best Time</span>Jan–Mar, Jul–Sep</div>
+          <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Currency</span>Ugandan Shilling</div>
+          <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Time Zone</span>GMT +3</div>
+          <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Main Airport</span>Entebbe (EBB)</div>
+        </div>
+      </section>
+
+      {/* Overview */}
+      <section className="bg-cream py-20 px-6 md:px-16">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <p className="section-label mb-3">Destination Overview</p>
+            <h2 className="section-heading mb-6">Africa&apos;s Most Rewarding Safari</h2>
+            <div className="w-12 h-0.5 bg-gold mb-8" />
+            <p className="text-stone font-sans leading-relaxed mb-4">
+              Uganda is a multicultural country in East Africa whose diverse landscape spans from
+              the lush rainforests of Bwindi Impenetrable National Park — home to half the world&apos;s
+              mountain gorillas — to the stunning savannas of Queen Elizabeth National Park and the
+              thundering power of Murchison Falls.
+            </p>
+            <p className="text-stone font-sans leading-relaxed mb-4">
+              Often called the Pearl of Africa, Uganda packs extraordinary biodiversity into a
+              compact country: over 1,000 bird species, 13 primate species including chimpanzees
+              and gorillas, and the Big Five roaming its national parks.
+            </p>
+            <p className="text-stone font-sans leading-relaxed">
+              At Tilenga Safaris, we are uniquely positioned in Uganda — our two lodges sit at
+              the gates of Murchison Falls and Queen Elizabeth National Parks, ensuring you
+              maximize every wildlife moment.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <img
+              src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=500&q=80"
+              alt="Murchison Falls"
+              className="w-full h-48 object-cover"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1573408301185-9519f94816b5?w=500&q=80"
+              alt="Gorilla"
+              className="w-full h-48 object-cover mt-6"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=500&q=80"
+              alt="Giraffe"
+              className="w-full h-48 object-cover -mt-6"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=500&q=80"
+              alt="Savannah"
+              className="w-full h-48 object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Highlights */}
+      <section className="bg-cream-dark py-12 px-6 md:px-16">
+        <div className="max-w-4xl mx-auto">
+          <p className="section-label text-center mb-8">Uganda Hot Spots</p>
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-4 text-center">
+            {highlights.map((h) => (
+              <div key={h.label} className="bg-white p-4 border border-gold/20">
+                <div className="text-3xl mb-2">{h.icon}</div>
+                <p className="text-forest text-xs font-sans uppercase tracking-wider">{h.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tour Packages */}
+      <section className="bg-cream py-24 px-6 md:px-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="section-label mb-3">Safari Packages</p>
+            <h2 className="section-heading">Uganda Tour Packages</h2>
+            <div className="w-16 h-0.5 bg-gold mx-auto mt-5" />
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {packages.map((pkg) => (
+              <div key={pkg.name} className="bg-white border border-gold/10 p-8 hover:shadow-md transition-shadow">
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h3 className="font-serif text-xl text-forest">{pkg.name}</h3>
+                    <p className="text-gold text-xs uppercase tracking-wider font-sans mt-1">{pkg.duration}</p>
+                  </div>
+                  <span className="bg-forest text-cream text-xs font-sans px-3 py-1 shrink-0 ml-4 text-center">
+                    {pkg.price}
+                  </span>
+                </div>
+                <p className="text-stone font-sans text-sm leading-relaxed mb-5">{pkg.description}</p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {pkg.activities.map((act) => (
+                    <span key={act} className="text-[10px] uppercase tracking-wider text-stone border border-stone/30 px-2 py-0.5 font-sans">
+                      {act}
+                    </span>
+                  ))}
+                </div>
+                <Link href="/plan-a-trip" className="text-forest font-sans text-sm uppercase tracking-wider border-b border-gold hover:text-gold transition-colors">
+                  Enquire →
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-forest py-20 px-6 md:px-16 text-center">
+        <h2 className="font-serif text-3xl md:text-4xl text-cream mb-6">Ready to Explore Uganda?</h2>
+        <p className="text-cream/60 font-sans max-w-lg mx-auto mb-8">
+          Let our Uganda specialists tailor your perfect itinerary — gorillas, parks, or both.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link href="/plan-a-trip" className="btn-outline">Plan My Trip</Link>
+          <Link href="/lodges" className="btn-ghost">Our Uganda Lodges</Link>
+        </div>
+      </section>
+    </>
+  );
+}
