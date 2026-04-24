@@ -9,7 +9,7 @@ const variants: Record<string, Variants> = {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
     },
   },
   down: {
@@ -17,7 +17,7 @@ const variants: Record<string, Variants> = {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
     },
   },
   left: {
@@ -25,7 +25,7 @@ const variants: Record<string, Variants> = {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
     },
   },
   right: {
@@ -33,7 +33,7 @@ const variants: Record<string, Variants> = {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
     },
   },
   scale: {
@@ -41,7 +41,7 @@ const variants: Record<string, Variants> = {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
     },
   },
   fade: {
@@ -76,7 +76,7 @@ export default function FadeIn({
         hidden: v.hidden,
         visible: {
           ...(v.visible as object),
-          transition: { duration, ease: [0.22, 1, 0.36, 1], delay },
+          transition: { duration, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay },
         },
       }
     : {

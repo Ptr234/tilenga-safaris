@@ -27,7 +27,7 @@ const lodges = [
 ];
 
 const experiences = [
-  { title: "Gorilla Trekking", description: "Come face-to-face with endangered mountain gorillas in Bwindi or Volcanoes National Park.", image: "https://images.unsplash.com/photo-1573408301185-9519f94816b5?w=600&q=80" },
+  { title: "Gorilla Trekking", description: "Come face-to-face with endangered mountain gorillas in Bwindi or Volcanoes National Park.", image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=600&q=80" },
   { title: "Game Drives", description: "Guided dawn and dusk drives through Africa's most prolific wildlife parks.", image: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=600&q=80" },
   { title: "Boat Safaris", description: "Glide along the Kazinga Channel or Albert Nile for up-close hippo, crocodile, and bird encounters.", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" },
   { title: "Cultural Immersion", description: "Meet local communities — basketry workshops, village walks, traditional cuisine, and living heritage.", image: "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&q=80" },
@@ -39,7 +39,7 @@ const destinations = [
   { name: "Uganda", tag: "Pearl of Africa", image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=600&q=80", href: "/destinations/uganda" },
   { name: "Kenya", tag: "Iconic Maasai Mara", image: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=600&q=80", href: "/destinations/kenya" },
   { name: "Tanzania", tag: "Serengeti & Zanzibar", image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=600&q=80", href: "/destinations/tanzania" },
-  { name: "Rwanda", tag: "Land of a Thousand Hills", image: "https://images.unsplash.com/photo-1573408301185-9519f94816b5?w=600&q=80", href: "/destinations/rwanda" },
+  { name: "Rwanda", tag: "Land of a Thousand Hills", image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=600&q=80", href: "/destinations/rwanda" },
   { name: "South Africa", tag: "Cape & Kruger", image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=600&q=80", href: "/destinations/south-africa" },
   { name: "Dubai", tag: "Desert Luxury", image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80", href: "/destinations/dubai" },
 ];

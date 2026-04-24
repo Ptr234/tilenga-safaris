@@ -46,12 +46,12 @@ const packages = [
 ];
 
 const highlights = [
-  { icon: "🦍", label: "Mountain Gorillas" },
-  { icon: "💧", label: "Murchison Falls" },
-  { icon: "🦁", label: "Big Five" },
-  { icon: "🐦", label: "1,000+ Bird Species" },
-  { icon: "🏔️", label: "Mt. Rwenzori" },
-  { icon: "🚣", label: "Source of the Nile" },
+  "Mountain Gorillas",
+  "Murchison Falls",
+  "Big Five",
+  "1,000+ Bird Species",
+  "Mt. Rwenzori",
+  "Source of the Nile",
 ];
 
 export default function UgandaPage() {
@@ -116,7 +116,7 @@ export default function UgandaPage() {
               className="w-full h-48 object-cover"
             />
             <img
-              src="https://images.unsplash.com/photo-1573408301185-9519f94816b5?w=500&q=80"
+              src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=500&q=80"
               alt="Gorilla"
               className="w-full h-48 object-cover mt-6"
             />
@@ -138,12 +138,11 @@ export default function UgandaPage() {
       <section className="bg-cream-dark py-12 px-6 md:px-16">
         <div className="max-w-4xl mx-auto">
           <p className="section-label text-center mb-8">Uganda Hot Spots</p>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-4 text-center">
+          <div className="flex flex-wrap justify-center gap-3">
             {highlights.map((h) => (
-              <div key={h.label} className="bg-white p-4 border border-gold/20">
-                <div className="text-3xl mb-2">{h.icon}</div>
-                <p className="text-forest text-xs font-sans uppercase tracking-wider">{h.label}</p>
-              </div>
+              <span key={h} className="border border-gold/50 text-forest text-xs font-sans uppercase tracking-widest px-4 py-2">
+                {h}
+              </span>
             ))}
           </div>
         </div>

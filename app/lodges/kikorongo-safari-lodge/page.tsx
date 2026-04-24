@@ -25,12 +25,12 @@ const rooms = [
 ];
 
 const activities = [
-  { name: "Kazinga Channel Cruise", desc: "Sail the 40km channel between Lake Edward and Lake George — one of the world's greatest concentrations of hippos, Nile crocodiles, and 600+ bird species.", icon: "⛵" },
-  { name: "Queen Elizabeth Game Drive", desc: "Track lions, elephants, buffaloes, leopards, and the famous tree-climbing lions of Ishasha sector on guided morning and evening drives.", icon: "🚙" },
-  { name: "Bird Watching", desc: "Over 600 bird species in Queen Elizabeth NP — including shoebill storks, African skimmers, and the rare martial eagle.", icon: "🐦" },
-  { name: "Mount Rwenzori Climbing", desc: "The legendary Mountains of the Moon — Africa's third-highest peak with equatorial glaciers, giant heathers, and stunning Albertine Rift views.", icon: "🏔️" },
-  { name: "Boat Cruise", desc: "Evening boat cruises on Lake Kikorongo with spectacular sunset over the Rwenzori Mountains and prolific birdlife.", icon: "🌅" },
-  { name: "Chimpanzee Tracking", desc: "Kibale National Park, just 3 hours away, offers one of the best chimpanzee tracking experiences in Africa.", icon: "🐒" },
+  { name: "Kazinga Channel Cruise", desc: "Sail the 40km channel between Lake Edward and Lake George — one of the world's greatest concentrations of hippos, Nile crocodiles, and 600+ bird species." },
+  { name: "Queen Elizabeth Game Drive", desc: "Track lions, elephants, buffaloes, leopards, and the famous tree-climbing lions of Ishasha sector on guided morning and evening drives." },
+  { name: "Bird Watching", desc: "Over 600 bird species in Queen Elizabeth NP — including shoebill storks, African skimmers, and the rare martial eagle." },
+  { name: "Mount Rwenzori Climbing", desc: "The legendary Mountains of the Moon — Africa's third-highest peak with equatorial glaciers, giant heathers, and stunning Albertine Rift views." },
+  { name: "Boat Cruise", desc: "Evening boat cruises on Lake Kikorongo with spectacular sunset over the Rwenzori Mountains and prolific birdlife." },
+  { name: "Chimpanzee Tracking", desc: "Kibale National Park, just 3 hours away, offers one of the best chimpanzee tracking experiences in Africa." },
 ];
 
 export default function KikorongoSafariLodgePage() {
@@ -146,9 +146,9 @@ export default function KikorongoSafariLodgePage() {
             <div className="w-16 h-0.5 bg-gold mx-auto mt-5" />
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {activities.map((act) => (
+            {activities.map((act, i) => (
               <div key={act.name} className="bg-cream-dark border border-gold/10 p-6 hover:shadow-sm transition-shadow">
-                <div className="text-3xl mb-3">{act.icon}</div>
+                <p className="font-serif text-3xl text-gold/40 mb-3 leading-none">{String(i + 1).padStart(2, "0")}</p>
                 <h3 className="font-serif text-lg text-forest mb-2">{act.name}</h3>
                 <p className="text-stone font-sans text-sm leading-relaxed">{act.desc}</p>
               </div>

@@ -18,12 +18,12 @@ const rooms = [
 ];
 
 const activities = [
-  { name: "Game Drives", desc: "Guided morning and evening drives through Murchison Falls National Park — elephants, giraffes, lions, buffaloes, and hippos await.", icon: "🚙" },
-  { name: "Murchison Falls Hike", desc: "Trek to the top of Africa's most powerful waterfall — 45 metres of the Nile squeezed through a 7-metre gorge.", icon: "💧" },
-  { name: "Nile Boat Safari", desc: "A 3-hour boat safari along the Albert Nile to the base of Murchison Falls, with hippos, crocodiles, and over 450 bird species.", icon: "🚢" },
-  { name: "Sport Fishing", desc: "Cast for Nile perch and tiger fish in the Albert Nile with experienced local guides and all equipment provided.", icon: "🎣" },
-  { name: "Night Game Drives", desc: "Spot nocturnal creatures — civets, genets, bush babies, and African wild cats — under the stars.", icon: "🌙" },
-  { name: "Basketry Workshops", desc: "Connect with local artisans and learn traditional basket weaving techniques — a meaningful community experience.", icon: "🧺" },
+  { name: "Game Drives", desc: "Guided morning and evening drives through Murchison Falls National Park — elephants, giraffes, lions, buffaloes, and hippos await." },
+  { name: "Murchison Falls Hike", desc: "Trek to the top of Africa's most powerful waterfall — 45 metres of the Nile squeezed through a 7-metre gorge." },
+  { name: "Nile Boat Safari", desc: "A 3-hour boat safari along the Albert Nile to the base of Murchison Falls, with hippos, crocodiles, and over 450 bird species." },
+  { name: "Sport Fishing", desc: "Cast for Nile perch and tiger fish in the Albert Nile with experienced local guides and all equipment provided." },
+  { name: "Night Game Drives", desc: "Spot nocturnal creatures — civets, genets, bush babies, and African wild cats — under the stars." },
+  { name: "Basketry Workshops", desc: "Connect with local artisans and learn traditional basket weaving techniques — a meaningful community experience." },
 ];
 
 export default function TilengaSafariLodgePage() {
@@ -139,9 +139,9 @@ export default function TilengaSafariLodgePage() {
             <div className="w-16 h-0.5 bg-gold mx-auto mt-5" />
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {activities.map((act) => (
+            {activities.map((act, i) => (
               <div key={act.name} className="bg-cream-dark border border-gold/10 p-6 hover:shadow-sm transition-shadow">
-                <div className="text-3xl mb-3">{act.icon}</div>
+                <p className="font-serif text-3xl text-gold/40 mb-3 leading-none">{String(i + 1).padStart(2, "0")}</p>
                 <h3 className="font-serif text-lg text-forest mb-2">{act.name}</h3>
                 <p className="text-stone font-sans text-sm leading-relaxed">{act.desc}</p>
               </div>

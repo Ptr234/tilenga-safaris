@@ -39,7 +39,7 @@ const destinations = [
       "The rolling hills of Rwanda shelter endangered mountain gorillas in Volcanoes National Park, golden monkeys in Nyungwe Forest, and the serene shores of Lake Kivu.",
     hotspots: ["Gorilla Tracking", "Volcanoes NP", "Kigali City Tour", "Lake Kivu"],
     bestTime: "May–Oct",
-    image: "https://images.unsplash.com/photo-1573408301185-9519f94816b5?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=900&q=80",
     href: "/destinations/rwanda",
   },
   {

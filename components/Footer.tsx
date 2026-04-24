@@ -29,11 +29,8 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 md:px-16 py-16 grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Brand */}
         <div className="md:col-span-1">
-          <Link href="/" className="flex flex-col leading-none mb-4">
-            <span className="font-serif text-2xl text-cream">Tilenga Safaris</span>
-            <span className="text-gold text-[10px] uppercase tracking-[0.3em] font-sans">
-              Explore · Discover · Experience
-            </span>
+          <Link href="/" className="flex mb-4">
+            <img src="/Tilenga-Logo-Full.svg" alt="Tilenga Safaris" className="h-12 w-auto" />
           </Link>
           <p className="text-cream/50 text-sm font-sans leading-relaxed">
             Crafting personalized adventures for unforgettable memories across East Africa and beyond.

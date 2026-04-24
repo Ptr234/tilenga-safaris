@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 
 const slides = [
   {
@@ -37,12 +37,12 @@ const textVariants = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   }),
   exit: { opacity: 0, y: -20, filter: "blur(4px)", transition: { duration: 0.4 } },
 };
 
-const imageVariants = {
+const imageVariants: Variants = {
   enter: { scale: 1.08, opacity: 0 },
   active: {
     scale: 1,

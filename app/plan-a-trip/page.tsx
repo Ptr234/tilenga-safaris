@@ -142,7 +142,12 @@ export default function PlanATripPage() {
           <div className="md:col-span-2">
             {submitted ? (
               <div className="bg-white border border-gold/20 p-12 text-center">
-                <div className="text-5xl mb-6">✅</div>
+                <div className="flex justify-center mb-6">
+                  <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="28" cy="28" r="27" stroke="#C9A96E" strokeWidth="2"/>
+                    <path d="M18 28.5L24.5 35L38 21" stroke="#C9A96E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
                 <h2 className="font-serif text-3xl text-forest mb-4">Thank You!</h2>
                 <p className="text-stone font-sans leading-relaxed max-w-md mx-auto">
                   We&apos;ve received your enquiry and will be in touch within 24 hours with

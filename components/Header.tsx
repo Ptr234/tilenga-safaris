@@ -35,7 +35,7 @@ const dropdownVariants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.22, ease: "easeOut" as const },
   },
   exit: {
     opacity: 0,
@@ -59,7 +59,7 @@ const mobileMenuVariants = {
   visible: {
     height: "auto",
     opacity: 1,
-    transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   },
   exit: {
     height: 0,
@@ -83,7 +83,7 @@ export default function Header() {
     <motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
         scrolled ? "bg-forest shadow-lg" : "bg-forest/80 backdrop-blur-sm"
       }`}
@@ -101,17 +101,14 @@ export default function Header() {
       {/* Main nav */}
       <div className="flex items-center justify-between px-6 md:px-12 py-4">
         {/* Logo */}
-        <Link href="/" className="flex flex-col leading-none group">
-          <motion.span
-            className="font-serif text-xl md:text-2xl text-cream tracking-wide"
-            whileHover={{ letterSpacing: "0.05em" }}
+        <Link href="/" className="flex items-center group">
+          <motion.img
+            src="/Tilenga-Logo-Full.svg"
+            alt="Tilenga Safaris"
+            className="h-12 md:h-14 w-auto"
+            whileHover={{ scale: 1.03 }}
             transition={{ duration: 0.3 }}
-          >
-            Tilenga Safaris
-          </motion.span>
-          <span className="text-gold text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-sans">
-            Explore · Discover · Experience
-          </span>
+          />
         </Link>
 
         {/* Desktop nav */}

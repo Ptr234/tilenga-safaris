@@ -1,12 +1,12 @@
 import Link from "next/link";
 
 const highlights = [
-  { icon: "🏙️", label: "Burj Khalifa" },
-  { icon: "🐪", label: "Desert Safari" },
-  { icon: "🛍️", label: "Gold Souk" },
-  { icon: "🌴", label: "Palm Jumeirah" },
-  { icon: "⛵", label: "Dubai Creek" },
-  { icon: "🍽️", label: "World-class Dining" },
+  "Burj Khalifa",
+  "Desert Safari",
+  "Gold Souk",
+  "Palm Jumeirah",
+  "Dubai Creek",
+  "World-class Dining",
 ];
 
 export default function DubaiPage() {
@@ -72,12 +72,9 @@ export default function DubaiPage() {
       <section className="bg-cream-dark py-12 px-6 md:px-16">
         <div className="max-w-4xl mx-auto">
           <p className="section-label text-center mb-8">Dubai Highlights</p>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-4 text-center">
+          <div className="flex flex-wrap justify-center gap-3">
             {highlights.map((h) => (
-              <div key={h.label} className="bg-white p-4 border border-gold/20">
-                <div className="text-3xl mb-2">{h.icon}</div>
-                <p className="text-forest text-xs font-sans uppercase tracking-wider">{h.label}</p>
-              </div>
+              <span key={h} className="border border-gold/50 text-forest text-xs font-sans uppercase tracking-widest px-4 py-2">{h}</span>
             ))}
           </div>
         </div>

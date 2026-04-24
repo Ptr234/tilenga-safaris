@@ -4,22 +4,22 @@ const values = [
   {
     title: "Customer-Centricity",
     desc: "Every itinerary we design is built around you — your interests, pace, budget, and vision. We foster enduring relationships, not one-time transactions.",
-    icon: "❤️",
+    num: "01",
   },
   {
     title: "Integrity",
     desc: "Transparency in pricing, honest communication, and ethical partnerships. What we promise, we deliver.",
-    icon: "🤝",
+    num: "02",
   },
   {
     title: "Quality",
     desc: "From our lodge standards to our guide expertise and partner networks — we maintain elevated standards at every touchpoint of your journey.",
-    icon: "⭐",
+    num: "03",
   },
   {
     title: "Sustainability",
     desc: "We support environmentally conscious practices, local communities, and cultural preservation — ensuring Africa's wild beauty endures.",
-    icon: "🌿",
+    num: "04",
   },
 ];
 
@@ -100,7 +100,7 @@ export default function AboutPage() {
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=500&q=80" alt="Uganda" className="w-full h-44 object-cover" />
-              <img src="https://images.unsplash.com/photo-1573408301185-9519f94816b5?w=500&q=80" alt="Gorilla" className="w-full h-44 object-cover mt-6" />
+              <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=500&q=80" alt="Gorilla" className="w-full h-44 object-cover mt-6" />
             </div>
             <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=80" alt="Africa" className="w-full h-44 object-cover" />
           </div>
@@ -118,7 +118,7 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-8">
             {values.map((v) => (
               <div key={v.title} className="bg-white p-8 border-l-2 border-gold">
-                <div className="text-3xl mb-4">{v.icon}</div>
+                <p className="font-serif text-3xl text-gold mb-4">{v.num}</p>
                 <h3 className="font-serif text-xl text-forest mb-3">{v.title}</h3>
                 <p className="text-stone font-sans text-sm leading-relaxed">{v.desc}</p>
               </div>

@@ -28,12 +28,12 @@ const packages = [
 ];
 
 const highlights = [
-  { icon: "🎈", label: "Hot Air Balloon" },
-  { icon: "🏝️", label: "Zanzibar" },
-  { icon: "🐃", label: "Wildebeest Migration" },
-  { icon: "⛰️", label: "Mt. Kilimanjaro" },
-  { icon: "🌍", label: "Ruaha NP" },
-  { icon: "🦁", label: "Serengeti" },
+  "Hot Air Balloon",
+  "Zanzibar",
+  "Wildebeest Migration",
+  "Mt. Kilimanjaro",
+  "Ruaha NP",
+  "Serengeti",
 ];
 
 export default function TanzaniaPage() {
@@ -99,12 +99,9 @@ export default function TanzaniaPage() {
       <section className="bg-cream-dark py-12 px-6 md:px-16">
         <div className="max-w-4xl mx-auto">
           <p className="section-label text-center mb-8">Tanzania Hot Spots</p>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-4 text-center">
+          <div className="flex flex-wrap justify-center gap-3">
             {highlights.map((h) => (
-              <div key={h.label} className="bg-white p-4 border border-gold/20">
-                <div className="text-3xl mb-2">{h.icon}</div>
-                <p className="text-forest text-xs font-sans uppercase tracking-wider">{h.label}</p>
-              </div>
+              <span key={h} className="border border-gold/50 text-forest text-xs font-sans uppercase tracking-widest px-4 py-2">{h}</span>
             ))}
           </div>
         </div>
