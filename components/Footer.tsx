@@ -30,7 +30,7 @@ export default function Footer() {
         {/* Brand */}
         <div className="md:col-span-1">
           <Link href="/" className="flex mb-4">
-            <img src="/tilenga-logo-light.svg" alt="Tilenga Safaris" className="h-12 w-auto" />
+            <img src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/tilenga-logo-light.svg`} alt="Tilenga Safaris" className="h-12 w-auto" />
           </Link>
           <p className="text-cream/50 text-sm font-sans leading-relaxed">
             Crafting personalized adventures for unforgettable memories across East Africa and beyond.

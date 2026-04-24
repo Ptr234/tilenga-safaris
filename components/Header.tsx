@@ -103,7 +103,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center group">
           <motion.img
-            src="/tilenga-logo-light.svg"
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/tilenga-logo-light.svg`}
             alt="Tilenga Safaris"
             className="h-12 md:h-14 w-auto"
             whileHover={{ scale: 1.03 }}

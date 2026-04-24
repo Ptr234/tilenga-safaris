@@ -1,9 +1,14 @@
 /** @type {import('next').NextConfig} */
+const basePath = process.env.NODE_ENV === "production" ? "/tilenga-safaris" : "";
+
 const nextConfig = {
   output: "export",
-  basePath: process.env.NODE_ENV === "production" ? "/tilenga-safaris" : "",
-  assetPrefix: process.env.NODE_ENV === "production" ? "/tilenga-safaris/" : "",
+  basePath,
+  assetPrefix: basePath ? `${basePath}/` : "",
   trailingSlash: true,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   images: {
     unoptimized: true,
     remotePatterns: [
