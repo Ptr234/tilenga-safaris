@@ -79,71 +79,71 @@ export default function DestinationsPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/80 via-forest-dark/30 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 to-transparent" />
-        <div className="relative z-10 px-8 md:px-20 pb-16 max-w-3xl">
-          <div className="flex items-center gap-3 mb-4">
+        <div className="relative z-10 px-8 md:px-20 pb-16 max-w-4xl">
+          <div className="flex items-center gap-3 mb-6">
             <div className="w-8 h-px bg-gold" />
             <p className="section-label text-gold">Africa &amp; Beyond</p>
           </div>
-          <h1 className="font-serif text-6xl md:text-8xl text-cream leading-none mb-4">
+          <h1 className="font-serif text-6xl md:text-8xl lg:text-[7rem] text-cream leading-[0.9] mb-6 uppercase tracking-heritage">
             Our<br /><em className="not-italic text-gold">Destinations</em>
           </h1>
-          <p className="text-cream/60 font-sans text-sm max-w-md leading-relaxed">
+          <p className="text-cream/60 font-sans text-base max-w-md leading-relaxed">
             Six breathtaking destinations. Each with its own character, wildlife, and transformative story.
           </p>
         </div>
       </section>
 
       {/* Editorial asymmetric grid — top row */}
-      <section className="bg-forest-dark p-1.5">
+      <section className="bg-forest-dark p-2">
         {/* Row 1: Uganda (large 2/3) + Kenya+Tanzania stacked (1/3) */}
-        <div className="grid grid-cols-3 gap-1.5 mb-1.5">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 mb-2">
           {/* Uganda — large feature */}
           <Link
             href={destinations[0].href}
-            className="col-span-2 group relative overflow-hidden h-[80vh] min-h-[480px] block"
+            className="lg:col-span-2 group relative overflow-hidden h-[85vh] min-h-[500px] block"
           >
             <img
               src={destinations[0].image}
               alt={destinations[0].name}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/90 via-forest-dark/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-dark/20 to-transparent" />
             {/* Large number */}
-            <span className="absolute top-6 left-8 font-serif text-cream/10 text-[8rem] md:text-[10rem] leading-none select-none pointer-events-none">
+            <span className="absolute top-6 left-8 font-serif text-cream/5 text-[10rem] md:text-[14rem] leading-none select-none pointer-events-none uppercase">
               {destinations[0].num}
             </span>
-            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10">
-              <div className="w-8 h-px bg-gold mb-3 transition-all duration-500 group-hover:w-16" />
-              <p className="text-gold text-[10px] uppercase tracking-[0.3em] font-sans mb-2">{destinations[0].tag}</p>
-              <h2 className="font-serif text-4xl md:text-6xl text-cream leading-none mb-3">{destinations[0].name}</h2>
-              <p className="text-cream/60 text-sm font-sans leading-relaxed max-w-sm translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 mb-4">
+            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+              <div className="w-12 h-px bg-gold mb-4 transition-all duration-500 group-hover:w-20" />
+              <p className="text-gold text-xs uppercase tracking-[0.35em] font-sans mb-3">{destinations[0].tag}</p>
+              <h2 className="font-serif text-5xl md:text-7xl text-cream leading-none mb-4 uppercase tracking-heritage">{destinations[0].name}</h2>
+              <p className="text-cream/60 text-base font-sans leading-relaxed max-w-md translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 mb-6">
                 {destinations[0].description}
               </p>
-              <span className="text-gold text-xs uppercase tracking-widest font-sans border-b border-gold/30 pb-0.5">
+              <span className="text-gold text-[11px] uppercase tracking-widest font-sans border border-gold/30 px-4 py-2 bg-black/20 backdrop-blur-sm">
                 Best time: {destinations[0].bestTime}
               </span>
             </div>
           </Link>
 
           {/* Kenya + Tanzania stacked */}
-          <div className="col-span-1 flex flex-col gap-1.5">
+          <div className="lg:col-span-1 flex flex-col gap-2">
             {[destinations[1], destinations[2]].map((dest) => (
               <Link
                 key={dest.name}
                 href={dest.href}
-                className="group relative overflow-hidden flex-1 min-h-[200px] block"
+                className="group relative overflow-hidden flex-1 min-h-[300px] block"
               >
                 <img
                   src={dest.image}
                   alt={dest.name}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/85 via-forest-dark/20 to-transparent" />
-                <span className="absolute top-4 right-4 font-serif text-cream/15 text-5xl leading-none select-none">{dest.num}</span>
-                <div className="absolute bottom-0 left-0 p-5">
-                  <div className="w-5 h-px bg-gold mb-2 transition-all duration-500 group-hover:w-10" />
-                  <p className="text-gold text-[10px] uppercase tracking-[0.25em] font-sans">{dest.tag}</p>
-                  <h3 className="font-serif text-2xl text-cream">{dest.name}</h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/90 via-forest-dark/20 to-transparent" />
+                <span className="absolute top-6 right-8 font-serif text-cream/10 text-7xl leading-none select-none uppercase">{dest.num}</span>
+                <div className="absolute bottom-0 left-0 p-8">
+                  <div className="w-8 h-px bg-gold mb-3 transition-all duration-500 group-hover:w-16" />
+                  <p className="text-gold text-[10px] uppercase tracking-[0.3em] font-sans mb-1">{dest.tag}</p>
+                  <h3 className="font-serif text-3xl md:text-4xl text-cream uppercase tracking-heritage">{dest.name}</h3>
                 </div>
               </Link>
             ))}
@@ -151,25 +151,25 @@ export default function DestinationsPage() {
         </div>
 
         {/* Row 2: Rwanda, South Africa, Dubai — equal thirds */}
-        <div className="grid grid-cols-3 gap-1.5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
           {[destinations[3], destinations[4], destinations[5]].map((dest) => (
             <Link
               key={dest.name}
               href={dest.href}
-              className="group relative overflow-hidden h-[55vh] min-h-[320px] block"
+              className="group relative overflow-hidden h-[65vh] min-h-[400px] block"
             >
               <img
                 src={dest.image}
                 alt={dest.name}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/90 via-forest-dark/30 to-transparent" />
-              <span className="absolute top-5 left-5 font-serif text-cream/10 text-6xl leading-none select-none">{dest.num}</span>
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <div className="w-6 h-px bg-gold mb-2 transition-all duration-500 group-hover:w-12" />
-                <p className="text-gold text-[9px] uppercase tracking-[0.25em] font-sans">{dest.tag}</p>
-                <h3 className="font-serif text-2xl md:text-3xl text-cream mb-2">{dest.name}</h3>
-                <p className="text-cream/55 text-xs font-sans leading-relaxed translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+              <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-dark/30 to-transparent" />
+              <span className="absolute top-6 left-6 font-serif text-cream/10 text-7xl leading-none select-none uppercase">{dest.num}</span>
+              <div className="absolute bottom-0 left-0 right-0 p-8">
+                <div className="w-10 h-px bg-gold mb-3 transition-all duration-500 group-hover:w-20" />
+                <p className="text-gold text-[10px] uppercase tracking-[0.3em] font-sans mb-1">{dest.tag}</p>
+                <h3 className="font-serif text-3xl text-cream mb-3 uppercase tracking-heritage">{dest.name}</h3>
+                <p className="text-cream/55 text-sm font-sans leading-relaxed translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                   {dest.description}
                 </p>
               </div>

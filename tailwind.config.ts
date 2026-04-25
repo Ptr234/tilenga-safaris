@@ -29,10 +29,24 @@ const config: Config = {
           light: "#9A9A88",
           dark: "#444438",
         },
+        earth: {
+          DEFAULT: "#8B5E3C",
+          dark: "#5D3E28",
+          light: "#A67B5B",
+        },
+        clay: {
+          DEFAULT: "#D4A373",
+          light: "#E9C46A",
+        },
       },
       fontFamily: {
         serif: ["Playfair Display", "Georgia", "serif"],
         sans: ["Lato", "Inter", "sans-serif"],
+        display: ["Playfair Display", "serif"],
+      },
+      letterSpacing: {
+        "widest-plus": "0.3em",
+        "heritage": "0.15em",
       },
     },
   },

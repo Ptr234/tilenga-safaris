@@ -111,58 +111,67 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/30 to-forest-dark/85" />
         <div className="relative z-10 px-6 md:px-16 pb-16 max-w-3xl">
           <p className="section-label text-gold mb-3">Who We Are</p>
-          <h1 className="font-serif text-5xl md:text-7xl text-cream mb-3">About Us</h1>
+          <h1 className="font-serif text-5xl md:text-8xl text-cream mb-4 uppercase tracking-heritage leading-none">About Us</h1>
           <p className="font-serif italic text-2xl text-gold">Passion for Travel. Care for People.</p>
         </div>
       </section>
 
       {/* Mission */}
-      <section className="bg-cream py-24 px-6 md:px-16">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <section className="bg-cream py-32 px-6 md:px-16">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
           <div>
             <p className="section-label mb-3">Our Story</p>
-            <h2 className="section-heading mb-6">Crafting Personalized Adventures</h2>
-            <div className="w-12 h-0.5 bg-gold mb-8" />
-            <p className="text-stone font-sans leading-relaxed mb-4">
-              Tilenga Safaris was founded on a simple, powerful belief — that travel has the power
-              to transform. We serve explorers and travel enthusiasts who view journeys not as
-              mere destination-reaching, but as opportunities to discover themselves and the world.
-            </p>
-            <p className="text-stone font-sans leading-relaxed mb-4">
-              With over 5 years of expertise in the travel industry and a passionate team of
-              specialists who know East Africa deeply, we develop carefully designed itineraries
-              that combine adventure, culture, and relaxation — creating lasting impressions
-              that our guests carry home for a lifetime.
-            </p>
-            <p className="text-stone font-sans leading-relaxed mb-8">
-              Our mission is simple: <em className="text-forest font-serif">&ldquo;to inspire and enrich lives through travel.&rdquo;</em>
-            </p>
-            <Link href="/plan-a-trip" className="btn-primary">Plan Your Safari</Link>
-          </div>
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <img src="https://images.unsplash.com/photo-1614528767034-70de9fe166e0?w=500&q=80" alt="Uganda gorilla" className="w-full h-44 object-cover" />
-              <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=500&q=80" alt="Murchison Falls" className="w-full h-44 object-cover mt-6" />
+            <h2 className="section-heading mb-8 uppercase tracking-heritage">Crafting Personalized Adventures</h2>
+            <div className="w-16 h-px bg-gold mb-8" />
+            <div className="space-y-6 text-stone font-sans text-base leading-relaxed mb-12">
+              <p>
+                Tilenga Safaris was founded on a simple, powerful belief — that travel has the power
+                to transform. We serve explorers and travel enthusiasts who view journeys not as
+                mere destination-reaching, but as opportunities to discover themselves and the world.
+              </p>
+              <p>
+                With over 5 years of expertise in the travel industry and a passionate team of
+                specialists who know East Africa deeply, we develop carefully designed itineraries
+                that combine adventure, culture, and relaxation — creating lasting impressions
+                that our guests carry home for a lifetime.
+              </p>
+              <p className="text-forest font-serif italic text-lg">
+                &ldquo;Our mission is to inspire and enrich lives through travel.&rdquo;
+              </p>
             </div>
-            <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=700&q=80" alt="Gorillas in mist" className="w-full h-44 object-cover" />
+            <Link href="/plan-a-trip" className="btn-primary px-10">Plan Your Safari</Link>
+          </div>
+          <div className="space-y-6">
+            <div className="grid grid-cols-2 gap-6">
+              <div className="film-frame h-56">
+                <img src="https://images.unsplash.com/photo-1614528767034-70de9fe166e0?w=500&q=80" alt="Uganda gorilla" className="w-full h-full object-cover" />
+              </div>
+              <div className="film-frame h-56 mt-12">
+                <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=500&q=80" alt="Murchison Falls" className="w-full h-full object-cover" />
+              </div>
+            </div>
+            <div className="film-frame h-64">
+              <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=700&q=80" alt="Gorillas in mist" className="w-full h-full object-cover" />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Values */}
-      <section className="bg-cream-dark py-20 px-6 md:px-16">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
+      <section className="bg-cream-dark py-28 px-6 md:px-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20">
             <p className="section-label mb-3">How We Work</p>
-            <h2 className="section-heading">Our Core Values</h2>
-            <div className="w-16 h-0.5 bg-gold mx-auto mt-5" />
+            <h2 className="section-heading uppercase tracking-heritage">Our Core Values</h2>
+            <div className="w-20 h-px bg-gold mx-auto mt-6" />
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-10">
             {values.map((v) => (
-              <div key={v.title} className="bg-white p-8 border-l-2 border-gold">
-                <p className="font-serif text-3xl text-gold mb-4">{v.num}</p>
-                <h3 className="font-serif text-xl text-forest mb-3">{v.title}</h3>
-                <p className="text-stone font-sans text-sm leading-relaxed">{v.desc}</p>
+              <div key={v.title} className="bg-white p-10 border border-gold/10 relative group hover:border-gold/30 transition-colors duration-500">
+                <p className="font-serif text-5xl text-gold/10 absolute top-6 right-8 group-hover:text-gold/20 transition-colors">{v.num}</p>
+                <h3 className="font-serif text-2xl text-forest mb-4 uppercase tracking-wide">{v.title}</h3>
+                <div className="w-8 h-px bg-gold/40 mb-6 group-hover:w-12 transition-all duration-500" />
+                <p className="text-stone font-sans text-base leading-relaxed">{v.desc}</p>
               </div>
             ))}
           </div>

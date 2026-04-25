@@ -31,12 +31,12 @@ export default function Footer() {
 
       {/* ── DESTINATION PICTORIALS ── */}
       <div className="px-6 md:px-12 pb-14">
-        <p className="text-center text-gold text-[9px] uppercase tracking-[0.45em] font-sans font-semibold mb-7">
+        <p className="text-center text-gold text-[9px] uppercase tracking-heritage font-sans font-semibold mb-7">
           Our Destinations
         </p>
         <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
           {destinationPics.map((d) => (
-            <Link key={d.name} href={d.href} className="group block relative overflow-hidden h-48 md:h-56">
+            <Link key={d.name} href={d.href} className="group block relative overflow-hidden h-48 md:h-56 film-frame">
               <img
                 src={d.image}
                 alt={d.name}
@@ -44,7 +44,7 @@ export default function Footer() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-3">
-                <p className="text-white font-serif text-sm leading-tight">{d.name}</p>
+                <p className="text-white font-serif text-sm leading-tight uppercase tracking-wide">{d.name}</p>
                 <p className="text-white/60 font-sans text-[9px] uppercase tracking-[0.2em] mt-0.5">{d.sub}</p>
               </div>
             </Link>

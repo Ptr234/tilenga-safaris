@@ -99,20 +99,20 @@ export default function Header() {
       </div>
 
       {/* Main nav */}
-      <div className="flex items-center justify-between px-6 md:px-12 py-4">
+      <div className="flex items-center justify-between px-6 md:px-12 py-5">
         {/* Logo */}
         <Link href="/" className="flex items-center group">
           <motion.img
             src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/tilenga-logo-light.svg`}
             alt="Tilenga Safaris"
-            className="h-12 md:h-14 w-auto"
+            className="h-10 md:h-12 w-auto"
             whileHover={{ scale: 1.03 }}
             transition={{ duration: 0.3 }}
           />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-10">
           {navItems.map((item) => (
             <div
               key={item.label}
@@ -120,7 +120,7 @@ export default function Header() {
               onMouseEnter={() => item.children && setOpenDropdown(item.label)}
               onMouseLeave={() => setOpenDropdown(null)}
             >
-              <Link href={item.href} className="nav-link flex items-center gap-1 group">
+              <Link href={item.href} className="nav-link flex items-center gap-1 group uppercase tracking-heritage text-[11px] font-medium">
                 {item.label}
                 {item.children && (
                   <motion.svg
@@ -134,13 +134,6 @@ export default function Header() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </motion.svg>
                 )}
-                {/* Underline hover */}
-                <motion.span
-                  className="absolute -bottom-1 left-0 h-px bg-gold"
-                  initial={{ width: 0 }}
-                  whileHover={{ width: "100%" }}
-                  transition={{ duration: 0.25 }}
-                />
               </Link>
 
               <AnimatePresence>
@@ -241,7 +234,7 @@ export default function Header() {
               >
                 <Link
                   href={item.href}
-                  className="block px-6 py-3 text-cream/90 text-sm uppercase tracking-wider font-sans border-b border-white/10 hover:text-gold transition-colors"
+                  className="block px-6 py-3 text-cream/90 text-sm uppercase tracking-heritage font-sans border-b border-white/10 hover:text-gold transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
                   {item.label}
@@ -252,7 +245,7 @@ export default function Header() {
                       <Link
                         key={child.label}
                         href={child.href}
-                        className="block px-10 py-2.5 text-cream/60 text-xs uppercase tracking-wider font-sans border-b border-white/5 hover:text-gold transition-colors"
+                        className="block px-10 py-2.5 text-cream/60 text-xs uppercase tracking-heritage font-sans border-b border-white/5 hover:text-gold transition-colors"
                         onClick={() => setMobileOpen(false)}
                       >
                         {child.label}
@@ -268,7 +261,7 @@ export default function Header() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-              <Link href="/plan-a-trip" className="btn-outline block text-center text-sm" onClick={() => setMobileOpen(false)}>
+              <Link href="/plan-a-trip" className="btn-outline block text-center text-sm uppercase tracking-heritage" onClick={() => setMobileOpen(false)}>
                 Book Now
               </Link>
             </motion.div>

@@ -88,7 +88,7 @@ export default function HomePage() {
           <LineReveal
             lines={["Our Lodges in Uganda"]}
             delay={0.1}
-            lineClassName="font-serif text-4xl md:text-5xl text-cream leading-tight"
+            lineClassName="font-serif text-4xl md:text-5xl text-cream leading-tight uppercase tracking-heritage"
           />
           <FadeIn direction="fade" delay={0.4}>
             <div className="w-12 h-px bg-gold mx-auto mt-6" />
@@ -143,7 +143,7 @@ export default function HomePage() {
             <LineReveal
               lines={["Our Destinations"]}
               delay={0.1}
-              lineClassName="section-heading"
+              lineClassName="section-heading uppercase tracking-heritage"
             />
             <FadeIn direction="fade" delay={0.35}>
               <div className="w-12 h-px bg-gold mx-auto mt-5" />
@@ -162,7 +162,7 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/85 via-forest-dark/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 p-5 md:p-6">
                     <div className="w-5 h-px bg-gold mb-2 transition-all duration-500 group-hover:w-10" />
-                    <p className="font-serif text-xl md:text-2xl text-cream leading-tight">{dest.name}</p>
+                    <p className="font-serif text-xl md:text-2xl text-cream leading-tight uppercase tracking-wide">{dest.name}</p>
                     <p className="text-gold/80 text-[10px] uppercase tracking-[0.2em] font-sans mt-1">{dest.tag}</p>
                   </div>
                 </Link>
@@ -184,7 +184,7 @@ export default function HomePage() {
             <LineReveal
               lines={["Extraordinary Experiences"]}
               delay={0.1}
-              lineClassName="section-heading"
+              lineClassName="section-heading uppercase tracking-heritage"
             />
             <FadeIn direction="fade" delay={0.4}>
               <div className="w-12 h-px bg-gold mx-auto mt-5" />
@@ -231,59 +231,81 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Heritage — parallax */}
-      <ParallaxSection
-        imageUrl="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=1800&q=80"
-        className="py-36 px-6 md:px-16"
-        overlayClassName="bg-forest-dark/70"
-      >
-        <div className="max-w-3xl mx-auto text-center">
-          <FadeIn direction="up">
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="w-10 h-px bg-gold/60" />
-              <p className="section-label text-gold">Our Story</p>
-              <div className="w-10 h-px bg-gold/60" />
+      {/* Heritage — narrative approach */}
+      <section className="py-32 px-6 md:px-16 bg-cream-dark">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-12 gap-12 items-center">
+            <div className="md:col-span-5 order-2 md:order-1">
+              <FadeIn direction="right">
+                <p className="section-label mb-4">A Century of Passion</p>
+                <h2 className="font-serif text-4xl md:text-6xl text-forest leading-[1.1] mb-8 uppercase tracking-heritage">
+                  The Spirit of <br />
+                  <em className="text-earth not-italic">Timeless Safari</em>
+                </h2>
+                <div className="w-12 h-px bg-gold mb-8" />
+                <div className="space-y-6 text-stone font-sans text-base leading-relaxed">
+                  <p>
+                    Tilenga Safaris is more than a travel company; it is a legacy of discovery rooted in the profound beauty of the East African landscape. Our journeys are crafted for those who seek the authentic, the rare, and the transformative.
+                  </p>
+                  <p>
+                    From the mist-shrouded peaks of the Rwenzori to the golden horizons of the Maasai Mara, we invite you to experience a "Golden Age" of travel—where every detail is considered, and every moment is an invitation to wonder.
+                  </p>
+                </div>
+                <div className="mt-12">
+                  <Link href="/about" className="group inline-flex items-center gap-4">
+                    <span className="btn-primary">Our Story</span>
+                    <span className="text-xs uppercase tracking-[0.2em] text-forest group-hover:text-gold transition-colors duration-300">Discover Our Roots</span>
+                  </Link>
+                </div>
+              </FadeIn>
             </div>
-          </FadeIn>
-          <FadeIn direction="up" delay={0.1}>
-            <h2 className="font-serif text-5xl md:text-7xl text-cream leading-[1] mb-6">
-              Passion for Travel.<br />
-              <em className="text-gold not-italic font-serif">Care for People.</em>
-            </h2>
-          </FadeIn>
-          <FadeIn direction="fade" delay={0.25}>
-            <p className="text-cream/65 font-sans leading-relaxed max-w-xl mx-auto mb-4 text-sm md:text-base">
-              Tilenga Safaris was born from a deep love of travel and an unwavering belief
-              that every journey should transform the traveler. With over 5 years of expertise,
-              we craft itineraries that blend adventure, culture, and relaxation.
-            </p>
-            <p className="text-cream/65 font-sans leading-relaxed max-w-xl mx-auto mb-12 text-sm md:text-base">
-              Our four core values —{" "}
-              <span className="text-gold">customer-centricity, integrity, quality, and sustainability</span>{" "}
-              — guide every moment we craft for our guests.
-            </p>
-          </FadeIn>
-          <FadeIn direction="up" delay={0.35}>
-            <Link href="/about" className="btn-ghost">Our Story</Link>
-          </FadeIn>
+            
+            <div className="md:col-span-7 order-1 md:order-2">
+              <div className="relative">
+                <ImageReveal direction="left">
+                  <div className="film-frame aspect-[4/5] md:aspect-[16/10] overflow-hidden shadow-2xl">
+                    <img 
+                      src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=1800&q=80" 
+                      alt="The Spirit of Safari" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </ImageReveal>
+                {/* Floating secondary image for depth */}
+                <div className="absolute -bottom-12 -left-12 hidden lg:block w-64 h-80 z-10">
+                  <FadeIn direction="up" delay={0.4}>
+                    <div className="film-frame h-full overflow-hidden shadow-xl border-4 border-cream">
+                      <img 
+                        src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=800&q=80" 
+                        alt="Wildlife Detail" 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </FadeIn>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </ParallaxSection>
+      </section>
 
       {/* Sustainability */}
       <section className="py-28 px-6 md:px-16 bg-cream">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
           <FadeIn direction="left">
             <p className="section-label mb-3">Responsible Travel</p>
-            <h2 className="section-heading mb-6">A Commitment to<br />Communities &amp; Conservation</h2>
-            <div className="w-10 h-px bg-gold mb-8" />
-            <p className="text-stone font-sans leading-relaxed mb-4 text-sm">
-              Sustainability is woven into how we operate. We work closely with local communities,
-              support indigenous culture preservation, and partner with conservation-focused lodges across East Africa.
-            </p>
-            <p className="text-stone font-sans leading-relaxed mb-10 text-sm">
-              When you travel with Tilenga Safaris, your journey contributes to the livelihoods
-              of local guides, hospitality staff, and community artisans.
-            </p>
+            <h2 className="section-heading mb-8 uppercase tracking-heritage">A Commitment to<br />Communities &amp; Conservation</h2>
+            <div className="w-12 h-px bg-gold mb-8" />
+            <div className="space-y-6 text-stone font-sans text-base leading-relaxed mb-10">
+              <p>
+                Sustainability is woven into how we operate. We work closely with local communities,
+                support indigenous culture preservation, and partner with conservation-focused lodges across East Africa.
+              </p>
+              <p>
+                When you travel with Tilenga Safaris, your journey contributes to the livelihoods
+                of local guides, hospitality staff, and community artisans.
+              </p>
+            </div>
             <StaggerGrid className="space-y-4 mb-10">
               {sustainabilityItems.map((item) => (
                 <StaggerItem key={item}>
@@ -297,43 +319,60 @@ export default function HomePage() {
             <Link href="/about" className="btn-primary">Learn More</Link>
           </FadeIn>
 
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 gap-4">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&q=80" alt="Conservation" className="w-full h-56 object-cover hover:scale-[1.05] transition-transform duration-700" />
+              <div className="film-frame aspect-square">
+                <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&q=80" alt="Conservation" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
+              </div>
             </ImageReveal>
-            <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-8">
-              <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" alt="Landscape" className="w-full h-56 object-cover hover:scale-[1.05] transition-transform duration-700" />
+            <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-12">
+              <div className="film-frame aspect-square">
+                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" alt="Landscape" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
+              </div>
             </ImageReveal>
-            <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-8">
-              <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&q=80" alt="Wildlife" className="w-full h-56 object-cover hover:scale-[1.05] transition-transform duration-700" />
+            <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-12">
+              <div className="film-frame aspect-square">
+                <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&q=80" alt="Wildlife" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
+              </div>
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&q=80" alt="Community" className="w-full h-56 object-cover hover:scale-[1.05] transition-transform duration-700" />
+              <div className="film-frame aspect-square">
+                <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&q=80" alt="Community" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
+              </div>
             </ImageReveal>
           </div>
         </div>
       </section>
 
       {/* CTA Banner */}
-      <section className="bg-forest py-24 px-6 md:px-16 text-center">
-        <FadeIn direction="up">
-          <div className="flex items-center justify-center gap-4 mb-5">
-            <div className="w-10 h-px bg-gold/60" />
-            <p className="section-label text-gold">Ready to Explore?</p>
-            <div className="w-10 h-px bg-gold/60" />
-          </div>
-          <h2 className="font-serif text-4xl md:text-6xl text-cream mb-6 leading-tight">
-            Let Us Craft Your<br />Perfect Safari
-          </h2>
-          <p className="text-cream/50 font-sans max-w-lg mx-auto mb-12 text-sm leading-relaxed">
-            Share your dream — we&apos;ll design a bespoke itinerary combining wildlife,
-            culture, and luxury across Africa&apos;s most iconic destinations.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/plan-a-trip" className="btn-outline">Plan a Trip</Link>
-            <a href="tel:+256789390350" className="btn-ghost">+256 789 390 350</a>
-          </div>
-        </FadeIn>
+      <section className="bg-forest-dark py-32 px-6 md:px-16 text-center relative overflow-hidden">
+        {/* Subtle background image */}
+        <div className="absolute inset-0 opacity-20">
+          <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1800&q=80" alt="CTA Background" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute inset-0 bg-forest-dark/80" />
+        
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <FadeIn direction="up">
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <div className="w-10 h-px bg-gold/60" />
+              <p className="section-label text-gold">Your Journey Awaits</p>
+              <div className="w-10 h-px bg-gold/60" />
+            </div>
+            <h2 className="font-serif text-4xl md:text-7xl text-cream mb-8 leading-tight uppercase tracking-heritage">
+              Let Us Craft Your<br />
+              <em className="text-gold not-italic">Personal Legacy</em>
+            </h2>
+            <p className="text-cream/60 font-sans max-w-xl mx-auto mb-12 text-base leading-relaxed">
+              Share your vision with us — we&apos;ll design a bespoke itinerary that blends 
+              adventure, culture, and wild luxury across Africa&apos;s most storied landscapes.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Link href="/plan-a-trip" className="btn-primary px-10">Plan Your Safari</Link>
+              <a href="tel:+256789390350" className="btn-ghost px-10">Speak to an Expert</a>
+            </div>
+          </FadeIn>
+        </div>
       </section>
     </>
   );

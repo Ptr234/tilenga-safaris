@@ -122,7 +122,7 @@ export default function HeroCarousel() {
             </motion.div>
 
             {/* Main heading — word-by-word reveal */}
-            <h1 className="font-serif text-6xl md:text-8xl lg:text-[7rem] text-cream leading-[0.92] mb-4 block">
+            <h1 className="font-serif text-5xl md:text-7xl lg:text-[6.5rem] text-cream leading-[0.92] mb-6 block uppercase tracking-heritage">
               <WordReveal text={slide.heading} delay={0.2} />
             </h1>
 

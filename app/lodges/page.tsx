@@ -87,27 +87,27 @@ export default function LodgesPage() {
 
         <div className="relative z-10 px-8 md:px-20 pb-24 max-w-4xl">
           <FadeIn direction="up" delay={0.1}>
-            <div className="flex items-center gap-3 mb-5">
+            <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-px bg-gold" />
               <p className="section-label text-gold">Where You Stay</p>
             </div>
           </FadeIn>
           <FadeIn direction="up" delay={0.25}>
-            <h1 className="font-serif text-6xl md:text-8xl lg:text-[7rem] text-cream leading-none mb-5">
-              Our<br /><em className="italic text-gold">Lodges</em>
+            <h1 className="font-serif text-6xl md:text-8xl lg:text-[7.5rem] text-cream leading-[0.9] mb-6 uppercase tracking-heritage">
+              Our<br /><em className="italic text-gold not-italic">Lodges</em>
             </h1>
           </FadeIn>
           <FadeIn direction="up" delay={0.42}>
-            <p className="text-cream/55 font-sans text-sm md:text-base leading-relaxed max-w-sm mb-10">
-              Two lodges. Two parks. Positioned at the entrance gates of Uganda&apos;s most spectacular wilderness.
+            <p className="text-cream/55 font-sans text-base md:text-lg leading-relaxed max-w-md mb-12">
+              Two iconic sanctuaries. Positioned at the entrance gates of Uganda&apos;s most spectacular wilderness.
             </p>
           </FadeIn>
           <FadeIn direction="up" delay={0.56}>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/lodges/tilenga-safari-lodge" className="btn-primary">
+            <div className="flex flex-col sm:flex-row gap-6">
+              <Link href="/lodges/tilenga-safari-lodge" className="btn-primary px-10">
                 Tilenga Safari Lodge
               </Link>
-              <Link href="/lodges/kikorongo-safari-lodge" className="btn-ghost">
+              <Link href="/lodges/kikorongo-safari-lodge" className="btn-ghost px-10">
                 Kikorongo Safari Lodge
               </Link>
             </div>
@@ -124,36 +124,36 @@ export default function LodgesPage() {
       {lodges.map((lodge) => (
         <section
           key={lodge.id}
-          className="grid md:grid-cols-[58fr_42fr] overflow-hidden"
-          style={{ minHeight: "85vh" }}
+          className="grid md:grid-cols-[58fr_42fr] overflow-hidden bg-forest-dark"
+          style={{ minHeight: "90vh" }}
         >
           {/* Image panel */}
-          <div className={`relative min-h-[55vh] md:min-h-0 ${lodge.imageOrder}`}>
-            <ImageReveal direction={lodge.revealDir} className="absolute inset-0 overflow-hidden">
+          <div className={`relative min-h-[60vh] md:min-h-0 ${lodge.imageOrder}`}>
+            <ImageReveal direction={lodge.revealDir} className="absolute inset-0 overflow-hidden film-frame m-2">
               <img
                 src={lodge.image}
                 alt={`${lodge.nameA} ${lodge.nameB}`}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1800ms] ease-out hover:scale-105"
               />
             </ImageReveal>
 
             {/* Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/10 via-transparent to-forest-dark/65 pointer-events-none z-[1]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/10 via-transparent to-forest-dark/80 pointer-events-none z-[1]" />
 
             {/* Park badge */}
-            <FadeIn direction="down" delay={0.5} className="absolute top-8 left-8 z-10">
-              <span className="bg-gold text-forest-dark text-[9px] uppercase tracking-[0.22em] font-sans font-bold px-4 py-2">
+            <FadeIn direction="down" delay={0.5} className="absolute top-10 left-10 z-10">
+              <span className="bg-gold text-forest-dark text-[10px] uppercase tracking-[0.25em] font-sans font-bold px-5 py-2.5">
                 {lodge.location}
               </span>
             </FadeIn>
 
             {/* Stats bar */}
-            <FadeIn direction="fade" delay={0.7} className="absolute bottom-0 left-0 right-0 z-10">
-              <div className="flex divide-x divide-white/10 bg-forest-dark/80 backdrop-blur-sm">
+            <FadeIn direction="fade" delay={0.7} className="absolute bottom-6 left-6 right-6 z-10">
+              <div className="flex divide-x divide-white/10 bg-forest-dark/90 backdrop-blur-md border border-white/5 shadow-2xl">
                 {lodge.stats.map((stat) => (
-                  <div key={stat.label} className="flex-1 px-5 py-5 text-center">
-                    <p className="font-serif text-xl md:text-2xl text-gold">{stat.value}</p>
-                    <p className="text-cream/40 text-[9px] uppercase tracking-widest font-sans mt-1">{stat.label}</p>
+                  <div key={stat.label} className="flex-1 px-6 py-6 text-center">
+                    <p className="font-serif text-2xl md:text-3xl text-gold">{stat.value}</p>
+                    <p className="text-cream/40 text-[9px] uppercase tracking-widest font-sans mt-2">{stat.label}</p>
                   </div>
                 ))}
               </div>
@@ -161,24 +161,24 @@ export default function LodgesPage() {
           </div>
 
           {/* Content panel */}
-          <div className={`${lodge.panelBg} flex flex-col justify-center px-10 md:px-14 py-16 md:py-20 ${lodge.contentOrder}`}>
+          <div className={`${lodge.panelBg} flex flex-col justify-center px-12 md:px-20 py-20 md:py-24 ${lodge.contentOrder}`}>
             <FadeIn direction={lodge.revealDir === "left" ? "right" : "left"} delay={0.2}>
-              <p className="section-label text-gold mb-4">{lodge.sublocation}</p>
-              <h2 className="font-serif text-4xl md:text-5xl text-cream leading-tight">
+              <p className="section-label text-gold mb-6">{lodge.sublocation}</p>
+              <h2 className="font-serif text-5xl md:text-7xl text-cream leading-[0.95] uppercase tracking-heritage">
                 {lodge.nameA}<br />
-                <em className="italic text-gold">{lodge.nameB}</em>
+                <em className="italic text-gold not-italic">{lodge.nameB}</em>
               </h2>
-              <p className="font-serif italic text-cream/35 text-sm mt-3 mb-8">&ldquo;{lodge.tagline}&rdquo;</p>
-              <div className="w-10 h-px bg-gold/30 mb-8" />
-              <p className="text-cream/60 font-sans text-sm leading-relaxed mb-10">
+              <p className="font-serif italic text-cream/35 text-base mt-6 mb-10">&ldquo;{lodge.tagline}&rdquo;</p>
+              <div className="w-16 h-px bg-gold mb-10" />
+              <p className="text-cream/60 font-sans text-base leading-relaxed mb-12 max-w-lg">
                 {lodge.description}
               </p>
 
-              <div className="flex flex-wrap gap-2 mb-12">
+              <div className="flex flex-wrap gap-3 mb-16">
                 {lodge.amenities.map((a) => (
                   <span
                     key={a}
-                    className="text-[9px] uppercase tracking-[0.18em] text-cream/45 border border-cream/15 px-3 py-1.5 font-sans"
+                    className="text-[10px] uppercase tracking-[0.2em] text-cream/45 border border-cream/15 px-4 py-2 font-sans hover:border-gold/30 hover:text-gold transition-colors duration-300"
                   >
                     {a}
                   </span>
@@ -187,10 +187,10 @@ export default function LodgesPage() {
 
               <Link
                 href={lodge.href}
-                className="inline-flex items-center gap-3 text-cream/65 hover:text-gold font-sans text-xs uppercase tracking-[0.2em] transition-colors duration-300 group self-start border-b border-cream/20 hover:border-gold pb-2"
+                className="inline-flex items-center gap-4 text-cream/80 hover:text-gold font-sans text-xs uppercase tracking-[0.25em] transition-colors duration-300 group self-start border-b border-cream/20 hover:border-gold pb-3"
               >
-                Explore Lodge
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                Explore Sanctuary
+                <span className="transition-transform duration-300 group-hover:translate-x-2">→</span>
               </Link>
             </FadeIn>
           </div>
@@ -198,44 +198,50 @@ export default function LodgesPage() {
       ))}
 
       {/* ── WHY OUR LODGES ── */}
-      <section className="bg-cream py-24 px-8 md:px-20">
-        <FadeIn className="text-center mb-16">
-          <p className="section-label mb-3">The Tilenga Difference</p>
-          <h2 className="font-serif text-4xl md:text-5xl text-forest leading-tight">
+      <section className="bg-cream py-32 px-8 md:px-20">
+        <FadeIn className="text-center mb-24">
+          <p className="section-label mb-4">The Tilenga Legacy</p>
+          <h2 className="font-serif text-4xl md:text-6xl text-forest leading-tight uppercase tracking-heritage">
             Why Stay With Us
           </h2>
+          <div className="w-20 h-px bg-gold mx-auto mt-8" />
         </FadeIn>
 
-        <StaggerGrid className="grid md:grid-cols-3 max-w-5xl mx-auto border-t border-b border-gold/15">
+        <StaggerGrid className="grid md:grid-cols-3 max-w-7xl mx-auto border-t border-b border-gold/15">
           {pillars.map((p) => (
             <StaggerItem
               key={p.number}
-              className="px-8 md:px-12 py-10 md:py-14 border-b md:border-b-0 md:border-r border-gold/15 last:border-0 group hover:bg-forest-dark/[0.025] transition-colors duration-500"
+              className="px-10 md:px-16 py-14 md:py-20 border-b md:border-b-0 md:border-r border-gold/15 last:border-0 group hover:bg-forest-dark/[0.02] transition-colors duration-500"
             >
-              <p className="font-serif text-6xl text-gold/15 group-hover:text-gold/30 transition-colors duration-500 leading-none mb-5">
+              <p className="font-serif text-7xl text-gold/10 group-hover:text-gold/25 transition-colors duration-500 leading-none mb-8">
                 {p.number}
               </p>
-              <h3 className="font-serif text-xl text-forest mb-3">{p.title}</h3>
-              <div className="w-6 h-px bg-gold/40 mb-4" />
-              <p className="text-stone font-sans text-sm leading-relaxed">{p.desc}</p>
+              <h3 className="font-serif text-2xl text-forest mb-5 uppercase tracking-wide">{p.title}</h3>
+              <div className="w-10 h-px bg-gold/40 mb-6 group-hover:w-16 transition-all duration-500" />
+              <p className="text-stone font-sans text-base leading-relaxed">{p.desc}</p>
             </StaggerItem>
           ))}
         </StaggerGrid>
       </section>
 
       {/* ── CTA ── */}
-      <section className="bg-forest py-24 px-8 md:px-20">
-        <FadeIn className="max-w-2xl mx-auto text-center">
-          <div className="w-10 h-px bg-gold/40 mx-auto mb-8" />
-          <h2 className="font-serif text-4xl md:text-5xl text-cream leading-tight mb-5">
-            Ready to Book<br />Your Stay?
+      <section className="bg-forest-dark py-32 px-8 md:px-20 relative overflow-hidden text-center">
+        <div className="absolute inset-0 opacity-20">
+          <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1800&q=85" alt="CTA bg" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute inset-0 bg-forest-dark/80" />
+        
+        <FadeIn className="relative z-10 max-w-2xl mx-auto text-center">
+          <div className="w-16 h-px bg-gold/40 mx-auto mb-10" />
+          <h2 className="font-serif text-4xl md:text-6xl text-cream leading-tight mb-6 uppercase tracking-heritage">
+            Ready to Book<br />Your Sanctuary?
           </h2>
-          <p className="text-cream/50 font-sans text-sm leading-relaxed mb-10 max-w-sm mx-auto">
-            Contact our team for availability, custom rates, or to bundle your lodge with a full safari itinerary across Uganda.
+          <p className="text-cream/50 font-sans text-base leading-relaxed mb-12 max-w-sm mx-auto">
+            Contact our specialists for availability, private camp arrangements, or to bundle your stay into a full safari.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/plan-a-trip" className="btn-outline">Plan My Safari</Link>
-            <a href="mailto:destinations@tilengasafaris.com" className="btn-ghost">Email Us</a>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link href="/plan-a-trip" className="btn-primary px-10">Plan My Safari</Link>
+            <a href="mailto:destinations@tilengasafaris.com" className="btn-ghost px-10">Speak to an Expert</a>
           </div>
         </FadeIn>
       </section>
