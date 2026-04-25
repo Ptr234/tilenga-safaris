@@ -57,7 +57,7 @@ export default function PlanATripPage() {
             <div className="w-10 h-px bg-gold" />
             <p className="section-label text-gold">Start Your Legacy</p>
           </div>
-          <h1 className="font-serif text-5xl md:text-8xl text-cream uppercase tracking-heritage leading-none">Plan Your<br /> <em className="italic text-gold not-italic">Safari</em></h1>
+          <h1 className="font-serif text-5xl md:text-8xl text-cream uppercase tracking-[0.15em] leading-none">Plan Your<br /> <em className="italic text-gold not-italic">Safari</em></h1>
         </div>
       </section>
 
@@ -79,7 +79,7 @@ export default function PlanATripPage() {
           {/* Sidebar */}
           <div className="md:col-span-1 space-y-8">
             <div className="bg-forest-dark text-cream p-10 film-frame">
-              <p className="font-serif text-2xl mb-6 uppercase tracking-heritage leading-tight">Speak to a <br />Specialist</p>
+              <p className="font-serif text-2xl mb-6 uppercase tracking-[0.15em] leading-tight">Speak to a <br />Specialist</p>
               <div className="w-8 h-px bg-gold mb-8" />
               <p className="text-cream/50 font-sans text-sm mb-10 leading-relaxed">
                 Every great journey begins with a conversation. Our experts are ready to guide you through the planning process.
@@ -128,7 +128,7 @@ export default function PlanATripPage() {
                     </svg>
                   </div>
                 </div>
-                <h2 className="font-serif text-4xl text-forest mb-6 uppercase tracking-heritage">Thank You</h2>
+                <h2 className="font-serif text-4xl text-forest mb-6 uppercase tracking-[0.15em]">Thank You</h2>
                 <p className="text-stone font-sans text-base leading-relaxed max-w-sm mx-auto">
                   We have received your enquiry. A specialist will contact you shortly to begin crafting your journey.
                 </p>
@@ -215,7 +215,7 @@ export default function PlanATripPage() {
                 </div>
 
                 <div className="pt-6">
-                  <button type="submit" className="btn-primary w-full text-center text-sm py-5 tracking-heritage uppercase">
+                  <button type="submit" className="btn-primary w-full text-center text-sm py-5 tracking-[0.15em] uppercase">
                     Submit Request
                   </button>
                 </div>

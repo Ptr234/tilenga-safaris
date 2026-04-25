@@ -29,49 +29,9 @@ const navItems = [
   { label: "Plan a Trip", href: "/plan-a-trip" },
 ];
 
-const dropdownVariants = {
-  hidden: { opacity: 0, y: -6, scale: 0.98 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.22, ease: "easeOut" as const },
-  },
-  exit: {
-    opacity: 0,
-    y: -6,
-    scale: 0.98,
-    transition: { duration: 0.15 },
-  },
-};
-
-const dropdownItemVariants = {
-  hidden: { opacity: 0, x: -8 },
-  visible: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: { delay: i * 0.04, duration: 0.2 },
-  }),
-};
-
-const mobileMenuVariants = {
-  hidden: { height: 0, opacity: 0 },
-  visible: {
-    height: "auto",
-    opacity: 1,
-    transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
-  },
-  exit: {
-    height: 0,
-    opacity: 0,
-    transition: { duration: 0.25 },
-  },
-};
-
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -80,194 +40,162 @@ export default function Header() {
   }, []);
 
   return (
-    <motion.header
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-        scrolled ? "bg-forest shadow-lg" : "bg-forest/80 backdrop-blur-sm"
-      }`}
-    >
-      {/* Top bar */}
-      <div className="hidden md:flex items-center justify-end gap-6 px-8 py-1.5 border-b border-white/10 text-xs text-cream/70 font-sans">
-        <a href="tel:+256789390350" className="hover:text-gold transition-colors duration-200">
-          +256 789 390 350
-        </a>
-        <a href="mailto:destinations@tilengasafaris.com" className="hover:text-gold transition-colors duration-200">
-          destinations@tilengasafaris.com
-        </a>
-      </div>
-
-      {/* Main nav */}
-      <div className="flex items-center justify-between px-6 md:px-12 py-5">
-        {/* Logo */}
-        <Link href="/" className="flex items-center group">
-          <motion.img
-            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/tilenga-logo-light.svg`}
-            alt="Tilenga Safaris"
-            className="h-10 md:h-12 w-auto"
-            whileHover={{ scale: 1.03 }}
-            transition={{ duration: 0.3 }}
-          />
-        </Link>
-
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-10">
-          {navItems.map((item) => (
-            <div
-              key={item.label}
-              className="relative"
-              onMouseEnter={() => item.children && setOpenDropdown(item.label)}
-              onMouseLeave={() => setOpenDropdown(null)}
+    <>
+      <motion.header
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-700 ${
+          scrolled ? "py-4 bg-forest shadow-2xl" : "py-8 bg-transparent"
+        }`}
+      >
+        <div className="flex items-center justify-between px-6 md:px-12 max-w-[1800px] mx-auto relative">
+          
+          {/* Left: Menu Toggle */}
+          <div className="flex-1 flex items-center">
+            <button 
+              onClick={() => setMobileOpen(true)}
+              className="group flex items-center gap-3 text-cream hover:text-gold transition-colors duration-300"
             >
-              <Link href={item.href} className="nav-link flex items-center gap-1 group uppercase tracking-heritage text-[11px] font-medium">
-                {item.label}
-                {item.children && (
-                  <motion.svg
-                    animate={{ rotate: openDropdown === item.label ? 180 : 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="w-3 h-3 opacity-60"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </motion.svg>
-                )}
-              </Link>
+              <div className="flex flex-col gap-1.5 items-start">
+                <span className="w-5 h-px bg-current transition-all duration-300 group-hover:w-8" />
+                <span className="w-8 h-px bg-current" />
+              </div>
+              <span className="text-[10px] uppercase tracking-[0.4em] font-sans font-bold hidden md:block">Menu</span>
+            </button>
+          </div>
 
-              <AnimatePresence>
-                {item.children && openDropdown === item.label && (
-                  <motion.div
-                    variants={dropdownVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    className="absolute top-full left-0 mt-2 bg-forest-dark border border-gold/20 min-w-[210px] shadow-2xl overflow-hidden"
-                  >
-                    {item.children.map((child, i) => (
-                      <motion.div
-                        key={child.label}
-                        custom={i}
-                        variants={dropdownItemVariants}
-                        initial="hidden"
-                        animate="visible"
-                      >
-                        <Link
-                          href={child.href}
-                          className="block px-5 py-3 text-cream/80 text-xs uppercase tracking-wider font-sans hover:bg-forest hover:text-gold transition-colors duration-150 border-b border-white/5 last:border-0"
-                        >
-                          {child.label}
-                        </Link>
-                      </motion.div>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
-
-          <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
-            <Link href="/plan-a-trip" className="btn-outline text-[11px] py-2 px-5">
-              Book Now
+          {/* Center: Logo */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <Link href="/" className="block">
+              <motion.img
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/tilenga-logo-light.svg`}
+                alt="Tilenga Safaris"
+                className={`transition-all duration-700 object-contain ${scrolled ? "h-8 md:h-10" : "h-10 md:h-14"}`}
+              />
             </Link>
-          </motion.div>
-        </nav>
+          </div>
 
-        {/* Mobile menu button */}
-        <motion.button
-          className="md:hidden text-cream"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          whileTap={{ scale: 0.9 }}
-          aria-label="Toggle menu"
-        >
-          <AnimatePresence mode="wait" initial={false}>
-            {mobileOpen ? (
-              <motion.svg
-                key="close"
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </motion.svg>
-            ) : (
-              <motion.svg
-                key="open"
-                initial={{ rotate: 90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: -90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </motion.svg>
-            )}
-          </AnimatePresence>
-        </motion.button>
-      </div>
+          {/* Right: Enquire CTA */}
+          <div className="flex-1 flex items-center justify-end">
+            <Link 
+              href="/plan-a-trip" 
+              className="group relative overflow-hidden hidden md:block"
+            >
+              <span className="text-[10px] uppercase tracking-[0.4em] font-sans font-bold text-cream group-hover:text-gold transition-colors duration-300">
+                Plan Your Safari
+              </span>
+              <span className="absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-500 group-hover:w-full" />
+            </Link>
+            {/* Mobile Book Icon */}
+            <Link href="/plan-a-trip" className="md:hidden text-cream hover:text-gold transition-colors">
+               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                 <path d="M12 19l7-7 3 3-7 7-3-3z" />
+                 <path d="M18 13l-1.5-7.5L2 2l5.5 14.5L13 18l5-5z" />
+                 <path d="M2 2l7.5 1.5" />
+                 <path d="M2 2l1.5 7.5" />
+               </svg>
+            </Link>
+          </div>
 
-      {/* Mobile menu */}
+        </div>
+      </motion.header>
+
+      {/* Half-screen Menu Overlay */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            variants={mobileMenuVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="md:hidden bg-forest-dark border-t border-white/10 overflow-hidden"
-          >
-            {navItems.map((item, i) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.07, duration: 0.3 }}
-              >
-                <Link
-                  href={item.href}
-                  className="block px-6 py-3 text-cream/90 text-sm uppercase tracking-heritage font-sans border-b border-white/10 hover:text-gold transition-colors"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {item.label}
-                </Link>
-                {item.children && (
-                  <div className="bg-forest/50">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.label}
-                        href={child.href}
-                        className="block px-10 py-2.5 text-cream/60 text-xs uppercase tracking-heritage font-sans border-b border-white/5 hover:text-gold transition-colors"
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </motion.div>
-            ))}
+          <>
+            {/* Background Backdrop (Clear / Dismiss Area) */}
             <motion.div
-              className="px-6 py-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileOpen(false)}
+              className="fixed inset-0 z-50 cursor-pointer"
+            />
+
+            {/* Menu Panel */}
+            <motion.div
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="fixed top-0 left-0 bottom-0 z-[60] bg-forest-dark w-full md:w-1/2 lg:w-[45vw] flex flex-col shadow-2xl"
             >
-              <Link href="/plan-a-trip" className="btn-outline block text-center text-sm uppercase tracking-heritage" onClick={() => setMobileOpen(false)}>
-                Book Now
-              </Link>
+              {/* Close Button Inside Panel */}
+              <div className="flex justify-between items-center p-8 md:p-12">
+                <div className="flex items-center gap-4">
+                  <div className="w-8 h-px bg-gold/50" />
+                  <span className="text-gold text-[9px] uppercase tracking-[0.4em] font-bold">Tilenga Navigation</span>
+                </div>
+                <button 
+                  onClick={() => setMobileOpen(false)}
+                  className="group flex items-center gap-3 text-gold"
+                >
+                  <span className="text-[10px] uppercase tracking-[0.4em] font-sans font-bold">Close</span>
+                  <div className="relative w-8 h-8 flex items-center justify-center">
+                    <span className="absolute w-6 h-px bg-gold rotate-45 transition-transform duration-500 group-hover:rotate-[135deg]" />
+                    <span className="absolute w-6 h-px bg-gold -rotate-45 transition-transform duration-500 group-hover:rotate-45" />
+                  </div>
+                </button>
+              </div>
+
+              {/* Menu Links */}
+              <div className="flex-1 flex flex-col px-8 md:px-20 justify-center pb-24 overflow-y-auto custom-scrollbar">
+                <nav className="flex flex-col gap-8 md:gap-12">
+                  {navItems.map((item, i) => (
+                    <motion.div
+                      key={item.label}
+                      initial={{ opacity: 0, x: -30 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3 + i * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                      className="group/item"
+                    >
+                      <Link
+                        href={item.href}
+                        className="font-serif text-4xl md:text-6xl text-cream hover:text-gold transition-colors duration-500 uppercase tracking-tight block mb-3"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                      
+                      {/* Children / Sub-links */}
+                      {item.children && (
+                        <div className="flex flex-wrap gap-x-6 gap-y-2 opacity-60 group-hover/item:opacity-100 transition-opacity duration-500">
+                          {item.children.map((child) => (
+                            <Link 
+                              key={child.label} 
+                              href={child.href}
+                              className="text-cream hover:text-gold text-[10px] uppercase tracking-[0.2em] font-sans transition-colors"
+                              onClick={() => setMobileOpen(false)}
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </motion.div>
+                  ))}
+                </nav>
+
+                {/* Bottom Contact Info */}
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8 }}
+                  className="mt-20 pt-12 border-t border-white/10"
+                >
+                  <p className="text-gold uppercase tracking-[0.4em] text-[9px] font-bold mb-6">Concierge</p>
+                  <div className="flex flex-col gap-4 font-serif italic text-cream/40 text-lg">
+                    <a href="tel:+256789390350" className="hover:text-gold transition-colors">+256 789 390 350</a>
+                    <a href="mailto:destinations@tilengasafaris.com" className="hover:text-gold transition-colors">destinations@tilengasafaris.com</a>
+                  </div>
+                </motion.div>
+              </div>
             </motion.div>
-          </motion.div>
+          </>
         )}
       </AnimatePresence>
-    </motion.header>
+    </>
   );
 }

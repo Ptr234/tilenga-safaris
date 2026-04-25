@@ -84,7 +84,7 @@ export default function DestinationsPage() {
             <div className="w-8 h-px bg-gold" />
             <p className="section-label text-gold">Africa &amp; Beyond</p>
           </div>
-          <h1 className="font-serif text-6xl md:text-8xl lg:text-[7rem] text-cream leading-[0.9] mb-6 uppercase tracking-heritage">
+          <h1 className="font-serif text-6xl md:text-8xl lg:text-[7rem] text-cream leading-[0.9] mb-6 uppercase tracking-[0.15em]">
             Our<br /><em className="not-italic text-gold">Destinations</em>
           </h1>
           <p className="text-cream/60 font-sans text-base max-w-md leading-relaxed">
@@ -115,7 +115,7 @@ export default function DestinationsPage() {
             <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
               <div className="w-12 h-px bg-gold mb-4 transition-all duration-500 group-hover:w-20" />
               <p className="text-gold text-xs uppercase tracking-[0.35em] font-sans mb-3">{destinations[0].tag}</p>
-              <h2 className="font-serif text-5xl md:text-7xl text-cream leading-none mb-4 uppercase tracking-heritage">{destinations[0].name}</h2>
+              <h2 className="font-serif text-5xl md:text-7xl text-cream leading-none mb-4 uppercase tracking-[0.15em]">{destinations[0].name}</h2>
               <p className="text-cream/60 text-base font-sans leading-relaxed max-w-md translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 mb-6">
                 {destinations[0].description}
               </p>
@@ -143,7 +143,7 @@ export default function DestinationsPage() {
                 <div className="absolute bottom-0 left-0 p-8">
                   <div className="w-8 h-px bg-gold mb-3 transition-all duration-500 group-hover:w-16" />
                   <p className="text-gold text-[10px] uppercase tracking-[0.3em] font-sans mb-1">{dest.tag}</p>
-                  <h3 className="font-serif text-3xl md:text-4xl text-cream uppercase tracking-heritage">{dest.name}</h3>
+                  <h3 className="font-serif text-3xl md:text-4xl text-cream uppercase tracking-[0.15em]">{dest.name}</h3>
                 </div>
               </Link>
             ))}
@@ -168,7 +168,7 @@ export default function DestinationsPage() {
               <div className="absolute bottom-0 left-0 right-0 p-8">
                 <div className="w-10 h-px bg-gold mb-3 transition-all duration-500 group-hover:w-20" />
                 <p className="text-gold text-[10px] uppercase tracking-[0.3em] font-sans mb-1">{dest.tag}</p>
-                <h3 className="font-serif text-3xl text-cream mb-3 uppercase tracking-heritage">{dest.name}</h3>
+                <h3 className="font-serif text-3xl text-cream mb-3 uppercase tracking-[0.15em]">{dest.name}</h3>
                 <p className="text-cream/55 text-sm font-sans leading-relaxed translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                   {dest.description}
                 </p>

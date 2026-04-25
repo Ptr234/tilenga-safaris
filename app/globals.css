@@ -15,26 +15,39 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   body {
     background-color: var(--cream);
-    color: #2d2d2d;
+    color: #333333;
     font-family: "Lato", sans-serif;
+    line-height: 1.8;
   }
   h1,
   h2,
   h3,
   h4 {
     font-family: "Playfair Display", serif;
+    font-weight: 500;
+    color: var(--forest);
   }
 }
 
 @layer components {
   .section-label {
-    @apply text-gold uppercase tracking-[0.25em] text-xs font-sans font-bold;
+    @apply text-gold uppercase tracking-[0.4em] text-[10px] font-sans font-bold mb-4 block;
   }
   .section-heading {
-    @apply text-forest font-serif text-4xl md:text-5xl leading-tight;
+    @apply text-forest font-serif text-4xl md:text-6xl leading-[1.15] uppercase tracking-[0.15em];
+  }
+  
+  .editorial-italic {
+    @apply font-serif italic text-gold/90;
+  }
+
+  .body-text {
+    @apply text-stone font-sans text-base md:text-lg leading-relaxed md:leading-loose;
   }
 
   .package-grid {
@@ -196,9 +209,9 @@
 
   /* Nav links */
   .nav-link {
-    @apply text-cream/90 text-sm uppercase tracking-wider font-sans;
+    @apply text-cream/90 text-[10px] uppercase tracking-[0.15em] font-sans font-semibold;
     position: relative;
-    transition: color 0.2s ease;
+    transition: color 0.3s ease;
   }
   .nav-link::after {
     content: "";

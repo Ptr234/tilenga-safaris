@@ -93,7 +93,7 @@ export default function LodgesPage() {
             </div>
           </FadeIn>
           <FadeIn direction="up" delay={0.25}>
-            <h1 className="font-serif text-6xl md:text-8xl lg:text-[7.5rem] text-cream leading-[0.9] mb-6 uppercase tracking-heritage">
+            <h1 className="font-serif text-6xl md:text-8xl lg:text-[7.5rem] text-cream leading-[0.9] mb-6 uppercase tracking-[0.15em]">
               Our<br /><em className="italic text-gold not-italic">Lodges</em>
             </h1>
           </FadeIn>
@@ -164,7 +164,7 @@ export default function LodgesPage() {
           <div className={`${lodge.panelBg} flex flex-col justify-center px-12 md:px-20 py-20 md:py-24 ${lodge.contentOrder}`}>
             <FadeIn direction={lodge.revealDir === "left" ? "right" : "left"} delay={0.2}>
               <p className="section-label text-gold mb-6">{lodge.sublocation}</p>
-              <h2 className="font-serif text-5xl md:text-7xl text-cream leading-[0.95] uppercase tracking-heritage">
+              <h2 className="font-serif text-5xl md:text-7xl text-cream leading-[0.95] uppercase tracking-[0.15em]">
                 {lodge.nameA}<br />
                 <em className="italic text-gold not-italic">{lodge.nameB}</em>
               </h2>
@@ -201,7 +201,7 @@ export default function LodgesPage() {
       <section className="bg-cream py-32 px-8 md:px-20">
         <FadeIn className="text-center mb-24">
           <p className="section-label mb-4">The Tilenga Legacy</p>
-          <h2 className="font-serif text-4xl md:text-6xl text-forest leading-tight uppercase tracking-heritage">
+          <h2 className="font-serif text-4xl md:text-6xl text-forest leading-tight uppercase tracking-[0.15em]">
             Why Stay With Us
           </h2>
           <div className="w-20 h-px bg-gold mx-auto mt-8" />
@@ -233,7 +233,7 @@ export default function LodgesPage() {
         
         <FadeIn className="relative z-10 max-w-2xl mx-auto text-center">
           <div className="w-16 h-px bg-gold/40 mx-auto mb-10" />
-          <h2 className="font-serif text-4xl md:text-6xl text-cream leading-tight mb-6 uppercase tracking-heritage">
+          <h2 className="font-serif text-4xl md:text-6xl text-cream leading-tight mb-6 uppercase tracking-[0.15em]">
             Ready to Book<br />Your Sanctuary?
           </h2>
           <p className="text-cream/50 font-sans text-base leading-relaxed mb-12 max-w-sm mx-auto">

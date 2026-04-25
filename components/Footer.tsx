@@ -31,7 +31,7 @@ export default function Footer() {
 
       {/* ── DESTINATION PICTORIALS ── */}
       <div className="px-6 md:px-12 pb-14">
-        <p className="text-center text-gold text-[9px] uppercase tracking-heritage font-sans font-semibold mb-7">
+        <p className="text-center text-gold text-[9px] uppercase tracking-[0.15em] font-sans font-semibold mb-7">
           Our Destinations
         </p>
         <div className="grid grid-cols-3 md:grid-cols-6 gap-2">

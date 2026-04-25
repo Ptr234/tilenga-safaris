@@ -50,7 +50,7 @@ const imageVariants: Variants = {
 function WordReveal({ text, delay = 0, className = "" }: { text: string; delay?: number; className?: string }) {
   const words = text.split(" ");
   return (
-    <span className={`inline-flex flex-wrap gap-x-[0.25em] ${className}`}>
+    <span className={`flex flex-wrap justify-center gap-x-[0.3em] ${className}`}>
       {words.map((word, i) => (
         <span key={i} className="overflow-hidden inline-block">
           <motion.span
@@ -122,14 +122,14 @@ export default function HeroCarousel() {
             </motion.div>
 
             {/* Main heading — word-by-word reveal */}
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-[6.5rem] text-cream leading-[0.92] mb-6 block uppercase tracking-heritage">
+            <h1 className="section-heading !text-cream text-5xl md:text-7xl lg:text-[7.5rem] mb-8 leading-[0.85]">
               <WordReveal text={slide.heading} delay={0.2} />
             </h1>
 
             {/* Italic subtitle */}
-            <div className="overflow-hidden mb-5">
+            <div className="overflow-hidden mb-8">
               <motion.p
-                className="font-serif italic text-xl md:text-2xl text-gold/90"
+                className="editorial-italic text-2xl md:text-3xl"
                 initial={{ y: "100%", opacity: 0 }}
                 animate={{ y: "0%", opacity: 1 }}
                 exit={{ y: "-100%", opacity: 0 }}
@@ -141,7 +141,7 @@ export default function HeroCarousel() {
 
             {/* Body */}
             <motion.p
-              className="text-cream/65 font-sans text-sm md:text-base max-w-md mb-10 leading-relaxed"
+              className="text-cream/70 font-sans text-base md:text-lg max-w-md mb-12 leading-relaxed"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}

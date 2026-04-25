@@ -111,7 +111,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/30 to-forest-dark/85" />
         <div className="relative z-10 px-6 md:px-16 pb-16 max-w-3xl">
           <p className="section-label text-gold mb-3">Who We Are</p>
-          <h1 className="font-serif text-5xl md:text-8xl text-cream mb-4 uppercase tracking-heritage leading-none">About Us</h1>
+          <h1 className="font-serif text-5xl md:text-8xl text-cream mb-4 uppercase tracking-[0.15em] leading-none">About Us</h1>
           <p className="font-serif italic text-2xl text-gold">Passion for Travel. Care for People.</p>
         </div>
       </section>
@@ -121,7 +121,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
           <div>
             <p className="section-label mb-3">Our Story</p>
-            <h2 className="section-heading mb-8 uppercase tracking-heritage">Crafting Personalized Adventures</h2>
+            <h2 className="section-heading mb-8 uppercase tracking-[0.15em]">Crafting Personalized Adventures</h2>
             <div className="w-16 h-px bg-gold mb-8" />
             <div className="space-y-6 text-stone font-sans text-base leading-relaxed mb-12">
               <p>
@@ -162,7 +162,7 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
             <p className="section-label mb-3">How We Work</p>
-            <h2 className="section-heading uppercase tracking-heritage">Our Core Values</h2>
+            <h2 className="section-heading uppercase tracking-[0.15em]">Our Core Values</h2>
             <div className="w-20 h-px bg-gold mx-auto mt-6" />
           </div>
           <div className="grid md:grid-cols-2 gap-10">

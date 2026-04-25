@@ -88,7 +88,7 @@ export default function HomePage() {
           <LineReveal
             lines={["Our Lodges in Uganda"]}
             delay={0.1}
-            lineClassName="font-serif text-4xl md:text-5xl text-cream leading-tight uppercase tracking-heritage"
+            lineClassName="font-serif text-4xl md:text-5xl text-cream leading-tight uppercase tracking-[0.15em]"
           />
           <FadeIn direction="fade" delay={0.4}>
             <div className="w-12 h-px bg-gold mx-auto mt-6" />
@@ -135,132 +135,101 @@ export default function HomePage() {
         </StaggerGrid>
       </section>
 
-      {/* Destinations Section — Editorial Staggered Layout */}
+      {/* Destinations Section — Journal Style Editorial Grid */}
       <section className="py-32 px-6 md:px-16 bg-cream">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-24">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-20">
             <div className="max-w-2xl">
               <FadeIn direction="fade">
-                <p className="section-label mb-4">Africa & Beyond</p>
+                <span className="text-gold uppercase tracking-[0.4em] text-[10px] font-bold mb-4 block">The Explorer&apos;s Map</span>
               </FadeIn>
-              <LineReveal
-                lines={["Our Iconic", "Destinations"]}
-                delay={0.1}
-                lineClassName="font-serif text-5xl md:text-8xl text-forest uppercase tracking-heritage leading-[0.9]"
-              />
+              <h2 className="font-serif text-4xl md:text-6xl text-forest uppercase tracking-widest leading-none">
+                Our Iconic <br />
+                <span className="italic text-gold lowercase tracking-normal">Destinations</span>
+              </h2>
             </div>
-            <FadeIn direction="up" delay={0.4} className="max-w-sm">
-              <p className="text-stone font-sans text-base leading-relaxed mb-6">
-                From the thundering falls of the Nile to the endless horizons of the Serengeti, 
-                we curate journeys across Africa's most storied landscapes.
+            <FadeIn direction="up" delay={0.3} className="max-w-xs">
+              <p className="text-stone/70 font-sans text-sm leading-relaxed mb-6">
+                Curated journeys across East Africa&apos;s most profound landscapes, from mist-covered mountains to sun-drenched savannahs.
               </p>
-              <Link href="/destinations" className="text-link-arrow">View All Destinations</Link>
+              <Link href="/destinations" className="group inline-flex items-center gap-2 text-forest text-[10px] uppercase tracking-widest font-bold border-b border-gold/30 pb-1 hover:border-gold transition-colors">
+                View All Regions
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </Link>
             </FadeIn>
           </div>
 
-          {/* Staggered Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-32">
+          {/* Clean Journal Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-y-20 gap-x-8">
             
-            {/* 01. Uganda - Large Staggered */}
-            <div className="md:col-span-1 md:pt-20">
+            {/* 01. Uganda — Large Featured Vertical */}
+            <div className="md:col-span-7">
               <FadeIn direction="up">
                 <Link href="/destinations/uganda" className="group block">
-                  <div className="relative aspect-[4/5] overflow-hidden film-frame mb-8">
+                  <div className="relative aspect-[16/10] md:aspect-[14/11] overflow-hidden mb-8 shadow-sm">
                     <img
                       src={destinations[0].image}
                       alt={destinations[0].name}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+                      className="absolute inset-0 w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-[1500ms] ease-out group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-forest-dark/10 group-hover:bg-transparent transition-colors duration-700" />
                   </div>
-                  <div className="flex items-start justify-between border-t border-gold/20 pt-6">
-                    <div>
-                      <span className="font-serif text-gold text-sm uppercase tracking-[0.3em] mb-2 block">01 — {destinations[0].tag}</span>
-                      <h3 className="font-serif text-4xl text-forest uppercase tracking-heritage">{destinations[0].name}</h3>
-                    </div>
-                    <span className="w-10 h-10 border border-gold/30 rounded-full flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-cream transition-all duration-500">
-                      →
-                    </span>
+                  <div className="max-w-lg">
+                    <span className="font-serif text-gold text-sm italic mb-2 block">Featured Region</span>
+                    <h3 className="font-serif text-3xl md:text-5xl text-forest uppercase tracking-widest mb-4">{destinations[0].name}</h3>
+                    <p className="text-stone font-sans text-[15px] leading-loose mb-6 opacity-80">
+                      Known as the Pearl of Africa, Uganda offers a tapestry of landscapes — from the thundering Murchison Falls to the legendary mountain gorillas of Bwindi.
+                    </p>
+                    <span className="text-[10px] uppercase tracking-widest text-gold font-bold">Discover {destinations[0].name}</span>
                   </div>
                 </Link>
               </FadeIn>
             </div>
 
-            {/* 02. Kenya - Offset */}
-            <div className="md:col-span-1">
+            {/* 02. Kenya — Smaller Offset */}
+            <div className="md:col-span-5 md:pt-32">
               <FadeIn direction="up" delay={0.2}>
                 <Link href="/destinations/kenya" className="group block">
-                  <div className="relative aspect-[4/5] overflow-hidden film-frame mb-8">
+                  <div className="relative aspect-square md:aspect-[4/5] overflow-hidden mb-8 shadow-sm">
                     <img
                       src={destinations[1].image}
                       alt={destinations[1].name}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+                      className="absolute inset-0 w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-[1500ms] group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-forest-dark/10 group-hover:bg-transparent transition-colors duration-700" />
                   </div>
-                  <div className="flex items-start justify-between border-t border-gold/20 pt-6">
-                    <div>
-                      <span className="font-serif text-gold text-sm uppercase tracking-[0.3em] mb-2 block">02 — {destinations[1].tag}</span>
-                      <h3 className="font-serif text-4xl text-forest uppercase tracking-heritage">{destinations[1].name}</h3>
-                    </div>
-                    <span className="w-10 h-10 border border-gold/30 rounded-full flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-cream transition-all duration-500">
-                      →
-                    </span>
+                  <div>
+                    <h3 className="font-serif text-3xl text-forest uppercase tracking-widest mb-3">{destinations[1].name}</h3>
+                    <p className="text-stone/70 font-sans text-sm leading-relaxed mb-4">{destinations[1].tag}</p>
+                    <div className="w-10 h-px bg-gold/40 transition-all duration-500 group-hover:w-20" />
                   </div>
                 </Link>
               </FadeIn>
             </div>
 
-            {/* 03. Tanzania - Full Width Break */}
-            <div className="md:col-span-2">
-              <FadeIn direction="up">
-                <Link href="/destinations/tanzania" className="group block">
-                  <div className="relative h-[60vh] md:h-[70vh] overflow-hidden film-frame mb-8">
-                    <img
-                      src={destinations[2].image}
-                      alt={destinations[2].name}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2500ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-forest-dark/10 group-hover:bg-transparent transition-colors duration-700" />
-                    {/* Floating Text Overlay for Full Width Card */}
-                    <div className="absolute bottom-12 left-12 right-12 flex flex-col md:flex-row md:items-end justify-between gap-6 pointer-events-none">
-                       <div>
-                          <span className="text-gold text-xs uppercase tracking-[0.4em] font-sans font-bold mb-3 block">Featured Destination</span>
-                          <h3 className="font-serif text-5xl md:text-8xl text-cream uppercase tracking-heritage leading-none">Tanzania</h3>
-                       </div>
-                       <p className="text-cream/70 font-sans text-sm max-w-xs mb-2">The Serengeti plains and the ancient Ngorongoro Crater await.</p>
+            {/* Row 2: Symmetric Journal Row */}
+            {[destinations[2], destinations[3], destinations[4]].map((dest, i) => (
+              <div key={dest.name} className="md:col-span-4">
+                <FadeIn direction="up" delay={0.1 * i}>
+                  <Link href={dest.href} className="group block">
+                    <div className="relative aspect-[4/5] overflow-hidden mb-6 shadow-sm border border-gold/5">
+                      <img
+                        src={dest.image}
+                        alt={dest.name}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                      />
                     </div>
-                  </div>
-                </Link>
-              </FadeIn>
-            </div>
-
-            {/* Others - 3 Columns */}
-            <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-12">
-               {[destinations[3], destinations[4], destinations[5]].map((dest, i) => (
-                 <FadeIn key={dest.name} direction="up" delay={i * 0.15}>
-                    <Link href={dest.href} className="group block">
-                      <div className="relative aspect-square overflow-hidden film-frame mb-6">
-                        <img
-                          src={dest.image}
-                          alt={dest.name}
-                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                        />
-                      </div>
-                      <div className="border-t border-gold/15 pt-4">
-                        <h4 className="font-serif text-2xl text-forest uppercase tracking-wide">{dest.name}</h4>
-                        <p className="text-gold text-[10px] uppercase tracking-[0.2em] font-sans mt-1">{dest.tag}</p>
-                      </div>
-                    </Link>
-                 </FadeIn>
-               ))}
-            </div>
-
+                    <div className="text-center px-4">
+                      <h4 className="font-serif text-2xl text-forest uppercase tracking-widest mb-2">{dest.name}</h4>
+                      <p className="text-gold text-[9px] uppercase tracking-[0.3em] font-bold">{dest.tag}</p>
+                    </div>
+                  </Link>
+                </FadeIn>
+              </div>
+            ))}
           </div>
 
           <FadeIn direction="up" delay={0.2} className="text-center mt-32">
-            <Link href="/destinations" className="btn-primary px-12">Explore All Journeys</Link>
+            <Link href="/destinations" className="btn-primary px-14">The Full Collection</Link>
           </FadeIn>
         </div>
       </section>
@@ -273,7 +242,7 @@ export default function HomePage() {
             <LineReveal
               lines={["Extraordinary Experiences"]}
               delay={0.1}
-              lineClassName="section-heading uppercase tracking-heritage"
+              lineClassName="section-heading uppercase tracking-[0.15em]"
             />
             <FadeIn direction="fade" delay={0.4}>
               <div className="w-12 h-px bg-gold mx-auto mt-5" />
@@ -320,30 +289,35 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Heritage — narrative approach */}
-      <section className="py-32 px-6 md:px-16 bg-cream-dark">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-12 gap-12 items-center">
+      {/* Heritage — narrative approach with parallax anchor */}
+      <section className="py-40 px-6 md:px-16 bg-cream-dark relative overflow-hidden">
+        {/* Subtle decorative elements for scroll depth */}
+        <div className="absolute top-0 right-0 w-[40%] h-full opacity-[0.03] pointer-events-none">
+           <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1200&q=80" className="w-full h-full object-cover" alt="" />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid md:grid-cols-12 gap-20 items-center">
             <div className="md:col-span-5 order-2 md:order-1">
-              <FadeIn direction="right">
-                <p className="section-label mb-4">A Century of Passion</p>
-                <h2 className="font-serif text-4xl md:text-6xl text-forest leading-[1.1] mb-8 uppercase tracking-heritage">
+              <FadeIn direction="up" delay={0.1}>
+                <p className="section-label">A Century of Passion</p>
+                <h2 className="section-heading mb-12 leading-[1.1]">
                   The Spirit of <br />
-                  <em className="text-earth not-italic">Timeless Safari</em>
+                  <span className="editorial-italic">Timeless Safari</span>
                 </h2>
-                <div className="w-12 h-px bg-gold mb-8" />
-                <div className="space-y-6 text-stone font-sans text-base leading-relaxed">
+                <div className="w-20 h-px bg-gold mb-12" />
+                <div className="space-y-10 body-text">
                   <p>
                     Tilenga Safaris is more than a travel company; it is a legacy of discovery rooted in the profound beauty of the East African landscape. Our journeys are crafted for those who seek the authentic, the rare, and the transformative.
                   </p>
                   <p>
-                    From the mist-shrouded peaks of the Rwenzori to the golden horizons of the Maasai Mara, we invite you to experience a "Golden Age" of travel—where every detail is considered, and every moment is an invitation to wonder.
+                    From the mist-shrouded peaks of the Rwenzori to the golden horizons of the Maasai Mara, we invite you to experience a &ldquo;Golden Age&rdquo; of travel—where every detail is considered, and every moment is an invitation to wonder.
                   </p>
                 </div>
-                <div className="mt-12">
-                  <Link href="/about" className="group inline-flex items-center gap-4">
-                    <span className="btn-primary">Our Story</span>
-                    <span className="text-xs uppercase tracking-[0.2em] text-forest group-hover:text-gold transition-colors duration-300">Discover Our Roots</span>
+                <div className="mt-16">
+                  <Link href="/about" className="group inline-flex items-center gap-6">
+                    <span className="btn-primary px-10">Our Story</span>
+                    <span className="text-[10px] uppercase tracking-[0.3em] text-forest group-hover:text-gold transition-colors duration-500 font-bold">Discover Our Roots</span>
                   </Link>
                 </div>
               </FadeIn>
@@ -351,8 +325,8 @@ export default function HomePage() {
             
             <div className="md:col-span-7 order-1 md:order-2">
               <div className="relative">
-                <ImageReveal direction="left">
-                  <div className="film-frame aspect-[4/5] md:aspect-[16/10] overflow-hidden shadow-2xl">
+                <ImageReveal direction="left" delay={0.3}>
+                  <div className="film-frame aspect-[16/11] overflow-hidden shadow-2xl">
                     <img 
                       src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=1800&q=80" 
                       alt="The Spirit of Safari" 
@@ -360,10 +334,10 @@ export default function HomePage() {
                     />
                   </div>
                 </ImageReveal>
-                {/* Floating secondary image for depth */}
-                <div className="absolute -bottom-12 -left-12 hidden lg:block w-64 h-80 z-10">
-                  <FadeIn direction="up" delay={0.4}>
-                    <div className="film-frame h-full overflow-hidden shadow-xl border-4 border-cream">
+                {/* Floating secondary image with different scroll speed */}
+                <div className="absolute -bottom-16 -left-16 hidden lg:block w-72 h-96 z-10">
+                  <FadeIn direction="up" delay={0.6}>
+                    <div className="film-frame h-full overflow-hidden shadow-2xl border-4 border-white/10">
                       <img 
                         src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=800&q=80" 
                         alt="Wildlife Detail" 
@@ -382,10 +356,10 @@ export default function HomePage() {
       <section className="py-28 px-6 md:px-16 bg-cream">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
           <FadeIn direction="left">
-            <p className="section-label mb-3">Responsible Travel</p>
-            <h2 className="section-heading mb-8 uppercase tracking-heritage">A Commitment to<br />Communities &amp; Conservation</h2>
-            <div className="w-12 h-px bg-gold mb-8" />
-            <div className="space-y-6 text-stone font-sans text-base leading-relaxed mb-10">
+            <p className="section-label">Responsible Travel</p>
+            <h2 className="section-heading mb-10">A Commitment to<br />Communities &amp; Conservation</h2>
+            <div className="w-16 h-px bg-gold mb-10" />
+            <div className="space-y-8 body-text mb-12">
               <p>
                 Sustainability is woven into how we operate. We work closely with local communities,
                 support indigenous culture preservation, and partner with conservation-focused lodges across East Africa.
@@ -395,11 +369,11 @@ export default function HomePage() {
                 of local guides, hospitality staff, and community artisans.
               </p>
             </div>
-            <StaggerGrid className="space-y-4 mb-10">
+            <StaggerGrid className="space-y-5 mb-12">
               {sustainabilityItems.map((item) => (
                 <StaggerItem key={item}>
-                  <div className="flex items-start gap-4 text-stone font-sans text-sm">
-                    <span className="text-gold mt-0.5 shrink-0">✦</span>
+                  <div className="flex items-start gap-4 text-stone font-sans text-[15px] leading-relaxed">
+                    <span className="text-gold mt-1 shrink-0 text-xs">✦</span>
                     {item}
                   </div>
                 </StaggerItem>
@@ -448,11 +422,11 @@ export default function HomePage() {
               <p className="section-label text-gold">Your Journey Awaits</p>
               <div className="w-10 h-px bg-gold/60" />
             </div>
-            <h2 className="font-serif text-4xl md:text-7xl text-cream mb-8 leading-tight uppercase tracking-heritage">
+            <h2 className="section-heading mb-10 text-cream">
               Let Us Craft Your<br />
-              <em className="text-gold not-italic">Personal Legacy</em>
+              <span className="editorial-italic !text-gold">Personal Legacy</span>
             </h2>
-            <p className="text-cream/60 font-sans max-w-xl mx-auto mb-12 text-base leading-relaxed">
+            <p className="text-cream/60 font-sans max-w-xl mx-auto mb-14 text-base md:text-lg leading-relaxed md:leading-loose">
               Share your vision with us — we&apos;ll design a bespoke itinerary that blends 
               adventure, culture, and wild luxury across Africa&apos;s most storied landscapes.
             </p>
