@@ -135,43 +135,127 @@ export default function HomePage() {
         </StaggerGrid>
       </section>
 
-      {/* Destinations grid */}
-      <section className="py-28 px-6 md:px-16 bg-cream">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-14">
+      {/* Destinations grid — asymmetric cinematic layout */}
+      <section className="py-32 px-6 md:px-16 bg-cream">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
             <FadeIn direction="fade"><p className="section-label mb-3">Africa &amp; Beyond</p></FadeIn>
             <LineReveal
               lines={["Our Destinations"]}
               delay={0.1}
-              lineClassName="section-heading uppercase tracking-heritage"
+              lineClassName="section-heading uppercase tracking-heritage text-5xl md:text-7xl"
             />
             <FadeIn direction="fade" delay={0.35}>
-              <div className="w-12 h-px bg-gold mx-auto mt-5" />
+              <div className="w-20 h-px bg-gold mx-auto mt-8" />
+              <p className="text-stone max-w-2xl mx-auto mt-8 font-sans text-base leading-relaxed">
+                From the misty peaks of the Rwenzori to the golden horizons of the Mara, 
+                discover the most iconic landscapes across East Africa and beyond.
+              </p>
             </FadeIn>
           </div>
 
-          <StaggerGrid className="grid grid-cols-2 md:grid-cols-3 gap-1.5">
-            {destinations.map((dest) => (
-              <StaggerItem key={dest.name}>
-                <Link href={dest.href} className="dest-card group block relative overflow-hidden aspect-[3/4] md:aspect-[3/4]">
-                  <img
-                    src={dest.image}
-                    alt={dest.name}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/85 via-forest-dark/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 p-5 md:p-6">
-                    <div className="w-5 h-px bg-gold mb-2 transition-all duration-500 group-hover:w-10" />
-                    <p className="font-serif text-xl md:text-2xl text-cream leading-tight uppercase tracking-wide">{dest.name}</p>
-                    <p className="text-gold/80 text-[10px] uppercase tracking-[0.2em] font-sans mt-1">{dest.tag}</p>
-                  </div>
-                </Link>
-              </StaggerItem>
-            ))}
+          <StaggerGrid className="grid grid-cols-1 md:grid-cols-12 gap-4">
+            {/* 01. Uganda — Featured Large */}
+            <StaggerItem className="md:col-span-8 md:row-span-2">
+              <Link href="/destinations/uganda" className="group block relative overflow-hidden h-[70vh] md:h-full film-frame">
+                <img
+                  src={destinations[0].image}
+                  alt={destinations[0].name}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1800ms] ease-out group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/90 via-forest-dark/10 to-transparent" />
+                <span className="absolute top-8 left-8 font-serif text-cream/10 text-9xl leading-none select-none uppercase pointer-events-none">01</span>
+                <div className="absolute bottom-0 left-0 p-8 md:p-12">
+                  <p className="text-gold text-xs uppercase tracking-[0.4em] font-sans mb-3">{destinations[0].tag}</p>
+                  <h3 className="font-serif text-4xl md:text-6xl text-cream mb-4 uppercase tracking-heritage leading-none">{destinations[0].name}</h3>
+                  <div className="w-12 h-px bg-gold mb-6 transition-all duration-500 group-hover:w-24" />
+                  <span className="inline-flex items-center gap-3 text-gold text-[10px] uppercase tracking-widest font-sans border border-gold/30 px-4 py-2 bg-black/20 backdrop-blur-sm group-hover:bg-gold group-hover:text-forest transition-all duration-500">
+                    Explore Destination
+                  </span>
+                </div>
+              </Link>
+            </StaggerItem>
+
+            {/* 02. Kenya */}
+            <StaggerItem className="md:col-span-4">
+              <Link href="/destinations/kenya" className="group block relative overflow-hidden h-[45vh] md:h-[400px] film-frame">
+                <img
+                  src={destinations[1].image}
+                  alt={destinations[1].name}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/80 via-transparent to-transparent" />
+                <span className="absolute top-6 right-8 font-serif text-cream/10 text-6xl uppercase">02</span>
+                <div className="absolute bottom-0 left-0 p-8">
+                  <p className="text-gold text-[10px] uppercase tracking-[0.3em] font-sans mb-1">{destinations[1].tag}</p>
+                  <h3 className="font-serif text-3xl text-cream uppercase tracking-heritage">{destinations[1].name}</h3>
+                </div>
+              </Link>
+            </StaggerItem>
+
+            {/* 03. Tanzania */}
+            <StaggerItem className="md:col-span-4">
+              <Link href="/destinations/tanzania" className="group block relative overflow-hidden h-[45vh] md:h-[400px] film-frame">
+                <img
+                  src={destinations[2].image}
+                  alt={destinations[2].name}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/80 via-transparent to-transparent" />
+                <span className="absolute top-6 right-8 font-serif text-cream/10 text-6xl uppercase">03</span>
+                <div className="absolute bottom-0 left-0 p-8">
+                  <p className="text-gold text-[10px] uppercase tracking-[0.3em] font-sans mb-1">{destinations[2].tag}</p>
+                  <h3 className="font-serif text-3xl text-cream uppercase tracking-heritage">{destinations[2].name}</h3>
+                </div>
+              </Link>
+            </StaggerItem>
+
+            {/* Bottom Row */}
+            <StaggerItem className="md:col-span-4">
+              <Link href="/destinations/rwanda" className="group block relative overflow-hidden h-[45vh] md:h-[400px] film-frame">
+                <img
+                  src={destinations[3].image}
+                  alt={destinations[3].name}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/80 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 p-8">
+                  <h3 className="font-serif text-2xl text-cream uppercase tracking-heritage">{destinations[3].name}</h3>
+                </div>
+              </Link>
+            </StaggerItem>
+
+            <StaggerItem className="md:col-span-4">
+              <Link href="/destinations/south-africa" className="group block relative overflow-hidden h-[45vh] md:h-[400px] film-frame">
+                <img
+                  src={destinations[4].image}
+                  alt={destinations[4].name}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/80 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 p-8">
+                  <h3 className="font-serif text-2xl text-cream uppercase tracking-heritage">{destinations[4].name}</h3>
+                </div>
+              </Link>
+            </StaggerItem>
+
+            <StaggerItem className="md:col-span-4">
+              <Link href="/destinations/dubai" className="group block relative overflow-hidden h-[45vh] md:h-[400px] film-frame">
+                <img
+                  src={destinations[5].image}
+                  alt={destinations[5].name}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/80 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 p-8">
+                  <h3 className="font-serif text-2xl text-cream uppercase tracking-heritage">{destinations[5].name}</h3>
+                </div>
+              </Link>
+            </StaggerItem>
           </StaggerGrid>
 
-          <FadeIn direction="up" delay={0.2} className="text-center mt-10">
-            <Link href="/destinations" className="btn-outline">All Destinations</Link>
+          <FadeIn direction="up" delay={0.2} className="text-center mt-20">
+            <Link href="/destinations" className="btn-outline px-12">View All Destinations</Link>
           </FadeIn>
         </div>
       </section>
