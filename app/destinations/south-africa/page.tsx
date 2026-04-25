@@ -109,7 +109,7 @@ export default function SouthAfricaPage() {
               <img src="https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=500&q=80" alt="Cape Town Table Mountain" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-6">
-              <img src="https://images.unsplash.com/photo-1576085834044-92c469b79d11?w=500&q=80" alt="Cape Town aerial" className="w-full h-52 object-cover" />
+              <img src="https://images.unsplash.com/photo-1595123550441-d377e017de6a?w=500&q=80" alt="Cape Town aerial" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
               <img src="https://images.unsplash.com/photo-1501705388883-4ed8a543392c?w=500&q=80" alt="Kruger elephant" className="w-full h-52 object-cover" />
