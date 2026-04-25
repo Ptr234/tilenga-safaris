@@ -62,7 +62,7 @@ export default function KikorongoSafariLodgePage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url(https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1800&q=85)",
+            backgroundImage: "url(https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1800&q=85)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -156,7 +156,7 @@ export default function KikorongoSafariLodgePage() {
         <div className="relative min-h-[50vh] md:min-h-0 order-1 md:order-2">
           <ImageReveal direction="right" className="absolute inset-0 overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1000&q=85"
+              src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1000&q=85"
               alt="Kikorongo Safari Lodge lake view"
               className="absolute inset-0 w-full h-full object-cover"
             />

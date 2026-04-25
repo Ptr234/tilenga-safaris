@@ -147,7 +147,7 @@ export default function TilengaSafariLodgePage() {
         <div className="relative min-h-[50vh] md:min-h-0 order-1 md:order-2">
           <ImageReveal direction="right" className="absolute inset-0 overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1000&q=85"
+              src="https://images.unsplash.com/photo-1523805081730-614449339e7d?w=1000&q=85"
               alt="Tilenga Safari Lodge wildlife view"
               className="absolute inset-0 w-full h-full object-cover"
             />

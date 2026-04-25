@@ -24,7 +24,7 @@ const hotspots = [
   {
     name: "Kibale Forest",
     detail: "Chimpanzee Trekking Capital",
-    image: "https://images.unsplash.com/photo-1566926741784-9052b4c30b33?w=900&q=85",
+    image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=900&q=85",
   },
   {
     name: "Source of the Nile",
@@ -34,7 +34,7 @@ const hotspots = [
   {
     name: "Lake Bunyonyi",
     detail: "Africa's Deepest & Most Beautiful Lake",
-    image: "https://images.unsplash.com/photo-1566926741784-9052b4c30b33?w=900&q=85",
+    image: "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=900&q=85",
   },
 ];
 
@@ -47,7 +47,7 @@ const packages = [
     description:
       "A compact gem offering zebra, impala, hippo, and over 300 bird species in one intimate park — perfect for a short escape.",
     activities: ["Game drives", "Boat cruise", "Nature walks", "Bird watching"],
-    image: "https://images.unsplash.com/photo-1551009175-8a68da93d5f9?w=700&q=85",
+    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=85",
   },
   {
     name: "Murchison Falls & Queen Elizabeth",
