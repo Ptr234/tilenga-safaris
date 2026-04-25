@@ -14,7 +14,7 @@ const hotspots = [
   {
     name: "Desert Safari",
     detail: "Dune Bashing, Camel Rides & Bedouin Dinner",
-    image: "https://images.unsplash.com/2dtvA_QgF6Q?w=900&q=85",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&q=85",
   },
   {
     name: "Dubai Marina",
@@ -104,7 +104,7 @@ export default function DubaiPage() {
               <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=80" alt="Dubai Burj Khalifa" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-6">
-              <img src="https://images.unsplash.com/2dtvA_QgF6Q?w=500&q=80" alt="Dubai desert camels" className="w-full h-52 object-cover" />
+              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&q=80" alt="Dubai desert camels" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-6">
               <img src="https://images.unsplash.com/photo-1548813395-afeb41e01842?w=500&q=80" alt="Dubai Marina" className="w-full h-52 object-cover" />

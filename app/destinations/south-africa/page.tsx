@@ -9,17 +9,17 @@ const hotspots = [
   {
     name: "Kruger National Park",
     detail: "Africa's Premier Big Five Reserve",
-    image: "https://images.unsplash.com/NWwv0ETyzxc?w=900&q=85",
+    image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=900&q=85",
   },
   {
     name: "Cape Town",
     detail: "Table Mountain & the Atlantic Seaboard",
-    image: "https://images.unsplash.com/tRPvXfu5Xf0?w=900&q=85",
+    image: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=900&q=85",
   },
   {
     name: "Cape Peninsula",
     detail: "Boulders Beach & Cape of Good Hope",
-    image: "https://images.unsplash.com/zZLQzxk_MOU?w=900&q=85",
+    image: "https://images.unsplash.com/photo-1576085834044-92c469b79d11?w=900&q=85",
   },
   {
     name: "Cape Winelands",
@@ -34,7 +34,7 @@ const hotspots = [
   {
     name: "Kruger Wildlife",
     detail: "Elephant, Rhino, Buffalo & Leopard",
-    image: "https://images.unsplash.com/vbgrmKnlFuc?w=900&q=85",
+    image: "https://images.unsplash.com/photo-1501705388883-4ed8a543392c?w=900&q=85",
   },
 ];
 
@@ -46,7 +46,7 @@ export default function SouthAfricaPage() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage: "url(https://images.unsplash.com/NWwv0ETyzxc?w=1800&q=80)",
+            backgroundImage: "url(https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1800&q=80)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -103,16 +103,16 @@ export default function SouthAfricaPage() {
 
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
-              <img src="https://images.unsplash.com/NWwv0ETyzxc?w=500&q=80" alt="Kruger lion" className="w-full h-52 object-cover" />
+              <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=500&q=80" alt="Kruger lion" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-6">
-              <img src="https://images.unsplash.com/tRPvXfu5Xf0?w=500&q=80" alt="Cape Town Table Mountain" className="w-full h-52 object-cover" />
+              <img src="https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=500&q=80" alt="Cape Town Table Mountain" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-6">
-              <img src="https://images.unsplash.com/zZLQzxk_MOU?w=500&q=80" alt="Cape Town aerial" className="w-full h-52 object-cover" />
+              <img src="https://images.unsplash.com/photo-1576085834044-92c469b79d11?w=500&q=80" alt="Cape Town aerial" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
-              <img src="https://images.unsplash.com/vbgrmKnlFuc?w=500&q=80" alt="Kruger elephant" className="w-full h-52 object-cover" />
+              <img src="https://images.unsplash.com/photo-1501705388883-4ed8a543392c?w=500&q=80" alt="Kruger elephant" className="w-full h-52 object-cover" />
             </ImageReveal>
           </div>
         </div>

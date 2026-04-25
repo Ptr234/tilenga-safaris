@@ -24,7 +24,7 @@ const hotspots = [
   {
     name: "Lake Nakuru",
     detail: "Flamingo-Lined Soda Lake",
-    image: "https://images.unsplash.com/yTqJvkkdDUU?w=900&q=85",
+    image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=900&q=85",
   },
   {
     name: "Samburu Reserve",
