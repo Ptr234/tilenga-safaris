@@ -1,4 +1,6 @@
 import Link from "next/link";
+import FadeIn from "@/components/motion/FadeIn";
+import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 
 const values = [
   {
@@ -26,31 +28,71 @@ const values = [
 const team = [
   {
     role: "Safari Operations",
+    tag: "In-Field Experts",
     desc: "Our operations team coordinates every detail of your journey — from airport meet-and-greet to lodge transfers, activity bookings, and in-country support.",
+    image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=700&q=85",
   },
   {
     role: "Travel Concierge",
-    desc: "Dedicated specialists who craft bespoke itineraries, secure permits, and provide VIP assistance tailored to your travel style.",
+    tag: "Bespoke Itineraries",
+    desc: "Dedicated specialists who craft bespoke itineraries, secure permits, and provide VIP assistance tailored to your exact travel style.",
+    image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=700&q=85",
   },
   {
     role: "Lodge Management",
-    desc: "On-site teams at both Tilenga Safari Lodge and Kikorongo Safari Lodge ensure warm hospitality, safety, and wildlife expertise.",
+    tag: "Hospitality & Comfort",
+    desc: "On-site teams at Tilenga and Kikorongo Safari Lodges ensure warm hospitality, guest safety, and unmatched wildlife expertise.",
+    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=700&q=85",
   },
   {
     role: "Community Liaisons",
-    desc: "Local community partners who connect our guests with authentic cultural experiences while supporting livelihoods and conservation.",
+    tag: "Culture & Conservation",
+    desc: "Local partners who connect guests with authentic cultural experiences while actively supporting community livelihoods and conservation.",
+    image: "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=700&q=85",
   },
 ];
 
 const services = [
-  "Meet and greet services with airport assistance",
-  "Custom itinerary design for all travel styles",
-  "Gorilla and chimpanzee permit procurement",
-  "Luxury and standard private vehicle transfers",
-  "Airport transportation coordination",
-  "VIP concierge experiences",
-  "Lodge bookings across East Africa",
-  "Group and family safari coordination",
+  {
+    num: "01",
+    title: "Airport Meet & Greet",
+    desc: "Seamless arrivals — our team meets you on landing, handles your luggage, and transfers you comfortably to your first destination.",
+  },
+  {
+    num: "02",
+    title: "Bespoke Itinerary Design",
+    desc: "Custom, day-by-day journeys built around your interests, pace, and budget. No two Tilenga itineraries are alike.",
+  },
+  {
+    num: "03",
+    title: "Gorilla & Chimp Permits",
+    desc: "We secure the hard-to-get permits for gorilla tracking and chimpanzee habituation experiences in Uganda and Rwanda.",
+  },
+  {
+    num: "04",
+    title: "Private Vehicle Transfers",
+    desc: "Luxury 4WD and standard vehicles with experienced drivers — across Uganda, Kenya, Tanzania, and Rwanda.",
+  },
+  {
+    num: "05",
+    title: "Airport Transportation",
+    desc: "Punctual, professional airport transfers coordinated precisely with your flight schedule — day or night.",
+  },
+  {
+    num: "06",
+    title: "VIP Concierge",
+    desc: "Exclusive access, restaurant reservations, last-minute permits, and anything in between — handled discreetly.",
+  },
+  {
+    num: "07",
+    title: "Lodge & Hotel Bookings",
+    desc: "Curated lodges, camps, and boutique hotels across East Africa — including our own Tilenga and Kikorongo properties.",
+  },
+  {
+    num: "08",
+    title: "Group & Family Safaris",
+    desc: "Specialist coordination for multi-generational families, corporate retreats, and private group travel of any size.",
+  },
 ];
 
 export default function AboutPage() {
@@ -61,7 +103,7 @@ export default function AboutPage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url(https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=1800&q=80)",
+            backgroundImage: "url(https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=1800&q=80)",
             backgroundSize: "cover",
             backgroundPosition: "center 30%",
           }}
@@ -99,10 +141,10 @@ export default function AboutPage() {
           </div>
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
-              <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=500&q=80" alt="Uganda" className="w-full h-44 object-cover" />
-              <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=500&q=80" alt="Gorilla" className="w-full h-44 object-cover mt-6" />
+              <img src="https://images.unsplash.com/photo-1614528767034-70de9fe166e0?w=500&q=80" alt="Uganda gorilla" className="w-full h-44 object-cover" />
+              <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=500&q=80" alt="Murchison Falls" className="w-full h-44 object-cover mt-6" />
             </div>
-            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=80" alt="Africa" className="w-full h-44 object-cover" />
+            <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=700&q=80" alt="Gorillas in mist" className="w-full h-44 object-cover" />
           </div>
         </div>
       </section>
@@ -178,38 +220,103 @@ export default function AboutPage() {
       </section>
 
       {/* Services */}
-      <section className="bg-forest py-20 px-6 md:px-16">
-        <div className="max-w-5xl mx-auto text-center">
-          <p className="section-label text-gold mb-3">What We Do</p>
-          <h2 className="font-serif text-4xl text-cream mb-5">Our Services</h2>
-          <div className="w-16 h-0.5 bg-gold mx-auto mb-12" />
-          <div className="grid md:grid-cols-2 gap-4 text-left">
+      <section className="bg-forest-dark py-24 px-6 md:px-16 overflow-hidden">
+        <div className="max-w-6xl mx-auto">
+
+          {/* Header row */}
+          <FadeIn className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16 pb-10 border-b border-white/10">
+            <div>
+              <p className="section-label text-gold mb-3">What We Do</p>
+              <h2 className="font-serif text-4xl md:text-5xl text-cream leading-tight">
+                Our Services
+              </h2>
+            </div>
+            <p className="text-cream/45 font-sans text-sm leading-relaxed max-w-sm md:text-right">
+              Every detail handled — from your first flight to your final sunset. Here is how we make your journey extraordinary.
+            </p>
+          </FadeIn>
+
+          {/* Services magazine grid */}
+          <StaggerGrid className="grid md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-0">
             {services.map((s) => (
-              <div key={s} className="flex gap-4 items-start bg-forest-dark/40 px-6 py-4 border border-white/10">
-                <span className="text-gold mt-0.5">✦</span>
-                <p className="text-cream/80 font-sans text-sm">{s}</p>
-              </div>
+              <StaggerItem key={s.num}>
+                <div className="group py-8 border-t border-white/10 hover:border-gold/40 transition-colors duration-300">
+                  <p className="font-serif text-5xl text-gold/15 group-hover:text-gold/35 transition-colors duration-500 leading-none mb-5">
+                    {s.num}
+                  </p>
+                  <h3 className="font-serif text-lg text-cream mb-3 group-hover:text-gold transition-colors duration-300 leading-snug">
+                    {s.title}
+                  </h3>
+                  <div className="w-5 h-px bg-gold/30 mb-4 group-hover:w-10 transition-all duration-500" />
+                  <p className="text-cream/45 font-sans text-sm leading-relaxed">
+                    {s.desc}
+                  </p>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGrid>
+
+          {/* Bottom CTA */}
+          <FadeIn className="mt-14 pt-10 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <p className="font-serif italic text-cream/40 text-lg">
+              &ldquo;From airport to wilderness — every step, handled.&rdquo;
+            </p>
+            <Link href="/plan-a-trip" className="btn-outline shrink-0">
+              Start Planning
+            </Link>
+          </FadeIn>
+
         </div>
       </section>
 
       {/* Team */}
-      <section className="bg-cream py-20 px-6 md:px-16">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="section-label mb-3">The People Behind Your Journey</p>
-            <h2 className="section-heading">Our Team</h2>
-            <div className="w-16 h-0.5 bg-gold mx-auto mt-5" />
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
+      <section className="bg-cream py-24 px-6 md:px-16">
+        <div className="max-w-6xl mx-auto">
+
+          {/* Header */}
+          <FadeIn className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 pb-10 border-b border-gold/15">
+            <div>
+              <p className="section-label mb-3">The People Behind Your Journey</p>
+              <h2 className="font-serif text-4xl md:text-5xl text-forest leading-tight">Our Team</h2>
+            </div>
+            <p className="text-stone font-sans text-sm leading-relaxed max-w-xs md:text-right">
+              Specialists who live and breathe East Africa — committed to making every detail of your safari extraordinary.
+            </p>
+          </FadeIn>
+
+          {/* Cards */}
+          <StaggerGrid className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {team.map((t) => (
-              <div key={t.role} className="bg-cream-dark p-7 border border-gold/20">
-                <h3 className="font-serif text-lg text-forest mb-3">{t.role}</h3>
-                <p className="text-stone font-sans text-sm leading-relaxed">{t.desc}</p>
-              </div>
+              <StaggerItem key={t.role}>
+                <div className="group overflow-hidden bg-white border border-gold/10 hover:-translate-y-1.5 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:shadow-[0_16px_48px_rgba(26,60,43,0.12)]">
+
+                  {/* Image */}
+                  <div className="relative overflow-hidden h-64">
+                    <img
+                      src={t.image}
+                      alt={t.role}
+                      className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                    />
+                    {/* Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-forest-dark/10 to-transparent" />
+
+                    {/* Tag badge */}
+                    <span className="absolute bottom-4 left-4 bg-gold text-forest-dark text-[9px] uppercase tracking-[0.2em] font-sans font-bold px-3 py-1.5">
+                      {t.tag}
+                    </span>
+                  </div>
+
+                  {/* Text */}
+                  <div className="p-6">
+                    <div className="w-6 h-px bg-gold mb-4 group-hover:w-10 transition-all duration-500" />
+                    <h3 className="font-serif text-xl text-forest mb-3 leading-snug">{t.role}</h3>
+                    <p className="text-stone font-sans text-sm leading-relaxed">{t.desc}</p>
+                  </div>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGrid>
+
         </div>
       </section>
 

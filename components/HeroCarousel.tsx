@@ -6,14 +6,14 @@ import { motion, AnimatePresence, type Variants } from "framer-motion";
 
 const slides = [
   {
-    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1800&q=80",
+    image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1800&q=80",
     region: "Uganda",
     heading: "Wild Luxury",
     sub: "Unforgettable Memories",
     body: "Pearl of Africa — where gorillas, lions, and the Nile converge.",
   },
   {
-    image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1800&q=80",
+    image: "https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=1800&q=80",
     region: "Kenya",
     heading: "Iconic Savannah",
     sub: "Epic Encounters",
