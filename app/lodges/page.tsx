@@ -41,7 +41,7 @@ const lodges = [
       { value: "600+", label: "Bird Species" },
     ],
     amenities: ["Lake & Mountain Views", "Swimming Pool", "Kazinga Channel", "Bird Watching", "Rwenzori Climbing"],
-    image: "https://images.unsplash.com/photo-1566926741784-9052b4c30b33?w=1400&q=85",
+    image: "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=1400&q=85",
     href: "/lodges/kikorongo-safari-lodge",
     panelBg: "bg-forest",
     imageOrder: "md:order-2",
@@ -132,7 +132,7 @@ export default function LodgesPage() {
             <ImageReveal direction={lodge.revealDir} className="absolute inset-0 overflow-hidden">
               <img
                 src={lodge.image}
-                alt={lodge.name}
+                alt={`${lodge.nameA} ${lodge.nameB}`}
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </ImageReveal>

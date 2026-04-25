@@ -10,7 +10,7 @@ const rooms = [
     description:
       "Named in the Lukhonzo language of Kasese, each cottage captures wide views of both Lake Kikorongo and Lake George — private terraces perfectly positioned for sunset watching over the Rwenzori Mountains.",
     features: ["Lake Kikorongo & George views", "Private terrace", "Rwenzori Mountain panorama", "Indoor bathroom", "Daily housekeeping"],
-    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=900&q=85",
   },
   {
     name: "Premium Tents",
@@ -18,7 +18,7 @@ const rooms = [
     description:
       "Tented accommodation that brings you closest to nature — bird calls at dawn, the lake shimmering below. Ideal for birders and photographers seeking complete immersion in Queen Elizabeth NP.",
     features: ["Natural tented setting", "Bird watching access", "Photographer-friendly", "Lake views", "En suite facilities"],
-    image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=900&q=85",
   },
   {
     name: "Intimate Cottages",
@@ -26,7 +26,7 @@ const rooms = [
     description:
       "Smaller, ground-level cottages suited to guests who prefer not to hike. Cozy and private, these units offer a quieter retreat within the lodge grounds with direct garden access.",
     features: ["Ground-level access", "Secluded & private", "Indoor bathroom", "Garden view", "Ideal for mobility-conscious guests"],
-    image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=900&q=85",
   },
 ];
 
@@ -62,7 +62,7 @@ export default function KikorongoSafariLodgePage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url(https://images.unsplash.com/photo-1566926741784-9052b4c30b33?w=1800&q=80)",
+            backgroundImage: "url(https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1800&q=85)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -156,7 +156,7 @@ export default function KikorongoSafariLodgePage() {
         <div className="relative min-h-[50vh] md:min-h-0 order-1 md:order-2">
           <ImageReveal direction="right" className="absolute inset-0 overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=1000&q=85"
+              src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1000&q=85"
               alt="Kikorongo Safari Lodge lake view"
               className="absolute inset-0 w-full h-full object-cover"
             />
@@ -266,11 +266,11 @@ export default function KikorongoSafariLodgePage() {
       {/* ── GALLERY STRIP ── */}
       <div className="flex gap-0.5 h-52 md:h-72 overflow-hidden">
         {[
-          "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=600&q=80",
-          "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&q=80",
-          "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&q=80",
-          "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80",
-          "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&q=80",
+          "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=600&q=85",
+          "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=600&q=85",
+          "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=600&q=85",
+          "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&q=85",
+          "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=600&q=85",
         ].map((src, i) => (
           <div key={i} className="flex-1 overflow-hidden group">
             <img

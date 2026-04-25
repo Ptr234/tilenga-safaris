@@ -6,6 +6,7 @@ import AnimatedCounter from "@/components/motion/AnimatedCounter";
 import ParallaxSection from "@/components/motion/ParallaxSection";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
+import LineReveal from "@/components/motion/LineReveal";
 
 const lodges = [
   {
@@ -80,17 +81,23 @@ export default function HomePage() {
 
       {/* Our Lodges — full-image cinematic cards */}
       <section className="py-28 px-6 md:px-16 bg-forest-dark">
-        <FadeIn direction="up" className="text-center mb-16 max-w-2xl mx-auto">
-          <p className="section-label text-gold mb-3">Where You Stay</p>
-          <h2 className="font-serif text-4xl md:text-5xl text-cream leading-tight">
-            <SplitText text="Our Lodges in Uganda" by="word" stagger={0.06} />
-          </h2>
-          <div className="w-12 h-px bg-gold mx-auto mt-6" />
-          <p className="text-cream/50 max-w-xl mx-auto mt-6 font-sans leading-relaxed text-sm">
-            Each lodge sits at the gateway of Uganda&apos;s most spectacular national parks —
-            designed for comfort, wildlife, and that rare sense of being completely away.
-          </p>
-        </FadeIn>
+        <div className="text-center mb-16 max-w-2xl mx-auto">
+          <FadeIn direction="fade" delay={0}>
+            <p className="section-label text-gold mb-3">Where You Stay</p>
+          </FadeIn>
+          <LineReveal
+            lines={["Our Lodges in Uganda"]}
+            delay={0.1}
+            lineClassName="font-serif text-4xl md:text-5xl text-cream leading-tight"
+          />
+          <FadeIn direction="fade" delay={0.4}>
+            <div className="w-12 h-px bg-gold mx-auto mt-6" />
+            <p className="text-cream/50 max-w-xl mx-auto mt-6 font-sans leading-relaxed text-sm">
+              Each lodge sits at the gateway of Uganda&apos;s most spectacular national parks —
+              designed for comfort, wildlife, and that rare sense of being completely away.
+            </p>
+          </FadeIn>
+        </div>
 
         <StaggerGrid className="grid md:grid-cols-2 gap-2 max-w-7xl mx-auto">
           {lodges.map((lodge) => (
@@ -131,13 +138,17 @@ export default function HomePage() {
       {/* Destinations grid */}
       <section className="py-28 px-6 md:px-16 bg-cream">
         <div className="max-w-6xl mx-auto">
-          <FadeIn direction="up" className="text-center mb-14">
-            <p className="section-label mb-3">Africa &amp; Beyond</p>
-            <h2 className="section-heading">
-              <SplitText text="Our Destinations" by="word" stagger={0.07} />
-            </h2>
-            <div className="w-12 h-px bg-gold mx-auto mt-5" />
-          </FadeIn>
+          <div className="text-center mb-14">
+            <FadeIn direction="fade"><p className="section-label mb-3">Africa &amp; Beyond</p></FadeIn>
+            <LineReveal
+              lines={["Our Destinations"]}
+              delay={0.1}
+              lineClassName="section-heading"
+            />
+            <FadeIn direction="fade" delay={0.35}>
+              <div className="w-12 h-px bg-gold mx-auto mt-5" />
+            </FadeIn>
+          </div>
 
           <StaggerGrid className="grid grid-cols-2 md:grid-cols-3 gap-1.5">
             {destinations.map((dest) => (
@@ -168,17 +179,21 @@ export default function HomePage() {
       {/* Experiences — full-image hover reveal */}
       <section className="py-28 px-6 md:px-16 bg-cream-dark">
         <div className="max-w-6xl mx-auto">
-          <FadeIn direction="up" className="text-center mb-14">
-            <p className="section-label mb-3">What We Offer</p>
-            <h2 className="section-heading">
-              <SplitText text="Extraordinary Experiences" by="word" stagger={0.06} />
-            </h2>
-            <div className="w-12 h-px bg-gold mx-auto mt-5" />
-            <p className="text-stone max-w-xl mx-auto mt-6 font-sans leading-relaxed text-sm">
-              Each journey is thoughtfully tailored — gorilla trekking at dawn, boat safaris,
-              cultural encounters, mountain summits, and beach retreats.
-            </p>
-          </FadeIn>
+          <div className="text-center mb-14">
+            <FadeIn direction="fade"><p className="section-label mb-3">What We Offer</p></FadeIn>
+            <LineReveal
+              lines={["Extraordinary Experiences"]}
+              delay={0.1}
+              lineClassName="section-heading"
+            />
+            <FadeIn direction="fade" delay={0.4}>
+              <div className="w-12 h-px bg-gold mx-auto mt-5" />
+              <p className="text-stone max-w-xl mx-auto mt-6 font-sans leading-relaxed text-sm">
+                Each journey is thoughtfully tailored — gorilla trekking at dawn, boat safaris,
+                cultural encounters, mountain summits, and beach retreats.
+              </p>
+            </FadeIn>
+          </div>
 
           <StaggerGrid className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5">
             {experiences.map((exp) => (

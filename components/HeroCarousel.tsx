@@ -100,28 +100,29 @@ export default function HeroCarousel() {
         />
       </AnimatePresence>
 
-      {/* Layered overlays — cinematic vignette */}
-      <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/80 via-forest-dark/30 to-transparent z-[1]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-transparent to-forest-dark/40 z-[1]" />
+      {/* Layered overlays — centered cinematic vignette */}
+      <div className="absolute inset-0 bg-forest-dark/50 z-[1]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/75 via-transparent to-forest-dark/40 z-[1]" />
 
-      {/* Content — left aligned */}
-      <div className="relative z-[2] h-full flex flex-col justify-end px-8 md:px-20 pb-24 max-w-4xl">
+      {/* Content — centered */}
+      <div className="relative z-[2] h-full flex flex-col items-center justify-center text-center px-6 md:px-16 max-w-5xl mx-auto w-full">
         <AnimatePresence mode="wait">
-          <div key={`content-${current}`}>
+          <div key={`content-${current}`} className="flex flex-col items-center">
             {/* Region label */}
             <motion.div
               className="flex items-center gap-3 mb-5"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -10 }}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
               transition={{ duration: 0.6, delay: 0.1, ease: EASE_OUT }}
             >
               <div className="w-8 h-px bg-gold" />
-              <span className="text-gold text-xs uppercase tracking-[0.35em] font-sans">{slide.region}</span>
+              <span className="text-gold text-xs uppercase tracking-[0.45em] font-sans">{slide.region}</span>
+              <div className="w-8 h-px bg-gold" />
             </motion.div>
 
             {/* Main heading — word-by-word reveal */}
-            <h1 className="font-serif text-6xl md:text-8xl lg:text-[6.5rem] text-cream leading-[0.95] mb-4 block">
+            <h1 className="font-serif text-6xl md:text-8xl lg:text-[7rem] text-cream leading-[0.92] mb-4 block">
               <WordReveal text={slide.heading} delay={0.2} />
             </h1>
 
@@ -140,7 +141,7 @@ export default function HeroCarousel() {
 
             {/* Body */}
             <motion.p
-              className="text-cream/60 font-sans text-sm md:text-base max-w-md mb-10 leading-relaxed"
+              className="text-cream/65 font-sans text-sm md:text-base max-w-md mb-10 leading-relaxed"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
@@ -151,7 +152,7 @@ export default function HeroCarousel() {
 
             {/* CTAs */}
             <motion.div
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-4 justify-center"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}

@@ -10,7 +10,7 @@ const rooms = [
     description:
       "Located at the property edge with stunning sunrise and sunset views over the Albert Nile. Each cottage features a wide private balcony, indoor bathroom, and electric mosquito repellent — a perfect blend of bush comfort and contemporary style.",
     features: ["River Nile views", "Private balcony", "Indoor bathroom", "Electric mosquito repellent", "Daily housekeeping"],
-    image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&q=85",
   },
   {
     name: "Executive Cottages",
@@ -18,7 +18,7 @@ const rooms = [
     description:
       "Designed for families and groups — 3-in-1 cottages with twin and single beds, and balconies large enough to seat up to 8 people. Ideal for group gatherings at sunrise over the Nile.",
     features: ["Twin & single beds", "Family / group layout", "Large balcony seats 8", "Indoor bathroom", "Bush view"],
-    image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=900&q=85",
   },
 ];
 
