@@ -23,7 +23,7 @@ export default function RootLayout({
           <ScrollProgress />
           <Header />
           <PageTransition>
-            <main className="pt-16 md:pt-[106px]">{children}</main>
+            <main>{children}</main>
           </PageTransition>
           <Footer />
 

@@ -86,7 +86,7 @@ export default function HeroCarousel() {
   const slide = slides[current];
 
   return (
-    <section className="relative h-screen min-h-[640px] overflow-hidden bg-forest-dark">
+    <section className="relative h-screen h-[100dvh] min-h-[640px] overflow-hidden bg-forest-dark">
       {/* Background */}
       <AnimatePresence mode="sync">
         <motion.div
@@ -105,7 +105,7 @@ export default function HeroCarousel() {
       <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/75 via-transparent to-forest-dark/40 z-[1]" />
 
       {/* Content — centered */}
-      <div className="relative z-[2] h-full flex flex-col items-center justify-center text-center px-6 md:px-16 max-w-5xl mx-auto w-full">
+      <div className="relative z-[2] h-full flex flex-col items-center justify-center text-center px-6 md:px-16 pt-20 md:pt-28 max-w-5xl mx-auto w-full">
         <AnimatePresence mode="wait">
           <div key={`content-${current}`} className="flex flex-col items-center">
             {/* Region label */}
