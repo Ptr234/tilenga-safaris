@@ -355,9 +355,32 @@ export default function HomePage() {
       {/* Sustainability */}
       <section className="py-4 md:py-28 px-6 md:px-16 bg-cream">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-4 md:gap-20 items-center">
-          <FadeIn direction="left">
+          <div className="grid grid-cols-2 gap-4 pt-12 md:pt-0">
+            <ImageReveal direction="top" delay={0} className="overflow-hidden">
+              <div className="film-frame aspect-square">
+                <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&q=80" alt="Conservation" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
+              </div>
+            </ImageReveal>
+            <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-12">
+              <div className="film-frame aspect-square">
+                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" alt="Landscape" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
+              </div>
+            </ImageReveal>
+            <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-12">
+              <div className="film-frame aspect-square">
+                <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&q=80" alt="Wildlife" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
+              </div>
+            </ImageReveal>
+            <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
+              <div className="film-frame aspect-square">
+                <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&q=80" alt="Community" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
+              </div>
+            </ImageReveal>
+          </div>
+
+          <FadeIn direction="right">
             <p className="section-label">Responsible Travel</p>
-            <h2 className="section-heading mb-4 md:mb-10">A Commitment to<br />Communities &amp; Conservation</h2>
+            <h2 className="section-heading mb-4 md:mb-10 !text-2xl md:!text-4xl lg:!text-5xl">A Commitment to<br />Communities &amp; Conservation</h2>
             <div className="w-16 h-px bg-gold mb-4 md:mb-10" />
             <div className="space-y-4 md:space-y-8 body-text mb-6 md:mb-12">
               <p>
@@ -381,30 +404,106 @@ export default function HomePage() {
             </StaggerGrid>
             <Link href="/about" className="btn-primary">Learn More</Link>
           </FadeIn>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-2 gap-4 pt-12 md:pt-0">
-            <ImageReveal direction="top" delay={0} className="overflow-hidden">
-              <div className="film-frame aspect-square">
-                <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&q=80" alt="Conservation" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
-              </div>
-            </ImageReveal>
-            <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-12">
-              <div className="film-frame aspect-square">
-                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" alt="Landscape" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
-              </div>
-            </ImageReveal>
-            <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-12">
-              <div className="film-frame aspect-square">
-                <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&q=80" alt="Wildlife" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
-              </div>
-            </ImageReveal>
-            <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
-              <div className="film-frame aspect-square">
-                <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&q=80" alt="Community" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
-              </div>
-            </ImageReveal>
+      {/* Testimonials */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1800&q=90"
+            alt=""
+            className="w-full h-full object-cover object-center scale-[1.06]"
+          />
+          <div className="absolute inset-0 bg-[#050f08]/80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050f08] via-transparent to-[#050f08]/70" />
+        </div>
+
+        {/* Gold horizontal rule — top accent */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+
+        {/* Content */}
+        <div className="relative z-10 w-full py-28 md:py-40">
+          <div className="max-w-7xl mx-auto px-6 md:px-16">
+
+            {/* Full-width 2-col grid: heading left, quotes right */}
+            <div className="grid md:grid-cols-[1fr_1.6fr] gap-12 md:gap-24 items-start">
+
+              {/* LEFT — sticky-ish header block */}
+              <FadeIn direction="left" className="md:pt-4">
+                <p className="section-label !text-gold/60 mb-6">Verified Traveller Reviews</p>
+                <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl text-cream uppercase tracking-[0.05em] leading-[1.05] mb-8">
+                  What Our<br />Travellers<br />Say
+                </h2>
+                <div className="w-16 h-px bg-gold/50 mb-8" />
+                <p className="font-sans text-cream/50 text-sm leading-relaxed mb-10">
+                  Real experiences shared by guests who explored Uganda with us — unedited, unsponsored.
+                </p>
+                {/* Stars + platform badge */}
+                <div className="inline-flex items-center gap-3 border border-gold/25 px-5 py-3">
+                  <div className="flex gap-[3px]">
+                    {[...Array(5)].map((_, s) => (
+                      <span key={s} className="text-gold text-sm">★</span>
+                    ))}
+                  </div>
+                  <div className="w-px h-4 bg-gold/25" />
+                  <span className="font-sans text-gold/60 text-[10px] tracking-[0.3em] uppercase">Tripadvisor</span>
+                </div>
+              </FadeIn>
+
+              {/* RIGHT — testimonials, each full-width of the column */}
+              <StaggerGrid className="flex flex-col gap-0">
+                {[
+                  {
+                    quote: "From the beginning, Tilenga Safaris handled every detail with precision and care. They booked us into high-end accommodations with the best views and paired us with a top-tier safari guide. When our original agency failed to plan anything for our arrival day, Tilenga Safaris immediately stepped in and went above and beyond — in every sense of the word.",
+                    name: "Faycal A.",
+                    date: "12 months ago",
+                    tag: "Uganda Circuit",
+                  },
+                  {
+                    quote: "Coming face-to-face with a silverback and his family in Bwindi Impenetrable Forest was surreal. Tilenga handled everything seamlessly — permits, accommodations, transportation. We felt safe, well cared for, and truly immersed in Uganda's wild beauty. If you're considering gorilla trekking, look no further.",
+                    name: "Martina N.",
+                    date: "1 year ago",
+                    tag: "Gorilla Trekking",
+                  },
+                ].map((t, i) => (
+                  <StaggerItem key={i}>
+                    <div className={`relative group py-10 md:py-12 px-0 ${i === 0 ? "border-b border-gold/20" : ""}`}>
+                      {/* Large ghost quote mark */}
+                      <span className="absolute right-0 top-6 font-serif text-[9rem] leading-none text-gold/[0.06] select-none pointer-events-none group-hover:text-gold/[0.1] transition-colors duration-700">
+                        &rdquo;
+                      </span>
+
+                      {/* Tag pill */}
+                      <span className="inline-block font-sans text-[9px] tracking-[0.35em] uppercase text-gold/60 border border-gold/20 px-3 py-1 mb-6">
+                        {t.tag}
+                      </span>
+
+                      {/* Quote */}
+                      <p className="font-serif italic text-cream/80 text-xl md:text-2xl lg:text-[1.6rem] leading-[1.75] mb-8 group-hover:text-cream transition-colors duration-500 relative z-10">
+                        &ldquo;{t.quote}&rdquo;
+                      </p>
+
+                      {/* Attribution */}
+                      <div className="flex items-center gap-4">
+                        <div className="w-10 h-px bg-gold/50" />
+                        <div>
+                          <p className="font-sans text-cream text-xs font-semibold tracking-[0.2em] uppercase">{t.name}</p>
+                          <p className="font-sans text-cream/35 text-[10px] tracking-[0.2em] uppercase mt-0.5">{t.date}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </StaggerGrid>
+
+            </div>
           </div>
         </div>
+
+        {/* Gold horizontal rule — bottom accent */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
       </section>
 
       </>

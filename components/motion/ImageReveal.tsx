@@ -21,6 +21,7 @@ interface ImageRevealProps {
   delay?: number;
   duration?: number;
   className?: string;
+  margin?: string;
 }
 
 export default function ImageReveal({
@@ -29,6 +30,7 @@ export default function ImageReveal({
   delay = 0,
   duration = 1.4,
   className,
+  margin = "-50px",
 }: ImageRevealProps) {
   const { hidden, visible } = clipMap[direction];
 
@@ -37,7 +39,7 @@ export default function ImageReveal({
       className={className}
       initial={{ clipPath: hidden }}
       whileInView={{ clipPath: visible }}
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin }}
       transition={{ duration, delay, ease: EASE }}
     >
       {children}

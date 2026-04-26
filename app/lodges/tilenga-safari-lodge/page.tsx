@@ -189,8 +189,8 @@ export default function TilengaSafariLodgePage() {
               key={room.name}
               className={`grid md:grid-cols-2 min-h-[420px] ${i % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""}`}
             >
-              <div className="relative overflow-hidden h-64 md:h-auto group">
-                <ImageReveal direction={i % 2 === 0 ? "left" : "right"} className="absolute inset-0 overflow-hidden">
+              <div className="relative overflow-hidden h-64 md:min-h-[420px] group">
+                <ImageReveal direction={i % 2 === 0 ? "left" : "right"} margin="0px" className="absolute inset-0 overflow-hidden">
                   <img
                     src={room.image}
                     alt={room.name}
