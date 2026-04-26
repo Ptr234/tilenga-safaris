@@ -3,6 +3,8 @@ import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const rooms = [
   {
     name: "Premium Cottages",
@@ -10,7 +12,7 @@ const rooms = [
     description:
       "Located at the property edge with stunning sunrise and sunset views over the Albert Nile. Each cottage features a wide private balcony, indoor bathroom, and electric mosquito repellent — a perfect blend of bush comfort and contemporary style.",
     features: ["River Nile views", "Private balcony", "Indoor bathroom", "Electric mosquito repellent", "Daily housekeeping"],
-    image: "/photos/tilengasafarilodge/cottage1.png",
+    image: `${base}/photos/tilengasafarilodge/cottage1.png`,
   },
   {
     name: "Executive Cottages",
@@ -18,7 +20,7 @@ const rooms = [
     description:
       "Designed for families and groups — 3-in-1 cottages with twin and single beds, and balconies large enough to seat up to 8 people. Ideal for group gatherings at sunrise over the Nile.",
     features: ["Twin & single beds", "Family / group layout", "Large balcony seats 8", "Indoor bathroom", "Bush view"],
-    image: "/photos/tilengasafarilodge/cottage2.png",
+    image: `${base}/photos/tilengasafarilodge/cottage2.png`,
   },
 ];
 
@@ -54,7 +56,7 @@ export default function TilengaSafariLodgePage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url('/photos/tilengasafarilodge/entrance.png')",
+            backgroundImage: `url('${base}/photos/tilengasafarilodge/entrance.png')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -147,7 +149,7 @@ export default function TilengaSafariLodgePage() {
         <div className="relative min-h-[50vh] md:min-h-0 order-1 md:order-2">
           <ImageReveal direction="right" className="absolute inset-0 overflow-hidden">
             <img
-              src="/photos/tilengasafarilodge/cottage3.png"
+              src={`${base}/photos/tilengasafarilodge/cottage3.png`}
               alt="Tilenga Safari Lodge wildlife view"
               className="absolute inset-0 w-full h-full object-cover"
             />
@@ -255,10 +257,10 @@ export default function TilengaSafariLodgePage() {
       </section>
 
       {/* ── GALLERY — Tightened Album Spread ── */}
-      <section className="bg-forest-dark py-16 md:py-24 overflow-hidden relative">
+      <section className="bg-forest-dark py-12 md:py-20 overflow-hidden relative">
         <div className="absolute inset-0 grain-overlay opacity-[0.05] pointer-events-none" />
         
-        <div className="max-w-7xl mx-auto px-6 md:px-16 mb-12 md:mb-20 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 md:px-16 mb-8 md:mb-14 relative z-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <FadeIn>
               <div className="flex items-center gap-4 mb-4">
@@ -284,12 +286,12 @@ export default function TilengaSafariLodgePage() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-0 items-start">
             
             {/* Left Page */}
-            <div className="md:col-span-5 space-y-16 md:space-y-24 md:pr-10">
+            <div className="md:col-span-5 space-y-12 md:space-y-16 md:pr-10">
                <FadeIn direction="up" delay={0.1}>
                  <div className="relative group">
                     <div className="absolute -inset-4 bg-white/[0.02] -rotate-2 group-hover:rotate-[-0.5deg] transition-transform duration-1000 ease-out" />
                     <div className="relative z-10 overflow-hidden shadow-2xl border border-white/5">
-                       <img src="/photos/tilengasafarilodge/night.png" alt="Cottage Night View" className="w-full aspect-[4/5] object-cover transition-transform duration-[2.5s] group-hover:scale-110" />
+                       <img src={`${base}/photos/tilengasafarilodge/night.png`} alt="Cottage Night View" className="w-full aspect-[4/5] object-cover transition-transform duration-[2.5s] group-hover:scale-110" />
                     </div>
                     <div className="relative z-20 mt-6">
                        <p className="font-serif italic text-gold text-xl md:text-2xl">"The tranquility of the bush at twilight."</p>
@@ -302,7 +304,7 @@ export default function TilengaSafariLodgePage() {
                  <div className="relative group md:ml-20">
                     <div className="absolute -inset-4 bg-white/[0.02] rotate-2 group-hover:rotate-[0.5deg] transition-transform duration-1000 ease-out" />
                     <div className="relative z-10 overflow-hidden shadow-xl border border-white/10">
-                       <img src="/photos/tilengasafarilodge/insideview.png" alt="Inside View" className="w-full aspect-square object-cover transition-transform duration-[2.5s] group-hover:scale-110" />
+                       <img src={`${base}/photos/tilengasafarilodge/insideview.png`} alt="Inside View" className="w-full aspect-square object-cover transition-transform duration-[2.5s] group-hover:scale-110" />
                     </div>
                     <div className="relative z-20 mt-6 flex items-center gap-4">
                        <div className="w-6 h-px bg-gold" />
@@ -313,19 +315,19 @@ export default function TilengaSafariLodgePage() {
             </div>
 
             {/* Right Page */}
-            <div className="md:col-span-7 space-y-16 md:space-y-24 md:pt-16">
+            <div className="md:col-span-7 space-y-12 md:space-y-16 md:pt-16">
                <FadeIn direction="up" delay={0.2}>
                  <div className="relative group">
                     <div className="absolute -inset-6 bg-white/[0.015] rotate-1 group-hover:rotate-0 transition-transform duration-[1.8s] ease-out" />
                     <div className="relative z-10 overflow-hidden shadow-2xl">
-                       <img src="/photos/tilengasafarilodge/pool.png" alt="Swimming Pool View" className="w-full aspect-[16/10] object-cover transition-transform duration-[4s] group-hover:scale-105" />
+                       <img src={`${base}/photos/tilengasafarilodge/pool.png`} alt="Swimming Pool View" className="w-full aspect-[16/10] object-cover transition-transform duration-[4s] group-hover:scale-105" />
                     </div>
                     
                     <div className="absolute -bottom-12 -right-2 hidden lg:block w-52 z-30 group-hover:translate-y-[-8px] transition-transform duration-1000">
                         <FadeIn direction="up" delay={0.5}>
                            <div className="bg-[#fcfbf4] p-3 pb-10 shadow-2xl rotate-3 group-hover:rotate-1 transition-transform duration-700 border border-black/5">
                               <div className="relative overflow-hidden aspect-square">
-                                <img src="/photos/tilengasafarilodge/watersafari.png" alt="Water Safari" className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700" />
+                                <img src={`${base}/photos/tilengasafarilodge/watersafari.png`} alt="Water Safari" className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700" />
                               </div>
                               <p className="font-serif italic text-[#1a3c2b] text-center mt-3 text-sm">"Cruising the Nile"</p>
                            </div>
@@ -338,7 +340,7 @@ export default function TilengaSafariLodgePage() {
                   <FadeIn direction="up" delay={0.4}>
                     <div className="group">
                        <div className="relative overflow-hidden shadow-xl grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000">
-                          <img src="/photos/tilengasafarilodge/breakfast.png" alt="Breakfast" className="w-full aspect-[3/4] object-cover transition-transform duration-[3s] group-hover:scale-110" />
+                          <img src={`${base}/photos/tilengasafarilodge/breakfast.png`} alt="Breakfast" className="w-full aspect-[3/4] object-cover transition-transform duration-[3s] group-hover:scale-110" />
                        </div>
                        <div className="mt-4 flex justify-between items-center">
                           <span className="text-[9px] uppercase tracking-widest text-cream/30 font-mono">03 · DAWN</span>
@@ -350,7 +352,7 @@ export default function TilengaSafariLodgePage() {
                   <FadeIn direction="up" delay={0.5}>
                     <div className="group pt-12 md:pt-20">
                        <div className="relative overflow-hidden shadow-xl grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000">
-                          <img src="/photos/tilengasafarilodge/lunch.png" alt="Lunch Setup" className="w-full aspect-[3/4] object-cover transition-transform duration-[3s] group-hover:scale-110" />
+                          <img src={`${base}/photos/tilengasafarilodge/lunch.png`} alt="Lunch Setup" className="w-full aspect-[3/4] object-cover transition-transform duration-[3s] group-hover:scale-110" />
                        </div>
                        <div className="mt-4 flex justify-between items-center">
                           <span className="text-[9px] uppercase tracking-widest text-cream/30 font-mono">04 · MIDDAY</span>
