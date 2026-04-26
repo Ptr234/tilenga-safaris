@@ -248,34 +248,144 @@ export default function KikorongoSafariLodgePage() {
         </div>
       </section>
 
-      {/* ── GALLERY ── */}
-      <section className="bg-forest-dark py-20 md:py-32">
-        <div className="px-5 md:px-20 mb-16">
-          <FadeIn>
-            <p className="section-label text-gold mb-3">Gallery</p>
-            <h2 className="font-serif text-4xl md:text-5xl text-cream">Lodge Life</h2>
-          </FadeIn>
-        </div>
+      {/* ── GALLERY — Curated Album Spread ── */}
+      <section className="bg-forest-dark py-24 md:py-48 overflow-hidden relative">
+        <div className="absolute inset-0 grain-overlay opacity-[0.07] pointer-events-none" />
         
-        <StaggerGrid className="grid grid-cols-2 md:grid-cols-4 gap-2 px-2">
-          {[
-            "/photos/kikorongo fireplace.jpg",
-            "/photos/kikorongo outside.jpg",
-            "/photos/kikorongo ranger.jpg",
-            "/photos/kikorongo travel.jpg",
-          ].map((img, i) => (
-            <StaggerItem key={i} className={i === 1 ? "md:col-span-2 md:row-span-2" : ""}>
-              <div className="relative h-full min-h-[300px] overflow-hidden group">
-                <img
-                  src={img}
-                  alt={`Kikorongo gallery ${i + 1}`}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-forest-dark/20 group-hover:bg-transparent transition-colors duration-500" />
+        {/* Decorative Background Elements */}
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-white/[0.01] -skew-x-12 transform origin-top translate-x-20 pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-6 md:px-16 mb-24 md:mb-40 relative z-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
+            <FadeIn>
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-gold text-[10px] uppercase tracking-[0.6em] font-bold">Field Journal</span>
+                <div className="w-16 h-px bg-gold/30" />
               </div>
-            </StaggerItem>
-          ))}
-        </StaggerGrid>
+              <h2 className="font-serif text-6xl md:text-[9rem] text-cream leading-[0.8] uppercase tracking-tighter">
+                Lodge <br />
+                <span className="italic text-gold lowercase tracking-normal pl-8 md:pl-20 block">Life</span>
+              </h2>
+            </FadeIn>
+            <FadeIn direction="up" delay={0.3} className="max-w-[200px]">
+               <div className="space-y-4 border-l border-gold/20 pl-6 py-2">
+                  <p className="text-[9px] uppercase tracking-[0.3em] text-cream/40 font-mono">Location Data</p>
+                  <p className="text-gold font-mono text-[11px] leading-relaxed">
+                    0° 0' 11.2" N <br />
+                    29° 59' 31.8" E
+                  </p>
+                  <p className="text-cream/30 font-serif italic text-sm pt-2">"Where hemispheres meet."</p>
+               </div>
+            </FadeIn>
+          </div>
+        </div>
+
+        <div className="max-w-[1500px] mx-auto px-6 md:px-16 relative z-10">
+          {/* Main Album Spread */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-20 md:gap-0 items-start">
+            
+            {/* Left Page — Intimate Details */}
+            <div className="md:col-span-5 space-y-40 md:pr-20">
+               <FadeIn direction="up" delay={0.1}>
+                 <div className="relative group">
+                    {/* Shadow & Paper depth */}
+                    <div className="absolute -inset-6 bg-white/[0.02] -rotate-3 group-hover:rotate-[-1deg] transition-transform duration-1000 ease-out shadow-inner" />
+                    <div className="relative z-10 overflow-hidden shadow-[20px_40px_80px_-15px_rgba(0,0,0,0.7)] border border-white/5">
+                       <img src="/photos/kikorongo fireplace.jpg" alt="Fireplace" className="w-full aspect-[4/5] object-cover transition-transform duration-[2.5s] group-hover:scale-110" />
+                    </div>
+                    {/* Handwritten annotation */}
+                    <div className="relative z-20 mt-10 md:ml-[-20px]">
+                       <p className="font-serif italic text-gold text-2xl md:text-3xl leading-tight">"The evening ritual, <br />by the wood-fire hearth."</p>
+                       <span className="text-cream/20 text-[10px] font-mono mt-4 block uppercase tracking-widest">— 19:42 HRS</span>
+                    </div>
+                 </div>
+               </FadeIn>
+
+               <FadeIn direction="up" delay={0.3}>
+                 <div className="relative group md:ml-16 lg:ml-32">
+                    <div className="absolute -inset-6 bg-white/[0.02] rotate-3 group-hover:rotate-[1deg] transition-transform duration-1000 ease-out" />
+                    <div className="relative z-10 overflow-hidden shadow-2xl border border-white/10">
+                       <img src="/photos/kikorongo ranger.jpg" alt="Ranger" className="w-full aspect-square object-cover transition-transform duration-[2.5s] group-hover:scale-110" />
+                       <div className="absolute inset-0 bg-gold/5 group-hover:bg-transparent transition-colors duration-700" />
+                    </div>
+                    <div className="relative z-20 mt-8 flex items-start gap-4">
+                       <div className="pt-2"><div className="w-8 h-px bg-gold" /></div>
+                       <div>
+                          <span className="text-gold text-[9px] uppercase tracking-[0.5em] font-bold">Field Expert</span>
+                          <h3 className="text-cream font-serif text-xl mt-2">Guidance through the Rift</h3>
+                       </div>
+                    </div>
+                 </div>
+               </FadeIn>
+            </div>
+
+            {/* Right Page — Wide Perspective & Insert */}
+            <div className="md:col-span-7 space-y-40 md:pt-32">
+               <FadeIn direction="up" delay={0.2}>
+                 <div className="relative group">
+                    {/* Large Spread Shadow */}
+                    <div className="absolute -inset-10 bg-white/[0.015] rotate-1 group-hover:rotate-0 transition-transform duration-[1.8s] ease-out" />
+                    <div className="relative z-10 overflow-hidden shadow-[0_64px_128px_-24px_rgba(0,0,0,0.8)]">
+                       <img src="/photos/kikorongo outside.jpg" alt="Lodge Exterior" className="w-full aspect-[16/10] object-cover transition-transform duration-[4s] group-hover:scale-105" />
+                    </div>
+                    
+                    {/* The "Polaroid" Insert */}
+                    <div className="absolute -bottom-20 -right-4 hidden lg:block w-64 z-30 group-hover:translate-y-[-15px] transition-transform duration-1000">
+                        <FadeIn direction="up" delay={0.6}>
+                           <div className="bg-[#fcfbf4] p-4 pb-14 shadow-[10px_30px_60px_rgba(0,0,0,0.5)] rotate-6 group-hover:rotate-3 transition-transform duration-700 border border-black/5">
+                              <div className="relative overflow-hidden aspect-square">
+                                <img src="/photos/kikorongo tourist.jpg" alt="Guest Experience" className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700" />
+                                <div className="absolute inset-0 bg-[#3a4d39]/10" />
+                              </div>
+                              <p className="font-serif italic text-[#1a3c2b] text-center mt-6 text-base tracking-tight">"Moments of quiet wonder"</p>
+                           </div>
+                        </FadeIn>
+                    </div>
+                 </div>
+               </FadeIn>
+
+               {/* Bottom Grid — Paired Contrasts */}
+               <div className="grid grid-cols-2 gap-12 md:gap-20 md:pt-20">
+                  <FadeIn direction="up" delay={0.4}>
+                    <div className="group">
+                       <div className="relative overflow-hidden shadow-2xl grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000">
+                          <img src="/photos/kikorongo travel.jpg" alt="Safari Travel" className="w-full aspect-[3/4] object-cover transition-transform duration-[3s] group-hover:scale-110" />
+                          <div className="absolute inset-0 border border-white/10 pointer-events-none" />
+                       </div>
+                       <div className="mt-8 flex justify-between items-end">
+                          <div>
+                            <span className="text-[10px] uppercase tracking-widest text-cream/30 font-mono">03 · 12 · 25</span>
+                            <h4 className="text-gold font-serif italic text-lg mt-1">The Golden Hour Drive</h4>
+                          </div>
+                          <span className="text-white/5 font-serif text-5xl">01</span>
+                       </div>
+                    </div>
+                  </FadeIn>
+                  
+                  <FadeIn direction="up" delay={0.5}>
+                    <div className="group pt-24 md:pt-48">
+                       <div className="relative overflow-hidden shadow-2xl grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000">
+                          <img src="/photos/kikorongo cotages2.jpg" alt="Wide View" className="w-full aspect-[3/4] object-cover transition-transform duration-[3s] group-hover:scale-110" />
+                          <div className="absolute inset-0 border border-white/10 pointer-events-none" />
+                       </div>
+                       <div className="mt-8 flex justify-between items-end">
+                          <div>
+                            <span className="text-[10px] uppercase tracking-widest text-cream/30 font-mono">SANCTUARY VIEW</span>
+                            <h4 className="text-gold font-serif italic text-lg mt-1">Horizon Lines</h4>
+                          </div>
+                          <span className="text-white/5 font-serif text-5xl">02</span>
+                       </div>
+                    </div>
+                  </FadeIn>
+               </div>
+            </div>
+          </div>
+
+          {/* Decorative Section Footer Watermark */}
+          <div className="absolute bottom-[-10vw] left-0 pointer-events-none opacity-[0.03]">
+             <p className="font-serif text-[20vw] whitespace-nowrap uppercase tracking-tighter select-none">Equator</p>
+          </div>
+        </div>
       </section>
 
       {/* ── LOCATION & BOOKING ── */}
