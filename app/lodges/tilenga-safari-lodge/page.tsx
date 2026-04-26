@@ -10,7 +10,7 @@ const rooms = [
     description:
       "Located at the property edge with stunning sunrise and sunset views over the Albert Nile. Each cottage features a wide private balcony, indoor bathroom, and electric mosquito repellent — a perfect blend of bush comfort and contemporary style.",
     features: ["River Nile views", "Private balcony", "Indoor bathroom", "Electric mosquito repellent", "Daily housekeeping"],
-    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&q=85",
+    image: "/photos/tilengasafarilodge/tilengasafarislodge  cottage.png",
   },
   {
     name: "Executive Cottages",
@@ -18,7 +18,7 @@ const rooms = [
     description:
       "Designed for families and groups — 3-in-1 cottages with twin and single beds, and balconies large enough to seat up to 8 people. Ideal for group gatherings at sunrise over the Nile.",
     features: ["Twin & single beds", "Family / group layout", "Large balcony seats 8", "Indoor bathroom", "Bush view"],
-    image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=900&q=85",
+    image: "/photos/tilengasafarilodge/tilengasafarislodge cottage2.png",
   },
 ];
 
@@ -54,7 +54,7 @@ export default function TilengaSafariLodgePage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url(https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1800&q=80)",
+            backgroundImage: "url('/photos/tilengasafarilodge/tilengasafarislodge  entrance.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -147,7 +147,7 @@ export default function TilengaSafariLodgePage() {
         <div className="relative min-h-[50vh] md:min-h-0 order-1 md:order-2">
           <ImageReveal direction="right" className="absolute inset-0 overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1523805081730-614449339e7d?w=1000&q=85"
+              src="/photos/tilengasafarilodge/tilengasafarislodge  cottage3.png"
               alt="Tilenga Safari Lodge wildlife view"
               className="absolute inset-0 w-full h-full object-cover"
             />
@@ -254,24 +254,145 @@ export default function TilengaSafariLodgePage() {
         </div>
       </section>
 
-      {/* ── GALLERY STRIP ── */}
-      <div className="flex gap-0.5 h-52 md:h-72 overflow-hidden">
-        {[
-          "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&q=80",
-          "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&q=80",
-          "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80",
-          "https://images.unsplash.com/photo-1551009175-8a68da93d5f9?w=600&q=80",
-          "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=600&q=80",
-        ].map((src, i) => (
-          <div key={i} className="flex-1 overflow-hidden group">
-            <img
-              src={src}
-              alt={`Lodge gallery ${i + 1}`}
-              className="w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
-            />
+      {/* ── GALLERY — Curated Album Spread ── */}
+      <section className="bg-forest-dark py-24 md:py-48 overflow-hidden relative">
+        <div className="absolute inset-0 grain-overlay opacity-[0.07] pointer-events-none" />
+        
+        {/* Decorative Background Elements */}
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-white/[0.01] -skew-x-12 transform origin-top translate-x-20 pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-6 md:px-16 mb-24 md:mb-40 relative z-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
+            <FadeIn>
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-gold text-[10px] uppercase tracking-[0.6em] font-bold">Tilenga Field Journal</span>
+                <div className="w-16 h-px bg-gold/30" />
+              </div>
+              <h2 className="font-serif text-6xl md:text-[9rem] text-cream leading-[0.8] uppercase tracking-tighter">
+                Lodge <br />
+                <span className="italic text-gold lowercase tracking-normal pl-8 md:pl-20 block">Life</span>
+              </h2>
+            </FadeIn>
+            <FadeIn direction="up" delay={0.3} className="max-w-[200px]">
+               <div className="space-y-4 border-l border-gold/20 pl-6 py-2">
+                  <p className="text-[9px] uppercase tracking-[0.3em] text-cream/40 font-mono">Location Data</p>
+                  <p className="text-gold font-mono text-[11px] leading-relaxed">
+                    2° 14' 54.6" N <br />
+                    31° 31' 44.4" E
+                  </p>
+                  <p className="text-cream/30 font-serif italic text-sm pt-2">"Overlooking the Albert Nile."</p>
+               </div>
+            </FadeIn>
           </div>
-        ))}
-      </div>
+        </div>
+
+        <div className="max-w-[1500px] mx-auto px-6 md:px-16 relative z-10">
+          {/* Main Album Spread */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-20 md:gap-0 items-start">
+            
+            {/* Left Page — Intimate Details */}
+            <div className="md:col-span-5 space-y-40 md:pr-20">
+               <FadeIn direction="up" delay={0.1}>
+                 <div className="relative group">
+                    {/* Shadow & Paper depth */}
+                    <div className="absolute -inset-6 bg-white/[0.02] -rotate-3 group-hover:rotate-[-1deg] transition-transform duration-1000 ease-out shadow-inner" />
+                    <div className="relative z-10 overflow-hidden shadow-[20px_40px_80px_-15px_rgba(0,0,0,0.7)] border border-white/5">
+                       <img src="/photos/tilengasafarilodge/tilengasafarislodge  cottage night view.png" alt="Cottage Night View" className="w-full aspect-[4/5] object-cover transition-transform duration-[2.5s] group-hover:scale-110" />
+                    </div>
+                    {/* Handwritten annotation */}
+                    <div className="relative z-20 mt-10 md:ml-[-20px]">
+                       <p className="font-serif italic text-gold text-2xl md:text-3xl leading-tight">"The tranquility of <br />the bush at twilight."</p>
+                       <span className="text-cream/20 text-[10px] font-mono mt-4 block uppercase tracking-widest">— 20:15 HRS</span>
+                    </div>
+                 </div>
+               </FadeIn>
+
+               <FadeIn direction="up" delay={0.3}>
+                 <div className="relative group md:ml-16 lg:ml-32">
+                    <div className="absolute -inset-6 bg-white/[0.02] rotate-3 group-hover:rotate-[1deg] transition-transform duration-1000 ease-out" />
+                    <div className="relative z-10 overflow-hidden shadow-2xl border border-white/10">
+                       <img src="/photos/tilengasafarilodge/tilengasafarislodge  insideview lodge.png" alt="Inside View" className="w-full aspect-square object-cover transition-transform duration-[2.5s] group-hover:scale-110" />
+                       <div className="absolute inset-0 bg-gold/5 group-hover:bg-transparent transition-colors duration-700" />
+                    </div>
+                    <div className="relative z-20 mt-8 flex items-start gap-4">
+                       <div className="pt-2"><div className="w-8 h-px bg-gold" /></div>
+                       <div>
+                          <span className="text-gold text-[9px] uppercase tracking-[0.5em] font-bold">Sanctuary</span>
+                          <h3 className="text-cream font-serif text-xl mt-2">Elevated comfort in the wild</h3>
+                       </div>
+                    </div>
+                 </div>
+               </FadeIn>
+            </div>
+
+            {/* Right Page — Wide Perspective & Insert */}
+            <div className="md:col-span-7 space-y-40 md:pt-32">
+               <FadeIn direction="up" delay={0.2}>
+                 <div className="relative group">
+                    {/* Large Spread Shadow */}
+                    <div className="absolute -inset-10 bg-white/[0.015] rotate-1 group-hover:rotate-0 transition-transform duration-[1.8s] ease-out" />
+                    <div className="relative z-10 overflow-hidden shadow-[0_64px_128px_-24px_rgba(0,0,0,0.8)]">
+                       <img src="/photos/tilengasafarilodge/tilengasafarislodge  swimming pool view.png" alt="Swimming Pool View" className="w-full aspect-[16/10] object-cover transition-transform duration-[4s] group-hover:scale-105" />
+                    </div>
+                    
+                    {/* The "Polaroid" Insert */}
+                    <div className="absolute -bottom-20 -right-4 hidden lg:block w-64 z-30 group-hover:translate-y-[-15px] transition-transform duration-1000">
+                        <FadeIn direction="up" delay={0.6}>
+                           <div className="bg-[#fcfbf4] p-4 pb-14 shadow-[10px_30px_60px_rgba(0,0,0,0.5)] rotate-6 group-hover:rotate-3 transition-transform duration-700 border border-black/5">
+                              <div className="relative overflow-hidden aspect-square">
+                                <img src="/photos/tilengasafarilodge/tilengasafarislodge  water safari.png" alt="Water Safari" className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700" />
+                                <div className="absolute inset-0 bg-[#3a4d39]/10" />
+                              </div>
+                              <p className="font-serif italic text-[#1a3c2b] text-center mt-6 text-base tracking-tight">"Cruising the Albert Nile"</p>
+                           </div>
+                        </FadeIn>
+                    </div>
+                 </div>
+               </FadeIn>
+
+               {/* Bottom Grid — Paired Contrasts */}
+               <div className="grid grid-cols-2 gap-12 md:gap-20 md:pt-20">
+                  <FadeIn direction="up" delay={0.4}>
+                    <div className="group">
+                       <div className="relative overflow-hidden shadow-2xl grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000">
+                          <img src="/photos/tilengasafarilodge/tilengasafarislodge  breakfast.png" alt="Breakfast" className="w-full aspect-[3/4] object-cover transition-transform duration-[3s] group-hover:scale-110" />
+                          <div className="absolute inset-0 border border-white/10 pointer-events-none" />
+                       </div>
+                       <div className="mt-8 flex justify-between items-end">
+                          <div>
+                            <span className="text-[10px] uppercase tracking-widest text-cream/30 font-mono">DAWN</span>
+                            <h4 className="text-gold font-serif italic text-lg mt-1">Nile Side Breakfast</h4>
+                          </div>
+                          <span className="text-white/5 font-serif text-5xl">01</span>
+                       </div>
+                    </div>
+                  </FadeIn>
+                  
+                  <FadeIn direction="up" delay={0.5}>
+                    <div className="group pt-24 md:pt-48">
+                       <div className="relative overflow-hidden shadow-2xl grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000">
+                          <img src="/photos/tilengasafarilodge/tilengasafarislodge lunchsetup.png" alt="Lunch Setup" className="w-full aspect-[3/4] object-cover transition-transform duration-[3s] group-hover:scale-110" />
+                          <div className="absolute inset-0 border border-white/10 pointer-events-none" />
+                       </div>
+                       <div className="mt-8 flex justify-between items-end">
+                          <div>
+                            <span className="text-[10px] uppercase tracking-widest text-cream/30 font-mono">MIDDAY</span>
+                            <h4 className="text-gold font-serif italic text-lg mt-1">Culinary Journey</h4>
+                          </div>
+                          <span className="text-white/5 font-serif text-5xl">02</span>
+                       </div>
+                    </div>
+                  </FadeIn>
+               </div>
+            </div>
+          </div>
+
+          {/* Decorative Section Footer Watermark */}
+          <div className="absolute bottom-[-10vw] left-0 pointer-events-none opacity-[0.03]">
+             <p className="font-serif text-[20vw] whitespace-nowrap uppercase tracking-tighter select-none">Albert Nile</p>
+          </div>
+        </div>
+      </section>
 
       {/* ── LOCATION & ACCESS ── */}
       <section className="bg-cream-dark py-12 md:py-20 px-6 md:px-16">
@@ -337,7 +458,7 @@ export default function TilengaSafariLodgePage() {
             <div className="w-10 h-px bg-gold mb-8" />
             <ul className="space-y-5 mb-10">
               {[
-                { label: "Phone", value: "+256 789 390 350 / +256 703 999 688", href: "tel:+256789390350" },
+                { label: "Phone", value: "Call Us Now", href: "tel:+256789390350" },
                 { label: "Email", value: "booking@tilengasafarilodge.com", href: "mailto:booking@tilengasafarilodge.com" },
                 { label: "Location", value: "Northern park boundary, Murchison Falls NP, Uganda" },
               ].map((item) => (
