@@ -278,53 +278,71 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="bg-cream py-14 md:py-24 px-6 md:px-16">
-        <div className="max-w-6xl mx-auto">
+      {/* Team — Editorial Portrait Grid */}
+      <section className="bg-cream py-20 md:py-32 px-6 md:px-16">
+        <div className="max-w-7xl mx-auto">
 
           {/* Header */}
-          <FadeIn className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 pb-10 border-b border-gold/15">
-            <div>
-              <p className="section-label mb-3">The People Behind Your Journey</p>
-              <h2 className="font-serif text-4xl md:text-5xl text-forest leading-tight">Our Team</h2>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 md:mb-24">
+            <div className="max-w-2xl">
+              <FadeIn direction="fade">
+                <span className="text-gold uppercase tracking-[0.4em] text-[10px] font-bold mb-4 block">The People Behind Your Journey</span>
+              </FadeIn>
+              <h2 className="font-serif text-4xl md:text-6xl text-forest uppercase tracking-widest leading-none">
+                Our Expert <br />
+                <span className="italic text-gold lowercase tracking-normal">Team</span>
+              </h2>
             </div>
-            <p className="text-stone font-sans text-sm leading-relaxed max-w-xs md:text-right">
-              Specialists who live and breathe East Africa — committed to making every detail of your safari extraordinary.
-            </p>
-          </FadeIn>
+            <FadeIn direction="up" delay={0.3} className="max-w-xs">
+              <p className="text-stone/70 font-sans text-sm leading-relaxed mb-6">
+                Specialists who live and breathe East Africa — committed to making every detail of your safari extraordinary.
+              </p>
+              <div className="w-12 h-px bg-gold/40" />
+            </FadeIn>
+          </div>
 
-          {/* Cards */}
-          <StaggerGrid className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((t) => (
-              <StaggerItem key={t.role}>
-                <div className="group overflow-hidden bg-white border border-gold/10 hover:-translate-y-1.5 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:shadow-[0_16px_48px_rgba(26,60,43,0.12)]">
-
-                  {/* Image */}
-                  <div className="relative overflow-hidden h-64">
+          {/* Cinematic Portrait Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 md:gap-y-32">
+            {team.map((t, i) => (
+              <FadeIn key={t.role} direction="up" delay={i * 0.1}>
+                <div className="group block">
+                  <div className="relative aspect-[4/5] overflow-hidden mb-8 shadow-sm border border-gold/5">
                     <img
                       src={t.image}
                       alt={t.role}
-                      className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                      className="absolute inset-0 w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-[1500ms] ease-out group-hover:scale-105"
                     />
-                    {/* Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-forest-dark/10 to-transparent" />
+                    {/* Elegant overlay on hover */}
+                    <div className="absolute inset-0 bg-forest-dark/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    
+                    {/* Vertical tag label on side */}
+                    <div className="absolute top-0 right-0 h-full flex items-center pr-4">
+                      <span className="[writing-mode:vertical-lr] rotate-180 text-[9px] uppercase tracking-[0.4em] text-cream/40 font-bold group-hover:text-gold transition-colors duration-500">
+                        {t.tag}
+                      </span>
+                    </div>
 
-                    {/* Tag badge */}
-                    <span className="absolute bottom-4 left-4 bg-gold text-forest-dark text-[9px] uppercase tracking-[0.2em] font-sans font-bold px-3 py-1.5">
-                      {t.tag}
+                    {/* Number decoration */}
+                    <span className="absolute top-6 left-6 font-serif text-4xl text-cream/10 group-hover:text-gold/20 transition-colors duration-700">
+                      0{i + 1}
                     </span>
                   </div>
 
-                  {/* Text */}
-                  <div className="p-6">
-                    <div className="w-6 h-px bg-gold mb-4 group-hover:w-10 transition-all duration-500" />
-                    <h3 className="font-serif text-xl text-forest mb-3 leading-snug">{t.role}</h3>
-                    <p className="text-stone font-sans text-sm leading-relaxed">{t.desc}</p>
+                  <div className="max-w-md">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-8 h-px bg-gold/40 transition-all duration-500 group-hover:w-16" />
+                      <h3 className="font-serif text-2xl md:text-3xl text-forest uppercase tracking-widest leading-tight">
+                        {t.role}
+                      </h3>
+                    </div>
+                    <p className="text-stone font-sans text-[15px] leading-loose opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                      {t.desc}
+                    </p>
                   </div>
                 </div>
-              </StaggerItem>
+              </FadeIn>
             ))}
-          </StaggerGrid>
+          </div>
 
         </div>
       </section>
