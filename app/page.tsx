@@ -11,7 +11,7 @@ const lodges = [
     name: "Tilenga Safari Lodge",
     location: "Murchison Falls National Park, Uganda",
     description: "A haven of comfort overlooking the Albert Nile. 26 cottages with private balconies, wildlife encounters, and a world-class chef.",
-    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=80",
+    image: "/photos/tilengasafarilodge/entrance.png",
     href: "/lodges/tilenga-safari-lodge",
     tag: "Murchison Falls",
   },
