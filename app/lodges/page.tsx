@@ -41,7 +41,7 @@ const lodges = [
       { value: "600+", label: "Bird Species" },
     ],
     amenities: ["Lake & Mountain Views", "Swimming Pool", "Kazinga Channel", "Bird Watching", "Rwenzori Climbing"],
-    image: "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=1400&q=85",
+    image: "/photos/kikorongo outside.jpg",
     href: "/lodges/kikorongo-safari-lodge",
     panelBg: "bg-forest",
     imageOrder: "md:order-2",
