@@ -50,8 +50,9 @@
     @apply text-stone/80 font-sans text-base md:text-[17px] leading-[1.85] md:leading-[2];
   }
 
+  /* ── Package grid ─────────────────────────────── */
   .package-grid {
-    @apply grid gap-6;
+    @apply grid gap-5;
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
   @screen md {
@@ -65,33 +66,107 @@
     }
   }
 
+  /* ── Package card — cinematic full-bleed ───────── */
   .package-card {
-    @apply bg-white border border-gold/10 overflow-hidden shadow-sm transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] flex h-full flex-col;
+    @apply relative overflow-hidden cursor-default;
+    aspect-ratio: 3 / 4;
   }
-  .package-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 24px 56px rgba(26, 60, 43, 0.13);
-    border-color: rgba(201, 169, 110, 0.32);
+
+  .package-card-img {
+    @apply absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)];
+  }
+  .package-card:hover .package-card-img {
+    transform: scale(1.08);
+  }
+
+  .package-card-overlay {
+    @apply absolute inset-0 z-10 transition-all duration-700;
+    background: linear-gradient(
+      to top,
+      rgba(8, 22, 14, 0.97) 0%,
+      rgba(8, 22, 14, 0.62) 38%,
+      rgba(8, 22, 14, 0.14) 62%,
+      transparent 100%
+    );
+  }
+  .package-card:hover .package-card-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(8, 22, 14, 0.99) 0%,
+      rgba(8, 22, 14, 0.80) 50%,
+      rgba(8, 22, 14, 0.30) 75%,
+      transparent 100%
+    );
+  }
+
+  .package-card-num {
+    @apply absolute top-5 left-5 z-20 font-serif leading-none select-none pointer-events-none;
+    font-size: clamp(2.2rem, 3.5vw, 3rem);
+    color: rgba(247, 243, 236, 0.10);
+    letter-spacing: -0.02em;
+  }
+
+  .package-card-duration {
+    @apply absolute top-5 right-5 z-20 text-[8.5px] uppercase tracking-[0.22em] text-cream/75 font-sans border border-cream/20 px-3 py-1.5;
+    background: rgba(8, 22, 14, 0.50);
+    backdrop-filter: blur(10px);
+  }
+
+  .package-card-body {
+    @apply absolute bottom-0 left-0 right-0 p-6 z-20;
   }
 
   .package-card-tagline {
-    @apply uppercase tracking-[0.25em] text-[10px] text-gold font-semibold;
+    @apply uppercase tracking-[0.28em] text-[8.5px] text-gold font-semibold font-sans block mb-2;
+  }
+
+  .package-card-title {
+    @apply font-serif text-[1.2rem] text-cream leading-tight mb-3;
+    font-style: italic;
+  }
+
+  .package-card-rule {
+    @apply h-px bg-gold mb-4 transition-all duration-500;
+    width: 2rem;
+  }
+  .package-card:hover .package-card-rule {
+    width: 3.5rem;
+  }
+
+  /* Description reveal via CSS grid-rows animation */
+  .package-card-description-wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    margin-bottom: 0;
+    transition:
+      grid-template-rows 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.4s ease,
+      margin-bottom 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .package-card:hover .package-card-description-wrap {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    margin-bottom: 0.875rem;
+  }
+  .package-card-description-wrap > div {
+    overflow: hidden;
   }
 
   .package-description {
-    @apply text-stone font-sans text-sm leading-relaxed mb-5 flex-1;
+    @apply text-cream/60 font-sans text-[11px] leading-relaxed pb-1;
   }
 
   .package-features {
-    @apply flex flex-wrap gap-1.5 mb-0;
+    @apply flex flex-wrap gap-x-3 gap-y-1.5 mb-5;
   }
 
   .package-feature-pill {
-    @apply text-[9px] uppercase tracking-wider text-stone/70 border border-stone/20 px-2.5 py-1 font-sans;
+    @apply text-[8.5px] uppercase tracking-wider text-cream/55 font-sans flex items-center gap-1.5;
   }
 
   .package-cta {
-    @apply text-forest font-sans text-xs uppercase tracking-[0.18em] hover:text-gold transition-colors duration-300 font-semibold inline-flex items-center gap-2;
+    @apply text-cream/70 font-sans text-[10px] uppercase tracking-[0.2em] hover:text-gold transition-colors duration-300 font-semibold inline-flex items-center gap-2;
   }
 
   /* Buttons with shimmer + motion */

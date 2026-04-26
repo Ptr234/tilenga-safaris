@@ -294,37 +294,37 @@ export default function UgandaPage() {
             </Link>
           </FadeIn>
           <StaggerGrid className="package-grid">
-            {packages.map((pkg) => (
+            {packages.map((pkg, i) => (
               <StaggerItem key={pkg.name}>
                 <div className="package-card group">
-                  {/* Image */}
-                  <div className="relative overflow-hidden h-52 shrink-0">
-                    <img
-                      src={pkg.image}
-                      alt={pkg.name}
-                      className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/55 via-transparent to-transparent" />
-                    <span className="absolute bottom-3 right-3 bg-forest-dark/80 backdrop-blur-sm text-gold text-[9px] uppercase tracking-widest font-sans px-3 py-1.5">
-                      {pkg.duration}
-                    </span>
-                  </div>
+                  <img src={pkg.image} alt={pkg.name} className="package-card-img" />
+                  <div className="package-card-overlay" />
+                  <span className="package-card-num">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="package-card-duration">{pkg.duration}</span>
 
-                  {/* Content */}
-                  <div className="p-6 flex flex-col flex-1">
-                    <p className="package-card-tagline mb-2">{pkg.tagline}</p>
-                    <h3 className="font-serif text-xl text-forest mb-3 leading-snug">{pkg.name}</h3>
-                    <div className="w-6 h-px bg-gold mb-4 group-hover:w-10 transition-all duration-500" />
-                    <p className="package-description">{pkg.description}</p>
-                    <div className="package-features mb-5">
+                  <div className="package-card-body">
+                    <p className="package-card-tagline">{pkg.tagline}</p>
+                    <h3 className="package-card-title">{pkg.name}</h3>
+                    <div className="package-card-rule" />
+
+                    <div className="package-card-description-wrap">
+                      <div><p className="package-description">{pkg.description}</p></div>
+                    </div>
+
+                    <div className="package-features">
                       {pkg.activities.map((act) => (
-                        <span key={act} className="package-feature-pill">{act}</span>
+                        <span key={act} className="package-feature-pill">
+                          <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />
+                          {act}
+                        </span>
                       ))}
                     </div>
-                    <div className="flex items-center justify-between pt-5 border-t border-gold/15 mt-auto">
-                      <span className="font-serif text-gold text-sm">{pkg.price}</span>
+
+                    <div className="flex items-center justify-between pt-4 border-t border-cream/10">
+                      <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
                       <Link href="/plan-a-trip" className="package-cta">
-                        Enquire <span className="group-hover:translate-x-0.5 transition-transform duration-300 inline-block">→</span>
+                        Enquire
+                        <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
                       </Link>
                     </div>
                   </div>
