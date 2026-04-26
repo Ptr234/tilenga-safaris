@@ -57,41 +57,57 @@ const services = [
     num: "01",
     title: "Airport Meet & Greet",
     desc: "Seamless arrivals — our team meets you on landing, handles your luggage, and transfers you comfortably to your first destination.",
+    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1000&q=80",
+    tag: "Logistics"
   },
   {
     num: "02",
     title: "Bespoke Itinerary Design",
     desc: "Custom, day-by-day journeys built around your interests, pace, and budget. No two Tilenga itineraries are alike.",
+    image: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1000&q=80",
+    tag: "Consultancy"
   },
   {
     num: "03",
     title: "Gorilla & Chimp Permits",
     desc: "We secure the hard-to-get permits for gorilla tracking and chimpanzee habituation experiences in Uganda and Rwanda.",
+    image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1000&q=80",
+    tag: "Special Access"
   },
   {
     num: "04",
     title: "Private Vehicle Transfers",
     desc: "Luxury 4WD and standard vehicles with experienced drivers — across Uganda, Kenya, Tanzania, and Rwanda.",
+    image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=1000&q=80",
+    tag: "Transportation"
   },
   {
     num: "05",
     title: "Airport Transportation",
     desc: "Punctual, professional airport transfers coordinated precisely with your flight schedule — day or night.",
+    image: "https://images.unsplash.com/photo-1542296332-2b4473347e76?w=1000&q=80",
+    tag: "Logistics"
   },
   {
     num: "06",
     title: "VIP Concierge",
     desc: "Exclusive access, restaurant reservations, last-minute permits, and anything in between — handled discreetly.",
+    image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1000&q=80",
+    tag: "Exclusive"
   },
   {
     num: "07",
     title: "Lodge & Hotel Bookings",
     desc: "Curated lodges, camps, and boutique hotels across East Africa — including our own Tilenga and Kikorongo properties.",
+    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1000&q=80",
+    tag: "Hospitality"
   },
   {
     num: "08",
     title: "Group & Family Safaris",
     desc: "Specialist coordination for multi-generational families, corporate retreats, and private group travel of any size.",
+    image: "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=1000&q=80",
+    tag: "Specialist"
   },
 ];
 
@@ -228,50 +244,153 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Services */}
-      <section className="bg-forest-dark py-14 md:py-24 px-6 md:px-16 overflow-hidden">
-        <div className="max-w-6xl mx-auto">
+      {/* Services — High-End Lookbook Grid */}
+      <section className="bg-forest-dark py-20 md:py-40 px-6 md:px-16 overflow-hidden relative">
+        <div className="absolute inset-0 grain-overlay opacity-10 pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto relative z-10">
 
-          {/* Header row */}
-          <FadeIn className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16 pb-10 border-b border-white/10">
-            <div>
-              <p className="section-label text-gold mb-3">What We Do</p>
-              <h2 className="font-serif text-4xl md:text-5xl text-cream leading-tight">
-                Our Services
+          {/* Section Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-24 md:mb-40">
+            <div className="max-w-3xl">
+              <FadeIn direction="fade">
+                <span className="text-gold uppercase tracking-[0.5em] text-[10px] font-bold mb-6 block">Our Craft</span>
+              </FadeIn>
+              <h2 className="font-serif text-5xl md:text-8xl text-cream uppercase tracking-tight leading-[0.85]">
+                The Full <br />
+                <span className="italic text-gold lowercase tracking-normal">Concierge</span>
               </h2>
             </div>
-            <p className="text-cream/45 font-sans text-sm leading-relaxed max-w-sm md:text-right">
-              Every detail handled — from your first flight to your final sunset. Here is how we make your journey extraordinary.
-            </p>
-          </FadeIn>
+            <FadeIn direction="up" delay={0.3} className="max-w-xs">
+              <p className="text-cream/40 font-sans text-sm leading-relaxed mb-8">
+                Seamless coordination from touch-down to takeoff. Discover the pillars of a Tilenga-standard journey.
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-px bg-gold/50" />
+                <span className="text-gold text-[10px] uppercase tracking-widest font-bold">Explore Our Services</span>
+              </div>
+            </FadeIn>
+          </div>
 
-          {/* Services magazine grid */}
-          <StaggerGrid className="grid md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-0">
-            {services.map((s) => (
-              <StaggerItem key={s.num}>
-                <div className="group py-8 border-t border-white/10 hover:border-gold/40 transition-colors duration-300">
-                  <p className="font-serif text-5xl text-gold/15 group-hover:text-gold/35 transition-colors duration-500 leading-none mb-5">
-                    {s.num}
-                  </p>
-                  <h3 className="font-serif text-lg text-cream mb-3 group-hover:text-gold transition-colors duration-300 leading-snug">
-                    {s.title}
-                  </h3>
-                  <div className="w-5 h-px bg-gold/30 mb-4 group-hover:w-10 transition-all duration-500" />
-                  <p className="text-cream/45 font-sans text-sm leading-relaxed">
-                    {s.desc}
-                  </p>
+          {/* Premium Mosaic Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-1.5 md:gap-3">
+            
+            {/* 01. Airport Meet & Greet — Large Featured */}
+            <div className="md:col-span-8 md:row-span-2">
+              <FadeIn direction="up">
+                <div className="group relative aspect-[16/10] md:aspect-auto md:h-[80vh] overflow-hidden">
+                  <img src={services[0].image} alt={services[0].title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-forest-dark/40 group-hover:bg-forest-dark/20 transition-colors duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-transparent to-transparent opacity-80" />
+                  
+                  <div className="absolute top-10 left-10">
+                    <span className="font-serif text-7xl md:text-9xl text-white/10">{services[0].num}</span>
+                  </div>
+                  
+                  <div className="absolute bottom-0 left-0 p-8 md:p-14 w-full">
+                    <p className="text-gold text-[10px] uppercase tracking-[0.4em] font-bold mb-4">{services[0].tag}</p>
+                    <h3 className="font-serif text-3xl md:text-5xl text-cream uppercase tracking-widest mb-6">{services[0].title}</h3>
+                    <p className="text-cream/60 font-sans text-base md:text-lg max-w-xl leading-relaxed opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700">
+                      {services[0].desc}
+                    </p>
+                  </div>
                 </div>
-              </StaggerItem>
+              </FadeIn>
+            </div>
+
+            {/* 02. Bespoke Design — Tall Vertical */}
+            <div className="md:col-span-4 md:row-span-2">
+              <FadeIn direction="up" delay={0.2}>
+                <div className="group relative aspect-[4/5] md:h-[80vh] overflow-hidden">
+                  <img src={services[1].image} alt={services[1].title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-forest-dark/50 group-hover:bg-forest-dark/30 transition-colors duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-transparent to-transparent" />
+                  
+                  <div className="absolute bottom-0 left-0 p-8 md:p-12">
+                    <span className="font-serif text-5xl text-gold/30 block mb-6">{services[1].num}</span>
+                    <p className="text-gold text-[10px] uppercase tracking-[0.4em] font-bold mb-4">{services[1].tag}</p>
+                    <h3 className="font-serif text-2xl md:text-3xl text-cream uppercase tracking-wider mb-6">{services[1].title}</h3>
+                    <p className="text-cream/50 font-sans text-sm leading-relaxed">
+                      {services[1].desc}
+                    </p>
+                  </div>
+                </div>
+              </FadeIn>
+            </div>
+
+            {/* Row 2: Alternating smaller/medium blocks */}
+            {/* 03. Gorilla Permits — Wide impact */}
+            <div className="md:col-span-5">
+              <FadeIn direction="up">
+                <div className="group relative aspect-square md:aspect-[4/3] overflow-hidden border border-white/5">
+                  <img src={services[2].image} alt={services[2].title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-forest-dark/60 group-hover:bg-forest-dark/40 transition-colors duration-700" />
+                  <div className="absolute inset-0 flex items-center justify-center p-10 text-center">
+                    <div>
+                      <span className="text-gold/40 font-serif text-xl block mb-4">— {services[2].num} —</span>
+                      <h3 className="font-serif text-2xl md:text-3xl text-cream uppercase tracking-widest mb-6">{services[2].title}</h3>
+                      <p className="text-cream/60 font-sans text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        {services[2].desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </FadeIn>
+            </div>
+
+            {/* 04. Private Vehicles — Detailed */}
+            <div className="md:col-span-7">
+              <FadeIn direction="up" delay={0.2}>
+                <div className="group relative aspect-video md:aspect-auto md:h-full overflow-hidden border border-white/5">
+                  <img src={services[3].image} alt={services[3].title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-forest-dark/20" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-forest-dark via-forest-dark/40 to-transparent" />
+                  <div className="relative z-10 h-full flex flex-col justify-center p-8 md:p-16 max-w-lg">
+                    <p className="text-gold text-[10px] uppercase tracking-[0.4em] font-bold mb-4">{services[3].tag}</p>
+                    <h3 className="font-serif text-3xl text-cream uppercase tracking-widest mb-6">{services[3].title}</h3>
+                    <p className="text-cream/70 font-sans text-sm md:text-base leading-loose">
+                      {services[3].desc}
+                    </p>
+                  </div>
+                </div>
+              </FadeIn>
+            </div>
+
+            {/* Row 3: Service Cards Grid (05, 06, 07, 08) */}
+            {services.slice(4).map((s, i) => (
+              <div key={s.num} className="md:col-span-3">
+                <FadeIn direction="up" delay={0.1 * i}>
+                  <div className="group relative aspect-[3/4] overflow-hidden border border-white/5">
+                    <img src={s.image} alt={s.title} className="absolute inset-0 w-full h-full object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-[1500ms]" />
+                    <div className="absolute inset-0 bg-forest-dark/70 group-hover:bg-forest-dark/40 transition-all duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-transparent to-transparent" />
+                    
+                    <div className="absolute bottom-0 left-0 p-8">
+                      <span className="font-serif text-4xl text-gold/20 mb-4 block group-hover:text-gold/50 transition-colors">{s.num}</span>
+                      <h3 className="font-serif text-lg md:text-xl text-cream uppercase tracking-widest mb-4 group-hover:text-gold transition-colors">{s.title}</h3>
+                      <p className="text-cream/40 font-sans text-xs leading-relaxed group-hover:text-cream/80 transition-colors line-clamp-3">
+                        {s.desc}
+                      </p>
+                    </div>
+                  </div>
+                </FadeIn>
+              </div>
             ))}
-          </StaggerGrid>
+          </div>
 
           {/* Bottom CTA */}
-          <FadeIn className="mt-14 pt-10 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <p className="font-serif italic text-cream/40 text-lg">
-              &ldquo;From airport to wilderness — every step, handled.&rdquo;
-            </p>
-            <Link href="/plan-a-trip" className="btn-outline shrink-0">
-              Start Planning
+          <FadeIn className="mt-24 md:mt-40 pt-16 border-t border-white/5 flex flex-col lg:flex-row items-center justify-between gap-12">
+            <div className="max-w-2xl text-center lg:text-left">
+               <p className="font-serif italic text-cream/30 text-2xl md:text-4xl leading-tight">
+                &ldquo;From your first arrival to the final wilderness sunset — every detail is handled with absolute care.&rdquo;
+              </p>
+            </div>
+            <Link href="/plan-a-trip" className="group inline-flex items-center gap-8">
+               <span className="btn-primary px-14 py-5 shadow-2xl">Start Your Journey</span>
+               <div className="flex flex-col">
+                  <span className="text-gold text-[10px] uppercase tracking-[0.5em] font-bold">Concierge</span>
+                  <span className="text-cream/40 text-[9px] uppercase tracking-[0.2em] font-sans">Request Itinerary</span>
+               </div>
             </Link>
           </FadeIn>
 
@@ -366,7 +485,7 @@ export default function AboutPage() {
                 <svg className="w-5 h-5 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <a href="tel:+256789390350" className="hover:text-gold transition-colors">+256 789 390 350</a>
+                <a href="tel:+256789390350" className="hover:text-gold transition-colors">Call Us Now</a>
               </li>
               <li className="flex gap-4">
                 <svg className="w-5 h-5 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
