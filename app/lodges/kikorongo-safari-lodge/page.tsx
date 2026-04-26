@@ -3,6 +3,8 @@ import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const rooms = [
   {
     name: "Premium Cottages",
@@ -10,7 +12,7 @@ const rooms = [
     description:
       "Named in the Lukhonzo language of Kasese, each cottage captures wide views of both Lake Kikorongo and Lake George — private terraces perfectly positioned for sunset watching over the Rwenzori Mountains.",
     features: ["Lake Kikorongo & George views", "Private terrace", "Rwenzori Mountain panorama", "Indoor bathroom", "Daily housekeeping"],
-    image: "/photos/kikorongo cotages2.jpg",
+    image: `${base}/photos/kikorongo_cottage2.jpg`,
   },
   {
     name: "Premium Tents",
@@ -18,7 +20,7 @@ const rooms = [
     description:
       "Tented accommodation that brings you closest to nature — bird calls at dawn, the lake shimmering below. Ideal for birders and photographers seeking complete immersion in Queen Elizabeth NP.",
     features: ["Natural tented setting", "Bird watching access", "Photographer-friendly", "Lake views", "En suite facilities"],
-    image: "/photos/kikorongo room.jpg",
+    image: `${base}/photos/kikorongo_room2.jpg`,
   },
   {
     name: "Intimate Cottages",
@@ -26,7 +28,7 @@ const rooms = [
     description:
       "Smaller, ground-level cottages suited to guests who prefer not to hike. Cozy and private, these units offer a quieter retreat within the lodge grounds with direct garden access.",
     features: ["Ground-level access", "Secluded & private", "Indoor bathroom", "Garden view", "Ideal for mobility-conscious guests"],
-    image: "/photos/KIKORONGO room 1.jpg",
+    image: `${base}/photos/kikorongo_room1.jpg`,
   },
 ];
 
@@ -62,7 +64,7 @@ export default function KikorongoSafariLodgePage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url('/photos/kikorongo outside.jpg')",
+            backgroundImage: `url('${base}/photos/kikorongo_outside.jpg')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -156,7 +158,7 @@ export default function KikorongoSafariLodgePage() {
         <div className="relative min-h-[50vh] md:min-h-0 order-1 md:order-2 overflow-hidden">
           <ImageReveal direction="right" className="absolute inset-0">
             <img
-              src="/photos/kikorongo cottages.jpg"
+              src={`${base}/photos/kikorongo_cottage1.jpg`}
               alt="Kikorongo Safari Lodge lake view"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 hover:scale-110"
             />
@@ -275,7 +277,6 @@ export default function KikorongoSafariLodgePage() {
         </div>
 
         <div className="max-w-[1400px] mx-auto px-6 md:px-16 relative z-10">
-          {/* Main Album Spread with tighter verticality */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-0 items-start">
             
             {/* Left Page */}
@@ -284,7 +285,7 @@ export default function KikorongoSafariLodgePage() {
                  <div className="relative group">
                     <div className="absolute -inset-4 bg-white/[0.02] -rotate-2 group-hover:rotate-[-0.5deg] transition-transform duration-1000 ease-out" />
                     <div className="relative z-10 overflow-hidden shadow-2xl border border-white/5">
-                       <img src="/photos/kikorongo fireplace.jpg" alt="Fireplace" className="w-full aspect-[4/5] object-cover transition-transform duration-[2.5s] group-hover:scale-110" />
+                       <img src={`${base}/photos/kikorongo_fireplace.jpg`} alt="Fireplace" className="w-full aspect-[4/5] object-cover transition-transform duration-[2.5s] group-hover:scale-110" />
                     </div>
                     <div className="relative z-20 mt-6">
                        <p className="font-serif italic text-gold text-xl md:text-2xl">"Evening rituals by the hearth."</p>
@@ -297,7 +298,7 @@ export default function KikorongoSafariLodgePage() {
                  <div className="relative group md:ml-20">
                     <div className="absolute -inset-4 bg-white/[0.02] rotate-2 group-hover:rotate-[0.5deg] transition-transform duration-1000 ease-out" />
                     <div className="relative z-10 overflow-hidden shadow-xl border border-white/10">
-                       <img src="/photos/kikorongo ranger.jpg" alt="Ranger" className="w-full aspect-square object-cover transition-transform duration-[2.5s] group-hover:scale-110" />
+                       <img src={`${base}/photos/kikorongo_ranger.jpg`} alt="Ranger" className="w-full aspect-square object-cover transition-transform duration-[2.5s] group-hover:scale-110" />
                     </div>
                     <div className="relative z-20 mt-6 flex items-center gap-4">
                        <div className="w-6 h-px bg-gold" />
@@ -313,15 +314,14 @@ export default function KikorongoSafariLodgePage() {
                  <div className="relative group">
                     <div className="absolute -inset-6 bg-white/[0.015] rotate-1 group-hover:rotate-0 transition-transform duration-[1.8s] ease-out" />
                     <div className="relative z-10 overflow-hidden shadow-2xl">
-                       <img src="/photos/kikorongo outside.jpg" alt="Lodge Exterior" className="w-full aspect-[16/10] object-cover transition-transform duration-[4s] group-hover:scale-105" />
+                       <img src={`${base}/photos/kikorongo_outside.jpg`} alt="Lodge Exterior" className="w-full aspect-[16/10] object-cover transition-transform duration-[4s] group-hover:scale-105" />
                     </div>
                     
-                    {/* Floating Insert */}
                     <div className="absolute -bottom-12 -right-2 hidden lg:block w-52 z-30 group-hover:translate-y-[-8px] transition-transform duration-1000">
                         <FadeIn direction="up" delay={0.5}>
                            <div className="bg-[#fcfbf4] p-3 pb-10 shadow-2xl rotate-3 group-hover:rotate-1 transition-transform duration-700 border border-black/5">
                               <div className="relative overflow-hidden aspect-square">
-                                <img src="/photos/kikorongo tourist.jpg" alt="Guest Experience" className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700" />
+                                <img src={`${base}/photos/kikorongo_tourist.jpg`} alt="Guest Experience" className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700" />
                               </div>
                               <p className="font-serif italic text-[#1a3c2b] text-center mt-3 text-sm">"Moments of wonder"</p>
                            </div>
@@ -334,7 +334,7 @@ export default function KikorongoSafariLodgePage() {
                   <FadeIn direction="up" delay={0.4}>
                     <div className="group">
                        <div className="relative overflow-hidden shadow-xl grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000">
-                          <img src="/photos/kikorongo travel.jpg" alt="Safari Travel" className="w-full aspect-[3/4] object-cover transition-transform duration-[3s] group-hover:scale-110" />
+                          <img src={`${base}/photos/kikorongo_travel.jpg`} alt="Safari Travel" className="w-full aspect-[3/4] object-cover transition-transform duration-[3s] group-hover:scale-110" />
                        </div>
                        <div className="mt-4 flex justify-between items-center">
                           <span className="text-[9px] uppercase tracking-widest text-cream/30 font-mono">01 · EXPEDITION</span>
@@ -346,7 +346,7 @@ export default function KikorongoSafariLodgePage() {
                   <FadeIn direction="up" delay={0.5}>
                     <div className="group pt-12 md:pt-20">
                        <div className="relative overflow-hidden shadow-xl grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000">
-                          <img src="/photos/kikorongo cotages2.jpg" alt="Wide View" className="w-full aspect-[3/4] object-cover transition-transform duration-[3s] group-hover:scale-110" />
+                          <img src={`${base}/photos/kikorongo_cottage2.jpg`} alt="Wide View" className="w-full aspect-[3/4] object-cover transition-transform duration-[3s] group-hover:scale-110" />
                        </div>
                        <div className="mt-4 flex justify-between items-center">
                           <span className="text-[9px] uppercase tracking-widest text-cream/30 font-mono">02 · SANCTUARY</span>
