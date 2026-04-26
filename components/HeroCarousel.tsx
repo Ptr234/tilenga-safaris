@@ -225,7 +225,8 @@ export default function HeroCarousel() {
       >
         <motion.div
           className="w-px h-12 bg-gradient-to-b from-cream/40 to-transparent"
-          animate={{ scaleY: [1, 0.2, 1], originY: "top" }}
+          style={{ originY: 0 }}
+          animate={{ scaleY: [1, 0.2, 1] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         />
       </motion.div>
