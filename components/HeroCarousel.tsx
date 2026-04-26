@@ -86,7 +86,7 @@ export default function HeroCarousel() {
   const slide = slides[current];
 
   return (
-    <section className="relative h-screen h-[100dvh] min-h-[640px] overflow-hidden bg-forest-dark">
+    <section className="grain-overlay relative h-[100dvh] min-h-[640px] overflow-hidden bg-forest-dark">
       {/* Background */}
       <AnimatePresence mode="sync">
         <motion.div
@@ -122,14 +122,14 @@ export default function HeroCarousel() {
             </motion.div>
 
             {/* Main heading — word-by-word reveal */}
-            <h1 className="section-heading !text-cream text-5xl md:text-7xl lg:text-[7.5rem] mb-8 leading-[0.85]">
+            <h1 className="section-heading !text-cream text-4xl sm:text-5xl md:text-7xl lg:text-[7.5rem] mb-5 md:mb-8 leading-[0.9] md:leading-[0.85]">
               <WordReveal text={slide.heading} delay={0.2} />
             </h1>
 
             {/* Italic subtitle */}
-            <div className="overflow-hidden mb-8">
+            <div className="overflow-hidden mb-5 md:mb-8">
               <motion.p
-                className="editorial-italic text-2xl md:text-3xl"
+                className="editorial-italic text-xl sm:text-2xl md:text-3xl"
                 initial={{ y: "100%", opacity: 0 }}
                 animate={{ y: "0%", opacity: 1 }}
                 exit={{ y: "-100%", opacity: 0 }}
@@ -141,7 +141,7 @@ export default function HeroCarousel() {
 
             {/* Body */}
             <motion.p
-              className="text-cream/70 font-sans text-base md:text-lg max-w-md mb-12 leading-relaxed"
+              className="text-cream/70 font-sans text-sm md:text-lg max-w-md mb-8 md:mb-12 leading-relaxed"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}

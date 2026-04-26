@@ -68,7 +68,7 @@ export default function DestinationsPage() {
   return (
     <>
       {/* Cinematic hero */}
-      <section className="relative h-[65vh] min-h-[420px] overflow-hidden flex items-end">
+      <section className="grain-overlay relative h-[65vh] min-h-[420px] overflow-hidden flex items-end">
         <div
           className="absolute inset-0"
           style={{

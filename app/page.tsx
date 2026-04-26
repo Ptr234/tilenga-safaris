@@ -78,8 +78,8 @@ export default function HomePage() {
       </section>
 
       {/* Our Lodges — full-image cinematic cards */}
-      <section className="py-28 px-6 md:px-16 bg-forest-dark">
-        <div className="text-center mb-16 max-w-2xl mx-auto">
+      <section className="py-14 md:py-28 px-6 md:px-16 bg-forest-dark">
+        <div className="text-center mb-10 md:mb-16 max-w-2xl mx-auto">
           <FadeIn direction="fade" delay={0}>
             <p className="section-label text-gold mb-3">Where You Stay</p>
           </FadeIn>
@@ -116,8 +116,8 @@ export default function HomePage() {
                 <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10">
                   <p className="text-gold/70 text-[10px] uppercase tracking-[0.25em] font-sans mb-2">{lodge.location}</p>
                   <h3 className="font-serif text-3xl md:text-4xl text-cream mb-3 leading-tight">{lodge.name}</h3>
-                  {/* Description slides up on hover */}
-                  <p className="text-cream/60 text-sm font-sans leading-relaxed max-w-sm mb-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
+                  {/* Description — always visible on mobile, hover-reveal on desktop */}
+                  <p className="text-cream/60 text-sm font-sans leading-relaxed max-w-sm mb-5 translate-y-0 opacity-100 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-500 ease-out">
                     {lodge.description}
                   </p>
                   <span className="inline-flex items-center gap-2 text-gold text-xs uppercase tracking-widest font-sans border-b border-gold/40 pb-0.5 group-hover:border-gold transition-colors duration-300">
@@ -134,10 +134,10 @@ export default function HomePage() {
       </section>
 
       {/* Destinations Section — Journal Style Editorial Grid */}
-      <section className="py-32 px-6 md:px-16 bg-cream">
+      <section className="py-16 md:py-32 px-6 md:px-16 bg-cream">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-20">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-10 mb-10 md:mb-20">
             <div className="max-w-2xl">
               <FadeIn direction="fade">
                 <span className="text-gold uppercase tracking-[0.4em] text-[10px] font-bold mb-4 block">The Explorer&apos;s Map</span>
@@ -159,7 +159,7 @@ export default function HomePage() {
           </div>
 
           {/* Clean Journal Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-y-20 gap-x-8">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-y-10 md:gap-y-20 gap-x-8">
             
             {/* 01. Uganda — Large Featured Vertical */}
             <div className="md:col-span-7">
@@ -226,16 +226,16 @@ export default function HomePage() {
             ))}
           </div>
 
-          <FadeIn direction="up" delay={0.2} className="text-center mt-32">
-            <Link href="/destinations" className="btn-primary px-14">The Full Collection</Link>
+          <FadeIn direction="up" delay={0.2} className="text-center mt-14 md:mt-32">
+            <Link href="/destinations" className="btn-primary px-10 md:px-14">The Full Collection</Link>
           </FadeIn>
         </div>
       </section>
 
       {/* Experiences — full-image hover reveal */}
-      <section className="py-28 px-6 md:px-16 bg-cream-dark">
+      <section className="py-14 md:py-28 px-6 md:px-16 bg-cream-dark">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-8 md:mb-14">
             <FadeIn direction="fade"><p className="section-label mb-3">What We Offer</p></FadeIn>
             <LineReveal
               lines={["Extraordinary Experiences"]}
@@ -288,23 +288,23 @@ export default function HomePage() {
       </section>
 
       {/* Heritage — narrative approach with parallax anchor */}
-      <section className="py-40 px-6 md:px-16 bg-cream-dark relative overflow-hidden">
+      <section className="py-20 md:py-40 px-6 md:px-16 bg-cream-dark relative overflow-hidden">
         {/* Subtle decorative elements for scroll depth */}
         <div className="absolute top-0 right-0 w-[40%] h-full opacity-[0.03] pointer-events-none">
            <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1200&q=80" className="w-full h-full object-cover" alt="" />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid md:grid-cols-12 gap-20 items-center">
+          <div className="grid md:grid-cols-12 gap-10 md:gap-20 items-center">
             <div className="md:col-span-5 order-2 md:order-1">
               <FadeIn direction="up" delay={0.1}>
                 <p className="section-label">A Century of Passion</p>
-                <h2 className="section-heading mb-12 leading-[1.1]">
+                <h2 className="section-heading mb-6 md:mb-12 leading-[1.1]">
                   The Spirit of <br />
                   <span className="editorial-italic">Timeless Safari</span>
                 </h2>
-                <div className="w-20 h-px bg-gold mb-12" />
-                <div className="space-y-10 body-text">
+                <div className="w-20 h-px bg-gold mb-6 md:mb-12" />
+                <div className="space-y-5 md:space-y-10 body-text">
                   <p>
                     Tilenga Safaris is more than a travel company; it is a legacy of discovery rooted in the profound beauty of the East African landscape. Our journeys are crafted for those who seek the authentic, the rare, and the transformative.
                   </p>
@@ -312,7 +312,7 @@ export default function HomePage() {
                     From the mist-shrouded peaks of the Rwenzori to the golden horizons of the Maasai Mara, we invite you to experience a &ldquo;Golden Age&rdquo; of travel—where every detail is considered, and every moment is an invitation to wonder.
                   </p>
                 </div>
-                <div className="mt-16">
+                <div className="mt-8 md:mt-16">
                   <Link href="/about" className="group inline-flex items-center gap-6">
                     <span className="btn-primary px-10">Our Story</span>
                     <span className="text-[10px] uppercase tracking-[0.3em] text-forest group-hover:text-gold transition-colors duration-500 font-bold">Discover Our Roots</span>
@@ -351,13 +351,13 @@ export default function HomePage() {
       </section>
 
       {/* Sustainability */}
-      <section className="py-28 px-6 md:px-16 bg-cream">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+      <section className="py-14 md:py-28 px-6 md:px-16 bg-cream">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-20 items-center">
           <FadeIn direction="left">
             <p className="section-label">Responsible Travel</p>
-            <h2 className="section-heading mb-10">A Commitment to<br />Communities &amp; Conservation</h2>
-            <div className="w-16 h-px bg-gold mb-10" />
-            <div className="space-y-8 body-text mb-12">
+            <h2 className="section-heading mb-6 md:mb-10">A Commitment to<br />Communities &amp; Conservation</h2>
+            <div className="w-16 h-px bg-gold mb-6 md:mb-10" />
+            <div className="space-y-5 md:space-y-8 body-text mb-8 md:mb-12">
               <p>
                 Sustainability is woven into how we operate. We work closely with local communities,
                 support indigenous culture preservation, and partner with conservation-focused lodges across East Africa.
@@ -405,36 +405,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Banner */}
-      <section className="bg-forest-dark py-32 px-6 md:px-16 text-center relative overflow-hidden">
-        {/* Subtle background image */}
-        <div className="absolute inset-0 opacity-20">
-          <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1800&q=80" alt="CTA Background" className="w-full h-full object-cover" />
-        </div>
-        <div className="absolute inset-0 bg-forest-dark/80" />
-        
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <FadeIn direction="up">
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="w-10 h-px bg-gold/60" />
-              <p className="section-label text-gold">Your Journey Awaits</p>
-              <div className="w-10 h-px bg-gold/60" />
-            </div>
-            <h2 className="section-heading mb-10 text-cream">
-              Let Us Craft Your<br />
-              <span className="editorial-italic !text-gold">Personal Legacy</span>
-            </h2>
-            <p className="text-cream/60 font-sans max-w-xl mx-auto mb-14 text-base md:text-lg leading-relaxed md:leading-loose">
-              Share your vision with us — we&apos;ll design a bespoke itinerary that blends 
-              adventure, culture, and wild luxury across Africa&apos;s most storied landscapes.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Link href="/plan-a-trip" className="btn-primary px-10">Plan Your Safari</Link>
-              <a href="tel:+256789390350" className="btn-ghost px-10">Speak to an Expert</a>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-    </>
-  );
-}
+      </>
+      );
+      }

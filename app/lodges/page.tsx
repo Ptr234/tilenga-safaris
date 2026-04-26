@@ -72,7 +72,7 @@ export default function LodgesPage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section className="relative h-screen min-h-[640px] overflow-hidden flex flex-col justify-end">
+      <section className="grain-overlay relative h-screen min-h-[640px] overflow-hidden flex flex-col justify-end">
         <div
           className="absolute inset-0"
           style={{
@@ -94,7 +94,7 @@ export default function LodgesPage() {
           </FadeIn>
           <FadeIn direction="up" delay={0.25}>
             <h1 className="font-serif text-6xl md:text-8xl lg:text-[7.5rem] text-cream leading-[0.9] mb-6 uppercase tracking-[0.15em]">
-              Our<br /><em className="italic text-gold not-italic">Lodges</em>
+              Our<br /><em className="not-italic text-gold">Lodges</em>
             </h1>
           </FadeIn>
           <FadeIn direction="up" delay={0.42}>
@@ -166,7 +166,7 @@ export default function LodgesPage() {
               <p className="section-label text-gold mb-6">{lodge.sublocation}</p>
               <h2 className="font-serif text-5xl md:text-7xl text-cream leading-[0.95] uppercase tracking-[0.15em]">
                 {lodge.nameA}<br />
-                <em className="italic text-gold not-italic">{lodge.nameB}</em>
+                <em className="not-italic text-gold">{lodge.nameB}</em>
               </h2>
               <p className="font-serif italic text-cream/35 text-base mt-6 mb-10">&ldquo;{lodge.tagline}&rdquo;</p>
               <div className="w-16 h-px bg-gold mb-10" />

@@ -33,7 +33,7 @@ export default function PlanATripPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[45vh] min-h-[350px] overflow-hidden flex flex-col justify-end">
+      <section className="grain-overlay relative h-[65vh] min-h-[450px] overflow-hidden flex flex-col justify-end">
         <div
           className="absolute inset-0"
           style={{
@@ -48,12 +48,12 @@ export default function PlanATripPage() {
             <div className="w-10 h-px bg-gold" />
             <p className="section-label text-gold">Start Your Legacy</p>
           </div>
-          <h1 className="font-serif text-5xl md:text-8xl text-cream uppercase tracking-[0.15em] leading-none">Plan Your<br /> <em className="italic text-gold not-italic">Safari</em></h1>
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-8xl text-cream uppercase tracking-[0.15em] leading-none">Plan Your<br /> <em className="not-italic text-gold">Safari</em></h1>
         </div>
       </section>
 
       {/* Intro */}
-      <section className="bg-cream py-20 px-6 md:px-16 text-center">
+      <section className="bg-cream py-10 md:py-20 px-6 md:px-16 text-center">
         <div className="max-w-3xl mx-auto">
           <p className="text-stone font-sans text-base leading-relaxed mb-4">
             Share your vision with us. Our specialists will craft a bespoke itinerary tailored 
@@ -64,12 +64,12 @@ export default function PlanATripPage() {
       </section>
 
       {/* Form + Sidebar */}
-      <section className="bg-cream-dark py-12 px-6 md:px-16 pb-24">
+      <section className="bg-cream-dark py-8 md:py-12 px-6 md:px-16 pb-14 md:pb-24">
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
 
           {/* Sidebar */}
           <div className="md:col-span-1 space-y-8">
-            <div className="bg-forest-dark text-cream p-10 film-frame">
+            <div className="bg-forest-dark text-cream p-6 md:p-10 film-frame">
               <p className="font-serif text-2xl mb-6 uppercase tracking-[0.15em] leading-tight">Speak to a <br />Specialist</p>
               <div className="w-8 h-px bg-gold mb-8" />
               <p className="text-cream/50 font-sans text-sm mb-10 leading-relaxed">
@@ -99,7 +99,7 @@ export default function PlanATripPage() {
               </ul>
             </div>
 
-            <div className="bg-white p-10 border border-gold/10">
+            <div className="bg-white p-6 md:p-10 border border-gold/10">
               <p className="font-serif text-xl text-forest mb-4 uppercase tracking-wide">Response Time</p>
               <div className="w-8 h-px bg-gold mb-6" />
               <p className="text-stone font-sans text-sm leading-relaxed">
@@ -111,7 +111,7 @@ export default function PlanATripPage() {
           {/* Form */}
           <div className="md:col-span-2">
             {submitted ? (
-              <div className="bg-white border border-gold/10 p-16 text-center film-frame">
+              <div className="bg-white border border-gold/10 p-8 md:p-16 text-center film-frame">
                 <div className="flex justify-center mb-8">
                   <div className="w-16 h-16 rounded-full border border-gold flex items-center justify-center">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -125,7 +125,7 @@ export default function PlanATripPage() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-white border border-gold/10 p-10 space-y-8">
+              <form onSubmit={handleSubmit} className="bg-white border border-gold/10 p-6 md:p-10 space-y-6 md:space-y-8">
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">First Name *</label>

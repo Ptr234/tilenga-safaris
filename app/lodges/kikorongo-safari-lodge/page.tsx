@@ -58,7 +58,7 @@ export default function KikorongoSafariLodgePage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section className="relative h-screen min-h-[600px] overflow-hidden flex items-end">
+      <section className="grain-overlay relative h-screen min-h-[600px] overflow-hidden flex items-end">
         <div
           className="absolute inset-0"
           style={{
@@ -70,7 +70,7 @@ export default function KikorongoSafariLodgePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/85 via-forest-dark/30 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/80 via-transparent to-forest-dark/25" />
 
-        <div className="relative z-10 px-8 md:px-20 pb-20 max-w-3xl">
+        <div className="relative z-10 px-5 md:px-20 pb-10 md:pb-20 max-w-3xl">
           <FadeIn direction="up" delay={0.1}>
             <div className="flex items-center gap-3 mb-4">
               <div className="w-8 h-px bg-gold" />
@@ -78,7 +78,7 @@ export default function KikorongoSafariLodgePage() {
             </div>
           </FadeIn>
           <FadeIn direction="up" delay={0.25}>
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-cream leading-none mb-4">
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-cream leading-none mb-4">
               Kikorongo<br /><em className="italic text-gold">Safari Lodge</em>
             </h1>
           </FadeIn>
@@ -110,7 +110,7 @@ export default function KikorongoSafariLodgePage() {
       {/* ── LODGE OVERVIEW ── */}
       <section className="grid md:grid-cols-2 overflow-hidden" style={{ minHeight: "75vh" }}>
         {/* Text */}
-        <div className="bg-cream flex flex-col justify-center px-8 md:px-16 py-20 order-2 md:order-1">
+        <div className="bg-cream flex flex-col justify-center px-6 md:px-16 py-12 md:py-20 order-2 md:order-1">
           <FadeIn direction="left">
             <p className="section-label mb-3">Lodge Overview</p>
             <h2 className="font-serif text-4xl md:text-5xl text-forest leading-tight mb-6">
@@ -175,8 +175,8 @@ export default function KikorongoSafariLodgePage() {
       </section>
 
       {/* ── ACCOMMODATION ── */}
-      <section className="bg-forest-dark py-20">
-        <div className="max-w-6xl mx-auto px-6 md:px-16 mb-14">
+      <section className="bg-forest-dark py-12 md:py-20">
+        <div className="max-w-6xl mx-auto px-6 md:px-16 mb-8 md:mb-14">
           <FadeIn>
             <div className="flex items-end justify-between">
               <div>
@@ -212,7 +212,7 @@ export default function KikorongoSafariLodgePage() {
                 </span>
               </div>
 
-              <FadeIn direction={i % 2 === 0 ? "right" : "left"} className="bg-cream flex flex-col justify-center px-8 md:px-14 py-12">
+              <FadeIn direction={i % 2 === 0 ? "right" : "left"} className="bg-cream flex flex-col justify-center px-5 md:px-14 py-8 md:py-12">
                 <div className="w-8 h-px bg-gold mb-5" />
                 <h3 className="font-serif text-3xl md:text-4xl text-forest mb-4">{room.name}</h3>
                 <p className="text-stone font-sans text-sm leading-relaxed mb-7">{room.description}</p>
@@ -230,9 +230,9 @@ export default function KikorongoSafariLodgePage() {
       </section>
 
       {/* ── ACTIVITIES ── */}
-      <section className="bg-cream py-24 px-6 md:px-16">
+      <section className="bg-cream py-14 md:py-24 px-6 md:px-16">
         <div className="max-w-6xl mx-auto">
-          <FadeIn className="flex items-end gap-8 mb-16">
+          <FadeIn className="flex items-end gap-8 mb-10 md:mb-16">
             <div>
               <p className="section-label mb-3">Things to Do</p>
               <h2 className="font-serif text-4xl md:text-5xl text-forest leading-tight">
@@ -283,8 +283,8 @@ export default function KikorongoSafariLodgePage() {
       </div>
 
       {/* ── LOCATION & ACCESS ── */}
-      <section className="bg-cream-dark py-20 px-6 md:px-16">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+      <section className="bg-cream-dark py-12 md:py-20 px-6 md:px-16">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-start">
           <FadeIn direction="left">
             <p className="section-label mb-3">Find Us</p>
             <h2 className="font-serif text-4xl md:text-5xl text-forest leading-tight mb-6">
@@ -343,8 +343,8 @@ export default function KikorongoSafariLodgePage() {
       </section>
 
       {/* ── BOOKING ── */}
-      <section className="bg-forest py-24 px-6 md:px-16">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <section className="bg-forest py-14 md:py-24 px-6 md:px-16">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <FadeIn direction="left">
             <p className="section-label text-gold mb-3">Reserve Your Stay</p>
             <h2 className="font-serif text-4xl md:text-5xl text-cream leading-tight mb-6">

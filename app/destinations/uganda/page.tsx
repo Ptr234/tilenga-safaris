@@ -131,7 +131,7 @@ export default function UgandaPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[80vh] min-h-[500px] overflow-hidden flex items-end">
+      <section className="grain-overlay relative h-[80vh] min-h-[500px] overflow-hidden flex items-end">
         <div
           className="absolute inset-0 scale-110 transition-transform duration-[8000ms]"
           style={{

@@ -76,10 +76,16 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Right: Enquire CTA */}
-          <div className="flex-1 flex items-center justify-end">
-            <Link 
-              href="/plan-a-trip" 
+          {/* Right: Contact + Enquire CTA */}
+          <div className="flex-1 flex items-center justify-end gap-6">
+            <a
+              href="tel:+256789390350"
+              className="hidden lg:block text-[9px] uppercase tracking-[0.3em] font-sans text-cream/40 hover:text-gold transition-colors duration-300"
+            >
+              +256 789 390 350
+            </a>
+            <Link
+              href="/plan-a-trip"
               className="group relative overflow-hidden hidden md:block"
             >
               <span className="text-[10px] uppercase tracking-[0.4em] font-sans font-bold text-cream group-hover:text-gold transition-colors duration-300">

@@ -99,7 +99,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[65vh] min-h-[450px] overflow-hidden flex items-end">
+      <section className="grain-overlay relative h-[65vh] min-h-[450px] overflow-hidden flex items-end">
         <div
           className="absolute inset-0"
           style={{
@@ -111,14 +111,14 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/30 to-forest-dark/85" />
         <div className="relative z-10 px-6 md:px-16 pb-16 max-w-3xl">
           <p className="section-label text-gold mb-3">Who We Are</p>
-          <h1 className="font-serif text-5xl md:text-8xl text-cream mb-4 uppercase tracking-[0.15em] leading-none">About Us</h1>
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-8xl text-cream mb-4 uppercase tracking-[0.15em] leading-none">About Us</h1>
           <p className="font-serif italic text-2xl text-gold">Passion for Travel. Care for People.</p>
         </div>
       </section>
 
       {/* Mission */}
-      <section className="bg-cream py-32 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+      <section className="bg-cream py-16 md:py-32 px-6 md:px-16">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-20 items-center">
           <div>
             <p className="section-label mb-3">Our Story</p>
             <h2 className="section-heading mb-8 uppercase tracking-[0.15em]">Crafting Personalized Adventures</h2>
@@ -158,16 +158,16 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="bg-cream-dark py-28 px-6 md:px-16">
+      <section className="bg-cream-dark py-14 md:py-28 px-6 md:px-16">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
+          <div className="text-center mb-10 md:mb-20">
             <p className="section-label mb-3">How We Work</p>
             <h2 className="section-heading uppercase tracking-[0.15em]">Our Core Values</h2>
             <div className="w-20 h-px bg-gold mx-auto mt-6" />
           </div>
           <div className="grid md:grid-cols-2 gap-10">
             {values.map((v) => (
-              <div key={v.title} className="bg-white p-10 border border-gold/10 relative group hover:border-gold/30 transition-colors duration-500">
+              <div key={v.title} className="bg-white p-6 md:p-10 border border-gold/10 relative group hover:border-gold/30 transition-colors duration-500">
                 <p className="font-serif text-5xl text-gold/10 absolute top-6 right-8 group-hover:text-gold/20 transition-colors">{v.num}</p>
                 <h3 className="font-serif text-2xl text-forest mb-4 uppercase tracking-wide">{v.title}</h3>
                 <div className="w-8 h-px bg-gold/40 mb-6 group-hover:w-12 transition-all duration-500" />
@@ -179,7 +179,7 @@ export default function AboutPage() {
       </section>
 
       {/* Why choose us */}
-      <section className="py-24 px-6 md:px-16 bg-cream relative overflow-hidden">
+      <section className="py-14 md:py-24 px-6 md:px-16 bg-cream relative overflow-hidden">
         <div
           className="absolute right-0 top-0 w-1/2 h-full hidden md:block"
           style={{
@@ -229,7 +229,7 @@ export default function AboutPage() {
       </section>
 
       {/* Services */}
-      <section className="bg-forest-dark py-24 px-6 md:px-16 overflow-hidden">
+      <section className="bg-forest-dark py-14 md:py-24 px-6 md:px-16 overflow-hidden">
         <div className="max-w-6xl mx-auto">
 
           {/* Header row */}
@@ -279,7 +279,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="bg-cream py-24 px-6 md:px-16">
+      <section className="bg-cream py-14 md:py-24 px-6 md:px-16">
         <div className="max-w-6xl mx-auto">
 
           {/* Header */}
@@ -330,7 +330,7 @@ export default function AboutPage() {
       </section>
 
       {/* Contact / Location */}
-      <section className="bg-cream-dark py-20 px-6 md:px-16">
+      <section className="bg-cream-dark py-12 md:py-20 px-6 md:px-16">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
             <p className="section-label mb-3">Find Us</p>
