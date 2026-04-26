@@ -3,6 +3,8 @@ import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const lodges = [
   {
     id: "tilenga",
@@ -19,7 +21,7 @@ const lodges = [
       { value: "450+", label: "Bird Species" },
     ],
     amenities: ["Albert Nile Views", "Private Balconies", "Sport Fishing", "Night Game Drives", "Basketry Workshops"],
-    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1400&q=85",
+    image: `${base}/photos/tilengasafarilodge/entrance.png`,
     href: "/lodges/tilenga-safari-lodge",
     panelBg: "bg-forest-dark",
     imageOrder: "md:order-1",
@@ -41,7 +43,7 @@ const lodges = [
       { value: "600+", label: "Bird Species" },
     ],
     amenities: ["Lake & Mountain Views", "Swimming Pool", "Kazinga Channel", "Bird Watching", "Rwenzori Climbing"],
-    image: "/photos/kikorongo outside.jpg",
+    image: `${base}/photos/kikorongo_outside.jpg`,
     href: "/lodges/kikorongo-safari-lodge",
     panelBg: "bg-forest",
     imageOrder: "md:order-2",
