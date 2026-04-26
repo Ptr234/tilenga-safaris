@@ -235,7 +235,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href="tel:+256789390350" className="text-cream/40 text-xs font-sans hover:text-gold transition-colors duration-300">
-                  +256 789 390 350
+                  Call Us Now
                 </a>
               </li>
               <li>

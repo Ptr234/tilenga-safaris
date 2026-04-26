@@ -82,7 +82,7 @@ export default function Header() {
               href="tel:+256789390350"
               className="hidden lg:block text-[9px] uppercase tracking-[0.3em] font-sans text-cream/40 hover:text-gold transition-colors duration-300"
             >
-              +256 789 390 350
+              Call Us Now
             </a>
             <Link
               href="/plan-a-trip"
