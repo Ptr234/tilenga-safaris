@@ -3,9 +3,7 @@ import HeroCarousel from "@/components/HeroCarousel";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import AnimatedCounter from "@/components/motion/AnimatedCounter";
-import ParallaxSection from "@/components/motion/ParallaxSection";
 import ImageReveal from "@/components/motion/ImageReveal";
-import SplitText from "@/components/motion/SplitText";
 import LineReveal from "@/components/motion/LineReveal";
 
 const lodges = [

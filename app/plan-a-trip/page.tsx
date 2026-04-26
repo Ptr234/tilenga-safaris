@@ -15,15 +15,6 @@ const interests = [
   "Honeymoon / Romance",
   "Family Safari",
 ];
-const budgets = [
-  "Under $1,500",
-  "$1,500 – $3,000",
-  "$3,000 – $5,000",
-  "$5,000 – $10,000",
-  "$10,000+",
-  "To be discussed",
-];
-
 export default function PlanATripPage() {
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);

@@ -36,18 +36,18 @@
 
 @layer components {
   .section-label {
-    @apply text-gold uppercase tracking-[0.4em] text-[10px] font-sans font-bold mb-4 block;
+    @apply text-gold uppercase tracking-[0.45em] text-[9px] font-sans font-bold mb-6 block opacity-80;
   }
   .section-heading {
-    @apply text-forest font-serif text-4xl md:text-6xl leading-[1.15] uppercase tracking-[0.15em];
+    @apply text-forest font-serif text-4xl md:text-6xl lg:text-[5rem] leading-[1.05] uppercase tracking-[0.05em];
   }
   
   .editorial-italic {
-    @apply font-serif italic text-gold/90;
+    @apply font-serif italic text-gold/80 lowercase tracking-normal;
   }
 
   .body-text {
-    @apply text-stone font-sans text-base md:text-lg leading-relaxed md:leading-loose;
+    @apply text-stone/80 font-sans text-base md:text-[17px] leading-[1.85] md:leading-[2];
   }
 
   .package-grid {
