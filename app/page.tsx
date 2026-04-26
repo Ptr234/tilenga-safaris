@@ -6,12 +6,14 @@ import AnimatedCounter from "@/components/motion/AnimatedCounter";
 import ImageReveal from "@/components/motion/ImageReveal";
 import LineReveal from "@/components/motion/LineReveal";
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const lodges = [
   {
     name: "Tilenga Safari Lodge",
     location: "Murchison Falls National Park, Uganda",
     description: "A haven of comfort overlooking the Albert Nile. 26 cottages with private balconies, wildlife encounters, and a world-class chef.",
-    image: "/photos/tilengasafarilodge/entrance.png",
+    image: `${base}/photos/tilengasafarilodge/entrance.png`,
     href: "/lodges/tilenga-safari-lodge",
     tag: "Murchison Falls",
   },
@@ -19,7 +21,7 @@ const lodges = [
     name: "Kikorongo Safari Lodge",
     location: "Queen Elizabeth National Park, Uganda",
     description: "Perched at the Equator above Lake George, with sweeping Rwenzori views and the world's largest hippo concentration.",
-    image: "/photos/kikorongo outside.jpg",
+    image: `${base}/photos/kikorongo_outside.jpg`,
     href: "/lodges/kikorongo-safari-lodge",
     tag: "Queen Elizabeth NP",
   },
@@ -233,7 +235,7 @@ export default function HomePage() {
       </section>
 
       {/* Experiences — full-image hover reveal */}
-      <section className="py-14 md:py-28 px-6 md:px-16 bg-cream-dark">
+      <section className="pt-14 pb-0 md:py-28 px-6 md:px-16 bg-cream-dark">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8 md:mb-14">
             <FadeIn direction="fade"><p className="section-label mb-3">What We Offer</p></FadeIn>
@@ -281,30 +283,30 @@ export default function HomePage() {
             ))}
           </StaggerGrid>
 
-          <FadeIn direction="up" delay={0.3} className="text-center mt-12">
+          <FadeIn direction="up" delay={0.3} className="text-center mt-6 md:mt-12">
             <Link href="/plan-a-trip" className="btn-primary">Create Your Dream Safari</Link>
           </FadeIn>
         </div>
       </section>
 
       {/* Heritage — narrative approach with parallax anchor */}
-      <section className="py-20 md:py-40 px-6 md:px-16 bg-cream-dark relative overflow-hidden">
+      <section className="py-4 md:py-40 px-6 md:px-16 bg-cream-dark relative overflow-hidden">
         {/* Subtle decorative elements for scroll depth */}
         <div className="absolute top-0 right-0 w-[40%] h-full opacity-[0.03] pointer-events-none">
            <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1200&q=80" className="w-full h-full object-cover" alt="" />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid md:grid-cols-12 gap-10 md:gap-20 items-center">
+          <div className="grid md:grid-cols-12 gap-4 md:gap-20 items-center">
             <div className="md:col-span-5 order-2 md:order-1">
               <FadeIn direction="up" delay={0.1}>
                 <p className="section-label">A Century of Passion</p>
-                <h2 className="section-heading mb-6 md:mb-12 leading-[1.1]">
+                <h2 className="section-heading mb-4 md:mb-12 leading-[1.1]">
                   The Spirit of <br />
                   <span className="editorial-italic">Timeless Safari</span>
                 </h2>
-                <div className="w-20 h-px bg-gold mb-6 md:mb-12" />
-                <div className="space-y-5 md:space-y-10 body-text">
+                <div className="w-20 h-px bg-gold mb-4 md:mb-12" />
+                <div className="space-y-4 md:space-y-10 body-text">
                   <p>
                     Tilenga Safaris is more than a travel company; it is a legacy of discovery rooted in the profound beauty of the East African landscape. Our journeys are crafted for those who seek the authentic, the rare, and the transformative.
                   </p>
@@ -312,7 +314,7 @@ export default function HomePage() {
                     From the mist-shrouded peaks of the Rwenzori to the golden horizons of the Maasai Mara, we invite you to experience a &ldquo;Golden Age&rdquo; of travel—where every detail is considered, and every moment is an invitation to wonder.
                   </p>
                 </div>
-                <div className="mt-8 md:mt-16">
+                <div className="mt-6 md:mt-16">
                   <Link href="/about" className="group inline-flex items-center gap-6">
                     <span className="btn-primary px-10">Our Story</span>
                     <span className="text-[10px] uppercase tracking-[0.3em] text-forest group-hover:text-gold transition-colors duration-500 font-bold">Discover Our Roots</span>
@@ -332,8 +334,8 @@ export default function HomePage() {
                     />
                   </div>
                 </ImageReveal>
-                {/* Floating secondary image with different scroll speed */}
-                <div className="absolute -bottom-16 -left-16 hidden lg:block w-72 h-96 z-10">
+                {/* Floating secondary image with different scroll speed — removed negative bottom for mobile */}
+                <div className="absolute bottom-0 -left-16 hidden lg:block w-72 h-96 z-10">
                   <FadeIn direction="up" delay={0.6}>
                     <div className="film-frame h-full overflow-hidden shadow-2xl border-4 border-white/10">
                       <img 
@@ -351,13 +353,13 @@ export default function HomePage() {
       </section>
 
       {/* Sustainability */}
-      <section className="py-14 md:py-28 px-6 md:px-16 bg-cream">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-20 items-center">
+      <section className="py-4 md:py-28 px-6 md:px-16 bg-cream">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-4 md:gap-20 items-center">
           <FadeIn direction="left">
             <p className="section-label">Responsible Travel</p>
-            <h2 className="section-heading mb-6 md:mb-10">A Commitment to<br />Communities &amp; Conservation</h2>
-            <div className="w-16 h-px bg-gold mb-6 md:mb-10" />
-            <div className="space-y-5 md:space-y-8 body-text mb-8 md:mb-12">
+            <h2 className="section-heading mb-4 md:mb-10">A Commitment to<br />Communities &amp; Conservation</h2>
+            <div className="w-16 h-px bg-gold mb-4 md:mb-10" />
+            <div className="space-y-4 md:space-y-8 body-text mb-6 md:mb-12">
               <p>
                 Sustainability is woven into how we operate. We work closely with local communities,
                 support indigenous culture preservation, and partner with conservation-focused lodges across East Africa.
@@ -367,7 +369,7 @@ export default function HomePage() {
                 of local guides, hospitality staff, and community artisans.
               </p>
             </div>
-            <StaggerGrid className="space-y-5 mb-12">
+            <StaggerGrid className="space-y-3 mb-10">
               {sustainabilityItems.map((item) => (
                 <StaggerItem key={item}>
                   <div className="flex items-start gap-4 text-stone font-sans text-[15px] leading-relaxed">
@@ -380,7 +382,7 @@ export default function HomePage() {
             <Link href="/about" className="btn-primary">Learn More</Link>
           </FadeIn>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4 pt-12 md:pt-0">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <div className="film-frame aspect-square">
                 <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&q=80" alt="Conservation" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
