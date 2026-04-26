@@ -1,75 +1,151 @@
 import Link from "next/link";
 
-const destinationPics = [
-  { name: "Uganda",       sub: "Pearl of Africa",          image: "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=500&q=85", href: "/destinations/uganda" },
-  { name: "Kenya",        sub: "Maasai Mara",              image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=500&q=85", href: "/destinations/kenya" },
-  { name: "Tanzania",     sub: "Serengeti",                image: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=500&q=85", href: "/destinations/tanzania" },
-  { name: "Rwanda",       sub: "A Thousand Hills",         image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=85", href: "/destinations/rwanda" },
-  { name: "South Africa", sub: "Cape & Kruger",            image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=500&q=85", href: "/destinations/south-africa" },
-  { name: "Dubai",        sub: "Desert Luxury",            image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=85", href: "/destinations/dubai" },
+const destinations = [
+  { name: "Uganda",       sub: "Pearl of Africa",   image: "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=600&q=85", href: "/destinations/uganda" },
+  { name: "Kenya",        sub: "Maasai Mara",        image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&q=85", href: "/destinations/kenya" },
+  { name: "Tanzania",     sub: "Serengeti",          image: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=600&q=85", href: "/destinations/tanzania" },
+  { name: "Rwanda",       sub: "A Thousand Hills",   image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=85", href: "/destinations/rwanda" },
+  { name: "South Africa", sub: "Cape & Kruger",      image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=85", href: "/destinations/south-africa" },
+  { name: "Dubai",        sub: "Desert Luxury",      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=85", href: "/destinations/dubai" },
 ];
 
 export default function Footer() {
   const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
   return (
-    <footer className="bg-white">
+    <footer className="bg-[#07130d]">
 
-      {/* ── HERO LOGO BAND ── */}
-      <div className="border-t-4 border-gold pt-16 pb-10 px-6 text-center">
-        <Link href="/" className="inline-flex justify-center mb-6">
-          <img
-            src={`${base}/Tilenga-Logo-Full.svg`}
-            alt="Tilenga Safaris"
-            className="h-24 w-auto"
-          />
-        </Link>
-        <p className="font-serif italic text-stone/60 text-base tracking-wide max-w-sm mx-auto">
-          &ldquo;Crafting journeys that leave lasting impressions&rdquo;
-        </p>
+      {/* ── CTA BAND ── */}
+      <div className="relative overflow-hidden">
+        <div
+          className="absolute inset-0 scale-105"
+          style={{
+            backgroundImage: "url(https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=1800&q=70)",
+            backgroundSize: "cover",
+            backgroundPosition: "center 40%",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#07130d]/80 via-[#07130d]/70 to-[#07130d]" />
+        <div className="relative z-10 text-center px-6 py-28 md:py-36">
+          <p className="text-gold text-[9px] uppercase tracking-[0.45em] font-sans font-semibold mb-6">
+            Tilenga Safaris
+          </p>
+          <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl text-cream leading-[1.05] mb-4">
+            Where Your African<br />
+            <span className="italic text-gold">Story Begins</span>
+          </h2>
+          <div className="w-12 h-px bg-gold/50 mx-auto my-8" />
+          <p className="font-serif italic text-cream/55 text-lg md:text-xl max-w-md mx-auto mb-10">
+            &ldquo;Crafting journeys that leave lasting impressions&rdquo;
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/plan-a-trip"
+              className="inline-block border border-gold text-gold px-10 py-3.5 text-[10px] uppercase tracking-[0.3em] font-sans font-semibold hover:bg-gold hover:text-forest transition-all duration-300"
+            >
+              Plan a Trip
+            </Link>
+            <Link
+              href="/lodges"
+              className="inline-block border border-cream/20 text-cream/70 px-10 py-3.5 text-[10px] uppercase tracking-[0.3em] font-sans font-semibold hover:border-cream/50 hover:text-cream transition-all duration-300"
+            >
+              Our Lodges
+            </Link>
+          </div>
+        </div>
       </div>
 
-      {/* ── DESTINATION PICTORIALS ── */}
-      <div className="px-6 md:px-12 pb-14">
-        <p className="text-center text-gold text-[9px] uppercase tracking-[0.15em] font-sans font-semibold mb-7">
+      {/* ── DESTINATION STRIP ── */}
+      <div className="border-t border-gold/15">
+        <p className="text-center text-gold/60 text-[8px] uppercase tracking-[0.4em] font-sans font-semibold pt-10 pb-6">
           Our Destinations
         </p>
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
-          {destinationPics.map((d) => (
-            <Link key={d.name} href={d.href} className="group block relative overflow-hidden h-48 md:h-56 film-frame">
+        <div className="grid grid-cols-3 md:grid-cols-6">
+          {destinations.map((d) => (
+            <Link
+              key={d.name}
+              href={d.href}
+              className="group relative overflow-hidden block"
+              style={{ aspectRatio: "3/4" }}
+            >
               <img
                 src={d.image}
                 alt={d.name}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-3">
-                <p className="text-white font-serif text-sm leading-tight uppercase tracking-wide">{d.name}</p>
-                <p className="text-white/60 font-sans text-[9px] uppercase tracking-[0.2em] mt-0.5">{d.sub}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-500 group-hover:opacity-80" />
+              <div
+                className="absolute inset-0 border border-transparent group-hover:border-gold/40 transition-all duration-500 z-10"
+              />
+              <div className="absolute bottom-0 left-0 right-0 p-3 z-10">
+                <div className="w-4 h-px bg-gold mb-2 group-hover:w-7 transition-all duration-500" />
+                <p className="text-cream font-serif text-sm leading-tight">{d.name}</p>
+                <p className="text-cream/50 font-sans text-[8px] uppercase tracking-[0.18em] mt-0.5">{d.sub}</p>
               </div>
             </Link>
           ))}
         </div>
       </div>
 
-      {/* ── NEWSLETTER BAND ── */}
-      <div className="bg-forest py-10 px-6 md:px-16">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <p className="font-serif text-xl text-cream">Stay Connected With Africa</p>
-            <p className="text-cream/50 text-sm font-sans mt-1">
-              Safari stories, seasonal offers &amp; travel inspiration.
-            </p>
-          </div>
-          <form className="flex w-full md:w-auto gap-0">
+      {/* ── LOGO + SOCIAL BAND ── */}
+      <div className="border-t border-gold/15 py-16 px-6 text-center">
+        <Link href="/" className="inline-flex justify-center mb-8">
+          <img
+            src={`${base}/Tilenga-Logo-Full.svg`}
+            alt="Tilenga Safaris"
+            className="h-20 w-auto brightness-0 invert opacity-80 hover:opacity-100 transition-opacity duration-300"
+          />
+        </Link>
+
+        {/* Social icons */}
+        <div className="flex items-center justify-center gap-3 mb-10">
+          <a
+            href="https://www.instagram.com/tilengasafaris_travel/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="w-9 h-9 border border-cream/15 flex items-center justify-center text-cream/35 hover:border-gold hover:text-gold transition-all duration-300"
+          >
+            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+          <a
+            href="#"
+            aria-label="Facebook"
+            className="w-9 h-9 border border-cream/15 flex items-center justify-center text-cream/35 hover:border-gold hover:text-gold transition-all duration-300"
+          >
+            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
+          </a>
+          <a
+            href="https://wa.me/256789390350"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            className="w-9 h-9 border border-cream/15 flex items-center justify-center text-cream/35 hover:border-gold hover:text-gold transition-all duration-300"
+          >
+            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+          </a>
+        </div>
+
+        {/* Newsletter */}
+        <div className="max-w-md mx-auto">
+          <p className="text-cream/40 text-[9px] uppercase tracking-[0.3em] font-sans mb-4">
+            Safari stories &amp; travel inspiration
+          </p>
+          <form className="flex">
             <input
               type="email"
               placeholder="Your email address"
-              className="flex-1 md:w-64 bg-white/10 border border-white/20 text-cream placeholder-cream/35 px-4 py-3 text-sm font-sans focus:outline-none focus:border-gold/50 transition-colors"
+              className="flex-1 bg-white/5 border border-white/10 text-cream placeholder-cream/25 px-4 py-3 text-xs font-sans focus:outline-none focus:border-gold/40 transition-colors"
             />
             <button
               type="submit"
-              className="bg-gold hover:bg-gold-dark text-forest-dark font-sans text-[10px] uppercase tracking-[0.25em] px-6 py-3 transition-colors font-semibold shrink-0"
+              className="bg-gold hover:bg-[#b8933a] text-[#07130d] font-sans text-[9px] uppercase tracking-[0.25em] px-6 py-3 transition-colors font-bold shrink-0"
             >
               Subscribe
             </button>
@@ -78,19 +154,19 @@ export default function Footer() {
       </div>
 
       {/* ── NAV GRID ── */}
-      <div className="bg-white border-t border-stone/10">
-        <div className="max-w-6xl mx-auto px-6 md:px-16 py-14 grid grid-cols-2 md:grid-cols-4 gap-10">
+      <div className="border-t border-gold/15">
+        <div className="max-w-6xl mx-auto px-6 md:px-16 py-14 grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-6">
 
           <div>
-            <p className="text-gold text-[9px] uppercase tracking-[0.4em] font-sans font-semibold mb-5">
+            <p className="text-gold/70 text-[8px] uppercase tracking-[0.4em] font-sans font-semibold mb-6">
               Destinations
             </p>
-            <ul className="space-y-3">
+            <ul className="space-y-3.5">
               {["Uganda", "Kenya", "Tanzania", "Rwanda", "South Africa", "Dubai"].map((d) => (
                 <li key={d}>
                   <Link
                     href={`/destinations/${d.toLowerCase().replace(" ", "-")}`}
-                    className="text-stone/70 text-xs font-sans hover:text-gold transition-colors duration-300 tracking-wide"
+                    className="text-cream/40 text-xs font-sans hover:text-gold transition-colors duration-300 tracking-wide"
                   >
                     {d}
                   </Link>
@@ -100,32 +176,32 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-gold text-[9px] uppercase tracking-[0.4em] font-sans font-semibold mb-5">
+            <p className="text-gold/70 text-[8px] uppercase tracking-[0.4em] font-sans font-semibold mb-6">
               Our Lodges
             </p>
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-3.5 mb-8">
               <li>
-                <Link href="/lodges/tilenga-safari-lodge" className="text-stone/70 text-xs font-sans hover:text-gold transition-colors duration-300 tracking-wide">
+                <Link href="/lodges/tilenga-safari-lodge" className="text-cream/40 text-xs font-sans hover:text-gold transition-colors duration-300 tracking-wide">
                   Tilenga Safari Lodge
                 </Link>
               </li>
               <li>
-                <Link href="/lodges/kikorongo-safari-lodge" className="text-stone/70 text-xs font-sans hover:text-gold transition-colors duration-300 tracking-wide">
+                <Link href="/lodges/kikorongo-safari-lodge" className="text-cream/40 text-xs font-sans hover:text-gold transition-colors duration-300 tracking-wide">
                   Kikorongo Safari Lodge
                 </Link>
               </li>
             </ul>
-            <p className="text-gold text-[9px] uppercase tracking-[0.4em] font-sans font-semibold mb-5">
+            <p className="text-gold/70 text-[8px] uppercase tracking-[0.4em] font-sans font-semibold mb-6">
               Company
             </p>
-            <ul className="space-y-3">
+            <ul className="space-y-3.5">
               <li>
-                <Link href="/about" className="text-stone/70 text-xs font-sans hover:text-gold transition-colors duration-300 tracking-wide">
+                <Link href="/about" className="text-cream/40 text-xs font-sans hover:text-gold transition-colors duration-300 tracking-wide">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/plan-a-trip" className="text-stone/70 text-xs font-sans hover:text-gold transition-colors duration-300 tracking-wide">
+                <Link href="/plan-a-trip" className="text-cream/40 text-xs font-sans hover:text-gold transition-colors duration-300 tracking-wide">
                   Plan a Trip
                 </Link>
               </li>
@@ -133,13 +209,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-gold text-[9px] uppercase tracking-[0.4em] font-sans font-semibold mb-5">
+            <p className="text-gold/70 text-[8px] uppercase tracking-[0.4em] font-sans font-semibold mb-6">
               Experiences
             </p>
-            <ul className="space-y-3">
+            <ul className="space-y-3.5">
               {["Gorilla Trekking", "Game Drives", "Boat Safaris", "Cultural Immersion", "Mountain Climbing", "Beach Extensions"].map((e) => (
                 <li key={e}>
-                  <Link href="/plan-a-trip" className="text-stone/70 text-xs font-sans hover:text-gold transition-colors duration-300 tracking-wide">
+                  <Link href="/plan-a-trip" className="text-cream/40 text-xs font-sans hover:text-gold transition-colors duration-300 tracking-wide">
                     {e}
                   </Link>
                 </li>
@@ -148,89 +224,48 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-gold text-[9px] uppercase tracking-[0.4em] font-sans font-semibold mb-5">
+            <p className="text-gold/70 text-[8px] uppercase tracking-[0.4em] font-sans font-semibold mb-6">
               Get In Touch
             </p>
             <ul className="space-y-4">
-              <li className="text-stone/70 text-xs font-sans leading-relaxed">
+              <li className="text-cream/40 text-xs font-sans leading-relaxed">
                 Lungujja, Ssendawula Zone<br />
                 Eseza House, P.O. Box 2599<br />
                 Kampala, Uganda
               </li>
               <li>
-                <a href="tel:+256789390350" className="text-stone/70 text-xs font-sans hover:text-gold transition-colors duration-300">
+                <a href="tel:+256789390350" className="text-cream/40 text-xs font-sans hover:text-gold transition-colors duration-300">
                   +256 789 390 350
                 </a>
               </li>
               <li>
-                <a href="mailto:destinations@tilengasafaris.com" className="text-stone/70 text-xs font-sans hover:text-gold transition-colors duration-300 break-all">
+                <a href="mailto:destinations@tilengasafaris.com" className="text-cream/40 text-xs font-sans hover:text-gold transition-colors duration-300 break-all">
                   destinations@tilengasafaris.com
                 </a>
               </li>
             </ul>
-
-            {/* Social icons */}
-            <div className="flex items-center gap-2 mt-8">
-              <a
-                href="https://www.instagram.com/tilengasafaris_travel/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="w-8 h-8 border border-stone/20 flex items-center justify-center text-stone/50 hover:border-gold hover:text-gold transition-all duration-300"
-              >
-                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                </svg>
-              </a>
-              <a
-                href="#"
-                aria-label="Facebook"
-                className="w-8 h-8 border border-stone/20 flex items-center justify-center text-stone/50 hover:border-gold hover:text-gold transition-all duration-300"
-              >
-                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
-              </a>
-              <a
-                href="https://wa.me/256789390350"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WhatsApp"
-                className="w-8 h-8 border border-stone/20 flex items-center justify-center text-stone/50 hover:border-gold hover:text-gold transition-all duration-300"
-              >
-                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                </svg>
-              </a>
-            </div>
           </div>
 
         </div>
       </div>
 
-      {/* ── ACCREDITATIONS ── */}
-      <div className="border-t border-stone/10 bg-white">
-        <div className="max-w-6xl mx-auto px-6 md:px-16 py-6 flex flex-wrap items-center justify-center gap-6 md:gap-10">
-          <span className="text-[9px] uppercase tracking-[0.35em] text-stone/40 font-sans">Uganda Tourism Board</span>
-          <div className="w-px h-3 bg-stone/15 hidden md:block" />
-          <span className="text-[9px] uppercase tracking-[0.35em] text-stone/40 font-sans">Certified Operator</span>
-          <div className="w-px h-3 bg-stone/15 hidden md:block" />
-          <span className="text-[9px] uppercase tracking-[0.35em] text-stone/40 font-sans">Conservation Partner</span>
-        </div>
-      </div>
-
-      {/* ── COPYRIGHT BAR ── */}
-      <div className="bg-stone/5 border-t border-stone/10 py-5 px-6 md:px-16">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-stone/40 text-[10px] font-sans tracking-[0.2em] uppercase">
-            &copy; {new Date().getFullYear()} Tilenga Safaris &nbsp;&middot;&nbsp; All rights reserved.
-          </p>
-          <div className="flex gap-6">
-            <Link href="/privacy" className="text-stone/40 text-[10px] font-sans hover:text-gold transition-colors tracking-wide">
-              Privacy Policy
+      {/* ── BOTTOM BAR ── */}
+      <div className="border-t border-gold/10 py-6 px-6 md:px-16">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex flex-wrap items-center gap-4 md:gap-8">
+            <span className="text-cream/20 text-[8px] uppercase tracking-[0.35em] font-sans">Uganda Tourism Board</span>
+            <span className="text-cream/20 text-[8px] uppercase tracking-[0.35em] font-sans">Certified Operator</span>
+            <span className="text-cream/20 text-[8px] uppercase tracking-[0.35em] font-sans">Conservation Partner</span>
+          </div>
+          <div className="flex items-center gap-6">
+            <p className="text-cream/20 text-[9px] font-sans tracking-[0.2em] uppercase">
+              &copy; {new Date().getFullYear()} Tilenga Safaris
+            </p>
+            <Link href="/privacy" className="text-cream/20 text-[9px] font-sans hover:text-gold/60 transition-colors tracking-wide">
+              Privacy
             </Link>
-            <Link href="/terms" className="text-stone/40 text-[10px] font-sans hover:text-gold transition-colors tracking-wide">
-              Terms &amp; Conditions
+            <Link href="/terms" className="text-cream/20 text-[9px] font-sans hover:text-gold/60 transition-colors tracking-wide">
+              Terms
             </Link>
           </div>
         </div>
