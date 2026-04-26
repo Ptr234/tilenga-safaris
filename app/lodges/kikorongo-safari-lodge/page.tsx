@@ -266,10 +266,10 @@ export default function KikorongoSafariLodgePage() {
       {/* ── GALLERY STRIP ── */}
       <div className="flex gap-0.5 h-52 md:h-72 overflow-hidden">
         {[
-          "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=600&q=85",
+          "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=85",
           "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=600&q=85",
           "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=600&q=85",
-          "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&q=85",
+          "https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=85",
           "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=600&q=85",
         ].map((src, i) => (
           <div key={i} className="flex-1 overflow-hidden group">
