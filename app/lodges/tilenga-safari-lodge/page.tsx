@@ -312,6 +312,18 @@ export default function TilengaSafariLodgePage() {
                     </div>
                  </div>
                </FadeIn>
+
+               <FadeIn direction="up" delay={0.4}>
+                 <div className="relative group">
+                    <div className="absolute -inset-4 bg-white/[0.02] -rotate-3 group-hover:rotate-[-1deg] transition-transform duration-1000 ease-out" />
+                    <div className="relative z-10 overflow-hidden shadow-2xl border border-white/5">
+                       <img src={`${base}/photos/tilengasafarilodge/tilengasafarislodge cottage night.png`} alt="Cottage Night" className="w-full aspect-[4/3] object-cover transition-transform duration-[2.5s] group-hover:scale-110" />
+                    </div>
+                    <div className="relative z-20 mt-6">
+                       <p className="font-serif italic text-gold text-lg">Bush luxury under the starlit sky.</p>
+                    </div>
+                 </div>
+               </FadeIn>
             </div>
 
             {/* Right Page */}
@@ -361,6 +373,43 @@ export default function TilengaSafariLodgePage() {
                     </div>
                   </FadeIn>
                </div>
+
+               <div className="grid grid-cols-12 gap-6 md:gap-10">
+                  <div className="col-span-12 md:col-span-7">
+                    <FadeIn direction="up" delay={0.6}>
+                      <div className="group">
+                         <div className="relative overflow-hidden shadow-2xl border border-white/5 grayscale-[30%] group-hover:grayscale-0 transition-all duration-[2s]">
+                            <img src={`${base}/photos/tilengasafarilodge/tilengasafarislodge swimmingpool view2.png`} alt="Pool View 2" className="w-full aspect-[16/9] object-cover transition-transform duration-[3s] group-hover:scale-105" />
+                         </div>
+                         <div className="mt-4 flex items-center gap-4">
+                            <p className="text-cream/30 text-[10px] uppercase tracking-widest">Refreshment with a view</p>
+                            <div className="flex-1 h-px bg-gold/10" />
+                         </div>
+                      </div>
+                    </FadeIn>
+                  </div>
+                  <div className="col-span-12 md:col-span-5 md:pt-12">
+                    <FadeIn direction="up" delay={0.7}>
+                       <div className="group">
+                          <div className="relative overflow-hidden shadow-xl border-l-4 border-gold/40">
+                             <img src={`${base}/photos/tilengasafarilodge/tilengasafarislodge lunch close setup.png`} alt="Lunch Detail" className="w-full aspect-square object-cover transition-transform duration-[3s] group-hover:scale-110" />
+                          </div>
+                          <p className="mt-3 text-gold font-serif italic text-xs">"Attention to every detail."</p>
+                       </div>
+                    </FadeIn>
+                  </div>
+               </div>
+
+               <FadeIn direction="up" delay={0.8}>
+                 <div className="relative group">
+                    <div className="relative z-10 overflow-hidden shadow-2xl grayscale-[15%] group-hover:grayscale-0 transition-all duration-1000">
+                       <img src={`${base}/photos/tilengasafarilodge/travel.png`} alt="Safari Travel" className="w-full aspect-[21/9] object-cover transition-transform duration-[4s] group-hover:scale-105" />
+                    </div>
+                    <div className="absolute top-6 left-6 z-20">
+                       <span className="bg-forest-dark/60 backdrop-blur-md px-3 py-1 text-gold text-[9px] uppercase tracking-[0.4em] font-bold">The Journey</span>
+                    </div>
+                 </div>
+               </FadeIn>
             </div>
           </div>
 

@@ -298,6 +298,18 @@ export default function KikorongoSafariLodgePage() {
                     </div>
                  </div>
                </FadeIn>
+
+               <FadeIn direction="up" delay={0.4}>
+                 <div className="relative group">
+                    <div className="absolute -inset-4 bg-white/[0.02] -rotate-3 group-hover:rotate-[-1deg] transition-transform duration-1000 ease-out" />
+                    <div className="relative z-10 overflow-hidden shadow-2xl border border-white/5">
+                       <img src={`${base}/photos/kikorongo_room1.jpg`} alt="Cottage Interior" className="w-full aspect-[4/3] object-cover transition-transform duration-[2.5s] group-hover:scale-110" />
+                    </div>
+                    <div className="relative z-20 mt-6 text-right">
+                       <p className="font-serif italic text-gold text-lg">Intimate spaces for reflection.</p>
+                    </div>
+                 </div>
+               </FadeIn>
             </div>
 
             {/* Right Page */}
@@ -347,6 +359,18 @@ export default function KikorongoSafariLodgePage() {
                     </div>
                   </FadeIn>
                </div>
+
+               <FadeIn direction="up" delay={0.6}>
+                  <div className="group">
+                     <div className="relative overflow-hidden shadow-2xl border border-white/5 grayscale-[30%] group-hover:grayscale-0 transition-all duration-[2s]">
+                        <img src={`${base}/photos/kikorongo_room2.jpg`} alt="Premium Interior" className="w-full aspect-[21/9] object-cover transition-transform duration-[3s] group-hover:scale-105" />
+                     </div>
+                     <div className="mt-6 flex items-center gap-6">
+                        <div className="flex-1 h-px bg-gold/20" />
+                        <p className="font-serif italic text-gold text-lg italic">"A retreat above the clouds."</p>
+                     </div>
+                  </div>
+               </FadeIn>
             </div>
           </div>
 
