@@ -6,11 +6,18 @@ import PageTransition from "@/components/motion/PageTransition";
 import SmoothScroll from "@/components/motion/SmoothScroll";
 import ScrollProgress from "@/components/motion/ScrollProgress";
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export const metadata: Metadata = {
   title: "Tilenga Safaris — Explore Discover Experience",
   description:
     "Tilenga Safaris crafts personalized adventures across Uganda, Kenya, Tanzania, Rwanda and beyond. Wild luxury. Unforgettable memories.",
   keywords: "safari, Uganda, Kenya, Tanzania, Rwanda, Africa, gorilla trekking, Murchison Falls, luxury travel",
+  manifest: `${base}/manifest.json`,
+  icons: {
+    icon: `${base}/icon.svg`,
+    apple: `${base}/icon.svg`,
+  },
 };
 
 export default function RootLayout({
