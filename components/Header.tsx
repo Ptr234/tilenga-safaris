@@ -46,7 +46,7 @@ export default function Header() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-700 ${
-          scrolled ? "py-4 bg-forest shadow-2xl" : "py-8 bg-transparent"
+          scrolled ? "py-3 md:py-4 bg-forest shadow-2xl" : "py-5 md:py-8 bg-transparent"
         }`}
       >
         <div className="flex items-center justify-between px-6 md:px-12 max-w-[1800px] mx-auto relative">
@@ -159,7 +159,7 @@ export default function Header() {
                     >
                       <Link
                         href={item.href}
-                        className="font-serif text-4xl md:text-6xl text-cream hover:text-gold transition-colors duration-500 uppercase tracking-tight block mb-3"
+                        className="font-serif text-3xl sm:text-4xl md:text-6xl text-cream hover:text-gold transition-colors duration-500 uppercase tracking-tight block mb-3"
                         onClick={() => setMobileOpen(false)}
                       >
                         {item.label}

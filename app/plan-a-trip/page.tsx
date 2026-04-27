@@ -48,7 +48,7 @@ export default function PlanATripPage() {
             <div className="w-10 h-px bg-gold" />
             <p className="section-label text-gold">Start Your Legacy</p>
           </div>
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-8xl text-cream uppercase tracking-[0.15em] leading-none">Plan Your<br /> <em className="not-italic text-gold">Safari</em></h1>
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-8xl text-cream uppercase tracking-[0.1em] md:tracking-[0.15em] leading-[1.05] md:leading-none">Plan Your<br /> <em className="not-italic text-gold">Safari</em></h1>
         </div>
       </section>
 
@@ -68,7 +68,7 @@ export default function PlanATripPage() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
 
           {/* Sidebar */}
-          <div className="md:col-span-1 space-y-8">
+          <div className="md:col-span-1 space-y-8 order-2 md:order-1">
             <div className="bg-forest-dark text-cream p-6 md:p-10 film-frame">
               <p className="font-serif text-2xl mb-6 uppercase tracking-[0.15em] leading-tight">Speak to a <br />Specialist</p>
               <div className="w-8 h-px bg-gold mb-8" />
@@ -109,7 +109,7 @@ export default function PlanATripPage() {
           </div>
 
           {/* Form */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 order-1 md:order-2">
             {submitted ? (
               <div className="bg-white border border-gold/10 p-8 md:p-16 text-center film-frame">
                 <div className="flex justify-center mb-8">

@@ -72,7 +72,7 @@ export default function Footer() {
           <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gold/10">
 
             {/* LEFT — Brand & CTA */}
-            <div className="flex flex-col justify-center py-20 md:py-32 md:pr-16">
+            <div className="flex flex-col justify-center py-14 md:py-32 md:pr-16">
               <Link href="/" className="inline-flex mb-10">
                 <img
                   src={`${base}/tilenga-logo-light.svg`}
@@ -83,7 +83,7 @@ export default function Footer() {
 
               <div className="w-10 h-px bg-gold/40 mb-8" />
 
-              <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-cream leading-[1.06] mb-6">
+              <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl text-cream leading-[1.06] mb-6">
                 Where Your African<br />
                 <span className="italic text-gold font-serif">Story Begins</span>
               </h2>
@@ -109,7 +109,7 @@ export default function Footer() {
             </div>
 
             {/* RIGHT — Newsletter + Contact */}
-            <div className="flex flex-col justify-center py-20 md:py-32 md:pl-16">
+            <div className="flex flex-col justify-center py-10 md:py-32 md:pl-16">
 
               <p className="text-gold/60 text-[8px] uppercase tracking-[0.45em] font-sans font-semibold mb-3">
                 Safari Stories &amp; Travel Inspiration
@@ -233,7 +233,7 @@ export default function Footer() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16 py-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-8">
 
             <div>
               <div className="flex items-center gap-3 mb-7">

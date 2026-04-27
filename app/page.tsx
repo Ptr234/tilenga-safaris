@@ -102,7 +102,7 @@ export default function HomePage() {
         <StaggerGrid className="grid md:grid-cols-2 gap-2 max-w-7xl mx-auto">
           {lodges.map((lodge) => (
             <StaggerItem key={lodge.name}>
-              <Link href={lodge.href} className="group block relative overflow-hidden h-[85vh] min-h-[500px]">
+              <Link href={lodge.href} className="group block relative overflow-hidden h-[62vh] md:h-[85vh] min-h-[420px]">
                 <img
                   src={lodge.image}
                   alt={lodge.name}
@@ -161,10 +161,10 @@ export default function HomePage() {
           </div>
 
           {/* Clean Journal Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-y-10 md:gap-y-20 gap-x-8">
-            
+          <div className="grid grid-cols-2 md:grid-cols-12 gap-y-8 md:gap-y-20 gap-x-6 md:gap-x-8">
+
             {/* 01. Uganda — Large Featured Vertical */}
-            <div className="md:col-span-7">
+            <div className="col-span-2 md:col-span-7">
               <FadeIn direction="up">
                 <Link href="/destinations/uganda" className="group block">
                   <div className="relative aspect-[16/10] md:aspect-[14/11] overflow-hidden mb-8 shadow-sm">
@@ -187,7 +187,7 @@ export default function HomePage() {
             </div>
 
             {/* 02. Kenya — Smaller Offset */}
-            <div className="md:col-span-5 md:pt-32">
+            <div className="col-span-2 md:col-span-5 md:pt-32">
               <FadeIn direction="up" delay={0.2}>
                 <Link href="/destinations/kenya" className="group block">
                   <div className="relative aspect-square md:aspect-[4/5] overflow-hidden mb-8 shadow-sm">
@@ -207,25 +207,25 @@ export default function HomePage() {
             </div>
 
             {/* Row 2: Symmetric Journal Row */}
-            {[destinations[2], destinations[3], destinations[4]].map((dest, i) => (
-              <div key={dest.name} className="md:col-span-4">
-                <FadeIn direction="up" delay={0.1 * i}>
+            <div className="col-span-2 md:col-span-12 grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+              {[destinations[2], destinations[3], destinations[4]].map((dest, i) => (
+                <FadeIn key={dest.name} direction="up" delay={0.1 * i}>
                   <Link href={dest.href} className="group block">
-                    <div className="relative aspect-[4/5] overflow-hidden mb-6 shadow-sm border border-gold/5">
+                    <div className="relative aspect-[3/4] md:aspect-[4/5] overflow-hidden mb-4 md:mb-6 shadow-sm border border-gold/5">
                       <img
                         src={dest.image}
                         alt={dest.name}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                       />
                     </div>
-                    <div className="text-center px-4">
-                      <h4 className="font-serif text-2xl text-forest uppercase tracking-widest mb-2">{dest.name}</h4>
-                      <p className="text-gold text-[9px] uppercase tracking-[0.3em] font-bold">{dest.tag}</p>
+                    <div className="text-center px-1 md:px-4">
+                      <h4 className="font-serif text-base md:text-2xl text-forest uppercase tracking-widest mb-1 md:mb-2">{dest.name}</h4>
+                      <p className="text-gold text-[8px] md:text-[9px] uppercase tracking-[0.3em] font-bold">{dest.tag}</p>
                     </div>
                   </Link>
                 </FadeIn>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           <FadeIn direction="up" delay={0.2} className="text-center mt-14 md:mt-32">
@@ -235,7 +235,7 @@ export default function HomePage() {
       </section>
 
       {/* Experiences — full-image hover reveal */}
-      <section className="pt-14 pb-0 md:py-28 px-6 md:px-16 bg-cream-dark">
+      <section className="pt-14 pb-10 md:py-28 px-6 md:px-16 bg-cream-dark">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8 md:mb-14">
             <FadeIn direction="fade"><p className="section-label mb-3">What We Offer</p></FadeIn>
@@ -253,7 +253,7 @@ export default function HomePage() {
             </FadeIn>
           </div>
 
-          <StaggerGrid className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5">
+          <StaggerGrid className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-1 md:gap-1.5">
             {experiences.map((exp) => (
               <StaggerItem key={exp.title}>
                 <div className="group relative overflow-hidden aspect-square cursor-default">
@@ -267,11 +267,11 @@ export default function HomePage() {
                   {/* Hover overlay */}
                   <div className="absolute inset-0 bg-forest/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   {/* Title — always visible */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-0 group-hover:-translate-y-2 transition-transform duration-500">
-                    <h3 className="font-serif text-xl text-cream">{exp.title}</h3>
+                  <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6 translate-y-0 group-hover:-translate-y-2 transition-transform duration-500">
+                    <h3 className="font-serif text-sm md:text-xl text-cream leading-tight">{exp.title}</h3>
                   </div>
-                  {/* Description — hover reveal */}
-                  <div className="absolute inset-0 flex items-center justify-center px-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                  {/* Description — hover reveal (desktop only) */}
+                  <div className="absolute inset-0 hidden md:flex items-center justify-center px-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                     <div className="text-center">
                       <div className="w-8 h-px bg-gold mx-auto mb-4" />
                       <h3 className="font-serif text-2xl text-cream mb-3">{exp.title}</h3>
@@ -290,14 +290,14 @@ export default function HomePage() {
       </section>
 
       {/* Heritage — narrative approach with parallax anchor */}
-      <section className="py-4 md:py-40 px-6 md:px-16 bg-cream-dark relative z-10">
+      <section className="pt-10 pb-14 md:py-40 px-6 md:px-16 bg-cream-dark relative z-10">
         {/* Subtle decorative elements for scroll depth */}
         <div className="absolute top-0 right-0 w-[40%] h-full opacity-[0.03] pointer-events-none">
            <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1200&q=80" className="w-full h-full object-cover" alt="" />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid md:grid-cols-12 gap-4 md:gap-20 items-center">
+          <div className="grid md:grid-cols-12 gap-10 md:gap-20 items-center">
             <div className="md:col-span-5 order-2 md:order-1">
               <FadeIn direction="up" delay={0.1}>
                 <p className="section-label">A Century of Passion</p>
@@ -327,20 +327,32 @@ export default function HomePage() {
               <div className="relative">
                 <ImageReveal direction="left" delay={0.3}>
                   <div className="film-frame aspect-[16/11] overflow-hidden shadow-2xl">
-                    <img 
-                      src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=1800&q=80" 
-                      alt="The Spirit of Safari" 
+                    <img
+                      src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=1800&q=80"
+                      alt="The Spirit of Safari"
                       className="w-full h-full object-cover"
                     />
                   </div>
                 </ImageReveal>
-                {/* Floating secondary image — bleeds into Sustainability section below */}
+
+                {/* Mobile: secondary image shown below as inline block */}
+                <FadeIn direction="up" delay={0.4} className="mt-4 lg:hidden">
+                  <div className="film-frame aspect-video overflow-hidden shadow-xl">
+                    <img
+                      src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=800&q=80"
+                      alt="Wildlife Detail"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </FadeIn>
+
+                {/* Desktop: floating secondary image — bleeds into Sustainability section below */}
                 <div className="absolute -bottom-20 -left-16 hidden lg:block w-72 h-96 z-20">
                   <FadeIn direction="up" delay={0.6}>
                     <div className="film-frame h-full overflow-hidden shadow-2xl border-4 border-white/10">
-                      <img 
-                        src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=800&q=80" 
-                        alt="Wildlife Detail" 
+                      <img
+                        src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=800&q=80"
+                        alt="Wildlife Detail"
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -353,20 +365,20 @@ export default function HomePage() {
       </section>
 
       {/* Sustainability */}
-      <section className="py-4 md:py-28 px-6 md:px-16 bg-cream relative z-[5] lg:pt-24">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-4 md:gap-20 items-center">
-          <div className="grid grid-cols-2 gap-4 pt-12 md:pt-0">
+      <section className="py-14 md:py-28 px-6 md:px-16 bg-cream relative z-[5] lg:pt-24">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-20 items-center">
+          <div className="grid grid-cols-2 gap-3 md:gap-4 pt-6 md:pt-0">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <div className="film-frame aspect-square">
                 <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&q=80" alt="Conservation" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
               </div>
             </ImageReveal>
-            <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-12">
+            <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-0 md:mt-12">
               <div className="film-frame aspect-square">
                 <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" alt="Landscape" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
               </div>
             </ImageReveal>
-            <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-12">
+            <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden mt-0 md:-mt-12">
               <div className="film-frame aspect-square">
                 <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&q=80" alt="Wildlife" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
               </div>
@@ -445,16 +457,16 @@ export default function HomePage() {
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
 
         {/* Content — extra top padding on desktop so content clears the bleed image */}
-        <div className="relative z-10 w-full pt-36 pb-28 md:pt-52 md:pb-40">
+        <div className="relative z-10 w-full pt-20 pb-20 md:pt-52 md:pb-40">
           <div className="max-w-7xl mx-auto px-6 md:px-16">
 
             {/* Full-width 2-col grid: heading left, quotes right */}
-            <div className="grid md:grid-cols-[1fr_1.6fr] gap-12 md:gap-24 items-start">
+            <div className="grid md:grid-cols-[1fr_1.6fr] gap-10 md:gap-24 items-start">
 
               {/* LEFT — sticky-ish header block */}
               <FadeIn direction="left" className="md:pt-4">
                 <p className="section-label !text-gold/60 mb-6">Verified Traveller Reviews</p>
-                <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl text-cream uppercase tracking-[0.05em] leading-[1.05] mb-8">
+                <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl text-cream uppercase tracking-[0.05em] leading-[1.05] mb-8">
                   What Our<br />Travellers<br />Say
                 </h2>
                 <div className="w-16 h-px bg-gold/50 mb-8" />
@@ -502,7 +514,7 @@ export default function HomePage() {
                       </span>
 
                       {/* Quote */}
-                      <p className="font-serif italic text-cream/80 text-xl md:text-2xl lg:text-[1.6rem] leading-[1.75] mb-8 group-hover:text-cream transition-colors duration-500 relative z-10">
+                      <p className="font-serif italic text-cream/80 text-base md:text-2xl lg:text-[1.6rem] leading-[1.7] mb-6 md:mb-8 group-hover:text-cream transition-colors duration-500 relative z-10">
                         &ldquo;{t.quote}&rdquo;
                       </p>
 
