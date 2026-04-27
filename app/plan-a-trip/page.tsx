@@ -15,6 +15,7 @@ const interests = [
   "Honeymoon / Romance",
   "Family Safari",
 ];
+
 export default function PlanATripPage() {
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
@@ -55,9 +56,9 @@ export default function PlanATripPage() {
       {/* Intro */}
       <section className="bg-cream py-10 md:py-20 px-6 md:px-16 text-center">
         <div className="max-w-3xl mx-auto">
-          <p className="text-stone font-sans text-base leading-relaxed mb-4">
-            Share your vision with us. Our specialists will craft a bespoke itinerary tailored 
-            to your unique rhythm — combining wild adventure with refined comfort.
+          <h2 className="font-serif text-3xl md:text-5xl text-forest uppercase tracking-widest mb-8">Plan A Trip</h2>
+          <p className="text-stone font-sans text-base leading-relaxed mb-4 italic">
+            Before we can start creating your custom itinerary for your adventure, let us know a little more about what you have in mind so we can build a trip to suit your needs.
           </p>
           <div className="w-16 h-px bg-gold mx-auto mt-8" />
         </div>
@@ -125,89 +126,122 @@ export default function PlanATripPage() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-white border border-gold/10 p-6 md:p-10 space-y-6 md:space-y-8">
-                <div className="grid md:grid-cols-2 gap-8">
+              <form onSubmit={handleSubmit} className="bg-white border border-gold/10 p-6 md:p-10 space-y-6 md:space-y-10">
+                
+                {/* Personal Details */}
+                <div className="space-y-6">
+                   <p className="text-gold text-[10px] uppercase tracking-[0.3em] font-bold border-b border-gold/20 pb-2">01. Personal Details</p>
+                   <div className="grid md:grid-cols-2 gap-8">
+                    <div>
+                      <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">Name *</label>
+                      <input type="text" required className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors" />
+                    </div>
+                    <div>
+                      <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">Surname *</label>
+                      <input type="text" required className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors" />
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div>
+                      <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">Email Address *</label>
+                      <input type="email" required className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors" />
+                    </div>
+                    <div>
+                      <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">Phone *</label>
+                      <input type="tel" required className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Trip Details */}
+                <div className="space-y-6">
+                  <p className="text-gold text-[10px] uppercase tracking-[0.3em] font-bold border-b border-gold/20 pb-2">02. Trip Composition</p>
+                  <div className="grid md:grid-cols-3 gap-8">
+                    <div>
+                      <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">Number of Adults *</label>
+                      <input type="number" min="1" required className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors" />
+                    </div>
+                    <div>
+                      <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">Number of Children (6-16yrs)</label>
+                      <input type="number" min="0" className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors" />
+                    </div>
+                    <div>
+                      <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">Number of Pax (Total)</label>
+                      <input type="number" min="1" className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Logistics */}
+                <div className="space-y-6">
+                  <p className="text-gold text-[10px] uppercase tracking-[0.3em] font-bold border-b border-gold/20 pb-2">03. Timeline & Destinations</p>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div>
+                      <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">Check in date</label>
+                      <input type="date" className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors" />
+                    </div>
+                    <div>
+                      <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">Check out date</label>
+                      <input type="date" className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors" />
+                    </div>
+                  </div>
+
                   <div>
-                    <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">First Name *</label>
-                    <input
-                      type="text"
+                    <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">Destinations you&apos;re interested in *</label>
+                    <select
                       required
-                      className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors"
-                    />
+                      className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors appearance-none"
+                    >
+                      <option value="">Select a destination</option>
+                      {destinations.map((d) => (
+                        <option key={d}>{d}</option>
+                      ))}
+                    </select>
                   </div>
+                </div>
+
+                {/* Preferences */}
+                <div className="space-y-6">
+                  <p className="text-gold text-[10px] uppercase tracking-[0.3em] font-bold border-b border-gold/20 pb-2">04. Preferences</p>
                   <div>
-                    <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">Last Name *</label>
-                    <input
-                      type="text"
-                      required
-                      className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors"
-                    />
+                    <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-6">Travel Interests / Preferences (select all that apply)</label>
+                    <div className="flex flex-wrap gap-3">
+                      {interests.map((interest) => (
+                        <button
+                          type="button"
+                          key={interest}
+                          onClick={() => toggleInterest(interest)}
+                          className={`text-[10px] uppercase tracking-widest font-sans px-4 py-2 border transition-all duration-300 ${
+                            selectedInterests.includes(interest)
+                              ? "bg-forest text-cream border-forest"
+                              : "bg-transparent text-stone/60 border-stone/20 hover:border-gold hover:text-gold"
+                          }`}
+                        >
+                          {interest}
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                <div className="grid md:grid-cols-2 gap-8">
                   <div>
-                    <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">Email Address *</label>
-                    <input
-                      type="email"
-                      required
-                      className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors"
+                    <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">Preferred activities in this destination</label>
+                    <textarea
+                      rows={2}
+                      placeholder="e.g. Hot air balloon, private dining, specific wildlife sightings..."
+                      className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors resize-none"
                     />
                   </div>
-                  <div>
-                    <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">Phone / WhatsApp</label>
-                    <input
-                      type="tel"
-                      className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors"
-                    />
+
+                  <div className="flex items-center gap-4">
+                    <input type="checkbox" id="suggestions" className="w-4 h-4 accent-gold" />
+                    <label htmlFor="suggestions" className="text-stone font-sans text-sm">Open to different suggestions / options</label>
                   </div>
-                </div>
-
-                <div>
-                  <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">Preferred Destination *</label>
-                  <select
-                    required
-                    className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors appearance-none"
-                  >
-                    <option value="">Select a destination</option>
-                    {destinations.map((d) => (
-                      <option key={d}>{d}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-6">Interests (select all that apply)</label>
-                  <div className="flex flex-wrap gap-3">
-                    {interests.map((interest) => (
-                      <button
-                        type="button"
-                        key={interest}
-                        onClick={() => toggleInterest(interest)}
-                        className={`text-[10px] uppercase tracking-widest font-sans px-4 py-2 border transition-all duration-300 ${
-                          selectedInterests.includes(interest)
-                            ? "bg-forest text-cream border-forest"
-                            : "bg-transparent text-stone/60 border-stone/20 hover:border-gold hover:text-gold"
-                        }`}
-                      >
-                        {interest}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">Tell us about your dream safari</label>
-                  <textarea
-                    rows={4}
-                    placeholder="Share your vision..."
-                    className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors resize-none"
-                  />
                 </div>
 
                 <div className="pt-6">
-                  <button type="submit" className="btn-primary w-full text-center text-sm py-5 tracking-[0.15em] uppercase">
-                    Submit Request
+                  <button type="submit" className="btn-primary w-full text-center text-sm py-5 tracking-[0.15em] uppercase font-bold">
+                    Create My Journey
                   </button>
                 </div>
               </form>
