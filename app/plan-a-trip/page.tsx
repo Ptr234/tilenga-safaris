@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const destinations = ["Uganda", "Kenya", "Tanzania", "Rwanda", "South Africa", "Dubai", "Multiple Destinations"];
+const destinations = ["Uganda", "Kenya", "Tanzania", "Rwanda", "South Africa", "Namibia", "Botswana", "Multiple Destinations"];
 const interests = [
   "Gorilla Trekking",
   "Game Drives",

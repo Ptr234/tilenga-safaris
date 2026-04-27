@@ -14,7 +14,8 @@ const navItems = [
       { label: "Tanzania", href: "/destinations/tanzania" },
       { label: "Rwanda", href: "/destinations/rwanda" },
       { label: "South Africa", href: "/destinations/south-africa" },
-      { label: "Dubai", href: "/destinations/dubai" },
+      { label: "Namibia", href: "/destinations/namibia" },
+      { label: "Botswana", href: "/destinations/botswana" },
     ],
   },
   {

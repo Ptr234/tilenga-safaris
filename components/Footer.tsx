@@ -6,7 +6,8 @@ const destinations = [
   { name: "Tanzania",     sub: "Serengeti",          image: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=600&q=85", href: "/destinations/tanzania" },
   { name: "Rwanda",       sub: "A Thousand Hills",   image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=85", href: "/destinations/rwanda" },
   { name: "South Africa", sub: "Cape & Kruger",      image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=85", href: "/destinations/south-africa" },
-  { name: "Dubai",        sub: "Desert Luxury",      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=85", href: "/destinations/dubai" },
+  { name: "Namibia",      sub: "Desert & Dunes",     image: "https://images.unsplash.com/photo-1547952237-23dcc22f66fc?w=600&q=85", href: "/destinations/namibia" },
+  { name: "Botswana",     sub: "Okavango Delta",     image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=85", href: "/destinations/botswana" },
 ];
 
 const socials = [
@@ -189,7 +190,7 @@ export default function Footer() {
             View All →
           </Link>
         </div>
-        <div className="grid grid-cols-3 md:grid-cols-6">
+        <div className="grid grid-cols-4 md:grid-cols-7">
           {destinations.map((d, i) => (
             <Link
               key={d.name}
@@ -244,10 +245,10 @@ export default function Footer() {
                 Destinations
               </p>
               <ul className="space-y-3">
-                {["Uganda", "Kenya", "Tanzania", "Rwanda", "South Africa", "Dubai"].map((d) => (
+                {["Uganda", "Kenya", "Tanzania", "Rwanda", "South Africa", "Namibia", "Botswana"].map((d) => (
                   <li key={d}>
                     <Link
-                      href={`/destinations/${d.toLowerCase().replace(" ", "-")}`}
+                      href={`/destinations/${d.toLowerCase().replace(/ /g, "-")}`}
                       className="text-forest/70 text-[11px] font-sans hover:text-gold transition-colors duration-300 tracking-wide group flex items-center gap-2"
                     >
                       <span className="w-0 group-hover:w-3 h-px bg-gold transition-all duration-300 inline-block shrink-0" />

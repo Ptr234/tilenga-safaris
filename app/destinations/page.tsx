@@ -53,14 +53,24 @@ const destinations = [
     num: "05",
   },
   {
-    name: "Dubai",
-    tag: "Desert Luxury",
-    description: "The perfect safari extension — dune safaris, record-breaking architecture, world-class dining, and ancient souks.",
-    hotspots: ["Desert Safari", "Burj Khalifa", "Old Dubai Souks", "Palm Jumeirah"],
-    bestTime: "Nov–Mar",
-    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=80",
-    href: "/destinations/dubai",
+    name: "Namibia",
+    tag: "Desert & Dunes",
+    description: "A land of vast silence — towering red dunes at Sossusvlei, Etosha's wildlife, the Skeleton Coast, and starlit desert skies.",
+    hotspots: ["Sossusvlei Dunes", "Etosha NP", "Skeleton Coast", "Fish River Canyon"],
+    bestTime: "May–Oct",
+    image: "https://images.unsplash.com/photo-1547952237-23dcc22f66fc?w=1200&q=80",
+    href: "/destinations/namibia",
     num: "06",
+  },
+  {
+    name: "Botswana",
+    tag: "Okavango Delta",
+    description: "Pristine wilderness at its most exclusive — the Okavango Delta, Chobe's elephants, and the Kalahari under a billion stars.",
+    hotspots: ["Okavango Delta", "Chobe NP", "Moremi Reserve", "Makgadikgadi Pans"],
+    bestTime: "Apr–Oct",
+    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1200&q=80",
+    href: "/destinations/botswana",
+    num: "07",
   },
 ];
 
@@ -88,7 +98,7 @@ export default function DestinationsPage() {
             Our<br /><em className="not-italic text-gold">Destinations</em>
           </h1>
           <p className="text-cream/60 font-sans text-base max-w-md leading-relaxed">
-            Six breathtaking destinations. Each with its own character, wildlife, and transformative story.
+            Seven breathtaking destinations. Each with its own character, wildlife, and transformative story.
           </p>
         </div>
       </section>
@@ -150,9 +160,9 @@ export default function DestinationsPage() {
           </div>
         </div>
 
-        {/* Row 2: Rwanda, South Africa, Dubai — equal thirds */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-          {[destinations[3], destinations[4], destinations[5]].map((dest) => (
+        {/* Row 2: Rwanda, South Africa, Namibia, Botswana — equal quarters */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          {[destinations[3], destinations[4], destinations[5], destinations[6]].map((dest) => (
             <Link
               key={dest.name}
               href={dest.href}

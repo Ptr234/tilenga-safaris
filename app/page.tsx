@@ -42,12 +42,13 @@ const destinations = [
   { name: "Tanzania", tag: "Serengeti & Zanzibar", image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=800&q=80", href: "/destinations/tanzania" },
   { name: "Rwanda", tag: "Land of a Thousand Hills", image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800&q=80", href: "/destinations/rwanda" },
   { name: "South Africa", tag: "Cape & Kruger", image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=800&q=80", href: "/destinations/south-africa" },
-  { name: "Dubai", tag: "Desert Luxury", image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80", href: "/destinations/dubai" },
+  { name: "Namibia", tag: "Desert & Dunes", image: "https://images.unsplash.com/photo-1547952237-23dcc22f66fc?w=800&q=80", href: "/destinations/namibia" },
+  { name: "Botswana", tag: "Okavango Delta", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80", href: "/destinations/botswana" },
 ];
 
 const stats = [
   { value: "5+", label: "Years of Expertise" },
-  { value: "6", label: "Destinations" },
+  { value: "7", label: "Destinations" },
   { value: "2", label: "Luxury Lodges" },
   { value: "500+", label: "Happy Travelers" },
 ];
@@ -77,62 +78,6 @@ export default function HomePage() {
             </FadeIn>
           ))}
         </div>
-      </section>
-
-      {/* Our Lodges — full-image cinematic cards */}
-      <section className="py-14 md:py-28 px-6 md:px-16 bg-forest-dark">
-        <div className="text-center mb-10 md:mb-16 max-w-2xl mx-auto">
-          <FadeIn direction="fade" delay={0}>
-            <p className="section-label text-gold mb-3">Where You Stay</p>
-          </FadeIn>
-          <LineReveal
-            lines={["Our Lodges in Uganda"]}
-            delay={0.1}
-            lineClassName="font-serif text-4xl md:text-5xl text-cream leading-tight uppercase tracking-[0.15em]"
-          />
-          <FadeIn direction="fade" delay={0.4}>
-            <div className="w-12 h-px bg-gold mx-auto mt-6" />
-            <p className="text-cream/50 max-w-xl mx-auto mt-6 font-sans leading-relaxed text-sm">
-              Each lodge sits at the gateway of Uganda&apos;s most spectacular national parks —
-              designed for comfort, wildlife, and that rare sense of being completely away.
-            </p>
-          </FadeIn>
-        </div>
-
-        <StaggerGrid className="grid md:grid-cols-2 gap-2 max-w-7xl mx-auto">
-          {lodges.map((lodge) => (
-            <StaggerItem key={lodge.name}>
-              <Link href={lodge.href} className="group block relative overflow-hidden h-[62vh] md:h-[85vh] min-h-[420px]">
-                <img
-                  src={lodge.image}
-                  alt={lodge.name}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
-                />
-                {/* Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-dark/30 to-transparent transition-opacity duration-700 group-hover:opacity-90" />
-                {/* Tag */}
-                <span className="absolute top-6 left-6 text-[10px] uppercase tracking-[0.25em] font-sans text-gold border border-gold/40 px-3 py-1 bg-forest-dark/40 backdrop-blur-sm">
-                  {lodge.tag}
-                </span>
-                {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10">
-                  <p className="text-gold/70 text-[10px] uppercase tracking-[0.25em] font-sans mb-2">{lodge.location}</p>
-                  <h3 className="font-serif text-3xl md:text-4xl text-cream mb-3 leading-tight">{lodge.name}</h3>
-                  {/* Description — always visible on mobile, hover-reveal on desktop */}
-                  <p className="text-cream/60 text-sm font-sans leading-relaxed max-w-sm mb-5 translate-y-0 opacity-100 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-500 ease-out">
-                    {lodge.description}
-                  </p>
-                  <span className="inline-flex items-center gap-2 text-gold text-xs uppercase tracking-widest font-sans border-b border-gold/40 pb-0.5 group-hover:border-gold transition-colors duration-300">
-                    Explore Lodge
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                      <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                </div>
-              </Link>
-            </StaggerItem>
-          ))}
-        </StaggerGrid>
       </section>
 
       {/* Destinations Section — Journal Style Editorial Grid */}
@@ -207,8 +152,8 @@ export default function HomePage() {
             </div>
 
             {/* Row 2: Symmetric Journal Row */}
-            <div className="col-span-2 md:col-span-12 grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-              {[destinations[2], destinations[3], destinations[4]].map((dest, i) => (
+            <div className="col-span-2 md:col-span-12 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+              {[destinations[2], destinations[3], destinations[4], destinations[5]].map((dest, i) => (
                 <FadeIn key={dest.name} direction="up" delay={0.1 * i}>
                   <Link href={dest.href} className="group block">
                     <div className="relative aspect-[3/4] md:aspect-[4/5] overflow-hidden mb-4 md:mb-6 shadow-sm border border-gold/5">
@@ -232,6 +177,58 @@ export default function HomePage() {
             <Link href="/destinations" className="btn-primary px-10 md:px-14">The Full Collection</Link>
           </FadeIn>
         </div>
+      </section>
+
+      {/* Our Lodges — full-image cinematic cards */}
+      <section className="py-14 md:py-28 px-6 md:px-16 bg-forest-dark">
+        <div className="text-center mb-10 md:mb-16 max-w-2xl mx-auto">
+          <FadeIn direction="fade" delay={0}>
+            <p className="section-label text-gold mb-3">Where You Stay</p>
+          </FadeIn>
+          <LineReveal
+            lines={["Our Lodges in Uganda"]}
+            delay={0.1}
+            lineClassName="font-serif text-4xl md:text-5xl text-cream leading-tight uppercase tracking-[0.15em]"
+          />
+          <FadeIn direction="fade" delay={0.4}>
+            <div className="w-12 h-px bg-gold mx-auto mt-6" />
+            <p className="text-cream/50 max-w-xl mx-auto mt-6 font-sans leading-relaxed text-sm">
+              Each lodge sits at the gateway of Uganda&apos;s most spectacular national parks —
+              designed for comfort, wildlife, and that rare sense of being completely away.
+            </p>
+          </FadeIn>
+        </div>
+
+        <StaggerGrid className="grid md:grid-cols-2 gap-2 max-w-7xl mx-auto">
+          {lodges.map((lodge) => (
+            <StaggerItem key={lodge.name}>
+              <Link href={lodge.href} className="group block relative overflow-hidden h-[62vh] md:h-[85vh] min-h-[420px]">
+                <img
+                  src={lodge.image}
+                  alt={lodge.name}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-dark/30 to-transparent transition-opacity duration-700 group-hover:opacity-90" />
+                <span className="absolute top-6 left-6 text-[10px] uppercase tracking-[0.25em] font-sans text-gold border border-gold/40 px-3 py-1 bg-forest-dark/40 backdrop-blur-sm">
+                  {lodge.tag}
+                </span>
+                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10">
+                  <p className="text-gold/70 text-[10px] uppercase tracking-[0.25em] font-sans mb-2">{lodge.location}</p>
+                  <h3 className="font-serif text-3xl md:text-4xl text-cream mb-3 leading-tight">{lodge.name}</h3>
+                  <p className="text-cream/60 text-sm font-sans leading-relaxed max-w-sm mb-5 translate-y-0 opacity-100 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-500 ease-out">
+                    {lodge.description}
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-gold text-xs uppercase tracking-widest font-sans border-b border-gold/40 pb-0.5 group-hover:border-gold transition-colors duration-300">
+                    Explore Lodge
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                </div>
+              </Link>
+            </StaggerItem>
+          ))}
+        </StaggerGrid>
       </section>
 
       {/* Experiences — full-image hover reveal */}
