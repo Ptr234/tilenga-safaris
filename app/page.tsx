@@ -7,6 +7,7 @@ import ImageReveal from "@/components/motion/ImageReveal";
 import LineReveal from "@/components/motion/LineReveal";
 
 import ExperienceCarousel from "@/components/ExperienceCarousel";
+import Partners from "@/components/Partners";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -412,6 +413,9 @@ export default function HomePage() {
           </div>
         </FadeIn>
       </section>
+
+      {/* Partners */}
+      <Partners />
 
       {/* Testimonials */}
       <section className="relative z-0 min-h-screen flex items-center overflow-hidden">

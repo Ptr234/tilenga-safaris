@@ -4,23 +4,23 @@ import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 
 const values = [
   {
-    title: "Customer-Centricity",
-    desc: "Every itinerary we design is built around you — your interests, pace, budget, and vision. We foster enduring relationships, not one-time transactions.",
+    title: "Customer-centricity",
+    desc: "Putting the customer experience at the forefront of everything, and building long-term relationships.",
     num: "01",
   },
   {
     title: "Integrity",
-    desc: "Transparency in pricing, honest communication, and ethical partnerships. What we promise, we deliver.",
+    desc: "Committing to honesty and transparency in all dealings, including pricing, communication, and partnerships.",
     num: "02",
   },
   {
     title: "Quality",
-    desc: "From our lodge standards to our guide expertise and partner networks — we maintain elevated standards at every touchpoint of your journey.",
+    desc: "Delivering high standards of service, accommodation, and experiences to ensure memorable and enjoyable trips.",
     num: "03",
   },
   {
     title: "Sustainability",
-    desc: "We support environmentally conscious practices, local communities, and cultural preservation — ensuring Africa's wild beauty endures.",
+    desc: "Promoting responsible travel practices that minimize environmental impact, support local communities, and preserve cultural heritage.",
     num: "04",
   },
 ];
@@ -125,34 +125,27 @@ export default function AboutPage() {
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/30 to-forest-dark/85" />
-        <div className="relative z-10 px-6 md:px-16 pb-16 max-w-3xl">
-          <p className="section-label text-gold mb-3">Who We Are</p>
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-8xl text-cream mb-4 uppercase tracking-[0.15em] leading-none">About Us</h1>
-          <p className="font-serif italic text-2xl text-gold">Passion for Travel. Care for People.</p>
+        <div className="relative z-10 px-6 md:px-16 pb-16 max-w-4xl">
+          <p className="section-label text-gold mb-3 uppercase tracking-[0.4em] font-bold">About Tilenga</p>
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl text-cream mb-4 uppercase tracking-[0.1em] leading-[1.1]">
+            Founded on the principles of passion for travel and a deep understanding of customer needs
+          </h1>
         </div>
       </section>
 
-      {/* Mission */}
+      {/* About Tilenga Main */}
       <section className="bg-cream py-16 md:py-32 px-6 md:px-16">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-20 items-center">
           <div>
-            <p className="section-label mb-3">Our Story</p>
-            <h2 className="section-heading mb-8 uppercase tracking-[0.15em]">Crafting Personalized Adventures</h2>
+            <p className="section-label mb-3 text-gold uppercase tracking-widest font-bold">About Tilenga</p>
+            <h2 className="section-heading mb-8 uppercase tracking-[0.1em] text-forest">Our Story</h2>
             <div className="w-16 h-px bg-gold mb-8" />
-            <div className="space-y-6 text-stone font-sans text-base leading-relaxed mb-12">
+            <div className="space-y-6 text-stone font-sans text-lg leading-relaxed mb-12">
               <p>
-                Tilenga Safaris was founded on a simple, powerful belief — that travel has the power
-                to transform. We serve explorers and travel enthusiasts who view journeys not as
-                mere destination-reaching, but as opportunities to discover themselves and the world.
+                At Tilenga Safaris, we are passionate explorers and dedicated travel enthusiasts who believe that travel is not just about reaching a destination; it’s about immersing yourself in new experiences, creating unforgettable memories, and discovering the world around you.
               </p>
               <p>
-                With over 5 years of expertise in the travel industry and a passionate team of
-                specialists who know East Africa deeply, we develop carefully designed itineraries
-                that combine adventure, culture, and relaxation — creating lasting impressions
-                that our guests carry home for a lifetime.
-              </p>
-              <p className="text-forest font-serif italic text-lg">
-                &ldquo;Our mission is to inspire and enrich lives through travel.&rdquo;
+                Founded on the principles of passion for travel and a deep understanding of customer needs, we strive to provide exceptional service and curated travel experiences beyond the ordinary.
               </p>
             </div>
             <Link href="/plan-a-trip" className="btn-primary px-10">Plan Your Safari</Link>
@@ -173,22 +166,55 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values */}
-      <section className="bg-cream-dark py-14 md:py-28 px-6 md:px-16">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10 md:mb-20">
-            <p className="section-label mb-3">How We Work</p>
-            <h2 className="section-heading uppercase tracking-[0.15em]">Our Core Values</h2>
-            <div className="w-20 h-px bg-gold mx-auto mt-6" />
+      {/* Mission */}
+      <section className="bg-forest-dark py-20 md:py-40 px-6 md:px-16 relative overflow-hidden">
+        <div className="absolute inset-0 grain-overlay opacity-5 pointer-events-none" />
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <p className="text-gold text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block">Our Purpose</p>
+          <h2 className="font-serif text-3xl md:text-5xl text-cream mb-10 uppercase tracking-widest leading-tight">Our Mission</h2>
+          <div className="w-20 h-px bg-gold mx-auto mb-10" />
+          <p className="font-serif italic text-2xl md:text-3xl text-cream/90 leading-relaxed max-w-3xl mx-auto">
+            &ldquo;Our mission is simple yet profound: to inspire and enrich lives through travel. We strive to offer meticulously crafted bespoke itineraries that blend adventure, culture, and relaxation, ensuring each trip leaves a lasting impact.&rdquo;
+          </p>
+        </div>
+      </section>
+
+      {/* Values — Editorial Grid */}
+      <section className="bg-cream-dark py-20 md:py-40 px-6 md:px-16 overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-20 md:mb-32">
+            <div className="max-w-2xl">
+              <FadeIn direction="fade">
+                <span className="text-gold uppercase tracking-[0.5em] text-[10px] font-bold mb-6 block text-center md:text-left">The Tilenga Ethos</span>
+              </FadeIn>
+              <h2 className="font-serif text-5xl md:text-8xl text-forest uppercase tracking-tighter leading-[0.85] text-center md:text-left">
+                Our Core <br />
+                <span className="italic text-gold lowercase tracking-normal">Values</span>
+              </h2>
+            </div>
+            <div className="hidden md:block w-24 h-px bg-gold/30 mb-4" />
           </div>
-          <div className="grid md:grid-cols-2 gap-10">
-            {values.map((v) => (
-              <div key={v.title} className="bg-white p-6 md:p-10 border border-gold/10 relative group hover:border-gold/30 transition-colors duration-500">
-                <p className="font-serif text-5xl text-gold/10 absolute top-6 right-8 group-hover:text-gold/20 transition-colors">{v.num}</p>
-                <h3 className="font-serif text-2xl text-forest mb-4 uppercase tracking-wide">{v.title}</h3>
-                <div className="w-8 h-px bg-gold/40 mb-6 group-hover:w-12 transition-all duration-500" />
-                <p className="text-stone font-sans text-base leading-relaxed">{v.desc}</p>
-              </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16">
+            {values.map((v, i) => (
+              <FadeIn key={v.title} direction="up" delay={i * 0.1} className="relative group">
+                {/* Large Background Number */}
+                <div className="absolute -top-10 -left-4 pointer-events-none select-none">
+                  <span className="font-serif text-[8rem] text-forest/[0.04] leading-none group-hover:text-gold/[0.08] transition-colors duration-1000">
+                    {v.num}
+                  </span>
+                </div>
+
+                <div className="relative z-10 pt-4">
+                   <div className="w-8 h-px bg-gold mb-8 transition-all duration-700 group-hover:w-full group-hover:bg-gold/40" />
+                   <h3 className="font-serif text-2xl text-forest uppercase tracking-widest mb-6 leading-tight group-hover:text-gold transition-colors duration-500">
+                     {v.title}
+                   </h3>
+                   <p className="text-stone/70 font-sans text-[15px] leading-relaxed group-hover:text-stone transition-colors duration-500">
+                     {v.desc}
+                   </p>
+                </div>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -207,36 +233,29 @@ export default function AboutPage() {
         <div className="absolute right-0 top-0 w-1/2 h-full hidden md:block bg-forest-dark/40" />
         <div className="max-w-6xl mx-auto relative">
           <div className="max-w-xl">
-            <p className="section-label mb-3">Why Tilenga Safaris</p>
-            <h2 className="section-heading mb-6">What Sets Us Apart</h2>
+            <p className="section-label mb-3 text-gold">Commitment to Excellence</p>
+            <h2 className="section-heading mb-6">Why Choose Us?</h2>
             <div className="w-12 h-0.5 bg-gold mb-8" />
-            <div className="space-y-6 mb-10">
-              <div className="flex gap-4">
-                <span className="text-gold text-xl mt-0.5">✦</span>
+            <div className="space-y-12 mb-10">
+              <div className="flex gap-6">
+                <span className="text-gold text-2xl mt-0.5 shrink-0">✦</span>
                 <div>
-                  <h4 className="font-serif text-lg text-forest mb-1">Specialized Local Expertise</h4>
-                  <p className="text-stone font-sans text-sm leading-relaxed">Our team comprises specialists who know every corner of East Africa — from the best gorilla family groups to the most productive game drive circuits.</p>
+                  <h4 className="font-serif text-xl text-forest uppercase tracking-widest mb-3">Expertise</h4>
+                  <p className="text-stone font-sans text-sm leading-relaxed">With years of experience in the travel industry, our team of travel specialists has insider knowledge and expertise to ensure seamless travel experiences.</p>
                 </div>
               </div>
-              <div className="flex gap-4">
-                <span className="text-gold text-xl mt-0.5">✦</span>
+              <div className="flex gap-6">
+                <span className="text-gold text-2xl mt-0.5 shrink-0">✦</span>
                 <div>
-                  <h4 className="font-serif text-lg text-forest mb-1">Truly Personalized Service</h4>
-                  <p className="text-stone font-sans text-sm leading-relaxed">No two itineraries are alike. We listen deeply to your travel dreams and craft experiences that reflect exactly what matters to you.</p>
+                  <h4 className="font-serif text-xl text-forest uppercase tracking-widest mb-3">Personalized Service</h4>
+                  <p className="text-stone font-sans text-sm leading-relaxed">We understand that every traveler is unique. That&apos;s why we take the time to listen to your desires and preferences to tailor-make your journey according to your needs.</p>
                 </div>
               </div>
-              <div className="flex gap-4">
-                <span className="text-gold text-xl mt-0.5">✦</span>
+              <div className="flex gap-6">
+                <span className="text-gold text-2xl mt-0.5 shrink-0">✦</span>
                 <div>
-                  <h4 className="font-serif text-lg text-forest mb-1">Safety &amp; Reliable Networks</h4>
-                  <p className="text-stone font-sans text-sm leading-relaxed">Backed by established partner networks and trusted transport providers — your safety and comfort are our first priority throughout every journey.</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <span className="text-gold text-xl mt-0.5">✦</span>
-                <div>
-                  <h4 className="font-serif text-lg text-forest mb-1">Our Own Lodges</h4>
-                  <p className="text-stone font-sans text-sm leading-relaxed">Uniquely, we own and operate two of Uganda&apos;s finest safari lodges — giving you unparalleled access and quality assurance from your accommodations.</p>
+                  <h4 className="font-serif text-xl text-forest uppercase tracking-widest mb-3">Trust and Reliability</h4>
+                  <p className="text-stone font-sans text-sm leading-relaxed">We prioritise your safety and comfort above all else. Our trusted network of partners and suppliers enables us to deliver reliable and secure travel arrangements.</p>
                 </div>
               </div>
             </div>
@@ -470,7 +489,7 @@ export default function AboutPage() {
       <section className="bg-cream-dark py-12 md:py-20 px-6 md:px-16">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <p className="section-label mb-3">Find Us</p>
+            <p className="section-label mb-3 text-gold">Find Us</p>
             <h2 className="section-heading mb-6">Get in Touch</h2>
             <div className="w-12 h-0.5 bg-gold mb-8" />
             <ul className="space-y-5 text-stone font-sans">
@@ -485,13 +504,13 @@ export default function AboutPage() {
                 <svg className="w-5 h-5 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <a href="tel:+256789390350" className="hover:text-gold transition-colors">Call Us Now</a>
+                <a href="tel:+256789390350" className="hover:text-gold transition-colors font-bold">+256 789 390 350</a>
               </li>
               <li className="flex gap-4">
                 <svg className="w-5 h-5 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:destinations@tilengasafaris.com" className="hover:text-gold transition-colors">destinations@tilengasafaris.com</a>
+                <a href="mailto:destinations@tilengasafaris.com" className="hover:text-gold transition-colors font-bold">destinations@tilengasafaris.com</a>
               </li>
               <li className="flex gap-4">
                 <svg className="w-5 h-5 text-gold shrink-0" fill="currentColor" viewBox="0 0 24 24">
@@ -501,12 +520,12 @@ export default function AboutPage() {
               </li>
             </ul>
           </div>
-          <div className="bg-forest text-cream p-8 text-center">
-            <p className="font-serif text-2xl mb-4">Ready to Start Planning?</p>
+          <div className="bg-forest text-cream p-8 text-center film-frame">
+            <p className="font-serif text-2xl mb-4 uppercase tracking-wider">Ready to Start Planning?</p>
             <p className="text-cream/60 font-sans text-sm mb-8">
               Tell us your dream safari and we&apos;ll handle every detail from planning to return.
             </p>
-            <Link href="/plan-a-trip" className="btn-outline block">
+            <Link href="/plan-a-trip" className="btn-outline block border-cream/30 text-cream hover:bg-cream hover:text-forest">
               Plan a Trip
             </Link>
           </div>

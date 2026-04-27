@@ -369,22 +369,40 @@ export default function Footer() {
       </div>
 
       {/* ── BOTTOM BAR ── */}
-      <div className="bg-[#f2ebe0] border-t border-forest/10 py-5 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
-          <div className="flex flex-wrap items-center gap-1 text-forest/35 text-[8px] font-sans uppercase tracking-[0.3em]">
-            <span>Uganda Tourism Board</span>
-            <span className="mx-2 text-gold/50">·</span>
-            <span>Certified Operator</span>
-            <span className="mx-2 text-gold/50">·</span>
-            <span>Conservation Partner</span>
+      <div className="bg-[#f2ebe0] border-t border-forest/10 py-8 px-6 md:px-16">
+        <div className="max-w-7xl mx-auto flex flex-col gap-8">
+          
+          {/* Partners Strip */}
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500">
+            <a href="https://utb.go.ug/" target="_blank" rel="noopener noreferrer" className="h-8 md:h-10 w-auto relative">
+              <img src={`${base}/photos/partnerslogo/uganda-tourism-board-logo-25518EC15B-seeklogo.com_.webp`} alt="UTB" className="h-full w-auto object-contain" />
+            </a>
+            <a href="https://auto.ug/" target="_blank" rel="noopener noreferrer" className="h-8 md:h-10 w-auto relative">
+              <img src={`${base}/photos/partnerslogo/autologo-114x114x0x0x114x114x1670356750.webp`} alt="AUTO" className="h-full w-auto object-contain" />
+            </a>
+            <a href="https://www.adventuretravel.biz/" target="_blank" rel="noopener noreferrer" className="h-8 md:h-10 w-auto relative">
+              <img src={`${base}/photos/partnerslogo/ATTAlogo.png`} alt="ATTA" className="h-full w-auto object-contain" />
+            </a>
           </div>
-          <div className="flex items-center gap-5">
-            <p className="text-forest/35 text-[8px] font-sans tracking-[0.25em] uppercase">
-              &copy; {new Date().getFullYear()} Tilenga Safaris
-            </p>
-            <span className="text-gold/50">·</span>
-            <Link href="/privacy" className="text-forest/35 text-[8px] font-sans hover:text-gold transition-colors tracking-wide uppercase">Privacy</Link>
-            <Link href="/terms" className="text-forest/35 text-[8px] font-sans hover:text-gold transition-colors tracking-wide uppercase">Terms</Link>
+
+          <div className="w-full h-px bg-forest/5" />
+
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center justify-center gap-1 text-forest/35 text-[8px] font-sans uppercase tracking-[0.3em]">
+              <span>Uganda Tourism Board</span>
+              <span className="mx-2 text-gold/50">·</span>
+              <span>Certified Operator</span>
+              <span className="mx-2 text-gold/50">·</span>
+              <span>Conservation Partner</span>
+            </div>
+            <div className="flex items-center gap-5">
+              <p className="text-forest/35 text-[8px] font-sans tracking-[0.25em] uppercase">
+                &copy; {new Date().getFullYear()} Tilenga Safaris
+              </p>
+              <span className="text-gold/50">·</span>
+              <Link href="/privacy" className="text-forest/35 text-[8px] font-sans hover:text-gold transition-colors tracking-wide uppercase">Privacy</Link>
+              <Link href="/terms" className="text-forest/35 text-[8px] font-sans hover:text-gold transition-colors tracking-wide uppercase">Terms</Link>
+            </div>
           </div>
         </div>
       </div>

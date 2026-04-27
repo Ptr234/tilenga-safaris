@@ -18,6 +18,7 @@ const interests = [
 
 export default function PlanATripPage() {
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
+  const [showSuggestionBox, setShowSuggestionBox] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const toggleInterest = (interest: string) => {
@@ -233,9 +234,27 @@ export default function PlanATripPage() {
                     />
                   </div>
 
-                  <div className="flex items-center gap-4">
-                    <input type="checkbox" id="suggestions" className="w-4 h-4 accent-gold" />
-                    <label htmlFor="suggestions" className="text-stone font-sans text-sm">Open to different suggestions / options</label>
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-4">
+                      <input 
+                        type="checkbox" 
+                        id="suggestions" 
+                        className="w-4 h-4 accent-gold cursor-pointer" 
+                        onChange={(e) => setShowSuggestionBox(e.target.checked)}
+                      />
+                      <label htmlFor="suggestions" className="text-stone font-sans text-sm cursor-pointer">Open to different suggestions / options</label>
+                    </div>
+                    
+                    {showSuggestionBox && (
+                      <div className="animate-in fade-in slide-in-from-top-2 duration-300">
+                        <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3 text-gold/80">Your Suggestions / Ideas</label>
+                        <textarea
+                          rows={3}
+                          placeholder="Tell us what other options or styles of travel you'd like us to consider..."
+                          className="w-full border-b border-gold/30 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors resize-none"
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
 
