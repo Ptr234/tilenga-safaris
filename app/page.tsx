@@ -152,8 +152,8 @@ export default function HomePage() {
             </div>
 
             {/* Row 2: Symmetric Journal Row */}
-            <div className="col-span-2 md:col-span-12 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-              {[destinations[2], destinations[3], destinations[4], destinations[5]].map((dest, i) => (
+            <div className="col-span-2 md:col-span-12 grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8">
+              {[destinations[2], destinations[3], destinations[4], destinations[5], destinations[6]].map((dest, i) => (
                 <FadeIn key={dest.name} direction="up" delay={0.1 * i}>
                   <Link href={dest.href} className="group block">
                     <div className="relative aspect-[3/4] md:aspect-[4/5] overflow-hidden mb-4 md:mb-6 shadow-sm border border-gold/5">
