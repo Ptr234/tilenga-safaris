@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import HeroCarousel from "@/components/HeroCarousel";
+import HeroVideo from "@/components/HeroVideo";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import AnimatedCounter from "@/components/motion/AnimatedCounter";
@@ -80,7 +80,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <HeroCarousel />
+      <HeroVideo />
 
       {/* Stats bar */}
       <section className="bg-forest py-12">
