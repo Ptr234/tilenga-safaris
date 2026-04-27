@@ -58,7 +58,7 @@ const destinations = [
     description: "A land of vast silence — towering red dunes at Sossusvlei, Etosha's wildlife, the Skeleton Coast, and starlit desert skies.",
     hotspots: ["Sossusvlei Dunes", "Etosha NP", "Skeleton Coast", "Fish River Canyon"],
     bestTime: "May–Oct",
-    image: "https://images.unsplash.com/photo-1547952237-23dcc22f66fc?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=1200&q=80",
     href: "/destinations/namibia",
     num: "06",
   },

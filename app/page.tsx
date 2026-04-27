@@ -6,6 +6,8 @@ import AnimatedCounter from "@/components/motion/AnimatedCounter";
 import ImageReveal from "@/components/motion/ImageReveal";
 import LineReveal from "@/components/motion/LineReveal";
 
+import ExperienceCarousel from "@/components/ExperienceCarousel";
+
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const lodges = [
@@ -42,7 +44,7 @@ const destinations = [
   { name: "Tanzania", tag: "Serengeti & Zanzibar", image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=800&q=80", href: "/destinations/tanzania" },
   { name: "Rwanda", tag: "Land of a Thousand Hills", image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800&q=80", href: "/destinations/rwanda" },
   { name: "South Africa", tag: "Cape & Kruger", image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=800&q=80", href: "/destinations/south-africa" },
-  { name: "Namibia", tag: "Desert & Dunes", image: "https://images.unsplash.com/photo-1547952237-23dcc22f66fc?w=800&q=80", href: "/destinations/namibia" },
+  { name: "Namibia", tag: "Desert & Dunes", image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=800&q=80", href: "/destinations/namibia" },
   { name: "Botswana", tag: "Okavango Delta", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80", href: "/destinations/botswana" },
 ];
 
@@ -250,35 +252,9 @@ export default function HomePage() {
             </FadeIn>
           </div>
 
-          <StaggerGrid className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-1 md:gap-1.5">
-            {experiences.map((exp) => (
-              <StaggerItem key={exp.title}>
-                <div className="group relative overflow-hidden aspect-square cursor-default">
-                  <img
-                    src={exp.image}
-                    alt={exp.title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
-                  />
-                  {/* Always-on gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/80 via-forest-dark/10 to-transparent" />
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-forest/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  {/* Title — always visible */}
-                  <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6 translate-y-0 group-hover:-translate-y-2 transition-transform duration-500">
-                    <h3 className="font-serif text-sm md:text-xl text-cream leading-tight">{exp.title}</h3>
-                  </div>
-                  {/* Description — hover reveal (desktop only) */}
-                  <div className="absolute inset-0 hidden md:flex items-center justify-center px-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                    <div className="text-center">
-                      <div className="w-8 h-px bg-gold mx-auto mb-4" />
-                      <h3 className="font-serif text-2xl text-cream mb-3">{exp.title}</h3>
-                      <p className="text-cream/80 text-sm font-sans leading-relaxed">{exp.description}</p>
-                    </div>
-                  </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerGrid>
+          <FadeIn direction="up" delay={0.6}>
+            <ExperienceCarousel experiences={experiences} />
+          </FadeIn>
 
           <FadeIn direction="up" delay={0.3} className="text-center mt-6 md:mt-12">
             <Link href="/plan-a-trip" className="btn-primary">Create Your Dream Safari</Link>

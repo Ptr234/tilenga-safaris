@@ -9,7 +9,7 @@ const hotspots = [
   {
     name: "Sossusvlei",
     detail: "World's Highest Red Sand Dunes",
-    image: "https://images.unsplash.com/photo-1547952237-23dcc22f66fc?w=900&q=85",
+    image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=900&q=85",
   },
   {
     name: "Etosha National Park",
@@ -57,7 +57,7 @@ const packages = [
     description:
       "From the towering red dunes of Sossusvlei to Etosha's wildlife-rich salt pan and the raw Atlantic shores of Swakopmund — an epic journey through one of Africa's most dramatic landscapes.",
     activities: ["Sossusvlei dunes", "Etosha game drives", "Swakopmund adventure", "Desert stargazing"],
-    image: "https://images.unsplash.com/photo-1547952237-23dcc22f66fc?w=700&q=85",
+    image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=700&q=85",
   },
   {
     name: "10-Day Namibia Full Circuit",
@@ -89,7 +89,7 @@ export default function NamibiaPage() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage: "url(https://images.unsplash.com/photo-1547952237-23dcc22f66fc?w=1800&q=80)",
+            backgroundImage: "url(https://images.unsplash.com/photo-1488197047962-b48492212cda?w=1800&q=80)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -151,7 +151,7 @@ export default function NamibiaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1547952237-23dcc22f66fc?w=500&q=80"
+                src="https://images.unsplash.com/photo-1488197047962-b48492212cda?w=500&q=80"
                 alt="Sossusvlei dunes"
                 className="w-full h-52 object-cover"
               />

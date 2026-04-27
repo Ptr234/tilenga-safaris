@@ -6,7 +6,7 @@ const destinations = [
   { name: "Tanzania",     sub: "Serengeti",          image: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=600&q=85", href: "/destinations/tanzania" },
   { name: "Rwanda",       sub: "A Thousand Hills",   image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=85", href: "/destinations/rwanda" },
   { name: "South Africa", sub: "Cape & Kruger",      image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=85", href: "/destinations/south-africa" },
-  { name: "Namibia",      sub: "Desert & Dunes",     image: "https://images.unsplash.com/photo-1547952237-23dcc22f66fc?w=600&q=85", href: "/destinations/namibia" },
+  { name: "Namibia",      sub: "Desert & Dunes",     image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=600&q=85", href: "/destinations/namibia" },
   { name: "Botswana",     sub: "Okavango Delta",     image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=85", href: "/destinations/botswana" },
 ];
 
