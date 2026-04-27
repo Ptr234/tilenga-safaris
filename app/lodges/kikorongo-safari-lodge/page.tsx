@@ -7,27 +7,19 @@ const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const rooms = [
   {
-    name: "Premium Cottages",
-    count: "18 Units",
-    description:
-      "Named in the Lukhonzo language of Kasese, each cottage captures wide views of both Lake Kikorongo and Lake George — private terraces perfectly positioned for sunset watching over the Rwenzori Mountains.",
-    features: ["Lake Kikorongo & George views", "Private terrace", "Rwenzori Mountain panorama", "Indoor bathroom", "Daily housekeeping"],
-    image: `${base}/photos/kikorongo_cottage2.jpg`,
-  },
-  {
-    name: "Premium Tents",
+    name: "Premium Tented Cottages",
     count: "13 Units",
     description:
-      "Tented accommodation that brings you closest to nature — bird calls at dawn, the lake shimmering below. Ideal for birders and photographers seeking complete immersion in Queen Elizabeth NP.",
-    features: ["Natural tented setting", "Bird watching access", "Photographer-friendly", "Lake views", "En suite facilities"],
+      "Named in the Lukhonzo language of Kasese — Kambere, Thembo, Busomungu — each tented cottage is positioned at the highest point of the escarpment on Mpondwe road, divided into sunrise and sunset wings. Wide views of both Lake Kikorongo and Lake George, surrounded by maintained bush.",
+    features: ["Lake Kikorongo & George views", "Sunrise & sunset wings", "Private terrace", "Rwenzori Mountain panorama", "En suite facilities"],
     image: `${base}/photos/kikorongo_room2.jpg`,
   },
   {
     name: "Intimate Cottages",
     count: "5 Units",
     description:
-      "Smaller, ground-level cottages suited to guests who prefer not to hike. Cozy and private, these units offer a quieter retreat within the lodge grounds with direct garden access.",
-    features: ["Ground-level access", "Secluded & private", "Indoor bathroom", "Garden view", "Ideal for mobility-conscious guests"],
+      "Situated at the landscape edges, these smaller cottages are ideal for those who prefer a compact, quieter retreat. Striking sunrise views over both lakes make them a favourite for birders, couples, writers, and photographers.",
+    features: ["Ground-level access", "Lake views", "Striking sunrises", "Indoor bathroom", "Ideal for birders & photographers"],
     image: `${base}/photos/kikorongo_room1.jpg`,
   },
 ];
@@ -42,7 +34,7 @@ const activities = [
 ];
 
 const quickFacts = [
-  { label: "Premium Cottages", value: "18" },
+  { label: "Total Cottages", value: "18" },
   { label: "Premium Tents", value: "13" },
   { label: "Intimate Cottages", value: "5" },
   { label: "Location", value: "Equator" },
@@ -136,7 +128,7 @@ export default function KikorongoSafariLodgePage() {
             {/* Stats row */}
             <div className="grid grid-cols-3 gap-4 border-t border-gold/15 pt-8 mb-10">
               {[
-                { value: "36", label: "Units" },
+                { value: "18", label: "Cottages" },
                 { value: "0°", label: "The Equator" },
                 { value: "600+", label: "Bird Species" },
               ].map((s) => (
@@ -177,7 +169,7 @@ export default function KikorongoSafariLodgePage() {
             <div className="w-16 h-px bg-gold mx-auto mt-8" />
           </FadeIn>
 
-          <StaggerGrid className="grid md:grid-cols-3 gap-8">
+          <StaggerGrid className="grid md:grid-cols-2 gap-8">
             {rooms.map((room) => (
               <StaggerItem key={room.name}>
                 <div className="group bg-white/5 border border-white/10 overflow-hidden flex flex-col h-full">
@@ -404,6 +396,8 @@ export default function KikorongoSafariLodgePage() {
                 
                 <div className="space-y-8 mb-12">
                   {[
+                    { label: "Phone", value: "+256 789 390 350", href: "tel:+256789390350" },
+                    { label: "Phone 2", value: "+256 775 69 2334", href: "tel:+256775692334" },
                     { label: "Email", value: "bookings@kikorongosafarilodge.com", href: "mailto:bookings@kikorongosafarilodge.com" },
                     { label: "Web", value: "www.kikorongosafarilodge.com", href: "https://www.kikorongosafarilodge.com" },
                   ].map((contact) => (

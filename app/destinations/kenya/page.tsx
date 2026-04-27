@@ -32,8 +32,23 @@ const hotspots = [
     image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=900&q=85",
   },
   {
-    name: "Diani Beach",
-    detail: "Indian Ocean Coastline",
+    name: "Hells Gate National Park",
+    detail: "Gorges, Geysers & Cycling Safaris",
+    image: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=900&q=85",
+  },
+  {
+    name: "Giraffe Centre",
+    detail: "Nairobi — Endangered Rothschild's Giraffe",
+    image: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=900&q=85",
+  },
+  {
+    name: "Mount Kenya",
+    detail: "Africa's Second-Highest Peak",
+    image: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=900&q=85",
+  },
+  {
+    name: "Indian Ocean Beaches",
+    detail: "Diani & Mombasa — Pristine Coastline",
     image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=900&q=85",
   },
 ];

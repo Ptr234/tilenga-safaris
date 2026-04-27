@@ -434,7 +434,8 @@ export default function TilengaSafariLodgePage() {
             <div className="w-10 h-px bg-gold mb-8" />
             <ul className="space-y-5 mb-10">
               {[
-                { label: "Phone", value: "Call Us Now", href: "tel:+256789390350" },
+                { label: "Phone", value: "+256 789 390 350", href: "tel:+256789390350" },
+                { label: "Phone 2", value: "+256 703 999 688", href: "tel:+256703999688" },
                 { label: "Email", value: "booking@tilengasafarilodge.com", href: "mailto:booking@tilengasafarilodge.com" },
                 { label: "Location", value: "Northern park boundary, Murchison Falls NP, Uganda" },
               ].map((item) => (

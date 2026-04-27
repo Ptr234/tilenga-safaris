@@ -8,17 +8,17 @@ import SplitText from "@/components/motion/SplitText";
 const hotspots = [
   {
     name: "Serengeti",
-    detail: "Endless Plains, Endless Wildlife",
+    detail: "Endless Plains & the Great Migration",
     image: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=900&q=85",
   },
   {
     name: "Ngorongoro Crater",
-    detail: "UNESCO World Heritage — Africa's Eden",
+    detail: "UNESCO World Heritage — Big Five & Black Rhino",
     image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=900&q=85",
   },
   {
     name: "Zanzibar",
-    detail: "Spice Island & Indian Ocean Beaches",
+    detail: "Stone Town, Spice Tours & Crystal-Clear Waters",
     image: "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&q=85",
   },
   {
@@ -27,14 +27,14 @@ const hotspots = [
     image: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=900&q=85",
   },
   {
+    name: "Ruaha National Park",
+    detail: "Tanzania's Largest & Most Wild Park",
+    image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=900&q=85",
+  },
+  {
     name: "Tarangire National Park",
     detail: "Baobab Giants & Elephant Herds",
     image: "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=900&q=85",
-  },
-  {
-    name: "Hot Air Balloon Safari",
-    detail: "Dawn Float Over the Serengeti",
-    image: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=900&q=85",
   },
 ];
 

@@ -1,19 +1,55 @@
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
+import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
+
+const packages = [
+  {
+    name: "8-Day South Africa Discovery",
+    tagline: "Safari, city & culture",
+    duration: "8 Days",
+    price: "Request a Quote",
+    description:
+      "Safari in Kruger National Park, Cape Town's iconic Table Mountain, Hartbeespoort boat cruise, Johannesburg city tour, and a deeply moving visit to Soweto and the Apartheid Museum.",
+    activities: [
+      "Kruger NP safari",
+      "Table Mountain Cableway",
+      "Hartbeespoort boat cruise",
+      "Johannesburg & Soweto tour",
+      "Apartheid Museum visit",
+      "Local food tasting",
+    ],
+    image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=700&q=85",
+    itinerary: [
+      { days: "Days 1–2", desc: "Arrival in Johannesburg, transfer to Kruger National Park." },
+      { days: "Days 3–5", desc: "Game drives in Kruger; travel to Cape Town and explore Table Mountain." },
+      { days: "Days 6–8", desc: "Hartbeespoort, Johannesburg & Soweto tours, Apartheid Museum, departure." },
+    ],
+  },
+];
 
 const hotspots = [
   {
     name: "Kruger National Park",
-    detail: "Africa's Premier Big Five Reserve",
+    detail: "Africa's Premier Big Five Safari Reserve",
     image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=900&q=85",
   },
   {
     name: "Cape Town",
     detail: "Table Mountain & the Atlantic Seaboard",
     image: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=900&q=85",
+  },
+  {
+    name: "Drakensberg Mountains",
+    detail: "Stunning Peaks & Dramatic Escarpments",
+    image: "https://images.unsplash.com/photo-1501705388883-4ed8a543392c?w=900&q=85",
+  },
+  {
+    name: "Johannesburg & Soweto",
+    detail: "Apartheid Museum & Living History",
+    image: "https://images.unsplash.com/photo-1595123550441-d377e017de6a?w=900&q=85",
   },
   {
     name: "Cape Peninsula",
@@ -24,16 +60,6 @@ const hotspots = [
     name: "Cape Winelands",
     detail: "Stellenbosch, Franschhoek & World-Class Wine",
     image: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=900&q=85",
-  },
-  {
-    name: "Garden Route",
-    detail: "Scenic Coastal Drive & Tsitsikamma Forest",
-    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=900&q=85",
-  },
-  {
-    name: "Kruger Wildlife",
-    detail: "Elephant, Rhino, Buffalo & Leopard",
-    image: "https://images.unsplash.com/photo-1501705388883-4ed8a543392c?w=900&q=85",
   },
 ];
 
@@ -129,6 +155,54 @@ export default function SouthAfricaPage() {
           </h2>
         </FadeIn>
         <HotspotGallery hotspots={hotspots} />
+      </section>
+
+      {/* Tour Package */}
+      <section className="bg-cream py-24 px-6 md:px-16">
+        <div className="max-w-6xl mx-auto">
+          <FadeIn className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 pb-10 border-b border-gold/20">
+            <div>
+              <p className="section-label mb-3">Safari Package</p>
+              <h2 className="font-serif text-4xl md:text-5xl text-forest leading-tight">South Africa Tour Package</h2>
+            </div>
+            <Link href="/plan-a-trip" className="btn-primary shrink-0 self-start md:self-end">Get a Custom Quote</Link>
+          </FadeIn>
+
+          {packages.map((pkg) => (
+            <div key={pkg.name} className="grid md:grid-cols-2 gap-12 items-start">
+              <div className="relative overflow-hidden aspect-[4/3]">
+                <img src={pkg.image} alt={pkg.name} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-transparent to-transparent" />
+                <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">{pkg.duration}</span>
+              </div>
+              <div>
+                <p className="section-label mb-2">{pkg.tagline}</p>
+                <h3 className="font-serif text-3xl text-forest mb-4">{pkg.name}</h3>
+                <div className="w-10 h-px bg-gold mb-6" />
+                <p className="text-stone font-sans text-sm leading-relaxed mb-8">{pkg.description}</p>
+
+                <div className="space-y-4 mb-8">
+                  {pkg.itinerary.map((item) => (
+                    <div key={item.days} className="flex gap-4 border-t border-gold/10 pt-4">
+                      <span className="text-gold text-[10px] uppercase tracking-widest font-sans w-20 shrink-0 pt-0.5">{item.days}</span>
+                      <span className="text-stone font-sans text-sm leading-relaxed">{item.desc}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {pkg.activities.map((act) => (
+                    <span key={act} className="text-[10px] uppercase tracking-widest font-sans border border-gold/30 text-forest/70 px-3 py-1.5 flex items-center gap-2">
+                      <span className="w-1 h-1 rounded-full bg-gold" />{act}
+                    </span>
+                  ))}
+                </div>
+
+                <Link href="/plan-a-trip" className="btn-primary">Enquire About This Package</Link>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* CTA */}

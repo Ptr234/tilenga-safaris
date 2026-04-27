@@ -22,9 +22,9 @@ const hotspots = [
     image: "https://images.unsplash.com/photo-1474690870753-1b92efa1f2d8?w=900&q=85",
   },
   {
-    name: "Akagera National Park",
-    detail: "Big Five Savanna & Rolling Wetlands",
-    image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=900&q=85",
+    name: "Kigali Genocide Memorial",
+    detail: "A Powerful Tribute to History & Remembrance",
+    image: "https://images.unsplash.com/photo-1526319238109-56f76eaba7f2?w=900&q=85",
   },
   {
     name: "Kigali",
@@ -35,7 +35,7 @@ const hotspots = [
 
 const itinerary = [
   { day: "Days 1–2", title: "Kigali Arrival & City Tour", desc: "Arrive in Kigali, visit the moving Kigali Genocide Memorial, explore vibrant city markets, and enjoy authentic Rwandan cuisine." },
-  { day: "Days 3–5", title: "Volcanoes National Park", desc: "Trek into the mist-covered volcanic forests to encounter mountain gorilla families and golden monkeys. Each hour-long encounter is profoundly rare and deeply moving." },
+  { day: "Days 3–5", title: "Volcanoes National Park", desc: "Trek into the mist-covered volcanic forests for gorilla tracking and golden monkey tracking. Each hour-long gorilla encounter is profoundly rare — up to 8 people per family group." },
   { day: "Days 6–8", title: "Lake Kivu & Departure", desc: "Relax on the serene shores of Lake Kivu, boat to the islands, experience a cultural village stay, and taste local food before your journey home." },
 ];
 
