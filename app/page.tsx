@@ -290,7 +290,7 @@ export default function HomePage() {
       </section>
 
       {/* Heritage — narrative approach with parallax anchor */}
-      <section className="py-4 md:py-40 px-6 md:px-16 bg-cream-dark relative overflow-hidden">
+      <section className="py-4 md:py-40 px-6 md:px-16 bg-cream-dark relative z-10">
         {/* Subtle decorative elements for scroll depth */}
         <div className="absolute top-0 right-0 w-[40%] h-full opacity-[0.03] pointer-events-none">
            <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1200&q=80" className="w-full h-full object-cover" alt="" />
@@ -334,8 +334,8 @@ export default function HomePage() {
                     />
                   </div>
                 </ImageReveal>
-                {/* Floating secondary image with different scroll speed — removed negative bottom for mobile */}
-                <div className="absolute bottom-0 -left-16 hidden lg:block w-72 h-96 z-10">
+                {/* Floating secondary image — bleeds into Sustainability section below */}
+                <div className="absolute -bottom-20 -left-16 hidden lg:block w-72 h-96 z-20">
                   <FadeIn direction="up" delay={0.6}>
                     <div className="film-frame h-full overflow-hidden shadow-2xl border-4 border-white/10">
                       <img 
@@ -353,7 +353,7 @@ export default function HomePage() {
       </section>
 
       {/* Sustainability */}
-      <section className="py-4 md:py-28 px-6 md:px-16 bg-cream">
+      <section className="py-4 md:py-28 px-6 md:px-16 bg-cream relative z-[5] lg:pt-24">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-4 md:gap-20 items-center">
           <div className="grid grid-cols-2 gap-4 pt-12 md:pt-0">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
@@ -405,10 +405,31 @@ export default function HomePage() {
             <Link href="/about" className="btn-primary">Learn More</Link>
           </FadeIn>
         </div>
+
+        {/* Bleed image — hangs into Testimonials section below */}
+        <FadeIn direction="up" delay={0.4} className="absolute -bottom-24 right-6 md:right-20 hidden md:block w-52 md:w-64 h-72 md:h-80 z-20">
+          <div className="relative h-full overflow-hidden shadow-2xl">
+            <img
+              src="https://images.unsplash.com/photo-1551085254-e96b210db58a?w=600&q=85"
+              alt="East Africa wildlife"
+              className="w-full h-full object-cover"
+            />
+            {/* Gold corner accent — top-left */}
+            <span className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-gold/70" />
+            {/* Gold corner accent — bottom-right */}
+            <span className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-gold/70" />
+            {/* Subtle label */}
+            <div className="absolute bottom-4 left-4 right-4">
+              <span className="font-sans text-[9px] tracking-[0.3em] uppercase text-cream/70 bg-forest-dark/60 backdrop-blur-sm px-2 py-1">
+                East Africa
+              </span>
+            </div>
+          </div>
+        </FadeIn>
       </section>
 
       {/* Testimonials */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative z-0 min-h-screen flex items-center overflow-hidden">
         {/* Background image */}
         <div className="absolute inset-0">
           <img
@@ -423,8 +444,8 @@ export default function HomePage() {
         {/* Gold horizontal rule — top accent */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
 
-        {/* Content */}
-        <div className="relative z-10 w-full py-28 md:py-40">
+        {/* Content — extra top padding on desktop so content clears the bleed image */}
+        <div className="relative z-10 w-full pt-36 pb-28 md:pt-52 md:pb-40">
           <div className="max-w-7xl mx-auto px-6 md:px-16">
 
             {/* Full-width 2-col grid: heading left, quotes right */}
