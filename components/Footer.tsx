@@ -95,9 +95,9 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="inline-flex mb-7">
               <img
-                src={`${base}/Tilenga-Logo-Full.svg`}
+                src={`${base}/tilenga-logo-light.svg`}
                 alt="Tilenga Safaris"
-                className="h-14 w-auto brightness-0 invert opacity-70 hover:opacity-100 transition-opacity duration-300"
+                className="h-14 w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
               />
             </Link>
             <p className="text-gold/60 text-[8px] uppercase tracking-[0.3em] font-sans mb-1">
