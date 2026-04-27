@@ -1,4 +1,8 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import HeroCarousel from "@/components/HeroCarousel";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
@@ -40,13 +44,13 @@ const experiences = [
 ];
 
 const destinations = [
-  { name: "Uganda", tag: "Pearl of Africa", image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800&q=80", href: "/destinations/uganda" },
-  { name: "Kenya", tag: "Iconic Maasai Mara", image: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=800&q=80", href: "/destinations/kenya" },
-  { name: "Tanzania", tag: "Serengeti & Zanzibar", image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=800&q=80", href: "/destinations/tanzania" },
-  { name: "Rwanda", tag: "Land of a Thousand Hills", image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800&q=80", href: "/destinations/rwanda" },
-  { name: "South Africa", tag: "Cape & Kruger", image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=800&q=80", href: "/destinations/south-africa" },
-  { name: "Namibia", tag: "Desert & Dunes", image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=800&q=80", href: "/destinations/namibia" },
-  { name: "Botswana", tag: "Okavango Delta", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80", href: "/destinations/botswana" },
+  { name: "Uganda", tag: "Pearl of Africa", description: "Known as the Pearl of Africa, Uganda offers a tapestry of landscapes — from the thundering Murchison Falls to the legendary mountain gorillas of Bwindi.", image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800&q=80", href: "/destinations/uganda" },
+  { name: "Kenya", tag: "Iconic Maasai Mara", description: "Witness the Great Migration and the golden savannahs of the Maasai Mara, home to Africa's most legendary wildlife encounters.", image: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=800&q=80", href: "/destinations/kenya" },
+  { name: "Tanzania", tag: "Serengeti & Zanzibar", description: "From the endless plains of the Serengeti to the turquoise waters of Zanzibar, Tanzania is a land of breathtaking contrasts.", image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=800&q=80", href: "/destinations/tanzania" },
+  { name: "Rwanda", tag: "Land of a Thousand Hills", description: "Discover a land of mist-covered volcanoes and rare mountain gorillas in the Heart of Africa.", image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800&q=80", href: "/destinations/rwanda" },
+  { name: "Namibia", tag: "Desert & Dunes", description: "Explore the ancient Namib Desert, where towering red dunes meet the haunting Skeleton Coast.", image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=800&q=80", href: "/destinations/namibia" },
+  { name: "Botswana", tag: "Okavango Delta", description: "Glide through the crystal-clear channels of the Okavango Delta, a sanctuary for Africa's most diverse wildlife.", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80", href: "/destinations/botswana" },
+  { name: "South Africa", tag: "Cape & Kruger", description: "Experience the vibrant culture of Cape Town and the world-class safari circuits of Kruger National Park.", image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=800&q=80", href: "/destinations/south-africa" },
 ];
 
 const stats = [
@@ -64,6 +68,15 @@ const sustainabilityItems = [
 ];
 
 export default function HomePage() {
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % destinations.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <>
       {/* Hero */}
@@ -84,7 +97,7 @@ export default function HomePage() {
       </section>
 
       {/* Destinations Section — Journal Style Editorial Grid */}
-      <section className="py-16 md:py-32 px-6 md:px-16 bg-cream">
+      <section className="py-16 md:py-32 px-6 md:px-16 bg-cream overflow-hidden">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-10 mb-10 md:mb-20">
@@ -93,8 +106,8 @@ export default function HomePage() {
                 <span className="text-gold uppercase tracking-[0.4em] text-[10px] font-bold mb-4 block">The Explorer&apos;s Map</span>
               </FadeIn>
               <h2 className="font-serif text-4xl md:text-6xl text-forest uppercase tracking-widest leading-none">
-                Our Iconic <br />
-                <span className="italic text-gold lowercase tracking-normal">Destinations</span>
+                Discover <br />
+                <span className="italic text-gold lowercase tracking-normal">Africa</span>
               </h2>
             </div>
             <FadeIn direction="up" delay={0.3} className="max-w-xs">
@@ -111,52 +124,80 @@ export default function HomePage() {
           {/* Clean Journal Grid */}
           <div className="grid grid-cols-2 md:grid-cols-12 gap-y-8 md:gap-y-20 gap-x-6 md:gap-x-8">
 
-            {/* 01. Uganda — Large Featured Vertical */}
+            {/* 01. Switching Featured Card — Maintains the design we had */}
             <div className="col-span-2 md:col-span-7">
               <FadeIn direction="up">
-                <Link href="/destinations/uganda" className="group block">
-                  <div className="relative aspect-[16/10] md:aspect-[14/11] overflow-hidden mb-8 shadow-sm">
-                    <img
-                      src={destinations[0].image}
-                      alt={destinations[0].name}
-                      className="absolute inset-0 w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-[1500ms] ease-out group-hover:scale-105"
+                <div className="relative group block cursor-pointer">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeIdx}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 1.2, ease: "easeInOut" }}
+                    >
+                      <Link href={destinations[activeIdx].href}>
+                        <div className="relative aspect-[16/10] md:aspect-[14/11] overflow-hidden mb-8 shadow-sm">
+                          <img
+                            src={destinations[activeIdx].image}
+                            alt={destinations[activeIdx].name}
+                            className="absolute inset-0 w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-[1500ms] ease-out group-hover:scale-105"
+                          />
+                        </div>
+                        <div className="max-w-lg">
+                          <span className="font-serif text-gold text-sm italic mb-2 block tracking-widest">Discover Africa</span>
+                          <h3 className="font-serif text-3xl md:text-5xl text-forest uppercase tracking-widest mb-4 transition-colors group-hover:text-gold">
+                            {destinations[activeIdx].name}
+                          </h3>
+                          <p className="text-stone font-sans text-[15px] leading-loose mb-6 opacity-80 min-h-[80px]">
+                            {destinations[activeIdx].description}
+                          </p>
+                          <span className="text-[10px] uppercase tracking-widest text-gold font-bold flex items-center gap-2">
+                            Explore {destinations[activeIdx].name}
+                            <span className="group-hover:translate-x-1 transition-transform">→</span>
+                          </span>
+                        </div>
+                      </Link>
+                    </motion.div>
+                  </AnimatePresence>
+                  
+                  {/* Subtle Progress Bar */}
+                  <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gold/10 overflow-hidden">
+                    <motion.div 
+                      key={`progress-${activeIdx}`}
+                      initial={{ x: "-100%" }}
+                      animate={{ x: "0%" }}
+                      transition={{ duration: 6, ease: "linear" }}
+                      className="h-full bg-gold"
                     />
                   </div>
-                  <div className="max-w-lg">
-                    <span className="font-serif text-gold text-sm italic mb-2 block">Featured Region</span>
-                    <h3 className="font-serif text-3xl md:text-5xl text-forest uppercase tracking-widest mb-4">{destinations[0].name}</h3>
-                    <p className="text-stone font-sans text-[15px] leading-loose mb-6 opacity-80">
-                      Known as the Pearl of Africa, Uganda offers a tapestry of landscapes — from the thundering Murchison Falls to the legendary mountain gorillas of Bwindi.
-                    </p>
-                    <span className="text-[10px] uppercase tracking-widest text-gold font-bold">Discover {destinations[0].name}</span>
-                  </div>
-                </Link>
+                </div>
               </FadeIn>
             </div>
 
-            {/* 02. Kenya — Smaller Offset */}
+            {/* 02. Uganda — Smaller Offset */}
             <div className="col-span-2 md:col-span-5 md:pt-32">
               <FadeIn direction="up" delay={0.2}>
-                <Link href="/destinations/kenya" className="group block">
+                <Link href={destinations[0].href} className="group block">
                   <div className="relative aspect-square md:aspect-[4/5] overflow-hidden mb-8 shadow-sm">
                     <img
-                      src={destinations[1].image}
-                      alt={destinations[1].name}
+                      src={destinations[0].image}
+                      alt={destinations[0].name}
                       className="absolute inset-0 w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-[1500ms] group-hover:scale-105"
                     />
                   </div>
                   <div>
-                    <h3 className="font-serif text-3xl text-forest uppercase tracking-widest mb-3">{destinations[1].name}</h3>
-                    <p className="text-stone/70 font-sans text-sm leading-relaxed mb-4">{destinations[1].tag}</p>
+                    <h3 className="font-serif text-3xl text-forest uppercase tracking-widest mb-3 group-hover:text-gold transition-colors">{destinations[0].name}</h3>
+                    <p className="text-stone/70 font-sans text-sm leading-relaxed mb-4">{destinations[0].tag}</p>
                     <div className="w-10 h-px bg-gold/40 transition-all duration-500 group-hover:w-20" />
                   </div>
                 </Link>
               </FadeIn>
             </div>
 
-            {/* Row 2: Symmetric Journal Row */}
-            <div className="col-span-2 md:col-span-12 grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8">
-              {[destinations[2], destinations[3], destinations[4], destinations[5], destinations[6]].map((dest, i) => (
+            {/* Row 2: Symmetric Journal Row — All 6 remaining iconic spots including Kenya */}
+            <div className="col-span-2 md:col-span-12 grid grid-cols-2 md:grid-cols-6 gap-6 md:gap-8">
+              {[destinations[1], destinations[2], destinations[3], destinations[4], destinations[5], destinations[6]].map((dest, i) => (
                 <FadeIn key={dest.name} direction="up" delay={0.1 * i}>
                   <Link href={dest.href} className="group block">
                     <div className="relative aspect-[3/4] md:aspect-[4/5] overflow-hidden mb-4 md:mb-6 shadow-sm border border-gold/5">
@@ -167,7 +208,7 @@ export default function HomePage() {
                       />
                     </div>
                     <div className="text-center px-1 md:px-4">
-                      <h4 className="font-serif text-base md:text-2xl text-forest uppercase tracking-widest mb-1 md:mb-2">{dest.name}</h4>
+                      <h4 className="font-serif text-base md:text-xl xl:text-2xl text-forest uppercase tracking-widest mb-1 md:mb-2 group-hover:text-gold transition-colors">{dest.name}</h4>
                       <p className="text-gold text-[8px] md:text-[9px] uppercase tracking-[0.3em] font-bold">{dest.tag}</p>
                     </div>
                   </Link>
@@ -265,7 +306,6 @@ export default function HomePage() {
 
       {/* Heritage — narrative approach with parallax anchor */}
       <section className="pt-10 pb-14 md:py-40 px-6 md:px-16 bg-cream-dark relative z-10">
-        {/* Subtle decorative elements for scroll depth */}
         <div className="absolute top-0 right-0 w-[40%] h-full opacity-[0.03] pointer-events-none">
            <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1200&q=80" className="w-full h-full object-cover" alt="" />
         </div>
@@ -309,7 +349,6 @@ export default function HomePage() {
                   </div>
                 </ImageReveal>
 
-                {/* Mobile: secondary image shown below as inline block */}
                 <FadeIn direction="up" delay={0.4} className="mt-4 lg:hidden">
                   <div className="film-frame aspect-video overflow-hidden shadow-xl">
                     <img
@@ -320,7 +359,6 @@ export default function HomePage() {
                   </div>
                 </FadeIn>
 
-                {/* Desktop: floating secondary image — bleeds into Sustainability section below */}
                 <div className="absolute -bottom-20 -left-16 hidden lg:block w-72 h-96 z-20">
                   <FadeIn direction="up" delay={0.6}>
                     <div className="film-frame h-full overflow-hidden shadow-2xl border-4 border-white/10">
@@ -392,7 +430,6 @@ export default function HomePage() {
           </FadeIn>
         </div>
 
-        {/* Bleed image — hangs into Testimonials section below */}
         <FadeIn direction="up" delay={0.4} className="absolute -bottom-24 right-6 md:right-20 hidden md:block w-52 md:w-64 h-72 md:h-80 z-20">
           <div className="relative h-full overflow-hidden shadow-2xl">
             <img
@@ -400,11 +437,8 @@ export default function HomePage() {
               alt="East Africa wildlife"
               className="w-full h-full object-cover"
             />
-            {/* Gold corner accent — top-left */}
             <span className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-gold/70" />
-            {/* Gold corner accent — bottom-right */}
             <span className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-gold/70" />
-            {/* Subtle label */}
             <div className="absolute bottom-4 left-4 right-4">
               <span className="font-sans text-[9px] tracking-[0.3em] uppercase text-cream/70 bg-forest-dark/60 backdrop-blur-sm px-2 py-1">
                 East Africa
@@ -419,7 +453,6 @@ export default function HomePage() {
 
       {/* Testimonials */}
       <section className="relative z-0 min-h-screen flex items-center overflow-hidden">
-        {/* Background image */}
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1800&q=90"
@@ -430,17 +463,11 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#050f08] via-transparent to-[#050f08]/70" />
         </div>
 
-        {/* Gold horizontal rule — top accent */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
 
-        {/* Content — extra top padding on desktop so content clears the bleed image */}
         <div className="relative z-10 w-full pt-20 pb-20 md:pt-52 md:pb-40">
           <div className="max-w-7xl mx-auto px-6 md:px-16">
-
-            {/* Full-width 2-col grid: heading left, quotes right */}
             <div className="grid md:grid-cols-[1fr_1.6fr] gap-10 md:gap-24 items-start">
-
-              {/* LEFT — sticky-ish header block */}
               <FadeIn direction="left" className="md:pt-4">
                 <p className="section-label !text-gold/60 mb-6">Verified Traveller Reviews</p>
                 <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl text-cream uppercase tracking-[0.05em] leading-[1.05] mb-8">
@@ -450,7 +477,6 @@ export default function HomePage() {
                 <p className="font-sans text-cream/50 text-sm leading-relaxed mb-10">
                   Real experiences shared by guests who explored Uganda with us — unedited, unsponsored.
                 </p>
-                {/* Stars + platform badge */}
                 <div className="inline-flex items-center gap-3 border border-gold/25 px-5 py-3">
                   <div className="flex gap-[3px]">
                     {[...Array(5)].map((_, s) => (
@@ -462,7 +488,6 @@ export default function HomePage() {
                 </div>
               </FadeIn>
 
-              {/* RIGHT — testimonials, each full-width of the column */}
               <StaggerGrid className="flex flex-col gap-0">
                 {[
                   {
@@ -480,22 +505,15 @@ export default function HomePage() {
                 ].map((t, i) => (
                   <StaggerItem key={i}>
                     <div className={`relative group py-10 md:py-12 px-0 ${i === 0 ? "border-b border-gold/20" : ""}`}>
-                      {/* Large ghost quote mark */}
                       <span className="absolute right-0 top-6 font-serif text-[9rem] leading-none text-gold/[0.06] select-none pointer-events-none group-hover:text-gold/[0.1] transition-colors duration-700">
                         &rdquo;
                       </span>
-
-                      {/* Tag pill */}
                       <span className="inline-block font-sans text-[9px] tracking-[0.35em] uppercase text-gold/60 border border-gold/20 px-3 py-1 mb-6">
                         {t.tag}
                       </span>
-
-                      {/* Quote */}
                       <p className="font-serif italic text-cream/80 text-base md:text-2xl lg:text-[1.6rem] leading-[1.7] mb-6 md:mb-8 group-hover:text-cream transition-colors duration-500 relative z-10">
                         &ldquo;{t.quote}&rdquo;
                       </p>
-
-                      {/* Attribution */}
                       <div className="flex items-center gap-4">
                         <div className="w-10 h-px bg-gold/50" />
                         <div>
@@ -507,15 +525,11 @@ export default function HomePage() {
                   </StaggerItem>
                 ))}
               </StaggerGrid>
-
             </div>
           </div>
         </div>
-
-        {/* Gold horizontal rule — bottom accent */}
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
       </section>
-
-      </>
-      );
-      }
+    </>
+  );
+}
