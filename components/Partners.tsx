@@ -3,20 +3,22 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const partners = [
   { 
     name: "Uganda Tourism Board", 
-    logo: "/photos/partnerslogo/uganda-tourism-board-logo-25518EC15B-seeklogo.com_.webp",
+    logo: `${base}/photos/partnerslogo/uganda-tourism-board-logo-25518EC15B-seeklogo.com_.webp`,
     link: "https://utb.go.ug/"
   },
   { 
     name: "Association of Uganda Tour Operators", 
-    logo: "/photos/partnerslogo/autologo-114x114x0x0x114x114x1670356750.webp",
+    logo: `${base}/photos/partnerslogo/autologo-114x114x0x0x114x114x1670356750.webp`,
     link: "https://auto.ug/"
   },
   { 
     name: "Adventure Travel Trade Association", 
-    logo: "/photos/partnerslogo/ATTAlogo.png",
+    logo: `${base}/photos/partnerslogo/ATTAlogo.png`,
     link: "https://www.adventuretravel.biz/"
   },
 ];
