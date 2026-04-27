@@ -69,7 +69,7 @@ export default function HeroVideo() {
   const slide = slides[current];
 
   return (
-    <section className="grain-overlay relative h-[100dvh] min-h-[640px] overflow-hidden bg-forest-dark">
+    <section className="relative h-[100dvh] min-h-[640px] overflow-hidden bg-forest-dark">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <video
@@ -77,14 +77,13 @@ export default function HeroVideo() {
           muted
           loop
           playsInline
-          className="w-full h-full object-cover opacity-50"
+          className="w-full h-full object-cover opacity-80"
         >
           <source src={`${base}/homevideo/tilenga.mp4`} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        {/* Layered overlays — centered cinematic vignette */}
-        <div className="absolute inset-0 bg-forest-dark/40 z-[1]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/80 via-transparent to-forest-dark/40 z-[1]" />
+        {/* Subtle gradient to ensure text readability without blurring the video */}
+        <div className="absolute inset-0 bg-black/20 z-[1]" />
       </div>
 
       {/* Content — centered */}
