@@ -104,14 +104,14 @@ export default function HeroVideo() {
             </motion.div>
 
             {/* Main heading — word-by-word reveal */}
-            <h1 className="section-heading !text-cream text-4xl sm:text-5xl md:text-7xl lg:text-[7.5rem] mb-5 md:mb-8 leading-[0.9] md:leading-[0.85]">
+            <h1 className="section-heading !text-cream mb-4 md:mb-8 !leading-[0.95] md:!leading-[0.85]">
               <WordReveal text={slide.heading} delay={0.2} />
             </h1>
 
             {/* Italic subtitle */}
-            <div className="overflow-hidden mb-5 md:mb-8">
+            <div className="overflow-hidden mb-6 md:mb-8">
               <motion.p
-                className="editorial-italic text-xl sm:text-2xl md:text-3xl text-gold"
+                className="editorial-italic text-gold"
                 initial={{ y: "100%", opacity: 0 }}
                 animate={{ y: "0%", opacity: 1 }}
                 exit={{ y: "-100%", opacity: 0 }}
@@ -123,7 +123,7 @@ export default function HeroVideo() {
 
             {/* Body */}
             <motion.p
-              className="text-cream/70 font-sans text-sm md:text-lg max-w-md mb-8 md:mb-12 leading-relaxed h-[3em]"
+              className="text-cream/70 font-sans text-sm md:text-lg max-w-md mb-10 md:mb-12 leading-relaxed min-h-[3em]"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}

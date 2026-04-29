@@ -256,172 +256,263 @@ export default function TilengaSafariLodgePage() {
         </div>
       </section>
 
-      {/* ── GALLERY — Expansive Journal Spread ── */}
-      <section className="bg-forest-dark py-20 md:py-32 overflow-hidden relative">
-        <div className="absolute inset-0 grain-overlay opacity-[0.07] pointer-events-none" />
-        
-        <div className="max-w-[1600px] mx-auto px-6 md:px-16 mb-16 md:mb-24 relative z-10">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
+      {/* ── LODGE LIFE — A Day at Tilenga ── */}
+      <section className="bg-forest-dark overflow-hidden">
+
+        {/* Section Header */}
+        <div className="relative px-6 md:px-16 pt-20 md:pt-32 pb-16 md:pb-24">
+          <div className="absolute inset-0 grain-overlay opacity-[0.07] pointer-events-none" />
+          <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row md:items-end justify-between gap-10 relative z-10">
             <FadeIn>
               <div className="flex items-center gap-4 mb-6">
                 <span className="text-gold text-[10px] uppercase tracking-[0.8em] font-bold">Tilenga Field Journal</span>
                 <div className="w-20 h-px bg-gold/30" />
               </div>
-              <h2 className="font-serif text-6xl md:text-[10rem] text-cream leading-[0.75] uppercase tracking-tighter">
+              <h2 className="font-serif text-5xl sm:text-6xl md:text-[10rem] text-cream leading-[0.75] uppercase tracking-tighter">
                 Lodge <br />
-                <span className="italic text-gold lowercase tracking-normal pl-12 md:pl-32 block">Life</span>
+                <span className="italic text-gold lowercase tracking-normal pl-8 sm:pl-12 md:pl-32 block">Life</span>
               </h2>
             </FadeIn>
             <FadeIn direction="up" delay={0.2} className="max-w-[320px]">
-               <div className="space-y-4 border-l border-gold/20 pl-8 py-2">
-                  <p className="text-[10px] uppercase tracking-[0.4em] text-cream/40 font-mono">Archive No. 044</p>
-                  <p className="text-gold font-mono text-xs leading-relaxed uppercase tracking-widest">
-                    Murchison Falls Boundary <br />
-                    2° 14' 54.6" N · 31° 31' 44.4" E
-                  </p>
-                  <p className="text-cream/50 font-serif italic text-lg leading-relaxed">
-                    "The rhythm of the Nile is felt in every quiet corner of the lodge."
-                  </p>
-               </div>
+              <div className="space-y-4 border-l border-gold/20 pl-8 py-2">
+                <p className="text-[10px] uppercase tracking-[0.4em] text-cream/40 font-mono">Archive No. 044</p>
+                <p className="text-gold font-mono text-xs leading-relaxed uppercase tracking-widest">
+                  Murchison Falls Boundary <br />
+                  2° 14' 54.6" N · 31° 31' 44.4" E
+                </p>
+                <p className="text-cream/50 font-serif italic text-lg leading-relaxed">
+                  "The rhythm of the Nile is felt in every quiet corner of the lodge."
+                </p>
+              </div>
             </FadeIn>
           </div>
         </div>
 
-        <div className="max-w-[1800px] mx-auto px-4 md:px-12 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 lg:gap-8">
-            
-            {/* Column 1: Dramatic Verticals */}
-            <div className="md:col-span-4 space-y-4 md:space-y-8">
-               <FadeIn direction="up" delay={0.1}>
-                 <div className="relative group overflow-hidden">
-                    <div className="absolute inset-0 bg-forest-dark/20 z-10 group-hover:bg-transparent transition-colors duration-700" />
-                    <img src={`${base}/photos/tilengasafarilodge/night.png`} alt="Cottage Night View" className="w-full aspect-[3/4] object-cover transition-transform duration-[3s] group-hover:scale-105" />
-                    <div className="absolute bottom-6 left-6 z-20">
-                       <span className="text-[10px] uppercase tracking-[0.3em] text-cream/60 font-mono">01 · Twilight</span>
-                    </div>
-                 </div>
-               </FadeIn>
-               
-               <FadeIn direction="up" delay={0.3}>
-                 <div className="relative group overflow-hidden md:ml-12">
-                    <img src={`${base}/photos/tilengasafarilodge/insideview.png`} alt="Inside View" className="w-full aspect-square object-cover transition-transform duration-[3s] group-hover:scale-110" />
-                    <div className="absolute inset-0 border-[20px] border-forest-dark/0 group-hover:border-forest-dark/10 transition-all duration-700" />
-                 </div>
-               </FadeIn>
-
-               <FadeIn direction="up" delay={0.5}>
-                 <div className="relative group overflow-hidden">
-                    <img src={`${base}/photos/tilengasafarilodge/tilengasafarislodge cottage night.png`} alt="Cottage Night" className="w-full aspect-[4/5] object-cover transition-transform duration-[3s] group-hover:scale-105" />
-                    <div className="absolute top-6 right-6 z-20">
-                       <p className="font-serif italic text-gold text-lg">Starlit Sanctuary</p>
-                    </div>
-                 </div>
-               </FadeIn>
+        {/* ── ACT I: The Arrival ── */}
+        <FadeIn>
+          <div className="relative h-[70vh] md:h-[88vh] overflow-hidden group">
+            <img
+              src={`${base}/photos/tilengasafarilodge/entrance.png`}
+              alt="Tilenga Safari Lodge Entrance"
+              className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/85 via-forest-dark/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/50 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16 lg:p-24">
+              <div className="max-w-2xl">
+                <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-5">I · The Arrival</p>
+                <h3 className="font-serif text-3xl md:text-5xl lg:text-6xl text-cream leading-tight mb-5">
+                  Every stay begins with<br /><em className="italic text-gold">the same quiet wonder.</em>
+                </h3>
+                <p className="text-cream/50 font-sans text-sm leading-relaxed max-w-lg">
+                  A pause at the gate. The Nile glittering through the acacia canopy. Elephants moving slowly along the ridge. Before a single bag is unpacked, Tilenga has already said everything.
+                </p>
+              </div>
             </div>
-
-            {/* Column 2: Immersive Centerpiece */}
-            <div className="md:col-span-5 space-y-4 md:space-y-8 md:pt-24">
-               <FadeIn direction="up" delay={0.2}>
-                 <div className="relative group">
-                    <div className="relative z-10 overflow-hidden shadow-2xl">
-                       <img src={`${base}/photos/tilengasafarilodge/pool.png`} alt="Swimming Pool View" className="w-full aspect-[4/5] object-cover transition-transform duration-[4s] group-hover:scale-105" />
-                       <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                    </div>
-                    
-                    {/* Floating elements */}
-                    <div className="absolute -bottom-16 -left-12 hidden lg:block w-64 z-30 group-hover:translate-y-[-10px] transition-transform duration-1000">
-                        <FadeIn direction="up" delay={0.6}>
-                           <div className="bg-[#fcfbf4] p-4 pb-12 shadow-2xl -rotate-2 group-hover:rotate-0 transition-transform duration-700 border border-black/5">
-                              <div className="relative overflow-hidden aspect-square">
-                                <img src={`${base}/photos/tilengasafarilodge/watersafari.png`} alt="Water Safari" className="w-full h-full object-cover" />
-                              </div>
-                              <p className="font-serif italic text-[#1a3c2b] text-center mt-4 text-base">Nile Expeditions</p>
-                           </div>
-                        </FadeIn>
-                    </div>
-                 </div>
-               </FadeIn>
-
-               <div className="grid grid-cols-2 gap-4 md:gap-8 pt-8">
-                  <FadeIn direction="up" delay={0.4}>
-                    <div className="group">
-                       <div className="relative overflow-hidden grayscale-[30%] group-hover:grayscale-0 transition-all duration-1000">
-                          <img src={`${base}/photos/tilengasafarilodge/breakfast.png`} alt="Breakfast" className="w-full aspect-[3/4] object-cover" />
-                       </div>
-                       <div className="mt-4">
-                          <h4 className="text-gold font-serif italic text-base">Al Fresco Dining</h4>
-                       </div>
-                    </div>
-                  </FadeIn>
-                  
-                  <FadeIn direction="up" delay={0.6}>
-                    <div className="group pt-16">
-                       <div className="relative overflow-hidden grayscale-[30%] group-hover:grayscale-0 transition-all duration-1000">
-                          <img src={`${base}/photos/tilengasafarilodge/lunch.png`} alt="Lunch Setup" className="w-full aspect-[3/4] object-cover" />
-                       </div>
-                    </div>
-                  </FadeIn>
-               </div>
+            <div className="absolute top-8 right-8 md:top-12 md:right-14">
+              <span className="font-serif text-cream/10 text-8xl leading-none select-none">I</span>
             </div>
-
-            {/* Column 3: Detail & Wide Views */}
-            <div className="md:col-span-3 space-y-4 md:space-y-8 md:pt-12">
-               <FadeIn direction="up" delay={0.4}>
-                 <div className="group">
-                    <div className="relative overflow-hidden shadow-xl grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000">
-                       <img src={`${base}/photos/tilengasafarilodge/tilengasafarislodge swimmingpool view2.png`} alt="Pool View 2" className="w-full aspect-[3/5] object-cover transition-transform duration-[3s] group-hover:scale-110" />
-                    </div>
-                 </div>
-               </FadeIn>
-
-               <FadeIn direction="up" delay={0.7}>
-                 <div className="group">
-                    <div className="relative overflow-hidden border-l-8 border-gold/20 pl-4">
-                       <img src={`${base}/photos/tilengasafarilodge/tilengasafarislodge lunch close setup.png`} alt="Lunch Detail" className="w-full aspect-square object-cover" />
-                       <div className="mt-4">
-                          <p className="text-cream/40 text-[9px] uppercase tracking-[0.3em] font-mono">Culinary Details · Midday</p>
-                       </div>
-                    </div>
-                 </div>
-               </FadeIn>
-
-               <FadeIn direction="up" delay={0.9}>
-                 <div className="relative group overflow-hidden">
-                    <img src={`${base}/photos/tilengasafarilodge/travel.png`} alt="Safari Travel" className="w-full aspect-square object-cover transition-transform duration-[4s] group-hover:scale-105" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                       <span className="text-gold/80 border border-gold/40 px-6 py-2 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 uppercase tracking-[0.4em] text-[10px]">On Safari</span>
-                    </div>
-                 </div>
-               </FadeIn>
-            </div>
-
           </div>
+        </FadeIn>
 
-          {/* Full-Width immersive block at the bottom of the section */}
-          <div className="mt-8 md:mt-16">
-             <FadeIn direction="up" delay={1.1}>
-                <div className="relative group h-[50vh] md:h-[70vh] overflow-hidden">
-                   <img src={`${base}/photos/tilengasafarilodge/entrance.png`} alt="Lodge Entrance Wide" className="w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-105" />
-                   <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/80 via-transparent to-transparent" />
-                   <div className="absolute bottom-12 left-12 right-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
-                      <div className="max-w-xl">
-                         <h3 className="font-serif text-4xl md:text-6xl text-cream mb-4">Arrival in Paradise</h3>
-                         <p className="text-cream/60 font-sans text-sm md:text-base leading-relaxed">
-                            Every journey to Tilenga begins with a sense of wonder. The vastness of the park meets the intimacy of our hospitality.
-                         </p>
-                      </div>
-                      <div className="flex gap-4">
-                         <Link href="/plan-a-trip" className="btn-primary">Experience It Yourself</Link>
-                      </div>
-                   </div>
+        {/* ── ACT II: Morning Ritual ── */}
+        <div className="grid md:grid-cols-2">
+          {/* Left: Breakfast image — tall, cinematic */}
+          <FadeIn direction="left" className="relative overflow-hidden group min-h-[55vh]">
+            <img
+              src={`${base}/photos/tilengasafarilodge/breakfast.png`}
+              alt="Al Fresco Breakfast at Tilenga"
+              className="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/75 via-transparent to-transparent" />
+            <div className="absolute bottom-8 left-8">
+              <p className="font-mono text-[10px] text-gold/60 uppercase tracking-[0.4em] mb-2">06:30 hrs</p>
+              <h4 className="font-serif italic text-cream text-2xl md:text-3xl">Al Fresco Mornings</h4>
+            </div>
+          </FadeIn>
+
+          {/* Right: Copy + Nile Safari image */}
+          <div className="bg-[#0c1c11] flex flex-col justify-between p-10 md:p-14 lg:p-20">
+            <FadeIn direction="right">
+              <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-8">II · Morning Ritual</p>
+              <p className="font-serif italic text-cream/90 text-2xl md:text-3xl leading-relaxed mb-8">
+                "Breakfast arrives with the wildlife — elephants at the riverbank, ibis crossing the dawn sky."
+              </p>
+              <p className="text-cream/40 font-sans text-sm leading-relaxed">
+                Every morning at Tilenga is staged by nature. The table is set as the Albert Nile catches its first gold. Meals here are never just meals — they are a front-row seat to the daily theatre of the African bush.
+              </p>
+            </FadeIn>
+            <FadeIn direction="up" delay={0.3} className="mt-10">
+              <div className="relative overflow-hidden group">
+                <img
+                  src={`${base}/photos/tilengasafarilodge/watersafari.png`}
+                  alt="Nile Boat Safari at Dawn"
+                  className="w-full aspect-[16/8] object-cover transition-transform duration-[4s] group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/60 to-transparent" />
+                <div className="absolute bottom-4 right-5">
+                  <span className="text-[9px] text-cream/40 font-mono uppercase tracking-widest">Nile Expeditions · Dawn</span>
                 </div>
-             </FadeIn>
-          </div>
-
-          <div className="absolute bottom-[-10vw] right-[-5vw] pointer-events-none opacity-[0.03]">
-             <p className="font-serif text-[25vw] whitespace-nowrap uppercase tracking-tighter select-none">Tilenga</p>
+              </div>
+            </FadeIn>
           </div>
         </div>
+
+        {/* ── ACT III: The Midday Pool ── */}
+        <FadeIn>
+          <div className="relative h-[60vh] md:h-[80vh] overflow-hidden group">
+            <img
+              src={`${base}/photos/tilengasafarilodge/pool.png`}
+              alt="Lodge Swimming Pool"
+              className="w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-forest-dark/35 group-hover:bg-forest-dark/20 transition-colors duration-1000" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+              <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-6">III · The Midday Retreat</p>
+              <h3 className="font-serif italic text-cream text-4xl md:text-6xl lg:text-7xl max-w-3xl leading-tight">
+                Afternoons drift between<br />the pool and the horizon.
+              </h3>
+            </div>
+            <div className="absolute bottom-6 right-8 md:bottom-10 md:right-14">
+              <span className="text-cream/20 font-mono text-[9px] uppercase tracking-widest">The Pool · Murchison Falls NP</span>
+            </div>
+            <div className="absolute top-8 right-8">
+              <span className="font-serif text-cream/8 text-8xl leading-none select-none">III</span>
+            </div>
+          </div>
+        </FadeIn>
+
+        {/* ── ACT IV: Interiors & Details ── */}
+        <div className="grid grid-cols-2 md:grid-cols-4">
+          {[
+            { src: `${base}/photos/tilengasafarilodge/insideview.png`,                           alt: "Cottage Interior",      label: "Inside the Cottage",   sub: "Light · Space · Rest" },
+            { src: `${base}/photos/tilengasafarilodge/cottage3.png`,                              alt: "Cottage Wildlife View", label: "Wildlife at Your Door", sub: "From the balcony" },
+            { src: `${base}/photos/tilengasafarilodge/tilengasafarislodge lunch close setup.png`, alt: "Lunch Detail",          label: "Culinary Details",     sub: "Crafted with care" },
+            { src: `${base}/photos/tilengasafarilodge/tilengasafarislodge swimmingpool view2.png`,alt: "Pool View",             label: "The Blue Hour",        sub: "Pool · Afternoon" },
+          ].map((item, i) => (
+            <FadeIn key={item.alt} direction="up" delay={i * 0.12}>
+              <div className="relative group overflow-hidden">
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="w-full aspect-[3/4] md:aspect-[4/5] object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-[1200ms] group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                  <h4 className="font-serif italic text-gold text-base mb-1">{item.label}</h4>
+                  <p className="text-cream/50 text-[9px] uppercase tracking-widest font-mono">{item.sub}</p>
+                </div>
+                <div className="absolute top-4 left-4">
+                  <span className="font-serif text-cream/8 text-5xl leading-none select-none">{String(i + 1).padStart(2, "0")}</span>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+
+        {/* ── ACT V: Dining ── */}
+        <div className="grid md:grid-cols-5">
+          {/* Left: Large lunch image */}
+          <FadeIn direction="left" className="md:col-span-3 relative overflow-hidden group min-h-[50vh]">
+            <img
+              src={`${base}/photos/tilengasafarilodge/lunch.png`}
+              alt="Lunch at Tilenga"
+              className="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-forest-dark/50" />
+          </FadeIn>
+
+          {/* Right: Editorial copy */}
+          <div className="md:col-span-2 bg-[#0c1c11] flex flex-col justify-center p-10 md:p-14">
+            <FadeIn direction="right">
+              <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-6">V · At the Table</p>
+              <h3 className="font-serif text-3xl md:text-4xl text-cream leading-tight mb-6">
+                A kitchen shaped<br /><em className="italic text-gold">by the wild.</em>
+              </h3>
+              <div className="w-8 h-px bg-gold/40 mb-6" />
+              <p className="text-cream/40 font-sans text-sm leading-relaxed mb-8">
+                Our chef draws from Ugandan flavour and international craft — working with what the land offers and what the Nile inspires. Meals unfold with the sun, each one a conversation between plate and panorama.
+              </p>
+              <p className="font-serif italic text-cream/30 text-lg leading-relaxed">
+                "The best meals we have ever had — and we have eaten everywhere."
+              </p>
+              <p className="text-cream/20 font-mono text-[9px] uppercase tracking-widest mt-3">— A Tilenga Guest, 2024</p>
+            </FadeIn>
+          </div>
+        </div>
+
+        {/* ── ACT VI: Nightfall ── */}
+        <div className="grid md:grid-cols-5">
+          {/* Left: Editorial copy + small night image */}
+          <div className="md:col-span-2 bg-[#060f09] flex flex-col justify-center p-10 md:p-14 order-2 md:order-1">
+            <FadeIn direction="left">
+              <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-6">VI · Nightfall</p>
+              <h3 className="font-serif text-3xl md:text-5xl text-cream leading-tight mb-6">
+                Starlit<br /><em className="italic text-gold">Sanctuary</em>
+              </h3>
+              <div className="w-8 h-px bg-gold/40 mb-6" />
+              <p className="text-cream/40 font-sans text-sm leading-relaxed mb-10">
+                When darkness falls over Murchison Falls, the bush takes on a new voice. Crickets fill the air, the Nile murmurs below, and your cottage glows warmly against the infinite African sky. This is the hour the lodge belongs entirely to you.
+              </p>
+            </FadeIn>
+            <FadeIn direction="up" delay={0.3}>
+              <div className="relative overflow-hidden group">
+                <img
+                  src={`${base}/photos/tilengasafarilodge/night.png`}
+                  alt="Lodge at Night"
+                  className="w-full aspect-[4/3] object-cover transition-transform duration-[4s] group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 to-transparent" />
+                <div className="absolute bottom-4 left-5">
+                  <span className="font-mono text-[9px] text-cream/40 uppercase tracking-widest">21:47 hrs · The Quiet Hours</span>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+
+          {/* Right: Full tall cottage night image */}
+          <FadeIn direction="right" className="md:col-span-3 relative overflow-hidden group min-h-[60vh] order-1 md:order-2">
+            <img
+              src={`${base}/photos/tilengasafarilodge/tilengasafarislodge cottage night.png`}
+              alt="Cottage at Night"
+              className="w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#060f09]/60" />
+            <div className="absolute top-8 right-8 text-right">
+              <p className="font-serif italic text-gold/60 text-xl">Starlit Sanctuary</p>
+              <p className="font-mono text-[9px] text-cream/25 uppercase tracking-widest mt-1">Murchison Falls NP</p>
+            </div>
+          </FadeIn>
+        </div>
+
+        {/* ── ACT VII: On Safari — Closing CTA ── */}
+        <FadeIn>
+          <div className="relative h-[60vh] md:h-[70vh] overflow-hidden group">
+            <img
+              src={`${base}/photos/tilengasafarilodge/travel.png`}
+              alt="Safari Game Drive"
+              className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/90 via-forest-dark/30 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16 lg:p-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <div className="max-w-xl">
+                <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-5">VII · On Safari</p>
+                <h3 className="font-serif text-3xl md:text-5xl text-cream leading-tight">
+                  Beyond the lodge,<br /><em className="italic text-gold">Africa is waiting.</em>
+                </h3>
+              </div>
+              <div className="shrink-0">
+                <Link href="/plan-a-trip" className="btn-primary">Experience It Yourself</Link>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+
+        {/* Background watermark */}
+        <div className="overflow-hidden pointer-events-none select-none opacity-[0.025]">
+          <p className="font-serif text-[25vw] whitespace-nowrap uppercase tracking-tighter text-cream">Tilenga</p>
+        </div>
+
       </section>
 
       {/* ── LOCATION & ACCESS ── */}

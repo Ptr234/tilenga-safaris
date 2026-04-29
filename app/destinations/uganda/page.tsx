@@ -246,9 +246,9 @@ export default function UgandaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1614528767034-70de9fe166e0?w=500&q=80"
+                src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1200&q=80"
                 alt="Mountain Gorillas"
-                className="w-full h-52 object-cover"
+                className="w-full h-52 object-cover hover:scale-110 transition-transform duration-700"
               />
             </ImageReveal>
             <ImageReveal

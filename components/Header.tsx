@@ -69,13 +69,13 @@ export default function Header() {
           <div className="flex-1 flex items-center">
             <button 
               onClick={() => setMobileOpen(true)}
-              className="group flex items-center gap-3 text-cream hover:text-gold transition-colors duration-300"
+              className="group flex items-center gap-3 text-cream hover:text-gold transition-colors duration-300 min-h-[44px]"
             >
               <div className="flex flex-col gap-1.5 items-start">
                 <span className="w-5 h-px bg-current transition-all duration-300 group-hover:w-8" />
                 <span className="w-8 h-px bg-current" />
               </div>
-              <span className="text-[10px] uppercase tracking-[0.4em] font-sans font-bold hidden md:block">Menu</span>
+              <span className="text-[10px] uppercase tracking-[0.4em] font-sans font-bold hidden sm:block">Menu</span>
             </button>
           </div>
 
@@ -85,13 +85,13 @@ export default function Header() {
               <motion.img
                 src={`${base}/tilenga-logo-light.svg`}
                 alt="Tilenga Safaris"
-                className={`transition-all duration-700 object-contain ${scrolled ? "h-8 md:h-10" : "h-10 md:h-14"}`}
+                className={`transition-all duration-700 object-contain ${scrolled ? "h-9 md:h-10" : "h-11 md:h-14"}`}
               />
             </Link>
           </div>
 
           {/* Right: Contact + Enquire CTA */}
-          <div className="flex-1 flex items-center justify-end gap-6">
+          <div className="flex-1 flex items-center justify-end gap-3 sm:gap-6">
             <a
               href="tel:+256789390350"
               className="hidden lg:block text-[9px] uppercase tracking-[0.3em] font-sans text-cream/40 hover:text-gold transition-colors duration-300"
@@ -100,15 +100,15 @@ export default function Header() {
             </a>
             <Link
               href="/plan-a-trip"
-              className="group relative overflow-hidden hidden md:block"
+              className="group relative overflow-hidden hidden sm:block"
             >
               <span className="text-[10px] uppercase tracking-[0.4em] font-sans font-bold text-cream group-hover:text-gold transition-colors duration-300">
                 Plan Your Safari
               </span>
               <span className="absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-500 group-hover:w-full" />
             </Link>
-            <Link href="/plan-a-trip" className="md:hidden text-cream hover:text-gold transition-colors">
-               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <Link href="/plan-a-trip" className="sm:hidden text-cream hover:text-gold transition-colors p-2" aria-label="Plan a Trip">
+               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                  <path d="M12 19l7-7 3 3-7 7-3-3z" />
                  <path d="M18 13l-1.5-7.5L2 2l5.5 14.5L13 18l5-5z" />
                  <path d="M2 2l7.5 1.5" />
@@ -130,7 +130,7 @@ export default function Header() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileOpen(false)}
-              className="fixed inset-0 z-[110] bg-black/40 backdrop-blur-sm cursor-pointer"
+              className="fixed inset-0 z-[110] bg-black/60 backdrop-blur-sm cursor-pointer"
             />
 
             {/* Menu Panel */}
@@ -142,7 +142,7 @@ export default function Header() {
               className="fixed top-0 left-0 bottom-0 z-[120] bg-forest-dark w-full md:w-1/2 lg:w-[45vw] flex flex-col shadow-2xl overflow-hidden"
             >
               {/* Dynamic Background Image Showcase inside the panel */}
-              <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+              <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={hoveredImage}
@@ -153,44 +153,44 @@ export default function Header() {
                     className="absolute inset-0"
                   >
                     <img src={hoveredImage} alt="" className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-b from-forest-dark via-transparent to-forest-dark" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-forest-dark via-forest-dark/40 to-forest-dark" />
                   </motion.div>
                 </AnimatePresence>
               </div>
 
               {/* Close Button Inside Panel */}
-              <div className="relative z-10 flex justify-between items-center p-8 md:p-12">
+              <div className="relative z-10 flex justify-between items-center p-6 sm:p-8 md:p-12">
                 <div className="flex items-center gap-4">
                   <div className="w-8 h-px bg-gold/50" />
-                  <span className="text-gold text-[9px] uppercase tracking-[0.4em] font-bold">Tilenga Navigation</span>
+                  <span className="text-gold text-[9px] uppercase tracking-[0.4em] font-bold">Navigation</span>
                 </div>
                 <button 
                   onClick={() => setMobileOpen(false)}
-                  className="group flex items-center gap-3 text-gold"
+                  className="group flex items-center gap-3 text-gold p-2"
                 >
-                  <span className="text-[10px] uppercase tracking-[0.4em] font-sans font-bold">Close</span>
+                  <span className="text-[10px] uppercase tracking-[0.4em] font-sans font-bold hidden xs:block">Close</span>
                   <div className="relative w-8 h-8 flex items-center justify-center">
                     <span className="absolute w-6 h-px bg-gold rotate-45 transition-transform duration-500 group-hover:rotate-[135deg]" />
-                    <span className="absolute w-6 h-px bg-gold -rotate-45 transition-transform duration-500 group-hover:rotate-45" />
+                    <span className="absolute w-6 h-px bg-gold -rotate-45 transition-transform duration-500 group-hover:rotate(45deg)" />
                   </div>
                 </button>
               </div>
 
               {/* Menu Links */}
-              <div className="relative z-10 flex-1 flex flex-col px-8 md:px-20 justify-center pb-24 overflow-y-auto custom-scrollbar">
-                <nav className="flex flex-col gap-8 md:gap-12">
+              <div className="relative z-10 flex-1 flex flex-col px-8 sm:px-12 md:px-20 justify-center pb-20 overflow-y-auto custom-scrollbar">
+                <nav className="flex flex-col gap-6 sm:gap-8 md:gap-12">
                   {navItems.map((item, i) => (
                     <motion.div
                       key={item.label}
                       initial={{ opacity: 0, x: -30 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.3 + i * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                      transition={{ delay: 0.2 + i * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                       className="group/item"
                       onMouseEnter={() => setHoveredImage(item.image)}
                     >
                       <Link
                         href={item.href}
-                        className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-cream hover:text-gold transition-colors duration-500 uppercase tracking-tighter block mb-3 leading-none"
+                        className="font-serif text-3xl xs:text-4xl sm:text-5xl lg:text-6xl text-cream hover:text-gold transition-colors duration-500 uppercase tracking-tighter block mb-3 leading-none"
                         onClick={() => setMobileOpen(false)}
                       >
                         {item.label}
@@ -198,7 +198,7 @@ export default function Header() {
                       
                       {/* Children / Sub-links */}
                       {item.children && (
-                        <div className="flex flex-wrap gap-x-6 gap-y-2 opacity-40 group-hover/item:opacity-100 transition-opacity duration-500">
+                        <div className="flex flex-wrap gap-x-5 sm:gap-x-6 gap-y-3 opacity-60 group-hover/item:opacity-100 transition-opacity duration-500">
                           {item.children.map((child) => (
                             <Link 
                               key={child.label} 
@@ -207,7 +207,7 @@ export default function Header() {
                                 e.stopPropagation();
                                 setHoveredImage(child.image);
                               }}
-                              className="text-cream hover:text-gold text-[10px] md:text-xs uppercase tracking-[0.2em] font-sans transition-colors py-1"
+                              className="text-cream hover:text-gold text-[12px] sm:text-xs uppercase tracking-[0.2em] font-sans transition-colors py-1"
                               onClick={() => setMobileOpen(false)}
                             >
                               {child.label}
@@ -223,13 +223,13 @@ export default function Header() {
                 <motion.div 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.8 }}
-                  className="mt-20 pt-12 border-t border-white/10"
+                  transition={{ delay: 0.7 }}
+                  className="mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-white/10"
                 >
-                  <p className="text-gold uppercase tracking-[0.4em] text-[9px] font-bold mb-6">Concierge</p>
-                  <div className="flex flex-col gap-4 font-serif italic text-cream/40 text-lg">
+                  <p className="text-gold uppercase tracking-[0.45em] text-[9px] font-bold mb-4 sm:mb-6">Concierge</p>
+                  <div className="flex flex-col gap-3 sm:gap-4 font-serif italic text-cream/50 text-base sm:text-lg">
                     <a href="tel:+256789390350" className="hover:text-gold transition-colors">+256 789 390 350</a>
-                    <a href="mailto:destinations@tilengasafaris.com" className="hover:text-gold transition-colors">destinations@tilengasafaris.com</a>
+                    <a href="mailto:destinations@tilengasafaris.com" className="hover:text-gold transition-colors break-all">destinations@tilengasafaris.com</a>
                   </div>
                 </motion.div>
               </div>

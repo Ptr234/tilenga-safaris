@@ -71,7 +71,7 @@ const services = [
     num: "03",
     title: "Gorilla & Chimp Permits",
     desc: "We secure the hard-to-get permits for gorilla tracking and chimpanzee habituation experiences in Uganda and Rwanda.",
-    image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1000&q=80",
+    image: "/gorrilas/gorrilas2.jpg",
     tag: "Special Access"
   },
   {
@@ -153,14 +153,14 @@ export default function AboutPage() {
           <div className="space-y-6">
             <div className="grid grid-cols-2 gap-6">
               <div className="film-frame h-56">
-                <img src="https://images.unsplash.com/photo-1614528767034-70de9fe166e0?w=500&q=80" alt="Uganda gorilla" className="w-full h-full object-cover" />
+                <img src="/gorrilas/gorrillas.jpg" alt="Uganda gorilla" className="w-full h-full object-cover" />
               </div>
               <div className="film-frame h-56 mt-12">
                 <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=500&q=80" alt="Murchison Falls" className="w-full h-full object-cover" />
               </div>
             </div>
             <div className="film-frame h-64">
-              <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=700&q=80" alt="Gorillas in mist" className="w-full h-full object-cover" />
+              <img src="/gorrilas/gorrillas3.jpg" alt="Gorillas in mist" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>

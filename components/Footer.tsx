@@ -190,13 +190,13 @@ export default function Footer() {
             View All →
           </Link>
         </div>
-        <div className="grid grid-cols-4 md:grid-cols-7">
+        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7">
           {destinations.map((d, i) => (
             <Link
               key={d.name}
               href={d.href}
               className="group relative overflow-hidden block"
-              style={{ aspectRatio: "2/3" }}
+              style={{ aspectRatio: "1/1.5" }}
             >
               <img
                 src={d.image}

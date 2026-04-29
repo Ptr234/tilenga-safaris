@@ -13,6 +13,11 @@ interface ExperienceCarouselProps {
   experiences: Experience[];
 }
 
+const swipeConfidenceThreshold = 10000;
+const swipePower = (offset: number, velocity: number) => {
+  return Math.abs(offset) * velocity;
+};
+
 export default function ExperienceCarousel({ experiences }: ExperienceCarouselProps) {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -32,7 +37,7 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
   // Auto-play
   useEffect(() => {
     if (experiences.length === 0) return;
-    const timer = setInterval(nextStep, 5000);
+    const timer = setInterval(nextStep, 7000);
     return () => clearInterval(timer);
   }, [experiences.length]);
 
@@ -40,9 +45,9 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
 
   const variants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
+      x: direction > 0 ? "100%" : "-100%",
       opacity: 0,
-      scale: 0.9,
+      scale: 0.95,
     }),
     center: {
       zIndex: 1,
@@ -52,15 +57,15 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
     },
     exit: (direction: number) => ({
       zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
+      x: direction < 0 ? "100%" : "-100%",
       opacity: 0,
-      scale: 0.9,
+      scale: 0.95,
     }),
   };
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto overflow-hidden">
-      <div className="relative h-[400px] md:h-[600px] w-full flex items-center justify-center">
+    <div className="relative w-full max-w-[1400px] mx-auto overflow-hidden px-4 md:px-12">
+      <div className="relative h-[450px] sm:h-[550px] md:h-[700px] w-full flex items-center justify-center">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={index}
@@ -70,56 +75,84 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
             animate="center"
             exit="exit"
             transition={{
-              x: { type: "spring", stiffness: 300, damping: 30} ,
-              opacity: { duration: 0.4 },
-              scale: { duration: 0.4 }
+              x: { type: "spring", stiffness: 200, damping: 30 },
+              opacity: { duration: 0.6 },
+              scale: { duration: 0.6 }
             }}
-            className="absolute w-full h-full px-4 md:px-0"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={1}
+            onDragEnd={(e, { offset, velocity }) => {
+              const swipe = swipePower(offset.x, velocity.x);
+
+              if (swipe < -swipeConfidenceThreshold) {
+                nextStep();
+              } else if (swipe > swipeConfidenceThreshold) {
+                prevStep();
+              }
+            }}
+            className="absolute w-full h-full"
           >
-            <div className="relative w-full h-full overflow-hidden group">
+            <div className="relative w-full h-full overflow-hidden group shadow-2xl">
               <img
                 src={experiences[index].image}
                 alt={experiences[index].title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-110"
               />
-              {/* Always-on gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/80 via-forest-dark/10 to-transparent" />
+              {/* Cinematic gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-dark/20 to-transparent" />
               
               {/* Overlay content */}
-              <div className="absolute inset-0 flex flex-col items-center justify-end pb-12 px-6 text-center">
-                 <div className="w-12 h-px bg-gold mb-6" />
-                 <h3 className="font-serif text-3xl md:text-5xl text-cream mb-4 uppercase tracking-widest">{experiences[index].title}</h3>
-                 <p className="text-cream/80 text-sm md:text-base font-sans max-w-lg leading-relaxed">{experiences[index].description}</p>
+              <div className="absolute inset-0 flex flex-col items-center justify-end pb-12 sm:pb-16 px-6 sm:px-8 text-center max-w-3xl mx-auto">
+                 <motion.div 
+                   initial={{ scaleX: 0 }}
+                   animate={{ scaleX: 1 }}
+                   transition={{ delay: 0.4, duration: 0.8 }}
+                   className="w-12 sm:w-16 h-px bg-gold mb-6 sm:mb-8 origin-center" 
+                 />
+                 <h3 className="font-serif text-2xl sm:text-5xl md:text-7xl text-cream mb-4 sm:mb-6 uppercase tracking-[0.15em] sm:tracking-[0.2em] leading-tight">
+                   {experiences[index].title}
+                 </h3>
+                 <p className="text-cream/70 text-xs sm:text-base md:text-lg font-sans max-w-xl leading-relaxed">
+                   {experiences[index].description}
+                 </p>
+              </div>
+
+              {/* Counter */}
+              <div className="absolute top-6 right-6 sm:top-10 sm:right-10 z-10">
+                 <span className="font-serif text-cream/20 text-4xl sm:text-8xl select-none">
+                   {String(index + 1).padStart(2, "0")}
+                 </span>
               </div>
             </div>
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Navigation Arrows */}
-      <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between px-2 md:px-6 z-10 pointer-events-none">
+      {/* Navigation Arrows — more premium design */}
+      <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between px-1 md:px-8 z-20 pointer-events-none">
         <button
           onClick={(e) => { e.stopPropagation(); prevStep(); }}
-          className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-forest/40 backdrop-blur-md border border-cream/20 flex items-center justify-center text-cream hover:bg-gold hover:border-gold transition-all duration-300 pointer-events-auto"
+          className="w-10 h-10 sm:w-16 sm:h-16 rounded-full bg-forest-dark/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-cream hover:bg-gold hover:text-forest-dark hover:border-gold transition-all duration-500 pointer-events-auto group"
           aria-label="Previous experience"
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg width="20" height="20" sm-width="24" sm-height="24" viewBox="0 0 24 24" fill="none" className="transition-transform group-hover:-translate-x-1">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </button>
         <button
           onClick={(e) => { e.stopPropagation(); nextStep(); }}
-          className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-forest/40 backdrop-blur-md border border-cream/20 flex items-center justify-center text-cream hover:bg-gold hover:border-gold transition-all duration-300 pointer-events-auto"
+          className="w-10 h-10 sm:w-16 sm:h-16 rounded-full bg-forest-dark/30 backdrop-blur-md border border-white/10 flex items-center justify-center text-cream hover:bg-gold hover:text-forest-dark hover:border-gold transition-all duration-500 pointer-events-auto group"
           aria-label="Next experience"
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg width="20" height="20" sm-width="24" sm-height="24" viewBox="0 0 24 24" fill="none" className="transition-transform group-hover:translate-x-1">
+            <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </button>
       </div>
 
-      {/* Progress indicators */}
-      <div className="flex justify-center gap-3 mt-8">
+      {/* Progress indicators — minimal line style */}
+      <div className="flex justify-center gap-3 sm:gap-4 mt-8 md:mt-16">
         {experiences.map((_, i) => (
           <button
             key={i}
@@ -127,9 +160,11 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
               setDirection(i > index ? 1 : -1);
               setIndex(i);
             }}
-            className={`h-1.5 transition-all duration-500 rounded-full ${i === index ? 'w-8 bg-gold' : 'w-2 bg-forest/20'}`}
+            className="group py-3 sm:py-4 px-1"
             aria-label={`Go to experience ${i + 1}`}
-          />
+          >
+            <div className={`h-[1px] transition-all duration-700 rounded-full ${i === index ? 'w-10 sm:w-12 bg-gold' : 'w-5 sm:w-6 bg-forest/20 group-hover:bg-gold/40'}`} />
+          </button>
         ))}
       </div>
     </div>

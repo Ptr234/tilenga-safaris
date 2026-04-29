@@ -242,142 +242,252 @@ export default function KikorongoSafariLodgePage() {
         </div>
       </section>
 
-      {/* ── GALLERY — Expansive Album Grid ── */}
-      <section className="bg-forest-dark py-20 md:py-32 overflow-hidden relative">
-        <div className="absolute inset-0 grain-overlay opacity-[0.05] pointer-events-none" />
-        
-        <div className="max-w-[1600px] mx-auto px-6 md:px-16 mb-16 md:mb-24 relative z-10">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
+      {/* ── LODGE LIFE — A Day at Kikorongo ── */}
+      <section className="bg-forest-dark overflow-hidden">
+
+        {/* Section Header */}
+        <div className="relative px-6 md:px-16 pt-20 md:pt-32 pb-16 md:pb-24">
+          <div className="absolute inset-0 grain-overlay opacity-[0.05] pointer-events-none" />
+          <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row md:items-end justify-between gap-10 relative z-10">
             <FadeIn>
               <div className="flex items-center gap-4 mb-6">
                 <span className="text-gold text-[10px] uppercase tracking-[0.8em] font-bold">Kikorongo Archive</span>
                 <div className="w-20 h-px bg-gold/30" />
               </div>
-              <h2 className="font-serif text-6xl md:text-[10rem] text-cream leading-[0.75] uppercase tracking-tighter">
+              <h2 className="font-serif text-5xl sm:text-6xl md:text-[10rem] text-cream leading-[0.75] uppercase tracking-tighter">
                 Lodge <br />
-                <span className="italic text-gold lowercase tracking-normal pl-12 md:pl-32 block">Life</span>
+                <span className="italic text-gold lowercase tracking-normal pl-8 sm:pl-12 md:pl-32 block">Life</span>
               </h2>
             </FadeIn>
             <FadeIn direction="up" delay={0.2} className="max-w-[320px]">
-               <div className="space-y-4 border-l border-gold/20 pl-8 py-2">
-                  <p className="text-[10px] uppercase tracking-[0.4em] text-cream/40 font-mono">Archive No. 022</p>
-                  <p className="text-gold font-mono text-xs leading-relaxed uppercase tracking-widest">
-                    Queen Elizabeth Escarpment <br />
-                    0° 0' 11.2" N · 29° 59' 31.8" E
-                  </p>
-                  <p className="text-cream/50 font-serif italic text-lg leading-relaxed">
-                    "A sanctuary perched where the hemispheres meet."
-                  </p>
-               </div>
+              <div className="space-y-4 border-l border-gold/20 pl-8 py-2">
+                <p className="text-[10px] uppercase tracking-[0.4em] text-cream/40 font-mono">Archive No. 022</p>
+                <p className="text-gold font-mono text-xs leading-relaxed uppercase tracking-widest">
+                  Queen Elizabeth Escarpment <br />
+                  0° 0' 11.2" N · 29° 59' 31.8" E
+                </p>
+                <p className="text-cream/50 font-serif italic text-lg leading-relaxed">
+                  "A sanctuary perched where the hemispheres meet."
+                </p>
+              </div>
             </FadeIn>
           </div>
         </div>
 
-        <div className="max-w-[1800px] mx-auto px-4 md:px-12 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 lg:gap-8">
-            
-            {/* Column 1: Verticals and Details */}
-            <div className="md:col-span-4 space-y-4 md:space-y-8">
-               <FadeIn direction="up" delay={0.1}>
-                 <div className="relative group overflow-hidden">
-                    <img src={`${base}/photos/kikorongo_fireplace.jpg`} alt="Fireplace" className="w-full aspect-[3/4] object-cover transition-transform duration-[3s] group-hover:scale-105" />
-                    <div className="absolute bottom-6 left-6 z-20">
-                       <span className="text-[10px] uppercase tracking-[0.3em] text-cream/60 font-mono">19:42 HRS · THE HEARTH</span>
-                    </div>
-                 </div>
-               </FadeIn>
-               
-               <FadeIn direction="up" delay={0.3}>
-                 <div className="relative group overflow-hidden md:ml-12 border-l-4 border-gold/40">
-                    <img src={`${base}/photos/kikorongo_ranger.jpg`} alt="Ranger" className="w-full aspect-square object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/40 to-transparent" />
-                 </div>
-               </FadeIn>
-
-               <FadeIn direction="up" delay={0.5}>
-                 <div className="relative group overflow-hidden">
-                    <img src={`${base}/photos/kikorongo_room1.jpg`} alt="Cottage Interior" className="w-full aspect-[4/3] object-cover transition-transform duration-[3s] group-hover:scale-110" />
-                    <div className="absolute top-6 right-6 z-20 text-right">
-                       <p className="font-serif italic text-gold text-lg">Intimate Retreats</p>
-                    </div>
-                 </div>
-               </FadeIn>
+        {/* ── ACT I: The Escarpment ── */}
+        <FadeIn>
+          <div className="relative h-[70vh] md:h-[88vh] overflow-hidden group">
+            <img
+              src={`${base}/photos/kikorongo_outside.jpg`}
+              alt="Kikorongo Safari Lodge on the Equator"
+              className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/85 via-forest-dark/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/50 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16 lg:p-24">
+              <div className="max-w-2xl">
+                <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-5">I · The Escarpment</p>
+                <h3 className="font-serif text-3xl md:text-5xl lg:text-6xl text-cream leading-tight mb-5">
+                  Perched at the Equator,<br /><em className="italic text-gold">between two worlds.</em>
+                </h3>
+                <p className="text-cream/50 font-sans text-sm leading-relaxed max-w-lg">
+                  At precisely 0° latitude, Kikorongo sits on a steep ridge above Lake George and Lake Kikorongo — the Rwenzori Mountains framing the horizon, and the whole sweep of Queen Elizabeth NP laid out below. This is not just a lodge. It is a vantage point on Africa.
+                </p>
+              </div>
             </div>
-
-            {/* Column 2: Large Centerpiece & Overlaps */}
-            <div className="md:col-span-5 space-y-4 md:space-y-8 md:pt-24">
-               <FadeIn direction="up" delay={0.2}>
-                 <div className="relative group">
-                    <div className="relative z-10 overflow-hidden shadow-2xl">
-                       <img src={`${base}/photos/kikorongo_outside.jpg`} alt="Lodge Exterior Wide" className="w-full aspect-[4/5] object-cover transition-transform duration-[4s] group-hover:scale-105" />
-                       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-forest-dark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                    </div>
-                    
-                    {/* Floating Polaroid-style element */}
-                    <div className="absolute -bottom-20 -right-8 hidden lg:block w-72 z-30 group-hover:translate-y-[-12px] transition-transform duration-1000">
-                        <FadeIn direction="up" delay={0.6}>
-                           <div className="bg-[#fcfbf4] p-4 pb-16 shadow-2xl rotate-3 group-hover:rotate-1 transition-transform duration-700 border border-black/5">
-                              <div className="relative overflow-hidden aspect-square">
-                                <img src={`${base}/photos/kikorongo_tourist.jpg`} alt="Guest Experience" className="w-full h-full object-cover" />
-                              </div>
-                              <p className="font-serif italic text-[#1a3c2b] text-center mt-4 text-lg">Moments of Wonder</p>
-                           </div>
-                        </FadeIn>
-                    </div>
-                 </div>
-               </FadeIn>
-
-               <div className="pt-12">
-                  <FadeIn direction="up" delay={0.4}>
-                    <div className="group relative overflow-hidden">
-                       <img src={`${base}/photos/kikorongo_room2.jpg`} alt="Premium Interior" className="w-full aspect-[21/9] object-cover transition-transform duration-[3s] group-hover:scale-105" />
-                       <div className="absolute inset-0 flex items-end p-8 bg-gradient-to-t from-forest-dark/80 via-transparent to-transparent">
-                          <p className="font-serif italic text-gold text-xl">"A retreat above the clouds."</p>
-                       </div>
-                    </div>
-                  </FadeIn>
-               </div>
+            <div className="absolute top-10 right-10 text-right">
+              <p className="font-mono text-[9px] text-cream/20 uppercase tracking-[0.4em]">00° 00' · The Equator</p>
             </div>
-
-            {/* Column 3: Wide Horizons & Travel */}
-            <div className="md:col-span-3 space-y-4 md:space-y-8 md:pt-12">
-               <FadeIn direction="up" delay={0.4}>
-                 <div className="group relative">
-                    <div className="absolute -inset-2 border border-gold/10 scale-105 group-hover:scale-100 transition-transform duration-700" />
-                    <div className="relative overflow-hidden shadow-xl">
-                       <img src={`${base}/photos/kikorongo_travel.jpg`} alt="Safari Travel" className="w-full aspect-[3/5] object-cover transition-transform duration-[3s] group-hover:scale-110" />
-                    </div>
-                 </div>
-               </FadeIn>
-
-               <FadeIn direction="up" delay={0.7}>
-                 <div className="group">
-                    <div className="relative overflow-hidden">
-                       <img src={`${base}/photos/kikorongo_cottage2.jpg`} alt="Wide Horizon" className="w-full aspect-square object-cover" />
-                       <div className="mt-4 flex justify-between items-start">
-                          <h4 className="text-gold font-serif italic text-sm">Horizon Lines</h4>
-                          <span className="text-cream/20 text-[9px] font-mono uppercase tracking-widest">00° Equator</span>
-                       </div>
-                    </div>
-                 </div>
-               </FadeIn>
-
-               <FadeIn direction="up" delay={0.9}>
-                 <div className="relative group overflow-hidden bg-forest p-8 border border-gold/10">
-                    <h3 className="font-serif text-3xl text-gold mb-4 leading-tight">The Queen Elizabeth Experience</h3>
-                    <p className="text-cream/40 font-sans text-xs leading-relaxed uppercase tracking-widest">
-                       Elephants, Lions, and the Kazinga Channel at your doorstep.
-                    </p>
-                 </div>
-               </FadeIn>
-            </div>
-
           </div>
+        </FadeIn>
 
-          <div className="absolute bottom-[-10vw] left-[-5vw] pointer-events-none opacity-[0.03]">
-             <p className="font-serif text-[25vw] whitespace-nowrap uppercase tracking-tighter select-none">Kikorongo</p>
+        {/* ── ACT II: First Light Above the Lakes ── */}
+        <div className="grid md:grid-cols-2">
+          {/* Left: Cottage with lake view — tall portrait */}
+          <FadeIn direction="left" className="relative overflow-hidden group min-h-[55vh]">
+            <img
+              src={`${base}/photos/kikorongo_cottage1.jpg`}
+              alt="Cottage with Lake View at Dawn"
+              className="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-transparent to-transparent" />
+            <div className="absolute bottom-8 left-8">
+              <p className="font-mono text-[10px] text-gold/60 uppercase tracking-[0.4em] mb-2">05:50 hrs</p>
+              <h4 className="font-serif italic text-cream text-2xl md:text-3xl">First Light on the Lakes</h4>
+            </div>
+          </FadeIn>
+
+          {/* Right: Editorial copy + wide horizon image */}
+          <div className="bg-[#0b1a10] flex flex-col justify-between p-10 md:p-14 lg:p-20">
+            <FadeIn direction="right">
+              <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-8">II · First Light</p>
+              <p className="font-serif italic text-cream/90 text-2xl md:text-3xl leading-relaxed mb-8">
+                "You wake before the sun. Both lakes are still. Then the Rwenzori turns gold."
+              </p>
+              <p className="text-cream/40 font-sans text-sm leading-relaxed">
+                Mornings at Kikorongo are unhurried. Cool mountain air drifts through the terrace. Bird song fills the escarpment long before coffee arrives. The view alone is enough to hold you for an hour — two lakes, one horizon, and the ancient snow peaks of the Mountains of the Moon.
+              </p>
+            </FadeIn>
+            <FadeIn direction="up" delay={0.3} className="mt-10">
+              <div className="relative overflow-hidden group">
+                <img
+                  src={`${base}/photos/kikorongo_cottage2.jpg`}
+                  alt="Horizon View from the Escarpment"
+                  className="w-full aspect-[16/8] object-cover transition-transform duration-[4s] group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/50 to-transparent" />
+                <div className="absolute bottom-4 right-5">
+                  <span className="text-[9px] text-cream/40 font-mono uppercase tracking-widest">00° Equator · Lake George</span>
+                </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
+
+        {/* ── ACT III: Your Guide into the Wild ── */}
+        <div className="grid md:grid-cols-5">
+          {/* Left: Editorial copy + guest moment */}
+          <div className="md:col-span-2 bg-[#091510] flex flex-col justify-center p-10 md:p-14">
+            <FadeIn direction="left">
+              <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-6">III · The Guide</p>
+              <h3 className="font-serif text-3xl md:text-4xl text-cream leading-tight mb-6">
+                A voice that knows<br /><em className="italic text-gold">every sound.</em>
+              </h3>
+              <div className="w-8 h-px bg-gold/40 mb-6" />
+              <p className="text-cream/40 font-sans text-sm leading-relaxed mb-10">
+                Our guides are naturalists first and storytellers second. They read the savannah the way others read a map — a broken branch, a faint print in the dust, a silence that is never quite silent. Every game drive becomes a conversation with the landscape.
+              </p>
+            </FadeIn>
+            <FadeIn direction="up" delay={0.3}>
+              <div className="relative overflow-hidden group">
+                <img
+                  src={`${base}/photos/kikorongo_tourist.jpg`}
+                  alt="Guests in the Wild"
+                  className="w-full aspect-[4/3] object-cover transition-transform duration-[4s] group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/60 to-transparent" />
+                <div className="absolute bottom-4 left-5">
+                  <span className="font-mono text-[9px] text-cream/40 uppercase tracking-widest">In the Field · QENP</span>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+
+          {/* Right: Ranger — full tall image */}
+          <FadeIn direction="right" className="md:col-span-3 relative overflow-hidden group min-h-[60vh]">
+            <img
+              src={`${base}/photos/kikorongo_ranger.jpg`}
+              alt="Kikorongo Safari Ranger"
+              className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 transition-all duration-[1500ms] group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#091510]/60" />
+            <div className="absolute top-8 right-8 text-right">
+              <p className="font-serif italic text-gold/60 text-xl">Into the Wild</p>
+              <p className="font-mono text-[9px] text-cream/25 uppercase tracking-widest mt-1">Queen Elizabeth NP</p>
+            </div>
+          </FadeIn>
+        </div>
+
+        {/* ── ACT IV: The Sanctuary Rooms ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {[
+            {
+              src: `${base}/photos/kikorongo_room1.jpg`,
+              alt: "Intimate Cottage Interior",
+              label: "Intimate Retreat",
+              sub: "Ground-level · Lake views · Birder's favourite",
+              delay: 0,
+            },
+            {
+              src: `${base}/photos/kikorongo_room2.jpg`,
+              alt: "Premium Tented Cottage",
+              label: "Tented Sanctuary",
+              sub: "Sunrise & sunset wings · Rwenzori panorama",
+              delay: 0.15,
+            },
+          ].map((item) => (
+            <FadeIn key={item.alt} direction="up" delay={item.delay}>
+              <div className="relative group overflow-hidden">
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="w-full aspect-[4/3] md:aspect-[16/10] object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-[1200ms] group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="absolute bottom-0 left-0 right-0 p-8 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                  <h4 className="font-serif italic text-gold text-xl mb-2">{item.label}</h4>
+                  <p className="text-cream/50 text-[9px] uppercase tracking-widest font-mono">{item.sub}</p>
+                </div>
+                <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  <span className="font-serif italic text-gold/60 text-lg">{item.label}</span>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+
+        {/* ── ACT V: On Safari ── */}
+        <FadeIn>
+          <div className="relative h-[55vh] md:h-[70vh] overflow-hidden group">
+            <img
+              src={`${base}/photos/kikorongo_travel.jpg`}
+              alt="Game Drive in Queen Elizabeth NP"
+              className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-forest-dark/35 group-hover:bg-forest-dark/20 transition-colors duration-1000" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+              <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-6">V · Into the Park</p>
+              <h3 className="font-serif italic text-cream text-4xl md:text-6xl lg:text-7xl max-w-3xl leading-tight">
+                Lions. Elephants.<br />600 birds and counting.
+              </h3>
+            </div>
+            <div className="absolute bottom-6 right-8">
+              <span className="text-cream/20 font-mono text-[9px] uppercase tracking-widest">Queen Elizabeth National Park</span>
+            </div>
+          </div>
+        </FadeIn>
+
+        {/* ── ACT VI: The Hearth — Evening & CTA ── */}
+        <div className="grid md:grid-cols-2">
+          {/* Left: Large fireplace image */}
+          <FadeIn direction="left" className="relative overflow-hidden group min-h-[55vh]">
+            <img
+              src={`${base}/photos/kikorongo_fireplace.jpg`}
+              alt="Evening Fireplace at Kikorongo"
+              className="w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#060e09]/60" />
+            <div className="absolute bottom-8 left-8">
+              <p className="font-mono text-[10px] text-gold/60 uppercase tracking-[0.4em] mb-2">19:42 hrs</p>
+              <h4 className="font-serif italic text-cream text-2xl">The Hearth</h4>
+            </div>
+          </FadeIn>
+
+          {/* Right: Evening editorial copy + CTA */}
+          <div className="bg-[#060e09] flex flex-col justify-center p-10 md:p-14 lg:p-20">
+            <FadeIn direction="right">
+              <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-6">VI · Nightfall</p>
+              <h3 className="font-serif text-3xl md:text-5xl text-cream leading-tight mb-6">
+                When the sun drops<br />behind the <em className="italic text-gold">Rwenzori.</em>
+              </h3>
+              <div className="w-8 h-px bg-gold/40 mb-6" />
+              <p className="text-cream/40 font-sans text-sm leading-relaxed mb-10">
+                As dusk pulls the colour from the lakes, the lodge turns inward. The fire is lit. Birdsong gives way to the rustle of the bush. Cool highland air settles over the escarpment, and the night sky above the Equator fills with more stars than you thought possible.
+              </p>
+              <p className="font-serif italic text-cream/25 text-lg leading-relaxed mb-8">
+                "A profoundly peaceful atmosphere — we did not want to leave."
+              </p>
+              <p className="text-cream/20 font-mono text-[9px] uppercase tracking-widest mb-10">— A Kikorongo Guest, 2024</p>
+              <Link href="/plan-a-trip" className="btn-primary self-start">Experience It Yourself</Link>
+            </FadeIn>
+          </div>
+        </div>
+
+        {/* Background watermark */}
+        <div className="overflow-hidden pointer-events-none select-none opacity-[0.025]">
+          <p className="font-serif text-[20vw] whitespace-nowrap uppercase tracking-tighter text-cream">Kikorongo</p>
+        </div>
+
       </section>
 
       {/* ── LOCATION & BOOKING ── */}

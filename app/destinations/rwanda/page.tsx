@@ -9,7 +9,7 @@ const hotspots = [
   {
     name: "Volcanoes National Park",
     detail: "Mountain Gorilla Trekking in the Virungas",
-    image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=900&q=85",
+    image: "/gorrilas/gorrilas21.jpg",
   },
   {
     name: "Nyungwe Forest",
@@ -102,7 +102,7 @@ export default function RwandaPage() {
 
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=500&q=80" alt="Mountain Gorillas in mist" className="w-full h-52 object-cover" />
+              <img src="/gorrilas/gorillar.webp" alt="Mountain Gorillas in mist" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-6">
               <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=500&q=80" alt="Nyungwe forest" className="w-full h-52 object-cover" />

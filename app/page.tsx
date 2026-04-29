@@ -35,7 +35,7 @@ const lodges = [
 ];
 
 const experiences = [
-  { title: "Gorilla Trekking", description: "Face-to-face with endangered mountain gorillas in Bwindi or Volcanoes.", image: `${base}/experinces/gorrila treking.jpg` },
+  { title: "Gorilla Trekking", description: "Face-to-face with endangered mountain gorillas in Bwindi or Volcanoes.", image: `${base}/gorrilas/gorrila.webp` },
   { title: "Game Drives", description: "Guided dawn and dusk drives through Africa's most prolific wildlife parks.", image: `${base}/experinces/Game drives.jpg` },
   { title: "Boat Safaris", description: "Glide the Kazinga Channel or Albert Nile for hippo, croc, and bird encounters.", image: `${base}/experinces/water safari.jpg` },
   { title: "Cultural Immersion", description: "Basketry workshops, village walks, traditional cuisine, and living heritage.", image: `${base}/experinces/culture emersion.jpg` },
@@ -44,10 +44,10 @@ const experiences = [
 ];
 
 const destinations = [
-  { name: "Uganda", tag: "Pearl of Africa", description: "Known as the Pearl of Africa, Uganda offers a tapestry of landscapes — from the thundering Murchison Falls to the legendary mountain gorillas of Bwindi.", image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800&q=80", href: "/destinations/uganda" },
+  { name: "Uganda", tag: "Pearl of Africa", description: "Known as the Pearl of Africa, Uganda offers a tapestry of landscapes — from the thundering Murchison Falls to the legendary mountain gorillas of Bwindi.", image: `${base}/gorrilas/gorrilaking.webp`, href: "/destinations/uganda" },
   { name: "Kenya", tag: "Iconic Maasai Mara", description: "Witness the Great Migration and the golden savannahs of the Maasai Mara, home to Africa's most legendary wildlife encounters.", image: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=800&q=80", href: "/destinations/kenya" },
   { name: "Tanzania", tag: "Serengeti & Zanzibar", description: "From the endless plains of the Serengeti to the turquoise waters of Zanzibar, Tanzania is a land of breathtaking contrasts.", image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=800&q=80", href: "/destinations/tanzania" },
-  { name: "Rwanda", tag: "Land of a Thousand Hills", description: "Discover a land of mist-covered volcanoes and rare mountain gorillas in the Heart of Africa.", image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800&q=80", href: "/destinations/rwanda" },
+  { name: "Rwanda", tag: "Land of a Thousand Hills", description: "Discover a land of mist-covered volcanoes and rare mountain gorillas in the Heart of Africa.", image: `${base}/gorrilas/gorrilaa.webp`, href: "/destinations/rwanda" },
   { name: "Namibia", tag: "Desert & Dunes", description: "Explore the ancient Namib Desert, where towering red dunes meet the haunting Skeleton Coast.", image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=800&q=80", href: "/destinations/namibia" },
   { name: "Botswana", tag: "Okavango Delta", description: "Glide through the crystal-clear channels of the Okavango Delta, a sanctuary for Africa's most diverse wildlife.", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80", href: "/destinations/botswana" },
   { name: "South Africa", tag: "Cape & Kruger", description: "Experience the vibrant culture of Cape Town and the world-class safari circuits of Kruger National Park.", image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=800&q=80", href: "/destinations/south-africa" },
@@ -83,29 +83,29 @@ export default function HomePage() {
       <HeroVideo />
 
       {/* Stats bar */}
-      <section className="bg-forest py-12">
-        <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <section className="bg-forest py-8 md:py-12">
+        <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 text-center">
           {stats.map((s, i) => (
             <FadeIn key={s.label} direction="up" delay={i * 0.1}>
-              <p className="font-serif text-5xl text-gold">
+              <p className="font-serif text-4xl md:text-5xl text-gold">
                 <AnimatedCounter value={s.value} />
               </p>
-              <p className="text-cream/50 text-[10px] uppercase tracking-[0.3em] font-sans mt-2">{s.label}</p>
+              <p className="text-cream/50 text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-sans mt-2">{s.label}</p>
             </FadeIn>
           ))}
         </div>
       </section>
 
       {/* Destinations Section — Journal Style Editorial Grid */}
-      <section className="py-16 md:py-32 px-6 md:px-16 bg-cream overflow-hidden">
+      <section className="py-14 md:py-32 px-6 md:px-16 bg-cream overflow-hidden">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-10 mb-10 md:mb-20">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 md:gap-10 mb-12 md:mb-20">
             <div className="max-w-2xl">
               <FadeIn direction="fade">
-                <span className="text-gold uppercase tracking-[0.4em] text-[10px] font-bold mb-4 block">The Explorer&apos;s Map</span>
+                <span className="section-label">The Explorer&apos;s Map</span>
               </FadeIn>
-              <h2 className="font-serif text-4xl md:text-6xl text-forest uppercase tracking-widest leading-none">
+              <h2 className="section-heading">
                 Discover <br />
                 <span className="italic text-gold lowercase tracking-normal">Africa</span>
               </h2>
@@ -114,18 +114,17 @@ export default function HomePage() {
               <p className="text-stone/70 font-sans text-sm leading-relaxed mb-6">
                 Curated journeys across East Africa&apos;s most profound landscapes, from mist-covered mountains to sun-drenched savannahs.
               </p>
-              <Link href="/destinations" className="group inline-flex items-center gap-2 text-forest text-[10px] uppercase tracking-widest font-bold border-b border-gold/30 pb-1 hover:border-gold transition-colors">
+              <Link href="/destinations" className="text-link-arrow">
                 View All Regions
-                <span className="transition-transform group-hover:translate-x-1">→</span>
               </Link>
             </FadeIn>
           </div>
 
           {/* Clean Journal Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-12 gap-y-8 md:gap-y-20 gap-x-6 md:gap-x-8">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-y-20 gap-x-6 md:gap-x-8">
 
-            {/* 01. Switching Featured Card — Maintains the design we had */}
-            <div className="col-span-2 md:col-span-7">
+            {/* 01. Switching Featured Card */}
+            <div className="md:col-span-7">
               <FadeIn direction="up">
                 <div className="relative group block cursor-pointer">
                   <AnimatePresence mode="wait">
@@ -137,7 +136,7 @@ export default function HomePage() {
                       transition={{ duration: 1.2, ease: "easeInOut" }}
                     >
                       <Link href={destinations[activeIdx].href}>
-                        <div className="relative aspect-[16/10] md:aspect-[14/11] overflow-hidden mb-8 shadow-sm">
+                        <div className="relative aspect-[4/3] md:aspect-[14/11] overflow-hidden mb-6 md:mb-8 shadow-sm">
                           <img
                             src={destinations[activeIdx].image}
                             alt={destinations[activeIdx].name}
@@ -146,10 +145,10 @@ export default function HomePage() {
                         </div>
                         <div className="max-w-lg">
                           <span className="font-serif text-gold text-sm italic mb-2 block tracking-widest">Discover Africa</span>
-                          <h3 className="font-serif text-3xl md:text-5xl text-forest uppercase tracking-widest mb-4 transition-colors group-hover:text-gold">
+                          <h3 className="font-serif text-3xl md:text-5xl text-forest uppercase tracking-widest mb-4 transition-colors group-hover:text-gold leading-none">
                             {destinations[activeIdx].name}
                           </h3>
-                          <p className="text-stone font-sans text-[15px] leading-loose mb-6 opacity-80 min-h-[80px]">
+                          <p className="text-stone font-sans text-[15px] leading-relaxed md:leading-loose mb-6 opacity-80 md:min-h-[80px]">
                             {destinations[activeIdx].description}
                           </p>
                           <span className="text-[10px] uppercase tracking-widest text-gold font-bold flex items-center gap-2">
@@ -162,7 +161,7 @@ export default function HomePage() {
                   </AnimatePresence>
                   
                   {/* Subtle Progress Bar */}
-                  <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gold/10 overflow-hidden">
+                  <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gold/10 overflow-hidden hidden md:block">
                     <motion.div 
                       key={`progress-${activeIdx}`}
                       initial={{ x: "-100%" }}
@@ -176,10 +175,10 @@ export default function HomePage() {
             </div>
 
             {/* 02. Uganda — Smaller Offset */}
-            <div className="col-span-2 md:col-span-5 md:pt-32">
+            <div className="md:col-span-5 md:pt-32">
               <FadeIn direction="up" delay={0.2}>
                 <Link href={destinations[0].href} className="group block">
-                  <div className="relative aspect-square md:aspect-[4/5] overflow-hidden mb-8 shadow-sm">
+                  <div className="relative aspect-square md:aspect-[4/5] overflow-hidden mb-6 md:mb-8 shadow-sm">
                     <img
                       src={destinations[0].image}
                       alt={destinations[0].name}
@@ -195,21 +194,21 @@ export default function HomePage() {
               </FadeIn>
             </div>
 
-            {/* Row 2: Symmetric Journal Row — All 6 remaining iconic spots including Kenya */}
-            <div className="col-span-2 md:col-span-12 grid grid-cols-2 md:grid-cols-6 gap-6 md:gap-8">
+            {/* Row 2: Symmetric Journal Row */}
+            <div className="md:col-span-12 grid grid-cols-2 md:grid-cols-6 gap-6 md:gap-8">
               {[destinations[1], destinations[2], destinations[3], destinations[4], destinations[5], destinations[6]].map((dest, i) => (
                 <FadeIn key={dest.name} direction="up" delay={0.1 * i}>
                   <Link href={dest.href} className="group block">
-                    <div className="relative aspect-[3/4] md:aspect-[4/5] overflow-hidden mb-4 md:mb-6 shadow-sm border border-gold/5">
+                    <div className="relative aspect-[4/5] overflow-hidden mb-4 md:mb-6 shadow-sm border border-gold/5">
                       <img
                         src={dest.image}
                         alt={dest.name}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                       />
                     </div>
-                    <div className="text-center px-1 md:px-4">
-                      <h4 className="font-serif text-base md:text-xl xl:text-2xl text-forest uppercase tracking-widest mb-1 md:mb-2 group-hover:text-gold transition-colors">{dest.name}</h4>
-                      <p className="text-gold text-[8px] md:text-[9px] uppercase tracking-[0.3em] font-bold">{dest.tag}</p>
+                    <div className="text-center">
+                      <h4 className="font-serif text-lg md:text-xl xl:text-2xl text-forest uppercase tracking-widest mb-1 group-hover:text-gold transition-colors leading-tight">{dest.name}</h4>
+                      <p className="text-gold text-[8px] md:text-[9px] uppercase tracking-[0.2em] md:tracking-[0.3em] font-bold">{dest.tag}</p>
                     </div>
                   </Link>
                 </FadeIn>
