@@ -9,47 +9,47 @@ const hotspots = [
   {
     name: "Masai Mara",
     detail: "Kenya's Crown Jewel Reserve",
-    image: "https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=900&q=85",
+    image: "/Newstock/greatbeastmigration.jpg",
   },
   {
     name: "Great Migration",
     detail: "1.5 Million Wildebeest Crossing",
-    image: "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=900&q=85",
+    image: "/Newstock/zebras.jpg",
   },
   {
     name: "Amboseli National Park",
     detail: "Elephants Against Kilimanjaro",
-    image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=900&q=85",
+    image: "/Newstock/bigelephant.jpg",
   },
   {
     name: "Lake Nakuru",
     detail: "Flamingo-Lined Soda Lake",
-    image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=900&q=85",
+    image: "/Newstock/wildanimals.jpg",
   },
   {
     name: "Samburu Reserve",
     detail: "Rare Northern Species",
-    image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=900&q=85",
+    image: "/Newstock/cheetah.jpg",
   },
   {
     name: "Hells Gate National Park",
     detail: "Gorges, Geysers & Cycling Safaris",
-    image: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=900&q=85",
+    image: "/Newstock/safari.jpg",
   },
   {
     name: "Giraffe Centre",
     detail: "Nairobi — Endangered Rothschild's Giraffe",
-    image: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=900&q=85",
+    image: "/Newstock/girrafe.jpg",
   },
   {
     name: "Mount Kenya",
     detail: "Africa's Second-Highest Peak",
-    image: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=900&q=85",
+    image: "/Newstock/Mountain Climbing06Mountain Climbing.jpg",
   },
   {
     name: "Indian Ocean Beaches",
     detail: "Diani & Mombasa — Pristine Coastline",
-    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=900&q=85",
+    image: "/Newstock/Zanzibar Beaches.jpg",
   },
 ];
 
@@ -67,7 +67,7 @@ const packages = [
       "Lake Nakuru flamingoes",
       "Masai Mara safari",
     ],
-    image: "https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=700&q=85",
+    image: "/Newstock/lioness.jpg",
   },
   {
     name: "7-Day Magical Kenya Tour",
@@ -82,7 +82,7 @@ const packages = [
       "Masai Mara",
       "Maasai village visit",
     ],
-    image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=700&q=85",
+    image: "/Newstock/elephantcars.jpg",
   },
   {
     name: "12-Day Kenya & Tanzania Safari",
@@ -97,7 +97,7 @@ const packages = [
       "Masai Mara",
       "Amboseli NP",
     ],
-    image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=700&q=85",
+    image: "/Newstock/bufallo.jpg",
   },
 ];
 
@@ -110,7 +110,7 @@ export default function KenyaPage() {
           className="absolute inset-0 scale-110"
           style={{
             backgroundImage:
-              "url(https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=1800&q=80)",
+              "url(/Newstock/splendifd.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -193,8 +193,8 @@ export default function KenyaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=500&q=80"
-                alt="Masai Mara landscape"
+                src="/Newstock/greatbeastmigration.jpg"
+                alt="Great Migration"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
@@ -204,8 +204,8 @@ export default function KenyaPage() {
               className="overflow-hidden mt-6"
             >
               <img
-                src="https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=500&q=80"
-                alt="Lion"
+                src="/Newstock/mothernbabyelephant.jpg"
+                alt="Elephant family"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
@@ -215,8 +215,8 @@ export default function KenyaPage() {
               className="overflow-hidden -mt-6"
             >
               <img
-                src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=500&q=80"
-                alt="Elephant Amboseli"
+                src="/Newstock/cheetah.jpg"
+                alt="Cheetah"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
@@ -226,8 +226,8 @@ export default function KenyaPage() {
               className="overflow-hidden"
             >
               <img
-                src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=500&q=80"
-                alt="Great Migration wildebeest"
+                src="/Newstock/zebras.jpg"
+                alt="Zebras on safari"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>

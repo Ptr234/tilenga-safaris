@@ -17,6 +17,8 @@ import Partners from "@/components/Partners";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
+import ParallaxSection from "@/components/motion/ParallaxSection";
+
 const lodges = [
   {
     name: "Tilenga Safari Lodge",
@@ -50,11 +52,11 @@ const experiences = [
     location: "Bwindi, Uganda",
     vibe: "Intimate · Rare · Sacred"
   },
-  { 
-    title: "Great Beast Migration", 
+  {
+    title: "Great Beast Migration",
     tag: "Wildlife Spectacle",
-    description: "Witness the world's most spectacular wildlife event as millions of wildebeest and zebra cross the Mara River, braving crocodiles and predators.", 
-    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1200&q=80",
+    description: "Witness the world's most spectacular wildlife event as millions of wildebeest and zebra cross the Mara River, braving crocodiles and predators.",
+    image: `${base}/Newstock/greatbeastmigration.jpg`,
     num: "02",
     location: "Maasai Mara, Kenya",
     vibe: "Epic · Primal · Raw"
@@ -77,11 +79,11 @@ const experiences = [
     location: "Serengeti & Kruger",
     vibe: "Vibrant · Patient · Golden"
   },
-  { 
-    title: "Hot Air Balloon", 
+  {
+    title: "Hot Air Balloon",
     tag: "Aerial Views",
-    description: "Soar above the golden plains at sunrise for a breathtaking bird's-eye view of the wild, followed by a champagne breakfast in the bush.", 
-    image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=1200&q=80",
+    description: "Soar above the golden plains at sunrise for a breathtaking bird's-eye view of the wild, followed by a champagne breakfast in the bush.",
+    image: `${base}/Newstock/Hot Air Balloon.jpg`,
     num: "05",
     location: "Serengeti / Mara",
     vibe: "Silent · Ethereal · Vast"
@@ -117,12 +119,12 @@ const experiences = [
 
 const destinations = [
   { name: "Uganda", tag: "Pearl of Africa", description: "Known as the Pearl of Africa, Uganda offers a tapestry of landscapes — from the thundering Murchison Falls to the legendary mountain gorillas of Bwindi.", image: `${base}/gorrilas/gorrilaking.webp`, href: "/destinations/uganda" },
-  { name: "Kenya", tag: "Iconic Maasai Mara", description: "Witness the Great Migration and the golden savannahs of the Maasai Mara, home to Africa's most legendary wildlife encounters.", image: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=800&q=80", href: "/destinations/kenya" },
-  { name: "Tanzania", tag: "Serengeti & Zanzibar", description: "From the endless plains of the Serengeti to the turquoise waters of Zanzibar, Tanzania is a land of breathtaking contrasts.", image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=800&q=80", href: "/destinations/tanzania" },
+  { name: "Kenya", tag: "Iconic Maasai Mara", description: "Witness the Great Migration and the golden savannahs of the Maasai Mara, home to Africa's most legendary wildlife encounters.", image: `${base}/Newstock/cheetah.jpg`, href: "/destinations/kenya" },
+  { name: "Tanzania", tag: "Serengeti & Zanzibar", description: "From the endless plains of the Serengeti to the turquoise waters of Zanzibar, Tanzania is a land of breathtaking contrasts.", image: `${base}/Newstock/Zanzibar Beaches.jpg`, href: "/destinations/tanzania" },
   { name: "Rwanda", tag: "Land of a Thousand Hills", description: "Discover a land of mist-covered volcanoes and rare mountain gorillas in the Heart of Africa.", image: `${base}/gorrilas/gorrilaa.webp`, href: "/destinations/rwanda" },
-  { name: "Namibia", tag: "Desert & Dunes", description: "Explore the ancient Namib Desert, where towering red dunes meet the haunting Skeleton Coast.", image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=800&q=80", href: "/destinations/namibia" },
-  { name: "Botswana", tag: "Okavango Delta", description: "Glide through the crystal-clear channels of the Okavango Delta, a sanctuary for Africa's most diverse wildlife.", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80", href: "/destinations/botswana" },
-  { name: "South Africa", tag: "Cape & Kruger", description: "Experience the vibrant culture of Cape Town and the world-class safari circuits of Kruger National Park.", image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=800&q=80", href: "/destinations/south-africa" },
+  { name: "Namibia", tag: "Desert & Dunes", description: "Explore the ancient Namib Desert, where towering red dunes meet the haunting Skeleton Coast.", image: `${base}/Newstock/zebras.jpg`, href: "/destinations/namibia" },
+  { name: "Botswana", tag: "Okavango Delta", description: "Glide through the crystal-clear channels of the Okavango Delta, a sanctuary for Africa's most diverse wildlife.", image: `${base}/Newstock/bigelephant.jpg`, href: "/destinations/botswana" },
+  { name: "South Africa", tag: "Cape & Kruger", description: "Experience the vibrant culture of Cape Town and the world-class safari circuits of Kruger National Park.", image: `${base}/Newstock/safari.jpg`, href: "/destinations/south-africa" },
 ];
 
 const stats = [
@@ -520,148 +522,194 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Heritage — narrative approach with parallax anchor */}
-      <section className="pt-10 pb-14 md:py-40 px-6 md:px-16 bg-cream-dark relative z-10">
-        <div className="absolute top-0 right-0 w-[40%] h-full opacity-[0.03] pointer-events-none">
-           <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1200&q=80" className="w-full h-full object-cover" alt="" />
-        </div>
-
+      {/* Redesigned Spirit of Timeless Safari Section */}
+      <ParallaxSection
+        imageUrl={`${base}/Newstock/splendifd.jpg`}
+        className="py-32 md:py-56 px-6 md:px-16"
+        overlayClassName="bg-gradient-to-b from-forest-dark/80 via-forest-dark/40 to-forest-dark/90"
+      >
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid md:grid-cols-12 gap-10 md:gap-20 items-center">
-            <div className="md:col-span-5 order-2 md:order-1">
-              <FadeIn direction="up" delay={0.1}>
-                <p className="section-label">A Century of Passion</p>
-                <h2 className="section-heading mb-4 md:mb-12 leading-[1.1]">
-                  The Spirit of <br />
-                  <span className="editorial-italic">Timeless Safari</span>
+          <div className="grid lg:grid-cols-2 gap-16 md:gap-24 items-center">
+            <div className="relative z-10">
+              <FadeIn direction="up">
+                <span className="inline-block text-gold text-[10px] md:text-xs uppercase tracking-[0.5em] font-bold mb-6 border-b border-gold/30 pb-2">
+                  Heritage of Discovery
+                </span>
+                
+                <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl text-cream leading-[0.9] mb-10">
+                  <SplitText text="The Spirit of" by="word" delay={0.2} /> <br />
+                  <span className="italic text-gold block mt-4">
+                    <SplitText text="Timeless Safari" by="word" delay={0.5} />
+                  </span>
                 </h2>
-                <div className="w-20 h-px bg-gold mb-4 md:mb-12" />
-                <div className="space-y-4 md:space-y-10 body-text">
-                  <p>
-                    Tilenga Safaris is more than a travel company; it is a legacy of discovery rooted in the profound beauty of the East African landscape. Our journeys are crafted for those who seek the authentic, the rare, and the transformative.
+
+                <div className="max-w-md space-y-8">
+                  <p className="text-cream/70 font-sans text-lg md:text-xl leading-relaxed">
+                    Tilenga Safaris is a legacy of discovery rooted in the profound beauty of the East African landscape. We invite you to experience a &ldquo;Golden Age&rdquo; of travel.
                   </p>
-                  <p>
-                    From the mist-shrouded peaks of the Rwenzori to the golden horizons of the Maasai Mara, we invite you to experience a &ldquo;Golden Age&rdquo; of travel—where every detail is considered, and every moment is an invitation to wonder.
-                  </p>
-                </div>
-                <div className="mt-6 md:mt-16">
-                  <Link href="/about" className="group inline-flex items-center gap-6">
-                    <span className="btn-primary px-10">Our Story</span>
-                    <span className="text-[10px] uppercase tracking-[0.3em] text-forest group-hover:text-gold transition-colors duration-500 font-bold">Discover Our Roots</span>
-                  </Link>
+                  
+                  <div className="flex flex-wrap gap-8 items-center pt-6">
+                    <MagneticButton>
+                      <Link href="/destinations" className="btn-primary px-12 py-5 bg-gold text-forest-dark border-none hover:bg-cream transition-colors duration-500">
+                        Explore Journeys
+                      </Link>
+                    </MagneticButton>
+                    
+                    <Link href="/about" className="group flex items-center gap-4 text-cream/60 hover:text-gold transition-colors duration-300 uppercase text-[10px] tracking-[0.3em] font-bold">
+                      Our Story
+                      <span className="w-8 h-px bg-cream/30 group-hover:w-12 group-hover:bg-gold transition-all duration-500" />
+                    </Link>
+                  </div>
                 </div>
               </FadeIn>
             </div>
-            
-            <div className="md:col-span-7 order-1 md:order-2">
-              <div className="relative">
-                <ImageReveal direction="left" delay={0.3}>
-                  <div className="film-frame aspect-[16/11] overflow-hidden shadow-2xl">
+
+            <div className="relative hidden lg:block">
+              {/* Layered Floating Imagery */}
+              <div className="relative w-full aspect-[4/5] max-w-lg ml-auto">
+                <ImageReveal direction="right" delay={0.4}>
+                  <div className="relative z-10 rounded-sm overflow-hidden shadow-2xl border border-white/10 aspect-[3/4]">
                     <img
-                      src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=1800&q=80"
-                      alt="The Spirit of Safari"
+                      src={`${base}/Newstock/elephantcars.jpg`}
                       className="w-full h-full object-cover"
+                      alt="Safari Experience"
                     />
                   </div>
                 </ImageReveal>
+                
+                {/* Floating secondary image */}
+                <motion.div 
+                  initial={{ y: 100, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 1.2, delay: 0.8 }}
+                  viewport={{ once: true }}
+                  className="absolute -bottom-16 -left-16 w-2/3 aspect-square z-20 backdrop-blur-md p-2 bg-white/5 border border-white/10 rounded-sm shadow-2xl"
+                >
+                  <img
+                    src={`${base}/Newstock/lioness.jpg`}
+                    className="w-full h-full object-cover rounded-sm"
+                    alt="Wildlife Detail"
+                  />
+                </motion.div>
 
-                <FadeIn direction="up" delay={0.4} className="mt-4 lg:hidden">
-                  <div className="film-frame aspect-video overflow-hidden shadow-xl">
-                    <img
-                      src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=800&q=80"
-                      alt="Wildlife Detail"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </FadeIn>
+                {/* Decorative rotation text */}
+                <motion.div 
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="absolute -top-10 -right-10 w-32 h-32 border border-gold/20 rounded-full flex items-center justify-center"
+                >
+                   <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
+                      <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+                      <text className="text-[7px] uppercase tracking-[0.2em] fill-gold/40 font-bold">
+                        <textPath xlinkHref="#circlePath">Tilenga Safaris • Timeless Discovery • Tilenga Safaris • Timeless Discovery •</textPath>
+                      </text>
+                   </svg>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ParallaxSection>
 
-                <div className="absolute -bottom-20 -left-16 hidden lg:block w-72 h-96 z-20">
-                  <FadeIn direction="up" delay={0.6}>
-                    <div className="film-frame h-full overflow-hidden shadow-2xl border-4 border-white/10">
-                      <img
-                        src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=800&q=80"
-                        alt="Wildlife Detail"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </FadeIn>
+      {/* Redesigned Sustainability Section */}
+      <section className="py-24 md:py-48 px-6 md:px-16 bg-[#0a1a12] relative overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0 pointer-events-none">
+          <img src={`${base}/Newstock/Boat Safaris08Boat Safaris.jpg`} alt="" className="w-full h-full object-cover opacity-15" />
+          <div className="absolute inset-0 bg-[#0a1a12]/75" />
+        </div>
+        {/* Subtle decorative background text */}
+        <div className="absolute top-20 left-10 opacity-[0.02] pointer-events-none select-none">
+          <span className="text-[20vw] font-serif text-cream uppercase leading-none">Respect</span>
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <div className="order-2 lg:order-1">
+              <div className="grid grid-cols-2 gap-4 relative">
+                 <div className="space-y-4">
+                    <ImageReveal direction="top" delay={0.1}>
+                       <div className="aspect-[3/4] rounded-sm overflow-hidden shadow-2xl border border-white/5">
+                          <img src={`${base}/Newstock/touristsmovinginforest.jpg`} className="w-full h-full object-cover" alt="Conservation" />
+                       </div>
+                    </ImageReveal>
+                    <ImageReveal direction="left" delay={0.3}>
+                       <div className="aspect-square rounded-sm overflow-hidden shadow-2xl border border-white/5">
+                          <img src={`${base}/Newstock/mothernbabyelephant.jpg`} className="w-full h-full object-cover" alt="Community" />
+                       </div>
+                    </ImageReveal>
+                 </div>
+                 <div className="space-y-4 pt-12">
+                    <ImageReveal direction="right" delay={0.2}>
+                       <div className="aspect-square rounded-sm overflow-hidden shadow-2xl border border-white/5">
+                          <img src={`${base}/Newstock/bufallo.jpg`} className="w-full h-full object-cover" alt="Wildlife" />
+                       </div>
+                    </ImageReveal>
+                    <ImageReveal direction="bottom" delay={0.4}>
+                       <div className="aspect-[3/4] rounded-sm overflow-hidden shadow-2xl border border-white/5">
+                          <img src={`${base}/Newstock/girrafe.jpg`} className="w-full h-full object-cover" alt="Sustainability" />
+                       </div>
+                    </ImageReveal>
+                 </div>
+
+                 {/* Floating badge */}
+                 <motion.div 
+                   whileHover={{ scale: 1.05, rotate: 5 }}
+                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-gold p-8 rounded-full shadow-2xl border-4 border-[#0a1a12] hidden md:flex flex-col items-center justify-center text-forest-dark"
+                 >
+                    <span className="text-[10px] uppercase tracking-widest font-bold">Guaranteed</span>
+                    <span className="font-serif text-2xl font-bold italic">Ethical</span>
+                    <span className="text-[10px] uppercase tracking-widest font-bold">Travel</span>
+                 </motion.div>
+              </div>
+            </div>
+
+            <div className="order-1 lg:order-2">
+              <FadeIn direction="right">
+                <span className="section-label text-gold/80">Responsible Travel</span>
+                <h2 className="font-serif text-5xl md:text-6xl text-cream leading-[1.1] mb-8">
+                  <SplitText text="A Commitment to" by="word" /> <br />
+                  <span className="italic text-gold">Communities & Conservation</span>
+                </h2>
+                
+                <div className="w-20 h-px bg-gold/30 mb-10" />
+                
+                <div className="space-y-6 text-cream/60 font-sans text-lg leading-relaxed mb-12">
+                  <p>
+                    Sustainability is woven into how we operate. We work closely with local communities,
+                    support indigenous culture preservation, and partner with conservation-focused lodges across East Africa.
+                  </p>
+                  <p>
+                    When you travel with Tilenga Safaris, your journey contributes to the livelihoods
+                    of local guides, hospitality staff, and community artisans.
+                  </p>
                 </div>
-              </div>
+
+                <div className="grid sm:grid-cols-2 gap-4 mb-12">
+                  {sustainabilityItems.map((item, i) => (
+                    <motion.div 
+                      key={item}
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.1 }}
+                      viewport={{ once: true }}
+                      className="group flex items-start gap-4 p-4 rounded-sm bg-white/5 border border-white/10 hover:bg-white/10 transition-colors duration-300"
+                    >
+                      <span className="text-gold text-lg group-hover:scale-110 transition-transform duration-300">✦</span>
+                      <span className="text-cream/80 text-sm font-sans leading-snug">{item}</span>
+                    </motion.div>
+                  ))}
+                </div>
+
+                <MagneticButton>
+                  <Link href="/about" className="btn-primary px-12 bg-cream text-forest-dark border-none hover:bg-gold transition-colors duration-500">
+                    Learn Our Philosophy
+                  </Link>
+                </MagneticButton>
+              </FadeIn>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Sustainability */}
-      <section className="py-14 md:py-28 px-6 md:px-16 bg-cream relative z-[5] lg:pt-24">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-20 items-center">
-          <div className="grid grid-cols-2 gap-3 md:gap-4 pt-6 md:pt-0">
-            <ImageReveal direction="top" delay={0} className="overflow-hidden">
-              <div className="film-frame aspect-square">
-                <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&q=80" alt="Conservation" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
-              </div>
-            </ImageReveal>
-            <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-0 md:mt-12">
-              <div className="film-frame aspect-square">
-                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" alt="Landscape" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
-              </div>
-            </ImageReveal>
-            <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden mt-0 md:-mt-12">
-              <div className="film-frame aspect-square">
-                <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&q=80" alt="Wildlife" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
-              </div>
-            </ImageReveal>
-            <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
-              <div className="film-frame aspect-square">
-                <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&q=80" alt="Community" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
-              </div>
-            </ImageReveal>
-          </div>
-
-          <FadeIn direction="right">
-            <p className="section-label">Responsible Travel</p>
-            <h2 className="section-heading mb-4 md:mb-10 !text-2xl md:!text-4xl lg:!text-5xl">A Commitment to<br />Communities &amp; Conservation</h2>
-            <div className="w-16 h-px bg-gold mb-4 md:mb-10" />
-            <div className="space-y-4 md:space-y-8 body-text mb-6 md:mb-12">
-              <p>
-                Sustainability is woven into how we operate. We work closely with local communities,
-                support indigenous culture preservation, and partner with conservation-focused lodges across East Africa.
-              </p>
-              <p>
-                When you travel with Tilenga Safaris, your journey contributes to the livelihoods
-                of local guides, hospitality staff, and community artisans.
-              </p>
-            </div>
-            <StaggerGrid className="space-y-3 mb-10">
-              {sustainabilityItems.map((item) => (
-                <StaggerItem key={item}>
-                  <div className="flex items-start gap-4 text-stone font-sans text-[15px] leading-relaxed">
-                    <span className="text-gold mt-1 shrink-0 text-xs">✦</span>
-                    {item}
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerGrid>
-            <Link href="/about" className="btn-primary">Learn More</Link>
-          </FadeIn>
-        </div>
-
-        <FadeIn direction="up" delay={0.4} className="absolute -bottom-24 right-6 md:right-20 hidden md:block w-52 md:w-64 h-72 md:h-80 z-20">
-          <div className="relative h-full overflow-hidden shadow-2xl">
-            <img
-              src="https://images.unsplash.com/photo-1551085254-e96b210db58a?w=600&q=85"
-              alt="East Africa wildlife"
-              className="w-full h-full object-cover"
-            />
-            <span className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-gold/70" />
-            <span className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-gold/70" />
-            <div className="absolute bottom-4 left-4 right-4">
-              <span className="font-sans text-[9px] tracking-[0.3em] uppercase text-cream/70 bg-forest-dark/60 backdrop-blur-sm px-2 py-1">
-                East Africa
-              </span>
-            </div>
-          </div>
-        </FadeIn>
       </section>
 
       {/* Partners */}
@@ -671,7 +719,7 @@ export default function HomePage() {
       <section className="relative z-0 min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1800&q=90"
+            src={`${base}/Newstock/wildanimals.jpg`}
             alt=""
             className="w-full h-full object-cover object-center scale-[1.06]"
           />

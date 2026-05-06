@@ -9,32 +9,32 @@ const hotspots = [
   {
     name: "Serengeti",
     detail: "Endless Plains & the Great Migration",
-    image: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=900&q=85",
+    image: "/Newstock/greatbeastmigration.jpg",
   },
   {
     name: "Ngorongoro Crater",
     detail: "UNESCO World Heritage — Big Five & Black Rhino",
-    image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=900&q=85",
+    image: "/Newstock/wildanimals.jpg",
   },
   {
     name: "Zanzibar",
     detail: "Stone Town, Spice Tours & Crystal-Clear Waters",
-    image: "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&q=85",
+    image: "/Newstock/Zanzibar Beaches.jpg",
   },
   {
     name: "Mount Kilimanjaro",
     detail: "Africa's Rooftop at 5,895m",
-    image: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=900&q=85",
+    image: "/Newstock/Mountain Climbing06Mountain Climbing.jpg",
   },
   {
     name: "Ruaha National Park",
     detail: "Tanzania's Largest & Most Wild Park",
-    image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=900&q=85",
+    image: "/Newstock/bufallo.jpg",
   },
   {
     name: "Tarangire National Park",
     detail: "Baobab Giants & Elephant Herds",
-    image: "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=900&q=85",
+    image: "/Newstock/bigelephant.jpg",
   },
 ];
 
@@ -54,7 +54,7 @@ const packages = [
       "Mnemba snorkeling",
       "Turtle swimming",
     ],
-    image: "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=700&q=85",
+    image: "/Newstock/safari.jpg",
   },
   {
     name: "Zanzibar Spice Island Escape",
@@ -71,7 +71,7 @@ const packages = [
       "Jozani Forest",
       "Dolphin swimming",
     ],
-    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=700&q=85",
+    image: "/Newstock/cheetah.jpg",
   },
   {
     name: "12-Day Kenya & Tanzania Safari",
@@ -88,7 +88,7 @@ const packages = [
       "Masai Mara",
       "Amboseli NP",
     ],
-    image: "https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=700&q=85",
+    image: "/Newstock/zebras.jpg",
   },
 ];
 
@@ -101,7 +101,7 @@ export default function TanzaniaPage() {
           className="absolute inset-0 scale-110"
           style={{
             backgroundImage:
-              "url(https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=1800&q=80)",
+              "url(/Newstock/greatbeastmigration.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -184,7 +184,7 @@ export default function TanzaniaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=500&q=80"
+                src="/Newstock/Mountain Climbing06Mountain Climbing.jpg"
                 alt="Mount Kilimanjaro"
                 className="w-full h-52 object-cover"
               />
@@ -195,7 +195,7 @@ export default function TanzaniaPage() {
               className="overflow-hidden mt-6"
             >
               <img
-                src="https://images.unsplash.com/photo-1474690870753-1b92efa1f2d8?w=500&q=80"
+                src="/Newstock/Zanzibar Beaches.jpg"
                 alt="Zanzibar beach"
                 className="w-full h-52 object-cover"
               />
@@ -206,8 +206,8 @@ export default function TanzaniaPage() {
               className="overflow-hidden -mt-6"
             >
               <img
-                src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=500&q=80"
-                alt="Ngorongoro Crater"
+                src="/Newstock/wildanimals.jpg"
+                alt="Ngorongoro wildlife"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
@@ -217,8 +217,8 @@ export default function TanzaniaPage() {
               className="overflow-hidden"
             >
               <img
-                src="https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=500&q=80"
-                alt="Serengeti wildlife"
+                src="/Newstock/bigelephant.jpg"
+                alt="Serengeti elephants"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>

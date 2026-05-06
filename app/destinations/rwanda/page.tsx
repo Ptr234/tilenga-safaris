@@ -14,22 +14,22 @@ const hotspots = [
   {
     name: "Nyungwe Forest",
     detail: "Ancient Canopy & Chimpanzee Sanctuary",
-    image: "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=900&q=85",
+    image: "/Newstock/touristsmovinginforest.jpg",
   },
   {
     name: "Lake Kivu",
     detail: "Volcanic Crater Lake on Congo Border",
-    image: "https://images.unsplash.com/photo-1474690870753-1b92efa1f2d8?w=900&q=85",
+    image: "/Newstock/Source of the Nile.jpg",
   },
   {
     name: "Kigali Genocide Memorial",
     detail: "A Powerful Tribute to History & Remembrance",
-    image: "https://images.unsplash.com/photo-1526319238109-56f76eaba7f2?w=900&q=85",
+    image: "/Newstock/wildanimals.jpg",
   },
   {
     name: "Kigali",
     detail: "Africa's Cleanest, Most Vibrant Capital",
-    image: "https://images.unsplash.com/photo-1526319238109-56f76eaba7f2?w=900&q=85",
+    image: "/Newstock/safari.jpg",
   },
 ];
 
@@ -47,7 +47,7 @@ export default function RwandaPage() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage: "url(https://images.unsplash.com/photo-1614528767034-70de9fe166e0?w=1800&q=80)",
+            backgroundImage: "url(/Newstock/gorrillahigh.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -105,13 +105,13 @@ export default function RwandaPage() {
               <img src="/gorrilas/gorillar.webp" alt="Mountain Gorillas in mist" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-6">
-              <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=500&q=80" alt="Nyungwe forest" className="w-full h-52 object-cover" />
+              <img src="/Newstock/Gorrillahd.jpg" alt="Mountain Gorilla" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-6">
-              <img src="https://images.unsplash.com/photo-1474690870753-1b92efa1f2d8?w=500&q=80" alt="Lake Kivu" className="w-full h-52 object-cover" />
+              <img src="/Newstock/gorrillla.jpg" alt="Gorillas in forest" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1526319238109-56f76eaba7f2?w=500&q=80" alt="Kigali city" className="w-full h-52 object-cover" />
+              <img src="/Newstock/Gorrilla.jpg" alt="Mountain Gorilla encounter" className="w-full h-52 object-cover" />
             </ImageReveal>
           </div>
         </div>
@@ -149,7 +149,7 @@ export default function RwandaPage() {
               <div className="bg-white border border-gold/10 overflow-hidden">
                 <div className="relative h-64">
                   <img
-                    src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
+                    src="/Newstock/touristsmovinginforest.jpg"
                     alt="Rwanda gorilla trekking"
                     className="w-full h-full object-cover"
                   />

@@ -9,42 +9,42 @@ const hotspots = [
   {
     name: "Mountain Gorillas",
     detail: "Bwindi Impenetrable Forest",
-    image: "https://images.unsplash.com/photo-1614528767034-70de9fe166e0?w=900&q=85",
+    image: "/Newstock/Gorrillahd.jpg",
   },
   {
     name: "Murchison Falls",
     detail: "The World's Most Powerful Waterfall",
-    image: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=900&q=85",
+    image: "/Newstock/Source of the Nile2.jpg",
   },
   {
     name: "Queen Elizabeth NP",
     detail: "Kazinga Channel & Tree-Climbing Lions",
-    image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=900&q=85",
+    image: "/Newstock/Queen Elizabeth NP.jpg",
   },
   {
     name: "Mt. Rwenzori",
     detail: "Mountains of the Moon — Africa's Third-Highest Peak",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=85",
+    image: "/Newstock/Mountain Climbing06Mountain Climbing.jpg",
   },
   {
     name: "Source of the Nile",
     detail: "Jinja — White Water Rafting & Bungee Jumping",
-    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=900&q=85",
+    image: "/Newstock/Source of the Nile.jpg",
   },
   {
     name: "Lake Mburo National Park",
     detail: "Zebras, Hippos & 350 Bird Species",
-    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=900&q=80",
+    image: "/Newstock/zebras.jpg",
   },
   {
     name: "Kibale Forest",
     detail: "Chimpanzee Trekking Capital of the World",
-    image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=900&q=85",
+    image: "/Newstock/touristsmovinginforest.jpg",
   },
   {
     name: "Buganda Kingdom",
     detail: "Uganda's Rich Cultural Heritage",
-    image: "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=900&q=85",
+    image: "/Newstock/tourist.jpg",
   },
 ];
 
@@ -57,7 +57,7 @@ const packages = [
     description:
       "A compact national park featuring 350 bird species and wildlife including zebras, impalas, buffalos, leopards, and hippos — located 3–4 hours from Kampala. Includes pick-up, bicycle tour, nature walk, and return.",
     activities: ["Pick-up from Kampala", "Bicycle tour", "Nature walk", "Bird watching"],
-    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=85",
+    image: "/Newstock/wildanimals.jpg",
   },
   {
     name: "5-Day Wildlife Safari to Murchison Falls & Queen Elizabeth",
@@ -73,7 +73,7 @@ const packages = [
       "Nature walks",
       "Sunset viewing",
     ],
-    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=85",
+    image: "/Newstock/bigelephant.jpg",
   },
   {
     name: "3-Day Gorilla Trekking Experience",
@@ -88,7 +88,7 @@ const packages = [
       "Forest walk",
       "Community visit",
     ],
-    image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=700&q=85",
+    image: "/Newstock/gorrillla.jpg",
   },
   {
     name: "8-Day Trip Around Uganda",
@@ -104,7 +104,7 @@ const packages = [
       "Bungee jumping & quad biking",
       "Local food tasting",
     ],
-    image: "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=700&q=85",
+    image: "/Newstock/greatbeastmigration.jpg",
   },
   {
     name: "5-Day Wild Safari Itinerary",
@@ -120,7 +120,7 @@ const packages = [
       "Nature walks",
       "Sunset viewing",
     ],
-    image: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=700&q=85",
+    image: "/Newstock/safari.jpg",
   },
   {
     name: "10-Day Rwenzori Mountains Trekking",
@@ -135,7 +135,7 @@ const packages = [
       "Diverse ecosystem walk",
       "Village visit",
     ],
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=85",
+    image: "/Newstock/lioness.jpg",
   },
   {
     name: "4-Day Gorilla Trekking Experience",
@@ -150,7 +150,7 @@ const packages = [
       "Lake Bunyonyi excursion",
       "Bird watching",
     ],
-    image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=700&q=85",
+    image: "/Newstock/gorrillahigh.jpg",
   },
 ];
 
@@ -163,7 +163,7 @@ export default function UgandaPage() {
           className="absolute inset-0 scale-110 transition-transform duration-[8000ms]"
           style={{
             backgroundImage:
-              "url(https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=1800&q=80)",
+              "url(/Newstock/splendifd.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -246,7 +246,7 @@ export default function UgandaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1200&q=80"
+                src="/Newstock/Gorrilla.jpg"
                 alt="Mountain Gorillas"
                 className="w-full h-52 object-cover hover:scale-110 transition-transform duration-700"
               />
@@ -257,8 +257,8 @@ export default function UgandaPage() {
               className="overflow-hidden mt-6"
             >
               <img
-                src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=500&q=80"
-                alt="Murchison Falls"
+                src="/Newstock/girrafe.jpg"
+                alt="African Wildlife"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
@@ -268,7 +268,7 @@ export default function UgandaPage() {
               className="overflow-hidden -mt-6"
             >
               <img
-                src="https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=500&q=80"
+                src="/Newstock/bufallo.jpg"
                 alt="Wildlife"
                 className="w-full h-52 object-cover"
               />
@@ -279,7 +279,7 @@ export default function UgandaPage() {
               className="overflow-hidden"
             >
               <img
-                src="https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=500&q=80"
+                src="/Newstock/elephantcars.jpg"
                 alt="Game drive"
                 className="w-full h-52 object-cover"
               />

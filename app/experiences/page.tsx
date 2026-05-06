@@ -28,7 +28,7 @@ const experiences = [
     title: "Great Beast Migration", 
     tag: "Wildlife Spectacle",
     description: "Witness the world's most spectacular wildlife event as millions of wildebeest and zebra cross the Mara River, braving crocodiles and predators.", 
-    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1200&q=80",
+    image: `${base}/Newstock/greatbeastmigration.jpg`,
     num: "02",
     location: "Maasai Mara, Kenya",
     vibe: "Epic · Primal · Raw"
@@ -58,7 +58,7 @@ const experiences = [
     title: "Hot Air Balloon", 
     tag: "Aerial Views",
     description: "Soar above the golden plains at sunrise for a breathtaking bird's-eye view of the wild, followed by a champagne breakfast in the bush.", 
-    image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=1200&q=80",
+    image: `${base}/Newstock/Hot Air Balloon.jpg`,
     num: "05",
     location: "Serengeti / Mara",
     vibe: "Silent · Ethereal · Vast"
@@ -98,7 +98,7 @@ const experiences = [
     title: "Namibia Desert", 
     tag: "Desert Landscapes",
     description: "Explore the towering red dunes of Sossusvlei and the haunting Skeleton Coast in one of the world's oldest and most surreal deserts.", 
-    image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=1200&q=80",
+    image: `${base}/Newstock/wildanimals.jpg`,
     num: "09",
     location: "Namib Desert, Namibia",
     vibe: "Arid · Surreal · Vast"
@@ -108,7 +108,7 @@ const experiences = [
     title: "Elephants in Botswana", 
     tag: "River Wildlife",
     description: "Navigate the Okavango Delta by mokoro and witness the massive elephant herds of Chobe National Park in a true wilderness paradise.", 
-    image: "https://images.unsplash.com/photo-1551085254-e96b210db58a?w=1200&q=80",
+    image: `${base}/Newstock/bufallo.jpg`,
     num: "10",
     location: "Okavango, Botswana",
     vibe: "Lush · Untamed · Primal"
@@ -391,7 +391,7 @@ export default function ExperiencesPage() {
 
       {/* Final Visual Closer — High Drama */}
       <section className="h-screen relative overflow-hidden">
-         <ParallaxSection imageUrl="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=1800&q=95" className="h-full">
+         <ParallaxSection imageUrl={`${base}/Newstock/cheetah.jpg`} className="h-full">
             <div className="absolute inset-0 flex items-center justify-center text-center">
                <div className="max-w-3xl px-6 relative">
                  <div className="absolute -top-32 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
