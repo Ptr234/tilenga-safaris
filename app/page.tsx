@@ -301,8 +301,9 @@ export default function HomePage() {
             <ExperienceCarousel experiences={experiences} />
           </FadeIn>
 
-          <FadeIn direction="up" delay={0.3} className="text-center mt-6 md:mt-12">
-            <Link href="/plan-a-trip" className="btn-primary">Create Your Dream Safari</Link>
+          <FadeIn direction="up" delay={0.3} className="text-center mt-6 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
+            <Link href="/experiences" className="btn-primary">View All Experiences</Link>
+            <Link href="/plan-a-trip" className="text-forest text-[10px] uppercase tracking-[0.4em] font-sans font-bold hover:text-gold transition-colors">Create Your Dream Safari</Link>
           </FadeIn>
         </div>
       </section>

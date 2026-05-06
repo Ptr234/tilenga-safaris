@@ -180,7 +180,7 @@ export default function Footer() {
               <ul className="space-y-4">
                 {experiences.map((e) => (
                   <li key={e}>
-                    <Link href="/plan-a-trip" className="text-cream/50 hover:text-gold text-[12px] font-sans tracking-wide transition-colors duration-300">
+                    <Link href="/experiences" className="text-cream/50 hover:text-gold text-[12px] font-sans tracking-wide transition-colors duration-300">
                       {e}
                     </Link>
                   </li>
