@@ -21,18 +21,22 @@ const lodges = [
   {
     name: "Tilenga Safari Lodge",
     location: "Murchison Falls National Park, Uganda",
+    coords: "2.2472° N, 31.4770° E",
     description: "A haven of comfort overlooking the Albert Nile. 26 cottages with private balconies, wildlife encounters, and a world-class chef.",
     image: `${base}/photos/tilengasafarilodge/entrance.png`,
     href: "/lodges/tilenga-safari-lodge",
     tag: "Murchison Falls",
+    features: ["26 Luxury Cottages", "Albert Nile Views", "Infinity Pool"]
   },
   {
     name: "Kikorongo Safari Lodge",
     location: "Queen Elizabeth National Park, Uganda",
+    coords: "0.0022° S, 30.0125° E",
     description: "Perched at the Equator above Lake George, with sweeping Rwenzori views and the world's largest hippo concentration.",
     image: `${base}/photos/kikorongo_outside.jpg`,
     href: "/lodges/kikorongo-safari-lodge",
     tag: "Queen Elizabeth NP",
+    features: ["Equator Position", "Hippo Sanctuary", "Rwenzori Vistas"]
   },
 ];
 
@@ -290,56 +294,81 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Our Lodges — full-image cinematic cards */}
-      <section className="py-14 md:py-28 px-6 md:px-16 bg-forest-dark">
-        <div className="text-center mb-10 md:mb-16 max-w-2xl mx-auto">
-          <FadeIn direction="fade" delay={0}>
-            <p className="section-label text-gold mb-3">Where You Stay</p>
-          </FadeIn>
-          <LineReveal
-            lines={["Our Lodges in Uganda"]}
-            delay={0.1}
-            lineClassName="font-serif text-4xl md:text-5xl text-cream leading-tight uppercase tracking-[0.15em]"
-          />
-          <FadeIn direction="fade" delay={0.4}>
-            <div className="w-12 h-px bg-gold mx-auto mt-6" />
-            <p className="text-cream/50 max-w-xl mx-auto mt-6 font-sans leading-relaxed text-sm">
-              Each lodge sits at the gateway of Uganda&apos;s most spectacular national parks —
-              designed for comfort, wildlife, and that rare sense of being completely away.
-            </p>
-          </FadeIn>
-        </div>
+      {/* Our Lodges — Redesigned for Luxury */}
+      <section className="py-20 md:py-40 px-6 md:px-16 bg-forest-dark relative overflow-hidden">
+        {/* Decorative background element */}
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-forest-light/5 -skew-x-12 translate-x-1/2 pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
+            <div className="max-w-2xl">
+              <FadeIn direction="up">
+                <p className="section-label text-gold mb-4">Where You Stay</p>
+              </FadeIn>
+              <LineReveal
+                lines={["Our Lodges in Uganda"]}
+                delay={0.1}
+                lineClassName="font-serif text-5xl md:text-7xl text-cream leading-none uppercase tracking-[0.1em]"
+              />
+            </div>
+            <FadeIn direction="up" delay={0.3} className="md:max-w-md">
+               <p className="text-cream/50 font-sans leading-relaxed text-lg border-l border-gold/30 pl-6">
+                Each lodge sits at the gateway of Uganda&apos;s most spectacular national parks —
+                designed for comfort, wildlife, and that rare sense of being completely away.
+              </p>
+            </FadeIn>
+          </div>
 
-        <StaggerGrid className="grid md:grid-cols-2 gap-2 max-w-7xl mx-auto">
-          {lodges.map((lodge) => (
-            <StaggerItem key={lodge.name}>
-              <Link href={lodge.href} className="group block relative overflow-hidden h-[62vh] md:h-[85vh] min-h-[420px]">
-                <img
-                  src={lodge.image}
-                  alt={lodge.name}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-dark/30 to-transparent transition-opacity duration-700 group-hover:opacity-90" />
-                <span className="absolute top-6 left-6 text-[10px] uppercase tracking-[0.25em] font-sans text-gold border border-gold/40 px-3 py-1 bg-forest-dark/40 backdrop-blur-sm">
-                  {lodge.tag}
-                </span>
-                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10">
-                  <p className="text-gold/70 text-[10px] uppercase tracking-[0.25em] font-sans mb-2">{lodge.location}</p>
-                  <h3 className="font-serif text-3xl md:text-4xl text-cream mb-3 leading-tight">{lodge.name}</h3>
-                  <p className="text-cream/60 text-sm font-sans leading-relaxed max-w-sm mb-5 translate-y-0 opacity-100 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-500 ease-out">
-                    {lodge.description}
-                  </p>
-                  <span className="inline-flex items-center gap-2 text-gold text-xs uppercase tracking-widest font-sans border-b border-gold/40 pb-0.5 group-hover:border-gold transition-colors duration-300">
-                    Explore Lodge
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                      <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-0 items-center">
+            {lodges.map((lodge, idx) => (
+              <div 
+                key={lodge.name}
+                className={`col-span-1 md:col-span-6 relative ${idx === 1 ? 'md:-mt-32 md:col-start-7' : ''}`}
+              >
+                <div className={`relative group ${idx === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
+                  <ImageReveal direction={idx === 0 ? "left" : "right"} delay={0.2 * idx}>
+                    <Link href={lodge.href} className="block relative overflow-hidden aspect-[4/5] md:aspect-[3/4] rounded-sm">
+                      <img
+                        src={lodge.image}
+                        alt={lodge.name}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-700" />
+                    </Link>
+                  </ImageReveal>
+                  
+                  <div className={`mt-10 ${idx === 1 ? 'md:text-right' : ''}`}>
+                     <FadeIn direction="up" delay={0.4}>
+                        <p className="text-gold text-xs uppercase tracking-[0.3em] font-sans mb-3">
+                          {lodge.tag} • {lodge.location.split(',')[0]}
+                        </p>
+                        <h3 className="font-serif text-3xl md:text-5xl text-cream mb-5 leading-tight">{lodge.name}</h3>
+                        <p className={`text-cream/60 text-base font-sans leading-relaxed max-w-sm mb-10 ${idx === 1 ? 'md:ml-auto' : ''}`}>
+                          {lodge.description}
+                        </p>
+                        <Link 
+                          href={lodge.href} 
+                          className={`inline-flex items-center gap-4 text-cream hover:text-gold transition-colors duration-300 group/btn ${idx === 1 ? 'md:flex-row-reverse' : ''}`}
+                        >
+                          <span className="text-xs uppercase tracking-widest font-sans border-b border-cream/20 pb-1 group-hover/btn:border-gold">Explore Sanctuary</span>
+                          <div className="w-10 h-10 rounded-full border border-cream/20 flex items-center justify-center group-hover/btn:border-gold transition-colors duration-300">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className={`transition-transform ${idx === 1 ? 'group-hover/btn:-translate-x-1 rotate-180' : 'group-hover/btn:translate-x-1'}`}>
+                              <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                          </div>
+                        </Link>
+                     </FadeIn>
+                  </div>
+                  
+                  {/* Decorative Number */}
+                  <span className={`absolute -top-16 hidden md:block text-[14rem] font-serif text-cream/[0.03] pointer-events-none select-none ${idx === 0 ? '-right-4' : '-left-4'}`}>
+                    0{idx + 1}
                   </span>
                 </div>
-              </Link>
-            </StaggerItem>
-          ))}
-        </StaggerGrid>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* 03. The Experience Filmstrip — Immersive Desktop Horizontal Section */}
