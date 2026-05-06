@@ -496,9 +496,14 @@ button {
   transform: translateX(4px);
 }
 
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
 /* Hotspot gallery marquee */
-@keyframes hotspot-marquee {
-  0%   { transform: translateX(0); }
+@keyframes hotspot-marquee {  0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 .hotspot-track {

@@ -180,7 +180,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values — Editorial Grid */}
-      <section className="bg-cream-dark py-20 md:py-40 px-6 md:px-16 overflow-hidden">
+      <section id="conservation" className="bg-cream-dark py-20 md:py-40 px-6 md:px-16 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-20 md:mb-32">
             <div className="max-w-2xl">

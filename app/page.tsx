@@ -9,8 +9,10 @@ import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import AnimatedCounter from "@/components/motion/AnimatedCounter";
 import ImageReveal from "@/components/motion/ImageReveal";
 import LineReveal from "@/components/motion/LineReveal";
+import HorizontalScrollSection from "@/components/motion/HorizontalScrollSection";
+import SplitText from "@/components/motion/SplitText";
+import MagneticButton from "@/components/motion/MagneticButton";
 
-import ExperienceCarousel from "@/components/ExperienceCarousel";
 import Partners from "@/components/Partners";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -35,16 +37,78 @@ const lodges = [
 ];
 
 const experiences = [
-  { title: "Gorilla Tracking", description: "Face-to-face with endangered mountain gorillas in the misty highlands of Bwindi.", image: `${base}/experinces/gorrila treking.jpg` },
-  { title: "Great Beast Migration", description: "Witness the world's most spectacular wildlife event as millions cross the savannah.", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1200&q=80" },
-  { title: "Culture - Masai mara", description: "Connect with the living heritage and ancient traditions of the iconic Maasai people.", image: `${base}/experinces/culture emersion.jpg` },
-  { title: "Game drives for the big 5", description: "Expert-guided dawn and dusk drives in search of the legendary African Big Five.", image: `${base}/experinces/Game drives.jpg` },
-  { title: "Hot airballoon", description: "Soar above the golden plains at sunrise for a breathtaking bird's-eye view of the wild.", image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=1200&q=80" },
-  { title: "Mt Rwenzori climbing", description: "Summit the legendary 'Mountains of the Moon' for an epic alpine adventure at the Equator.", image: `${base}/experinces/kilimanjaro climbing.jpg` },
-  { title: "Zanzibar", description: "Unwind on turquoise shores where spice-scented breezes meet ancient Stone Town culture.", image: `${base}/experinces/zanzibar beach.jpg` },
-  { title: "Boat Safaris", description: "Glide the Albert Nile or Kazinga Channel for incredible hippo, croc, and bird sightings.", image: `${base}/experinces/water safari.jpg` },
-  { title: "Namibia Desert", description: "Explore the ancient, towering red dunes of Sossusvlei and the dramatic Skeleton Coast.", image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=1200&q=80" },
-  { title: "Elephants in Botswana", description: "Encounter massive herds in the lush Okavango Delta, a true sanctuary for giants.", image: "https://images.unsplash.com/photo-1551085254-e96b210db58a?w=1200&q=80" },
+  { 
+    title: "Gorilla Tracking", 
+    tag: "Primate Encounters",
+    description: "Face-to-face with endangered mountain gorillas in the misty highlands of Bwindi Impenetrable Forest. A transformative hour spent in the presence of these gentle giants.", 
+    image: `${base}/experinces/gorrila treking.jpg`,
+    num: "01",
+    location: "Bwindi, Uganda",
+    vibe: "Intimate · Rare · Sacred"
+  },
+  { 
+    title: "Great Beast Migration", 
+    tag: "Wildlife Spectacle",
+    description: "Witness the world's most spectacular wildlife event as millions of wildebeest and zebra cross the Mara River, braving crocodiles and predators.", 
+    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1200&q=80",
+    num: "02",
+    location: "Maasai Mara, Kenya",
+    vibe: "Epic · Primal · Raw"
+  },
+  { 
+    title: "Culture Immersion", 
+    tag: "Local Heritage",
+    description: "Connect with the living heritage and ancient traditions of the iconic Maasai, Batwa, and Karamojong people through authentic community-led encounters.", 
+    image: `${base}/experinces/culture emersion.jpg`,
+    num: "03",
+    location: "East Africa",
+    vibe: "Authentic · Human · Deep"
+  },
+  { 
+    title: "Big Five Game Drives", 
+    tag: "Classic Safari",
+    description: "Expert-guided dawn and dusk drives in search of the legendary African Big Five — Lion, Leopard, Elephant, Rhino, and Buffalo.", 
+    image: `${base}/experinces/Game drives.jpg`,
+    num: "04",
+    location: "Serengeti & Kruger",
+    vibe: "Vibrant · Patient · Golden"
+  },
+  { 
+    title: "Hot Air Balloon", 
+    tag: "Aerial Views",
+    description: "Soar above the golden plains at sunrise for a breathtaking bird's-eye view of the wild, followed by a champagne breakfast in the bush.", 
+    image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=1200&q=80",
+    num: "05",
+    location: "Serengeti / Mara",
+    vibe: "Silent · Ethereal · Vast"
+  },
+  { 
+    title: "Mountain Climbing", 
+    tag: "Adventure",
+    description: "Summit the legendary 'Mountains of the Moon' or climb Mt. Kilimanjaro for an epic alpine adventure and panoramic views of the continent.", 
+    image: `${base}/experinces/kilimanjaro climbing.jpg`,
+    num: "06",
+    location: "Rwenzori / Kilimanjaro",
+    vibe: "Rugged · Alpine · Triumphant"
+  },
+  { 
+    title: "Zanzibar Beaches", 
+    tag: "Coastal Escape",
+    description: "Unwind on turquoise shores where spice-scented breezes meet ancient Stone Town culture. The perfect conclusion to any safari adventure.", 
+    image: `${base}/experinces/zanzibar beach.jpg`,
+    num: "07",
+    location: "Zanzibar, Tanzania",
+    vibe: "Tranquil · Azure · Spice"
+  },
+  { 
+    title: "Boat Safaris", 
+    tag: "Water Exploration",
+    description: "Glide the Albert Nile or Kazinga Channel for incredible hippo, crocodile, and bird sightings from the unique perspective of the water.", 
+    image: `${base}/experinces/water safari.jpg`,
+    num: "08",
+    location: "Murchison Falls, Uganda",
+    vibe: "Fluid · Serene · Prolific"
+  },
 ];
 
 const destinations = [
@@ -278,33 +342,152 @@ export default function HomePage() {
         </StaggerGrid>
       </section>
 
-      {/* Experiences — full-image hover reveal */}
-      <section className="pt-14 pb-10 md:py-28 px-6 md:px-16 bg-cream-dark">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-8 md:mb-14">
-            <FadeIn direction="fade"><p className="section-label mb-3">What We Offer</p></FadeIn>
-            <LineReveal
+      {/* 03. The Experience Filmstrip — Immersive Desktop Horizontal Section */}
+      <section id="experiences" className="hidden lg:block bg-[#0a150f] py-20">
+        <div className="max-w-6xl mx-auto px-6 mb-20">
+           <FadeIn direction="fade"><p className="section-label mb-3">The Selection</p></FadeIn>
+           <LineReveal
               lines={["Extraordinary Experiences"]}
               delay={0.1}
-              lineClassName="section-heading uppercase tracking-[0.15em]"
-            />
-            <FadeIn direction="fade" delay={0.4}>
-              <div className="w-12 h-px bg-gold mx-auto mt-5" />
-              <p className="text-stone max-w-xl mx-auto mt-6 font-sans leading-relaxed text-sm">
-                Each journey is thoughtfully tailored — gorilla trekking at dawn, boat safaris,
-                cultural encounters, mountain summits, and beach retreats.
+              lineClassName="font-serif text-5xl md:text-7xl text-cream uppercase tracking-[0.1em]"
+           />
+        </div>
+
+        <HorizontalScrollSection scrollHeight="800vh" className="items-stretch">
+          <div className="flex h-full px-24 gap-32">
+            
+            {/* Intro Slide */}
+            <div className="min-w-[40vw] flex flex-col justify-center border-r border-white/5 pr-32">
+              <span className="text-gold text-[10px] uppercase tracking-[0.5em] mb-6 block">Filmstrip 01</span>
+              <h2 className="font-serif text-8xl text-cream leading-[0.9] uppercase tracking-tighter mb-10">
+                The <br /><span className="text-gold italic">Core</span> <br />Canon
+              </h2>
+              <div className="w-20 h-px bg-gold/30 mb-10" />
+              <p className="text-cream/40 max-w-sm font-sans text-[15px] leading-relaxed tracking-wide">
+                Scroll horizontally to traverse our most requested and rare African encounters. Each represents a unique chapter in your Tilenga story.
               </p>
-            </FadeIn>
+            </div>
+
+            {experiences.map((exp) => (
+              <div key={exp.title} className="min-w-[80vw] h-full relative group flex items-center justify-center py-20">
+                
+                {/* Background Layered Image */}
+                <div className="absolute inset-y-32 inset-x-0 overflow-hidden">
+                  <img 
+                    src={exp.image} 
+                    alt={exp.title} 
+                    className="w-full h-full object-cover grayscale-[50%] group-hover:grayscale-0 transition-all duration-[2000ms] ease-out group-hover:scale-105 opacity-40 group-hover:opacity-60" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#0a150f] via-transparent to-[#0a150f]" />
+                </div>
+                
+                {/* Content Panel */}
+                <div className="relative z-10 w-full max-w-6xl grid grid-cols-12 gap-10 items-end">
+                   
+                   {/* Card Image */}
+                   <div className="col-span-7">
+                      <ImageReveal direction="bottom" delay={0.2}>
+                         <div className="film-frame aspect-[16/10] shadow-2xl overflow-hidden group-hover:border-gold/30 transition-colors duration-700">
+                            <img src={exp.image} alt={exp.title} className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000" />
+                         </div>
+                      </ImageReveal>
+                   </div>
+
+                   {/* Text Content */}
+                   <div className="col-span-5 pb-12">
+                      <FadeIn direction="up">
+                        <span className="text-gold font-serif italic text-4xl mb-6 block">{exp.num}</span>
+                        <h3 className="font-serif text-6xl text-cream uppercase tracking-wider mb-8 leading-[0.9]">{exp.title}</h3>
+                        
+                        <div className="flex flex-col gap-6 mb-12">
+                           <div className="flex items-center gap-4">
+                              <div className="w-8 h-px bg-gold" />
+                              <span className="text-gold text-[10px] uppercase tracking-[0.4em] font-bold">{exp.tag}</span>
+                           </div>
+                           <p className="text-cream/70 font-sans text-base leading-relaxed max-w-md">
+                             {exp.description}
+                           </p>
+                           <div className="flex flex-wrap gap-4 pt-4">
+                              <span className="text-cream/30 text-[9px] uppercase tracking-[0.25em] font-bold border border-white/10 px-3 py-1.5">{exp.vibe}</span>
+                           </div>
+                        </div>
+
+                        <MagneticButton className="inline-block">
+                           <Link href="/plan-a-trip" className="text-gold text-[10px] uppercase tracking-[0.4em] font-bold flex items-center gap-4 hover:gap-6 transition-all">
+                              Inquire About This <span className="text-lg">→</span>
+                           </Link>
+                        </MagneticButton>
+                      </FadeIn>
+                   </div>
+                </div>
+
+                {/* Vertical Sidebar Info */}
+                <div className="absolute top-40 right-0">
+                   <span className="text-white/10 text-9xl font-serif select-none pointer-events-none uppercase tracking-tighter whitespace-nowrap">
+                      {exp.location.split(',')[0]}
+                   </span>
+                </div>
+                <div className="absolute bottom-40 right-12 z-20">
+                   <span className="text-gold/40 text-[10px] uppercase tracking-[0.5em] font-bold vertical-text">{exp.location}</span>
+                </div>
+              </div>
+            ))}
+
+            {/* Outro Slide — High Impact */}
+            <div className="min-w-[50vw] flex flex-col justify-center text-center items-center border-l border-white/5 pl-24">
+               <FadeIn direction="up">
+                 <span className="text-gold text-[10px] uppercase tracking-[0.5em] mb-10 block">End of Chapter</span>
+                 <h2 className="font-serif text-7xl md:text-8xl text-cream mb-14 uppercase tracking-tighter leading-[0.9]">
+                    Your Legacy <br /><span className="text-gold italic lowercase">awaits.</span>
+                 </h2>
+                 <MagneticButton>
+                    <Link href="/plan-a-trip" className="btn-primary px-16 py-5 text-base">Design Your Journey</Link>
+                 </MagneticButton>
+               </FadeIn>
+            </div>
           </div>
+        </HorizontalScrollSection>
+      </section>
 
-          <FadeIn direction="up" delay={0.6}>
-            <ExperienceCarousel experiences={experiences} />
+      {/* Mobile / Tablet Vertical Editorial Feed */}
+      <section className="lg:hidden bg-forest px-6 py-24" id="experiences-mobile">
+        <div className="max-w-2xl mx-auto">
+          <FadeIn direction="up" className="text-center mb-24">
+            <span className="text-gold text-[9px] uppercase tracking-[0.4em] font-bold mb-6 block">The Collection</span>
+            <h2 className="font-serif text-5xl text-cream uppercase tracking-tight">Extraordinary <br /><em className="italic text-gold">Experiences</em></h2>
           </FadeIn>
 
-          <FadeIn direction="up" delay={0.3} className="text-center mt-6 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Link href="/experiences" className="btn-primary">View All Experiences</Link>
-            <Link href="/plan-a-trip" className="text-forest text-[10px] uppercase tracking-[0.4em] font-sans font-bold hover:text-gold transition-colors">Create Your Dream Safari</Link>
-          </FadeIn>
+          <StaggerGrid className="space-y-32" stagger={0.2}>
+            {experiences.map((exp) => (
+              <StaggerItem key={exp.title} className="space-y-10 group">
+                 <div className="relative aspect-[4/5] overflow-hidden film-frame shadow-2xl">
+                    <img src={exp.image} alt={exp.title} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-forest/20" />
+                    <div className="absolute top-6 left-6 flex flex-col gap-2">
+                       <span className="font-serif italic text-gold text-5xl leading-none">{exp.num}</span>
+                       <span className="w-10 h-px bg-gold/50" />
+                    </div>
+                    <div className="absolute bottom-6 right-6">
+                       <span className="text-cream/50 text-[9px] uppercase tracking-[0.3em] font-bold vertical-text">{exp.location}</span>
+                    </div>
+                 </div>
+                 <div className="space-y-6">
+                    <div className="flex items-center gap-3">
+                       <div className="w-6 h-px bg-gold/40" />
+                       <span className="text-gold text-[9px] uppercase tracking-[0.3em] font-bold block">{exp.tag}</span>
+                    </div>
+                    <h3 className="font-serif text-4xl text-cream uppercase tracking-wider leading-tight">{exp.title}</h3>
+                    <p className="text-cream/60 font-sans leading-relaxed text-[15px]">
+                      {exp.description}
+                    </p>
+                    <div className="pt-4 flex flex-col gap-6">
+                       <span className="text-cream/30 text-[9px] uppercase tracking-[0.2em] font-bold italic">{exp.vibe}</span>
+                       <Link href="/plan-a-trip" className="btn-ghost text-center py-4">Inquire About This</Link>
+                    </div>
+                 </div>
+              </StaggerItem>
+            ))}
+          </StaggerGrid>
         </div>
       </section>
 

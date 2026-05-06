@@ -21,16 +21,16 @@ const navItems = [
     href: "/experiences",
     image: `${base}/experinces/Game drives.jpg`,
     children: [
-      { label: "Gorilla Tracking", href: "/experiences", image: `${base}/experinces/gorrila treking.jpg` },
-      { label: "Great Beast Migration", href: "/experiences", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80" },
-      { label: "Culture - Masai mara", href: "/experiences", image: `${base}/experinces/culture emersion.jpg` },
-      { label: "Game drives for the big 5", href: "/experiences", image: `${base}/experinces/Game drives.jpg` },
-      { label: "Hot airballoon", href: "/experiences", image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&q=80" },
-      { label: "Mt Rwenzori climbing", href: "/experiences", image: `${base}/experinces/kilimanjaro climbing.jpg` },
-      { label: "Zanzibar", href: "/experiences", image: `${base}/experinces/zanzibar beach.jpg` },
-      { label: "Boat Safaris", href: "/experiences", image: `${base}/experinces/water safari.jpg` },
-      { label: "Namibia Desert", href: "/experiences", image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=800&q=80" },
-      { label: "Elephants in Botswana", href: "/experiences", image: "https://images.unsplash.com/photo-1551085254-e96b210db58a?w=800&q=80" },
+      { label: "Gorilla Tracking", href: "/experiences#gorilla-tracking", image: `${base}/experinces/gorrila treking.jpg` },
+      { label: "Great Beast Migration", href: "/experiences#migration", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80" },
+      { label: "Culture - Masai mara", href: "/experiences#culture", image: `${base}/experinces/culture emersion.jpg` },
+      { label: "Game drives for the big 5", href: "/experiences#game-drives", image: `${base}/experinces/Game drives.jpg` },
+      { label: "Hot airballoon", href: "/experiences#balloon", image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&q=80" },
+      { label: "Mt Rwenzori climbing", href: "/experiences#climbing", image: `${base}/experinces/kilimanjaro climbing.jpg` },
+      { label: "Zanzibar", href: "/experiences#zanzibar", image: `${base}/experinces/zanzibar beach.jpg` },
+      { label: "Boat Safaris", href: "/experiences#boat-safaris", image: `${base}/experinces/water safari.jpg` },
+      { label: "Namibia Desert", href: "/experiences#namibia", image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=800&q=80" },
+      { label: "Elephants in Botswana", href: "/experiences#botswana", image: "https://images.unsplash.com/photo-1551085254-e96b210db58a?w=800&q=80" },
     ],
   },
   { label: "About Us", href: "/about", image: "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=1200&q=80" },
@@ -111,7 +111,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="fixed inset-0 z-[110] flex flex-col md:flex-row bg-[#f2ebe0] overflow-hidden"
+            className="fixed inset-0 z-[110] flex flex-col md:flex-row bg-[#060f09] overflow-hidden"
           >
             {/* Left: Image & Brand */}
             <div className="relative w-full md:w-[45%] h-[40vh] md:h-full overflow-hidden">
@@ -153,17 +153,17 @@ export default function Header() {
             </div>
 
             {/* Right: Menu Links */}
-            <div className="relative flex-1 h-full bg-[#f2ebe0] flex flex-col">
+            <div className="relative flex-1 h-full bg-[#060f09] flex flex-col">
               {/* Close Button Desktop */}
               <button 
                 onClick={() => setMobileOpen(false)}
-                className="absolute top-8 right-12 z-[130] text-stone-800 hidden md:block group"
+                className="absolute top-8 right-12 z-[130] text-cream hidden md:block group"
               >
                 <div className="flex items-center gap-4">
                   <span className="text-[10px] uppercase tracking-[0.4em] font-bold opacity-40 group-hover:opacity-100 transition-opacity">Close</span>
                   <div className="relative w-8 h-8 flex items-center justify-center">
-                    <span className="absolute w-8 h-px bg-stone-800 rotate-45" />
-                    <span className="absolute w-8 h-px bg-stone-800 -rotate-45" />
+                    <span className="absolute w-8 h-px bg-cream rotate-45" />
+                    <span className="absolute w-8 h-px bg-cream -rotate-45" />
                   </div>
                 </div>
               </button>
@@ -182,7 +182,7 @@ export default function Header() {
                       <Link
                         href={item.href}
                         onClick={() => setMobileOpen(false)}
-                        className="text-[#2d3a28] hover:text-gold text-2xl md:text-4xl lg:text-5xl font-serif uppercase tracking-wider transition-all duration-300 block mb-2"
+                        className="text-cream hover:text-gold text-2xl md:text-4xl lg:text-5xl font-serif uppercase tracking-wider transition-all duration-300 block mb-2"
                       >
                         {item.label}
                       </Link>
@@ -199,7 +199,7 @@ export default function Header() {
                                 setHoveredImage(child.image);
                               }}
                               onClick={() => setMobileOpen(false)}
-                              className="text-[#2d3a28] hover:text-gold text-[11px] md:text-xs font-sans font-bold uppercase tracking-widest transition-colors"
+                              className="text-cream/80 hover:text-gold text-[11px] md:text-xs font-sans font-bold uppercase tracking-widest transition-colors"
                             >
                               {child.label}
                             </Link>
@@ -212,24 +212,24 @@ export default function Header() {
               </div>
 
               {/* Bottom Bar Utility */}
-              <div className="flex border-t border-stone-200/60 p-10 md:p-12 items-center justify-between">
+              <div className="flex border-t border-white/10 p-10 md:p-12 items-center justify-between">
                 <div className="flex gap-10 lg:gap-16">
                   {bottomNav.map((item) => (
                     <Link
                       key={item.label}
                       href={item.href}
                       onClick={() => setMobileOpen(false)}
-                      className="text-stone-500 hover:text-gold text-[9px] tracking-[0.4em] font-sans font-bold transition-colors"
+                      className="text-cream/50 hover:text-gold text-[9px] tracking-[0.4em] font-sans font-bold transition-colors"
                     >
                       {item.label}
                     </Link>
                   ))}
                 </div>
                 <div className="hidden lg:flex items-center gap-6">
-                   <span className="text-stone-300 text-[9px] tracking-widest uppercase font-bold">Follow along</span>
+                   <span className="text-cream/30 text-[9px] tracking-widest uppercase font-bold">Follow along</span>
                    <div className="flex gap-4">
-                      <a href="https://www.instagram.com/tilengasafaris_travel/" target="_blank" className="text-stone-400 hover:text-gold transition-colors text-xs font-bold uppercase tracking-widest">Ig</a>
-                      <a href="https://www.facebook.com/TilengaSafaris/" target="_blank" className="text-stone-400 hover:text-gold transition-colors text-xs font-bold uppercase tracking-widest">Fb</a>
+                      <a href="https://www.instagram.com/tilengasafaris_travel/" target="_blank" className="text-cream/40 hover:text-gold transition-colors text-xs font-bold uppercase tracking-widest">Ig</a>
+                      <a href="https://www.facebook.com/TilengaSafaris/" target="_blank" className="text-cream/40 hover:text-gold transition-colors text-xs font-bold uppercase tracking-widest">Fb</a>
                    </div>
                 </div>
               </div>
