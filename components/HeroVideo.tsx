@@ -1,177 +1,63 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-const slides = [
-  {
-    region: "Uganda",
-    heading: "Wild Luxury",
-    sub: "Unforgettable Memories",
-    body: "Pearl of Africa — where gorillas, lions, and the Nile converge.",
-  },
-  {
-    region: "Kenya",
-    heading: "Iconic Savannah",
-    sub: "Epic Encounters",
-    body: "The Great Migration. Maasai Mara. Africa at its most magnificent.",
-  },
-  {
-    region: "Tanzania",
-    heading: "Serengeti Awaits",
-    sub: "The World's Greatest Safari",
-    body: "1.5 million wildebeest. Ngorongoro Crater. Zanzibar's white shores.",
-  },
-  {
-    region: "Rwanda",
-    heading: "Meet the Gorillas",
-    sub: "A Once-in-a-Lifetime Encounter",
-    body: "Face-to-face with mountain gorillas in the misty Virunga Volcanoes.",
-  },
-];
-
-const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
-
-function WordReveal({ text, delay = 0, className = "" }: { text: string; delay?: number; className?: string }) {
-  const words = text.split(" ");
-  return (
-    <span className={`flex flex-wrap justify-center gap-x-[0.3em] ${className}`}>
-      {words.map((word, i) => (
-        <span key={`${text}-${i}`} className="overflow-hidden inline-block">
-          <motion.span
-            className="inline-block"
-            initial={{ y: "110%", opacity: 0 }}
-            animate={{ y: "0%", opacity: 1 }}
-            exit={{ y: "-110%", opacity: 0 }}
-            transition={{ duration: 0.9, delay: delay + i * 0.1, ease: EASE_OUT }}
-          >
-            {word}
-          </motion.span>
-        </span>
-      ))}
-    </span>
-  );
-}
-
 export default function HeroVideo() {
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((c) => (c + 1) % slides.length);
-    }, 7000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const slide = slides[current];
-
   return (
-    <section className="relative h-[100dvh] min-h-[640px] overflow-hidden bg-forest-dark">
-      {/* Background Video */}
+    <section className="relative h-screen w-full overflow-hidden bg-stone-900">
+      {/* Background Media - Always Video */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-cover opacity-80"
+          className="w-full h-full object-cover"
         >
           <source src={`${base}/homevideo/tilenga.mp4`} type="video/mp4" />
-          Your browser does not support the video tag.
         </video>
-        {/* Subtle gradient to ensure text readability without blurring the video */}
-        <div className="absolute inset-0 bg-black/20 z-[1]" />
+        <div className="absolute inset-0 bg-black/30" />
       </div>
 
-      {/* Content — centered */}
-      <div className="relative z-[2] h-full flex flex-col items-center justify-center text-center px-6 md:px-16 pt-20 md:pt-28 max-w-5xl mx-auto w-full">
-        <AnimatePresence mode="wait">
-          <div key={`content-${current}`} className="flex flex-col items-center">
-            {/* Region label */}
-            <motion.div
-              className="flex items-center gap-3 mb-5"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: EASE_OUT }}
-            >
-              <div className="w-8 h-px bg-gold" />
-              <span className="text-gold text-xs uppercase tracking-[0.45em] font-sans">{slide.region}</span>
-              <div className="w-8 h-px bg-gold" />
-            </motion.div>
-
-            {/* Main heading — word-by-word reveal */}
-            <h1 className="section-heading !text-cream mb-4 md:mb-8 !leading-[0.95] md:!leading-[0.85]">
-              <WordReveal text={slide.heading} delay={0.2} />
-            </h1>
-
-            {/* Italic subtitle */}
-            <div className="overflow-hidden mb-6 md:mb-8">
-              <motion.p
-                className="editorial-italic text-gold"
-                initial={{ y: "100%", opacity: 0 }}
-                animate={{ y: "0%", opacity: 1 }}
-                exit={{ y: "-100%", opacity: 0 }}
-                transition={{ duration: 0.8, delay: 0.55, ease: EASE_OUT }}
-              >
-                {slide.sub}
-              </motion.p>
-            </div>
-
-            {/* Body */}
-            <motion.p
-              className="text-cream/70 font-sans text-sm md:text-lg max-w-md mb-10 md:mb-12 leading-relaxed min-h-[3em]"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.7, delay: 0.7, ease: "easeOut" }}
-            >
-              {slide.body}
-            </motion.p>
-
-            {/* CTAs */}
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.7, delay: 0.85, ease: EASE_OUT }}
-            >
-              <Link href="/plan-a-trip" className="btn-primary">Plan Your Safari</Link>
-              <Link href="/destinations" className="btn-ghost">Explore Destinations</Link>
-            </motion.div>
-          </div>
-        </AnimatePresence>
-      </div>
-
-      {/* Slide counter — bottom left */}
-      <motion.div
-        className="absolute bottom-8 left-8 md:left-20 z-10 hidden md:flex items-center gap-4"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
-      >
-        <span className="font-serif text-gold text-2xl">{String(current + 1).padStart(2, "0")}</span>
-        <div className="w-px h-6 bg-cream/20" />
-        <span className="text-cream/30 text-xs font-sans">{String(slides.length).padStart(2, "0")}</span>
-      </motion.div>
-
-      {/* Scroll hint */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.8 }}
-      >
+      {/* Centered Logo */}
+      <div className="relative z-10 h-full flex items-center justify-center px-6">
         <motion.div
-          className="w-px h-12 bg-gradient-to-b from-cream/40 to-transparent"
-          style={{ originY: 0 }}
-          animate={{ scaleY: [1, 0.2, 1] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        />
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
+          className="flex flex-col items-center"
+        >
+          <img 
+            src={`${base}/tilenga-logo-light.svg`} 
+            alt="Tilenga Safaris" 
+            className="h-32 md:h-56 lg:h-72 w-auto drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]" 
+          />
+        </motion.div>
+      </div>
+
+      {/* WhatsApp Pill - Bottom Right */}
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-8 right-8 z-20"
+      >
+        <a
+          href="https://wa.me/256789390350"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 bg-[#25D366]/90 hover:bg-[#25D366] text-white px-5 py-3 rounded-full shadow-2xl backdrop-blur-sm transition-all duration-300 group"
+        >
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+          <span className="text-[10px] md:text-[11px] font-sans font-bold uppercase tracking-[0.2em] whitespace-nowrap">
+            Have a Question? Chat with Us on WhatsApp
+          </span>
+        </a>
       </motion.div>
     </section>
   );

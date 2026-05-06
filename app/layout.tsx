@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import InstagramFeed from "@/components/InstagramFeed";
 import PageTransition from "@/components/motion/PageTransition";
 import SmoothScroll from "@/components/motion/SmoothScroll";
 import ScrollProgress from "@/components/motion/ScrollProgress";
@@ -32,6 +33,7 @@ export default function RootLayout({
           <PageTransition>
             <main>{children}</main>
           </PageTransition>
+          <InstagramFeed />
           <Footer />
 
           {/* WhatsApp floating button */}

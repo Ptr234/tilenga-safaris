@@ -8,21 +8,7 @@ const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const navItems = [
   {
-    label: "Destinations",
-    href: "/destinations",
-    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1200&q=80",
-    children: [
-      { label: "Uganda", href: "/destinations/uganda", image: "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=800&q=80" },
-      { label: "Kenya", href: "/destinations/kenya", image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=800&q=80" },
-      { label: "Tanzania", href: "/destinations/tanzania", image: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=800&q=80" },
-      { label: "Rwanda", href: "/destinations/rwanda", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" },
-      { label: "South Africa", href: "/destinations/south-africa", image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&q=80" },
-      { label: "Namibia", href: "/destinations/namibia", image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=800&q=80" },
-      { label: "Botswana", href: "/destinations/botswana", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80" },
-    ],
-  },
-  {
-    label: "Our Lodges",
+    label: "Our Stays",
     href: "/lodges",
     image: `${base}/photos/tilengasafarilodge/entrance.png`,
     children: [
@@ -30,8 +16,31 @@ const navItems = [
       { label: "Kikorongo Safari Lodge", href: "/lodges/kikorongo-safari-lodge", image: `${base}/photos/kikorongo_outside.jpg` },
     ],
   },
+  {
+    label: "Experiences & Activities",
+    href: "/destinations",
+    image: `${base}/experinces/Game drives.jpg`,
+    children: [
+      { label: "Uganda", href: "/destinations/uganda", image: `${base}/gorrilas/gorrila.webp` },
+      { label: "Kenya", href: "/destinations/kenya", image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=800&q=80" },
+      { label: "Tanzania", href: "/destinations/tanzania", image: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=800&q=80" },
+      { label: "Rwanda", href: "/destinations/rwanda", image: `${base}/gorrilas/gorrilaa.webp` },
+      { label: "South Africa", href: "/destinations/south-africa", image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&q=80" },
+      { label: "Namibia", href: "/destinations/namibia", image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=800&q=80" },
+      { label: "Botswana", href: "/destinations/botswana", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80" },
+    ],
+  },
   { label: "About Us", href: "/about", image: "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=1200&q=80" },
-  { label: "Plan a Trip", href: "/plan-a-trip", image: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=1200&q=80" },
+  { label: "Sustainability & Conservation", href: "/about#conservation", image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&q=80" },
+  { label: "Tilenga Safaris Travel Concierge", href: "/plan-a-trip", image: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=1200&q=80" },
+  { label: "Our Travel Stories", href: "/destinations", image: `${base}/experinces/culture emersion.jpg` },
+];
+
+const bottomNav = [
+  { label: "AGENTS PORTAL", href: "/plan-a-trip" },
+  { label: "OFFERS", href: "/destinations" },
+  { label: "FAQ", href: "/about" },
+  { label: "GALLERY", href: "/lodges" },
 ];
 
 export default function Header() {
@@ -56,159 +65,138 @@ export default function Header() {
   return (
     <>
       <motion.header
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${
-          scrolled ? "py-3 md:py-4 bg-forest shadow-2xl" : "py-5 md:py-8 bg-transparent"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 px-6 md:px-12 py-6 md:py-8 ${
+          scrolled || mobileOpen ? "bg-black/10 backdrop-blur-sm" : "bg-transparent"
         }`}
       >
-        <div className="flex items-center justify-between px-6 md:px-12 max-w-[1800px] mx-auto relative">
+        <div className="flex items-center justify-between max-w-[1800px] mx-auto">
           
-          {/* Left: Menu Toggle */}
-          <div className="flex-1 flex items-center">
+          {/* Left: Home */}
+          <div className="flex-1">
+            <Link href="/" className="text-cream text-[10px] uppercase tracking-[0.4em] font-sans font-bold hover:text-gold transition-colors">
+              Home
+            </Link>
+          </div>
+
+          {/* Right: Contact + Menu Toggle */}
+          <div className="flex-1 flex items-center justify-end gap-10">
+            <Link href="/plan-a-trip" className="hidden md:block text-cream text-[10px] uppercase tracking-[0.4em] font-sans font-bold hover:text-gold transition-colors">
+              Contact
+            </Link>
             <button 
-              onClick={() => setMobileOpen(true)}
-              className="group flex items-center gap-3 text-cream hover:text-gold transition-colors duration-300 min-h-[44px]"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="group flex items-center gap-3 text-cream hover:text-gold transition-colors"
+              aria-label="Toggle Menu"
             >
-              <div className="flex flex-col gap-1.5 items-start">
-                <span className="w-5 h-px bg-current transition-all duration-300 group-hover:w-8" />
-                <span className="w-8 h-px bg-current" />
+              <div className="flex flex-col gap-2 items-end">
+                <span className={`h-0.5 bg-current transition-all duration-500 ${mobileOpen ? "w-8 rotate-45 translate-y-2.5" : "w-6 group-hover:w-8"}`} />
+                <span className={`h-0.5 bg-current transition-all duration-500 ${mobileOpen ? "w-8 -rotate-45" : "w-8"}`} />
               </div>
-              <span className="text-[10px] uppercase tracking-[0.4em] font-sans font-bold hidden sm:block">Menu</span>
             </button>
-          </div>
-
-          {/* Center: Logo */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <Link href="/" className="block">
-              <motion.img
-                src={`${base}/tilenga-logo-light.svg`}
-                alt="Tilenga Safaris"
-                className={`transition-all duration-700 object-contain ${scrolled ? "h-9 md:h-10" : "h-11 md:h-14"}`}
-              />
-            </Link>
-          </div>
-
-          {/* Right: Contact + Enquire CTA */}
-          <div className="flex-1 flex items-center justify-end gap-3 sm:gap-6">
-            <a
-              href="tel:+256789390350"
-              className="hidden lg:block text-[9px] uppercase tracking-[0.3em] font-sans text-cream/40 hover:text-gold transition-colors duration-300"
-            >
-              Call Us Now
-            </a>
-            <Link
-              href="/plan-a-trip"
-              className="group relative overflow-hidden hidden sm:block"
-            >
-              <span className="text-[10px] uppercase tracking-[0.4em] font-sans font-bold text-cream group-hover:text-gold transition-colors duration-300">
-                Plan Your Safari
-              </span>
-              <span className="absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-500 group-hover:w-full" />
-            </Link>
-            <Link href="/plan-a-trip" className="sm:hidden text-cream hover:text-gold transition-colors p-2" aria-label="Plan a Trip">
-               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                 <path d="M12 19l7-7 3 3-7 7-3-3z" />
-                 <path d="M18 13l-1.5-7.5L2 2l5.5 14.5L13 18l5-5z" />
-                 <path d="M2 2l7.5 1.5" />
-                 <path d="M2 2l1.5 7.5" />
-               </svg>
-            </Link>
           </div>
 
         </div>
       </motion.header>
 
-      {/* Side-panel Menu Overlay */}
+      {/* Full-screen Split Menu */}
       <AnimatePresence>
         {mobileOpen && (
-          <>
-            {/* Background Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setMobileOpen(false)}
-              className="fixed inset-0 z-[110] bg-black/60 backdrop-blur-sm cursor-pointer"
-            />
-
-            {/* Menu Panel */}
-            <motion.div
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed top-0 left-0 bottom-0 z-[120] bg-forest-dark w-full md:w-1/2 lg:w-[45vw] flex flex-col shadow-2xl overflow-hidden"
-            >
-              {/* Dynamic Background Image Showcase inside the panel */}
-              <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={hoveredImage}
-                    initial={{ scale: 1.1, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0.95, opacity: 0 }}
-                    transition={{ duration: 1, ease: "easeInOut" }}
-                    className="absolute inset-0"
-                  >
-                    <img src={hoveredImage} alt="" className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-b from-forest-dark via-forest-dark/40 to-forest-dark" />
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-              {/* Close Button Inside Panel */}
-              <div className="relative z-10 flex justify-between items-center p-6 sm:p-8 md:p-12">
-                <div className="flex items-center gap-4">
-                  <div className="w-8 h-px bg-gold/50" />
-                  <span className="text-gold text-[9px] uppercase tracking-[0.4em] font-bold">Navigation</span>
-                </div>
-                <button 
-                  onClick={() => setMobileOpen(false)}
-                  className="group flex items-center gap-3 text-gold p-2"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="fixed inset-0 z-[110] flex flex-col md:flex-row bg-[#f2ebe0] overflow-hidden"
+          >
+            {/* Left: Image & Brand */}
+            <div className="relative w-full md:w-[45%] h-[40vh] md:h-full overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={hoveredImage}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="absolute inset-0"
                 >
-                  <span className="text-[10px] uppercase tracking-[0.4em] font-sans font-bold hidden xs:block">Close</span>
-                  <div className="relative w-8 h-8 flex items-center justify-center">
-                    <span className="absolute w-6 h-px bg-gold rotate-45 transition-transform duration-500 group-hover:rotate-[135deg]" />
-                    <span className="absolute w-6 h-px bg-gold -rotate-45 transition-transform duration-500 group-hover:rotate(45deg)" />
-                  </div>
-                </button>
+                  <img src={hoveredImage} alt="" className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-black/30" />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Logo Overlay on Image */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center text-cream">
+                <motion.img 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  src={`${base}/tilenga-logo-light.svg`} 
+                  alt="Tilenga Safaris" 
+                  className="h-24 md:h-40 w-auto mb-10 drop-shadow-2xl" 
+                />
+                <div className="space-y-3 opacity-90 font-sans text-[10px] tracking-[0.3em] uppercase font-bold">
+                  <p>destinations@tilengasafaris.com</p>
+                  <p>+256 789 390 350</p>
+                </div>
               </div>
 
-              {/* Menu Links */}
-              <div className="relative z-10 flex-1 flex flex-col px-8 sm:px-12 md:px-20 justify-center pb-20 overflow-y-auto custom-scrollbar">
-                <nav className="flex flex-col gap-6 sm:gap-8 md:gap-12">
+              {/* Bottom Nav on Left (Mobile) */}
+              <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-6 md:hidden">
+                {bottomNav.slice(0, 2).map(item => (
+                  <Link key={item.label} href={item.href} onClick={() => setMobileOpen(false)} className="text-[9px] tracking-widest text-cream uppercase font-bold">{item.label}</Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: Menu Links */}
+            <div className="relative flex-1 h-full bg-[#f2ebe0] flex flex-col">
+              {/* Close Button Desktop */}
+              <button 
+                onClick={() => setMobileOpen(false)}
+                className="absolute top-8 right-12 z-[130] text-stone-800 hidden md:block group"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="text-[10px] uppercase tracking-[0.4em] font-bold opacity-40 group-hover:opacity-100 transition-opacity">Close</span>
+                  <div className="relative w-8 h-8 flex items-center justify-center">
+                    <span className="absolute w-8 h-px bg-stone-800 rotate-45" />
+                    <span className="absolute w-8 h-px bg-stone-800 -rotate-45" />
+                  </div>
+                </div>
+              </button>
+
+              <div className="flex-1 flex flex-col justify-center px-10 md:px-20 lg:px-32 py-24 overflow-y-auto">
+                <nav className="space-y-4 md:space-y-8">
                   {navItems.map((item, i) => (
                     <motion.div
                       key={item.label}
-                      initial={{ opacity: 0, x: -30 }}
+                      initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.2 + i * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                      className="group/item"
+                      transition={{ delay: 0.1 + i * 0.05, duration: 0.6 }}
                       onMouseEnter={() => setHoveredImage(item.image)}
+                      className="group/item"
                     >
                       <Link
                         href={item.href}
-                        className="font-serif text-3xl xs:text-4xl sm:text-5xl lg:text-6xl text-cream hover:text-gold transition-colors duration-500 uppercase tracking-tighter block mb-3 leading-none"
                         onClick={() => setMobileOpen(false)}
+                        className="text-[#2d3a28] hover:text-gold text-2xl md:text-4xl lg:text-5xl font-serif uppercase tracking-wider transition-all duration-300 block mb-2"
                       >
                         {item.label}
                       </Link>
                       
-                      {/* Children / Sub-links */}
+                      {/* Children Links */}
                       {item.children && (
-                        <div className="flex flex-wrap gap-x-5 sm:gap-x-6 gap-y-3 opacity-60 group-hover/item:opacity-100 transition-opacity duration-500">
+                        <div className="flex flex-wrap gap-x-6 gap-y-2 opacity-60 group-hover/item:opacity-100 transition-opacity">
                           {item.children.map((child) => (
                             <Link 
-                              key={child.label} 
+                              key={child.label}
                               href={child.href}
                               onMouseEnter={(e) => {
                                 e.stopPropagation();
                                 setHoveredImage(child.image);
                               }}
-                              className="text-cream hover:text-gold text-[12px] sm:text-xs uppercase tracking-[0.2em] font-sans transition-colors py-1"
                               onClick={() => setMobileOpen(false)}
+                              className="text-[#2d3a28] hover:text-gold text-[11px] md:text-xs font-sans font-bold uppercase tracking-widest transition-colors"
                             >
                               {child.label}
                             </Link>
@@ -218,23 +206,42 @@ export default function Header() {
                     </motion.div>
                   ))}
                 </nav>
-
-                {/* Bottom Contact Info */}
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.7 }}
-                  className="mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-white/10"
-                >
-                  <p className="text-gold uppercase tracking-[0.45em] text-[9px] font-bold mb-4 sm:mb-6">Concierge</p>
-                  <div className="flex flex-col gap-3 sm:gap-4 font-serif italic text-cream/50 text-base sm:text-lg">
-                    <a href="tel:+256789390350" className="hover:text-gold transition-colors">+256 789 390 350</a>
-                    <a href="mailto:destinations@tilengasafaris.com" className="hover:text-gold transition-colors break-all">destinations@tilengasafaris.com</a>
-                  </div>
-                </motion.div>
               </div>
-            </motion.div>
-          </>
+
+              {/* Bottom Bar Utility */}
+              <div className="flex border-t border-stone-200/60 p-10 md:p-12 items-center justify-between">
+                <div className="flex gap-10 lg:gap-16">
+                  {bottomNav.map((item) => (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="text-stone-500 hover:text-gold text-[9px] tracking-[0.4em] font-sans font-bold transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+                <div className="hidden lg:flex items-center gap-6">
+                   <span className="text-stone-300 text-[9px] tracking-widest uppercase font-bold">Follow along</span>
+                   <div className="flex gap-4">
+                      <a href="https://www.instagram.com/tilengasafaris_travel/" target="_blank" className="text-stone-400 hover:text-gold transition-colors text-xs font-bold uppercase tracking-widest">Ig</a>
+                      <a href="https://www.facebook.com/TilengaSafaris/" target="_blank" className="text-stone-400 hover:text-gold transition-colors text-xs font-bold uppercase tracking-widest">Fb</a>
+                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Close Button Mobile Overlay */}
+            <button 
+              onClick={() => setMobileOpen(false)}
+              className="absolute top-8 right-8 z-[130] text-cream md:hidden bg-black/20 p-2 rounded-full backdrop-blur-sm"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
