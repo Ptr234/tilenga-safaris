@@ -35,12 +35,16 @@ const lodges = [
 ];
 
 const experiences = [
-  { title: "Gorilla Trekking", description: "Face-to-face with endangered mountain gorillas in Bwindi or Volcanoes.", image: `${base}/gorrilas/gorrila.webp` },
-  { title: "Game Drives", description: "Guided dawn and dusk drives through Africa's most prolific wildlife parks.", image: `${base}/experinces/Game drives.jpg` },
-  { title: "Boat Safaris", description: "Glide the Kazinga Channel or Albert Nile for hippo, croc, and bird encounters.", image: `${base}/experinces/water safari.jpg` },
-  { title: "Cultural Immersion", description: "Basketry workshops, village walks, traditional cuisine, and living heritage.", image: `${base}/experinces/culture emersion.jpg` },
-  { title: "Kilimanjaro Climbing", description: "Summit Africa's highest peak on an expert-guided multi-day ascent.", image: `${base}/experinces/kilimanjaro climbing.jpg` },
-  { title: "Zanzibar Beach", description: "Crystal-clear waters, Stone Town culture, and spice tours on Zanzibar.", image: `${base}/experinces/zanzibar beach.jpg` },
+  { title: "Gorilla Tracking", description: "Face-to-face with endangered mountain gorillas in the misty highlands of Bwindi.", image: `${base}/experinces/gorrila treking.jpg` },
+  { title: "Great Beast Migration", description: "Witness the world's most spectacular wildlife event as millions cross the savannah.", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1200&q=80" },
+  { title: "Culture - Masai mara", description: "Connect with the living heritage and ancient traditions of the iconic Maasai people.", image: `${base}/experinces/culture emersion.jpg` },
+  { title: "Game drives for the big 5", description: "Expert-guided dawn and dusk drives in search of the legendary African Big Five.", image: `${base}/experinces/Game drives.jpg` },
+  { title: "Hot airballoon", description: "Soar above the golden plains at sunrise for a breathtaking bird's-eye view of the wild.", image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=1200&q=80" },
+  { title: "Mt Rwenzori climbing", description: "Summit the legendary 'Mountains of the Moon' for an epic alpine adventure at the Equator.", image: `${base}/experinces/kilimanjaro climbing.jpg` },
+  { title: "Zanzibar", description: "Unwind on turquoise shores where spice-scented breezes meet ancient Stone Town culture.", image: `${base}/experinces/zanzibar beach.jpg` },
+  { title: "Boat Safaris", description: "Glide the Albert Nile or Kazinga Channel for incredible hippo, croc, and bird sightings.", image: `${base}/experinces/water safari.jpg` },
+  { title: "Namibia Desert", description: "Explore the ancient, towering red dunes of Sossusvlei and the dramatic Skeleton Coast.", image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=1200&q=80" },
+  { title: "Elephants in Botswana", description: "Encounter massive herds in the lush Okavango Delta, a true sanctuary for giants.", image: "https://images.unsplash.com/photo-1551085254-e96b210db58a?w=1200&q=80" },
 ];
 
 const destinations = [

@@ -13,12 +13,16 @@ const destinations = [
 ];
 
 const experiences = [
-  "Gorilla Trekking",
-  "Game Drives",
+  "Gorilla Tracking",
+  "Great Beast Migration",
+  "Culture - Masai mara",
+  "Game drives for the big 5",
+  "Hot airballoon",
+  "Mt Rwenzori climbing",
+  "Zanzibar",
   "Boat Safaris",
-  "Cultural Immersion",
-  "Mountain Climbing",
-  "Beach Extensions",
+  "Namibia Desert",
+  "Elephants in Botswana",
 ];
 
 const lodges = [
