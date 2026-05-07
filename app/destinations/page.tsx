@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import FadeIn from "@/components/motion/FadeIn";
+import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 

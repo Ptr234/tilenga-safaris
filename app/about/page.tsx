@@ -117,21 +117,27 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="grain-overlay relative h-[65vh] min-h-[450px] overflow-hidden flex items-end">
+      <section className="grain-overlay relative h-[70vh] min-h-[500px] overflow-hidden flex items-end">
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 scale-110 transition-transform duration-[10000ms] ease-out"
           style={{
             backgroundImage: `url(${base}/Newstock/greatbeastmigration.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center 30%",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/30 to-forest-dark/85" />
-        <div className="relative z-10 px-6 md:px-16 pb-16 max-w-4xl">
-          <p className="section-label text-gold mb-3 uppercase tracking-[0.4em] font-bold">About Tilenga</p>
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl text-cream mb-4 uppercase tracking-[0.1em] leading-[1.1]">
-            Founded on the principles of passion for travel and a deep understanding of customer needs
-          </h1>
+        <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/20 via-forest-dark/40 to-forest-dark/90" />
+        <div className="relative z-10 px-6 md:px-16 pb-20 max-w-5xl">
+          <FadeIn direction="up">
+            <p className="section-label text-gold mb-4 uppercase tracking-[0.4em] font-bold">About Tilenga</p>
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl text-cream mb-6 uppercase tracking-[0.05em] leading-[1.1]">
+              Founded on the <br />
+              <span className="italic text-gold lowercase tracking-normal">Passion</span> for Travel
+            </h1>
+            <p className="text-cream/70 font-sans text-lg md:text-xl max-w-2xl leading-relaxed">
+              Rooted in a deep understanding of customer needs and a legacy of discovery across the East African landscape.
+            </p>
+          </FadeIn>
         </div>
       </section>
 
