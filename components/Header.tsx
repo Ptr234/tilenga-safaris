@@ -19,24 +19,24 @@ const navItems = [
   {
     label: "Experiences & Activities",
     href: "/experiences",
-    image: `${base}/experinces/Game drives.jpg`,
+    image: `${base}/Newstock/Big Five Game Drives.jpg`,
     children: [
       { label: "Gorilla Tracking", href: "/experiences#gorilla-tracking", image: `${base}/experinces/gorrila treking.jpg` },
       { label: "Great Beast Migration", href: "/experiences#migration", image: `${base}/Newstock/greatbeastmigration.jpg` },
-      { label: "Culture - Masai mara", href: "/experiences#culture", image: `${base}/experinces/culture emersion.jpg` },
-      { label: "Game drives for the big 5", href: "/experiences#game-drives", image: `${base}/experinces/Game drives.jpg` },
-      { label: "Hot airballoon", href: "/experiences#balloon", image: `${base}/Newstock/Hot Air Balloon.jpg` },
-      { label: "Mt Rwenzori climbing", href: "/experiences#climbing", image: `${base}/experinces/kilimanjaro climbing.jpg` },
-      { label: "Zanzibar", href: "/experiences#zanzibar", image: `${base}/experinces/zanzibar beach.jpg` },
-      { label: "Boat Safaris", href: "/experiences#boat-safaris", image: `${base}/experinces/water safari.jpg` },
+      { label: "Culture Immersion", href: "/experiences#culture", image: `${base}/experinces/culture emersion.jpg` },
+      { label: "Game drives for the Big 5", href: "/experiences#game-drives", image: `${base}/Newstock/Big Five Game Drives.jpg` },
+      { label: "Hot Air Balloon", href: "/experiences#balloon", image: `${base}/Newstock/Hot Air Balloon.jpg` },
+      { label: "Mt Rwenzori Climbing", href: "/experiences#climbing", image: `${base}/Newstock/Mountain Climbing06Mountain Climbing.jpg` },
+      { label: "Zanzibar Beaches", href: "/experiences#zanzibar", image: `${base}/experinces/zanzibar beach.jpg` },
+      { label: "Boat Safaris", href: "/experiences#boat-safaris", image: `${base}/Newstock/Boat Safaris08Boat Safaris.jpg` },
       { label: "Namibia Desert", href: "/experiences#namibia", image: `${base}/Newstock/zebras.jpg` },
       { label: "Elephants in Botswana", href: "/experiences#botswana", image: `${base}/Newstock/bigelephant.jpg` },
     ],
   },
-  { label: "About Us", href: "/about", image: `${base}/Newstock/wildanimals.jpg` },
+  { label: "About Us", href: "/about", image: `${base}/Newstock/tourist.jpg` },
   { label: "Sustainability & Conservation", href: "/about#conservation", image: `${base}/Newstock/touristsmovinginforest.jpg` },
   { label: "Tilenga Safaris Travel Concierge", href: "/plan-a-trip", image: `${base}/Newstock/safari.jpg` },
-  { label: "Our Travel Stories", href: "/destinations", image: `${base}/experinces/culture emersion.jpg` },
+  { label: "Our Travel Stories", href: "/destinations", image: `${base}/Newstock/splendifd.jpg` },
 ];
 
 const bottomNav = [

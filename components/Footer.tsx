@@ -72,7 +72,7 @@ export default function Footer() {
   const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
   return (
-    <footer className="bg-[#060f09] text-cream pt-20 pb-10 overflow-hidden font-sans">
+    <footer className="bg-[#060f09] text-gold pt-20 pb-10 overflow-hidden font-sans">
       <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20">
         
         {/* Main Content Area */}
@@ -88,7 +88,7 @@ export default function Footer() {
                   href={s.href} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-cream/80 hover:text-gold transition-colors"
+                  className="text-gold/80 hover:text-white transition-colors"
                 >
                   {s.icon}
                 </a>
@@ -109,13 +109,13 @@ export default function Footer() {
             <div className="space-y-2">
               <a 
                 href="mailto:destinations@tilengasafaris.com" 
-                className="block text-cream/70 hover:text-gold text-lg transition-colors"
+                className="block text-gold/70 hover:text-white text-lg transition-colors"
               >
                 destinations@tilengasafaris.com
               </a>
               <a 
                 href="tel:+256789390350" 
-                className="block text-cream/70 hover:text-gold text-lg transition-colors"
+                className="block text-gold/70 hover:text-white text-lg transition-colors"
               >
                 +256 789 390 350
               </a>
@@ -130,7 +130,7 @@ export default function Footer() {
                   <Link 
                     key={link.label} 
                     href={link.href}
-                    className="text-[10px] uppercase tracking-[0.3em] font-bold hover:text-gold transition-colors"
+                    className="text-[10px] uppercase tracking-[0.3em] font-bold hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -149,10 +149,10 @@ export default function Footer() {
           {/* Placeholder for Awards from Screenshot */}
           <div className="flex items-center gap-8">
              <div className="w-24 h-24 border border-white/10 rounded-full flex items-center justify-center p-4">
-                <span className="text-[8px] uppercase tracking-tighter text-center font-bold text-cream/40">Award Winner 2025</span>
+                <span className="text-[8px] uppercase tracking-tighter text-center font-bold text-gold/40">Award Winner 2025</span>
              </div>
              <div className="w-24 h-24 border border-white/10 rounded-full flex items-center justify-center p-4">
-                <span className="text-[8px] uppercase tracking-tighter text-center font-bold text-cream/40">Award Winner 2024</span>
+                <span className="text-[8px] uppercase tracking-tighter text-center font-bold text-gold/40">Award Winner 2024</span>
              </div>
           </div>
         </div>
