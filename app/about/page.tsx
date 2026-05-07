@@ -222,16 +222,21 @@ export default function AboutPage() {
 
       {/* Why choose us */}
       <section className="py-14 md:py-24 px-6 md:px-16 bg-cream relative overflow-hidden">
-        <div
-          className="absolute right-0 top-0 w-1/2 h-full hidden md:block"
-          style={{
-            backgroundImage: "url(/Newstock/Big Five Game Drives.jpg)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
-        <div className="absolute right-0 top-0 w-1/2 h-full hidden md:block bg-forest-dark/40" />
+        {/* Right-side image panel */}
+        <div className="absolute right-0 top-0 w-full md:w-1/2 h-48 md:h-full">
+          <img
+            src="/Newstock/elephantcars.jpg"
+            alt="Safari experience"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-forest-dark/40" />
+          {/* Fade edge into cream on left */}
+          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-cream to-transparent hidden md:block" />
+        </div>
+
         <div className="max-w-6xl mx-auto relative">
+          {/* Spacer pushes content below the image on mobile */}
+          <div className="h-36 md:hidden" />
           <div className="max-w-xl">
             <p className="section-label mb-3 text-gold">Commitment to Excellence</p>
             <h2 className="section-heading mb-6">Why Choose Us?</h2>
