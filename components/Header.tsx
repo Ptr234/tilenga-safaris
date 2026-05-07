@@ -48,13 +48,13 @@ const navItems = [
     ],
   },
   { label: "About Us", href: "/about", image: `${base}/Newstock/tourist.jpg` },
-  { label: "Sustainability & Conservation", href: "/about#conservation", image: `${base}/Newstock/touristsmovinginforest.jpg` },
-  { label: "Tilenga Safaris Travel Concierge", href: "/plan-a-trip", image: `${base}/Newstock/safari.jpg` },
+  { label: "Sustainability & Conservation", href: "/about", image: `${base}/Newstock/touristsmovinginforest.jpg` },
+  { label: "Travel Concierge", href: "/plan-a-trip", image: `${base}/Newstock/safari.jpg` },
 ];
 
 const bottomNav = [
   { label: "AGENTS PORTAL", href: "/plan-a-trip" },
-  { label: "OFFERS", href: "/destinations" },
+  { label: "OFFERS", href: "/plan-a-trip" },
   { label: "FAQ", href: "/about" },
   { label: "GALLERY", href: "/lodges" },
 ];
