@@ -46,9 +46,10 @@ export default function HeroVideo() {
         className="absolute inset-0 z-0 origin-center will-change-transform"
       >
         <video
-          autoPlay muted loop playsInline
+          autoPlay loop playsInline
           className="w-full h-full object-cover"
         >
+          <source src={`${base}/photos/safari-hero.webm`} type="video/webm; codecs=vp9" />
           <source src={`${base}/homevideo/tilenga.mp4`} type="video/mp4" />
         </video>
       </motion.div>
