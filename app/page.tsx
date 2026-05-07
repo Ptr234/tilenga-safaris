@@ -697,18 +697,6 @@ export default function HomePage() {
               </div>
             ))}
 
-            {/* Outro Slide — High Impact */}
-            <div className="min-w-[50vw] flex flex-col justify-center text-center items-center border-l border-white/5 pl-24">
-               <FadeIn direction="up">
-                 <span className="text-gold text-[10px] uppercase tracking-[0.5em] mb-10 block">End of Chapter</span>
-                 <h2 className="font-serif text-7xl md:text-8xl text-cream mb-14 uppercase tracking-tighter leading-[0.9]">
-                    Your Legacy <br /><span className="text-gold italic lowercase">awaits.</span>
-                 </h2>
-                 <MagneticButton>
-                    <Link href="/plan-a-trip" className="btn-primary px-16 py-5 text-base">Design Your Journey</Link>
-                 </MagneticButton>
-               </FadeIn>
-            </div>
           </div>
         </HorizontalScrollSection>
       </section>
