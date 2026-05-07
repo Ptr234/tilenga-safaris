@@ -392,23 +392,21 @@ export default function ExperiencesPage() {
       {/* Final Visual Closer — High Drama */}
       <section className="h-screen relative overflow-hidden">
          <ParallaxSection imageUrl={`${base}/Newstock/cheetah.jpg`} className="h-full">
-            <div className="absolute inset-0 flex items-center justify-center text-center">
-               <div className="max-w-3xl px-6 relative">
-                 <div className="absolute -top-32 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
-                    <div className="w-px h-24 bg-gold/50" />
-                    <span className="text-gold text-[9px] uppercase tracking-[0.5em] font-bold">Awaken</span>
-                 </div>
-                 
-                 <h2 className="font-serif text-6xl md:text-[9rem] text-cream uppercase tracking-[-0.03em] mb-16 leading-none">
-                    YOUR JOURNEY <br /><span className="italic text-gold opacity-90">STARTS HERE</span>
-                 </h2>
-                 
-                 <MagneticButton>
-                    <Link href="/plan-a-trip" className="btn-outline border-white text-white hover:bg-white hover:text-forest px-20 py-6 text-lg tracking-[0.3em]">
-                      Book Your Experience
-                    </Link>
-                 </MagneticButton>
+            <div className="h-screen flex flex-col items-center justify-center text-center px-6">
+               <div className="flex flex-col items-center gap-3 mb-8">
+                  <div className="w-px h-14 bg-gold/50" />
+                  <span className="text-gold text-[9px] uppercase tracking-[0.5em] font-bold">Awaken</span>
                </div>
+
+               <h2 className="font-serif text-5xl md:text-6xl lg:text-[5.5rem] text-cream uppercase tracking-[-0.03em] mb-10 leading-none">
+                  YOUR JOURNEY <br /><span className="italic text-gold opacity-90">STARTS HERE</span>
+               </h2>
+
+               <MagneticButton>
+                  <Link href="/plan-a-trip" className="btn-outline border-white text-white hover:bg-white hover:text-forest px-20 py-6 text-lg tracking-[0.3em]">
+                    Book Your Experience
+                  </Link>
+               </MagneticButton>
             </div>
          </ParallaxSection>
       </section>
