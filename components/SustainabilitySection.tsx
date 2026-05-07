@@ -56,13 +56,13 @@ export default function SustainabilitySection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-[#f5f0e8]"
+      className="relative bg-[#0b1a10]"
     >
       {/* Ambient background orbs */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute top-[15%] left-[8%] w-80 h-80 rounded-full bg-gold/[0.06] blur-[100px]" />
-        <div className="absolute bottom-[20%] left-[12%] w-56 h-56 rounded-full bg-[#2d4a2d]/[0.05] blur-[80px]" />
-        <div className="absolute top-[55%] left-[5%] w-40 h-40 rounded-full bg-gold/[0.04] blur-[60px]" />
+        <div className="absolute top-[15%] left-[8%] w-80 h-80 rounded-full bg-gold/[0.07] blur-[120px]" />
+        <div className="absolute bottom-[20%] left-[12%] w-56 h-56 rounded-full bg-forest/[0.4] blur-[80px]" />
+        <div className="absolute top-[55%] left-[5%] w-40 h-40 rounded-full bg-gold/[0.05] blur-[60px]" />
       </div>
 
       <div className="flex items-start w-full">
@@ -73,30 +73,30 @@ export default function SustainabilitySection() {
 
             {/* Eyebrow */}
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-5 h-px bg-[#a68a60]/60" />
-              <span className="font-sans text-[9px] uppercase tracking-[0.55em] font-bold text-[#a68a60]">
+              <span className="w-5 h-px bg-gold/50" />
+              <span className="font-sans text-[9px] uppercase tracking-[0.55em] font-bold text-gold/70">
                 Tilenga Safaris
               </span>
             </div>
 
             {/* Heading */}
-            <h2 className="font-serif text-forest-dark leading-none mb-5">
+            <h2 className="font-serif text-cream leading-none mb-5">
               <span className="block text-[clamp(2.4rem,3.8vw,4.4rem)] uppercase tracking-tight">
                 Sustainability
               </span>
-              <span className="block font-serif italic text-[clamp(1.7rem,2.7vw,3.1rem)] text-[#a68a60] mt-1">
+              <span className="block font-serif italic text-[clamp(1.7rem,2.7vw,3.1rem)] text-gold mt-1">
                 &amp; Conservation
               </span>
             </h2>
 
             {/* Rule */}
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-px bg-[#a68a60]/40" />
-              <div className="w-1 h-1 rotate-45 bg-[#a68a60]/40" />
+              <div className="w-10 h-px bg-gold/30" />
+              <div className="w-1 h-1 rotate-45 bg-gold/30" />
             </div>
 
             {/* Body */}
-            <p className="font-sans text-[#3a3a2e]/70 text-sm md:text-base leading-[1.75] max-w-sm mb-7">
+            <p className="font-sans text-cream/50 text-sm md:text-base leading-[1.75] max-w-sm mb-7">
               Protecting landscapes, empowering communities, and preserving wildlife through
               responsible safari travel.
             </p>
@@ -104,7 +104,7 @@ export default function SustainabilitySection() {
             {/* CTA */}
             <Link
               href="/about"
-              className="group inline-flex items-center gap-4 bg-forest-dark hover:bg-[#a68a60] text-cream font-sans text-[11px] font-bold uppercase tracking-[0.25em] px-8 py-4 transition-all duration-500 mb-8"
+              className="group inline-flex items-center gap-4 border border-gold/40 hover:border-gold hover:bg-gold/10 text-gold font-sans text-[11px] font-bold uppercase tracking-[0.25em] px-8 py-4 transition-all duration-500 mb-8"
             >
               Discover Our Impact
               <svg
@@ -118,17 +118,17 @@ export default function SustainabilitySection() {
             {/* Scroll progress bar */}
             <div>
               <div className="flex justify-between items-center mb-2">
-                <span className="font-sans text-[8px] uppercase tracking-[0.45em] text-[#3a3a2e]/30 font-bold">
+                <span className="font-sans text-[8px] uppercase tracking-[0.45em] text-cream/20 font-bold">
                   Scroll to explore
                 </span>
-                <span className="font-sans text-[8px] uppercase tracking-[0.45em] text-[#a68a60]/60 font-bold">
+                <span className="font-sans text-[8px] uppercase tracking-[0.45em] text-gold/50 font-bold">
                   {images.length} Stories
                 </span>
               </div>
-              <div className="h-[2px] w-full bg-[#3a3a2e]/10 rounded-full overflow-hidden">
+              <div className="h-[2px] w-full bg-white/10 rounded-full overflow-hidden">
                 <motion.div
                   style={{ scaleX: barScaleX, transformOrigin: "left" }}
-                  className="h-full bg-[#a68a60] rounded-full"
+                  className="h-full bg-gold rounded-full"
                 />
               </div>
             </div>
@@ -143,17 +143,17 @@ export default function SustainabilitySection() {
         >
           {/* Mobile heading */}
           <div className="lg:hidden mb-12 text-center">
-            <span className="font-sans text-[9px] uppercase tracking-[0.55em] font-bold text-[#a68a60] block mb-4">
+            <span className="font-sans text-[9px] uppercase tracking-[0.55em] font-bold text-gold/70 block mb-4">
               Tilenga Safaris
             </span>
-            <h2 className="font-serif text-forest-dark text-4xl leading-none uppercase tracking-tight mb-2">
+            <h2 className="font-serif text-cream text-4xl leading-none uppercase tracking-tight mb-2">
               Sustainability
             </h2>
-            <p className="font-serif italic text-[#a68a60] text-2xl">&amp; Conservation</p>
-            <p className="font-sans text-[#3a3a2e]/60 text-sm leading-relaxed mt-6 max-w-md mx-auto">
+            <p className="font-serif italic text-gold text-2xl">&amp; Conservation</p>
+            <p className="font-sans text-cream/50 text-sm leading-relaxed mt-6 max-w-md mx-auto">
               Protecting landscapes, empowering communities, and preserving wildlife through responsible safari travel.
             </p>
-            <Link href="/about" className="inline-flex items-center gap-3 mt-8 bg-forest-dark text-cream font-sans text-[10px] font-bold uppercase tracking-[0.25em] px-7 py-3.5 transition-all duration-500 hover:bg-[#a68a60]">
+            <Link href="/about" className="inline-flex items-center gap-3 mt-8 border border-gold/40 hover:border-gold hover:bg-gold/10 text-gold font-sans text-[10px] font-bold uppercase tracking-[0.25em] px-7 py-3.5 transition-all duration-500">
               Discover Our Impact
             </Link>
           </div>
@@ -169,8 +169,8 @@ export default function SustainabilitySection() {
                 delay: 0.05,
               }}
               viewport={{ once: true, margin: "-80px" }}
-              // Outer frame — cream mat border effect
-              className="p-[6px] rounded-[24px] shadow-[0_24px_80px_rgba(0,0,0,0.13),0_4px_16px_rgba(0,0,0,0.07)] border border-[#a68a60]/20 bg-[#ede8de]"
+              // Outer frame — dark mat border effect
+              className="p-[6px] rounded-[24px] shadow-[0_24px_80px_rgba(0,0,0,0.5),0_4px_16px_rgba(0,0,0,0.3)] border border-gold/20 bg-[#0e1f16]"
             >
               {/* Inner image container */}
               <div className="relative rounded-[18px] overflow-hidden group">
