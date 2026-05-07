@@ -1,3 +1,5 @@
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
@@ -193,7 +195,7 @@ export default function KenyaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src="/Newstock/greatbeastmigration.jpg"
+                src={`${base}/Newstock/greatbeastmigration.jpg`}
                 alt="Great Migration"
                 className="w-full h-52 object-cover"
               />
@@ -204,7 +206,7 @@ export default function KenyaPage() {
               className="overflow-hidden mt-6"
             >
               <img
-                src="/Newstock/mothernbabyelephant.jpg"
+                src={`${base}/Newstock/mothernbabyelephant.jpg`}
                 alt="Elephant family"
                 className="w-full h-52 object-cover"
               />
@@ -215,7 +217,7 @@ export default function KenyaPage() {
               className="overflow-hidden -mt-6"
             >
               <img
-                src="/Newstock/cheetah.jpg"
+                src={`${base}/Newstock/cheetah.jpg`}
                 alt="Cheetah"
                 className="w-full h-52 object-cover"
               />
@@ -226,7 +228,7 @@ export default function KenyaPage() {
               className="overflow-hidden"
             >
               <img
-                src="/Newstock/zebras.jpg"
+                src={`${base}/Newstock/zebras.jpg`}
                 alt="Zebras on safari"
                 className="w-full h-52 object-cover"
               />

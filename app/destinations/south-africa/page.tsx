@@ -1,3 +1,5 @@
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";

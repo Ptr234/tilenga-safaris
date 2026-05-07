@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const destinations = [
   {
     name: "Uganda",
@@ -7,7 +9,7 @@ const destinations = [
     description: "From the lush rainforests of Bwindi to the thundering Murchison Falls and the source of the Nile — Africa at its most raw and rewarding.",
     hotspots: ["Gorilla Tracking", "Murchison Falls", "Queen Elizabeth NP", "Source of the Nile"],
     bestTime: "Jan–Mar · Jul–Sep",
-    image: "/Newstock/Source of the Nile.jpg",
+    image: `${base}/Newstock/Source of the Nile.jpg`,
     href: "/destinations/uganda",
     num: "01",
     large: true,
@@ -18,7 +20,7 @@ const destinations = [
     description: "The Great Migration. Maasai Mara. Amboseli's elephants against Kilimanjaro. Kenya is the quintessential African safari.",
     hotspots: ["Maasai Mara", "Wildebeest Migration", "Amboseli NP", "Lake Nakuru"],
     bestTime: "Dec–Mar · Jun–Oct",
-    image: "/Newstock/greatbeastmigration.jpg",
+    image: `${base}/Newstock/greatbeastmigration.jpg`,
     href: "/destinations/kenya",
     num: "02",
   },
@@ -28,7 +30,7 @@ const destinations = [
     description: "Vast Serengeti plains, the ancient Ngorongoro Crater, Kilimanjaro, and Zanzibar's crystal shores.",
     hotspots: ["Serengeti NP", "Ngorongoro Crater", "Zanzibar", "Mount Kilimanjaro"],
     bestTime: "Dec–Mar · Jun–Oct",
-    image: "/Newstock/Zanzibar Beaches.jpg",
+    image: `${base}/Newstock/Zanzibar Beaches.jpg`,
     href: "/destinations/tanzania",
     num: "03",
   },
@@ -38,7 +40,7 @@ const destinations = [
     description: "Mountain gorillas in volcanic mist. Golden monkeys in Nyungwe Forest. The serene shores of Lake Kivu.",
     hotspots: ["Gorilla Tracking", "Volcanoes NP", "Kigali City Tour", "Lake Kivu"],
     bestTime: "May–Oct",
-    image: "/Newstock/Gorrilla.jpg",
+    image: `${base}/Newstock/Gorrilla.jpg`,
     href: "/destinations/rwanda",
     num: "04",
   },
@@ -48,7 +50,7 @@ const destinations = [
     description: "Big Five in Kruger. Dramatic Cape Peninsula. World-class wines of Stellenbosch. Africa's most diverse destination.",
     hotspots: ["Kruger NP", "Cape Town", "Garden Route", "Winelands"],
     bestTime: "May–Sep",
-    image: "/Newstock/safari.jpg",
+    image: `${base}/Newstock/safari.jpg`,
     href: "/destinations/south-africa",
     num: "05",
   },
@@ -58,7 +60,7 @@ const destinations = [
     description: "A land of vast silence — towering red dunes at Sossusvlei, Etosha's wildlife, the Skeleton Coast, and starlit desert skies.",
     hotspots: ["Sossusvlei Dunes", "Etosha NP", "Skeleton Coast", "Fish River Canyon"],
     bestTime: "May–Oct",
-    image: "/Newstock/wildanimals.jpg",
+    image: `${base}/Newstock/wildanimals.jpg`,
     href: "/destinations/namibia",
     num: "06",
   },
@@ -68,7 +70,7 @@ const destinations = [
     description: "Pristine wilderness at its most exclusive — the Okavango Delta, Chobe's elephants, and the Kalahari under a billion stars.",
     hotspots: ["Okavango Delta", "Chobe NP", "Moremi Reserve", "Makgadikgadi Pans"],
     bestTime: "Apr–Oct",
-    image: "/Newstock/bigelephant.jpg",
+    image: `${base}/Newstock/bigelephant.jpg`,
     href: "/destinations/botswana",
     num: "07",
   },
@@ -82,7 +84,7 @@ export default function DestinationsPage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url(/Newstock/splendifd.jpg)",
+            backgroundImage: `url(${base}/Newstock/splendifd.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center 35%",
           }}
@@ -225,7 +227,7 @@ export default function DestinationsPage() {
         <div
           className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: "url(/Newstock/zebras.jpg)",
+            backgroundImage: `url(${base}/Newstock/zebras.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

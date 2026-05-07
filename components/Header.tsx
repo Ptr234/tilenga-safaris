@@ -33,10 +33,23 @@ const navItems = [
       { label: "Elephants in Botswana", href: "/experiences#botswana", image: `${base}/Newstock/bigelephant.jpg` },
     ],
   },
+  {
+    label: "Our Destinations",
+    href: "/destinations",
+    image: `${base}/Newstock/splendifd.jpg`,
+    children: [
+      { label: "Uganda", href: "/destinations/uganda", image: `${base}/Newstock/Source of the Nile.jpg` },
+      { label: "Kenya", href: "/destinations/kenya", image: `${base}/Newstock/greatbeastmigration.jpg` },
+      { label: "Tanzania", href: "/destinations/tanzania", image: `${base}/Newstock/Zanzibar Beaches.jpg` },
+      { label: "Rwanda", href: "/destinations/rwanda", image: `${base}/Newstock/Gorrilla.jpg` },
+      { label: "South Africa", href: "/destinations/south-africa", image: `${base}/Newstock/safari.jpg` },
+      { label: "Namibia", href: "/destinations/namibia", image: `${base}/Newstock/wildanimals.jpg` },
+      { label: "Botswana", href: "/destinations/botswana", image: `${base}/Newstock/bigelephant.jpg` },
+    ],
+  },
   { label: "About Us", href: "/about", image: `${base}/Newstock/tourist.jpg` },
   { label: "Sustainability & Conservation", href: "/about#conservation", image: `${base}/Newstock/touristsmovinginforest.jpg` },
   { label: "Tilenga Safaris Travel Concierge", href: "/plan-a-trip", image: `${base}/Newstock/safari.jpg` },
-  { label: "Our Travel Stories", href: "/destinations", image: `${base}/Newstock/splendifd.jpg` },
 ];
 
 const bottomNav = [

@@ -1,3 +1,5 @@
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
@@ -246,7 +248,7 @@ export default function UgandaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src="/Newstock/Gorrilla.jpg"
+                src={`${base}/Newstock/Gorrilla.jpg`}
                 alt="Mountain Gorillas"
                 className="w-full h-52 object-cover hover:scale-110 transition-transform duration-700"
               />
@@ -257,7 +259,7 @@ export default function UgandaPage() {
               className="overflow-hidden mt-6"
             >
               <img
-                src="/Newstock/girrafe.jpg"
+                src={`${base}/Newstock/girrafe.jpg`}
                 alt="African Wildlife"
                 className="w-full h-52 object-cover"
               />
@@ -268,7 +270,7 @@ export default function UgandaPage() {
               className="overflow-hidden -mt-6"
             >
               <img
-                src="/Newstock/bufallo.jpg"
+                src={`${base}/Newstock/bufallo.jpg`}
                 alt="Wildlife"
                 className="w-full h-52 object-cover"
               />
@@ -279,7 +281,7 @@ export default function UgandaPage() {
               className="overflow-hidden"
             >
               <img
-                src="/Newstock/elephantcars.jpg"
+                src={`${base}/Newstock/elephantcars.jpg`}
                 alt="Game drive"
                 className="w-full h-52 object-cover"
               />

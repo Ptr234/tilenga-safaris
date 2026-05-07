@@ -1,3 +1,5 @@
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
@@ -184,7 +186,7 @@ export default function TanzaniaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src="/Newstock/Mountain Climbing06Mountain Climbing.jpg"
+                src={`${base}/Newstock/Mountain Climbing06Mountain Climbing.jpg`}
                 alt="Mount Kilimanjaro"
                 className="w-full h-52 object-cover"
               />
@@ -195,7 +197,7 @@ export default function TanzaniaPage() {
               className="overflow-hidden mt-6"
             >
               <img
-                src="/Newstock/Zanzibar Beaches.jpg"
+                src={`${base}/Newstock/Zanzibar Beaches.jpg`}
                 alt="Zanzibar beach"
                 className="w-full h-52 object-cover"
               />
@@ -206,7 +208,7 @@ export default function TanzaniaPage() {
               className="overflow-hidden -mt-6"
             >
               <img
-                src="/Newstock/wildanimals.jpg"
+                src={`${base}/Newstock/wildanimals.jpg`}
                 alt="Ngorongoro wildlife"
                 className="w-full h-52 object-cover"
               />
@@ -217,7 +219,7 @@ export default function TanzaniaPage() {
               className="overflow-hidden"
             >
               <img
-                src="/Newstock/bigelephant.jpg"
+                src={`${base}/Newstock/bigelephant.jpg`}
                 alt="Serengeti elephants"
                 className="w-full h-52 object-cover"
               />

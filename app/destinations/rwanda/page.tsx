@@ -1,3 +1,5 @@
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
@@ -47,7 +49,7 @@ export default function RwandaPage() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage: "url(/Newstock/gorrillahigh.jpg)",
+            backgroundImage: `url(${base}/Newstock/gorrillahigh.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -102,16 +104,16 @@ export default function RwandaPage() {
 
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
-              <img src="/gorrilas/gorillar.webp" alt="Mountain Gorillas in mist" className="w-full h-52 object-cover" />
+              <img src={`${base}/gorrilas/gorillar.webp`} alt="Mountain Gorillas in mist" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-6">
-              <img src="/Newstock/Gorrillahd.jpg" alt="Mountain Gorilla" className="w-full h-52 object-cover" />
+              <img src={`${base}/Newstock/Gorrillahd.jpg`} alt="Mountain Gorilla" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-6">
-              <img src="/Newstock/gorrillla.jpg" alt="Gorillas in forest" className="w-full h-52 object-cover" />
+              <img src={`${base}/Newstock/gorrillla.jpg`} alt="Gorillas in forest" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
-              <img src="/Newstock/Gorrilla.jpg" alt="Mountain Gorilla encounter" className="w-full h-52 object-cover" />
+              <img src={`${base}/Newstock/Gorrilla.jpg`} alt="Mountain Gorilla encounter" className="w-full h-52 object-cover" />
             </ImageReveal>
           </div>
         </div>
@@ -149,7 +151,7 @@ export default function RwandaPage() {
               <div className="bg-white border border-gold/10 overflow-hidden">
                 <div className="relative h-64">
                   <img
-                    src="/Newstock/touristsmovinginforest.jpg"
+                    src={`${base}/Newstock/touristsmovinginforest.jpg`}
                     alt="Rwanda gorilla trekking"
                     className="w-full h-full object-cover"
                   />
