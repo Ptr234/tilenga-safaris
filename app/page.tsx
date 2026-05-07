@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import HeroVideo from "@/components/HeroVideo";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
@@ -159,8 +159,18 @@ const sustainabilityItems = [
   "Partnerships with national parks and conservation bodies",
 ];
 
+const sustainabilityImages = [
+  { src: `/photos/tilengasafarilodge/entrance.png`, label: "Conservation", caption: "Locally owned & operated lodges embedded in the landscape" },
+  { src: `/Newstock/touristsmovinginforest.jpg`, label: "Community", caption: "Cultural engagement programs with indigenous communities" },
+  { src: `/Newstock/mothernbabyelephant.jpg`, label: "Wildlife", caption: "Anti-litter & eco-conservation across East Africa" },
+  { src: `/Newstock/girrafe.jpg`, label: "Partnerships", caption: "Partnered with national parks & conservation bodies" },
+];
+
 export default function HomePage() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const sustainabilityRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: sustainabilityRef, offset: ["start start", "end end"] });
+  const imageX = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -844,104 +854,130 @@ export default function HomePage() {
         </div>
       </ParallaxSection>
 
-      {/* Redesigned Sustainability Section */}
-      <section className="py-24 md:py-48 px-6 md:px-16 bg-[#0a1a12] relative overflow-hidden">
-        {/* Background image */}
-        <div className="absolute inset-0 pointer-events-none">
-          <img src={`${base}/Newstock/Boat Safaris08Boat Safaris.jpg`} alt="" className="w-full h-full object-cover opacity-15" />
-          <div className="absolute inset-0 bg-[#0a1a12]/75" />
-        </div>
-        {/* Subtle decorative background text */}
-        <div className="absolute top-20 left-10 opacity-[0.02] pointer-events-none select-none">
-          <span className="text-[20vw] font-serif text-cream uppercase leading-none">Respect</span>
-        </div>
+      {/* Sustainability — Sticky text, horizontal-scroll images */}
+      <section ref={sustainabilityRef} className="relative bg-forest-dark" style={{ height: "500vh" }}>
+        <div className="sticky top-0 h-screen flex overflow-hidden">
 
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <div className="order-2 lg:order-1">
-              <div className="grid grid-cols-2 gap-4 relative">
-                 <div className="space-y-4">
-                    <ImageReveal direction="top" delay={0.1}>
-                       <div className="aspect-[3/4] rounded-sm overflow-hidden shadow-2xl border border-white/5">
-                          <img src={`${base}/Newstock/touristsmovinginforest.jpg`} className="w-full h-full object-cover" alt="Conservation" />
-                       </div>
-                    </ImageReveal>
-                    <ImageReveal direction="left" delay={0.3}>
-                       <div className="aspect-square rounded-sm overflow-hidden shadow-2xl border border-white/5">
-                          <img src={`${base}/Newstock/mothernbabyelephant.jpg`} className="w-full h-full object-cover" alt="Community" />
-                       </div>
-                    </ImageReveal>
-                 </div>
-                 <div className="space-y-4 pt-12">
-                    <ImageReveal direction="right" delay={0.2}>
-                       <div className="aspect-square rounded-sm overflow-hidden shadow-2xl border border-white/5">
-                          <img src={`${base}/Newstock/bufallo.jpg`} className="w-full h-full object-cover" alt="Wildlife" />
-                       </div>
-                    </ImageReveal>
-                    <ImageReveal direction="bottom" delay={0.4}>
-                       <div className="aspect-[3/4] rounded-sm overflow-hidden shadow-2xl border border-white/5">
-                          <img src={`${base}/Newstock/girrafe.jpg`} className="w-full h-full object-cover" alt="Sustainability" />
-                       </div>
-                    </ImageReveal>
-                 </div>
+          {/* LEFT: stable manifesto panel */}
+          <div className="w-[42%] shrink-0 relative flex flex-col h-full border-r border-white/10 z-10 overflow-hidden">
 
-                 {/* Floating badge */}
-                 <motion.div 
-                   whileHover={{ scale: 1.05, rotate: 5 }}
-                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-gold p-8 rounded-full shadow-2xl border-4 border-[#0a1a12] hidden md:flex flex-col items-center justify-center text-forest-dark"
-                 >
-                    <span className="text-[10px] uppercase tracking-widest font-bold">Guaranteed</span>
-                    <span className="font-serif text-2xl font-bold italic">Ethical</span>
-                    <span className="text-[10px] uppercase tracking-widest font-bold">Travel</span>
-                 </motion.div>
+            {/* Full-height left gold accent bar */}
+            <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-transparent via-gold to-transparent opacity-40" />
+
+            {/* Top — massive headline zone */}
+            <div className="px-10 md:px-12 pt-10 pb-8 border-b border-white/8">
+              <div className="flex items-center gap-3 mb-5">
+                <span className="w-5 h-px bg-gold/60" />
+                <span className="text-gold/70 text-[8px] uppercase tracking-[0.65em] font-bold">Responsible Travel</span>
+              </div>
+              <h2 className="font-serif text-[clamp(3rem,6.5vw,5.8rem)] text-cream uppercase tracking-[-0.01em] leading-[0.85] mb-2">
+                Commu­nities
+              </h2>
+              <p className="font-serif italic text-gold text-[clamp(1.6rem,3.2vw,2.9rem)] leading-none tracking-wide">
+                &amp; Conservation
+              </p>
+            </div>
+
+            {/* Middle — pull-quote + pillars grid */}
+            <div className="flex-1 flex flex-col px-10 md:px-12 py-7">
+
+              {/* Pull-quote */}
+              <p className="font-serif italic text-cream/90 text-[15px] md:text-base leading-[1.7] border-l-2 border-gold pl-5 mb-7">
+                &ldquo;Every journey we curate gives back — to the land, the wildlife, and the people who call East Africa home.&rdquo;
+              </p>
+
+              {/* Supporting line */}
+              <p className="text-cream/45 font-sans text-[11px] leading-[1.7] mb-8 max-w-[30ch]">
+                Your trip directly funds local guides, artisans, hospitality staff, and conservation initiatives.
+              </p>
+
+              {/* Pillars — 2 × 2 grid */}
+              <div className="flex items-center gap-3 mb-5">
+                <span className="text-gold/50 text-[7px] uppercase tracking-[0.65em] font-bold">Our Commitments</span>
+                <span className="flex-1 h-px bg-white/8" />
+              </div>
+              <div className="grid grid-cols-2 gap-px bg-white/8 flex-1">
+                {sustainabilityItems.map((item, i) => (
+                  <div
+                    key={item}
+                    className="bg-forest-dark group flex flex-col justify-between p-4 hover:bg-white/[0.04] transition-colors duration-500 cursor-default"
+                  >
+                    <span className="font-serif italic text-gold text-[2.2rem] leading-none mb-3 block group-hover:text-gold transition-colors duration-300">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <p className="text-cream/80 font-sans text-[11px] leading-[1.5] group-hover:text-cream transition-colors duration-300">
+                      {item}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="order-1 lg:order-2">
-              <FadeIn direction="right">
-                <span className="section-label text-gold/80">Responsible Travel</span>
-                <h2 className="font-serif text-5xl md:text-6xl text-cream leading-[1.1] mb-8">
-                  <SplitText text="A Commitment to" by="word" /> <br />
-                  <span className="italic text-gold">Communities & Conservation</span>
-                </h2>
-                
-                <div className="w-20 h-px bg-gold/30 mb-10" />
-                
-                <div className="space-y-6 text-cream/60 font-sans text-lg leading-relaxed mb-12">
-                  <p>
-                    Sustainability is woven into how we operate. We work closely with local communities,
-                    support indigenous culture preservation, and partner with conservation-focused lodges across East Africa.
-                  </p>
-                  <p>
-                    When you travel with Tilenga Safaris, your journey contributes to the livelihoods
-                    of local guides, hospitality staff, and community artisans.
-                  </p>
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-4 mb-12">
-                  {sustainabilityItems.map((item, i) => (
-                    <motion.div 
-                      key={item}
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      viewport={{ once: true }}
-                      className="group flex items-start gap-4 p-4 rounded-sm bg-white/5 border border-white/10 hover:bg-white/10 transition-colors duration-300"
-                    >
-                      <span className="text-gold text-lg group-hover:scale-110 transition-transform duration-300">✦</span>
-                      <span className="text-cream/80 text-sm font-sans leading-snug">{item}</span>
-                    </motion.div>
-                  ))}
-                </div>
-
-                <MagneticButton>
-                  <Link href="/about" className="btn-primary px-12 bg-cream text-forest-dark border-none hover:bg-gold transition-colors duration-500">
-                    Learn Our Philosophy
-                  </Link>
-                </MagneticButton>
-              </FadeIn>
+            {/* Bottom — CTA + scroll hint */}
+            <div className="px-10 md:px-12 pb-8 pt-5 border-t border-white/8 shrink-0">
+              <Link
+                href="/about"
+                className="group/cta flex items-center justify-between bg-gold hover:bg-cream px-6 py-4 mb-5 transition-all duration-500"
+              >
+                <span className="text-[10px] uppercase tracking-[0.45em] font-bold text-forest-dark">
+                  Our Philosophy
+                </span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-forest-dark group-hover/cta:translate-x-1 transition-transform duration-400">
+                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </Link>
+              <div className="flex items-center gap-3 opacity-30">
+                <span className="text-cream text-[7px] uppercase tracking-[0.5em]">Scroll to explore</span>
+                <svg width="18" height="9" viewBox="0 0 20 10" fill="none" className="text-gold">
+                  <path d="M0 5h18M13 1l5 4-5 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
             </div>
+
           </div>
+
+          {/* RIGHT: horizontally scrolling image cards */}
+          <div className="flex-1 overflow-hidden flex items-center">
+            <motion.div
+              style={{ x: imageX }}
+              className="flex gap-5 pl-8 will-change-transform"
+            >
+              {sustainabilityImages.map((img, i) => (
+                <div
+                  key={i}
+                  className="shrink-0 w-[52vw] md:w-[38vw] lg:w-[32vw] h-[78vh] relative overflow-hidden group"
+                >
+                  <img
+                    src={`${base}${img.src}`}
+                    alt={img.label}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2500ms] ease-out"
+                  />
+                  {/* Dark gradient bottom */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/85 via-forest-dark/10 to-transparent" />
+
+                  {/* Card index */}
+                  <div className="absolute top-6 left-6">
+                    <span className="font-serif text-[5rem] leading-none text-cream/[0.07] select-none">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+
+                  {/* Bottom label */}
+                  <div className="absolute bottom-0 inset-x-0 p-7">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="w-5 h-px bg-gold" />
+                      <span className="text-gold text-[9px] uppercase tracking-[0.45em] font-bold">{img.label}</span>
+                    </div>
+                    <p className="text-cream text-sm font-sans leading-snug max-w-[22ch]">{img.caption}</p>
+                  </div>
+
+                  {/* Hover gold border */}
+                  <div className="absolute inset-0 border border-transparent group-hover:border-gold/30 transition-colors duration-700" />
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
         </div>
       </section>
 
