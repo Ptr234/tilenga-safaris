@@ -170,11 +170,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Destinations Section — Journal Style Editorial Grid */}
-      <section className="py-14 md:py-32 px-6 md:px-16 bg-cream overflow-hidden">
-        <div className="max-w-7xl mx-auto">
+      {/* Destinations Section — Vivid Full-Bleed Editorial */}
+      <section className="py-14 md:py-32 bg-cream overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-16">
           {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 md:gap-10 mb-12 md:mb-20">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 md:gap-10 mb-12 md:mb-16">
             <div className="max-w-2xl">
               <FadeIn direction="fade">
                 <span className="section-label">The Explorer&apos;s Map</span>
@@ -193,106 +193,135 @@ export default function HomePage() {
               </Link>
             </FadeIn>
           </div>
+        </div>
 
-          {/* Clean Journal Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-y-20 gap-x-6 md:gap-x-8">
+        {/* Full-bleed Immersive Feature Switcher */}
+        <div className="relative h-[65vh] md:h-[88vh] overflow-hidden mb-3 md:mb-4">
+          {/* Switching Background Image */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`bg-${activeIdx}`}
+              initial={{ opacity: 0, scale: 1.08 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5, ease: [0.25, 1, 0.5, 1] }}
+              className="absolute inset-0"
+            >
+              <img
+                src={destinations[activeIdx].image}
+                alt={destinations[activeIdx].name}
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+          </AnimatePresence>
 
-            {/* 01. Switching Featured Card */}
-            <div className="md:col-span-7">
-              <FadeIn direction="up">
-                <div className="relative group block cursor-pointer">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeIdx}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 1.2, ease: "easeInOut" }}
+          {/* Layered gradient overlays */}
+          <div className="absolute inset-0 bg-gradient-to-r from-forest/90 via-forest/35 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/85 via-transparent to-forest/15" />
+
+          {/* Content overlay — bottom left */}
+          <div className="absolute inset-0 flex flex-col justify-end px-6 md:px-16 pb-14 md:pb-24">
+            <div className="max-w-7xl mx-auto w-full">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`content-${activeIdx}`}
+                  initial={{ y: 55, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -25, opacity: 0 }}
+                  transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className="w-10 h-px bg-gold" />
+                    <span className="text-gold text-[9px] uppercase tracking-[0.5em] font-bold">{destinations[activeIdx].tag}</span>
+                    <span className="text-white/30 text-[9px] uppercase tracking-widest">0{activeIdx + 1} / 07</span>
+                  </div>
+                  <h3 className="font-serif text-[18vw] md:text-[12vw] lg:text-[9.5vw] text-cream uppercase tracking-tight leading-none mb-6 -ml-1">
+                    {destinations[activeIdx].name}
+                  </h3>
+                  <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-16">
+                    <p className="text-cream/70 font-sans text-sm md:text-base leading-relaxed max-w-sm">
+                      {destinations[activeIdx].description}
+                    </p>
+                    <Link
+                      href={destinations[activeIdx].href}
+                      className="shrink-0 group inline-flex items-center gap-3 text-cream hover:text-gold transition-colors duration-300 text-[10px] uppercase tracking-[0.35em] font-bold border-b border-cream/20 pb-2 hover:border-gold"
                     >
-                      <Link href={destinations[activeIdx].href}>
-                        <div className="relative aspect-[4/3] md:aspect-[14/11] overflow-hidden mb-6 md:mb-8 shadow-sm">
-                          <img
-                            src={destinations[activeIdx].image}
-                            alt={destinations[activeIdx].name}
-                            className="absolute inset-0 w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-[1500ms] ease-out group-hover:scale-105"
-                          />
-                        </div>
-                        <div className="max-w-lg">
-                          <span className="font-serif text-gold text-sm italic mb-2 block tracking-widest">Discover Africa</span>
-                          <h3 className="font-serif text-3xl md:text-5xl text-forest uppercase tracking-widest mb-4 transition-colors group-hover:text-gold leading-none">
-                            {destinations[activeIdx].name}
-                          </h3>
-                          <p className="text-stone font-sans text-[15px] leading-relaxed md:leading-loose mb-6 opacity-80 md:min-h-[80px]">
-                            {destinations[activeIdx].description}
-                          </p>
-                          <span className="text-[10px] uppercase tracking-widest text-gold font-bold flex items-center gap-2">
-                            Explore {destinations[activeIdx].name}
-                            <span className="group-hover:translate-x-1 transition-transform">→</span>
-                          </span>
-                        </div>
-                      </Link>
-                    </motion.div>
-                  </AnimatePresence>
-                  
-                  {/* Subtle Progress Bar */}
-                  <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gold/10 overflow-hidden hidden md:block">
-                    <motion.div 
-                      key={`progress-${activeIdx}`}
-                      initial={{ x: "-100%" }}
-                      animate={{ x: "0%" }}
-                      transition={{ duration: 6, ease: "linear" }}
-                      className="h-full bg-gold"
-                    />
+                      Explore {destinations[activeIdx].name}
+                      <span className="group-hover:translate-x-1 transition-transform">→</span>
+                    </Link>
                   </div>
-                </div>
-              </FadeIn>
+                </motion.div>
+              </AnimatePresence>
             </div>
+          </div>
 
-            {/* 02. Uganda — Smaller Offset */}
-            <div className="md:col-span-5 md:pt-32">
-              <FadeIn direction="up" delay={0.2}>
-                <Link href={destinations[0].href} className="group block">
-                  <div className="relative aspect-square md:aspect-[4/5] overflow-hidden mb-6 md:mb-8 shadow-sm">
+          {/* Destination navigator pills — top right */}
+          <div className="absolute top-8 md:top-10 right-6 md:right-16 flex flex-col gap-2 z-10">
+            {destinations.map((dest, i) => (
+              <button
+                key={dest.name}
+                onClick={() => setActiveIdx(i)}
+                className={`text-[8px] uppercase tracking-[0.3em] font-bold py-1 px-3 border transition-all duration-500 text-right whitespace-nowrap ${
+                  i === activeIdx
+                    ? 'border-gold bg-gold/10 text-gold'
+                    : 'border-white/15 text-white/35 hover:border-white/50 hover:text-white/70'
+                }`}
+              >
+                {dest.name}
+              </button>
+            ))}
+          </div>
+
+          {/* Gold progress bar */}
+          <div className="absolute bottom-0 left-0 w-full h-[2px] bg-white/10 overflow-hidden">
+            <motion.div
+              key={`progress-${activeIdx}`}
+              initial={{ x: '-100%' }}
+              animate={{ x: '0%' }}
+              transition={{ duration: 6, ease: 'linear' }}
+              className="h-full bg-gold"
+            />
+          </div>
+        </div>
+
+        {/* Vibrant Destination Mosaic */}
+        <div className="px-6 md:px-16">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2 md:gap-3">
+              {destinations.map((dest, i) => (
+                <FadeIn key={dest.name} direction="up" delay={0.06 * i}>
+                  <Link href={dest.href} className="group block relative overflow-hidden aspect-[3/4] shadow-sm">
                     <img
-                      src={destinations[0].image}
-                      alt={destinations[0].name}
-                      className="absolute inset-0 w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-[1500ms] group-hover:scale-105"
+                      src={dest.image}
+                      alt={dest.name}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
                     />
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-3xl text-forest uppercase tracking-widest mb-3 group-hover:text-gold transition-colors">{destinations[0].name}</h3>
-                    <p className="text-stone/70 font-sans text-sm leading-relaxed mb-4">{destinations[0].tag}</p>
-                    <div className="w-10 h-px bg-gold/40 transition-all duration-500 group-hover:w-20" />
-                  </div>
-                </Link>
-              </FadeIn>
-            </div>
+                    {/* Base dark gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest/40 to-transparent" />
+                    {/* Gold warmth wash on hover */}
+                    <div className="absolute inset-0 bg-gold/0 group-hover:bg-gold/[0.12] transition-colors duration-700" />
+                    {/* Vivid border reveal */}
+                    <div className="absolute inset-0 border border-transparent group-hover:border-gold/50 transition-all duration-700" />
 
-            {/* Row 2: Symmetric Journal Row */}
-            <div className="md:col-span-12 grid grid-cols-2 md:grid-cols-6 gap-6 md:gap-8">
-              {[destinations[1], destinations[2], destinations[3], destinations[4], destinations[5], destinations[6]].map((dest, i) => (
-                <FadeIn key={dest.name} direction="up" delay={0.1 * i}>
-                  <Link href={dest.href} className="group block">
-                    <div className="relative aspect-[4/5] overflow-hidden mb-4 md:mb-6 shadow-sm border border-gold/5">
-                      <img
-                        src={dest.image}
-                        alt={dest.name}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                      />
+                    {/* Text */}
+                    <div className="absolute inset-x-0 bottom-0 p-3 md:p-4">
+                      <p className="text-gold/70 text-[7px] uppercase tracking-[0.25em] font-bold mb-1 group-hover:text-gold transition-colors duration-500 leading-tight">{dest.tag}</p>
+                      <h4 className="font-serif text-sm md:text-base lg:text-lg text-cream uppercase tracking-wider leading-none group-hover:text-gold transition-colors duration-500">{dest.name}</h4>
                     </div>
-                    <div className="text-center">
-                      <h4 className="font-serif text-lg md:text-xl xl:text-2xl text-forest uppercase tracking-widest mb-1 group-hover:text-gold transition-colors leading-tight">{dest.name}</h4>
-                      <p className="text-gold text-[8px] md:text-[9px] uppercase tracking-[0.2em] md:tracking-[0.3em] font-bold">{dest.tag}</p>
+
+                    {/* Hover explore chip */}
+                    <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                      <span className="text-[7px] uppercase tracking-widest text-gold font-bold bg-forest-dark/80 px-2 py-1">Explore →</span>
                     </div>
                   </Link>
                 </FadeIn>
               ))}
             </div>
-          </div>
 
-          <FadeIn direction="up" delay={0.2} className="text-center mt-14 md:mt-32">
-            <Link href="/destinations" className="btn-primary px-10 md:px-14">The Full Collection</Link>
-          </FadeIn>
+            <FadeIn direction="up" delay={0.2} className="text-center mt-14 md:mt-20">
+              <Link href="/destinations" className="btn-primary px-10 md:px-14">The Full Collection</Link>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
