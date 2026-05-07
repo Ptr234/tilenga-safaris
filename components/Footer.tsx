@@ -22,7 +22,7 @@ const navLinks = [
   {
     column: [
       { label: "Agent Portal", href: "/plan-a-trip" },
-      { label: "Offers", href: "/destinations" },
+      { label: "Offers", href: "/offers" },
       { label: "FAQ", href: "/faq" },
       { label: "Gallery", href: "/lodges" },
     ]

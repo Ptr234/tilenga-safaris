@@ -39,7 +39,7 @@ export default function ParallaxSection({
         }}
       />
       <div className={`absolute inset-0 z-[1] ${overlayClassName}`} />
-      <div className="relative z-[2]">{children}</div>
+      <div className="relative z-[2] h-full">{children}</div>
     </div>
   );
 }
