@@ -444,7 +444,7 @@ export default function TilengaSafariLodgePage() {
         {/* ── ACT VI: Nightfall ── */}
         <div className="grid md:grid-cols-5">
           {/* Left: Editorial copy + small night image */}
-          <div className="md:col-span-2 bg-[#060f09] flex flex-col justify-center p-10 md:p-14 order-2 md:order-1">
+          <div className="md:col-span-2 bg-forest-dark flex flex-col justify-center p-10 md:p-14 order-2 md:order-1">
             <FadeIn direction="left">
               <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-6">VI · Nightfall</p>
               <h3 className="font-serif text-3xl md:text-5xl text-cream leading-tight mb-6">

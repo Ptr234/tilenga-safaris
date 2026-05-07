@@ -124,7 +124,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="fixed inset-0 z-[110] flex flex-col md:flex-row bg-[#060f09] overflow-hidden"
+            className="fixed inset-0 z-[110] flex flex-col md:flex-row bg-forest-dark overflow-hidden"
           >
             {/* Left: Image & Brand */}
             <div className="relative w-full md:w-[45%] h-[40vh] md:h-full overflow-hidden">
@@ -166,7 +166,7 @@ export default function Header() {
             </div>
 
             {/* Right: Menu Links */}
-            <div className="relative flex-1 h-full bg-[#060f09] flex flex-col">
+            <div className="relative flex-1 h-full bg-forest-dark flex flex-col">
               {/* Close Button Desktop */}
               <button 
                 onClick={() => setMobileOpen(false)}

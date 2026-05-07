@@ -102,7 +102,7 @@ export default function InstagramFeed() {
               />
               
               {/* Overlay with Meta Info */}
-              <div className="absolute inset-0 bg-[#060f09]/60 opacity-0 group-hover:opacity-100 transition-all duration-400 flex flex-col items-center justify-center backdrop-blur-[2px]">
+              <div className="absolute inset-0 bg-forest-dark/60 opacity-0 group-hover:opacity-100 transition-all duration-400 flex flex-col items-center justify-center backdrop-blur-[2px]">
                 <div className="flex items-center gap-6 text-cream">
                   <div className="flex items-center gap-1.5">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

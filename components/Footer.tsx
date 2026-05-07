@@ -72,7 +72,7 @@ export default function Footer() {
   const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
   return (
-    <footer className="bg-[#060f09] text-gold pt-20 pb-10 overflow-hidden font-sans">
+    <footer className="bg-forest-dark text-gold pt-20 pb-10 overflow-hidden font-sans">
       <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20">
         
         {/* Main Content Area */}
@@ -99,7 +99,7 @@ export default function Footer() {
             <div>
               <Link 
                 href="/plan-a-trip"
-                className="inline-block bg-gold text-[#060f09] px-8 py-4 text-[11px] uppercase tracking-[0.2em] font-bold hover:bg-cream transition-colors rounded-sm"
+                className="inline-block bg-gold text-forest-dark px-8 py-4 text-[11px] uppercase tracking-[0.2em] font-bold hover:bg-cream transition-colors rounded-sm"
               >
                 Sign Up For Our Newsletter
               </Link>
