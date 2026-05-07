@@ -362,23 +362,21 @@ export default function HomePage() {
         </div>
 
         {/* Two lodge image cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 max-w-[1600px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-[1600px] mx-auto">
           {lodges.map((lodge, i) => (
             <FadeIn key={lodge.name} direction="up" delay={i * 0.12}>
-              <div className="relative overflow-hidden rounded-[20px] group">
+              <div className="relative overflow-hidden rounded-2xl group shadow-[0_2px_24px_rgba(0,0,0,0.10)]">
                 <img
                   src={lodge.image}
                   alt={lodge.name}
-                  className="w-full h-[55vw] md:h-[44vw] max-h-[700px] object-cover group-hover:scale-[1.03] transition-transform duration-[3000ms] ease-out"
+                  className="w-full h-[55vw] md:h-[44vw] max-h-[680px] object-cover group-hover:scale-[1.03] transition-transform duration-[3000ms] ease-out"
                 />
-                {/* Gradient so button is always readable */}
-                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/40 to-transparent" />
 
-                {/* Pill button — bottom center, Cottar's exact style */}
+                {/* Label — Cottar's exact style: cream bg, rounded rect, shadow, bottom-center */}
                 <div className="absolute bottom-5 inset-x-0 flex justify-center">
                   <Link
                     href={lodge.href}
-                    className="bg-cream text-forest-dark font-sans text-xs font-medium tracking-[0.12em] px-6 py-3 rounded-full shadow-sm hover:bg-white hover:shadow-md transition-all duration-200 whitespace-nowrap"
+                    className="bg-[#f5f0e8] text-forest-dark font-sans text-sm font-medium px-5 py-2.5 rounded-xl shadow-[0_4px_16px_rgba(0,0,0,0.22)] hover:bg-white transition-colors duration-200 whitespace-nowrap"
                   >
                     Book {lodge.name}
                   </Link>
