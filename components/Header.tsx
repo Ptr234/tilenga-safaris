@@ -149,7 +149,7 @@ export default function Header() {
                   animate={{ opacity: 1, scale: 1 }}
                   src={`${base}/tilenga-logo-light.svg`} 
                   alt="Tilenga Safaris" 
-                  className="h-24 md:h-40 w-auto mb-10 drop-shadow-2xl" 
+                  className="h-24 md:h-40 w-auto mb-8 drop-shadow-2xl" 
                 />
                 <div className="space-y-3 opacity-90 font-sans text-[10px] tracking-[0.3em] uppercase font-bold">
                   <p>destinations@tilengasafaris.com</p>
@@ -157,10 +157,24 @@ export default function Header() {
                 </div>
               </div>
 
-              {/* Bottom Nav on Left (Mobile) */}
-              <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-6 md:hidden">
-                {bottomNav.slice(0, 2).map(item => (
-                  <Link key={item.label} href={item.href} onClick={() => setMobileOpen(false)} className="text-[9px] tracking-widest text-cream uppercase font-bold">{item.label}</Link>
+              {/* Bottom Nav on Left Side (Desktop & Mobile) */}
+              <div className="absolute bottom-12 left-0 right-0 flex justify-center gap-x-8 lg:gap-x-12 gap-y-4 flex-wrap px-8 z-20">
+                {bottomNav.map((item, i) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 + i * 0.1, duration: 0.6 }}
+                  >
+                    <Link
+                      href={item.href}
+                      target={item.target}
+                      onClick={() => setMobileOpen(false)}
+                      className="text-white hover:text-gold text-[12px] md:text-lg lg:text-xl font-serif uppercase tracking-[0.2em] transition-all duration-300"
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -226,24 +240,15 @@ export default function Header() {
 
               {/* Bottom Bar Utility */}
               <div className="flex border-t border-white/10 p-10 md:p-12 items-center justify-between">
-                <div className="flex gap-10 lg:gap-16">
-                  {bottomNav.map((item) => (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      onClick={() => setMobileOpen(false)}
-                      className="text-cream/50 hover:text-gold text-[9px] tracking-[0.4em] font-sans font-bold transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-                <div className="hidden lg:flex items-center gap-6">
+                <div className="flex items-center gap-6">
                    <span className="text-cream/30 text-[9px] tracking-widest uppercase font-bold">Follow along</span>
                    <div className="flex gap-4">
                       <a href="https://www.instagram.com/tilengasafaris_travel/" target="_blank" className="text-cream/40 hover:text-gold transition-colors text-xs font-bold uppercase tracking-widest">Ig</a>
                       <a href="https://www.facebook.com/TilengaSafaris/" target="_blank" className="text-cream/40 hover:text-gold transition-colors text-xs font-bold uppercase tracking-widest">Fb</a>
                    </div>
+                </div>
+                <div className="hidden lg:block">
+                   <span className="text-cream/20 text-[9px] tracking-[0.4em] uppercase font-bold">© 2026 Tilenga Safaris</span>
                 </div>
               </div>
             </div>
