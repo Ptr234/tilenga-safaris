@@ -82,7 +82,7 @@ export default function TilengaSafariLodgePage() {
             </p>
           </FadeIn>
           <FadeIn direction="up" delay={0.56}>
-            <Link href="/plan-a-trip" className="btn-ghost">Book a Stay</Link>
+            <a href="https://tilengasafarilodge.com/plan-trip/" target="_blank" rel="noopener noreferrer" className="btn-ghost">Book a Stay</a>
           </FadeIn>
         </div>
 
@@ -139,7 +139,7 @@ export default function TilengaSafariLodgePage() {
             </div>
 
             <div className="flex gap-4">
-              <Link href="/plan-a-trip" className="btn-primary">Book a Stay</Link>
+              <a href="https://tilengasafarilodge.com/plan-trip/" target="_blank" rel="noopener noreferrer" className="btn-primary">Book a Stay</a>
               <a href="mailto:booking@tilengasafarilodge.com" className="btn-outline">Email Lodge</a>
             </div>
           </FadeIn>
@@ -233,9 +233,9 @@ export default function TilengaSafariLodgePage() {
               </h2>
             </div>
             <div className="flex-1 h-px bg-gold/20 mb-3 hidden md:block" />
-            <Link href="/plan-a-trip" className="hidden md:inline-block btn-primary shrink-0">
+            <a href="https://tilengasafarilodge.com/plan-trip/" target="_blank" rel="noopener noreferrer" className="hidden md:inline-block btn-primary shrink-0">
               Plan Your Stay
-            </Link>
+            </a>
           </FadeIn>
 
           <StaggerGrid className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-0">
@@ -502,7 +502,7 @@ export default function TilengaSafariLodgePage() {
                 </h3>
               </div>
               <div className="shrink-0">
-                <Link href="/plan-a-trip" className="btn-primary">Experience It Yourself</Link>
+                <a href="https://tilengasafarilodge.com/plan-trip/" target="_blank" rel="noopener noreferrer" className="btn-primary">Experience It Yourself</a>
               </div>
             </div>
           </div>
@@ -594,7 +594,7 @@ export default function TilengaSafariLodgePage() {
                 </li>
               ))}
             </ul>
-            <Link href="/plan-a-trip" className="btn-outline">Plan a Full Itinerary</Link>
+            <a href="https://tilengasafarilodge.com/plan-trip/" target="_blank" rel="noopener noreferrer" className="btn-outline">Plan a Full Itinerary</a>
           </FadeIn>
 
           <FadeIn direction="right" delay={0.2}>
@@ -605,9 +605,9 @@ export default function TilengaSafariLodgePage() {
                 Share your travel dates and we&apos;ll come back with availability, current rates, and a tailored proposal.
               </p>
               <div className="space-y-3">
-                <Link href="/plan-a-trip" className="btn-outline w-full text-center block">
+                <a href="https://tilengasafarilodge.com/plan-trip/" target="_blank" rel="noopener noreferrer" className="btn-outline w-full text-center block">
                   Request a Proposal
-                </Link>
+                </a>
                 <a
                   href="https://wa.me/256789390350?text=I'm interested in booking Tilenga Safari Lodge"
                   target="_blank"

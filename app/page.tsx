@@ -27,6 +27,7 @@ const lodges = [
     description: "A haven of comfort overlooking the Albert Nile. 26 cottages with private balconies, wildlife encounters, and a world-class chef.",
     image: `${base}/photos/tilengasafarilodge/entrance.png`,
     href: "/lodges/tilenga-safari-lodge",
+    bookHref: "https://tilengasafarilodge.com/plan-trip/",
     tag: "Murchison Falls",
     features: ["26 Luxury Cottages", "Albert Nile Views", "Infinity Pool"]
   },
@@ -37,6 +38,7 @@ const lodges = [
     description: "Perched at the Equator above Lake George, with sweeping Rwenzori views and the world's largest hippo concentration.",
     image: `${base}/photos/kikorongo_outside.jpg`,
     href: "/lodges/kikorongo-safari-lodge",
+    bookHref: "https://kikorongosafarilodge.com/availability/",
     tag: "Queen Elizabeth NP",
     features: ["Equator Position", "Hippo Sanctuary", "Rwenzori Vistas"]
   },
@@ -380,12 +382,14 @@ export default function HomePage() {
 
                 {/* Label — Cottar's exact style: cream bg, rounded rect, shadow, bottom-center */}
                 <div className="absolute bottom-5 inset-x-0 flex justify-center">
-                  <Link
-                    href={lodge.href}
+                  <a
+                    href={lodge.bookHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="bg-[#f5f0e8] text-forest-dark font-sans text-sm font-medium px-5 py-2.5 rounded-xl shadow-[0_4px_16px_rgba(0,0,0,0.22)] hover:bg-white transition-colors duration-200 whitespace-nowrap"
                   >
                     Book {lodge.name}
-                  </Link>
+                  </a>
                 </div>
               </div>
             </FadeIn>

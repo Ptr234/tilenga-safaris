@@ -82,7 +82,7 @@ export default function KikorongoSafariLodgePage() {
             </p>
           </FadeIn>
           <FadeIn direction="up" delay={0.56}>
-            <Link href="/plan-a-trip" className="btn-ghost">Book a Stay</Link>
+            <a href="https://kikorongosafarilodge.com/availability/" target="_blank" rel="noopener noreferrer" className="btn-ghost">Book a Stay</a>
           </FadeIn>
         </div>
 
@@ -140,7 +140,7 @@ export default function KikorongoSafariLodgePage() {
             </div>
 
             <div className="flex gap-4">
-              <Link href="/plan-a-trip" className="btn-primary">Book a Stay</Link>
+              <a href="https://kikorongosafarilodge.com/availability/" target="_blank" rel="noopener noreferrer" className="btn-primary">Book a Stay</a>
               <a href="mailto:bookings@kikorongosafarilodge.com" className="btn-outline">Email Lodge</a>
             </div>
           </FadeIn>
@@ -478,7 +478,7 @@ export default function KikorongoSafariLodgePage() {
                 "A profoundly peaceful atmosphere — we did not want to leave."
               </p>
               <p className="text-cream/20 font-mono text-[9px] uppercase tracking-widest mb-10">— A Kikorongo Guest, 2024</p>
-              <Link href="/plan-a-trip" className="btn-primary self-start">Experience It Yourself</Link>
+              <a href="https://kikorongosafarilodge.com/availability/" target="_blank" rel="noopener noreferrer" className="btn-primary self-start">Experience It Yourself</a>
             </FadeIn>
           </div>
         </div>
@@ -545,7 +545,7 @@ export default function KikorongoSafariLodgePage() {
                 </div>
 
                 <div className="flex flex-col gap-4">
-                  <Link href="/plan-a-trip" className="btn-primary w-full text-center">Plan Full Safari Itinerary</Link>
+                  <a href="https://kikorongosafarilodge.com/availability/" target="_blank" rel="noopener noreferrer" className="btn-primary w-full text-center">Plan Full Safari Itinerary</a>
                   <a 
                     href="https://wa.me/256789390350?text=I'm interested in Kikorongo Safari Lodge"
                     target="_blank"
