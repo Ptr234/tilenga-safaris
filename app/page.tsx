@@ -435,50 +435,56 @@ export default function HomePage() {
           </motion.div>
 
           {/* White content panel */}
-          <div className="bg-white flex flex-col justify-center px-10 md:px-14 lg:px-20 py-16 md:py-20 border-l border-stone/10">
-            <FadeIn direction="right">
-              {/* Eyebrow */}
-              <div className="flex items-center gap-3 mb-8">
-                <span className="w-8 h-px bg-gold" />
-                <span className="text-gold text-[10px] uppercase tracking-[0.45em] font-bold">Murchison Falls</span>
+          <div className="bg-white flex flex-col justify-between px-10 md:px-14 lg:px-16 py-12 md:py-16 border-l border-stone/10 min-h-[88vh]">
+            <FadeIn direction="right" className="flex flex-col h-full justify-between">
+              {/* Top block */}
+              <div>
+                {/* Eyebrow */}
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="w-8 h-px bg-gold" />
+                  <span className="text-gold text-[10px] uppercase tracking-[0.45em] font-bold">Murchison Falls</span>
+                </div>
+
+                {/* Name */}
+                <h3 className="font-serif text-6xl md:text-7xl lg:text-[5.5rem] text-forest-dark uppercase tracking-[0.04em] leading-[0.9] mb-2">
+                  Tilenga
+                </h3>
+                <p className="font-serif italic text-gold text-3xl md:text-4xl tracking-normal">Safari Lodge</p>
+
+                {/* Gold rule */}
+                <div className="w-16 h-[2px] bg-gold mt-7 mb-7" />
+
+                {/* Description */}
+                <p className="text-stone-dark font-sans text-base md:text-lg leading-relaxed max-w-sm">
+                  {lodges[0].description}
+                </p>
               </div>
 
-              {/* Name */}
-              <h3 className="font-serif text-5xl md:text-6xl lg:text-7xl text-forest-dark uppercase tracking-[0.05em] leading-[0.95] mb-2">
-                Tilenga
-              </h3>
-              <p className="font-serif italic text-gold text-2xl md:text-3xl tracking-normal">Safari Lodge</p>
+              {/* Bottom block — features + CTA */}
+              <div>
+                {/* Features */}
+                <div className="flex flex-col gap-5 mb-10 mt-8">
+                  {lodges[0].features.map((f) => (
+                    <div key={f} className="flex items-center gap-4 group/feat cursor-default">
+                      <span className="w-5 h-px bg-gold group-hover/feat:w-10 transition-all duration-400" />
+                      <span className="text-stone-dark text-[12px] md:text-[13px] uppercase tracking-[0.3em] font-bold group-hover/feat:text-forest-dark transition-colors duration-300">{f}</span>
+                    </div>
+                  ))}
+                </div>
 
-              {/* Gold rule */}
-              <div className="w-14 h-px bg-gold mt-8 mb-8" />
-
-              {/* Description */}
-              <p className="text-stone-dark font-sans text-[15px] leading-relaxed mb-10 max-w-sm">
-                {lodges[0].description}
-              </p>
-
-              {/* Features */}
-              <div className="flex flex-col gap-4 mb-12">
-                {lodges[0].features.map((f) => (
-                  <div key={f} className="flex items-center gap-4 group/feat cursor-default">
-                    <span className="w-5 h-px bg-gold group-hover/feat:w-9 transition-all duration-400" />
-                    <span className="text-stone-dark text-[11px] uppercase tracking-[0.3em] font-bold group-hover/feat:text-forest-dark transition-colors duration-300">{f}</span>
-                  </div>
-                ))}
+                {/* CTA */}
+                <Link
+                  href={lodges[0].href}
+                  className="group/cta self-start inline-flex items-center gap-5 bg-forest-dark hover:bg-gold w-full justify-between px-8 py-5 transition-all duration-500"
+                >
+                  <span className="text-[11px] uppercase tracking-[0.4em] font-bold text-cream group-hover/cta:text-forest-dark transition-colors duration-400">
+                    Enter Sanctuary
+                  </span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-gold group-hover/cta:text-forest-dark group-hover/cta:translate-x-1 transition-all duration-400">
+                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </Link>
               </div>
-
-              {/* CTA */}
-              <Link
-                href={lodges[0].href}
-                className="group/cta self-start inline-flex items-center gap-5 bg-forest-dark hover:bg-gold px-8 py-4 transition-all duration-500"
-              >
-                <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-cream group-hover/cta:text-forest-dark transition-colors duration-400">
-                  Enter Sanctuary
-                </span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-gold group-hover/cta:text-forest-dark group-hover/cta:translate-x-1 transition-all duration-400">
-                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </Link>
             </FadeIn>
           </div>
         </div>
@@ -487,50 +493,56 @@ export default function HomePage() {
         <div className="grid md:grid-cols-2 border-t border-stone/10">
 
           {/* White content panel */}
-          <div className="bg-white flex flex-col justify-center px-10 md:px-14 lg:px-20 py-16 md:py-20 order-2 md:order-1 border-r border-stone/10">
-            <FadeIn direction="left">
-              {/* Eyebrow */}
-              <div className="flex items-center gap-3 mb-8">
-                <span className="w-8 h-px bg-gold" />
-                <span className="text-gold text-[10px] uppercase tracking-[0.45em] font-bold">Queen Elizabeth NP</span>
+          <div className="bg-white flex flex-col justify-between px-10 md:px-14 lg:px-16 py-12 md:py-16 order-2 md:order-1 border-r border-stone/10 min-h-[88vh]">
+            <FadeIn direction="left" className="flex flex-col h-full justify-between">
+              {/* Top block */}
+              <div>
+                {/* Eyebrow */}
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="w-8 h-px bg-gold" />
+                  <span className="text-gold text-[10px] uppercase tracking-[0.45em] font-bold">Queen Elizabeth NP</span>
+                </div>
+
+                {/* Name */}
+                <h3 className="font-serif text-6xl md:text-7xl lg:text-[5.5rem] text-forest-dark uppercase tracking-[0.04em] leading-[0.9] mb-2">
+                  Kikorongo
+                </h3>
+                <p className="font-serif italic text-gold text-3xl md:text-4xl tracking-normal">Safari Lodge</p>
+
+                {/* Gold rule */}
+                <div className="w-16 h-[2px] bg-gold mt-7 mb-7" />
+
+                {/* Description */}
+                <p className="text-stone-dark font-sans text-base md:text-lg leading-relaxed max-w-sm">
+                  {lodges[1].description}
+                </p>
               </div>
 
-              {/* Name */}
-              <h3 className="font-serif text-5xl md:text-6xl lg:text-7xl text-forest-dark uppercase tracking-[0.05em] leading-[0.95] mb-2">
-                Kikorongo
-              </h3>
-              <p className="font-serif italic text-gold text-2xl md:text-3xl tracking-normal">Safari Lodge</p>
+              {/* Bottom block — features + CTA */}
+              <div>
+                {/* Features */}
+                <div className="flex flex-col gap-5 mb-10 mt-8">
+                  {lodges[1].features.map((f) => (
+                    <div key={f} className="flex items-center gap-4 group/feat cursor-default">
+                      <span className="w-5 h-px bg-gold group-hover/feat:w-10 transition-all duration-400" />
+                      <span className="text-stone-dark text-[12px] md:text-[13px] uppercase tracking-[0.3em] font-bold group-hover/feat:text-forest-dark transition-colors duration-300">{f}</span>
+                    </div>
+                  ))}
+                </div>
 
-              {/* Gold rule */}
-              <div className="w-14 h-px bg-gold mt-8 mb-8" />
-
-              {/* Description */}
-              <p className="text-stone-dark font-sans text-[15px] leading-relaxed mb-10 max-w-sm">
-                {lodges[1].description}
-              </p>
-
-              {/* Features */}
-              <div className="flex flex-col gap-4 mb-12">
-                {lodges[1].features.map((f) => (
-                  <div key={f} className="flex items-center gap-4 group/feat cursor-default">
-                    <span className="w-5 h-px bg-gold group-hover/feat:w-9 transition-all duration-400" />
-                    <span className="text-stone-dark text-[11px] uppercase tracking-[0.3em] font-bold group-hover/feat:text-forest-dark transition-colors duration-300">{f}</span>
-                  </div>
-                ))}
+                {/* CTA */}
+                <Link
+                  href={lodges[1].href}
+                  className="group/cta inline-flex items-center gap-5 bg-forest-dark hover:bg-gold w-full justify-between px-8 py-5 transition-all duration-500"
+                >
+                  <span className="text-[11px] uppercase tracking-[0.4em] font-bold text-cream group-hover/cta:text-forest-dark transition-colors duration-400">
+                    Enter Sanctuary
+                  </span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-gold group-hover/cta:text-forest-dark group-hover/cta:translate-x-1 transition-all duration-400">
+                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </Link>
               </div>
-
-              {/* CTA */}
-              <Link
-                href={lodges[1].href}
-                className="group/cta self-start inline-flex items-center gap-5 bg-forest-dark hover:bg-gold px-8 py-4 transition-all duration-500"
-              >
-                <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-cream group-hover/cta:text-forest-dark transition-colors duration-400">
-                  Enter Sanctuary
-                </span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-gold group-hover/cta:text-forest-dark group-hover/cta:translate-x-1 transition-all duration-400">
-                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </Link>
             </FadeIn>
           </div>
 
