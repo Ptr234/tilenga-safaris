@@ -53,10 +53,10 @@ const navItems = [
 ];
 
 const bottomNav = [
-  { label: "AGENTS PORTAL", href: "/plan-a-trip" },
+  { label: "AGENTS PORTAL", href: "/agents-portal" },
   { label: "OFFERS", href: "/offers" },
   { label: "FAQ", href: "/faq" },
-  { label: "GALLERY", href: "/lodges" },
+  { label: "GALLERY", href: "https://www.instagram.com/tilengasafaris_travel/", target: "_blank" },
 ];
 
 export default function Header() {

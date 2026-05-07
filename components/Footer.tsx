@@ -21,10 +21,10 @@ const navLinks = [
   },
   {
     column: [
-      { label: "Agent Portal", href: "/plan-a-trip" },
+      { label: "Agent Portal", href: "/agents-portal" },
       { label: "Offers", href: "/offers" },
       { label: "FAQ", href: "/faq" },
-      { label: "Gallery", href: "/lodges" },
+      { label: "Gallery", href: "https://www.instagram.com/tilengasafaris_travel/", target: "_blank" },
     ]
   }
 ];
