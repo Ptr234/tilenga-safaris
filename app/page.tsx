@@ -1,12 +1,11 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import HeroVideo from "@/components/HeroVideo";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
-import AnimatedCounter from "@/components/motion/AnimatedCounter";
 import ImageReveal from "@/components/motion/ImageReveal";
 import LineReveal from "@/components/motion/LineReveal";
 import HorizontalScrollSection from "@/components/motion/HorizontalScrollSection";
@@ -146,12 +145,6 @@ const destinations = [
   { name: "South Africa", tag: "Cape & Kruger", description: "Experience the vibrant culture of Cape Town and the world-class safari circuits of Kruger National Park.", image: `${base}/Newstock/safari.jpg`, href: "/destinations/south-africa" },
 ];
 
-const stats = [
-  { value: "5+", label: "Years of Expertise" },
-  { value: "7", label: "Destinations" },
-  { value: "2", label: "Luxury Lodges" },
-  { value: "500+", label: "Happy Travelers" },
-];
 
 export default function HomePage() {
   const [activeIdx, setActiveIdx] = useState(0);
@@ -168,19 +161,6 @@ export default function HomePage() {
       {/* Hero */}
       <HeroVideo />
 
-      {/* Stats bar */}
-      <section className="bg-forest py-8 md:py-12">
-        <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 text-center">
-          {stats.map((s, i) => (
-            <FadeIn key={s.label} direction="up" delay={i * 0.1}>
-              <p className="font-serif text-4xl md:text-5xl text-gold">
-                <AnimatedCounter value={s.value} />
-              </p>
-              <p className="text-cream/50 text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-sans mt-2">{s.label}</p>
-            </FadeIn>
-          ))}
-        </div>
-      </section>
 
       {/* Destinations Section — Cinematic Reveal */}
       <section className="pt-20 md:pt-36 pb-14 md:pb-32 bg-cream overflow-hidden">
