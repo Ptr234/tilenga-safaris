@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import HeroVideo from "@/components/HeroVideo";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
@@ -14,6 +14,7 @@ import SplitText from "@/components/motion/SplitText";
 import MagneticButton from "@/components/motion/MagneticButton";
 
 import Partners from "@/components/Partners";
+import SustainabilitySection from "@/components/SustainabilitySection";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -152,25 +153,8 @@ const stats = [
   { value: "500+", label: "Happy Travelers" },
 ];
 
-const sustainabilityItems = [
-  "Locally owned and operated lodges",
-  "Community cultural engagement programs",
-  "Anti-litter and eco-conservation initiatives",
-  "Partnerships with national parks and conservation bodies",
-];
-
-const sustainabilityImages = [
-  { src: `/photos/tilengasafarilodge/entrance.png`, label: "Conservation", caption: "Locally owned & operated lodges embedded in the landscape" },
-  { src: `/Newstock/touristsmovinginforest.jpg`, label: "Community", caption: "Cultural engagement programs with indigenous communities" },
-  { src: `/Newstock/mothernbabyelephant.jpg`, label: "Wildlife", caption: "Anti-litter & eco-conservation across East Africa" },
-  { src: `/Newstock/girrafe.jpg`, label: "Partnerships", caption: "Partnered with national parks & conservation bodies" },
-];
-
 export default function HomePage() {
   const [activeIdx, setActiveIdx] = useState(0);
-  const sustainabilityRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: sustainabilityRef, offset: ["start start", "end end"] });
-  const imageX = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -353,277 +337,55 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Our Lodges — Classic Split Editorial */}
-      <section className="bg-white relative overflow-hidden">
+      {/* Our Lodges */}
+      <section className="bg-cream py-20 md:py-36 px-4 md:px-8">
 
-        {/* Section Header — centered, classic */}
-        <div className="py-20 md:py-32 px-6 text-center relative">
-          {/* Thin gold ornament top */}
-          <div className="flex items-center justify-center gap-4 mb-10">
-            <span className="w-16 h-px bg-gold/30" />
-            <span className="text-gold/50 text-[8px] uppercase tracking-[0.6em] font-bold">Uganda</span>
-            <span className="w-16 h-px bg-gold/30" />
-          </div>
+        {/* Centered header */}
+        <div className="text-center mb-14 md:mb-20 max-w-4xl mx-auto px-4">
           <FadeIn direction="up">
-            <p className="section-label text-gold mb-5">Where You Stay</p>
-            <h2 className="font-serif text-5xl md:text-7xl text-forest-dark uppercase tracking-[0.06em] leading-none">
-              Our Lodges
+            <h2 className="font-serif text-[clamp(2rem,5.5vw,4.5rem)] text-forest-dark uppercase tracking-[0.04em] leading-tight mb-8">
+              Luxury Safari Lodges in Uganda
             </h2>
-            <p className="font-serif italic text-gold/70 text-2xl md:text-3xl mt-3 tracking-normal">in Uganda</p>
           </FadeIn>
-          <div className="flex items-center justify-center gap-3 mt-10">
-            <span className="w-10 h-px bg-gold/25" />
-            <span className="w-1.5 h-1.5 bg-gold/40 rotate-45 inline-block" />
-            <span className="w-10 h-px bg-gold/25" />
-          </div>
-          <FadeIn direction="up" delay={0.2} className="max-w-md mx-auto mt-8">
-            <p className="text-stone/55 font-sans text-sm leading-relaxed">
-              Each lodge sits at the gateway of Uganda&apos;s most spectacular national parks —
-              designed for comfort, wildlife, and that rare sense of being completely away.
+          <FadeIn direction="up" delay={0.12}>
+            <p className="text-stone/70 font-sans text-sm md:text-base leading-relaxed mb-4 max-w-2xl mx-auto">
+              Discover two exceptional safari lodges with Tilenga Safaris, a family-run luxury safari
+              company offering transformative experiences in the heart of East Africa.
+            </p>
+            <p className="text-stone/55 font-sans text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+              Situated within Uganda&apos;s most spectacular national parks — Murchison Falls and Queen
+              Elizabeth — Tilenga Safaris offers more than just a traditional safari. We curate
+              meaningful journeys rooted in heritage, guided by expertise, and delivered with an
+              unwavering commitment to conservation and community.
             </p>
           </FadeIn>
         </div>
 
-        {/* Lodge 01 — Tilenga: image left (dark forest), text right (white) */}
-        <div className="grid md:grid-cols-2 border-t border-stone/10">
+        {/* Two lodge image cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 max-w-[1600px] mx-auto">
+          {lodges.map((lodge, i) => (
+            <FadeIn key={lodge.name} direction="up" delay={i * 0.12}>
+              <div className="relative overflow-hidden rounded-[20px] group">
+                <img
+                  src={lodge.image}
+                  alt={lodge.name}
+                  className="w-full h-[55vw] md:h-[44vw] max-h-[700px] object-cover group-hover:scale-[1.03] transition-transform duration-[3000ms] ease-out"
+                />
+                {/* Gradient so button is always readable */}
+                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/40 to-transparent" />
 
-          {/* Dark image panel */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-            viewport={{ once: true }}
-            className="relative min-h-[70vh] md:min-h-[88vh] overflow-hidden group"
-          >
-            <img
-              src={lodges[0].image}
-              alt={lodges[0].name}
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-[3500ms] ease-out"
-            />
-            {/* Rich dark overlay — the "dark forest" side */}
-            <div className="absolute inset-0 bg-forest-dark/60" />
-            <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/90 via-forest-dark/20 to-transparent" />
-
-            {/* Watermark numeral */}
-            <div className="absolute top-8 left-8 select-none pointer-events-none">
-              <span className="font-serif text-[9rem] md:text-[13rem] leading-none text-cream/[0.05]">01</span>
-            </div>
-
-            {/* Tag */}
-            <div className="absolute top-10 right-10">
-              <span className="text-gold/60 text-[8px] uppercase tracking-[0.5em] font-bold border border-gold/20 px-3 py-1.5">
-                {lodges[0].tag}
-              </span>
-            </div>
-
-            {/* Bottom content on image */}
-            <div className="absolute inset-x-0 bottom-0 p-8 md:p-12">
-              {/* Thumbnails strip */}
-              <div className="grid grid-cols-3 gap-2 mb-8">
-                {[
-                  `${base}/photos/tilengasafarilodge/pool.png`,
-                  `${base}/photos/tilengasafarilodge/cottage1.png`,
-                  `${base}/photos/tilengasafarilodge/insideview.png`,
-                ].map((src, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.3 + i * 0.12 }}
-                    viewport={{ once: true }}
-                    className="relative overflow-hidden aspect-[4/3] border border-white/10 group/thumb cursor-pointer"
+                {/* Pill button — bottom center, Cottar's exact style */}
+                <div className="absolute bottom-5 inset-x-0 flex justify-center">
+                  <Link
+                    href={lodge.href}
+                    className="bg-cream text-forest-dark font-sans text-xs font-medium tracking-[0.12em] px-6 py-3 rounded-full shadow-sm hover:bg-white hover:shadow-md transition-all duration-200 whitespace-nowrap"
                   >
-                    <img src={src} alt="" className="w-full h-full object-cover group-hover/thumb:scale-110 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-forest-dark/30 group-hover/thumb:bg-transparent transition-colors duration-500" />
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Coordinates */}
-              <p className="font-mono text-cream/30 text-[9px] tracking-[0.35em] uppercase">{lodges[0].coords}</p>
-            </div>
-          </motion.div>
-
-          {/* White content panel */}
-          <div className="bg-white flex flex-col justify-between px-10 md:px-14 lg:px-16 py-12 md:py-16 border-l border-stone/10 min-h-[88vh]">
-            <FadeIn direction="right" className="flex flex-col h-full justify-between">
-              {/* Top block */}
-              <div>
-                {/* Eyebrow */}
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="w-8 h-px bg-gold" />
-                  <span className="text-gold text-[10px] uppercase tracking-[0.45em] font-bold">Murchison Falls</span>
+                    Book {lodge.name}
+                  </Link>
                 </div>
-
-                {/* Name */}
-                <h3 className="font-serif text-6xl md:text-7xl lg:text-[5.5rem] text-forest-dark uppercase tracking-[0.04em] leading-[0.9] mb-2">
-                  Tilenga
-                </h3>
-                <p className="font-serif italic text-gold text-3xl md:text-4xl tracking-normal">Safari Lodge</p>
-
-                {/* Gold rule */}
-                <div className="w-16 h-[2px] bg-gold mt-7 mb-7" />
-
-                {/* Description */}
-                <p className="text-stone-dark font-sans text-base md:text-lg leading-relaxed max-w-sm">
-                  {lodges[0].description}
-                </p>
-              </div>
-
-              {/* Bottom block — features + CTA */}
-              <div>
-                {/* Features */}
-                <div className="flex flex-col gap-5 mb-10 mt-8">
-                  {lodges[0].features.map((f) => (
-                    <div key={f} className="flex items-center gap-4 group/feat cursor-default">
-                      <span className="w-5 h-px bg-gold group-hover/feat:w-10 transition-all duration-400" />
-                      <span className="text-stone-dark text-[12px] md:text-[13px] uppercase tracking-[0.3em] font-bold group-hover/feat:text-forest-dark transition-colors duration-300">{f}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* CTA */}
-                <Link
-                  href={lodges[0].href}
-                  className="group/cta self-start inline-flex items-center gap-5 bg-forest-dark hover:bg-gold w-full justify-between px-8 py-5 transition-all duration-500"
-                >
-                  <span className="text-[11px] uppercase tracking-[0.4em] font-bold text-cream group-hover/cta:text-forest-dark transition-colors duration-400">
-                    Enter Sanctuary
-                  </span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-gold group-hover/cta:text-forest-dark group-hover/cta:translate-x-1 transition-all duration-400">
-                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </Link>
               </div>
             </FadeIn>
-          </div>
-        </div>
-
-        {/* Lodge 02 — Kikorongo: text left (white), image right (dark forest) */}
-        <div className="grid md:grid-cols-2 border-t border-stone/10">
-
-          {/* White content panel */}
-          <div className="bg-white flex flex-col justify-between px-10 md:px-14 lg:px-16 py-12 md:py-16 order-2 md:order-1 border-r border-stone/10 min-h-[88vh]">
-            <FadeIn direction="left" className="flex flex-col h-full justify-between">
-              {/* Top block */}
-              <div>
-                {/* Eyebrow */}
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="w-8 h-px bg-gold" />
-                  <span className="text-gold text-[10px] uppercase tracking-[0.45em] font-bold">Queen Elizabeth NP</span>
-                </div>
-
-                {/* Name */}
-                <h3 className="font-serif text-6xl md:text-7xl lg:text-[5.5rem] text-forest-dark uppercase tracking-[0.04em] leading-[0.9] mb-2">
-                  Kikorongo
-                </h3>
-                <p className="font-serif italic text-gold text-3xl md:text-4xl tracking-normal">Safari Lodge</p>
-
-                {/* Gold rule */}
-                <div className="w-16 h-[2px] bg-gold mt-7 mb-7" />
-
-                {/* Description */}
-                <p className="text-stone-dark font-sans text-base md:text-lg leading-relaxed max-w-sm">
-                  {lodges[1].description}
-                </p>
-              </div>
-
-              {/* Bottom block — features + CTA */}
-              <div>
-                {/* Features */}
-                <div className="flex flex-col gap-5 mb-10 mt-8">
-                  {lodges[1].features.map((f) => (
-                    <div key={f} className="flex items-center gap-4 group/feat cursor-default">
-                      <span className="w-5 h-px bg-gold group-hover/feat:w-10 transition-all duration-400" />
-                      <span className="text-stone-dark text-[12px] md:text-[13px] uppercase tracking-[0.3em] font-bold group-hover/feat:text-forest-dark transition-colors duration-300">{f}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* CTA */}
-                <Link
-                  href={lodges[1].href}
-                  className="group/cta inline-flex items-center gap-5 bg-forest-dark hover:bg-gold w-full justify-between px-8 py-5 transition-all duration-500"
-                >
-                  <span className="text-[11px] uppercase tracking-[0.4em] font-bold text-cream group-hover/cta:text-forest-dark transition-colors duration-400">
-                    Enter Sanctuary
-                  </span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-gold group-hover/cta:text-forest-dark group-hover/cta:translate-x-1 transition-all duration-400">
-                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </Link>
-              </div>
-            </FadeIn>
-          </div>
-
-          {/* Dark image panel */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-            viewport={{ once: true }}
-            className="relative min-h-[70vh] md:min-h-[88vh] overflow-hidden group order-1 md:order-2"
-          >
-            <img
-              src={lodges[1].image}
-              alt={lodges[1].name}
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-[3500ms] ease-out"
-            />
-            <div className="absolute inset-0 bg-forest-dark/60" />
-            <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/90 via-forest-dark/20 to-transparent" />
-
-            {/* Watermark numeral */}
-            <div className="absolute top-8 right-8 select-none pointer-events-none text-right">
-              <span className="font-serif text-[9rem] md:text-[13rem] leading-none text-cream/[0.05]">02</span>
-            </div>
-
-            {/* Tag */}
-            <div className="absolute top-10 left-10">
-              <span className="text-gold/60 text-[8px] uppercase tracking-[0.5em] font-bold border border-gold/20 px-3 py-1.5">
-                {lodges[1].tag}
-              </span>
-            </div>
-
-            {/* Bottom content on image */}
-            <div className="absolute inset-x-0 bottom-0 p-8 md:p-12">
-              <div className="grid grid-cols-3 gap-2 mb-8">
-                {[
-                  `${base}/photos/kikorongo_room1.jpg`,
-                  `${base}/photos/kikorongo_cottage1.jpg`,
-                  `${base}/photos/kikorongo_fireplace.jpg`,
-                ].map((src, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.3 + i * 0.12 }}
-                    viewport={{ once: true }}
-                    className="relative overflow-hidden aspect-[4/3] border border-white/10 group/thumb cursor-pointer"
-                  >
-                    <img src={src} alt="" className="w-full h-full object-cover group-hover/thumb:scale-110 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-forest-dark/30 group-hover/thumb:bg-transparent transition-colors duration-500" />
-                  </motion.div>
-                ))}
-              </div>
-              <p className="font-mono text-cream/30 text-[9px] tracking-[0.35em] uppercase">{lodges[1].coords}</p>
-            </div>
-          </motion.div>
-
-        </div>
-
-        {/* Classic footer rule */}
-        <div className="border-t border-stone/10 bg-white py-10 px-6 md:px-16">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-4">
-              <span className="w-4 h-px bg-gold/40" />
-              <span className="text-stone/35 text-[9px] uppercase tracking-[0.5em] font-bold">Two Properties · One Standard of Excellence</span>
-              <span className="w-4 h-px bg-gold/40" />
-            </div>
-            <Link href="/lodges" className="group inline-flex items-center gap-3 text-[9px] uppercase tracking-[0.4em] font-bold text-forest-dark hover:text-gold transition-colors duration-300 border-b border-forest-dark/15 pb-1 hover:border-gold">
-              View All Properties
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
-            </Link>
-          </div>
+          ))}
         </div>
 
       </section>
@@ -755,7 +517,7 @@ export default function HomePage() {
                       {exp.description}
                     </p>
                     <div className="pt-4 flex flex-col gap-6">
-                       <span className="text-cream/30 text-[9px] uppercase tracking-[0.2em] font-bold italic">{exp.vibe}</span>
+                       <span className="text-cream/30 text-[9px] uppercase tracking-[0.25em] font-bold italic">{exp.vibe}</span>
                        <Link href="/plan-a-trip" className="btn-ghost text-center py-4">Inquire About This</Link>
                     </div>
                  </div>
@@ -854,132 +616,7 @@ export default function HomePage() {
         </div>
       </ParallaxSection>
 
-      {/* Sustainability — Sticky text, horizontal-scroll images */}
-      <section ref={sustainabilityRef} className="relative bg-forest-dark" style={{ height: "500vh" }}>
-        <div className="sticky top-0 h-screen flex overflow-hidden">
-
-          {/* LEFT: stable manifesto panel */}
-          <div className="w-[42%] shrink-0 relative flex flex-col h-full border-r border-white/10 z-10 overflow-hidden">
-
-            {/* Full-height left gold accent bar */}
-            <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-transparent via-gold to-transparent opacity-40" />
-
-            {/* Top — massive headline zone */}
-            <div className="px-10 md:px-12 pt-10 pb-8 border-b border-white/8">
-              <div className="flex items-center gap-3 mb-5">
-                <span className="w-5 h-px bg-gold/60" />
-                <span className="text-gold/70 text-[8px] uppercase tracking-[0.65em] font-bold">Responsible Travel</span>
-              </div>
-              <h2 className="font-serif text-[clamp(3rem,6.5vw,5.8rem)] text-cream uppercase tracking-[-0.01em] leading-[0.85] mb-2">
-                Commu­nities
-              </h2>
-              <p className="font-serif italic text-gold text-[clamp(1.6rem,3.2vw,2.9rem)] leading-none tracking-wide">
-                &amp; Conservation
-              </p>
-            </div>
-
-            {/* Middle — pull-quote + pillars grid */}
-            <div className="flex-1 flex flex-col px-10 md:px-12 py-7">
-
-              {/* Pull-quote */}
-              <p className="font-serif italic text-cream/90 text-[15px] md:text-base leading-[1.7] border-l-2 border-gold pl-5 mb-7">
-                &ldquo;Every journey we curate gives back — to the land, the wildlife, and the people who call East Africa home.&rdquo;
-              </p>
-
-              {/* Supporting line */}
-              <p className="text-cream/45 font-sans text-[11px] leading-[1.7] mb-8 max-w-[30ch]">
-                Your trip directly funds local guides, artisans, hospitality staff, and conservation initiatives.
-              </p>
-
-              {/* Pillars — 2 × 2 grid */}
-              <div className="flex items-center gap-3 mb-5">
-                <span className="text-gold/50 text-[7px] uppercase tracking-[0.65em] font-bold">Our Commitments</span>
-                <span className="flex-1 h-px bg-white/8" />
-              </div>
-              <div className="grid grid-cols-2 gap-px bg-white/8 flex-1">
-                {sustainabilityItems.map((item, i) => (
-                  <div
-                    key={item}
-                    className="bg-forest-dark group flex flex-col justify-between p-4 hover:bg-white/[0.04] transition-colors duration-500 cursor-default"
-                  >
-                    <span className="font-serif italic text-gold text-[2.2rem] leading-none mb-3 block group-hover:text-gold transition-colors duration-300">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <p className="text-cream/80 font-sans text-[11px] leading-[1.5] group-hover:text-cream transition-colors duration-300">
-                      {item}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Bottom — CTA + scroll hint */}
-            <div className="px-10 md:px-12 pb-8 pt-5 border-t border-white/8 shrink-0">
-              <Link
-                href="/about"
-                className="group/cta flex items-center justify-between bg-gold hover:bg-cream px-6 py-4 mb-5 transition-all duration-500"
-              >
-                <span className="text-[10px] uppercase tracking-[0.45em] font-bold text-forest-dark">
-                  Our Philosophy
-                </span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-forest-dark group-hover/cta:translate-x-1 transition-transform duration-400">
-                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </Link>
-              <div className="flex items-center gap-3 opacity-30">
-                <span className="text-cream text-[7px] uppercase tracking-[0.5em]">Scroll to explore</span>
-                <svg width="18" height="9" viewBox="0 0 20 10" fill="none" className="text-gold">
-                  <path d="M0 5h18M13 1l5 4-5 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-            </div>
-
-          </div>
-
-          {/* RIGHT: horizontally scrolling image cards */}
-          <div className="flex-1 overflow-hidden flex items-center">
-            <motion.div
-              style={{ x: imageX }}
-              className="flex gap-5 pl-8 will-change-transform"
-            >
-              {sustainabilityImages.map((img, i) => (
-                <div
-                  key={i}
-                  className="shrink-0 w-[52vw] md:w-[38vw] lg:w-[32vw] h-[78vh] relative overflow-hidden group"
-                >
-                  <img
-                    src={`${base}${img.src}`}
-                    alt={img.label}
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2500ms] ease-out"
-                  />
-                  {/* Dark gradient bottom */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/85 via-forest-dark/10 to-transparent" />
-
-                  {/* Card index */}
-                  <div className="absolute top-6 left-6">
-                    <span className="font-serif text-[5rem] leading-none text-cream/[0.07] select-none">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-
-                  {/* Bottom label */}
-                  <div className="absolute bottom-0 inset-x-0 p-7">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="w-5 h-px bg-gold" />
-                      <span className="text-gold text-[9px] uppercase tracking-[0.45em] font-bold">{img.label}</span>
-                    </div>
-                    <p className="text-cream text-sm font-sans leading-snug max-w-[22ch]">{img.caption}</p>
-                  </div>
-
-                  {/* Hover gold border */}
-                  <div className="absolute inset-0 border border-transparent group-hover:border-gold/30 transition-colors duration-700" />
-                </div>
-              ))}
-            </motion.div>
-          </div>
-
-        </div>
-      </section>
+      <SustainabilitySection />
 
       {/* Partners */}
       <Partners />
