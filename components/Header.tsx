@@ -55,7 +55,7 @@ const navItems = [
 const bottomNav = [
   { label: "AGENTS PORTAL", href: "/plan-a-trip" },
   { label: "OFFERS", href: "/plan-a-trip" },
-  { label: "FAQ", href: "/about" },
+  { label: "FAQ", href: "/faq" },
   { label: "GALLERY", href: "/lodges" },
 ];
 
