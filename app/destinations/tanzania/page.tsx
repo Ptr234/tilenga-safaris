@@ -11,32 +11,32 @@ const hotspots = [
   {
     name: "Serengeti",
     detail: "Endless Plains & the Great Migration",
-    image: "/Newstock/greatbeastmigration.jpg",
+    image: `${base}/Newstock/greatbeastmigration.jpg`,
   },
   {
     name: "Ngorongoro Crater",
     detail: "UNESCO World Heritage — Big Five & Black Rhino",
-    image: "/Newstock/wildanimals.jpg",
+    image: `${base}/Newstock/wildanimals.jpg`,
   },
   {
     name: "Zanzibar",
     detail: "Stone Town, Spice Tours & Crystal-Clear Waters",
-    image: "/Newstock/Zanzibar Beaches.jpg",
+    image: `${base}/Newstock/Zanzibar Beaches.jpg`,
   },
   {
     name: "Mount Kilimanjaro",
     detail: "Africa's Rooftop at 5,895m",
-    image: "/Newstock/Mountain Climbing06Mountain Climbing.jpg",
+    image: `${base}/Newstock/Mountain Climbing06Mountain Climbing.jpg`,
   },
   {
     name: "Ruaha National Park",
     detail: "Tanzania's Largest & Most Wild Park",
-    image: "/Newstock/bufallo.jpg",
+    image: `${base}/Newstock/bufallo.jpg`,
   },
   {
     name: "Tarangire National Park",
     detail: "Baobab Giants & Elephant Herds",
-    image: "/Newstock/bigelephant.jpg",
+    image: `${base}/Newstock/bigelephant.jpg`,
   },
 ];
 
@@ -56,7 +56,7 @@ const packages = [
       "Mnemba snorkeling",
       "Turtle swimming",
     ],
-    image: "/Newstock/safari.jpg",
+    image: `${base}/Newstock/safari.jpg`,
   },
   {
     name: "Zanzibar Spice Island Escape",
@@ -73,7 +73,7 @@ const packages = [
       "Jozani Forest",
       "Dolphin swimming",
     ],
-    image: "/Newstock/cheetah.jpg",
+    image: `${base}/Newstock/cheetah.jpg`,
   },
   {
     name: "12-Day Kenya & Tanzania Safari",
@@ -90,7 +90,7 @@ const packages = [
       "Masai Mara",
       "Amboseli NP",
     ],
-    image: "/Newstock/zebras.jpg",
+    image: `${base}/Newstock/zebras.jpg`,
   },
 ];
 
@@ -103,7 +103,7 @@ export default function TanzaniaPage() {
           className="absolute inset-0 scale-110"
           style={{
             backgroundImage:
-              "url(/Newstock/greatbeastmigration.jpg)",
+              `url(${base}/Newstock/greatbeastmigration.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

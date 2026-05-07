@@ -11,27 +11,27 @@ const hotspots = [
   {
     name: "Volcanoes National Park",
     detail: "Mountain Gorilla Trekking in the Virungas",
-    image: "/gorrilas/gorrilas21.jpg",
+    image: `${base}/gorrilas/gorrilas21.jpg`,
   },
   {
     name: "Nyungwe Forest",
     detail: "Ancient Canopy & Chimpanzee Sanctuary",
-    image: "/Newstock/touristsmovinginforest.jpg",
+    image: `${base}/Newstock/touristsmovinginforest.jpg`,
   },
   {
     name: "Lake Kivu",
     detail: "Volcanic Crater Lake on Congo Border",
-    image: "/Newstock/Source of the Nile.jpg",
+    image: `${base}/Newstock/Source of the Nile.jpg`,
   },
   {
     name: "Kigali Genocide Memorial",
     detail: "A Powerful Tribute to History & Remembrance",
-    image: "/Newstock/wildanimals.jpg",
+    image: `${base}/Newstock/wildanimals.jpg`,
   },
   {
     name: "Kigali",
     detail: "Africa's Cleanest, Most Vibrant Capital",
-    image: "/Newstock/safari.jpg",
+    image: `${base}/Newstock/safari.jpg`,
   },
 ];
 

@@ -11,47 +11,47 @@ const hotspots = [
   {
     name: "Masai Mara",
     detail: "Kenya's Crown Jewel Reserve",
-    image: "/Newstock/greatbeastmigration.jpg",
+    image: `${base}/Newstock/greatbeastmigration.jpg`,
   },
   {
     name: "Great Migration",
     detail: "1.5 Million Wildebeest Crossing",
-    image: "/Newstock/zebras.jpg",
+    image: `${base}/Newstock/zebras.jpg`,
   },
   {
     name: "Amboseli National Park",
     detail: "Elephants Against Kilimanjaro",
-    image: "/Newstock/bigelephant.jpg",
+    image: `${base}/Newstock/bigelephant.jpg`,
   },
   {
     name: "Lake Nakuru",
     detail: "Flamingo-Lined Soda Lake",
-    image: "/Newstock/wildanimals.jpg",
+    image: `${base}/Newstock/wildanimals.jpg`,
   },
   {
     name: "Samburu Reserve",
     detail: "Rare Northern Species",
-    image: "/Newstock/cheetah.jpg",
+    image: `${base}/Newstock/cheetah.jpg`,
   },
   {
     name: "Hells Gate National Park",
     detail: "Gorges, Geysers & Cycling Safaris",
-    image: "/Newstock/safari.jpg",
+    image: `${base}/Newstock/safari.jpg`,
   },
   {
     name: "Giraffe Centre",
     detail: "Nairobi — Endangered Rothschild's Giraffe",
-    image: "/Newstock/girrafe.jpg",
+    image: `${base}/Newstock/girrafe.jpg`,
   },
   {
     name: "Mount Kenya",
     detail: "Africa's Second-Highest Peak",
-    image: "/Newstock/Mountain Climbing06Mountain Climbing.jpg",
+    image: `${base}/Newstock/Mountain Climbing06Mountain Climbing.jpg`,
   },
   {
     name: "Indian Ocean Beaches",
     detail: "Diani & Mombasa — Pristine Coastline",
-    image: "/Newstock/Zanzibar Beaches.jpg",
+    image: `${base}/Newstock/Zanzibar Beaches.jpg`,
   },
 ];
 
@@ -69,7 +69,7 @@ const packages = [
       "Lake Nakuru flamingoes",
       "Masai Mara safari",
     ],
-    image: "/Newstock/lioness.jpg",
+    image: `${base}/Newstock/lioness.jpg`,
   },
   {
     name: "7-Day Magical Kenya Tour",
@@ -84,7 +84,7 @@ const packages = [
       "Masai Mara",
       "Maasai village visit",
     ],
-    image: "/Newstock/elephantcars.jpg",
+    image: `${base}/Newstock/elephantcars.jpg`,
   },
   {
     name: "12-Day Kenya & Tanzania Safari",
@@ -99,7 +99,7 @@ const packages = [
       "Masai Mara",
       "Amboseli NP",
     ],
-    image: "/Newstock/bufallo.jpg",
+    image: `${base}/Newstock/bufallo.jpg`,
   },
 ];
 
@@ -112,7 +112,7 @@ export default function KenyaPage() {
           className="absolute inset-0 scale-110"
           style={{
             backgroundImage:
-              "url(/Newstock/splendifd.jpg)",
+              `url(${base}/Newstock/splendifd.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

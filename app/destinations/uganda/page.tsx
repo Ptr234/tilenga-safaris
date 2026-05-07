@@ -11,42 +11,42 @@ const hotspots = [
   {
     name: "Mountain Gorillas",
     detail: "Bwindi Impenetrable Forest",
-    image: "/Newstock/Gorrillahd.jpg",
+    image: `${base}/Newstock/Gorrillahd.jpg`,
   },
   {
     name: "Murchison Falls",
     detail: "The World's Most Powerful Waterfall",
-    image: "/Newstock/Source of the Nile2.jpg",
+    image: `${base}/Newstock/Source of the Nile2.jpg`,
   },
   {
     name: "Queen Elizabeth NP",
     detail: "Kazinga Channel & Tree-Climbing Lions",
-    image: "/Newstock/Queen Elizabeth NP.jpg",
+    image: `${base}/Newstock/Queen Elizabeth NP.jpg`,
   },
   {
     name: "Mt. Rwenzori",
     detail: "Mountains of the Moon — Africa's Third-Highest Peak",
-    image: "/Newstock/Mountain Climbing06Mountain Climbing.jpg",
+    image: `${base}/Newstock/Mountain Climbing06Mountain Climbing.jpg`,
   },
   {
     name: "Source of the Nile",
     detail: "Jinja — White Water Rafting & Bungee Jumping",
-    image: "/Newstock/Source of the Nile.jpg",
+    image: `${base}/Newstock/Source of the Nile.jpg`,
   },
   {
     name: "Lake Mburo National Park",
     detail: "Zebras, Hippos & 350 Bird Species",
-    image: "/Newstock/zebras.jpg",
+    image: `${base}/Newstock/zebras.jpg`,
   },
   {
     name: "Kibale Forest",
     detail: "Chimpanzee Trekking Capital of the World",
-    image: "/Newstock/touristsmovinginforest.jpg",
+    image: `${base}/Newstock/touristsmovinginforest.jpg`,
   },
   {
     name: "Buganda Kingdom",
     detail: "Uganda's Rich Cultural Heritage",
-    image: "/Newstock/tourist.jpg",
+    image: `${base}/Newstock/tourist.jpg`,
   },
 ];
 
@@ -59,7 +59,7 @@ const packages = [
     description:
       "A compact national park featuring 350 bird species and wildlife including zebras, impalas, buffalos, leopards, and hippos — located 3–4 hours from Kampala. Includes pick-up, bicycle tour, nature walk, and return.",
     activities: ["Pick-up from Kampala", "Bicycle tour", "Nature walk", "Bird watching"],
-    image: "/Newstock/wildanimals.jpg",
+    image: `${base}/Newstock/wildanimals.jpg`,
   },
   {
     name: "5-Day Wildlife Safari to Murchison Falls & Queen Elizabeth",
@@ -75,7 +75,7 @@ const packages = [
       "Nature walks",
       "Sunset viewing",
     ],
-    image: "/Newstock/bigelephant.jpg",
+    image: `${base}/Newstock/bigelephant.jpg`,
   },
   {
     name: "3-Day Gorilla Trekking Experience",
@@ -90,7 +90,7 @@ const packages = [
       "Forest walk",
       "Community visit",
     ],
-    image: "/Newstock/gorrillla.jpg",
+    image: `${base}/Newstock/gorrillla.jpg`,
   },
   {
     name: "8-Day Trip Around Uganda",
@@ -106,7 +106,7 @@ const packages = [
       "Bungee jumping & quad biking",
       "Local food tasting",
     ],
-    image: "/Newstock/greatbeastmigration.jpg",
+    image: `${base}/Newstock/greatbeastmigration.jpg`,
   },
   {
     name: "5-Day Wild Safari Itinerary",
@@ -122,7 +122,7 @@ const packages = [
       "Nature walks",
       "Sunset viewing",
     ],
-    image: "/Newstock/safari.jpg",
+    image: `${base}/Newstock/safari.jpg`,
   },
   {
     name: "10-Day Rwenzori Mountains Trekking",
@@ -137,7 +137,7 @@ const packages = [
       "Diverse ecosystem walk",
       "Village visit",
     ],
-    image: "/Newstock/lioness.jpg",
+    image: `${base}/Newstock/lioness.jpg`,
   },
   {
     name: "4-Day Gorilla Trekking Experience",
@@ -152,7 +152,7 @@ const packages = [
       "Lake Bunyonyi excursion",
       "Bird watching",
     ],
-    image: "/Newstock/gorrillahigh.jpg",
+    image: `${base}/Newstock/gorrillahigh.jpg`,
   },
 ];
 
@@ -165,7 +165,7 @@ export default function UgandaPage() {
           className="absolute inset-0 scale-110 transition-transform duration-[8000ms]"
           style={{
             backgroundImage:
-              "url(/Newstock/splendifd.jpg)",
+              `url(${base}/Newstock/splendifd.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
