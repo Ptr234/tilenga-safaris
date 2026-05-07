@@ -182,33 +182,59 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Destinations Section — Vivid Full-Bleed Editorial */}
-      <section className="py-14 md:py-32 bg-cream overflow-hidden">
+      {/* Destinations Section — Cinematic Reveal */}
+      <section className="pt-20 md:pt-36 pb-14 md:pb-32 bg-cream overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-16">
-          {/* Section Header */}
+          {/* Section Header — dramatic entrance */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 md:gap-10 mb-12 md:mb-16">
             <div className="max-w-2xl">
-              <FadeIn direction="fade">
-                <span className="section-label">The Explorer&apos;s Map</span>
-              </FadeIn>
-              <h2 className="section-heading">
+              <motion.span
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
+                viewport={{ once: true, margin: "-40px" }}
+                className="section-label block"
+              >
+                The Explorer&apos;s Map
+              </motion.span>
+
+              <motion.h2
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.0, ease: [0.25, 1, 0.5, 1], delay: 0.1 }}
+                viewport={{ once: true, margin: "-40px" }}
+                className="section-heading"
+              >
                 Discover <br />
                 <span className="italic text-gold lowercase tracking-normal">Africa</span>
-              </h2>
+              </motion.h2>
             </div>
-            <FadeIn direction="up" delay={0.3} className="max-w-xs">
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.9, ease: [0.25, 1, 0.5, 1], delay: 0.3 }}
+              viewport={{ once: true, margin: "-60px" }}
+              className="max-w-xs"
+            >
               <p className="text-stone/70 font-sans text-sm leading-relaxed mb-6">
                 Curated journeys across East Africa&apos;s most profound landscapes, from mist-covered mountains to sun-drenched savannahs.
               </p>
               <Link href="/destinations" className="text-link-arrow">
                 View All Regions
               </Link>
-            </FadeIn>
+            </motion.div>
           </div>
         </div>
 
-        {/* Full-bleed Immersive Feature Switcher */}
-        <div className="relative h-[65vh] md:h-[88vh] overflow-hidden mb-3 md:mb-4">
+        {/* Full-bleed Immersive Feature Switcher — rises into view */}
+        <motion.div
+          initial={{ opacity: 0, y: 60, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: "-40px" }}
+          className="relative h-[65vh] md:h-[88vh] overflow-hidden mb-3 md:mb-4"
+        >
           {/* Switching Background Image */}
           <AnimatePresence mode="wait">
             <motion.div
@@ -294,7 +320,7 @@ export default function HomePage() {
               className="h-full bg-gold"
             />
           </div>
-        </div>
+        </motion.div>
 
         {/* Vibrant Destination Mosaic */}
         <div className="px-6 md:px-16">
