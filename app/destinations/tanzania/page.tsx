@@ -34,7 +34,7 @@ const hotspots = [
   {
     name: "Ruaha National Park",
     detail: "Tanzania's Largest & Most Wild Park",
-    image: `${base}/Newstock/bufallo.jpg`,
+    image: `${base}/Newstock/ruaha-national-park.jpg`,
   },
   {
     name: "Tarangire National Park",
