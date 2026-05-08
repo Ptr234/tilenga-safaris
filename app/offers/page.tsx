@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import FadeIn from "@/components/motion/FadeIn";
 import ImageReveal from "@/components/motion/ImageReveal";
@@ -122,13 +120,10 @@ function OfferCard({ offer, index }: { offer: typeof offers[0]; index: number })
         <ImageReveal direction={index % 2 === 1 ? "right" : "left"}>
           <div className="relative p-3 md:p-6 border border-gold/20 bg-white/50 shadow-xl">
             <div className="relative aspect-[4/5] md:aspect-[4/5] overflow-hidden film-frame shadow-inner group">
-              <Image 
+              <img 
                 src={offer.image} 
                 alt={offer.title} 
-                fill
                 className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority={index < 2}
               />
               <div className="absolute inset-0 border-[10px] border-black/5 pointer-events-none" />
             </div>
@@ -189,9 +184,9 @@ function OfferCard({ offer, index }: { offer: typeof offers[0]; index: number })
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-10">
             <MagneticButton>
-              <Link href={offer.enquiryLink} className="btn-primary px-14 py-5 inline-block text-center min-w-[200px]">
+              <a href={`${base}${offer.enquiryLink}`} className="btn-primary px-14 py-5 inline-block text-center min-w-[200px]">
                 Enquire Now
-              </Link>
+              </a>
             </MagneticButton>
             
             {"finePrint" in offer && (
@@ -347,18 +342,18 @@ export default function OffersPage() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
               <MagneticButton>
-                <Link href="/plan-a-trip" className="btn-primary px-14 py-5">
+                <a href={`${base}/plan-a-trip/`} className="btn-primary px-14 py-5">
                   Start Planning
-                </Link>
+                </a>
               </MagneticButton>
-              <Link href="/faq" className="group flex items-center gap-4 text-stone-400 hover:text-gold transition-colors">
+              <a href={`${base}/faq/`} className="group flex items-center gap-4 text-stone-400 hover:text-gold transition-colors">
                 <span className="text-[10px] uppercase tracking-[0.5em] font-bold">
                   View Guest FAQ
                 </span>
                 <div className="relative w-10 h-px bg-current overflow-hidden">
                   <div className="absolute inset-0 bg-gold -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
                 </div>
-              </Link>
+              </a>
             </div>
           </FadeIn>
         </div>

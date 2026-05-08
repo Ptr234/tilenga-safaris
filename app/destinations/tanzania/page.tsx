@@ -1,4 +1,4 @@
-const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+"use client";
 
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
@@ -6,6 +6,9 @@ import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
+import DestinationHeroVideo from "@/components/DestinationHeroVideo";
+
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const hotspots = [
   {
@@ -42,87 +45,65 @@ const hotspots = [
 
 const packages = [
   {
-    name: "Zanzibar Beach Holiday",
-    tagline: "Indian Ocean beach escape",
-    duration: "5 Nights / 6 Days",
-    price: "From $1,200",
-    minPax: "Min. 2 participants",
+    name: "Zanzibar Beach Holiday (5N/6D)",
+    tagline: "Snorkeling & turtles at Nungwi",
+    duration: "6 Days / 5 Nights",
+    price: "Starting from $1200",
     description:
-      "Stone Town tour, Prison Island, Safari Blue, snorkeling at Mnemba, and turtle swimming at Nungwi — the perfect Indian Ocean escape with coastal luxury.",
+      "Includes Stone Town, Prison Island, Safari Blue, Mnemba snorkeling, and swimming with turtles at Nungwi Natural Aquarium.",
     activities: [
-      "Stone Town tour",
-      "Prison Island",
-      "Safari Blue",
-      "Mnemba snorkeling",
-      "Turtle swimming",
+      "Arrive Zanzibar Airport",
+      "Stone Town Walking Tour",
+      "Safari Blue Full-Day Trip",
+      "Mnemba Snorkeling",
+      "Nungwi Turtle Swimming",
     ],
     image: `${base}/Newstock/safari.jpg`,
+    itineraryUrl: `${base}/pdfs/ZANZIBAR-BEACH-HOLIDAY-AND-SNORKELING-1.pdf`,
   },
   {
-    name: "Zanzibar Spice Island Escape",
-    tagline: "Spice island and sunset bliss",
-    duration: "6 Nights / 7 Days",
-    price: "From $1,200",
-    minPax: "Min. 2 participants",
+    name: "Zanzibar Beach Holiday (6N/7D)",
+    tagline: "Dolphin swimming & Jozani forest",
+    duration: "7 Days / 6 Nights",
+    price: "Starting from $1200",
     description:
-      "Enjoy Stone Town, a Spice Tour, Jozani Forest with red colobus monkeys, and a dolphin swim — then relax on white-sand beaches as the sun sets over the Indian Ocean.",
+      "A complete island escape featuring Prison Island, spice tours, Jozani Forest, Safari Blue, and dolphin swimming encounters.",
     activities: [
-      "Stone Town",
-      "Prison Island",
-      "Spice Tour",
-      "Jozani Forest",
-      "Dolphin swimming",
+      "Arrive Zanzibar Airport",
+      "Stone Town & Prison Island",
+      "Safari Blue Full-Day",
+      "Dolphin & Jozani Forest Tour",
+      "Beach Relaxation",
     ],
     image: `${base}/Newstock/cheetah.jpg`,
+    itineraryUrl: `${base}/pdfs/ZANZIBAR-BEACH-HOLIDAY-6-NIGHTS-AND-7-DAYS-2.pdf`,
   },
   {
-    name: "12-Day Kenya & Tanzania Safari",
-    tagline: "Legendary migration safari",
+    name: "12-Day Safari Tour Around Kenya & Tanzania",
+    tagline: "Grand East African circuit",
     duration: "12 Days",
-    price: "From $3,000 / person",
-    minPax: "Min. 4 participants",
+    price: "Starting from $3000 (group of 4)",
     description:
-      "A seamless East Africa journey from the Serengeti and Ngorongoro to Kenya’s Masai Mara and Amboseli, designed for epic wildlife viewing and unforgettable landscapes.",
+      "Showcasing Ngorongoro Crater, the Big Five, rare Black Rhino, Serengeti's endless plains, Masai Mara, and authentic Maasai culture.",
     activities: [
-      "Serengeti NP",
-      "Ngorongoro Crater",
-      "Lake Nakuru",
-      "Masai Mara",
-      "Amboseli NP",
+      "Lake Nakuru & Masai Mara",
+      "Serengeti National Park",
+      "Ngorongoro Crater Tour",
+      "Arusha & Amboseli",
     ],
     image: `${base}/Newstock/zebras.jpg`,
+    itineraryUrl: `${base}/pdfs/12-DAY-SAFARI-TOUR-AROUND-KENYA-AND-TANZANIA-1-.pdf`,
   },
 ];
 
 export default function TanzaniaPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="grain-overlay relative h-[80vh] min-h-[500px] overflow-hidden flex items-end">
-        <div
-          className="absolute inset-0 scale-110"
-          style={{
-            backgroundImage:
-              `url(${base}/Newstock/greatbeastmigration.jpg)`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/20 via-forest-dark/30 to-forest-dark/95" />
-        <div className="relative z-10 px-6 md:px-16 pb-16 max-w-3xl">
-          <FadeIn direction="up">
-            <p className="section-label text-gold mb-3">East Africa</p>
-          </FadeIn>
-          <h1 className="font-serif text-6xl md:text-8xl text-cream mb-3 leading-none">
-            <SplitText text="Tanzania" by="char" stagger={0.04} delay={0.2} />
-          </h1>
-          <FadeIn direction="up" delay={0.5}>
-            <p className="font-serif italic text-2xl text-gold">
-              Serengeti &amp; Zanzibar
-            </p>
-          </FadeIn>
-        </div>
-      </section>
+      <DestinationHeroVideo 
+        videoSrc="/Destinations videos/tanzania-hero.mp4"
+        title="Tanzania"
+        subtitle="Serengeti & Zanzibar"
+      />
 
       {/* Quick info */}
       <section className="bg-forest py-6">
@@ -287,15 +268,23 @@ export default function TanzaniaPage() {
                       ))}
                     </div>
 
-                    <div className="flex items-center justify-between pt-4 border-t border-cream/10">
-                      <div>
+                    <div className="pt-4 border-t border-cream/10 space-y-3">
+                      <div className="flex items-center justify-between">
                         <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                        {pkg.minPax && <p className="text-cream/40 text-[9px] font-sans mt-0.5">{pkg.minPax}</p>}
+                        <Link href="/plan-a-trip" className="package-cta">
+                          Enquire
+                          <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
+                        </Link>
                       </div>
-                      <Link href="/plan-a-trip" className="package-cta">
-                        Enquire
-                        <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
-                      </Link>
+                      <a 
+                        href={pkg.itineraryUrl} 
+                        className="flex items-center justify-center gap-2 w-full py-2 border border-gold/30 text-gold text-[10px] uppercase tracking-widest hover:bg-gold hover:text-forest transition-all duration-300"
+                      >
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        Download Itinerary
+                      </a>
                     </div>
                   </div>
                 </div>
