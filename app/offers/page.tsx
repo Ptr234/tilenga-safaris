@@ -116,65 +116,90 @@ const faqs = [
 
 function OfferCard({ offer, index }: { offer: typeof offers[0]; index: number }) {
   return (
-    <div className={`flex flex-col ${index % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"} gap-12 md:gap-24 mb-32 md:mb-48`}>
-      <div className="w-full md:w-1/2">
-        <ImageReveal direction="bottom">
-          <div className="relative aspect-[4/5] md:aspect-square overflow-hidden film-frame shadow-2xl">
-            <Image 
-              src={offer.image} 
-              alt={offer.title} 
-              fill
-              className="w-full h-full object-cover transition-all duration-700"
-              sizes="(max-width: 768px) 100vw, 50vw"
-              priority={index < 2}
-            />
+    <div className={`flex flex-col ${index % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"} gap-12 md:gap-24 mb-40 md:mb-64 items-center`}>
+      {/* Image Side with Decorative Border */}
+      <div className="w-full md:w-1/2 relative">
+        <ImageReveal direction={index % 2 === 1 ? "right" : "left"}>
+          <div className="relative p-3 md:p-6 border border-gold/20 bg-white/50 shadow-xl">
+            <div className="relative aspect-[4/5] md:aspect-[4/5] overflow-hidden film-frame shadow-inner group">
+              <Image 
+                src={offer.image} 
+                alt={offer.title} 
+                fill
+                className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority={index < 2}
+              />
+              <div className="absolute inset-0 border-[10px] border-black/5 pointer-events-none" />
+            </div>
+            {/* Decorative Corner Accents */}
+            <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-gold/40 -translate-x-1 -translate-y-1" />
+            <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-gold/40 translate-x-1 translate-y-1" />
           </div>
         </ImageReveal>
       </div>
       
+      {/* Content Side */}
       <div className="w-full md:w-1/2 flex flex-col justify-center">
         <FadeIn direction="up">
-          <span className="section-label mb-6">{offer.label}</span>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-forest uppercase tracking-tight leading-none mb-10">
-            {offer.title}
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-8 h-px bg-gold" />
+            <span className="section-label mb-0">{offer.label}</span>
+          </div>
+          
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-7xl text-forest uppercase tracking-tight leading-[0.9] mb-10">
+            {offer.title.split(':').map((part, i) => (
+              <span key={i} className={i === 1 ? "block italic text-gold lowercase mt-2 font-normal" : ""}>
+                {part}{i === 0 && offer.title.includes(':') ? ':' : ''}
+              </span>
+            ))}
           </h2>
           
-          <div className="mb-10">
-            <h4 className="font-serif italic text-gold text-lg mb-3">Validity</h4>
-            <div className="space-y-1">
-              {offer.validity.map((v, i) => (
-                <p key={i} className="text-stone-500 font-sans text-sm tracking-wide">{v}</p>
-              ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12 py-8 border-y border-stone-200/60">
+            <div>
+              <h4 className="font-serif italic text-gold text-lg mb-3">Validity</h4>
+              <div className="space-y-1">
+                {offer.validity.map((v, i) => (
+                  <p key={i} className="text-stone-500 font-sans text-xs uppercase tracking-widest">{v}</p>
+                ))}
+              </div>
             </div>
+            {"description" in offer && (
+              <div>
+                <h4 className="font-serif italic text-gold text-lg mb-3">The Experience</h4>
+                <p className="text-stone-500 font-sans text-xs leading-relaxed italic line-clamp-3">"{offer.description}"</p>
+              </div>
+            )}
           </div>
 
-          {"description" in offer && (
-            <p className="body-text text-stone-600 mb-8 italic">"{offer.description}"</p>
-          )}
-
           <div className="mb-12">
-            <h4 className="font-serif italic text-gold text-lg mb-4">Offer Details</h4>
-            <ul className="space-y-3">
+            <h4 className="font-serif italic text-gold text-lg mb-6 flex items-center gap-3">
+              Offer Privileges
+              <div className="flex-1 h-px bg-gold/20" />
+            </h4>
+            <ul className="grid grid-cols-1 gap-4">
               {offer.details.map((detail, i) => (
-                <li key={i} className="flex gap-4 items-start">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gold mt-1.5 shrink-0" />
-                  <p className="text-stone-500 text-sm leading-relaxed">{detail}</p>
+                <li key={i} className="flex gap-4 items-start group">
+                  <span className="w-1 h-1 rounded-full bg-gold mt-2 shrink-0 group-hover:scale-150 transition-transform" />
+                  <p className="text-stone-600 text-sm leading-relaxed font-sans">{detail}</p>
                 </li>
               ))}
             </ul>
           </div>
 
-          {"finePrint" in offer && (
-            <p className="text-[10px] uppercase tracking-widest text-stone-400 mb-10">
-              ** {offer.finePrint}
-            </p>
-          )}
-
-          <MagneticButton>
-            <Link href={offer.enquiryLink} className="btn-primary px-12 py-5 inline-block text-center">
-              Enquire Now
-            </Link>
-          </MagneticButton>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-10">
+            <MagneticButton>
+              <Link href={offer.enquiryLink} className="btn-primary px-14 py-5 inline-block text-center min-w-[200px]">
+                Enquire Now
+              </Link>
+            </MagneticButton>
+            
+            {"finePrint" in offer && (
+              <p className="text-[9px] uppercase tracking-[0.2em] text-stone-400 max-w-[200px] leading-loose">
+                * {offer.finePrint}
+              </p>
+            )}
+          </div>
         </FadeIn>
       </div>
     </div>
