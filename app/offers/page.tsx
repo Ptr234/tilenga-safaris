@@ -20,9 +20,9 @@ const offers = [
     title: "4 Nights for the Price of 3",
     image: `${base}/photos/kikorongo_fireplace.jpg`,
     validity: [
-      "1st November - 19th December 2025",
       "11th January - 31st May 2026",
       "1st November - 19th December 2026",
+      "11th January - 31st May 2027",
     ],
     details: [
       "Applicable at Tilenga Safari Lodge and Kikorongo Safari Lodge during Private Season.",
@@ -36,10 +36,11 @@ const offers = [
     id: "multigenerational",
     label: "Family Legacy",
     title: "Bring the Grandparents for 50% Off",
-    image: `${base}/Newstock/tourist.jpg`,
+    image: `${base}/offerspageimages/Bring the Grandparents for 50% Off.jpg`,
     validity: [
-      "11th January - 31st March 2026",
       "1st June - 14th June 2026",
+      "11th January - 31st March 2027",
+      "1st June - 14th June 2027",
     ],
     description: "Family is at the heart of the Tilenga experience. We believe the best memories are the ones made together across generations. To make it easier to bring everyone together, we are introducing a special multigenerational offer.",
     details: [
@@ -56,11 +57,11 @@ const offers = [
     id: "honeymoon",
     label: "Romance in the Wild",
     title: "Honeymoon Offer: 50% Off Partner",
-    image: `${base}/photos/tilengasafarilodge/pool.png`,
+    image: `${base}/offerspageimages/Honeymoon Offer 50% Off Partner.jpg`,
     validity: [
-      "1st November - 19th December 2025",
       "11th January - 31st May 2026",
       "1st November - 19th December 2026",
+      "11th January - 31st May 2027",
     ],
     details: [
       "50% off one partner's accommodation at Tilenga Safari Lodge.",
@@ -75,8 +76,8 @@ const offers = [
     id: "family-comp",
     label: "Seasonal Specials",
     title: "Families with Children: Seasonal Savings",
-    image: `${base}/Newstock/lioness.jpg`,
-    validity: ["1st January 2026 - 31st December 2026"],
+    image: `${base}/offerspageimages/Families with Children.jpg`,
+    validity: ["1st January 2026 - 31st December 2027"],
     details: [
       "Private Season: Up to two children sharing a family unit with at least one adult stay complimentary.",
       "Mid Season: In a Family Unit, one child under 13 stays complimentary.",
@@ -244,7 +245,7 @@ export default function OffersPage() {
               <span className="flex items-center gap-6 mt-2">
                 <div className="w-12 md:w-24 h-px bg-gold/50" />
                 <SplitText
-                  text="2025 – 2026"
+                  text="2026 – 2027"
                   className="font-serif italic text-4xl md:text-6xl text-gold leading-none lowercase tracking-normal"
                   delay={0.6}
                 />

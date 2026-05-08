@@ -58,7 +58,7 @@ const agentFaqs = [
 const assets = [
   {
     label: "Rate Sheets",
-    tag: "2025 / 2026",
+    tag: "2026 / 2027",
     description: "Current nett and gross rate cards including all seasonal variations and special offers.",
     image: `${base}/photos/tilengasafarilodge/entrance.png`,
     cta: "Request Rates",
@@ -597,7 +597,7 @@ export default function AgentsPortalPage() {
                     </div>
                     <h3 className="font-serif text-4xl text-cream mb-6">Request Confirmed</h3>
                     <p className="text-cream/40 font-sans text-base leading-relaxed max-w-sm mx-auto font-light">
-                      Our trade relations team will review your application and send the 2025/26 rate deck within 24 hours.
+                      Our trade relations team will review your application and send the 2026/27 rate deck within 24 hours.
                     </p>
                     <button 
                       onClick={() => setRateFormOpen(false)}
