@@ -46,7 +46,11 @@ export default function HeroVideo() {
         className="absolute inset-0 z-0 origin-center will-change-transform"
       >
         <video
-          autoPlay loop playsInline muted
+          autoPlay
+          loop
+          playsInline
+          muted
+          preload="none"
           className="w-full h-full object-cover"
         >
           <source src={`${base}/Destinations videos/africa-generic.mp4`} type="video/mp4" />

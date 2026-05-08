@@ -39,6 +39,7 @@ export default function DestinationHeroVideo({ videoSrc, title, subtitle, tag = 
           loop
           playsInline
           muted
+          preload="none"
           className="w-full h-full object-cover"
         >
           <source src={`${base}${videoSrc}`} type="video/mp4" />
