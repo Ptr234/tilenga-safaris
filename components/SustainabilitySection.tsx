@@ -8,7 +8,7 @@ const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const images = [
   {
-    src: `${base}/Newpicselection/Ecoluxury.jpg`,
+    src: `${base}/photos/kikorongo_room2.jpg`,
     title: "Eco-Luxury Experience",
     description: "Every journey is designed to tread lightly — low-impact transport, solar-powered lodges, and zero single-use waste.",
   },
@@ -72,63 +72,70 @@ export default function SustainabilitySection() {
           <motion.div style={{ y: textY }} className="w-full h-full flex flex-col justify-center py-12">
 
             {/* Eyebrow */}
-            <div className="flex items-center gap-3 mb-5">
-              <span className="w-5 h-px bg-gold/50" />
-              <span className="font-sans text-[9px] uppercase tracking-[0.55em] font-bold text-gold/70">
+            <div className="flex items-center gap-4 mb-8">
+              <span className="text-gold text-[10px] uppercase tracking-[0.5em] font-bold block">
                 Tilenga Safaris
               </span>
             </div>
 
             {/* Heading */}
-            <h2 className="font-serif text-cream leading-none mb-5">
-              <span className="block text-[clamp(2.4rem,3.8vw,4.4rem)] uppercase tracking-tight">
+            <h2 className="font-serif text-cream leading-[0.85] mb-10">
+              <span className="block text-[clamp(2.4rem,4.2vw,4.8rem)] uppercase tracking-tighter">
                 Sustainability
               </span>
-              <span className="block font-serif italic text-[clamp(1.7rem,2.7vw,3.1rem)] text-gold mt-1">
-                &amp; Conservation
+              <span className="block font-serif italic text-[clamp(2rem,3vw,3.6rem)] text-gold lowercase font-light opacity-90 mt-2">
+                & Conservation.
               </span>
             </h2>
 
-            {/* Rule */}
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-px bg-gold/30" />
-              <div className="w-1 h-1 rotate-45 bg-gold/30" />
-            </div>
-
             {/* Body */}
-            <p className="font-sans text-cream/50 text-sm md:text-base leading-[1.75] max-w-sm mb-7">
-              Protecting landscapes, empowering communities, and preserving wildlife through
-              responsible safari travel.
-            </p>
+            <div className="flex flex-col gap-10 items-start mb-12">
+              <p className="font-sans text-cream/60 text-sm md:text-base leading-[1.9] max-w-md font-light border-l border-gold/20 pl-6">
+                For Tilenga Safaris, conservation is not a secondary mission or a corporate pillar—it is 
+                the very breath of our existence. We recognize that the landscapes of the Albertine Rift 
+                are fragile tapestries, woven together by ancient migration paths and delicate ecosystems 
+                that require more than just protection; they require active stewardship. Every journey 
+                we curate is designed as a direct investment into the survival of these corridors, 
+                ensuring that the rhythm of the wild remains uninterrupted for generations. We work 
+                hand-in-hand with local communities, moving beyond simple empowerment toward true 
+                partnership, where the prosperity of the people and the preservation of the wildlife 
+                are one and the same. This is our quiet promise: to tread with reverence and to leave 
+                behind a legacy that is measured not in footprints, but in the enduring heartbeat 
+                of the African savannah.
+              </p>
+              
+              <div className="flex flex-col pl-6">
+                <span className="font-serif text-4xl text-gold italic mb-1">VI</span>
+                <span className="text-cream/40 text-[9px] uppercase tracking-[0.4em] font-bold">
+                  Chapters of Impact
+                </span>
+              </div>
+            </div>
 
             {/* CTA */}
             <Link
               href="/about"
-              className="group inline-flex items-center gap-4 border border-gold/40 hover:border-gold hover:bg-gold/10 text-gold font-sans text-[11px] font-bold uppercase tracking-[0.25em] px-8 py-4 transition-all duration-500 mb-8"
+              className="group relative inline-flex items-center gap-6 py-2 overflow-hidden transition-all duration-500"
             >
-              Discover Our Impact
-              <svg
-                width="13" height="13" viewBox="0 0 24 24" fill="none"
-                className="group-hover:translate-x-1 transition-transform duration-300"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <div className="relative flex items-center gap-4">
+                <span className="w-12 h-px bg-gold/50 group-hover:w-20 transition-all duration-500" />
+                <span className="text-gold text-[11px] uppercase tracking-[0.3em] font-bold group-hover:tracking-[0.4em] transition-all duration-500">
+                  Discover Our Impact
+                </span>
+              </div>
             </Link>
 
-            {/* Scroll progress bar */}
-            <div>
-              <div className="flex justify-between items-center mb-2">
+            {/* Scroll progress bar - moved lower */}
+            <div className="mt-16">
+              <div className="flex justify-between items-center mb-3">
                 <span className="font-sans text-[8px] uppercase tracking-[0.45em] text-cream/20 font-bold">
                   Scroll to explore
                 </span>
-                <span className="font-sans text-[8px] uppercase tracking-[0.45em] text-gold/50 font-bold">
-                  {images.length} Stories
-                </span>
               </div>
-              <div className="h-[2px] w-full bg-white/10 rounded-full overflow-hidden">
+              <div className="h-[1px] w-full bg-white/5 rounded-full overflow-hidden">
                 <motion.div
                   style={{ scaleX: barScaleX, transformOrigin: "left" }}
-                  className="h-full bg-gold rounded-full"
+                  className="h-full bg-gold/40 rounded-full"
                 />
               </div>
             </div>

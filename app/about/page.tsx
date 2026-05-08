@@ -229,50 +229,42 @@ export default function AboutPage() {
       </section>
 
       {/* Why choose us */}
-      <section className="py-14 md:py-24 px-6 md:px-16 bg-cream relative overflow-hidden">
-        {/* Right-side image panel */}
-        <div className="absolute right-0 top-0 w-full md:w-1/2 h-48 md:h-full">
+      <section className="relative py-24 md:py-40 px-6 md:px-16 overflow-hidden">
+        {/* Full Background Image */}
+        <div className="absolute inset-0">
           <img
-            src={`${base}/Newstock/elephantcars.jpg`}
-            alt="Safari experience"
+            src={`${base}/photos/kikorongo_cottage1.jpg`}
+            alt="Tilenga Hospitality"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-forest-dark/40" />
-          {/* Fade edge into cream on left */}
-          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-cream to-transparent hidden md:block" />
+          <div className="absolute inset-0 bg-forest-dark/65" />
         </div>
 
-        <div className="max-w-6xl mx-auto relative">
-          {/* Spacer pushes content below the image on mobile */}
-          <div className="h-36 md:hidden" />
-          <div className="max-w-xl">
-            <p className="section-label mb-3 text-gold">Commitment to Excellence</p>
-            <h2 className="section-heading mb-6">Why Choose Us?</h2>
-            <div className="w-12 h-0.5 bg-gold mb-8" />
-            <div className="space-y-12 mb-10">
-              <div className="flex gap-6">
-                <span className="text-gold text-2xl mt-0.5 shrink-0">✦</span>
-                <div>
-                  <h4 className="font-serif text-xl text-forest uppercase tracking-widest mb-3">Expertise</h4>
-                  <p className="text-stone font-sans text-sm leading-relaxed">With years of experience in the travel industry, our team of travel specialists has insider knowledge and expertise to ensure seamless travel experiences.</p>
-                </div>
+        <div className="max-w-5xl mx-auto relative z-10">
+          <FadeIn direction="up">
+            <div className="text-center mb-20">
+              <p className="text-gold text-[10px] uppercase tracking-[0.5em] font-bold mb-6 block">Commitment to Excellence</p>
+              <h2 className="font-serif text-4xl md:text-6xl text-cream uppercase tracking-widest leading-tight">Why Choose Us?</h2>
+              <div className="w-16 h-px bg-gold/50 mx-auto mt-8" />
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+              <div className="flex flex-col items-center text-center group">
+                <h4 className="font-serif text-xl text-gold uppercase tracking-[0.2em] mb-6">Expertise</h4>
+                <p className="text-cream/80 font-sans text-[15px] leading-relaxed">With years of experience in the travel industry, our team of travel specialists has insider knowledge and expertise to ensure seamless travel experiences.</p>
               </div>
-              <div className="flex gap-6">
-                <span className="text-gold text-2xl mt-0.5 shrink-0">✦</span>
-                <div>
-                  <h4 className="font-serif text-xl text-forest uppercase tracking-widest mb-3">Personalized Service</h4>
-                  <p className="text-stone font-sans text-sm leading-relaxed">We understand that every traveler is unique. That&apos;s why we take the time to listen to your desires and preferences to tailor-make your journey according to your needs.</p>
-                </div>
+              
+              <div className="flex flex-col items-center text-center group">
+                <h4 className="font-serif text-xl text-gold uppercase tracking-[0.2em] mb-6">Personalized Service</h4>
+                <p className="text-cream/80 font-sans text-[15px] leading-relaxed">We understand that every traveler is unique. That&apos;s why we take the time to listen to your desires and preferences to tailor-make your journey according to your needs.</p>
               </div>
-              <div className="flex gap-6">
-                <span className="text-gold text-2xl mt-0.5 shrink-0">✦</span>
-                <div>
-                  <h4 className="font-serif text-xl text-forest uppercase tracking-widest mb-3">Trust and Reliability</h4>
-                  <p className="text-stone font-sans text-sm leading-relaxed">We prioritise your safety and comfort above all else. Our trusted network of partners and suppliers enables us to deliver reliable and secure travel arrangements.</p>
-                </div>
+              
+              <div className="flex flex-col items-center text-center group">
+                <h4 className="font-serif text-xl text-gold uppercase tracking-[0.2em] mb-6">Trust and Reliability</h4>
+                <p className="text-cream/80 font-sans text-[15px] leading-relaxed">We prioritise your safety and comfort above all else. Our trusted network of partners and suppliers enables us to deliver reliable and secure travel arrangements.</p>
               </div>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
