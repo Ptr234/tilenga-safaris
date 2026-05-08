@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import LoadingLink from "./LoadingLink";
 import { motion, AnimatePresence } from "framer-motion";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -91,16 +92,16 @@ export default function Header() {
           
           {/* Left: Home */}
           <div className="flex-1">
-            <Link href="/" className="text-cream text-[10px] uppercase tracking-[0.4em] font-sans font-bold hover:text-gold transition-colors">
+            <LoadingLink href="/" className="text-cream text-[10px] uppercase tracking-[0.4em] font-sans font-bold hover:text-gold transition-colors">
               Home
-            </Link>
+            </LoadingLink>
           </div>
 
           {/* Right: Contact + Menu Toggle */}
           <div className="flex-1 flex items-center justify-end gap-10">
-            <Link href="/plan-a-trip" className="hidden md:block text-cream text-[10px] uppercase tracking-[0.4em] font-sans font-bold hover:text-gold transition-colors">
+            <LoadingLink href="/plan-a-trip" className="hidden md:block text-cream text-[10px] uppercase tracking-[0.4em] font-sans font-bold hover:text-gold transition-colors">
               Contact
-            </Link>
+            </LoadingLink>
             <button 
               onClick={() => setMobileOpen(!mobileOpen)}
               className="group flex items-center gap-3 text-cream hover:text-gold transition-colors"
@@ -144,13 +145,15 @@ export default function Header() {
 
               {/* Logo Overlay on Image */}
               <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center text-cream">
-                <motion.img 
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  src={`${base}/tilenga-logo-light.svg`} 
-                  alt="Tilenga Safaris" 
-                  className="h-24 md:h-40 w-auto mb-8 drop-shadow-2xl" 
-                />
+                <LoadingLink href="/" onClick={() => setMobileOpen(false)}>
+                  <motion.img 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    src={`${base}/tilenga-logo-light.svg`} 
+                    alt="Tilenga Safaris" 
+                    className="h-24 md:h-40 w-auto mb-8 drop-shadow-2xl cursor-pointer" 
+                  />
+                </LoadingLink>
                 <div className="space-y-3 opacity-90 font-sans text-[10px] tracking-[0.3em] uppercase font-bold">
                   <p>destinations@tilengasafaris.com</p>
                   <p>+256 789 390 350</p>
@@ -166,14 +169,14 @@ export default function Header() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 + i * 0.1, duration: 0.6 }}
                   >
-                    <Link
+                    <LoadingLink
                       href={item.href}
                       target={item.target}
                       onClick={() => setMobileOpen(false)}
                       className="text-white hover:text-gold text-[12px] md:text-lg lg:text-xl font-serif uppercase tracking-[0.2em] transition-all duration-300"
                     >
                       {item.label}
-                    </Link>
+                    </LoadingLink>
                   </motion.div>
                 ))}
               </div>
@@ -206,19 +209,19 @@ export default function Header() {
                       onMouseEnter={() => setHoveredImage(item.image)}
                       className="group/item"
                     >
-                      <Link
+                      <LoadingLink
                         href={item.href}
                         onClick={() => setMobileOpen(false)}
                         className="text-cream hover:text-gold text-2xl md:text-4xl lg:text-5xl font-serif uppercase tracking-wider transition-all duration-300 block mb-2"
                       >
                         {item.label}
-                      </Link>
+                      </LoadingLink>
                       
                       {/* Children Links */}
                       {item.children && (
                         <div className="flex flex-wrap gap-x-6 gap-y-2 opacity-60 group-hover/item:opacity-100 transition-opacity">
                           {item.children.map((child) => (
-                            <Link 
+                            <LoadingLink 
                               key={child.label}
                               href={child.href}
                               onMouseEnter={(e) => {
@@ -229,7 +232,7 @@ export default function Header() {
                               className="text-cream/80 hover:text-gold text-[11px] md:text-xs font-sans font-bold uppercase tracking-widest transition-colors"
                             >
                               {child.label}
-                            </Link>
+                            </LoadingLink>
                           ))}
                         </div>
                       )}

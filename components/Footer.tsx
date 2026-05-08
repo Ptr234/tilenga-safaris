@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import LoadingLink from "./LoadingLink";
 
 const navLinks = [
   {
@@ -97,12 +98,12 @@ export default function Footer() {
 
             {/* Newsletter Button */}
             <div>
-              <Link 
+              <LoadingLink 
                 href="/plan-a-trip"
                 className="inline-block bg-gold text-forest-dark px-8 py-4 text-[11px] uppercase tracking-[0.2em] font-bold hover:bg-cream transition-colors rounded-sm"
               >
                 Sign Up For Our Newsletter
-              </Link>
+              </LoadingLink>
             </div>
 
             {/* Contact Details */}
@@ -127,13 +128,14 @@ export default function Footer() {
             {navLinks.map((col, idx) => (
               <div key={idx} className="flex flex-col gap-6">
                 {col.column.map((link) => (
-                  <Link 
+                  <LoadingLink 
                     key={link.label} 
                     href={link.href}
                     className="text-[10px] uppercase tracking-[0.3em] font-bold hover:text-white transition-colors"
+                    target={link.target}
                   >
                     {link.label}
-                  </Link>
+                  </LoadingLink>
                 ))}
               </div>
             ))}
@@ -159,13 +161,13 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-10 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-8">
-          <Link href="/">
+          <LoadingLink href="/">
             <img
               src={`${base}/tilenga-logo-light.svg`}
               alt="Tilenga Safaris"
               className="h-8 md:h-10 w-auto"
             />
-          </Link>
+          </LoadingLink>
         </div>
       </div>
     </footer>
