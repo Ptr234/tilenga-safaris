@@ -59,7 +59,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="grain-overlay relative h-[70vh] min-h-[500px] overflow-hidden flex items-end">
+      <section className="grain-overlay relative h-[85vh] min-h-[600px] overflow-hidden flex items-end">
         <div
           className="absolute inset-0 scale-110 transition-transform duration-[10000ms] ease-out"
           style={{

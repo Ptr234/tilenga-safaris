@@ -66,7 +66,7 @@ export default function PlanATripPage() {
   return (
     <>
       {/* Hero */}
-      <section className="grain-overlay relative h-[75vh] min-h-[550px] overflow-hidden flex flex-col justify-end">
+      <section className="grain-overlay relative h-[85vh] min-h-[600px] overflow-hidden flex flex-col justify-end">
         <div
           className="absolute inset-0"
           style={{
