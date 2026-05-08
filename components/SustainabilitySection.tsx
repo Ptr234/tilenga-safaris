@@ -55,6 +55,7 @@ export default function SustainabilitySection() {
 
   return (
     <section
+      id="sustainability"
       ref={sectionRef}
       className="relative bg-[#0b1a10]"
     >
