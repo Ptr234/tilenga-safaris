@@ -147,6 +147,39 @@ const destinations = [
   { name: "South Africa", tag: "Cape & Kruger", description: "Experience the vibrant culture of Cape Town and the world-class safari circuits of Kruger National Park.", image: `${base}/Newstock/safari.jpg`, href: "/destinations/south-africa" },
 ];
 
+const spiritCards = [
+  { 
+    title: "The Cheetah's Speed", 
+    tag: "Agility", 
+    image: `${base}/Newstock/cheetah.jpg`,
+    description: "Witness the raw power and grace of the fastest land animal in its natural habitat."
+  },
+  { 
+    title: "Gentle Giants", 
+    tag: "Serenity", 
+    image: `${base}/Newstock/girrafe.jpg`,
+    description: "Towering above the acacia trees, giraffes embody the peaceful majesty of the savannah."
+  },
+  { 
+    title: "Aerial Vistas", 
+    tag: "Perspective", 
+    image: `${base}/Newstock/Hot Air Balloon.jpg`,
+    description: "Soar above the plains at dawn for a perspective that only the birds usually enjoy."
+  },
+  { 
+    title: "Wild Patterns", 
+    tag: "Rhythm", 
+    image: `${base}/Newstock/zebras.jpg`,
+    description: "The rhythmic beauty of a zebra herd is one of nature's most iconic visual symphonies."
+  },
+  { 
+    title: "Primal Kinship", 
+    tag: "Connection", 
+    image: `${base}/Newstock/Gorrillahd.jpg`,
+    description: "A face-to-face encounter with a mountain gorilla is a profound moment of shared ancestry."
+  }
+];
+
 
 export default function HomePage() {
   const [activeIdx, setActiveIdx] = useState(0);
@@ -621,7 +654,56 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+
+          {/* New Spirit Cards Grid */}
+          <div className="mt-32 md:mt-48">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+              <div>
+                <span className="text-gold text-[10px] uppercase tracking-[0.4em] font-bold block mb-4">The Pillars of our Heritage</span>
+                <h3 className="font-serif text-4xl md:text-5xl text-cream uppercase">The Elements of <br /> <span className="italic text-gold">Discovery</span></h3>
+              </div>
+              <p className="text-cream/50 max-w-xs text-sm leading-relaxed">
+                Five distinct perspectives that define the Tilenga experience — from the speed of the predator to the silence of the sky.
+              </p>
+            </div>
+
+            <StaggerGrid className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8" stagger={0.15}>
+              {spiritCards.map((card, idx) => (
+                <StaggerItem key={idx} className="group">
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-white/5 shadow-2xl bg-forest-dark/40">
+                    <img 
+                      src={card.image} 
+                      alt={card.title}
+                      className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
+                    />
+                    
+                    {/* Overlays */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-700" />
+                    <div className="absolute inset-0 border border-gold/0 group-hover:border-gold/20 transition-all duration-700" />
+                    
+                    {/* Content */}
+                    <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                      <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <span className="text-gold text-[8px] uppercase tracking-[0.3em] font-bold block mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{card.tag}</span>
+                        <h4 className="font-serif text-xl text-cream leading-tight mb-3 group-hover:text-gold transition-colors duration-500">{card.title}</h4>
+                        <div className="h-px w-0 group-hover:w-full bg-gold/30 transition-all duration-700 mb-4" />
+                        <p className="text-cream/60 text-[11px] leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200 line-clamp-2">
+                          {card.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Numbering */}
+                    <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity">
+                      <span className="font-serif italic text-gold text-2xl">0{idx + 1}</span>
+                    </div>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerGrid>
+          </div>
         </div>
+
       </ParallaxSection>
 
       <SustainabilitySection />

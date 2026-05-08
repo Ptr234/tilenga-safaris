@@ -46,7 +46,7 @@ const hotspots = [
   {
     name: "Buganda Kingdom",
     detail: "Uganda's Rich Cultural Heritage",
-    image: `${base}/Newstock/tourist.jpg`,
+    image: `${base}/Newpicselection/BugandaKingdom.png`,
   },
 ];
 

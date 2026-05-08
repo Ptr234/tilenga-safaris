@@ -8,34 +8,34 @@ const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const images = [
   {
-    src: `${base}/Newstock/mothernbabyelephant.jpg`,
-    title: "Wildlife Conservation",
-    description: "Protecting Uganda's most endangered species across 50,000 acres of vital habitat.",
-  },
-  {
-    src: `${base}/experinces/culture emersion.jpg`,
-    title: "Local Communities",
-    description: "Empowering the Batwa, Karamojong, and lakeside communities through education, healthcare, and dignified livelihoods.",
-  },
-  {
-    src: `${base}/Newstock/touristsmovinginforest.jpg`,
+    src: `${base}/Newpicselection/Ecoluxury.jpg`,
     title: "Eco-Luxury Experience",
-    description: "Every journey is designed to tread lightly — low-impact transport, solar lodges, and zero single-use waste.",
+    description: "Every journey is designed to tread lightly — low-impact transport, solar-powered lodges, and zero single-use waste.",
   },
   {
-    src: `${base}/Newstock/Queen Elizabeth NP.jpg`,
-    title: "African Landscapes",
-    description: "From the shores of Lake George to the Albertine Rift — preserving the corridors that sustain life.",
+    src: `${base}/Newpicselection/wildlifeconservation.jpg`,
+    title: "Wildlife Conservation",
+    description: "Protecting East Africa's most endangered species across vital habitats through active monitoring and anti-poaching programmes.",
   },
   {
-    src: `${base}/Newstock/wildanimals.jpg`,
+    src: `${base}/Newpicselection/local communities.jpg`,
+    title: "Community Empowerment",
+    description: "Fostering meaningful bonds with local communities through education, healthcare initiatives, and dignified livelihood support.",
+  },
+  {
+    src: `${base}/Newpicselection/BugandaKingdom.png`,
+    title: "Cultural Heritage",
+    description: "Preserving and celebrating the rich history and royal legacies of the Buganda Kingdom as part of our holistic conservation approach.",
+  },
+  {
+    src: `${base}/Newpicselection/conservation.jpg`,
     title: "Nature Restoration",
-    description: "Active reforestation, anti-poaching programmes, and biodiversity monitoring funded by every guest stay.",
+    description: "Active reforestation and biodiversity monitoring funded by every guest stay to ensure the longevity of our natural landscapes.",
   },
   {
-    src: `${base}/experinces/gorrila treking.jpg`,
-    title: "Primate Conservation",
-    description: "Uganda holds over 50% of the world's mountain gorillas. A portion of every trek fee protects them.",
+    src: `${base}/Newpicselection/AfricanLandscape.jpg`,
+    title: "African Landscapes",
+    description: "Preserving the vast corridors and iconic vistas that sustain life across the Albertine Rift and beyond.",
   },
 ];
 
