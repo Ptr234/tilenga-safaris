@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import FadeIn from "@/components/motion/FadeIn";
 import ImageReveal from "@/components/motion/ImageReveal";
@@ -36,7 +37,7 @@ const offers = [
     id: "multigenerational",
     label: "Family Legacy",
     title: "Bring the Grandparents for 50% Off",
-    image: `${base}/offerspageimages/Bring the Grandparents for 50% Off.jpg`,
+    image: `${base}/offerspageimages/Bring%20the%20Grandparents%20for%2050%25%20Off.jpg`,
     validity: [
       "1st June - 14th June 2026",
       "11th January - 31st March 2027",
@@ -57,7 +58,7 @@ const offers = [
     id: "honeymoon",
     label: "Romance in the Wild",
     title: "Honeymoon Offer: 50% Off Partner",
-    image: `${base}/offerspageimages/Honeymoon Offer 50% Off Partner.jpg`,
+    image: `${base}/offerspageimages/Honeymoon%20Offer%2050%25%20Off%20Partner.jpg`,
     validity: [
       "11th January - 31st May 2026",
       "1st November - 19th December 2026",
@@ -119,12 +120,14 @@ function OfferCard({ offer, index }: { offer: typeof offers[0]; index: number })
       <div className="w-full md:w-1/2">
         <ImageReveal direction="bottom">
           <div className="relative aspect-[4/5] md:aspect-square overflow-hidden film-frame shadow-2xl">
-            <img 
+            <Image 
               src={offer.image} 
               alt={offer.title} 
-              className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
+              fill
+              className="w-full h-full object-cover transition-all duration-700"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority={index < 2}
             />
-            <div className="absolute inset-0 bg-forest/5 mix-blend-multiply" />
           </div>
         </ImageReveal>
       </div>
