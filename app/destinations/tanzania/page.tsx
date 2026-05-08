@@ -19,7 +19,7 @@ const hotspots = [
   {
     name: "Ngorongoro Crater",
     detail: "UNESCO World Heritage — Big Five & Black Rhino",
-    image: `${base}/Newstock/wildanimals.jpg`,
+    image: `${base}/Newstock/ngorongoro-crater.jpg`,
   },
   {
     name: "Zanzibar",
