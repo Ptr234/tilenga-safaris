@@ -6,17 +6,20 @@ import { useLoading } from "@/context/LoadingContext";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-const words = ["Explore", "Discover", "Experience"];
+// Minimalist Safari Cruiser SVG Path
+const CAR_PATH = "M2,12 L6,12 L7,9 L15,9 L17,12 L22,12 L22,18 L2,18 Z M6,12 L6,10 L15,10 L15,12 M4,18 A2,2 0 1,0 8,18 A2,2 0 1,0 4,18 M16,18 A2,2 0 1,0 20,18 A2,2 0 1,0 16,18";
 
-// Generate some stable random particles
-const generateParticles = (count: number) => {
+// Abstract "Journey" path across Africa
+const JOURNEY_PATH = "M-50,80 C100,120 200,20 400,80 C600,140 750,40 900,100";
+
+const generateDust = (count: number) => {
   return Array.from({ length: count }).map((_, i) => ({
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,
-    size: Math.random() * 2 + 1,
-    duration: Math.random() * 10 + 10,
-    delay: Math.random() * 5,
+    size: Math.random() * 1.5 + 0.5,
+    duration: Math.random() * 20 + 20,
+    delay: Math.random() * -20,
   }));
 };
 
@@ -25,192 +28,176 @@ export default function LoadingScreen() {
   const [index, setIndex] = useState(0);
   const [internalLoading, setInternalLoading] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const [progress, setProgress] = useState(0);
   
-  const particles = useMemo(() => {
-    if (!mounted) return [];
-    return generateParticles(20);
-  }, [mounted]);
-
+  const dust = useMemo(() => (mounted ? generateDust(30) : []), [mounted]);
   const isVisible = internalLoading || contextLoading;
 
   useEffect(() => {
     setMounted(true);
-  }, []);
-
-  useEffect(() => {
     if (isVisible) {
       document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
+      // Simulate/Control progress
+      const interval = setInterval(() => {
+        setProgress(prev => (prev < 100 ? prev + 0.5 : 100));
+      }, 20);
+      return () => {
+        clearInterval(interval);
+        document.body.style.overflow = "unset";
+      };
     }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
   }, [isVisible]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length);
-    }, 1200);
-
-    let timeout: NodeJS.Timeout;
     if (internalLoading) {
-      timeout = setTimeout(() => {
+      const timeout = setTimeout(() => {
         setInternalLoading(false);
-      }, 4000); // Slightly longer for the more creative reveal
+      }, 5000); // 5 seconds for a cinematic initial intro
+      return () => clearTimeout(timeout);
     }
-
-    return () => {
-      clearInterval(interval);
-      if (timeout) clearTimeout(timeout);
-    };
   }, [internalLoading]);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {isVisible && (
         <motion.div
+          key="loading-screen"
           initial={{ opacity: 1 }}
           exit={{ 
             opacity: 0,
-            transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] }
+            transition: { duration: 1.5, ease: [0.76, 0, 0.24, 1] }
           }}
-          className="fixed inset-0 z-[1000] flex flex-col items-center justify-center bg-forest-dark overflow-hidden"
+          className="fixed inset-0 z-[1000] flex flex-col items-center justify-center bg-[#050505] overflow-hidden"
         >
-          {/* 1. Cinematic Grain Overlay */}
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-              <filter id="noiseFilter">
-                <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
-              </filter>
-              <rect width="100%" height="100%" filter="url(#noiseFilter)" />
-            </svg>
-          </div>
-
-          {/* 2. Floating Golden Particles (Bokeh) */}
-          {particles.map((p) => (
+          {/* Cinematic Background */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#122B1E_0%,_transparent_100%)] opacity-40" />
+          
+          {/* 1. Floating Golden Dust */}
+          {dust.map((d) => (
             <motion.div
-              key={p.id}
-              className="absolute rounded-full bg-gold/20 blur-[1px]"
-              initial={{ 
-                x: `${p.x}%`, 
-                y: `${p.y}%`, 
-                opacity: 0,
-                scale: 0 
-              }}
+              key={d.id}
+              className="absolute rounded-full bg-gold/10 blur-[0.5px]"
               animate={{ 
-                y: [`${p.y}%`, `${p.y - 15}%`],
-                opacity: [0, 0.4, 0],
-                scale: [0, 1, 0]
+                x: [`${d.x}%`, `${d.x + 2}%`, `${d.x}%`],
+                y: [`${d.y}%`, `${d.y - 10}%`],
+                opacity: [0, 0.3, 0]
               }}
               transition={{ 
-                duration: p.duration, 
+                duration: d.duration, 
                 repeat: Infinity, 
-                delay: p.delay,
+                delay: d.delay,
                 ease: "linear"
               }}
-              style={{ width: p.size, height: p.size }}
+              style={{ width: d.size, height: d.size }}
             />
           ))}
 
-          {/* 3. Central Content */}
-          <div className="relative z-10 flex flex-col items-center">
+          {/* 2. Central Branding */}
+          <div className="relative z-10 flex flex-col items-center w-full max-w-4xl px-8">
             
-            {/* Logo Reveal with Masking Effect */}
+            {/* Logo - Soft Glow Emergence */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-              className="relative mb-16"
+              initial={{ opacity: 0, filter: "blur(10px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              transition={{ duration: 2, ease: "easeOut" }}
+              className="mb-24"
             >
-              {/* Outer Glow */}
-              <motion.div 
-                animate={{ opacity: [0.1, 0.3, 0.1] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="absolute inset-0 blur-3xl bg-gold/30 rounded-full scale-150" 
+              <img 
+                src={`${base}/tilenga-logo-light.svg`} 
+                alt="Tilenga Safaris" 
+                className="h-16 md:h-24 w-auto opacity-80" 
               />
-              
-              <div className="relative">
-                <img 
-                  src={`${base}/tilenga-logo-light.svg`} 
-                  alt="Tilenga Safaris" 
-                  className="h-24 md:h-36 w-auto" 
-                />
-                
-                {/* Shine effect passing over logo */}
-                <motion.div 
-                  initial={{ x: "-100%" }}
-                  animate={{ x: "200%" }}
-                  transition={{ 
-                    duration: 2, 
-                    repeat: Infinity, 
-                    repeatDelay: 3,
-                    ease: "easeInOut" 
-                  }}
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12"
-                />
-              </div>
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/20 to-transparent skew-x-12"
+                animate={{ x: ["-200%", "200%"] }}
+                transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
+              />
             </motion.div>
 
-            {/* Typography Sequence with Character Reveal */}
-            <div className="h-12 overflow-hidden flex flex-col items-center justify-center">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={words[index]}
-                  className="flex overflow-hidden"
+            {/* 3. The Journey Path */}
+            <div className="relative w-full h-32 mb-12">
+              <svg viewBox="0 0 800 150" className="w-full h-full fill-none overflow-visible">
+                {/* The Dotted Guide */}
+                <path 
+                  d={JOURNEY_PATH} 
+                  stroke="rgba(201,169,110,0.05)" 
+                  strokeWidth="1" 
+                  strokeDasharray="4 4" 
+                />
+                
+                {/* The Golden Animated Path */}
+                <motion.path 
+                  d={JOURNEY_PATH} 
+                  stroke="#C9A96E" 
+                  strokeWidth="1.5" 
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: progress / 100 }}
+                  transition={{ ease: "linear" }}
+                />
+
+                {/* The Explorer Cruiser Silhouette */}
+                <motion.g
+                   initial={{ opacity: 0 }}
+                   animate={{ opacity: 1 }}
+                   style={{ 
+                     offsetPath: `path("${JOURNEY_PATH}")`,
+                     offsetDistance: `${progress}%`
+                   }}
                 >
-                  {words[index].split("").map((char, i) => (
-                    <motion.span
-                      key={i}
-                      initial={{ y: "100%" }}
-                      animate={{ y: 0 }}
-                      exit={{ y: "-100%" }}
-                      transition={{ 
-                        duration: 0.6, 
-                        delay: i * 0.04,
-                        ease: [0.22, 1, 0.36, 1] 
-                      }}
-                      className="text-gold font-serif text-xl md:text-2xl uppercase tracking-[0.4em] font-light inline-block"
-                    >
-                      {char}
-                    </motion.span>
-                  ))}
-                </motion.div>
-              </AnimatePresence>
+                   <path 
+                     d={CAR_PATH} 
+                     fill="#C9A96E" 
+                     className="drop-shadow-[0_0_8px_rgba(201,169,110,0.5)]"
+                     transform="scale(0.8) translate(-12, -22)"
+                   />
+                   <motion.circle 
+                     r="3" 
+                     fill="#C9A96E" 
+                     className="blur-[2px]"
+                     animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
+                     transition={{ duration: 2, repeat: Infinity }}
+                   />
+                </motion.g>
+              </svg>
             </div>
 
-            {/* Elegant Progress Indicator */}
-            <div className="mt-12 flex items-center gap-4">
-              <div className="w-8 h-px bg-white/10" />
-              <div className="flex gap-1.5">
-                {[0, 1, 2].map((i) => (
-                  <motion.div
-                    key={i}
-                    animate={{ 
-                      scale: index === i ? [1, 1.2, 1] : 1,
-                      opacity: index === i ? 1 : 0.3,
-                      backgroundColor: index === i ? "#C9A96E" : "#FFFFFF"
-                    }}
-                    className="w-1.5 h-1.5 rounded-full"
-                  />
-                ))}
+            {/* 4. Refined Copy & Progress */}
+            <div className="text-center space-y-4">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="flex items-center justify-center gap-4"
+              >
+                <span className="w-8 h-px bg-gold/20" />
+                <h2 className="text-gold font-serif text-sm md:text-base uppercase tracking-[0.6em] font-light">
+                  Preparing Your Journey
+                </h2>
+                <span className="w-8 h-px bg-gold/20" />
+              </motion.div>
+              
+              <div className="flex flex-col items-center">
+                <span className="text-cream/30 font-sans text-[10px] tracking-[0.3em] font-bold">
+                  {Math.round(progress)}%
+                </span>
               </div>
-              <div className="w-8 h-px bg-white/10" />
             </div>
           </div>
 
-          {/* Bottom Branding */}
+          {/* 5. Minimal Heritage Footer */}
           <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.2 }}
-            transition={{ delay: 1, duration: 1 }}
-            className="absolute bottom-12 font-sans text-[8px] uppercase tracking-[0.8em] font-bold text-cream"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 0.4, y: 0 }}
+            transition={{ delay: 1.5, duration: 1 }}
+            className="absolute bottom-12 flex flex-col items-center gap-2"
           >
-            Africa — Experience the Untamed
+            <span className="font-sans text-[9px] uppercase tracking-[0.8em] text-cream">
+              The Wild is Calling
+            </span>
+            <div className="w-px h-12 bg-gradient-to-b from-gold/50 to-transparent" />
           </motion.div>
 
-          {/* Subtle Border Glow */}
-          <div className="absolute inset-0 border border-gold/5 pointer-events-none" />
+          {/* Cinematic Vignette */}
+          <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_150px_rgba(0,0,0,0.9)]" />
         </motion.div>
       )}
     </AnimatePresence>
