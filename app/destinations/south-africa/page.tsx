@@ -19,17 +19,17 @@ const hotspots = [
   {
     name: "Cape Town",
     detail: "Table Mountain & the Atlantic Seaboard",
-    image: `${base}/Newstock/Zanzibar Beaches.jpg`,
+    image: `${base}/Newstock/cape-town.jpg`,
   },
   {
-    name: "Johannesburg & Soweto",
-    detail: "Apartheid Museum & Living History",
-    image: `${base}/Newstock/wildanimals.jpg`,
+    name: "The Winelands",
+    detail: "Stellenbosch & Franschhoek Heritage Estates",
+    image: `${base}/Newstock/splendifd.jpg`,
   },
   {
     name: "Table Mountain",
     detail: "Iconic Flat-Topped Mountain Landmark",
-    image: `${base}/Newstock/Mountain Climbing06Mountain Climbing.jpg`,
+    image: `${base}/Newstock/table-mountain.jpg`,
   },
   {
     name: "Hartbeespoort",
@@ -40,22 +40,22 @@ const hotspots = [
 
 const packages = [
   {
-    name: "8-Day Visit South Africa",
-    tagline: "Thrilling safaris & vibrant cities",
-    duration: "8 Days",
-    price: "Enquire for Rates",
+    name: "8-Day South Africa Discovery",
+    tagline: "From the Highveld to the Cape",
+    duration: "8 Days / 7 Nights",
+    price: "Enquire for Bespoke Pricing",
     description:
-      "Explore South Africa’s extraordinary sights including Kruger National Park, Cape Town's Table Mountain, and the vibrant history of Johannesburg and Soweto.",
+      "A comprehensive journey through South Africa’s most iconic landscapes. Experience the raw wilderness of Kruger National Park, the historical depth of Johannesburg and Soweto, and the cosmopolitan beauty of Cape Town.",
     activities: [
-      "Kruger NP Safari",
-      "Cape Town & Table Mountain",
-      "Hartbeespoort Boat Cruise",
-      "Johannesburg City Tour",
+      "Kruger NP Guided Game Drives",
+      "Table Mountain Cableway",
+      "Cape of Good Hope Tour",
+      "Johannesburg History Tour",
       "Soweto & Apartheid Museum",
-      "Local Food Tasting",
+      "Bespoke Culinary Experiences",
     ],
     image: `${base}/Newstock/safari.jpg`,
-    itineraryUrl: "#", // Add specific South Africa PDF if available
+    itineraryUrl: "#", 
   },
 ];
 
@@ -65,17 +65,17 @@ export default function SouthAfricaPage() {
       <DestinationHeroVideo 
         videoSrc="/Destinations videos/south-africa-hero.mp4"
         title="South Africa"
-        subtitle="Cape & Kruger"
+        subtitle="A World in One Country"
         tag="Southern Africa"
       />
 
       {/* Quick info */}
       <section className="bg-forest py-6">
         <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-cream/70 text-sm font-sans">
-          <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Best Time</span>May–Sep</div>
+          <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Best Time</span>May–Sep (Safari), Nov–Mar (Cape)</div>
           <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Currency</span>South African Rand</div>
           <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Time Zone</span>GMT +2</div>
-          <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Main Airport</span>Johannesburg (JNB)</div>
+          <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Main Gateways</span>Johannesburg (JNB) / Cape Town (CPT)</div>
         </div>
       </section>
 
@@ -84,38 +84,39 @@ export default function SouthAfricaPage() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <FadeIn direction="left">
             <p className="section-label mb-3">Destination Overview</p>
-            <h2 className="section-heading mb-6">Africa&apos;s Most Complete Safari Experience</h2>
+            <h2 className="section-heading mb-6">The Pinnacle of African Diversity</h2>
             <div className="w-12 h-0.5 bg-gold mb-8" />
             <p className="text-stone font-sans leading-relaxed mb-4">
-              South Africa offers Africa&apos;s most diverse travel experience — world-class Big Five
-              safaris in Kruger National Park, dramatic Atlantic and Indian Ocean coastlines,
-              the breathtaking Cape Peninsula, and internationally acclaimed wine regions, all
-              within one country.
+              South Africa is often described as &ldquo;A World in One Country,&rdquo; offering an unparalleled
+              variety of experiences. From the thrumming energy of Johannesburg to the serene
+              vineyards of the Cape, and from the thundering surf of the Wild Coast to the
+              ancient silence of the Karoo.
             </p>
             <p className="text-stone font-sans leading-relaxed mb-4">
-              Kruger National Park is one of Africa&apos;s largest game reserves, home to the
-              Big Five — lion, leopard, elephant, rhino, and buffalo — along with over 500 bird
-              species and an extraordinary variety of predators.
+              In the northeast, Kruger National Park stands as a titan of conservation. This
+              vast sanctuary provides an intimate theatre for the Big Five, where expert guides
+              unveil the complex rhythms of the bush across two million hectares of wild terrain.
             </p>
             <p className="text-stone font-sans leading-relaxed">
-              Cape Town consistently ranks among the world&apos;s most beautiful cities —
-              framed by Table Mountain, with pristine beaches, vibrant culture, and the
-              famous Cape Winelands just an hour away.
+              At the continent&apos;s edge, Cape Town sits at the intersection of two oceans. 
+              Voted repeatedly as one of the world&apos;s most beautiful cities, it offers a 
+              sophisticated blend of award-winning gastronomy, rich history, and dramatic
+              natural landmarks like the legendary Table Mountain.
             </p>
           </FadeIn>
 
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
-              <img src={`${base}/Newstock/safari.jpg`} alt="Kruger lion" className="w-full h-52 object-cover" />
+              <img src={`${base}/Newstock/safari.jpg`} alt="Kruger Wildlife" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-6">
-              <img src={`${base}/Newstock/Zanzibar Beaches.jpg`} alt="Cape Town coastal" className="w-full h-52 object-cover" />
+              <img src={`${base}/Newstock/Zanzibar Beaches.jpg`} alt="Coastal Landscape" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-6">
-              <img src={`${base}/Newstock/wildanimals.jpg`} alt="African wildlife" className="w-full h-52 object-cover" />
+              <img src={`${base}/Newstock/wildanimals.jpg`} alt="South African Savannah" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
-              <img src={`${base}/Newstock/bigelephant.jpg`} alt="Kruger elephant" className="w-full h-52 object-cover" />
+              <img src={`${base}/Newstock/bigelephant.jpg`} alt="Majestic Elephant" className="w-full h-52 object-cover" />
             </ImageReveal>
           </div>
         </div>
@@ -126,10 +127,10 @@ export default function SouthAfricaPage() {
         <FadeIn direction="up" className="px-6 md:px-16 mb-10">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-8 h-px bg-gold/50" />
-            <p className="section-label text-gold">South Africa Hot Spots</p>
+            <p className="section-label text-gold">Iconic Hot Spots</p>
           </div>
           <h2 className="font-serif text-3xl md:text-4xl text-cream">
-            <SplitText text="Wild, Scenic & World-Class" by="word" stagger={0.06} />
+            <SplitText text="Grandeur in Every Direction" by="word" stagger={0.06} />
           </h2>
         </FadeIn>
         <HotspotGallery hotspots={hotspots} />
@@ -140,13 +141,13 @@ export default function SouthAfricaPage() {
         <div className="max-w-6xl mx-auto">
           <FadeIn className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 pb-10 border-b border-gold/20">
             <div>
-              <p className="section-label mb-3">Safari Packages</p>
+              <p className="section-label mb-3">Curated Journeys</p>
               <h2 className="font-serif text-4xl md:text-5xl text-forest leading-tight">
-                South Africa Tour Packages
+                South Africa Itineraries
               </h2>
             </div>
             <Link href="/plan-a-trip" className="btn-primary shrink-0 self-start md:self-end">
-              Get a Custom Quote
+              Request Custom Itinerary
             </Link>
           </FadeIn>
           <StaggerGrid className="package-grid">
@@ -184,15 +185,6 @@ export default function SouthAfricaPage() {
                           <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
                         </Link>
                       </div>
-                      <a 
-                        href={pkg.itineraryUrl} 
-                        className="flex items-center justify-center gap-2 w-full py-2 border border-gold/30 text-gold text-[10px] uppercase tracking-widest hover:bg-gold hover:text-forest transition-all duration-300"
-                      >
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                        </svg>
-                        Download Itinerary
-                      </a>
                     </div>
                   </div>
                 </div>
@@ -205,11 +197,11 @@ export default function SouthAfricaPage() {
       {/* CTA */}
       <section className="bg-forest py-20 px-6 md:px-16 text-center">
         <FadeIn direction="up">
-          <h2 className="font-serif text-3xl md:text-5xl text-cream mb-6">Ready for South Africa?</h2>
+          <h2 className="font-serif text-3xl md:text-5xl text-cream mb-6">Experience the Rainbow Nation</h2>
           <p className="text-cream/60 font-sans max-w-lg mx-auto mb-10">
-            Kruger sunrises, Cape Town sunsets, and wine under Table Mountain — let us design your perfect South Africa itinerary.
+            From the peak of Table Mountain to the deep bushveld of the Kruger — let us curate your definitive South African adventure.
           </p>
-          <Link href="/plan-a-trip" className="btn-outline">Plan My South Africa Trip</Link>
+          <Link href="/plan-a-trip" className="btn-outline">Start Your Journey</Link>
         </FadeIn>
       </section>
     </>

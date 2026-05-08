@@ -55,12 +55,12 @@ export default function DestinationHeroVideo({ videoSrc, title, subtitle, tag = 
       {/* Content */}
       <motion.div 
         style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 px-6 md:px-16 pb-16 max-w-4xl w-full"
+        className="relative z-10 px-6 md:px-16 pb-16 max-w-7xl w-full"
       >
         <FadeIn direction="up">
           <p className="section-label text-gold mb-3">{tag}</p>
         </FadeIn>
-        <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl text-cream mb-3 leading-none uppercase tracking-tighter">
+        <h1 className="font-serif text-6xl md:text-8xl lg:text-[10vw] text-cream mb-3 leading-[0.8] uppercase tracking-tighter whitespace-nowrap">
           <SplitText text={title} by="char" stagger={0.04} delay={0.2} />
         </h1>
         <FadeIn direction="up" delay={0.5}>

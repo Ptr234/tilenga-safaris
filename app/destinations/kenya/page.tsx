@@ -14,12 +14,12 @@ const hotspots = [
   {
     name: "Masai Mara",
     detail: "Kenya's Crown Jewel Reserve",
-    image: `${base}/Newstock/greatbeastmigration.jpg`,
+    image: `${base}/Newstock/masai-mara.jpg`,
   },
   {
     name: "Great Migration",
     detail: "1.5 Million Wildebeest Crossing",
-    image: `${base}/Newstock/zebras.jpg`,
+    image: `${base}/Newstock/greatbeastmigration.jpg`,
   },
   {
     name: "Amboseli National Park",
@@ -49,7 +49,7 @@ const hotspots = [
   {
     name: "Mount Kenya",
     detail: "Africa's Second-Highest Peak",
-    image: `${base}/Newstock/Mountain Climbing06Mountain Climbing.jpg`,
+    image: `${base}/Newstock/mount-kenya.jpg`,
   },
   {
     name: "Indian Ocean Beaches",
