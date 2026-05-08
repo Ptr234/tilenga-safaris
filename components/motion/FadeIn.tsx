@@ -44,6 +44,7 @@ interface FadeInProps {
   duration?: number;
   className?: string;
   once?: boolean;
+  id?: string;
 }
 
 export default function FadeIn({
@@ -53,6 +54,7 @@ export default function FadeIn({
   duration,
   className,
   once = true,
+  id,
 }: FadeInProps) {
   const v = variants[direction];
   const customV: Variants = {
@@ -69,6 +71,7 @@ export default function FadeIn({
 
   return (
     <motion.div
+      id={id}
       className={className}
       initial="hidden"
       whileInView="visible"
