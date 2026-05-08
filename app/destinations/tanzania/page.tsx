@@ -14,7 +14,7 @@ const hotspots = [
   {
     name: "Serengeti",
     detail: "Endless Plains & the Great Migration",
-    image: `${base}/Newstock/greatbeastmigration.jpg`,
+    image: `${base}/Newstock/serengeti-national-park.jpg`,
   },
   {
     name: "Ngorongoro Crater",
@@ -39,7 +39,7 @@ const hotspots = [
   {
     name: "Tarangire National Park",
     detail: "Baobab Giants & Elephant Herds",
-    image: `${base}/Newstock/bigelephant.jpg`,
+    image: `${base}/Newstock/tarangire-national-park.jpg`,
   },
 ];
 
