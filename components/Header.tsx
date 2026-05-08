@@ -49,7 +49,7 @@ const navItems = [
   },
   { label: "About Us", href: "/about", image: `${base}/Newstock/tourist.jpg` },
   { label: "Sustainability & Conservation", href: "/#sustainability", image: `${base}/Newstock/touristsmovinginforest.jpg` },
-  { label: "Travel Concierge", href: "/plan-a-trip", image: `${base}/Newstock/safari.jpg` },
+  { label: "Travel Concierge", href: "/about#travel-concierge", image: `${base}/Newstock/safari.jpg` },
 ];
 
 const bottomNav = [

@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const destinations = ["Uganda", "Kenya", "Tanzania", "Rwanda", "South Africa", "Namibia", "Botswana", "Multiple Destinations"];
 const interestsList = [
   "Gorilla Trekking",
@@ -64,11 +66,11 @@ export default function PlanATripPage() {
   return (
     <>
       {/* Hero */}
-      <section className="grain-overlay relative h-[65vh] min-h-[450px] overflow-hidden flex flex-col justify-end">
+      <section className="grain-overlay relative h-[75vh] min-h-[550px] overflow-hidden flex flex-col justify-end">
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url(https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=1800&q=80)",
+            backgroundImage: `url(${base}/Newstock/tourist.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center 60%",
           }}

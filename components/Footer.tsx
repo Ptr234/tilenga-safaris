@@ -14,7 +14,7 @@ const navLinks = [
   {
     column: [
       { label: "Sustainability & Conservation", href: "/#sustainability" },
-      { label: "Travel Concierge", href: "/plan-a-trip" },
+      { label: "Travel Concierge", href: "/about#travel-concierge" },
       { label: "Terms & Conditions", href: "/about" },
       { label: "Privacy Policy", href: "/about" },
     ]
