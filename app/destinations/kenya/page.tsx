@@ -54,7 +54,7 @@ const hotspots = [
   {
     name: "Indian Ocean Beaches",
     detail: "Diani & Mombasa — Pristine Coastline",
-    image: `${base}/Newstock/Zanzibar Beaches.jpg`,
+    image: `${base}/Newstock/indianocean.jpg`,
   },
 ];
 
