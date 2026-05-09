@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import LoadingLink from "./LoadingLink";
 
@@ -65,16 +66,24 @@ const socials = [
 
 export default function Footer() {
   const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Submitted email:", email);
+    setEmail("");
+    alert("Thank you! You will receive our tour packages soon.");
+  };
 
   return (
     <footer className="overflow-hidden font-sans border-t border-white/10">
       {/* Top Part: Forest Green Background */}
       <div className="bg-forest text-white pt-20 pb-16">
         <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
             
-            {/* Left Column: Logo, Newsletter, Contact */}
-            <div className="lg:col-span-4 space-y-12">
+            {/* Left Column: Logo, Newsletter */}
+            <div className="lg:col-span-3 space-y-12">
               <LoadingLink href="/">
                 <img
                   src={`${base}/tilenga-logo-light.svg`}
@@ -83,33 +92,32 @@ export default function Footer() {
                 />
               </LoadingLink>
 
-              <div>
-                <LoadingLink 
-                  href="/plan-a-trip"
-                  className="inline-block bg-gold text-forest-dark px-8 py-4 text-[11px] uppercase tracking-[0.2em] font-bold hover:bg-cream transition-colors rounded-sm"
-                >
-                  Sign Up For Our Newsletter
-                </LoadingLink>
-              </div>
-
-              <div className="space-y-2">
-                <a 
-                  href="mailto:destinations@tilengasafaris.com" 
-                  className="block text-white/80 hover:text-gold text-lg transition-colors font-bold"
-                >
-                  destinations@tilengasafaris.com
-                </a>
-                <a 
-                  href="tel:+256789390350" 
-                  className="block text-white/80 hover:text-gold text-lg transition-colors font-bold"
-                >
-                  +256 789 390 350
-                </a>
+              {/* Newsletter Form */}
+              <div className="space-y-4">
+                <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/60">
+                  To receive full tour packages
+                </p>
+                <form onSubmit={handleSubmit} className="relative max-w-sm group">
+                  <input
+                    type="email"
+                    placeholder="ENTER YOUR EMAIL"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="w-full bg-transparent border-b border-white/20 py-4 pr-12 text-[11px] tracking-[0.2em] font-bold focus:outline-none focus:border-gold transition-colors placeholder:text-white/30"
+                  />
+                  <button 
+                    type="submit"
+                    className="absolute right-0 bottom-4 text-gold hover:text-white transition-colors uppercase text-[11px] tracking-[0.2em] font-bold"
+                  >
+                    Send
+                  </button>
+                </form>
               </div>
             </div>
 
-            {/* Right Column: Nav Links Grid */}
-            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            {/* Right Column: Nav Links Grid + Contact Us */}
+            <div className="lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
               {navLinks.map((col, idx) => (
                 <div key={idx} className="flex flex-col gap-6">
                   <h3 className="text-gold text-[11px] uppercase tracking-[0.4em] font-bold mb-2">
@@ -127,6 +135,33 @@ export default function Footer() {
                   ))}
                 </div>
               ))}
+
+              {/* Contact Us Column */}
+              <div className="flex flex-col gap-6">
+                <h3 className="text-gold text-[11px] uppercase tracking-[0.4em] font-bold mb-2">
+                  Contact Us
+                </h3>
+                <div className="space-y-4 text-white/80 text-[12px] tracking-wide leading-relaxed">
+                  <p>
+                    Lungujja, Ssendawula Zone - Eseza House<br />
+                    P.O.Box 2599 Kampala, Uganda.
+                  </p>
+                  <div className="space-y-2">
+                    <a 
+                      href="tel:+256789390350" 
+                      className="block hover:text-gold transition-colors font-bold"
+                    >
+                      +256 789 390 350
+                    </a>
+                    <a 
+                      href="mailto:destinations@tilengasafaris.com" 
+                      className="block hover:text-gold transition-colors font-bold break-all"
+                    >
+                      destinations@tilengasafaris.com
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
