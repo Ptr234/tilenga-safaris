@@ -5,6 +5,7 @@ import LoadingLink from "./LoadingLink";
 
 const navLinks = [
   {
+    title: "Our Lodges",
     column: [
       { label: "Tilenga Safari Lodge", href: "/lodges/tilenga-safari-lodge" },
       { label: "Kikorongo Safari Lodge", href: "/lodges/kikorongo-safari-lodge" },
@@ -13,6 +14,7 @@ const navLinks = [
     ]
   },
   {
+    title: "Information",
     column: [
       { label: "Sustainability & Conservation", href: "/#sustainability" },
       { label: "Travel Concierge", href: "/about#travel-concierge" },
@@ -21,6 +23,7 @@ const navLinks = [
     ]
   },
   {
+    title: "Quick Links",
     column: [
       { label: "Agent Portal", href: "/agents-portal" },
       { label: "Offers", href: "/offers" },
@@ -33,19 +36,10 @@ const navLinks = [
 const socials = [
   {
     label: "Facebook",
-    href: "https://www.facebook.com/TilengaSafaris/",
+    href: "https://www.facebook.com/profile.php?id=61573564075538",
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-      </svg>
-    ),
-  },
-  {
-    label: "LinkedIn",
-    href: "#",
-    icon: (
-      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
       </svg>
     ),
   },
@@ -60,7 +54,7 @@ const socials = [
   },
   {
     label: "TikTok",
-    href: "#",
+    href: "https://www.tiktok.com/@tilengasafaris",
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.33-.85.51-1.44 1.43-1.58 2.41-.14 1.01.23 2.06 1.01 2.73.91.82 2.22.9 3.21.36.86-.41 1.44-1.25 1.58-2.19.14-1.11.02-2.22.02-3.34 0-4.85-.01-9.7-.01-14.55z"/>
@@ -73,101 +67,100 @@ export default function Footer() {
   const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
   return (
-    <footer className="bg-forest-dark text-gold pt-20 pb-10 overflow-hidden font-sans">
-      <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20">
-        
-        {/* Main Content Area */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-20 mb-20">
-          
-          {/* Left Column: Socials, Newsletter, Contact */}
-          <div className="lg:col-span-4 space-y-12">
-            {/* Social Icons */}
-            <div className="flex gap-6 items-center">
+    <footer className="overflow-hidden font-sans border-t border-white/10">
+      {/* Top Part: Forest Green Background */}
+      <div className="bg-forest text-white pt-20 pb-16">
+        <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-20">
+            
+            {/* Left Column: Logo, Newsletter, Contact */}
+            <div className="lg:col-span-4 space-y-12">
+              <LoadingLink href="/">
+                <img
+                  src={`${base}/tilenga-logo-light.svg`}
+                  alt="Tilenga Safaris"
+                  className="h-20 md:h-28 w-auto"
+                />
+              </LoadingLink>
+
+              <div>
+                <LoadingLink 
+                  href="/plan-a-trip"
+                  className="inline-block bg-gold text-forest-dark px-8 py-4 text-[11px] uppercase tracking-[0.2em] font-bold hover:bg-cream transition-colors rounded-sm"
+                >
+                  Sign Up For Our Newsletter
+                </LoadingLink>
+              </div>
+
+              <div className="space-y-2">
+                <a 
+                  href="mailto:destinations@tilengasafaris.com" 
+                  className="block text-white/80 hover:text-gold text-lg transition-colors font-bold"
+                >
+                  destinations@tilengasafaris.com
+                </a>
+                <a 
+                  href="tel:+256789390350" 
+                  className="block text-white/80 hover:text-gold text-lg transition-colors font-bold"
+                >
+                  +256 789 390 350
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: Nav Links Grid */}
+            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+              {navLinks.map((col, idx) => (
+                <div key={idx} className="flex flex-col gap-6">
+                  <h3 className="text-gold text-[11px] uppercase tracking-[0.4em] font-bold mb-2">
+                    {col.title}
+                  </h3>
+                  {col.column.map((link) => (
+                    <LoadingLink 
+                      key={link.label} 
+                      href={link.href}
+                      className="text-[12px] uppercase tracking-[0.2em] font-bold text-white/80 hover:text-gold transition-colors"
+                      target={link.target}
+                    >
+                      {link.label}
+                    </LoadingLink>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Part: Cream Background */}
+      <div className="bg-cream text-forest">
+        <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20">
+          {/* Partners Section */}
+          <div className="flex flex-wrap items-center justify-center gap-12 lg:gap-20 py-12 border-b border-forest/10">
+            <img src={`${base}/photos/partnerslogo/uganda-tourism-board-logo-25518EC15B-seeklogo.com_.webp`} alt="UTB" className="h-16 md:h-24 w-auto object-contain" />
+            <img src={`${base}/photos/partnerslogo/autologo-114x114x0x0x114x114x1670356750.webp`} alt="AUTO" className="h-16 md:h-24 w-auto object-contain" />
+            <img src={`${base}/photos/partnerslogo/ATTAlogo.png`} alt="ATTA" className="h-16 md:h-24 w-auto object-contain" />
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="py-10 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="flex gap-6 items-center order-2 md:order-1">
               {socials.map((s) => (
                 <a 
                   key={s.label} 
                   href={s.href} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-gold/80 hover:text-white transition-colors"
+                  className="text-forest/60 hover:text-gold transition-colors"
                 >
                   {s.icon}
                 </a>
               ))}
             </div>
-
-            {/* Newsletter Button */}
-            <div>
-              <LoadingLink 
-                href="/plan-a-trip"
-                className="inline-block bg-gold text-forest-dark px-8 py-4 text-[11px] uppercase tracking-[0.2em] font-bold hover:bg-cream transition-colors rounded-sm"
-              >
-                Sign Up For Our Newsletter
-              </LoadingLink>
-            </div>
-
-            {/* Contact Details */}
-            <div className="space-y-2">
-              <a 
-                href="mailto:destinations@tilengasafaris.com" 
-                className="block text-gold/70 hover:text-white text-lg transition-colors"
-              >
-                destinations@tilengasafaris.com
-              </a>
-              <a 
-                href="tel:+256789390350" 
-                className="block text-gold/70 hover:text-white text-lg transition-colors"
-              >
-                +256 789 390 350
-              </a>
-            </div>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-forest/40 font-bold order-1 md:order-2">
+              © {new Date().getFullYear()} Tilenga Safaris. All Rights Reserved.
+            </p>
           </div>
-
-          {/* Right Column: Nav Links Grid */}
-          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-            {navLinks.map((col, idx) => (
-              <div key={idx} className="flex flex-col gap-6">
-                {col.column.map((link) => (
-                  <LoadingLink 
-                    key={link.label} 
-                    href={link.href}
-                    className="text-[10px] uppercase tracking-[0.3em] font-bold hover:text-white transition-colors"
-                    target={link.target}
-                  >
-                    {link.label}
-                  </LoadingLink>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Awards / Partners Section */}
-        <div className="flex flex-wrap items-center justify-center gap-12 lg:gap-20 py-12 border-t border-white/10 mb-12">
-          <img src={`${base}/photos/partnerslogo/uganda-tourism-board-logo-25518EC15B-seeklogo.com_.webp`} alt="UTB" className="h-16 md:h-24 w-auto object-contain transition-all duration-700" />
-          <img src={`${base}/photos/partnerslogo/autologo-114x114x0x0x114x114x1670356750.webp`} alt="AUTO" className="h-16 md:h-24 w-auto object-contain transition-all duration-700" />
-          <img src={`${base}/photos/partnerslogo/ATTAlogo.png`} alt="ATTA" className="h-16 md:h-24 w-auto object-contain transition-all duration-700" />
-          
-          {/* Placeholder for Awards from Screenshot */}
-          <div className="flex items-center gap-8">
-             <div className="w-24 h-24 border border-white/10 rounded-full flex items-center justify-center p-4">
-                <span className="text-[8px] uppercase tracking-tighter text-center font-bold text-gold/40">Award Winner 2025</span>
-             </div>
-             <div className="w-24 h-24 border border-white/10 rounded-full flex items-center justify-center p-4">
-                <span className="text-[8px] uppercase tracking-tighter text-center font-bold text-gold/40">Award Winner 2024</span>
-             </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="pt-10 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-8">
-          <LoadingLink href="/">
-            <img
-              src={`${base}/tilenga-logo-light.svg`}
-              alt="Tilenga Safaris"
-              className="h-8 md:h-10 w-auto"
-            />
-          </LoadingLink>
         </div>
       </div>
     </footer>
