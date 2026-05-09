@@ -155,7 +155,7 @@ export default function KenyaPage() {
           <FadeIn direction="left">
             <p className="section-label mb-3">Destination Overview</p>
             <h2 className="section-heading mb-6">
-              The Quintessential African Safari
+              The Definitive African Journey
             </h2>
             <div className="w-12 h-0.5 bg-gold mb-8" />
             <p className="text-stone font-sans leading-relaxed mb-4">

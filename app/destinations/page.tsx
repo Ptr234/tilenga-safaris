@@ -21,7 +21,7 @@ const destinations = [
   {
     name: "Kenya",
     tag: "Iconic Maasai Mara",
-    description: "The Great Migration. Maasai Mara. Amboseli's elephants against Kilimanjaro. Kenya is the quintessential African safari.",
+    description: "The Great Migration. Maasai Mara. Amboseli's elephants against Kilimanjaro. Kenya is the definitive African journey.",
     hotspots: ["Maasai Mara", "Wildebeest Migration", "Amboseli NP", "Lake Nakuru"],
     bestTime: "Dec–Mar · Jun–Oct",
     image: `${base}/Newstock/greatbeastmigration.jpg`,
