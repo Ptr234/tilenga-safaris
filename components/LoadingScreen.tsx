@@ -23,11 +23,27 @@ export default function LoadingScreen() {
   const [internalLoading, setInternalLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [particles, setParticles] = useState<{id: number, x: number, y: number, size: number, duration: number, delay: number}[]>([]);
-  const isVisible = internalLoading || contextLoading;
+  
+  // Use a derived state to ensure we stay visible until progress is 100%
+  // even if contextLoading becomes false slightly early
+  const [isEffectivelyLoading, setIsEffectivelyLoading] = useState(true);
 
   useEffect(() => {
     setParticles(generateParticles(15));
   }, []);
+
+  // Sync effective loading state
+  useEffect(() => {
+    if (contextLoading || internalLoading) {
+      setIsEffectivelyLoading(true);
+    } else if (progress >= 100) {
+      // Small delay after hitting 100% to let the user "see" it finished
+      const timeout = setTimeout(() => {
+        setIsEffectivelyLoading(false);
+      }, 500);
+      return () => clearTimeout(timeout);
+    }
+  }, [contextLoading, internalLoading, progress]);
 
   // 3D Tilt Effect
   const mouseX = useMotionValue(0);
@@ -55,30 +71,31 @@ export default function LoadingScreen() {
   }, [mouseX, mouseY]);
 
   useEffect(() => {
-    if (isVisible) {
+    if (isEffectivelyLoading) {
       document.body.style.overflow = "hidden";
       setProgress(0);
 
       const interval = setInterval(() => {
         setProgress(prev => {
           if (prev >= 100) return 100;
-          const increment = Math.random() * 10;
+          // Smoothly ramp up progress
+          const increment = prev < 80 ? Math.random() * 15 : Math.random() * 5;
           return Math.min(prev + increment, 100);
         });
-      }, 120);
+      }, 100);
 
       return () => {
         clearInterval(interval);
         document.body.style.overflow = "unset";
       };
     }
-  }, [isVisible]);
+  }, [isEffectivelyLoading]);
 
   useEffect(() => {
     if (internalLoading) {
       const timeout = setTimeout(() => {
         setInternalLoading(false);
-      }, 4000); 
+      }, 3000); // 3s initial splash
       return () => clearTimeout(timeout);
     }
   }, [internalLoading]);
@@ -89,14 +106,14 @@ export default function LoadingScreen() {
 
   return (
     <AnimatePresence mode="wait">
-      {isVisible && (
+      {isEffectivelyLoading && (
         <motion.div
           key="loading-screen"
           initial={{ opacity: 1 }}
           exit={{ 
             opacity: 0,
             scale: 1.1,
-            transition: { duration: 1.5, ease: [0.7, 0, 0.3, 1] }
+            transition: { duration: 1.2, ease: [0.7, 0, 0.3, 1] }
           }}
           className="fixed inset-0 z-[1000] flex items-center justify-center bg-black overflow-hidden"
           style={{ perspective: "1000px" }}
@@ -107,7 +124,7 @@ export default function LoadingScreen() {
             style={{ 
               x: bgX, 
               y: bgY,
-              scale: 1.15, // Scale up slightly to prevent edges showing during parallax
+              scale: 1.15,
             }}
           >
             <img 
@@ -115,7 +132,6 @@ export default function LoadingScreen() {
               alt="Loading Background" 
               className="w-full h-full object-cover opacity-50 grayscale-[0.2]"
             />
-            {/* Dark Overlays for depth and focus */}
             <div className="absolute inset-0 bg-[#0B1A13]/70" />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-60" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#000_100%)] opacity-80" />
@@ -164,7 +180,6 @@ export default function LoadingScreen() {
                 </filter>
               </defs>
               
-              {/* Outer Glow Circle */}
               <motion.circle
                 cx="200"
                 cy="200"
@@ -180,7 +195,6 @@ export default function LoadingScreen() {
                 className="opacity-20"
               />
 
-              {/* Main Progress Circle */}
               <motion.circle
                 cx="200"
                 cy="200"
@@ -201,7 +215,6 @@ export default function LoadingScreen() {
 
             {/* 3. Central Content with Depth */}
             <div className="relative z-10 flex flex-col items-center gap-10 text-center" style={{ transform: "translateZ(60px)" }}>
-              {/* Logo */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
                 animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
@@ -213,8 +226,6 @@ export default function LoadingScreen() {
                   alt="Tilenga Safaris" 
                   className="h-24 md:h-32 w-auto brightness-125 drop-shadow-[0_15px_35px_rgba(0,0,0,0.8)]" 
                 />
-                
-                {/* Dynamic Shine */}
                 <motion.div 
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/20 to-transparent -skew-x-20"
                   animate={{ x: ["-250%", "250%"] }}
@@ -222,7 +233,6 @@ export default function LoadingScreen() {
                 />
               </motion.div>
 
-              {/* Description */}
               <div className="flex flex-col items-center gap-4">
                 <div className="overflow-hidden">
                   <motion.h2
@@ -245,11 +255,11 @@ export default function LoadingScreen() {
             </div>
           </motion.div>
 
-          {/* 4. Heritage Footer Element */}
+          {/* Heritage Footer Element */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 0.5, y: 0 }}
-            transition={{ delay: 2.5, duration: 1.5 }}
+            transition={{ delay: 1.5, duration: 1.5 }}
             className="absolute bottom-12 flex flex-col items-center gap-4 z-20"
           >
             <span className="text-[10px] uppercase tracking-[1em] text-gold/60 font-sans">
