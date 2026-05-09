@@ -121,7 +121,7 @@ const experiences = [
     title: "Namibia Desert",
     tag: "Desert Landscapes",
     description: "Explore the towering red dunes of Sossusvlei and the haunting Skeleton Coast in one of the world's oldest and most surreal deserts.",
-    image: `${base}/Newstock/zebras.jpg`,
+    image: `${base}/Newstock/Namibia Desert.jpg`,
     num: "09",
     location: "Namib Desert, Namibia",
     vibe: "Arid · Surreal · Vast"
@@ -130,7 +130,7 @@ const experiences = [
     title: "Elephants in Botswana",
     tag: "River Wildlife",
     description: "Navigate the Okavango Delta by mokoro and witness the massive elephant herds of Chobe National Park in a true wilderness paradise.",
-    image: `${base}/Newstock/bigelephant.jpg`,
+    image: `${base}/Newstock/Elephantfamily.jpg`,
     num: "10",
     location: "Okavango, Botswana",
     vibe: "Lush · Untamed · Primal"
