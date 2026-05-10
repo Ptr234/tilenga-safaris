@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
@@ -49,6 +52,8 @@ const locationDistances = [
 ];
 
 export default function KikorongoSafariLodgePage() {
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+
   return (
     <>
       {/* ── HERO ── */}
@@ -56,7 +61,7 @@ export default function KikorongoSafariLodgePage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `url('${base}/photos/kikorongo_outside.jpg')`,
+            backgroundImage: `url('${base}/photos/kikorongo_room1.jpg')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -82,7 +87,12 @@ export default function KikorongoSafariLodgePage() {
             </p>
           </FadeIn>
           <FadeIn direction="up" delay={0.56}>
-            <a href="https://kikorongosafarilodge.com/availability/" target="_blank" rel="noopener noreferrer" className="btn-ghost">Book a Stay</a>
+            <button 
+              onClick={() => setIsBookingOpen(true)}
+              className="btn-ghost"
+            >
+              Book a Stay
+            </button>
           </FadeIn>
         </div>
 
@@ -140,7 +150,12 @@ export default function KikorongoSafariLodgePage() {
             </div>
 
             <div className="flex gap-4">
-              <a href="https://kikorongosafarilodge.com/availability/" target="_blank" rel="noopener noreferrer" className="btn-primary">Book a Stay</a>
+              <button 
+                onClick={() => setIsBookingOpen(true)}
+                className="btn-primary"
+              >
+                Book a Stay
+              </button>
               <a href="mailto:bookings@kikorongosafarilodge.com" className="btn-outline">Email Lodge</a>
             </div>
           </FadeIn>
@@ -478,7 +493,12 @@ export default function KikorongoSafariLodgePage() {
                 "A profoundly peaceful atmosphere — we did not want to leave."
               </p>
               <p className="text-cream/20 font-mono text-[9px] uppercase tracking-widest mb-10">— A Kikorongo Guest, 2024</p>
-              <a href="https://kikorongosafarilodge.com/availability/" target="_blank" rel="noopener noreferrer" className="btn-primary self-start">Experience It Yourself</a>
+              <button 
+                onClick={() => setIsBookingOpen(true)}
+                className="btn-primary self-start"
+              >
+                Experience It Yourself
+              </button>
             </FadeIn>
           </div>
         </div>
@@ -545,7 +565,12 @@ export default function KikorongoSafariLodgePage() {
                 </div>
 
                 <div className="flex flex-col gap-4">
-                  <a href="https://kikorongosafarilodge.com/availability/" target="_blank" rel="noopener noreferrer" className="btn-primary w-full text-center">Plan Full Safari Itinerary</a>
+                  <button 
+                    onClick={() => setIsBookingOpen(true)}
+                    className="btn-primary w-full text-center"
+                  >
+                    Book a Stay
+                  </button>
                   <a 
                     href="https://wa.me/256789390350?text=I'm interested in Kikorongo Safari Lodge"
                     target="_blank"
@@ -561,6 +586,33 @@ export default function KikorongoSafariLodgePage() {
           </div>
         </div>
       </section>
+
+      {/* Booking Modal */}
+      {isBookingOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10">
+          <div 
+            className="absolute inset-0 bg-forest-dark/95 backdrop-blur-md"
+            onClick={() => setIsBookingOpen(false)}
+          />
+          <div className="relative w-full max-w-5xl h-[90vh] bg-cream rounded-sm overflow-hidden flex flex-col shadow-2xl">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gold/10">
+              <h3 className="font-serif text-forest text-xl">Book Kikorongo Safari Lodge</h3>
+              <button 
+                onClick={() => setIsBookingOpen(false)}
+                className="w-10 h-10 flex items-center justify-center text-forest hover:text-gold transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto bg-white">
+              {/* @ts-expect-error rr-resnova is a third-party web component */}
+              <rr-resnova widget-id="a145c6a5-916b-4db3-b2e4-b15a19e60992" api-url="https://resnova.resrequest.com/api/"></rr-resnova>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Bottom Nav */}
       <section className="bg-forest py-12 px-5 border-t border-white/5">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -35,7 +36,7 @@ export default function RootLayout({
             <ScrollProgress />
             <Header />
             <PageTransition>
-              <main>{children}</main>
+              <main className="relative">{children}</main>
             </PageTransition>
             <InstagramFeed />
             <Footer />
@@ -59,6 +60,7 @@ export default function RootLayout({
             </a>
           </SmoothScroll>
         </LoadingProvider>
+        <Script defer src="https://resnova.resrequest.com/widget/js/app.js" strategy="afterInteractive" />
       </body>
     </html>
   );

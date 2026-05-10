@@ -188,6 +188,7 @@ export default function LoadingScreen() {
                 strokeWidth="1"
                 fill="transparent"
                 strokeDasharray={circumference}
+                initial={{ strokeDashoffset: circumference }}
                 animate={{ strokeDashoffset, opacity: [0.1, 0.3, 0.1] }}
                 transition={{ strokeDashoffset: { duration: 0.5 }, opacity: { duration: 2, repeat: Infinity } }}
                 strokeLinecap="round"
@@ -203,6 +204,7 @@ export default function LoadingScreen() {
                 strokeWidth="3"
                 fill="transparent"
                 strokeDasharray={circumference}
+                initial={{ strokeDashoffset: circumference }}
                 animate={{ strokeDashoffset }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 strokeLinecap="round"

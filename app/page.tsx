@@ -183,6 +183,7 @@ const spiritCards = [
 
 export default function HomePage() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const [activeBookingLodge, setActiveBookingLodge] = useState<null | { name: string; id: string }>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -415,14 +416,15 @@ export default function HomePage() {
 
                 {/* Label — Cottar's exact style: cream bg, rounded rect, shadow, bottom-center */}
                 <div className="absolute bottom-5 inset-x-0 flex justify-center">
-                  <a
-                    href={lodge.bookHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={() => setActiveBookingLodge({ 
+                      name: lodge.name, 
+                      id: i === 0 ? "a145daf2-9f0a-48ef-bb89-89c56187884b" : "a145c6a5-916b-4db3-b2e4-b15a19e60992" 
+                    })}
                     className="bg-[#f5f0e8] text-forest-dark font-sans text-sm font-medium px-5 py-2.5 rounded-xl shadow-[0_4px_16px_rgba(0,0,0,0.22)] hover:bg-white transition-colors duration-200 whitespace-nowrap"
                   >
                     Book {lodge.name}
-                  </a>
+                  </button>
                 </div>
               </div>
             </FadeIn>
@@ -790,6 +792,33 @@ export default function HomePage() {
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
       </section>
+
+      {/* Booking Modal */}
+      {activeBookingLodge && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10">
+          <div 
+            className="absolute inset-0 bg-forest-dark/95 backdrop-blur-md"
+            onClick={() => setActiveBookingLodge(null)}
+          />
+          <div className="relative w-full max-w-5xl h-[90vh] bg-cream rounded-sm overflow-hidden flex flex-col shadow-2xl">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gold/10">
+              <h3 className="font-serif text-forest text-xl">Book {activeBookingLodge.name}</h3>
+              <button 
+                onClick={() => setActiveBookingLodge(null)}
+                className="w-10 h-10 flex items-center justify-center text-forest hover:text-gold transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto bg-white">
+              {/* @ts-expect-error rr-resnova is a third-party web component */}
+              <rr-resnova widget-id={activeBookingLodge.id} api-url="https://resnova.resrequest.com/api/"></rr-resnova>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

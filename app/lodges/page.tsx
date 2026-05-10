@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
@@ -21,8 +24,9 @@ const lodges = [
       { value: "450+", label: "Bird Species" },
     ],
     amenities: ["Albert Nile Views", "Private Balconies", "Sport Fishing", "Night Game Drives", "Basketry Workshops"],
-    image: `${base}/photos/tilengasafarilodge/entrance.png`,
+    image: `${base}/photos/tilengasafarilodge/insideview.png`,
     href: "/lodges/tilenga-safari-lodge",
+    bookingId: "a145daf2-9f0a-48ef-bb89-89c56187884b",
     panelBg: "bg-forest-dark",
     imageOrder: "md:order-1",
     contentOrder: "md:order-2",
@@ -43,8 +47,9 @@ const lodges = [
       { value: "600+", label: "Bird Species" },
     ],
     amenities: ["Lake & Mountain Views", "Swimming Pool", "Kazinga Channel", "Bird Watching", "Rwenzori Climbing"],
-    image: `${base}/photos/kikorongo_outside.jpg`,
+    image: `${base}/photos/kikorongo_room1.jpg`,
     href: "/lodges/kikorongo-safari-lodge",
+    bookingId: "a145c6a5-916b-4db3-b2e4-b15a19e60992",
     panelBg: "bg-forest",
     imageOrder: "md:order-2",
     contentOrder: "md:order-1",
@@ -71,6 +76,8 @@ const pillars = [
 ];
 
 export default function LodgesPage() {
+  const [activeBookingLodge, setActiveBookingLodge] = useState<null | { name: string; id: string }>(null);
+
   return (
     <>
       {/* ── HERO ── */}
@@ -187,13 +194,22 @@ export default function LodgesPage() {
                 ))}
               </div>
 
-              <Link
-                href={lodge.href}
-                className="inline-flex items-center gap-4 text-cream/80 hover:text-gold font-sans text-xs uppercase tracking-[0.25em] transition-colors duration-300 group self-start border-b border-cream/20 hover:border-gold pb-3"
-              >
-                Explore Sanctuary
-                <span className="transition-transform duration-300 group-hover:translate-x-2">→</span>
-              </Link>
+              <div className="flex flex-wrap gap-6 items-center">
+                <Link
+                  href={lodge.href}
+                  className="inline-flex items-center gap-4 text-cream/80 hover:text-gold font-sans text-xs uppercase tracking-[0.25em] transition-colors duration-300 group self-start border-b border-cream/20 hover:border-gold pb-3"
+                >
+                  Explore Sanctuary
+                  <span className="transition-transform duration-300 group-hover:translate-x-2">→</span>
+                </Link>
+                <button
+                  onClick={() => setActiveBookingLodge({ name: `${lodge.nameA} ${lodge.nameB}`, id: lodge.bookingId })}
+                  className="inline-flex items-center gap-4 text-gold hover:text-cream font-sans text-xs uppercase tracking-[0.25em] transition-colors duration-300 group self-start border-b border-gold/40 hover:border-cream pb-3"
+                >
+                  Book Stay
+                  <span className="transition-transform duration-300 group-hover:translate-x-2">→</span>
+                </button>
+              </div>
             </FadeIn>
           </div>
         </section>
@@ -247,6 +263,33 @@ export default function LodgesPage() {
           </div>
         </FadeIn>
       </section>
+
+      {/* Booking Modal */}
+      {activeBookingLodge && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10">
+          <div 
+            className="absolute inset-0 bg-forest-dark/95 backdrop-blur-md"
+            onClick={() => setActiveBookingLodge(null)}
+          />
+          <div className="relative w-full max-w-5xl h-[90vh] bg-cream rounded-sm overflow-hidden flex flex-col shadow-2xl">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gold/10">
+              <h3 className="font-serif text-forest text-xl">Book {activeBookingLodge.name}</h3>
+              <button 
+                onClick={() => setActiveBookingLodge(null)}
+                className="w-10 h-10 flex items-center justify-center text-forest hover:text-gold transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto bg-white">
+              {/* @ts-expect-error rr-resnova is a third-party web component */}
+              <rr-resnova widget-id={activeBookingLodge.id} api-url="https://resnova.resrequest.com/api/"></rr-resnova>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
@@ -49,6 +52,8 @@ const locationDistances = [
 ];
 
 export default function TilengaSafariLodgePage() {
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+
   return (
     <>
       {/* ── HERO ── */}
@@ -56,7 +61,7 @@ export default function TilengaSafariLodgePage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `url('${base}/photos/tilengasafarilodge/entrance.png')`,
+            backgroundImage: `url('${base}/photos/tilengasafarilodge/insideview.png')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -82,7 +87,12 @@ export default function TilengaSafariLodgePage() {
             </p>
           </FadeIn>
           <FadeIn direction="up" delay={0.56}>
-            <a href="https://tilengasafarilodge.com/plan-trip/" target="_blank" rel="noopener noreferrer" className="btn-ghost">Book a Stay</a>
+            <button 
+              onClick={() => setIsBookingOpen(true)}
+              className="btn-ghost"
+            >
+              Book a Stay
+            </button>
           </FadeIn>
         </div>
 
@@ -139,7 +149,12 @@ export default function TilengaSafariLodgePage() {
             </div>
 
             <div className="flex gap-4">
-              <a href="https://tilengasafarilodge.com/plan-trip/" target="_blank" rel="noopener noreferrer" className="btn-primary">Book a Stay</a>
+              <button 
+                onClick={() => setIsBookingOpen(true)}
+                className="btn-primary"
+              >
+                Book a Stay
+              </button>
               <a href="mailto:booking@tilengasafarilodge.com" className="btn-outline">Email Lodge</a>
             </div>
           </FadeIn>
@@ -233,9 +248,12 @@ export default function TilengaSafariLodgePage() {
               </h2>
             </div>
             <div className="flex-1 h-px bg-gold/20 mb-3 hidden md:block" />
-            <a href="https://tilengasafarilodge.com/plan-trip/" target="_blank" rel="noopener noreferrer" className="hidden md:inline-block btn-primary shrink-0">
+            <button 
+              onClick={() => setIsBookingOpen(true)}
+              className="hidden md:inline-block btn-primary shrink-0"
+            >
               Plan Your Stay
-            </a>
+            </button>
           </FadeIn>
 
           <StaggerGrid className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-0">
@@ -423,7 +441,7 @@ export default function TilengaSafariLodgePage() {
           </FadeIn>
 
           {/* Right: Editorial copy */}
-          <div className="md:col-span-2 bg-[#0c1c11] flex flex-col justify-center p-10 md:p-14">
+          <div className="md:col-span-2 bg-[#0c1c11] flex flex-col justify-center p-10 md:p-14 lg:p-20">
             <FadeIn direction="right">
               <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-6">V · At the Table</p>
               <h3 className="font-serif text-3xl md:text-4xl text-cream leading-tight mb-6">
@@ -502,7 +520,12 @@ export default function TilengaSafariLodgePage() {
                 </h3>
               </div>
               <div className="shrink-0">
-                <a href="https://tilengasafarilodge.com/plan-trip/" target="_blank" rel="noopener noreferrer" className="btn-primary">Experience It Yourself</a>
+                <button 
+                  onClick={() => setIsBookingOpen(true)}
+                  className="btn-primary"
+                >
+                  Experience It Yourself
+                </button>
               </div>
             </div>
           </div>
@@ -594,7 +617,12 @@ export default function TilengaSafariLodgePage() {
                 </li>
               ))}
             </ul>
-            <a href="https://tilengasafarilodge.com/plan-trip/" target="_blank" rel="noopener noreferrer" className="btn-outline">Plan a Full Itinerary</a>
+            <button 
+              onClick={() => setIsBookingOpen(true)}
+              className="btn-outline"
+            >
+              Plan a Full Itinerary
+            </button>
           </FadeIn>
 
           <FadeIn direction="right" delay={0.2}>
@@ -605,9 +633,12 @@ export default function TilengaSafariLodgePage() {
                 Share your travel dates and we&apos;ll come back with availability, current rates, and a tailored proposal.
               </p>
               <div className="space-y-3">
-                <a href="https://tilengasafarilodge.com/plan-trip/" target="_blank" rel="noopener noreferrer" className="btn-outline w-full text-center block">
+                <button 
+                  onClick={() => setIsBookingOpen(true)}
+                  className="btn-outline w-full text-center block"
+                >
                   Request a Proposal
-                </a>
+                </button>
                 <a
                   href="https://wa.me/256789390350?text=I'm interested in booking Tilenga Safari Lodge"
                   target="_blank"
@@ -624,6 +655,33 @@ export default function TilengaSafariLodgePage() {
           </FadeIn>
         </div>
       </section>
+
+      {/* Booking Modal */}
+      {isBookingOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10">
+          <div 
+            className="absolute inset-0 bg-forest-dark/95 backdrop-blur-md"
+            onClick={() => setIsBookingOpen(false)}
+          />
+          <div className="relative w-full max-w-5xl h-[90vh] bg-cream rounded-sm overflow-hidden flex flex-col shadow-2xl">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gold/10">
+              <h3 className="font-serif text-forest text-xl">Book Tilenga Safari Lodge</h3>
+              <button 
+                onClick={() => setIsBookingOpen(false)}
+                className="w-10 h-10 flex items-center justify-center text-forest hover:text-gold transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto bg-white">
+              {/* @ts-expect-error rr-resnova is a third-party web component */}
+              <rr-resnova widget-id="a145daf2-9f0a-48ef-bb89-89c56187884b" api-url="https://resnova.resrequest.com/api/"></rr-resnova>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
