@@ -685,6 +685,27 @@ export default function TilengaSafariLodgePage() {
           </div>
         </div>
       )}
+
+      {/* Bottom Nav */}
+      <section className="bg-forest py-12 px-5 border-t border-white/5">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+           <Link href="/lodges/kikorongo-safari-lodge" className="group flex items-center gap-6">
+              <div className="w-12 h-12 rounded-full border border-gold/20 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-forest transition-all">
+                 →
+              </div>
+              <div className="text-left">
+                <p className="text-gold/40 text-[9px] uppercase tracking-widest mb-1">Next Sanctuary</p>
+                <p className="text-cream font-serif text-xl group-hover:text-gold transition-colors">Kikorongo Safari Lodge</p>
+              </div>
+           </Link>
+           
+           <div className="w-px h-12 bg-white/10 hidden md:block" />
+
+           <Link href="/lodges" className="text-gold/40 text-[10px] uppercase tracking-[0.4em] hover:text-gold transition-colors">
+              Back to Lodges
+           </Link>
+        </div>
+      </section>
     </>
   );
 }
