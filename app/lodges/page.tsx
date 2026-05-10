@@ -286,7 +286,7 @@ export default function LodgesPage() {
                 </svg>
               </button>
             </div>
-            <div className="flex-1 overflow-y-auto bg-white min-h-[600px]">
+            <div className="flex-1 overflow-y-auto bg-white min-h-[600px]" data-lenis-prevent>
               {/* @ts-expect-error rr-resnova is a third-party web component */}
               <rr-resnova 
                 key={activeBookingLodge.id} 
