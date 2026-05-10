@@ -50,7 +50,7 @@ const instaPosts = [
 
 export default function InstagramFeed() {
   return (
-    <section className="bg-[#fdfcf8] py-20 overflow-hidden border-t border-gold/5">
+    <section className="bg-[#fdfcf8] py-20 overflow-hidden border-t border-gold/5 relative">
       <div className="max-w-7xl mx-auto px-6 md:px-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div>

@@ -76,7 +76,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="overflow-hidden font-sans border-t border-white/10">
+    <footer className="overflow-hidden font-sans border-t border-white/10 relative">
       {/* Top Part: Forest Green Background */}
       <div className="bg-forest text-white pt-20 pb-16">
         <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20">

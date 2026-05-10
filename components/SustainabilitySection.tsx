@@ -66,7 +66,7 @@ export default function SustainabilitySection() {
         <div className="absolute top-[55%] left-[5%] w-40 h-40 rounded-full bg-gold/[0.05] blur-[60px]" />
       </div>
 
-      <div className="flex items-start w-full">
+      <div className="flex items-start w-full relative">
 
         {/* ── LEFT PANEL — sticky ── */}
         <div className="hidden lg:block w-[38%] shrink-0 sticky top-0 h-screen overflow-hidden pl-10 xl:pl-20 pr-6">

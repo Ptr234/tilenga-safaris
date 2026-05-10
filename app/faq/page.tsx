@@ -261,7 +261,7 @@ export default function FAQPage() {
         <div className="flex flex-col lg:flex-row gap-20">
           
           {/* Sidebar Navigation (Sticky) */}
-          <aside className="lg:w-1/4">
+          <aside className="lg:w-1/4 relative">
             <div className="sticky top-32">
               <FadeIn direction="right">
                 <div className="mb-12 hidden lg:block">

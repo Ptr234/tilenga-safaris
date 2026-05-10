@@ -11,18 +11,21 @@
   --stone: #6b6b5a;
   --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 @layer base {
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    min-height: 100%;
   }
   body {
     background-color: var(--cream);
     color: #333333;
     font-family: "Lato", sans-serif;
     line-height: 1.8;
+    position: relative;
+    min-height: 100%;
   }
   h1,
   h2,

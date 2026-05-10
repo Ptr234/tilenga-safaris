@@ -88,7 +88,7 @@ export default function ConciergeSection() {
         <div className="absolute bottom-[20%] left-[12%] w-56 h-56 rounded-full bg-forest/[0.05] blur-[80px]" />
       </div>
 
-      <div className="flex items-start w-full">
+      <div className="flex items-start w-full relative">
 
         {/* ── LEFT PANEL — sticky ── */}
         <div className="hidden lg:block w-[38%] shrink-0 sticky top-0 h-screen overflow-hidden pl-10 xl:pl-20 pr-6">
