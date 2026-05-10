@@ -814,7 +814,7 @@ export default function HomePage() {
             </div>
             <div className="flex-1 overflow-y-auto bg-white">
               {/* @ts-expect-error rr-resnova is a third-party web component */}
-              <rr-resnova widget-id={activeBookingLodge.id} api-url="https://resnova.resrequest.com/api/"></rr-resnova>
+              <rr-resnova key={activeBookingLodge.id} widget-id={activeBookingLodge.id} api-url="https://resnova.resrequest.com/api/"></rr-resnova>
             </div>
           </div>
         </div>

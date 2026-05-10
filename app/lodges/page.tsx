@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Script from "next/script";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
@@ -80,6 +81,8 @@ export default function LodgesPage() {
 
   return (
     <>
+      <Script defer src="https://resnova.resrequest.com/widget/js/app.js" strategy="afterInteractive" />
+
       {/* ── HERO ── */}
       <section className="grain-overlay relative h-screen min-h-[640px] overflow-hidden flex flex-col justify-end">
         <div
@@ -285,7 +288,7 @@ export default function LodgesPage() {
             </div>
             <div className="flex-1 overflow-y-auto bg-white">
               {/* @ts-expect-error rr-resnova is a third-party web component */}
-              <rr-resnova widget-id={activeBookingLodge.id} api-url="https://resnova.resrequest.com/api/"></rr-resnova>
+              <rr-resnova key={activeBookingLodge.id} widget-id={activeBookingLodge.id} api-url="https://resnova.resrequest.com/api/"></rr-resnova>
             </div>
           </div>
         </div>
