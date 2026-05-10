@@ -609,9 +609,14 @@ export default function KikorongoSafariLodgePage() {
                 </svg>
               </button>
             </div>
-            <div className="flex-1 overflow-y-auto bg-white">
+            <div className="flex-1 overflow-y-auto bg-white min-h-[600px]">
               {/* @ts-expect-error rr-resnova is a third-party web component */}
-              <rr-resnova key="kikorongo-widget" widget-id="a145c6a5-916b-4db3-b2e4-b15a19e60992" api-url="https://resnova.resrequest.com/api/"></rr-resnova>
+              <rr-resnova 
+                key="kikorongo-widget" 
+                widget-id="a145c6a5-916b-4db3-b2e4-b15a19e60992" 
+                api-url="https://resnova.resrequest.com/api/"
+                style={{ display: 'block', width: '100%', minHeight: '600px' }}
+              ></rr-resnova>
             </div>
           </div>
         </div>

@@ -678,9 +678,14 @@ export default function TilengaSafariLodgePage() {
                 </svg>
               </button>
             </div>
-            <div className="flex-1 overflow-y-auto bg-white">
+            <div className="flex-1 overflow-y-auto bg-white min-h-[600px]">
               {/* @ts-expect-error rr-resnova is a third-party web component */}
-              <rr-resnova key="tilenga-widget" widget-id="a145daf2-9f0a-48ef-bb89-89c56187884b" api-url="https://resnova.resrequest.com/api/"></rr-resnova>
+              <rr-resnova 
+                key="tilenga-widget" 
+                widget-id="a145daf2-9f0a-48ef-bb89-89c56187884b" 
+                api-url="https://resnova.resrequest.com/api/"
+                style={{ display: 'block', width: '100%', minHeight: '600px' }}
+              ></rr-resnova>
             </div>
           </div>
         </div>
