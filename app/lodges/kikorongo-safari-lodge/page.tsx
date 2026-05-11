@@ -650,13 +650,6 @@ export default function KikorongoSafariLodgePage() {
             </FadeIn>
           </div>
         </div>
-
-        {/* Background watermark */}
-        <div className="overflow-hidden pointer-events-none select-none opacity-[0.025]">
-          <p className="font-serif text-[20vw] whitespace-nowrap uppercase tracking-tighter text-cream">
-            Kikorongo
-          </p>
-        </div>
       </section>
 
       {/* ── LOCATION & BOOKING ── */}
