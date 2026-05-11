@@ -685,7 +685,7 @@ export default function TilengaSafariLodgePage() {
         <FadeIn>
           <div className="relative h-[60vh] md:h-[70vh] overflow-hidden group">
             <img
-              src={`${base}/photos/tilengasafarilodge/travel.png`}
+              src={`${base}/photos/Africa.jpg`}
               alt="Safari Game Drive"
               className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105"
             />
