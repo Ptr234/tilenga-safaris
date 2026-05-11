@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Script from "next/script";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
@@ -87,12 +86,6 @@ export default function TilengaSafariLodgePage() {
 
   return (
     <>
-      <Script
-        defer
-        src="https://resnova.resrequest.com/widget/js/app.js"
-        strategy="afterInteractive"
-      />
-
       {/* ── HERO ── */}
       <section className="grain-overlay relative h-screen min-h-[600px] overflow-hidden flex items-end">
         <div
