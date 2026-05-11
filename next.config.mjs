@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
-const basePath = "";
+const basePath =
+  process.env.NODE_ENV === "production" ? "/tilenga-safaris" : "";
 
 const nextConfig = {
   output: "export",
