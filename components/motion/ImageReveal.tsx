@@ -9,10 +9,10 @@ const EASE: [number, number, number, number] = [0.76, 0, 0.24, 1];
 type Direction = "left" | "right" | "top" | "bottom";
 
 const clipMap: Record<Direction, { hidden: string; visible: string }> = {
-  left:   { hidden: "inset(0 100% 0 0)",   visible: "inset(0 0% 0 0)" },
-  right:  { hidden: "inset(0 0 0 100%)",   visible: "inset(0 0 0 0%)" },
-  top:    { hidden: "inset(0 0 100% 0)",   visible: "inset(0 0 0% 0)" },
-  bottom: { hidden: "inset(100% 0 0 0)",   visible: "inset(0% 0 0 0)" },
+  left: { hidden: "inset(0 100% 0 0)", visible: "inset(0 0% 0 0)" },
+  right: { hidden: "inset(0 0 0 100%)", visible: "inset(0 0 0 0%)" },
+  top: { hidden: "inset(0 0 100% 0)", visible: "inset(0 0 0% 0)" },
+  bottom: { hidden: "inset(100% 0 0 0)", visible: "inset(0% 0 0 0)" },
 };
 
 interface ImageRevealProps {
@@ -37,7 +37,7 @@ export default function ImageReveal({
   return (
     <motion.div
       className={className}
-      initial={{ clipPath: hidden }}
+      initial={{ clipPath: visible }}
       whileInView={{ clipPath: visible }}
       viewport={{ once: true, margin }}
       transition={{ duration, delay, ease: EASE }}

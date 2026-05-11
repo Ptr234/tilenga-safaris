@@ -164,12 +164,12 @@ export default function TilengaSafariLodgePage() {
         </div>
 
         {/* Single large image */}
-        <div className="relative min-h-[50vh] md:min-h-0 order-1 md:order-2">
-          <ImageReveal direction="right" className="absolute inset-0 overflow-hidden">
+        <div className="relative min-h-[50vh] md:min-h-0 order-1 md:order-2 overflow-hidden">
+          <ImageReveal direction="right" className="absolute inset-0">
             <img
               src={`${base}/photos/tilengasafarilodge/cottage3.png`}
               alt="Tilenga Safari Lodge wildlife view"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 hover:scale-110"
             />
           </ImageReveal>
           <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-forest-dark/20 pointer-events-none z-[1]" />

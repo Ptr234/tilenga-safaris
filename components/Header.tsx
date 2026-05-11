@@ -14,6 +14,7 @@ const navItems = [
     image: `${base}/photos/tilengasafarilodge/entrance.png`,
     children: [
       { label: "Tilenga Safari Lodge", href: "/lodges/tilenga-safari-lodge", image: `${base}/photos/tilengasafarilodge/entrance.png` },
+
       { label: "Kikorongo Safari Lodge", href: "/lodges/kikorongo-safari-lodge", image: `${base}/kikorongoimages/IMG_3000.jpg` },
     ],
   },
@@ -77,7 +78,7 @@ export default function Header() {
         }`}
       >
         <div className="flex items-center justify-between max-w-[1800px] mx-auto">
-          
+
           {/* Left: Home */}
           <div className="flex-1">
             <LoadingLink href="/" className="text-cream text-[10px] uppercase tracking-[0.4em] font-sans font-bold hover:text-gold transition-colors">
@@ -90,7 +91,7 @@ export default function Header() {
             <LoadingLink href="/plan-a-trip" className="hidden md:block text-cream text-[10px] uppercase tracking-[0.4em] font-sans font-bold hover:text-gold transition-colors">
               Contact
             </LoadingLink>
-            <button 
+            <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="group flex items-center gap-3 text-cream hover:text-gold transition-colors"
               aria-label="Toggle Menu"
@@ -134,12 +135,12 @@ export default function Header() {
               {/* Logo Overlay on Image */}
               <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center text-cream">
                 <LoadingLink href="/" onClick={() => setMobileOpen(false)}>
-                  <motion.img 
+                  <motion.img
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    src={`${base}/tilenga-logo-light.svg`} 
-                    alt="Tilenga Safaris" 
-                    className="h-24 md:h-40 w-auto mb-8 drop-shadow-2xl cursor-pointer" 
+                    src={`${base}/tilenga-logo-light.svg`}
+                    alt="Tilenga Safaris"
+                    className="h-24 md:h-40 w-auto mb-8 drop-shadow-2xl cursor-pointer"
                   />
                 </LoadingLink>
                 <div className="space-y-3 opacity-90 font-sans text-[10px] tracking-[0.3em] uppercase font-bold">
@@ -173,7 +174,7 @@ export default function Header() {
             {/* Right: Menu Links */}
             <div className="relative flex-1 h-full bg-forest-dark flex flex-col">
               {/* Close Button Desktop */}
-              <button 
+              <button
                 onClick={() => setMobileOpen(false)}
                 className="absolute top-8 right-12 z-[130] text-cream hidden md:block group"
               >
@@ -204,12 +205,12 @@ export default function Header() {
                       >
                         {item.label}
                       </LoadingLink>
-                      
+
                       {/* Children Links */}
                       {item.children && (
                         <div className="flex flex-wrap gap-x-6 gap-y-2 opacity-60 group-hover/item:opacity-100 transition-opacity">
                           {item.children.map((child) => (
-                            <LoadingLink 
+                            <LoadingLink
                               key={child.label}
                               href={child.href}
                               onMouseEnter={(e) => {
@@ -245,7 +246,7 @@ export default function Header() {
             </div>
 
             {/* Close Button Mobile Overlay */}
-            <button 
+            <button
               onClick={() => setMobileOpen(false)}
               className="absolute top-8 right-8 z-[130] text-cream md:hidden bg-black/20 p-2 rounded-full backdrop-blur-sm"
             >

@@ -139,12 +139,12 @@ export default function LodgesPage() {
           style={{ minHeight: "90vh" }}
         >
           {/* Image panel */}
-          <div className={`relative min-h-[60vh] md:min-h-0 ${lodge.imageOrder}`}>
-            <ImageReveal direction={lodge.revealDir} className="absolute inset-0 overflow-hidden film-frame m-2">
+          <div className={`relative min-h-[60vh] md:min-h-0 ${lodge.imageOrder} overflow-hidden`}>
+            <ImageReveal direction={lodge.revealDir} className="absolute inset-0 film-frame m-2">
               <img
                 src={lodge.image}
                 alt={`${lodge.nameA} ${lodge.nameB}`}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1800ms] ease-out hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-[1800ms] ease-out hover:scale-105"
               />
             </ImageReveal>
 
