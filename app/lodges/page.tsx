@@ -48,7 +48,7 @@ const lodges = [
       { value: "600+", label: "Bird Species" },
     ],
     amenities: ["Lake & Mountain Views", "Swimming Pool", "Kazinga Channel", "Bird Watching", "Rwenzori Climbing"],
-    image: `${base}/photos/kikorongo_room1.jpg`,
+    image: `${base}/photos/kikorongo_room2.jpg`,
     href: "/lodges/kikorongo-safari-lodge",
     bookingId: "a145c6a5-916b-4db3-b2e4-b15a19e60992",
     panelBg: "bg-forest",
@@ -88,10 +88,9 @@ export default function LodgesPage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage:
-              "url(https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1800&q=85)",
+            backgroundImage: `url('${base}/photos/kikorongo_room1.jpg')`,
             backgroundSize: "cover",
-            backgroundPosition: "center 40%",
+            backgroundPosition: "center",
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/90 via-forest-dark/50 to-transparent" />
@@ -251,7 +250,7 @@ export default function LodgesPage() {
           <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1800&q=85" alt="CTA bg" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-forest-dark/80" />
-        
+
         <FadeIn className="relative z-10 max-w-2xl mx-auto text-center">
           <div className="w-16 h-px bg-gold/40 mx-auto mb-10" />
           <h2 className="font-serif text-4xl md:text-6xl text-cream leading-tight mb-6 uppercase tracking-[0.15em]">

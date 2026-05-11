@@ -64,7 +64,7 @@ export default function KikorongoSafariLodgePage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `url('${base}/photos/kikorongo_room1.jpg')`,
+            backgroundImage: `url('${base}/kikorongoimages/IMG_3000.jpg')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

@@ -36,7 +36,7 @@ const lodges = [
     location: "Queen Elizabeth National Park, Uganda",
     coords: "0.0022° S, 30.0125° E",
     description: "Perched at the Equator above Lake George, with sweeping Rwenzori views and the world's largest hippo concentration.",
-    image: `${base}/photos/kikorongo_room1.jpg`,
+    image: `${base}/kikorongoimages/IMG_3000.jpg`,
     href: "/lodges/kikorongo-safari-lodge",
     bookHref: "https://kikorongosafarilodge.com/availability/",
     tag: "Queen Elizabeth NP",

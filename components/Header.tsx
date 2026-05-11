@@ -14,7 +14,7 @@ const navItems = [
     image: `${base}/photos/tilengasafarilodge/entrance.png`,
     children: [
       { label: "Tilenga Safari Lodge", href: "/lodges/tilenga-safari-lodge", image: `${base}/photos/tilengasafarilodge/entrance.png` },
-      { label: "Kikorongo Safari Lodge", href: "/lodges/kikorongo-safari-lodge", image: `${base}/photos/kikorongo_outside.jpg` },
+      { label: "Kikorongo Safari Lodge", href: "/lodges/kikorongo-safari-lodge", image: `${base}/kikorongoimages/IMG_3000.jpg` },
     ],
   },
   {
