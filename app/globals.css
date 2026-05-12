@@ -11,21 +11,18 @@
   --stone: #6b6b5a;
   --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 @layer base {
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    position: relative;
-    min-height: 100%;
   }
   body {
     background-color: var(--cream);
     color: #333333;
     font-family: "Lato", sans-serif;
     line-height: 1.8;
-    position: relative;
-    min-height: 100%;
   }
   h1,
   h2,
@@ -499,14 +496,9 @@ button {
   transform: translateX(4px);
 }
 
-.vertical-text {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: rotate(180deg);
-}
-
 /* Hotspot gallery marquee */
-@keyframes hotspot-marquee {  0%   { transform: translateX(0); }
+@keyframes hotspot-marquee {
+  0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 .hotspot-track {

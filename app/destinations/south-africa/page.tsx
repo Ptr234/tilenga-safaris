@@ -1,81 +1,102 @@
-"use client";
-
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
-import DestinationHeroVideo from "@/components/DestinationHeroVideo";
 
-const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const packages = [
+  {
+    name: "8-Day South Africa Discovery",
+    tagline: "Safari, city & culture",
+    duration: "8 Days",
+    price: "Request a Quote",
+    description:
+      "Safari in Kruger National Park, Cape Town's iconic Table Mountain, Hartbeespoort boat cruise, Johannesburg city tour, and a deeply moving visit to Soweto and the Apartheid Museum.",
+    activities: [
+      "Kruger NP safari",
+      "Table Mountain Cableway",
+      "Hartbeespoort boat cruise",
+      "Johannesburg & Soweto tour",
+      "Apartheid Museum visit",
+      "Local food tasting",
+    ],
+    image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=700&q=85",
+    itinerary: [
+      { days: "Days 1–2", desc: "Arrival in Johannesburg, transfer to Kruger National Park." },
+      { days: "Days 3–5", desc: "Game drives in Kruger; travel to Cape Town and explore Table Mountain." },
+      { days: "Days 6–8", desc: "Hartbeespoort, Johannesburg & Soweto tours, Apartheid Museum, departure." },
+    ],
+  },
+];
 
 const hotspots = [
   {
     name: "Kruger National Park",
     detail: "Africa's Premier Big Five Safari Reserve",
-    image: `${base}/Newstock/safari.jpg`,
+    image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=900&q=85",
   },
   {
     name: "Cape Town",
     detail: "Table Mountain & the Atlantic Seaboard",
-    image: `${base}/Newstock/cape-town.jpg`,
+    image: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=900&q=85",
   },
   {
-    name: "The Winelands",
-    detail: "Stellenbosch & Franschhoek Heritage Estates",
-    image: `${base}/Newstock/splendifd.jpg`,
+    name: "Drakensberg Mountains",
+    detail: "Stunning Peaks & Dramatic Escarpments",
+    image: "https://images.unsplash.com/photo-1501705388883-4ed8a543392c?w=900&q=85",
   },
   {
-    name: "Table Mountain",
-    detail: "Iconic Flat-Topped Mountain Landmark",
-    image: `${base}/Newstock/table-mountain.jpg`,
+    name: "Johannesburg & Soweto",
+    detail: "Apartheid Museum & Living History",
+    image: "https://images.unsplash.com/photo-1595123550441-d377e017de6a?w=900&q=85",
   },
   {
-    name: "Hartbeespoort",
-    detail: "Scenic Boat Cruises & Aerial Cableway",
-    image: `${base}/Newstock/Boat Safaris08Boat Safaris.jpg`,
+    name: "Cape Peninsula",
+    detail: "Boulders Beach & Cape of Good Hope",
+    image: "https://images.unsplash.com/photo-1576085834044-92c469b79d11?w=900&q=85",
   },
-];
-
-const packages = [
   {
-    name: "8-Day South Africa Discovery",
-    tagline: "From the Highveld to the Cape",
-    duration: "8 Days / 7 Nights",
-    price: "Enquire for Bespoke Pricing",
-    description:
-      "A comprehensive journey through South Africa’s most iconic landscapes. Experience the raw wilderness of Kruger National Park, the historical depth of Johannesburg and Soweto, and the cosmopolitan beauty of Cape Town.",
-    activities: [
-      "Kruger NP Guided Game Drives",
-      "Table Mountain Cableway",
-      "Cape of Good Hope Tour",
-      "Johannesburg History Tour",
-      "Soweto & Apartheid Museum",
-      "Bespoke Culinary Experiences",
-    ],
-    image: `${base}/Newstock/safari.jpg`,
-    itineraryUrl: "#", 
+    name: "Cape Winelands",
+    detail: "Stellenbosch, Franschhoek & World-Class Wine",
+    image: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=900&q=85",
   },
 ];
 
 export default function SouthAfricaPage() {
   return (
     <>
-      <DestinationHeroVideo 
-        videoSrc="/Destinations videos/south-africa-hero.mp4"
-        title="South Africa"
-        subtitle="A World in One Country"
-        tag="Southern Africa"
-      />
+      {/* Hero */}
+      <section className="grain-overlay relative h-[80vh] min-h-[500px] overflow-hidden flex items-end">
+        <div
+          className="absolute inset-0 scale-110"
+          style={{
+            backgroundImage: "url(https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1800&q=80)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/20 via-forest-dark/30 to-forest-dark/95" />
+        <div className="relative z-10 px-6 md:px-16 pb-16 max-w-3xl">
+          <FadeIn direction="up">
+            <p className="section-label text-gold mb-3">Southern Africa</p>
+          </FadeIn>
+          <h1 className="font-serif text-6xl md:text-8xl text-cream mb-3 leading-none">
+            <SplitText text="South Africa" by="word" stagger={0.07} delay={0.2} />
+          </h1>
+          <FadeIn direction="up" delay={0.5}>
+            <p className="font-serif italic text-2xl text-gold">Cape &amp; Kruger</p>
+          </FadeIn>
+        </div>
+      </section>
 
       {/* Quick info */}
       <section className="bg-forest py-6">
         <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-cream/70 text-sm font-sans">
-          <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Best Time</span>May–Sep (Safari), Nov–Mar (Cape)</div>
+          <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Best Time</span>May–Sep</div>
           <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Currency</span>South African Rand</div>
           <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Time Zone</span>GMT +2</div>
-          <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Main Gateways</span>Johannesburg (JNB) / Cape Town (CPT)</div>
+          <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Main Airport</span>Johannesburg (JNB)</div>
         </div>
       </section>
 
@@ -84,39 +105,39 @@ export default function SouthAfricaPage() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <FadeIn direction="left">
             <p className="section-label mb-3">Destination Overview</p>
-            <h2 className="section-heading mb-6">The Pinnacle of African Diversity</h2>
+            <h2 className="section-heading mb-6">Africa&apos;s Most Complete Safari Experience</h2>
             <div className="w-12 h-0.5 bg-gold mb-8" />
             <p className="text-stone font-sans leading-relaxed mb-4">
-              South Africa is often described as &ldquo;A World in One Country,&rdquo; offering an unparalleled
-              variety of experiences. From the thrumming energy of Johannesburg to the serene
-              vineyards of the Cape, and from the thundering surf of the Wild Coast to the
-              ancient silence of the Karoo.
+              South Africa offers Africa&apos;s most diverse travel experience — world-class Big Five
+              safaris in Kruger National Park, dramatic Atlantic and Indian Ocean coastlines,
+              the breathtaking Cape Peninsula, and internationally acclaimed wine regions, all
+              within one country.
             </p>
             <p className="text-stone font-sans leading-relaxed mb-4">
-              In the northeast, Kruger National Park stands as a titan of conservation. This
-              vast sanctuary provides an intimate theatre for the Big Five, where expert guides
-              unveil the complex rhythms of the bush across two million hectares of wild terrain.
+              Kruger National Park is one of Africa&apos;s largest game reserves, home to the
+              Big Five — lion, leopard, elephant, rhino, and buffalo — along with over 500 bird
+              species and an extraordinary variety of predators.
             </p>
-            <p className="text-stone font-sans leading-relaxed">
-              At the continent&apos;s edge, Cape Town sits at the intersection of two oceans. 
-              Voted repeatedly as one of the world&apos;s most beautiful cities, it offers a 
-              sophisticated blend of award-winning gastronomy, rich history, and dramatic
-              natural landmarks like the legendary Table Mountain.
+            <p className="text-stone font-sans leading-relaxed mb-8">
+              Cape Town consistently ranks among the world&apos;s most beautiful cities —
+              framed by Table Mountain, with pristine beaches, vibrant culture, and the
+              famous Cape Winelands just an hour away.
             </p>
+            <Link href="/plan-a-trip" className="btn-primary">Plan a South Africa Trip</Link>
           </FadeIn>
 
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
-              <img src={`${base}/Newstock/safari.jpg`} alt="Kruger Wildlife" className="w-full h-52 object-cover" />
+              <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=500&q=80" alt="Kruger lion" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-6">
-              <img src={`${base}/Newstock/Zanzibar Beaches.jpg`} alt="Coastal Landscape" className="w-full h-52 object-cover" />
+              <img src="https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=500&q=80" alt="Cape Town Table Mountain" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-6">
-              <img src={`${base}/Newstock/wildanimals.jpg`} alt="South African Savannah" className="w-full h-52 object-cover" />
+              <img src="https://images.unsplash.com/photo-1595123550441-d377e017de6a?w=500&q=80" alt="Cape Town aerial" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
-              <img src={`${base}/Newstock/bigelephant.jpg`} alt="Majestic Elephant" className="w-full h-52 object-cover" />
+              <img src="https://images.unsplash.com/photo-1501705388883-4ed8a543392c?w=500&q=80" alt="Kruger elephant" className="w-full h-52 object-cover" />
             </ImageReveal>
           </div>
         </div>
@@ -127,81 +148,71 @@ export default function SouthAfricaPage() {
         <FadeIn direction="up" className="px-6 md:px-16 mb-10">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-8 h-px bg-gold/50" />
-            <p className="section-label text-gold">Iconic Hot Spots</p>
+            <p className="section-label text-gold">South Africa Hot Spots</p>
           </div>
           <h2 className="font-serif text-3xl md:text-4xl text-cream">
-            <SplitText text="Grandeur in Every Direction" by="word" stagger={0.06} />
+            <SplitText text="Wild, Scenic & World-Class" by="word" stagger={0.06} />
           </h2>
         </FadeIn>
         <HotspotGallery hotspots={hotspots} />
       </section>
 
-      {/* Tour Packages */}
+      {/* Tour Package */}
       <section className="bg-cream py-24 px-6 md:px-16">
         <div className="max-w-6xl mx-auto">
           <FadeIn className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 pb-10 border-b border-gold/20">
             <div>
-              <p className="section-label mb-3">Curated Journeys</p>
-              <h2 className="font-serif text-4xl md:text-5xl text-forest leading-tight">
-                South Africa Itineraries
-              </h2>
+              <p className="section-label mb-3">Safari Package</p>
+              <h2 className="font-serif text-4xl md:text-5xl text-forest leading-tight">South Africa Tour Package</h2>
             </div>
-            <Link href="/plan-a-trip" className="btn-primary shrink-0 self-start md:self-end">
-              Request Custom Itinerary
-            </Link>
+            <Link href="/plan-a-trip" className="btn-primary shrink-0 self-start md:self-end">Get a Custom Quote</Link>
           </FadeIn>
-          <StaggerGrid className="package-grid">
-            {packages.map((pkg, i) => (
-              <StaggerItem key={pkg.name}>
-                <div className="package-card group">
-                  <img src={pkg.image} alt={pkg.name} className="package-card-img" />
-                  <div className="package-card-overlay" />
-                  <span className="package-card-num">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="package-card-duration">{pkg.duration}</span>
 
-                  <div className="package-card-body">
-                    <p className="package-card-tagline">{pkg.tagline}</p>
-                    <h3 className="package-card-title">{pkg.name}</h3>
-                    <div className="package-card-rule" />
+          {packages.map((pkg) => (
+            <div key={pkg.name} className="grid md:grid-cols-2 gap-12 items-start">
+              <div className="relative overflow-hidden aspect-[4/3]">
+                <img src={pkg.image} alt={pkg.name} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-transparent to-transparent" />
+                <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">{pkg.duration}</span>
+              </div>
+              <div>
+                <p className="section-label mb-2">{pkg.tagline}</p>
+                <h3 className="font-serif text-3xl text-forest mb-4">{pkg.name}</h3>
+                <div className="w-10 h-px bg-gold mb-6" />
+                <p className="text-stone font-sans text-sm leading-relaxed mb-8">{pkg.description}</p>
 
-                    <div className="package-card-description-wrap">
-                      <div><p className="package-description">{pkg.description}</p></div>
+                <div className="space-y-4 mb-8">
+                  {pkg.itinerary.map((item) => (
+                    <div key={item.days} className="flex gap-4 border-t border-gold/10 pt-4">
+                      <span className="text-gold text-[10px] uppercase tracking-widest font-sans w-20 shrink-0 pt-0.5">{item.days}</span>
+                      <span className="text-stone font-sans text-sm leading-relaxed">{item.desc}</span>
                     </div>
-
-                    <div className="package-features">
-                      {pkg.activities.map((act) => (
-                        <span key={act} className="package-feature-pill">
-                          <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />
-                          {act}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="pt-4 border-t border-cream/10 space-y-3">
-                      <div className="flex items-center justify-between">
-                        <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                        <Link href="/plan-a-trip" className="package-cta">
-                          Enquire
-                          <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
-              </StaggerItem>
-            ))}
-          </StaggerGrid>
+
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {pkg.activities.map((act) => (
+                    <span key={act} className="text-[10px] uppercase tracking-widest font-sans border border-gold/30 text-forest/70 px-3 py-1.5 flex items-center gap-2">
+                      <span className="w-1 h-1 rounded-full bg-gold" />{act}
+                    </span>
+                  ))}
+                </div>
+
+                <Link href="/plan-a-trip" className="btn-primary">Enquire About This Package</Link>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* CTA */}
       <section className="bg-forest py-20 px-6 md:px-16 text-center">
         <FadeIn direction="up">
-          <h2 className="font-serif text-3xl md:text-5xl text-cream mb-6">Experience the Rainbow Nation</h2>
+          <h2 className="font-serif text-3xl md:text-5xl text-cream mb-6">Ready for South Africa?</h2>
           <p className="text-cream/60 font-sans max-w-lg mx-auto mb-10">
-            From the peak of Table Mountain to the deep bushveld of the Kruger — let us curate your definitive South African adventure.
+            Kruger sunrises, Cape Town sunsets, and wine under Table Mountain — let us design your perfect South Africa itinerary.
           </p>
-          <Link href="/plan-a-trip" className="btn-outline">Start Your Journey</Link>
+          <Link href="/plan-a-trip" className="btn-outline">Plan My South Africa Trip</Link>
         </FadeIn>
       </section>
     </>

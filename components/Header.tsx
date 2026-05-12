@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import LoadingLink from "./LoadingLink";
 import { motion, AnimatePresence } from "framer-motion";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -14,39 +13,37 @@ const navItems = [
     image: `${base}/photos/tilengasafarilodge/entrance.png`,
     children: [
       { label: "Tilenga Safari Lodge", href: "/lodges/tilenga-safari-lodge", image: `${base}/photos/tilengasafarilodge/entrance.png` },
-
-      { label: "Kikorongo Safari Lodge", href: "/lodges/kikorongo-safari-lodge", image: `${base}/kikorongoimages/IMG_3000.jpg` },
+      { label: "Kikorongo Safari Lodge", href: "/lodges/kikorongo-safari-lodge", image: `${base}/photos/kikorongo_outside.jpg` },
     ],
   },
   {
     label: "Experiences & Activities",
-    href: "/experiences",
-    image: `${base}/Newstock/Big Five Game Drives.jpg`,
-  },
-  {
-    label: "Our Destinations",
-    href: "/destinations",
-    image: `${base}/Newstock/splendifd.jpg`,
+    href: "/plan-a-trip",
+    image: `${base}/experinces/Game drives.jpg`,
     children: [
-      { label: "Uganda", href: "/destinations/uganda", image: `${base}/Newstock/Source of the Nile.jpg` },
-      { label: "Kenya", href: "/destinations/kenya", image: `${base}/Newstock/greatbeastmigration.jpg` },
-      { label: "Tanzania", href: "/destinations/tanzania", image: `${base}/Newstock/Zanzibar Beaches.jpg` },
-      { label: "Rwanda", href: "/destinations/rwanda", image: `${base}/Newstock/Gorrilla.jpg` },
-      { label: "South Africa", href: "/destinations/south-africa", image: `${base}/Newstock/safari.jpg` },
-      { label: "Namibia", href: "/destinations/namibia", image: `${base}/Newstock/wildanimals.jpg` },
-      { label: "Botswana", href: "/destinations/botswana", image: `${base}/Newstock/bigelephant.jpg` },
+      { label: "Gorilla Tracking", href: "/plan-a-trip", image: `${base}/experinces/gorrila treking.jpg` },
+      { label: "Great Beast Migration", href: "/plan-a-trip", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80" },
+      { label: "Culture - Masai mara", href: "/plan-a-trip", image: `${base}/experinces/culture emersion.jpg` },
+      { label: "Game drives for the big 5", href: "/plan-a-trip", image: `${base}/experinces/Game drives.jpg` },
+      { label: "Hot airballoon", href: "/plan-a-trip", image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&q=80" },
+      { label: "Mt Rwenzori climbing", href: "/plan-a-trip", image: `${base}/experinces/kilimanjaro climbing.jpg` },
+      { label: "Zanzibar", href: "/plan-a-trip", image: `${base}/experinces/zanzibar beach.jpg` },
+      { label: "Boat Safaris", href: "/plan-a-trip", image: `${base}/experinces/water safari.jpg` },
+      { label: "Namibia Desert", href: "/plan-a-trip", image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=800&q=80" },
+      { label: "Elephants in Botswana", href: "/plan-a-trip", image: "https://images.unsplash.com/photo-1551085254-e96b210db58a?w=800&q=80" },
     ],
   },
-  { label: "About Us", href: "/about", image: `${base}/Newstock/tourist.jpg` },
-  { label: "Sustainability & Conservation", href: "/#sustainability", image: `${base}/Newstock/touristsmovinginforest.jpg` },
-  { label: "Travel Concierge", href: "/about#travel-concierge", image: `${base}/Newstock/safari.jpg` },
+  { label: "About Us", href: "/about", image: "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=1200&q=80" },
+  { label: "Sustainability & Conservation", href: "/about#conservation", image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&q=80" },
+  { label: "Tilenga Safaris Travel Concierge", href: "/plan-a-trip", image: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=1200&q=80" },
+  { label: "Our Travel Stories", href: "/destinations", image: `${base}/experinces/culture emersion.jpg` },
 ];
 
 const bottomNav = [
-  { label: "AGENTS PORTAL", href: "/agents-portal" },
-  { label: "OFFERS", href: "/offers" },
-  { label: "FAQ", href: "/faq" },
-  { label: "GALLERY", href: "https://www.instagram.com/tilengasafaris_travel/", target: "_blank" },
+  { label: "AGENTS PORTAL", href: "/plan-a-trip" },
+  { label: "OFFERS", href: "/destinations" },
+  { label: "FAQ", href: "/about" },
+  { label: "GALLERY", href: "/lodges" },
 ];
 
 export default function Header() {
@@ -78,20 +75,20 @@ export default function Header() {
         }`}
       >
         <div className="flex items-center justify-between max-w-[1800px] mx-auto">
-
+          
           {/* Left: Home */}
           <div className="flex-1">
-            <LoadingLink href="/" className="text-cream text-[10px] uppercase tracking-[0.4em] font-sans font-bold hover:text-gold transition-colors">
+            <Link href="/" className="text-cream text-[10px] uppercase tracking-[0.4em] font-sans font-bold hover:text-gold transition-colors">
               Home
-            </LoadingLink>
+            </Link>
           </div>
 
           {/* Right: Contact + Menu Toggle */}
           <div className="flex-1 flex items-center justify-end gap-10">
-            <LoadingLink href="/plan-a-trip" className="hidden md:block text-cream text-[10px] uppercase tracking-[0.4em] font-sans font-bold hover:text-gold transition-colors">
+            <Link href="/plan-a-trip" className="hidden md:block text-cream text-[10px] uppercase tracking-[0.4em] font-sans font-bold hover:text-gold transition-colors">
               Contact
-            </LoadingLink>
-            <button
+            </Link>
+            <button 
               onClick={() => setMobileOpen(!mobileOpen)}
               className="group flex items-center gap-3 text-cream hover:text-gold transition-colors"
               aria-label="Toggle Menu"
@@ -114,7 +111,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="fixed inset-0 z-[110] flex flex-col md:flex-row bg-forest-dark overflow-hidden"
+            className="fixed inset-0 z-[110] flex flex-col md:flex-row bg-[#f2ebe0] overflow-hidden"
           >
             {/* Left: Image & Brand */}
             <div className="relative w-full md:w-[45%] h-[40vh] md:h-full overflow-hidden">
@@ -134,55 +131,39 @@ export default function Header() {
 
               {/* Logo Overlay on Image */}
               <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center text-cream">
-                <LoadingLink href="/" onClick={() => setMobileOpen(false)}>
-                  <motion.img
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    src={`${base}/tilenga-logo-light.svg`}
-                    alt="Tilenga Safaris"
-                    className="h-24 md:h-40 w-auto mb-8 drop-shadow-2xl cursor-pointer"
-                  />
-                </LoadingLink>
+                <motion.img 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  src={`${base}/tilenga-logo-light.svg`} 
+                  alt="Tilenga Safaris" 
+                  className="h-24 md:h-40 w-auto mb-10 drop-shadow-2xl" 
+                />
                 <div className="space-y-3 opacity-90 font-sans text-[10px] tracking-[0.3em] uppercase font-bold">
                   <p>destinations@tilengasafaris.com</p>
                   <p>+256 789 390 350</p>
                 </div>
               </div>
 
-              {/* Bottom Nav on Left Side (Desktop & Mobile) */}
-              <div className="absolute bottom-12 left-0 right-0 flex justify-center gap-x-8 lg:gap-x-12 gap-y-4 flex-wrap px-8 z-20">
-                {bottomNav.map((item, i) => (
-                  <motion.div
-                    key={item.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 + i * 0.1, duration: 0.6 }}
-                  >
-                    <LoadingLink
-                      href={item.href}
-                      target={item.target}
-                      onClick={() => setMobileOpen(false)}
-                      className="text-white hover:text-gold text-[12px] md:text-lg lg:text-xl font-serif uppercase tracking-[0.2em] transition-all duration-300"
-                    >
-                      {item.label}
-                    </LoadingLink>
-                  </motion.div>
+              {/* Bottom Nav on Left (Mobile) */}
+              <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-6 md:hidden">
+                {bottomNav.slice(0, 2).map(item => (
+                  <Link key={item.label} href={item.href} onClick={() => setMobileOpen(false)} className="text-[9px] tracking-widest text-cream uppercase font-bold">{item.label}</Link>
                 ))}
               </div>
             </div>
 
             {/* Right: Menu Links */}
-            <div className="relative flex-1 h-full bg-forest-dark flex flex-col">
+            <div className="relative flex-1 h-full bg-[#f2ebe0] flex flex-col">
               {/* Close Button Desktop */}
-              <button
+              <button 
                 onClick={() => setMobileOpen(false)}
-                className="absolute top-8 right-12 z-[130] text-cream hidden md:block group"
+                className="absolute top-8 right-12 z-[130] text-stone-800 hidden md:block group"
               >
                 <div className="flex items-center gap-4">
                   <span className="text-[10px] uppercase tracking-[0.4em] font-bold opacity-40 group-hover:opacity-100 transition-opacity">Close</span>
                   <div className="relative w-8 h-8 flex items-center justify-center">
-                    <span className="absolute w-8 h-px bg-cream rotate-45" />
-                    <span className="absolute w-8 h-px bg-cream -rotate-45" />
+                    <span className="absolute w-8 h-px bg-stone-800 rotate-45" />
+                    <span className="absolute w-8 h-px bg-stone-800 -rotate-45" />
                   </div>
                 </div>
               </button>
@@ -198,19 +179,19 @@ export default function Header() {
                       onMouseEnter={() => setHoveredImage(item.image)}
                       className="group/item"
                     >
-                      <LoadingLink
+                      <Link
                         href={item.href}
                         onClick={() => setMobileOpen(false)}
-                        className="text-cream hover:text-gold text-2xl md:text-4xl lg:text-5xl font-serif uppercase tracking-wider transition-all duration-300 block mb-2"
+                        className="text-[#2d3a28] hover:text-gold text-2xl md:text-4xl lg:text-5xl font-serif uppercase tracking-wider transition-all duration-300 block mb-2"
                       >
                         {item.label}
-                      </LoadingLink>
-
+                      </Link>
+                      
                       {/* Children Links */}
                       {item.children && (
                         <div className="flex flex-wrap gap-x-6 gap-y-2 opacity-60 group-hover/item:opacity-100 transition-opacity">
                           {item.children.map((child) => (
-                            <LoadingLink
+                            <Link 
                               key={child.label}
                               href={child.href}
                               onMouseEnter={(e) => {
@@ -218,10 +199,10 @@ export default function Header() {
                                 setHoveredImage(child.image);
                               }}
                               onClick={() => setMobileOpen(false)}
-                              className="text-cream/80 hover:text-gold text-[11px] md:text-xs font-sans font-bold uppercase tracking-widest transition-colors"
+                              className="text-[#2d3a28] hover:text-gold text-[11px] md:text-xs font-sans font-bold uppercase tracking-widest transition-colors"
                             >
                               {child.label}
-                            </LoadingLink>
+                            </Link>
                           ))}
                         </div>
                       )}
@@ -231,22 +212,31 @@ export default function Header() {
               </div>
 
               {/* Bottom Bar Utility */}
-              <div className="flex border-t border-white/10 p-10 md:p-12 items-center justify-between">
-                <div className="flex items-center gap-6">
-                   <span className="text-cream/30 text-[9px] tracking-widest uppercase font-bold">Follow along</span>
-                   <div className="flex gap-4">
-                      <a href="https://www.instagram.com/tilengasafaris_travel/" target="_blank" className="text-cream/40 hover:text-gold transition-colors text-xs font-bold uppercase tracking-widest">Ig</a>
-                      <a href="https://www.facebook.com/TilengaSafaris/" target="_blank" className="text-cream/40 hover:text-gold transition-colors text-xs font-bold uppercase tracking-widest">Fb</a>
-                   </div>
+              <div className="flex border-t border-stone-200/60 p-10 md:p-12 items-center justify-between">
+                <div className="flex gap-10 lg:gap-16">
+                  {bottomNav.map((item) => (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="text-stone-500 hover:text-gold text-[9px] tracking-[0.4em] font-sans font-bold transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
                 </div>
-                <div className="hidden lg:block">
-                   <span className="text-cream/20 text-[9px] tracking-[0.4em] uppercase font-bold">© 2026 Tilenga Safaris</span>
+                <div className="hidden lg:flex items-center gap-6">
+                   <span className="text-stone-300 text-[9px] tracking-widest uppercase font-bold">Follow along</span>
+                   <div className="flex gap-4">
+                      <a href="https://www.instagram.com/tilengasafaris_travel/" target="_blank" className="text-stone-400 hover:text-gold transition-colors text-xs font-bold uppercase tracking-widest">Ig</a>
+                      <a href="https://www.facebook.com/TilengaSafaris/" target="_blank" className="text-stone-400 hover:text-gold transition-colors text-xs font-bold uppercase tracking-widest">Fb</a>
+                   </div>
                 </div>
               </div>
             </div>
 
             {/* Close Button Mobile Overlay */}
-            <button
+            <button 
               onClick={() => setMobileOpen(false)}
               className="absolute top-8 right-8 z-[130] text-cream md:hidden bg-black/20 p-2 rounded-full backdrop-blur-sm"
             >

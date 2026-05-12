@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import LoadingLink from "./LoadingLink";
+import Link from "next/link";
 
 interface Destination {
   name: string;
@@ -67,7 +67,7 @@ export default function DestinationSwitcher({ destinations }: DestinationSwitche
               </div>
               
               <div className="pt-4">
-                <LoadingLink 
+                <Link 
                   href={destinations[index].href}
                   className="group inline-flex items-center gap-4 text-forest text-xs uppercase tracking-[0.3em] font-bold"
                 >
@@ -81,7 +81,7 @@ export default function DestinationSwitcher({ destinations }: DestinationSwitche
                       <path d="M9.75 4.5L14.25 9L9.75 13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
-                </LoadingLink>
+                </Link>
               </div>
             </motion.div>
           </AnimatePresence>

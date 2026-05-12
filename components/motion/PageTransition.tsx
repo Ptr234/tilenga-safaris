@@ -14,7 +14,6 @@ export default function PageTransition({ children }: { children: ReactNode }) {
     <AnimatePresence mode="wait">
       <motion.div
         key={pathname}
-        className="relative"
         // Content fades in AFTER the curtain has opened (0.75s delay matches curtain duration)
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: 0.5, delay: 0.75, ease: "easeOut" } }}

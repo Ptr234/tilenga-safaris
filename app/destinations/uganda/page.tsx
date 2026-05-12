@@ -1,185 +1,188 @@
-"use client";
-
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
-import DestinationHeroVideo from "@/components/DestinationHeroVideo";
-
-const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const hotspots = [
   {
     name: "Mountain Gorillas",
     detail: "Bwindi Impenetrable Forest",
-    image: `${base}/Newstock/Gorrillahd.jpg`,
+    image: "https://images.unsplash.com/photo-1614528767034-70de9fe166e0?w=900&q=85",
   },
   {
     name: "Murchison Falls",
     detail: "The World's Most Powerful Waterfall",
-    image: `${base}/Newstock/Source of the Nile2.jpg`,
+    image: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=900&q=85",
   },
   {
     name: "Queen Elizabeth NP",
     detail: "Kazinga Channel & Tree-Climbing Lions",
-    image: `${base}/Newstock/Queen Elizabeth NP.jpg`,
+    image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=900&q=85",
   },
   {
     name: "Mt. Rwenzori",
     detail: "Mountains of the Moon — Africa's Third-Highest Peak",
-    image: `${base}/Newstock/Mountain Climbing06Mountain Climbing.jpg`,
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=85",
   },
   {
     name: "Source of the Nile",
     detail: "Jinja — White Water Rafting & Bungee Jumping",
-    image: `${base}/Newstock/Source of the Nile.jpg`,
+    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=900&q=85",
   },
   {
     name: "Lake Mburo National Park",
     detail: "Zebras, Hippos & 350 Bird Species",
-    image: `${base}/Newstock/zebras.jpg`,
+    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=900&q=80",
   },
   {
     name: "Kibale Forest",
     detail: "Chimpanzee Trekking Capital of the World",
-    image: `${base}/Newstock/touristsmovinginforest.jpg`,
+    image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=900&q=85",
   },
   {
     name: "Buganda Kingdom",
     detail: "Uganda's Rich Cultural Heritage",
-    image: `${base}/Newpicselection/BugandaKingdom.png`,
+    image: "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=900&q=85",
   },
 ];
 
 const packages = [
   {
-    name: "Lake Mburo National Park Experience",
-    tagline: "Compact gem & smallest park",
+    name: "Lake Mburo National Park",
+    tagline: "Short safari introduction",
     duration: "2 Days",
     price: "From $500 / person (group of 4)",
     description:
-      "Lake Mburo National Park is a compact gem and Uganda's smallest park, home to 350 bird species and animals such as zebras, impalas, buffalos, leopards, and hippos. Located conveniently close to the highway, it's easily accessible from Kampala.",
-    activities: [
-      "Pick up from Kampala",
-      "Bicycle Tour",
-      "Nature walk",
-      "Traveling Back to Kampala",
-    ],
-    image: `${base}/Newstock/wildanimals.jpg`,
-    itineraryUrl: `${base}/pdfs/LAKE-MBURO-NATIONAL-PARK-EXPERIENCE.pdf`,
+      "A compact national park featuring 350 bird species and wildlife including zebras, impalas, buffalos, leopards, and hippos — located 3–4 hours from Kampala. Includes pick-up, bicycle tour, nature walk, and return.",
+    activities: ["Pick-up from Kampala", "Bicycle tour", "Nature walk", "Bird watching"],
+    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=85",
   },
   {
     name: "5-Day Wildlife Safari to Murchison Falls & Queen Elizabeth",
-    tagline: "Waterfalls & Big Four adventure",
+    tagline: "Waterfall and wildlife adventure",
     duration: "5 Days",
     price: "From $2,000 / person (2+ pax)",
     description:
-      "A bespoke adventure through Uganda's extraordinary sights. Visit the world's most powerful waterfalls, see the big four in the largest National Park, and admire sunsets on the Nile and at Kazinga Channel.",
+      "Comprehensive safari combining the world’s most powerful waterfalls with Uganda’s largest national park — game drives, boat cruises, birding, nature walks, and sunset viewing.",
     activities: [
-      "World's most powerful waterfalls",
-      "Game drive (Big Four)",
-      "Safari Boat cruise",
-      "Birding",
-      "Kazinga Channel sunset",
-      "Nature walk",
+      "Waterfall visits",
+      "Game drives",
+      "Boat cruises",
+      "Nature walks",
+      "Sunset viewing",
     ],
-    image: `${base}/Newstock/bigelephant.jpg`,
-    itineraryUrl: `${base}/pdfs/5-DAY-WILDLIFE-SAFARI-IN-UGANDA-4.pdf`,
+    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=85",
   },
   {
     name: "3-Day Gorilla Trekking Experience",
-    tagline: "Focus on Bwindi's giants",
+    tagline: "Mountain gorilla immersion",
     duration: "3 Days",
     price: "From $2,800 (2+ pax)",
     description:
-      "A life-changing journey to Bwindi Impenetrable National Park. Trek to see mountain gorillas in one of four sectors (Ruhija, Rushaga, Buhoma, or Nkuringo) with a maximum of 8 people per group.",
+      "Trek into Bwindi Impenetrable National Park — across four sectors (Ruhija, Rushaga, Buhoma, Nkuringo) — for a life-changing hour with mountain gorilla families. Maximum 8 people per gorilla family.",
     activities: [
-      "Landing in Entebbe",
-      "Drive to Kisoro - Bwindi",
-      "Gorilla trekking",
-      "Return to Entebbe",
+      "Gorilla trekking in Bwindi",
+      "Four sector options",
+      "Forest walk",
+      "Community visit",
     ],
-    image: `${base}/Newstock/gorrillla.jpg`,
-    itineraryUrl: `${base}/pdfs/3-DAYS-GORILLA-TRACKING-IN-UGANDA-ROAD-TRIP-OPTION-1.pdf`,
+    image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=700&q=85",
   },
   {
     name: "8-Day Trip Around Uganda",
-    tagline: "The ultimate adventure circuit",
+    tagline: "Complete Uganda adventure",
     duration: "8 Days",
-    price: "Starting from $3,000",
+    price: "From $3,000",
     description:
-      "Experience the best of Uganda: Gorilla trekking, game drives at Queen Elizabeth, and Kazinga Channel boat cruises, combined with adrenaline activities like white water rafting, bungee jumping, and quad biking in Jinja.",
+      "The complete Uganda experience — gorilla trekking, game drives, boat cruises, plus adrenaline adventures on the Nile: white-water rafting, kayaking, bungee jumping, quad biking, and local food tasting.",
     activities: [
-      "Gorilla Trekking",
-      "Game drive & Boat cruise",
-      "White water rafting/Kayaking",
-      "Bungee jumping",
+      "Gorilla trekking",
+      "Game drives & boat cruises",
+      "White-water rafting",
+      "Bungee jumping & quad biking",
       "Local food tasting",
     ],
-    image: `${base}/Newstock/greatbeastmigration.jpg`,
-    itineraryUrl: `${base}/pdfs/8-DAY-ROUND-TRIP-AROUND-UGANDA-June.pdf`,
-  },
-  {
-    name: "10-Day Rwenzori Mountains Trekking",
-    tagline: "Legendary Margherita Peak ascent",
-    duration: "10 Days",
-    price: "Starting from $2,000",
-    description:
-      "Discover the untouched beauty of Rwenzori Mountains National Park. Experience diverse ecosystems and stunning landscapes as you ascend to Margherita Peak, Africa's third-highest point.",
-    activities: [
-      "Arrival in Entebbe",
-      "Transfer to Kasese",
-      "Varying ecosystems trek",
-      "Margherita Peak Ascent",
-    ],
-    image: `${base}/Newstock/lioness.jpg`,
-    itineraryUrl: "#",
-  },
-  {
-    name: "4-Day Gorilla Trekking Experience",
-    tagline: "Extended primate encounter",
-    duration: "4 Days",
-    price: "From $3,000 (2+ pax)",
-    description:
-      "Explore Uganda’s extraordinary sights and engage in a life-changing gorilla trekking adventure. This package includes air or road transfer to Kisoro for an immersive Bwindi experience.",
-    activities: [
-      "Arrival in Entebbe",
-      "Fly or drive to Kisoro",
-      "Gorilla Trekking",
-      "Return to Entebbe",
-    ],
-    image: `${base}/Newstock/gorrillahigh.jpg`,
-    itineraryUrl: "#",
+    image: "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=700&q=85",
   },
   {
     name: "5-Day Wild Safari Itinerary",
-    tagline: "Murchison Falls & Queen Elizabeth",
+    tagline: "Murchison & Queen Elizabeth highlights",
     duration: "5 Days",
     price: "From $2,000 / person (2+ pax)",
     description:
-      "Experience Uganda’s extraordinary sights and unlimited adventure. This itinerary focuses on the thundering Murchison Falls and the diverse fauna of Queen Elizabeth National Park's Kazinga Channel.",
+      "Visit the thundering Murchison Falls and Queen Elizabeth National Park — encounter the Big Four on game drives, cruise the Kazinga Channel, and watch the sunset over the Rift Valley.",
     activities: [
-      "Murchison Falls visit",
-      "Game Drive (Big Four)",
-      "Safari Boat Cruise",
-      "Kazinga Channel sunset",
-      "Nature Walk",
+      "Waterfall visits",
+      "Game drives",
+      "Boat cruises",
+      "Nature walks",
+      "Sunset viewing",
     ],
-    image: `${base}/Newstock/safari.jpg`,
-    itineraryUrl: `${base}/pdfs/5-DAY-WILDLIFE-SAFARI-IN-UGANDA-4.pdf`,
+    image: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=700&q=85",
+  },
+  {
+    name: "10-Day Rwenzori Mountains Trekking",
+    tagline: "Legendary mountain trek",
+    duration: "10 Days",
+    price: "From $2,000",
+    description:
+      "Trek through varying ecosystems to Margherita Peak — Africa’s third-highest summit. Equatorial glaciers, giant heathers, and breathtaking Albertine Rift Valley panoramas.",
+    activities: [
+      "Multi-day mountain trekking",
+      "Alpine glacier visit",
+      "Diverse ecosystem walk",
+      "Village visit",
+    ],
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=85",
+  },
+  {
+    name: "4-Day Gorilla Trekking Experience",
+    tagline: "Extended gorilla stay",
+    duration: "4 Days",
+    price: "From $3,000 (2+ pax)",
+    description:
+      "An extended gorilla experience with overnight stays in Entebbe and Kisoro — time to explore Bwindi’s forest trails, visit the Batwa trail, and unwind at Lake Bunyonyi.",
+    activities: [
+      "Gorilla trekking in Bwindi",
+      "Batwa trail",
+      "Lake Bunyonyi excursion",
+      "Bird watching",
+    ],
+    image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=700&q=85",
   },
 ];
 
 export default function UgandaPage() {
   return (
     <>
-      <DestinationHeroVideo 
-        videoSrc="/Destinations videos/uganda-hero.mp4"
-        title="Uganda"
-        subtitle="The Pearl of Africa"
-      />
+      {/* Hero */}
+      <section className="grain-overlay relative h-[80vh] min-h-[500px] overflow-hidden flex items-end">
+        <div
+          className="absolute inset-0 scale-110 transition-transform duration-[8000ms]"
+          style={{
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=1800&q=80)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/20 via-forest-dark/30 to-forest-dark/95" />
+        <div className="relative z-10 px-6 md:px-16 pb-16 max-w-3xl">
+          <FadeIn direction="up">
+            <p className="section-label text-gold mb-3">East Africa</p>
+          </FadeIn>
+          <h1 className="font-serif text-6xl md:text-8xl text-cream mb-3 leading-none">
+            <SplitText text="Uganda" by="char" stagger={0.04} delay={0.2} />
+          </h1>
+          <FadeIn direction="up" delay={0.5}>
+            <p className="font-serif italic text-2xl text-gold">
+              The Pearl of Africa
+            </p>
+          </FadeIn>
+        </div>
+      </section>
 
       {/* Quick info */}
       <section className="bg-forest py-6">
@@ -243,7 +246,7 @@ export default function UgandaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src={`${base}/Newstock/Gorrilla.jpg`}
+                src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1200&q=80"
                 alt="Mountain Gorillas"
                 className="w-full h-52 object-cover hover:scale-110 transition-transform duration-700"
               />
@@ -254,8 +257,8 @@ export default function UgandaPage() {
               className="overflow-hidden mt-6"
             >
               <img
-                src={`${base}/Newstock/girrafe.jpg`}
-                alt="African Wildlife"
+                src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=500&q=80"
+                alt="Murchison Falls"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
@@ -265,7 +268,7 @@ export default function UgandaPage() {
               className="overflow-hidden -mt-6"
             >
               <img
-                src={`${base}/Newstock/bufallo.jpg`}
+                src="https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=500&q=80"
                 alt="Wildlife"
                 className="w-full h-52 object-cover"
               />
@@ -276,7 +279,7 @@ export default function UgandaPage() {
               className="overflow-hidden"
             >
               <img
-                src={`${base}/Newstock/elephantcars.jpg`}
+                src="https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=500&q=80"
                 alt="Game drive"
                 className="w-full h-52 object-cover"
               />
@@ -344,23 +347,12 @@ export default function UgandaPage() {
                       ))}
                     </div>
 
-                    <div className="pt-4 border-t border-cream/10 space-y-3">
-                      <div className="flex items-center justify-between">
-                        <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                        <Link href="/plan-a-trip" className="package-cta">
-                          Enquire
-                          <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
-                        </Link>
-                      </div>
-                      <a 
-                        href={pkg.itineraryUrl} 
-                        className="flex items-center justify-center gap-2 w-full py-2 border border-gold/30 text-gold text-[10px] uppercase tracking-widest hover:bg-gold hover:text-forest transition-all duration-300"
-                      >
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                        </svg>
-                        Download Itinerary
-                      </a>
+                    <div className="flex items-center justify-between pt-4 border-t border-cream/10">
+                      <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
+                      <Link href="/plan-a-trip" className="package-cta">
+                        Enquire
+                        <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
+                      </Link>
                     </div>
                   </div>
                 </div>

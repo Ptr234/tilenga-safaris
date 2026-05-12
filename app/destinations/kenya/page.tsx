@@ -1,123 +1,135 @@
-"use client";
-
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
-import DestinationHeroVideo from "@/components/DestinationHeroVideo";
-
-const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const hotspots = [
   {
     name: "Masai Mara",
     detail: "Kenya's Crown Jewel Reserve",
-    image: `${base}/Newstock/masai-mara.jpg`,
+    image: "https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=900&q=85",
   },
   {
     name: "Great Migration",
     detail: "1.5 Million Wildebeest Crossing",
-    image: `${base}/Newstock/greatbeastmigration.jpg`,
+    image: "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=900&q=85",
   },
   {
     name: "Amboseli National Park",
     detail: "Elephants Against Kilimanjaro",
-    image: `${base}/Newstock/bigelephant.jpg`,
+    image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=900&q=85",
   },
   {
     name: "Lake Nakuru",
     detail: "Flamingo-Lined Soda Lake",
-    image: `${base}/Newstock/wildanimals.jpg`,
+    image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=900&q=85",
   },
   {
     name: "Samburu Reserve",
     detail: "Rare Northern Species",
-    image: `${base}/Newstock/cheetah.jpg`,
+    image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=900&q=85",
   },
   {
     name: "Hells Gate National Park",
     detail: "Gorges, Geysers & Cycling Safaris",
-    image: `${base}/Newstock/safari.jpg`,
+    image: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=900&q=85",
   },
   {
     name: "Giraffe Centre",
     detail: "Nairobi — Endangered Rothschild's Giraffe",
-    image: `${base}/Newstock/girrafe.jpg`,
+    image: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=900&q=85",
   },
   {
     name: "Mount Kenya",
     detail: "Africa's Second-Highest Peak",
-    image: `${base}/Newstock/mount-kenya.jpg`,
+    image: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=900&q=85",
   },
   {
     name: "Indian Ocean Beaches",
     detail: "Diani & Mombasa — Pristine Coastline",
-    image: `${base}/Newstock/indianocean.jpg`,
+    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=900&q=85",
   },
 ];
 
 const packages = [
   {
     name: "7-Day Kenya Prime Safari",
-    tagline: "Premier parks & daily game drives",
+    tagline: "Classic wildlife first-timer",
     duration: "7 Days",
-    price: "Starting from $2000 per person",
+    price: "From $2,000 / person",
     description:
-      "Showcasing premier national parks with daily game drives. Experience the land, wildlife, cultural diversity, and rich history of Kenya up close.",
+      "Explore Kenya’s most iconic reserves with game drives, cultural visits, and the Great Migration circuit including Samburu, Lake Nakuru, and Maasai Mara.",
     activities: [
-      "Nairobi Airport Transfer",
-      "Samburu National Reserve",
-      "Lake Nakuru National Park",
-      "Masai Mara National Reserve",
-      "Nairobi Return",
+      "Nairobi city tour",
+      "Samburu game drives",
+      "Lake Nakuru flamingoes",
+      "Masai Mara safari",
     ],
-    image: `${base}/Newstock/lioness.jpg`,
-    itineraryUrl: `${base}/pdfs/7–DAY-KENYA-PRIME-SAFARI-2.pdf`,
+    image: "https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=700&q=85",
   },
   {
     name: "7-Day Magical Kenya Tour",
-    tagline: "Evergreen marshes & pink lakes",
+    tagline: "Big five & cultural highlights",
     duration: "7 Days",
-    price: "Starting from $2000 per person",
+    price: "From $2,000 / person",
     description:
-      "From the evergreen marshes of Amboseli to the pink flamingo-lined shores of Lake Nakuru and the dotted plains of the Mara.",
+      "From Amboseli’s legendary elephant herds and Kilimanjaro views to Lake Nakuru and Masai Mara, this itinerary blends wildlife with authentic local culture.",
     activities: [
-      "Nairobi Airport Transfer",
-      "Amboseli National Park",
-      "Lake Nakuru National Park",
-      "Masai Mara National Reserve",
+      "Amboseli NP",
+      "Lake Nakuru",
+      "Masai Mara",
+      "Maasai village visit",
     ],
-    image: `${base}/Newstock/elephantcars.jpg`,
-    itineraryUrl: `${base}/pdfs/7-–-DAY-MAGICAL-KENYA-TOUR-1.pdf`,
+    image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=700&q=85",
   },
   {
-    name: "12-Day Safari Tour Around Kenya & Tanzania",
-    tagline: "Two countries, one epic adventure",
+    name: "12-Day Kenya & Tanzania Safari",
+    tagline: "East Africa grand safari",
     duration: "12 Days",
-    price: "Starting from $3000 (group of 4)",
+    price: "From $3,000 / person (group of 4)",
     description:
-      "Visit Kenya and Tanzania. Explore Ngorongoro Crater, Serengeti's endless plains, Masai Mara's scenery, and authentic Maasai culture.",
+      "Journey from Kenya’s Amboseli and Masai Mara to Tanzania’s Serengeti and Ngorongoro for a seamless, epic wildlife adventure across two countries.",
     activities: [
-      "Lake Nakuru & Masai Mara",
-      "Serengeti National Park",
-      "Ngorongoro Crater Tour",
-      "Arusha & Amboseli",
+      "Serengeti NP",
+      "Ngorongoro Crater",
+      "Masai Mara",
+      "Amboseli NP",
     ],
-    image: `${base}/Newstock/bufallo.jpg`,
-    itineraryUrl: `${base}/pdfs/12-DAY-SAFARI-TOUR-AROUND-KENYA-AND-TANZANIA-1-.pdf`,
+    image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=700&q=85",
   },
 ];
 
 export default function KenyaPage() {
   return (
     <>
-      <DestinationHeroVideo 
-        videoSrc="/Destinations videos/kenya-hero.mp4"
-        title="Kenya"
-        subtitle="Iconic Maasai Mara"
-      />
+      {/* Hero */}
+      <section className="grain-overlay relative h-[80vh] min-h-[500px] overflow-hidden flex items-end">
+        <div
+          className="absolute inset-0 scale-110"
+          style={{
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=1800&q=80)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/20 via-forest-dark/30 to-forest-dark/95" />
+        <div className="relative z-10 px-6 md:px-16 pb-16 max-w-3xl">
+          <FadeIn direction="up">
+            <p className="section-label text-gold mb-3">East Africa</p>
+          </FadeIn>
+          <h1 className="font-serif text-6xl md:text-8xl text-cream mb-3 leading-none">
+            <SplitText text="Kenya" by="char" stagger={0.04} delay={0.2} />
+          </h1>
+          <FadeIn direction="up" delay={0.5}>
+            <p className="font-serif italic text-2xl text-gold">
+              Iconic Maasai Mara
+            </p>
+          </FadeIn>
+        </div>
+      </section>
 
       {/* Quick info */}
       <section className="bg-forest py-6">
@@ -155,7 +167,7 @@ export default function KenyaPage() {
           <FadeIn direction="left">
             <p className="section-label mb-3">Destination Overview</p>
             <h2 className="section-heading mb-6">
-              The Definitive African Journey
+              The Quintessential African Safari
             </h2>
             <div className="w-12 h-0.5 bg-gold mb-8" />
             <p className="text-stone font-sans leading-relaxed mb-4">
@@ -181,8 +193,8 @@ export default function KenyaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src={`${base}/Newstock/greatbeastmigration.jpg`}
-                alt="Great Migration"
+                src="https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=500&q=80"
+                alt="Masai Mara landscape"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
@@ -192,8 +204,8 @@ export default function KenyaPage() {
               className="overflow-hidden mt-6"
             >
               <img
-                src={`${base}/Newstock/mothernbabyelephant.jpg`}
-                alt="Elephant family"
+                src="https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=500&q=80"
+                alt="Lion"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
@@ -203,8 +215,8 @@ export default function KenyaPage() {
               className="overflow-hidden -mt-6"
             >
               <img
-                src={`${base}/Newstock/cheetah.jpg`}
-                alt="Cheetah"
+                src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=500&q=80"
+                alt="Elephant Amboseli"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
@@ -214,8 +226,8 @@ export default function KenyaPage() {
               className="overflow-hidden"
             >
               <img
-                src={`${base}/Newstock/zebras.jpg`}
-                alt="Zebras on safari"
+                src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=500&q=80"
+                alt="Great Migration wildebeest"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
@@ -282,23 +294,12 @@ export default function KenyaPage() {
                       ))}
                     </div>
 
-                    <div className="pt-4 border-t border-cream/10 space-y-3">
-                      <div className="flex items-center justify-between">
-                        <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                        <Link href="/plan-a-trip" className="package-cta">
-                          Enquire
-                          <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
-                        </Link>
-                      </div>
-                      <a 
-                        href={pkg.itineraryUrl} 
-                        className="flex items-center justify-center gap-2 w-full py-2 border border-gold/30 text-gold text-[10px] uppercase tracking-widest hover:bg-gold hover:text-forest transition-all duration-300"
-                      >
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                        </svg>
-                        Download Itinerary
-                      </a>
+                    <div className="flex items-center justify-between pt-4 border-t border-cream/10">
+                      <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
+                      <Link href="/plan-a-trip" className="package-cta">
+                        Enquire
+                        <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
+                      </Link>
                     </div>
                   </div>
                 </div>

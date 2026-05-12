@@ -1,73 +1,70 @@
-"use client";
-
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
-import DestinationHeroVideo from "@/components/DestinationHeroVideo";
-
-const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const hotspots = [
   {
     name: "Volcanoes National Park",
     detail: "Mountain Gorilla Trekking in the Virungas",
-    image: `${base}/gorrilas/gorrilas21.jpg`,
+    image: "/gorrilas/gorrilas21.jpg",
   },
   {
     name: "Nyungwe Forest",
     detail: "Ancient Canopy & Chimpanzee Sanctuary",
-    image: `${base}/Newstock/touristsmovinginforest.jpg`,
+    image: "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=900&q=85",
   },
   {
     name: "Lake Kivu",
     detail: "Volcanic Crater Lake on Congo Border",
-    image: `${base}/Newstock/Source of the Nile.jpg`,
+    image: "https://images.unsplash.com/photo-1474690870753-1b92efa1f2d8?w=900&q=85",
   },
   {
     name: "Kigali Genocide Memorial",
     detail: "A Powerful Tribute to History & Remembrance",
-    image: `${base}/Newstock/wildanimals.jpg`,
+    image: "https://images.unsplash.com/photo-1526319238109-56f76eaba7f2?w=900&q=85",
   },
   {
     name: "Kigali",
     detail: "Africa's Cleanest, Most Vibrant Capital",
-    image: `${base}/Newstock/safari.jpg`,
+    image: "https://images.unsplash.com/photo-1526319238109-56f76eaba7f2?w=900&q=85",
   },
 ];
 
-const packages = [
-  {
-    name: "8-Day Visit Rwanda",
-    tagline: "Gorillas & cultural immersion",
-    duration: "8 Days",
-    price: "Enquire for Rates",
-    description:
-      "Explore Rwanda’s extraordinary sights including gorilla tracking in Volcanoes National Park, Kigali city tours, and Lake Kivu boat rides.",
-    activities: [
-      "Gorilla Tracking",
-      "Kigali City Tour",
-      "Genocide Memorial",
-      "Golden Monkey Tracking",
-      "Lake Kivu Boat Ride",
-      "Cultural Village",
-      "Local Food Tasting",
-    ],
-    image: `${base}/Newstock/touristsmovinginforest.jpg`,
-    itineraryUrl: "#", // Add specific Rwanda PDF if available, or keep as #
-  },
+const itinerary = [
+  { day: "Days 1–2", title: "Kigali Arrival & City Tour", desc: "Arrive in Kigali, visit the moving Kigali Genocide Memorial, explore vibrant city markets, and enjoy authentic Rwandan cuisine." },
+  { day: "Days 3–5", title: "Volcanoes National Park", desc: "Trek into the mist-covered volcanic forests for gorilla tracking and golden monkey tracking. Each hour-long gorilla encounter is profoundly rare — up to 8 people per family group." },
+  { day: "Days 6–8", title: "Lake Kivu & Departure", desc: "Relax on the serene shores of Lake Kivu, boat to the islands, experience a cultural village stay, and taste local food before your journey home." },
 ];
 
 export default function RwandaPage() {
   return (
     <>
-      <DestinationHeroVideo 
-        videoSrc="/Destinations videos/rwanda-hero.mp4"
-        title="Rwanda"
-        subtitle="Land of a Thousand Hills"
-      />
+      {/* Hero */}
+      <section className="grain-overlay relative h-[80vh] min-h-[500px] overflow-hidden flex items-end">
+        <div
+          className="absolute inset-0 scale-110"
+          style={{
+            backgroundImage: "url(https://images.unsplash.com/photo-1614528767034-70de9fe166e0?w=1800&q=80)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/20 via-forest-dark/30 to-forest-dark/95" />
+        <div className="relative z-10 px-6 md:px-16 pb-16 max-w-3xl">
+          <FadeIn direction="up">
+            <p className="section-label text-gold mb-3">East Africa</p>
+          </FadeIn>
+          <h1 className="font-serif text-6xl md:text-8xl text-cream mb-3 leading-none">
+            <SplitText text="Rwanda" by="char" stagger={0.04} delay={0.2} />
+          </h1>
+          <FadeIn direction="up" delay={0.5}>
+            <p className="font-serif italic text-2xl text-gold">Land of a Thousand Hills</p>
+          </FadeIn>
+        </div>
+      </section>
 
       {/* Quick info */}
       <section className="bg-forest py-6">
@@ -105,16 +102,16 @@ export default function RwandaPage() {
 
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
-              <img src={`${base}/gorrilas/gorillar.webp`} alt="Mountain Gorillas in mist" className="w-full h-52 object-cover" />
+              <img src="/gorrilas/gorillar.webp" alt="Mountain Gorillas in mist" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-6">
-              <img src={`${base}/Newstock/Gorrillahd.jpg`} alt="Mountain Gorilla" className="w-full h-52 object-cover" />
+              <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=500&q=80" alt="Nyungwe forest" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-6">
-              <img src={`${base}/Newstock/gorrillla.jpg`} alt="Gorillas in forest" className="w-full h-52 object-cover" />
+              <img src="https://images.unsplash.com/photo-1474690870753-1b92efa1f2d8?w=500&q=80" alt="Lake Kivu" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
-              <img src={`${base}/Newstock/Gorrilla.jpg`} alt="Mountain Gorilla encounter" className="w-full h-52 object-cover" />
+              <img src="https://images.unsplash.com/photo-1526319238109-56f76eaba7f2?w=500&q=80" alt="Kigali city" className="w-full h-52 object-cover" />
             </ImageReveal>
           </div>
         </div>
@@ -134,69 +131,59 @@ export default function RwandaPage() {
         <HotspotGallery hotspots={hotspots} />
       </section>
 
-      {/* Tour Packages */}
+      {/* Featured Package */}
       <section className="bg-cream py-24 px-6 md:px-16">
-        <div className="max-w-6xl mx-auto">
-          <FadeIn className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 pb-10 border-b border-gold/20">
-            <div>
-              <p className="section-label mb-3">Safari Packages</p>
-              <h2 className="font-serif text-4xl md:text-5xl text-forest leading-tight">
-                Rwanda Tour Packages
-              </h2>
-            </div>
-            <Link href="/plan-a-trip" className="btn-primary shrink-0 self-start md:self-end">
-              Get a Custom Quote
-            </Link>
+        <div className="max-w-5xl mx-auto">
+          <FadeIn direction="up" className="text-center mb-14">
+            <p className="section-label mb-3">Recommended Package</p>
+            <h2 className="section-heading">8-Day Visit Rwanda Safari</h2>
+            <div className="w-16 h-0.5 bg-gold mx-auto mt-5" />
+            <p className="text-stone font-sans mt-6 max-w-xl mx-auto">
+              The complete Rwanda experience — gorillas, golden monkeys, Kigali&apos;s culture,
+              Lake Kivu&apos;s tranquility, and the living history of a nation reborn.
+            </p>
           </FadeIn>
-          <StaggerGrid className="package-grid">
-            {packages.map((pkg, i) => (
-              <StaggerItem key={pkg.name}>
-                <div className="package-card group">
-                  <img src={pkg.image} alt={pkg.name} className="package-card-img" />
-                  <div className="package-card-overlay" />
-                  <span className="package-card-num">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="package-card-duration">{pkg.duration}</span>
 
-                  <div className="package-card-body">
-                    <p className="package-card-tagline">{pkg.tagline}</p>
-                    <h3 className="package-card-title">{pkg.name}</h3>
-                    <div className="package-card-rule" />
-
-                    <div className="package-card-description-wrap">
-                      <div><p className="package-description">{pkg.description}</p></div>
-                    </div>
-
-                    <div className="package-features">
-                      {pkg.activities.map((act) => (
-                        <span key={act} className="package-feature-pill">
-                          <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />
-                          {act}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="pt-4 border-t border-cream/10 space-y-3">
-                      <div className="flex items-center justify-between">
-                        <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                        <Link href="/plan-a-trip" className="package-cta">
-                          Enquire
-                          <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
-                        </Link>
-                      </div>
-                      <a 
-                        href={pkg.itineraryUrl} 
-                        className="flex items-center justify-center gap-2 w-full py-2 border border-gold/30 text-gold text-[10px] uppercase tracking-widest hover:bg-gold hover:text-forest transition-all duration-300"
-                      >
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                        </svg>
-                        Download Itinerary
-                      </a>
+          <StaggerGrid className="space-y-0">
+            <StaggerItem>
+              <div className="bg-white border border-gold/10 overflow-hidden">
+                <div className="relative h-64">
+                  <img
+                    src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
+                    alt="Rwanda gorilla trekking"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-forest-dark/50" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center">
+                      <p className="font-serif text-3xl text-cream">8 Days in Rwanda</p>
+                      <p className="text-gold text-sm font-sans uppercase tracking-widest mt-2">Gorillas · Culture · Lake Kivu</p>
                     </div>
                   </div>
                 </div>
-              </StaggerItem>
-            ))}
+                <div className="p-8">
+                  <div className="space-y-6 mb-8">
+                    {itinerary.map((day) => (
+                      <div key={day.day} className="flex gap-6 border-l-2 border-gold/30 pl-6">
+                        <div className="shrink-0">
+                          <p className="text-gold font-serif text-sm">{day.day}</p>
+                        </div>
+                        <div>
+                          <h4 className="font-serif text-lg text-forest mb-1">{day.title}</h4>
+                          <p className="text-stone text-sm font-sans leading-relaxed">{day.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {["Gorilla Tracking", "Kigali City Tour", "Genocide Memorial", "Golden Monkey Trek", "Lake Kivu Boat Ride", "Cultural Village", "Local Food Tasting"].map((act) => (
+                      <span key={act} className="text-[10px] uppercase tracking-wider text-stone border border-stone/30 px-2 py-0.5 font-sans">{act}</span>
+                    ))}
+                  </div>
+                  <Link href="/plan-a-trip" className="btn-primary">Enquire About This Package</Link>
+                </div>
+              </div>
+            </StaggerItem>
           </StaggerGrid>
         </div>
       </section>

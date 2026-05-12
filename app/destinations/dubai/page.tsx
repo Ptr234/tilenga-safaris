@@ -1,14 +1,9 @@
-"use client";
-
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
-import DestinationHeroVideo from "@/components/DestinationHeroVideo";
-
-const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const packages = [
   {
@@ -77,12 +72,29 @@ const hotspots = [
 export default function DubaiPage() {
   return (
     <>
-      <DestinationHeroVideo 
-        videoSrc="/Destinations videos/africa-generic.mp4"
-        title="Dubai"
-        subtitle="Desert Luxury"
-        tag="Middle East"
-      />
+      {/* Hero */}
+      <section className="grain-overlay relative h-[80vh] min-h-[500px] overflow-hidden flex items-end">
+        <div
+          className="absolute inset-0 scale-110"
+          style={{
+            backgroundImage: "url(https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1800&q=80)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/20 via-forest-dark/30 to-forest-dark/95" />
+        <div className="relative z-10 px-6 md:px-16 pb-16 max-w-3xl">
+          <FadeIn direction="up">
+            <p className="section-label text-gold mb-3">Middle East</p>
+          </FadeIn>
+          <h1 className="font-serif text-6xl md:text-8xl text-cream mb-3 leading-none">
+            <SplitText text="Dubai" by="char" stagger={0.05} delay={0.2} />
+          </h1>
+          <FadeIn direction="up" delay={0.5}>
+            <p className="font-serif italic text-2xl text-gold">Desert Luxury</p>
+          </FadeIn>
+        </div>
+      </section>
 
       {/* Quick info */}
       <section className="bg-forest py-6">

@@ -1,109 +1,126 @@
-"use client";
-
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
-import DestinationHeroVideo from "@/components/DestinationHeroVideo";
-
-const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const hotspots = [
   {
     name: "Serengeti",
     detail: "Endless Plains & the Great Migration",
-    image: `${base}/Newstock/serengeti-national-park.jpg`,
+    image: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=900&q=85",
   },
   {
     name: "Ngorongoro Crater",
     detail: "UNESCO World Heritage — Big Five & Black Rhino",
-    image: `${base}/Newstock/ngorongoro-crater.jpg`,
+    image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=900&q=85",
   },
   {
     name: "Zanzibar",
     detail: "Stone Town, Spice Tours & Crystal-Clear Waters",
-    image: `${base}/Newstock/Zanzibar Beaches.jpg`,
+    image: "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&q=85",
   },
   {
     name: "Mount Kilimanjaro",
     detail: "Africa's Rooftop at 5,895m",
-    image: `${base}/Newstock/Mountain Climbing06Mountain Climbing.jpg`,
+    image: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=900&q=85",
   },
   {
     name: "Ruaha National Park",
     detail: "Tanzania's Largest & Most Wild Park",
-    image: `${base}/Newstock/ruaha-national-park.jpg`,
+    image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=900&q=85",
   },
   {
     name: "Tarangire National Park",
     detail: "Baobab Giants & Elephant Herds",
-    image: `${base}/Newstock/tarangire-national-park.jpg`,
+    image: "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=900&q=85",
   },
 ];
 
 const packages = [
   {
-    name: "Zanzibar Beach Holiday (5N/6D)",
-    tagline: "Snorkeling & turtles at Nungwi",
-    duration: "6 Days / 5 Nights",
-    price: "Starting from $1200",
+    name: "Zanzibar Beach Holiday",
+    tagline: "Indian Ocean beach escape",
+    duration: "5 Nights / 6 Days",
+    price: "From $1,200",
+    minPax: "Min. 2 participants",
     description:
-      "Includes Stone Town, Prison Island, Safari Blue, Mnemba snorkeling, and swimming with turtles at Nungwi Natural Aquarium.",
+      "Stone Town tour, Prison Island, Safari Blue, snorkeling at Mnemba, and turtle swimming at Nungwi — the perfect Indian Ocean escape with coastal luxury.",
     activities: [
-      "Arrive Zanzibar Airport",
-      "Stone Town Walking Tour",
-      "Safari Blue Full-Day Trip",
-      "Mnemba Snorkeling",
-      "Nungwi Turtle Swimming",
+      "Stone Town tour",
+      "Prison Island",
+      "Safari Blue",
+      "Mnemba snorkeling",
+      "Turtle swimming",
     ],
-    image: `${base}/Newstock/safari.jpg`,
-    itineraryUrl: `${base}/pdfs/ZANZIBAR-BEACH-HOLIDAY-AND-SNORKELING-1.pdf`,
+    image: "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=700&q=85",
   },
   {
-    name: "Zanzibar Beach Holiday (6N/7D)",
-    tagline: "Dolphin swimming & Jozani forest",
-    duration: "7 Days / 6 Nights",
-    price: "Starting from $1200",
+    name: "Zanzibar Spice Island Escape",
+    tagline: "Spice island and sunset bliss",
+    duration: "6 Nights / 7 Days",
+    price: "From $1,200",
+    minPax: "Min. 2 participants",
     description:
-      "A complete island escape featuring Prison Island, spice tours, Jozani Forest, Safari Blue, and dolphin swimming encounters.",
+      "Enjoy Stone Town, a Spice Tour, Jozani Forest with red colobus monkeys, and a dolphin swim — then relax on white-sand beaches as the sun sets over the Indian Ocean.",
     activities: [
-      "Arrive Zanzibar Airport",
-      "Stone Town & Prison Island",
-      "Safari Blue Full-Day",
-      "Dolphin & Jozani Forest Tour",
-      "Beach Relaxation",
+      "Stone Town",
+      "Prison Island",
+      "Spice Tour",
+      "Jozani Forest",
+      "Dolphin swimming",
     ],
-    image: `${base}/Newstock/cheetah.jpg`,
-    itineraryUrl: `${base}/pdfs/ZANZIBAR-BEACH-HOLIDAY-6-NIGHTS-AND-7-DAYS-2.pdf`,
+    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=700&q=85",
   },
   {
-    name: "12-Day Safari Tour Around Kenya & Tanzania",
-    tagline: "Grand East African circuit",
+    name: "12-Day Kenya & Tanzania Safari",
+    tagline: "Legendary migration safari",
     duration: "12 Days",
-    price: "Starting from $3000 (group of 4)",
+    price: "From $3,000 / person",
+    minPax: "Min. 4 participants",
     description:
-      "Showcasing Ngorongoro Crater, the Big Five, rare Black Rhino, Serengeti's endless plains, Masai Mara, and authentic Maasai culture.",
+      "A seamless East Africa journey from the Serengeti and Ngorongoro to Kenya’s Masai Mara and Amboseli, designed for epic wildlife viewing and unforgettable landscapes.",
     activities: [
-      "Lake Nakuru & Masai Mara",
-      "Serengeti National Park",
-      "Ngorongoro Crater Tour",
-      "Arusha & Amboseli",
+      "Serengeti NP",
+      "Ngorongoro Crater",
+      "Lake Nakuru",
+      "Masai Mara",
+      "Amboseli NP",
     ],
-    image: `${base}/Newstock/zebras.jpg`,
-    itineraryUrl: `${base}/pdfs/12-DAY-SAFARI-TOUR-AROUND-KENYA-AND-TANZANIA-1-.pdf`,
+    image: "https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=700&q=85",
   },
 ];
 
 export default function TanzaniaPage() {
   return (
     <>
-      <DestinationHeroVideo 
-        videoSrc="/Destinations videos/tanzania-hero.mp4"
-        title="Tanzania"
-        subtitle="Serengeti & Zanzibar"
-      />
+      {/* Hero */}
+      <section className="grain-overlay relative h-[80vh] min-h-[500px] overflow-hidden flex items-end">
+        <div
+          className="absolute inset-0 scale-110"
+          style={{
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=1800&q=80)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/20 via-forest-dark/30 to-forest-dark/95" />
+        <div className="relative z-10 px-6 md:px-16 pb-16 max-w-3xl">
+          <FadeIn direction="up">
+            <p className="section-label text-gold mb-3">East Africa</p>
+          </FadeIn>
+          <h1 className="font-serif text-6xl md:text-8xl text-cream mb-3 leading-none">
+            <SplitText text="Tanzania" by="char" stagger={0.04} delay={0.2} />
+          </h1>
+          <FadeIn direction="up" delay={0.5}>
+            <p className="font-serif italic text-2xl text-gold">
+              Serengeti &amp; Zanzibar
+            </p>
+          </FadeIn>
+        </div>
+      </section>
 
       {/* Quick info */}
       <section className="bg-forest py-6">
@@ -167,7 +184,7 @@ export default function TanzaniaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src={`${base}/Newstock/Mountain Climbing06Mountain Climbing.jpg`}
+                src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=500&q=80"
                 alt="Mount Kilimanjaro"
                 className="w-full h-52 object-cover"
               />
@@ -178,7 +195,7 @@ export default function TanzaniaPage() {
               className="overflow-hidden mt-6"
             >
               <img
-                src={`${base}/Newstock/Zanzibar Beaches.jpg`}
+                src="https://images.unsplash.com/photo-1474690870753-1b92efa1f2d8?w=500&q=80"
                 alt="Zanzibar beach"
                 className="w-full h-52 object-cover"
               />
@@ -189,8 +206,8 @@ export default function TanzaniaPage() {
               className="overflow-hidden -mt-6"
             >
               <img
-                src={`${base}/Newstock/wildanimals.jpg`}
-                alt="Ngorongoro wildlife"
+                src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=500&q=80"
+                alt="Ngorongoro Crater"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
@@ -200,8 +217,8 @@ export default function TanzaniaPage() {
               className="overflow-hidden"
             >
               <img
-                src={`${base}/Newstock/bigelephant.jpg`}
-                alt="Serengeti elephants"
+                src="https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=500&q=80"
+                alt="Serengeti wildlife"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
@@ -268,23 +285,15 @@ export default function TanzaniaPage() {
                       ))}
                     </div>
 
-                    <div className="pt-4 border-t border-cream/10 space-y-3">
-                      <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between pt-4 border-t border-cream/10">
+                      <div>
                         <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                        <Link href="/plan-a-trip" className="package-cta">
-                          Enquire
-                          <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
-                        </Link>
+                        {pkg.minPax && <p className="text-cream/40 text-[9px] font-sans mt-0.5">{pkg.minPax}</p>}
                       </div>
-                      <a 
-                        href={pkg.itineraryUrl} 
-                        className="flex items-center justify-center gap-2 w-full py-2 border border-gold/30 text-gold text-[10px] uppercase tracking-widest hover:bg-gold hover:text-forest transition-all duration-300"
-                      >
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                        </svg>
-                        Download Itinerary
-                      </a>
+                      <Link href="/plan-a-trip" className="package-cta">
+                        Enquire
+                        <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
+                      </Link>
                     </div>
                   </div>
                 </div>
