@@ -12,19 +12,6 @@ const destinations = [
   { name: "Botswana", href: "/destinations/botswana" },
 ];
 
-const experiences = [
-  "Gorilla Tracking",
-  "Great Beast Migration",
-  "Culture - Masai mara",
-  "Game drives for the big 5",
-  "Hot airballoon",
-  "Mt Rwenzori climbing",
-  "Zanzibar",
-  "Boat Safaris",
-  "Namibia Desert",
-  "Elephants in Botswana",
-];
-
 const lodges = [
   { label: "Tilenga Safari Lodge", href: "/lodges/tilenga-safari-lodge" },
   { label: "Kikorongo Safari Lodge", href: "/lodges/kikorongo-safari-lodge" },
@@ -146,7 +133,7 @@ export default function Footer() {
       {/* ── MIDDLE SECTION: Navigation Grid ── */}
       <div className="border-b border-gold/10">
         <div className="max-w-7xl mx-auto px-6 md:px-16 py-16 md:py-24">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-8">
             
             {/* 01 Destinations */}
             <div>
@@ -168,30 +155,10 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* 02 Experiences */}
+            {/* 02 Our Lodges & Company */}
             <div>
               <div className="flex items-center gap-3 mb-8">
                 <span className="font-serif text-gold/40 text-xs">02</span>
-                <div className="h-px flex-1 bg-gold/10" />
-              </div>
-              <p className="text-gold/60 text-[10px] uppercase tracking-[0.4em] font-sans font-bold mb-8">
-                Experiences
-              </p>
-              <ul className="space-y-4">
-                {experiences.map((e) => (
-                  <li key={e}>
-                    <Link href="/plan-a-trip" className="text-cream/50 hover:text-gold text-[12px] font-sans tracking-wide transition-colors duration-300">
-                      {e}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* 03 Our Lodges & Company */}
-            <div>
-              <div className="flex items-center gap-3 mb-8">
-                <span className="font-serif text-gold/40 text-xs">03</span>
                 <div className="h-px flex-1 bg-gold/10" />
               </div>
               <p className="text-gold/60 text-[10px] uppercase tracking-[0.4em] font-sans font-bold mb-8">
@@ -220,10 +187,10 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* 04 Get In Touch */}
+            {/* 03 Get In Touch */}
             <div>
               <div className="flex items-center gap-3 mb-8">
-                <span className="font-serif text-gold/40 text-xs">04</span>
+                <span className="font-serif text-gold/40 text-xs">03</span>
                 <div className="h-px flex-1 bg-gold/10" />
               </div>
               <p className="text-gold/60 text-[10px] uppercase tracking-[0.4em] font-sans font-bold mb-8">

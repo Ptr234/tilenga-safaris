@@ -2,6 +2,7 @@ import Link from "next/link";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
+import ResNovaWidget from "@/components/ResNovaWidget";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -82,7 +83,7 @@ export default function KikorongoSafariLodgePage() {
             </p>
           </FadeIn>
           <FadeIn direction="up" delay={0.56}>
-            <Link href="/plan-a-trip" className="btn-ghost">Book a Stay</Link>
+            <Link href="#booking" className="btn-ghost">Book a Stay</Link>
           </FadeIn>
         </div>
 
@@ -140,7 +141,7 @@ export default function KikorongoSafariLodgePage() {
             </div>
 
             <div className="flex gap-4">
-              <Link href="/plan-a-trip" className="btn-primary">Book a Stay</Link>
+              <Link href="#booking" className="btn-primary">Book a Stay</Link>
               <a href="mailto:bookings@kikorongosafarilodge.com" className="btn-outline">Email Lodge</a>
             </div>
           </FadeIn>
@@ -483,82 +484,37 @@ export default function KikorongoSafariLodgePage() {
           </div>
         </div>
 
-        {/* Background watermark */}
-        <div className="overflow-hidden pointer-events-none select-none opacity-[0.025]">
-          <p className="font-serif text-[20vw] whitespace-nowrap uppercase tracking-tighter text-cream">Kikorongo</p>
-        </div>
-
       </section>
 
-      {/* ── LOCATION & BOOKING ── */}
-      <section className="bg-cream py-20 md:py-32 px-5 md:px-16 border-t border-gold/10">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 md:gap-24">
-            
-            {/* Travel Times */}
-            <div>
-              <FadeIn direction="left">
-                <h3 className="font-serif text-3xl text-forest mb-10">Getting There</h3>
-                <div className="space-y-6">
-                  {locationDistances.map((loc) => (
-                    <div key={loc.place} className="flex items-center justify-between border-b border-gold/15 pb-4">
-                      <span className="font-sans text-xs uppercase tracking-widest text-stone">{loc.place}</span>
-                      <span className="font-serif italic text-forest">{loc.distance}</span>
-                    </div>
-                  ))}
+      {/* ── LOCATION ── */}
+      <section id="booking" className="bg-cream py-20 md:py-28 px-5 md:px-16 border-t border-gold/10">
+        <div className="max-w-4xl mx-auto">
+          <FadeIn direction="left">
+            <h3 className="font-serif text-3xl text-forest mb-10">Getting There</h3>
+            <div className="space-y-6">
+              {locationDistances.map((loc) => (
+                <div key={loc.place} className="flex items-center justify-between border-b border-gold/15 pb-4">
+                  <span className="font-sans text-xs uppercase tracking-widest text-stone">{loc.place}</span>
+                  <span className="font-serif italic text-forest">{loc.distance}</span>
                 </div>
-                <div className="mt-12 bg-forest-dark p-8 text-cream">
-                  <p className="font-serif text-lg text-gold mb-4">Location Note</p>
-                  <p className="font-sans text-sm leading-relaxed text-cream/60">
-                    Kikorongo Safari Lodge is perched on a high ridge. While the views are unmatched, 
-                    the paths between cottages can be steep. Please inform us if you require 
-                    a cottage with easier access.
-                  </p>
-                </div>
-              </FadeIn>
+              ))}
             </div>
-
-            {/* Direct Book */}
-            <div className="bg-white p-10 md:p-16 border border-gold/20 shadow-2xl relative">
-              <div className="absolute -top-6 -right-6 w-32 h-32 bg-gold/5 rounded-full pointer-events-none" />
-              
-              <FadeIn direction="up">
-                <p className="section-label mb-4">Reservations</p>
-                <h2 className="font-serif text-4xl md:text-5xl text-forest leading-tight mb-8">
-                  Book Kikorongo<br /><em className="italic text-gold">Safari Lodge</em>
-                </h2>
-                
-                <div className="space-y-8 mb-12">
-                  {[
-                    { label: "Phone", value: "+256 789 390 350", href: "tel:+256789390350" },
-                    { label: "Phone 2", value: "+256 775 69 2334", href: "tel:+256775692334" },
-                    { label: "Email", value: "bookings@kikorongosafarilodge.com", href: "mailto:bookings@kikorongosafarilodge.com" },
-                    { label: "Web", value: "www.kikorongosafarilodge.com", href: "https://www.kikorongosafarilodge.com" },
-                  ].map((contact) => (
-                    <div key={contact.label}>
-                      <p className="text-[10px] uppercase tracking-[0.3em] text-gold font-bold mb-1">{contact.label}</p>
-                      <a href={contact.href} className="font-serif text-xl text-forest hover:text-gold transition-colors break-all">
-                        {contact.value}
-                      </a>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex flex-col gap-4">
-                  <Link href="/plan-a-trip" className="btn-primary w-full text-center">Plan Full Safari Itinerary</Link>
-                  <a 
-                    href="https://wa.me/256789390350?text=I'm interested in Kikorongo Safari Lodge"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-outline w-full text-center"
-                  >
-                    Chat on WhatsApp
-                  </a>
-                </div>
-              </FadeIn>
+            <div className="mt-12 bg-forest-dark p-8 text-cream">
+              <p className="font-serif text-lg text-gold mb-4">Location Note</p>
+              <p className="font-sans text-sm leading-relaxed text-cream/60">
+                Kikorongo Safari Lodge is perched on a high ridge. While the views are unmatched,
+                the paths between cottages can be steep. Please inform us if you require
+                a cottage with easier access.
+              </p>
             </div>
+          </FadeIn>
+        </div>
+      </section>
 
-          </div>
+      {/* ── RESNOVA WIDGET ── */}
+      <section className="bg-cream py-12 px-6 md:px-24 lg:px-48">
+        <div className="max-w-2xl mx-auto">
+          <ResNovaWidget widgetId="a145c6a5-916b-4db3-b2e4-b15a19e60992" />
         </div>
       </section>
 

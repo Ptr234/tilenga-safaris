@@ -5,11 +5,13 @@ import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const hotspots = [
   {
     name: "Mountain Gorillas",
     detail: "Bwindi Impenetrable Forest",
-    image: "https://images.unsplash.com/photo-1614528767034-70de9fe166e0?w=900&q=85",
+    image: `${base}/photos/newstock/Gorrillahd.jpg`,
   },
   {
     name: "Murchison Falls",
@@ -19,32 +21,32 @@ const hotspots = [
   {
     name: "Queen Elizabeth NP",
     detail: "Kazinga Channel & Tree-Climbing Lions",
-    image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=900&q=85",
+    image: `${base}/photos/newstock/Queen Elizabeth NP.jpg`,
   },
   {
     name: "Mt. Rwenzori",
     detail: "Mountains of the Moon — Africa's Third-Highest Peak",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=85",
+    image: `${base}/photos/newstock/Mountain Climbing06Mountain Climbing.jpg`,
   },
   {
     name: "Source of the Nile",
     detail: "Jinja — White Water Rafting & Bungee Jumping",
-    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=900&q=85",
+    image: `${base}/photos/newstock/Source of the Nile.jpg`,
   },
   {
     name: "Lake Mburo National Park",
     detail: "Zebras, Hippos & 350 Bird Species",
-    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=900&q=80",
+    image: `${base}/photos/newstock/zebras (1).jpg`,
   },
   {
     name: "Kibale Forest",
     detail: "Chimpanzee Trekking Capital of the World",
-    image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=900&q=85",
+    image: `${base}/photos/newstock/touristsmovinginforest.jpg`,
   },
   {
     name: "Buganda Kingdom",
     detail: "Uganda's Rich Cultural Heritage",
-    image: "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=900&q=85",
+    image: `${base}/photos/newstock/BugandaKingdom.png`,
   },
 ];
 
@@ -57,7 +59,7 @@ const packages = [
     description:
       "A compact national park featuring 350 bird species and wildlife including zebras, impalas, buffalos, leopards, and hippos — located 3–4 hours from Kampala. Includes pick-up, bicycle tour, nature walk, and return.",
     activities: ["Pick-up from Kampala", "Bicycle tour", "Nature walk", "Bird watching"],
-    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=85",
+    image: `${base}/photos/newstock/bufallo.jpg`,
   },
   {
     name: "5-Day Wildlife Safari to Murchison Falls & Queen Elizabeth",
@@ -73,7 +75,7 @@ const packages = [
       "Nature walks",
       "Sunset viewing",
     ],
-    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=85",
+    image: `${base}/photos/newstock/Big Five Game Drives.jpg`,
   },
   {
     name: "3-Day Gorilla Trekking Experience",
@@ -88,7 +90,7 @@ const packages = [
       "Forest walk",
       "Community visit",
     ],
-    image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=700&q=85",
+    image: `${base}/photos/newstock/gorrillla.jpg`,
   },
   {
     name: "8-Day Trip Around Uganda",
@@ -104,7 +106,7 @@ const packages = [
       "Bungee jumping & quad biking",
       "Local food tasting",
     ],
-    image: "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=700&q=85",
+    image: `${base}/photos/newstock/Boat Safaris08Boat Safaris.jpg`,
   },
   {
     name: "5-Day Wild Safari Itinerary",
@@ -257,8 +259,8 @@ export default function UgandaPage() {
               className="overflow-hidden mt-6"
             >
               <img
-                src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=500&q=80"
-                alt="Murchison Falls"
+                src={`${base}/photos/newstock/Source of the Nile2.jpg`}
+                alt="Source of the Nile, Uganda"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>

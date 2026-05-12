@@ -5,21 +5,23 @@ import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const hotspots = [
   {
     name: "Masai Mara",
     detail: "Kenya's Crown Jewel Reserve",
-    image: "https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=900&q=85",
+    image: `${base}/photos/newstock/Hot Air Balloon.jpg`,
   },
   {
     name: "Great Migration",
     detail: "1.5 Million Wildebeest Crossing",
-    image: "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=900&q=85",
+    image: `${base}/photos/newstock/greatbeastmigration.jpg`,
   },
   {
     name: "Amboseli National Park",
     detail: "Elephants Against Kilimanjaro",
-    image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=900&q=85",
+    image: `${base}/photos/newstock/mothernbabyelephant.jpg`,
   },
   {
     name: "Lake Nakuru",
@@ -29,27 +31,27 @@ const hotspots = [
   {
     name: "Samburu Reserve",
     detail: "Rare Northern Species",
-    image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=900&q=85",
+    image: `${base}/photos/newstock/cheetah.jpg`,
   },
   {
     name: "Hells Gate National Park",
     detail: "Gorges, Geysers & Cycling Safaris",
-    image: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=900&q=85",
+    image: `${base}/photos/newstock/zebras.jpg`,
   },
   {
     name: "Giraffe Centre",
     detail: "Nairobi — Endangered Rothschild's Giraffe",
-    image: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=900&q=85",
+    image: `${base}/photos/newstock/girrafe.jpg`,
   },
   {
     name: "Mount Kenya",
     detail: "Africa's Second-Highest Peak",
-    image: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=900&q=85",
+    image: `${base}/photos/newstock/Mount Kenya.jpg`,
   },
   {
     name: "Indian Ocean Beaches",
     detail: "Diani & Mombasa — Pristine Coastline",
-    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=900&q=85",
+    image: `${base}/photos/newstock/indianocean.jpg`,
   },
 ];
 
@@ -67,7 +69,7 @@ const packages = [
       "Lake Nakuru flamingoes",
       "Masai Mara safari",
     ],
-    image: "https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=700&q=85",
+    image: `${base}/photos/newstock/safari.jpg`,
   },
   {
     name: "7-Day Magical Kenya Tour",
@@ -82,7 +84,7 @@ const packages = [
       "Masai Mara",
       "Maasai village visit",
     ],
-    image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=700&q=85",
+    image: `${base}/photos/newstock/elephantcars.jpg`,
   },
   {
     name: "12-Day Kenya & Tanzania Safari",
@@ -97,7 +99,7 @@ const packages = [
       "Masai Mara",
       "Amboseli NP",
     ],
-    image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=700&q=85",
+    image: `${base}/photos/newstock/lioness.jpg`,
   },
 ];
 
@@ -110,7 +112,7 @@ export default function KenyaPage() {
           className="absolute inset-0 scale-110"
           style={{
             backgroundImage:
-              "url(https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=1800&q=80)",
+              `url(${base}/photos/newstock/splendifd.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

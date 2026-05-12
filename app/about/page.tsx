@@ -2,6 +2,8 @@ import Link from "next/link";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const values = [
   {
     title: "Customer-centricity",
@@ -30,25 +32,25 @@ const team = [
     role: "Safari Operations",
     tag: "In-Field Experts",
     desc: "Our operations team coordinates every detail of your journey — from airport meet-and-greet to lodge transfers, activity bookings, and in-country support.",
-    image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=700&q=85",
+    image: `${base}/photos/newstock/wildanimals.jpg`,
   },
   {
     role: "Travel Concierge",
     tag: "Bespoke Itineraries",
     desc: "Dedicated specialists who craft bespoke itineraries, secure permits, and provide VIP assistance tailored to your exact travel style.",
-    image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=700&q=85",
+    image: `${base}/photos/newstock/conservation.jpg`,
   },
   {
     role: "Lodge Management",
     tag: "Hospitality & Comfort",
     desc: "On-site teams at Tilenga and Kikorongo Safari Lodges ensure warm hospitality, guest safety, and unmatched wildlife expertise.",
-    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=700&q=85",
+    image: `${base}/photos/newstock/safari.jpg`,
   },
   {
     role: "Community Liaisons",
     tag: "Culture & Conservation",
     desc: "Local partners who connect guests with authentic cultural experiences while actively supporting community livelihoods and conservation.",
-    image: "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=700&q=85",
+    image: `${base}/photos/newstock/local communities.jpg`,
   },
 ];
 
@@ -57,56 +59,56 @@ const services = [
     num: "01",
     title: "Airport Meet & Greet",
     desc: "Seamless arrivals — our team meets you on landing, handles your luggage, and transfers you comfortably to your first destination.",
-    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1000&q=80",
+    image: `${base}/photos/newstock/Airportmeet and greet.jpg`,
     tag: "Logistics"
   },
   {
     num: "02",
     title: "Bespoke Itinerary Design",
     desc: "Custom, day-by-day journeys built around your interests, pace, and budget. No two Tilenga itineraries are alike.",
-    image: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1000&q=80",
+    image: `${base}/photos/newstock/bespokeitinenarydesign.jpg`,
     tag: "Consultancy"
   },
   {
     num: "03",
     title: "Gorilla & Chimp Permits",
     desc: "We secure the hard-to-get permits for gorilla tracking and chimpanzee habituation experiences in Uganda and Rwanda.",
-    image: "/gorrilas/gorrilas2.jpg",
+    image: `${base}/photos/newstock/Gorrillahd.jpg`,
     tag: "Special Access"
   },
   {
     num: "04",
     title: "Private Vehicle Transfers",
     desc: "Luxury 4WD and standard vehicles with experienced drivers — across Uganda, Kenya, Tanzania, and Rwanda.",
-    image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=1000&q=80",
+    image: `${base}/photos/newstock/privatevehichletransfers.jpg`,
     tag: "Transportation"
   },
   {
     num: "05",
     title: "Airport Transportation",
     desc: "Punctual, professional airport transfers coordinated precisely with your flight schedule — day or night.",
-    image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1000&q=80",
+    image: `${base}/photos/newstock/Airport transportation.jpg`,
     tag: "Logistics"
   },
   {
     num: "06",
     title: "VIP Concierge",
     desc: "Exclusive access, restaurant reservations, last-minute permits, and anything in between — handled discreetly.",
-    image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1000&q=80",
+    image: `${base}/photos/newstock/Ecoluxury.jpg`,
     tag: "Exclusive"
   },
   {
     num: "07",
     title: "Lodge & Hotel Bookings",
     desc: "Curated lodges, camps, and boutique hotels across East Africa — including our own Tilenga and Kikorongo properties.",
-    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1000&q=80",
+    image: `${base}/photos/newstock/safari.jpg`,
     tag: "Hospitality"
   },
   {
     num: "08",
     title: "Group & Family Safaris",
     desc: "Specialist coordination for multi-generational families, corporate retreats, and private group travel of any size.",
-    image: "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=1000&q=80",
+    image: `${base}/photos/newstock/groupandfamilysafaris.jpg`,
     tag: "Specialist"
   },
 ];
@@ -119,7 +121,7 @@ export default function AboutPage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url(https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=1800&q=80)",
+            backgroundImage: `url(${base}/photos/newstock/greatbeastmigration.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center 30%",
           }}
@@ -153,21 +155,21 @@ export default function AboutPage() {
           <div className="space-y-6">
             <div className="grid grid-cols-2 gap-6">
               <div className="film-frame h-56">
-                <img src="/gorrilas/gorrillas.jpg" alt="Uganda gorilla" className="w-full h-full object-cover" />
+                <img src={`${base}/photos/newstock/Gorrilla.jpg`} alt="Uganda gorilla" className="w-full h-full object-cover" />
               </div>
               <div className="film-frame h-56 mt-12">
-                <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=500&q=80" alt="Murchison Falls" className="w-full h-full object-cover" />
+                <img src={`${base}/photos/newstock/wildanimals.jpg`} alt="Murchison Falls" className="w-full h-full object-cover" />
               </div>
             </div>
             <div className="film-frame h-64">
-              <img src="/gorrilas/gorrillas3.jpg" alt="Gorillas in mist" className="w-full h-full object-cover" />
+              <img src={`${base}/photos/newstock/gorrillahigh.jpg`} alt="Gorillas in mist" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Mission */}
-      <section className="bg-forest-dark py-20 md:py-40 px-6 md:px-16 relative overflow-hidden">
+      {/* Mission / Conservation */}
+      <section id="conservation" className="bg-forest-dark py-20 md:py-40 px-6 md:px-16 relative overflow-hidden">
         <div className="absolute inset-0 grain-overlay opacity-5 pointer-events-none" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <p className="text-gold text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block">Our Purpose</p>

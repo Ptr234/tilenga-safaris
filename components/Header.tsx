@@ -18,30 +18,18 @@ const navItems = [
   },
   {
     label: "Experiences & Activities",
-    href: "/plan-a-trip",
-    image: `${base}/experinces/Game drives.jpg`,
-    children: [
-      { label: "Gorilla Tracking", href: "/plan-a-trip", image: `${base}/experinces/gorrila treking.jpg` },
-      { label: "Great Beast Migration", href: "/plan-a-trip", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80" },
-      { label: "Culture - Masai mara", href: "/plan-a-trip", image: `${base}/experinces/culture emersion.jpg` },
-      { label: "Game drives for the big 5", href: "/plan-a-trip", image: `${base}/experinces/Game drives.jpg` },
-      { label: "Hot airballoon", href: "/plan-a-trip", image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&q=80" },
-      { label: "Mt Rwenzori climbing", href: "/plan-a-trip", image: `${base}/experinces/kilimanjaro climbing.jpg` },
-      { label: "Zanzibar", href: "/plan-a-trip", image: `${base}/experinces/zanzibar beach.jpg` },
-      { label: "Boat Safaris", href: "/plan-a-trip", image: `${base}/experinces/water safari.jpg` },
-      { label: "Namibia Desert", href: "/plan-a-trip", image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=800&q=80" },
-      { label: "Elephants in Botswana", href: "/plan-a-trip", image: "https://images.unsplash.com/photo-1551085254-e96b210db58a?w=800&q=80" },
-    ],
+    href: "/#experiences",
+    image: `${base}/photos/newstock/Big Five Game Drives.jpg`,
   },
-  { label: "About Us", href: "/about", image: "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=1200&q=80" },
-  { label: "Sustainability & Conservation", href: "/about#conservation", image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&q=80" },
-  { label: "Tilenga Safaris Travel Concierge", href: "/plan-a-trip", image: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=1200&q=80" },
-  { label: "Our Travel Stories", href: "/destinations", image: `${base}/experinces/culture emersion.jpg` },
+  { label: "About Us", href: "/about", image: `${base}/photos/newstock/AfricanLandscape.jpg` },
+  { label: "Sustainability & Conservation", href: "/about#conservation", image: `${base}/photos/newstock/conservation.jpg` },
+  { label: "Tilenga Safaris Travel Concierge", href: "/plan-a-trip", image: `${base}/photos/newstock/bespokeitinenarydesign.jpg` },
+  { label: "Our Travel Stories", href: "/destinations", image: `${base}/photos/newstock/Masai Mara.jpg` },
 ];
 
 const bottomNav = [
   { label: "AGENTS PORTAL", href: "/plan-a-trip" },
-  { label: "OFFERS", href: "/destinations" },
+  { label: "OFFERS", href: "/lodges" },
   { label: "FAQ", href: "/about" },
   { label: "GALLERY", href: "/lodges" },
 ];

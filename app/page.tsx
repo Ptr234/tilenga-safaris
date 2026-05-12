@@ -35,26 +35,26 @@ const lodges = [
 ];
 
 const experiences = [
-  { title: "Gorilla Tracking", description: "Face-to-face with endangered mountain gorillas in the misty highlands of Bwindi.", image: `${base}/experinces/gorrila treking.jpg` },
-  { title: "Great Beast Migration", description: "Witness the world's most spectacular wildlife event as millions cross the savannah.", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1200&q=80" },
-  { title: "Culture - Masai mara", description: "Connect with the living heritage and ancient traditions of the iconic Maasai people.", image: `${base}/experinces/culture emersion.jpg` },
-  { title: "Game drives for the big 5", description: "Expert-guided dawn and dusk drives in search of the legendary African Big Five.", image: `${base}/experinces/Game drives.jpg` },
-  { title: "Hot airballoon", description: "Soar above the golden plains at sunrise for a breathtaking bird's-eye view of the wild.", image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=1200&q=80" },
-  { title: "Mt Rwenzori climbing", description: "Summit the legendary 'Mountains of the Moon' for an epic alpine adventure at the Equator.", image: `${base}/experinces/kilimanjaro climbing.jpg` },
-  { title: "Zanzibar", description: "Unwind on turquoise shores where spice-scented breezes meet ancient Stone Town culture.", image: `${base}/experinces/zanzibar beach.jpg` },
-  { title: "Boat Safaris", description: "Glide the Albert Nile or Kazinga Channel for incredible hippo, croc, and bird sightings.", image: `${base}/experinces/water safari.jpg` },
-  { title: "Namibia Desert", description: "Explore the ancient, towering red dunes of Sossusvlei and the dramatic Skeleton Coast.", image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=1200&q=80" },
-  { title: "Elephants in Botswana", description: "Encounter massive herds in the lush Okavango Delta, a true sanctuary for giants.", image: "https://images.unsplash.com/photo-1551085254-e96b210db58a?w=1200&q=80" },
+  { title: "Gorilla Tracking", description: "Face-to-face with endangered mountain gorillas in the misty highlands of Bwindi.", image: `${base}/photos/newstock/Gorrillahd.jpg` },
+  { title: "Great Beast Migration", description: "Witness the world's most spectacular wildlife event as millions cross the savannah.", image: `${base}/photos/newstock/greatbeastmigration.jpg` },
+  { title: "Culture - Masai mara", description: "Connect with the living heritage and ancient traditions of the iconic Maasai people.", image: `${base}/photos/newstock/Masai Mara.jpg` },
+  { title: "Game drives for the big 5", description: "Expert-guided dawn and dusk drives in search of the legendary African Big Five.", image: `${base}/photos/newstock/Big Five Game Drives.jpg` },
+  { title: "Hot airballoon", description: "Soar above the golden plains at sunrise for a breathtaking bird's-eye view of the wild.", image: `${base}/photos/newstock/Hot Air Balloon.jpg` },
+  { title: "Mt Rwenzori climbing", description: "Summit the legendary 'Mountains of the Moon' for an epic alpine adventure at the Equator.", image: `${base}/photos/newstock/Mountain Climbing06Mountain Climbing.jpg` },
+  { title: "Zanzibar", description: "Unwind on turquoise shores where spice-scented breezes meet ancient Stone Town culture.", image: `${base}/photos/newstock/Zanzibar Beaches.jpg` },
+  { title: "Boat Safaris", description: "Glide the Albert Nile or Kazinga Channel for incredible hippo, croc, and bird sightings.", image: `${base}/photos/newstock/Boat Safaris08Boat Safaris.jpg` },
+  { title: "Namibia Desert", description: "Explore the ancient, towering red dunes of Sossusvlei and the dramatic Skeleton Coast.", image: `${base}/photos/newstock/Namibia Desert.jpg` },
+  { title: "Elephants in Botswana", description: "Encounter massive herds in the lush Okavango Delta, a true sanctuary for giants.", image: `${base}/photos/newstock/Elephantfamily.jpg` },
 ];
 
 const destinations = [
-  { name: "Uganda", tag: "Pearl of Africa", description: "Known as the Pearl of Africa, Uganda offers a tapestry of landscapes — from the thundering Murchison Falls to the legendary mountain gorillas of Bwindi.", image: `${base}/gorrilas/gorrilaking.webp`, href: "/destinations/uganda" },
-  { name: "Kenya", tag: "Iconic Maasai Mara", description: "Witness the Great Migration and the golden savannahs of the Maasai Mara, home to Africa's most legendary wildlife encounters.", image: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=800&q=80", href: "/destinations/kenya" },
-  { name: "Tanzania", tag: "Serengeti & Zanzibar", description: "From the endless plains of the Serengeti to the turquoise waters of Zanzibar, Tanzania is a land of breathtaking contrasts.", image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=800&q=80", href: "/destinations/tanzania" },
-  { name: "Rwanda", tag: "Land of a Thousand Hills", description: "Discover a land of mist-covered volcanoes and rare mountain gorillas in the Heart of Africa.", image: `${base}/gorrilas/gorrilaa.webp`, href: "/destinations/rwanda" },
-  { name: "Namibia", tag: "Desert & Dunes", description: "Explore the ancient Namib Desert, where towering red dunes meet the haunting Skeleton Coast.", image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=800&q=80", href: "/destinations/namibia" },
-  { name: "Botswana", tag: "Okavango Delta", description: "Glide through the crystal-clear channels of the Okavango Delta, a sanctuary for Africa's most diverse wildlife.", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80", href: "/destinations/botswana" },
-  { name: "South Africa", tag: "Cape & Kruger", description: "Experience the vibrant culture of Cape Town and the world-class safari circuits of Kruger National Park.", image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=800&q=80", href: "/destinations/south-africa" },
+  { name: "Uganda", tag: "Pearl of Africa", description: "Known as the Pearl of Africa, Uganda offers a tapestry of landscapes — from the thundering Murchison Falls to the legendary mountain gorillas of Bwindi.", image: `${base}/photos/newstock/UgandaDestinationHero.jpg`, href: "/destinations/uganda" },
+  { name: "Kenya", tag: "Iconic Maasai Mara", description: "Witness the Great Migration and the golden savannahs of the Maasai Mara, home to Africa's most legendary wildlife encounters.", image: `${base}/photos/newstock/Masai Mara.jpg`, href: "/destinations/kenya" },
+  { name: "Tanzania", tag: "Serengeti & Zanzibar", description: "From the endless plains of the Serengeti to the turquoise waters of Zanzibar, Tanzania is a land of breathtaking contrasts.", image: `${base}/photos/newstock/SerengetiNationaLPark.jpg`, href: "/destinations/tanzania" },
+  { name: "Rwanda", tag: "Land of a Thousand Hills", description: "Discover a land of mist-covered volcanoes and rare mountain gorillas in the Heart of Africa.", image: `${base}/photos/newstock/gorrillahigh.jpg`, href: "/destinations/rwanda" },
+  { name: "Namibia", tag: "Desert & Dunes", description: "Explore the ancient Namib Desert, where towering red dunes meet the haunting Skeleton Coast.", image: `${base}/photos/newstock/Namibia Desert.jpg`, href: "/destinations/namibia" },
+  { name: "Botswana", tag: "Okavango Delta", description: "Glide through the crystal-clear channels of the Okavango Delta, a sanctuary for Africa's most diverse wildlife.", image: `${base}/photos/newstock/Elephantfamily.jpg`, href: "/destinations/botswana" },
+  { name: "South Africa", tag: "Cape & Kruger", description: "Experience the vibrant culture of Cape Town and the world-class safari circuits of Kruger National Park.", image: `${base}/photos/newstock/Cape Town.jpg`, href: "/destinations/south-africa" },
 ];
 
 const stats = [
@@ -279,7 +279,7 @@ export default function HomePage() {
       </section>
 
       {/* Experiences — full-image hover reveal */}
-      <section className="pt-14 pb-10 md:py-28 px-6 md:px-16 bg-cream-dark">
+      <section id="experiences" className="pt-14 pb-10 md:py-28 px-6 md:px-16 bg-cream-dark">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8 md:mb-14">
             <FadeIn direction="fade"><p className="section-label mb-3">What We Offer</p></FadeIn>
@@ -310,7 +310,7 @@ export default function HomePage() {
       {/* Heritage — narrative approach with parallax anchor */}
       <section className="pt-10 pb-14 md:py-40 px-6 md:px-16 bg-cream-dark relative z-10">
         <div className="absolute top-0 right-0 w-[40%] h-full opacity-[0.03] pointer-events-none">
-           <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1200&q=80" className="w-full h-full object-cover" alt="" />
+           <img src={`${base}/photos/newstock/wildanimals.jpg`} className="w-full h-full object-cover" alt="" />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -345,7 +345,7 @@ export default function HomePage() {
                 <ImageReveal direction="left" delay={0.3}>
                   <div className="film-frame aspect-[16/11] overflow-hidden shadow-2xl">
                     <img
-                      src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=1800&q=80"
+                      src={`${base}/photos/newstock/AfricanLandscape.jpg`}
                       alt="The Spirit of Safari"
                       className="w-full h-full object-cover"
                     />
@@ -355,7 +355,7 @@ export default function HomePage() {
                 <FadeIn direction="up" delay={0.4} className="mt-4 lg:hidden">
                   <div className="film-frame aspect-video overflow-hidden shadow-xl">
                     <img
-                      src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=800&q=80"
+                      src={`${base}/photos/newstock/wildlifeconservation.jpg`}
                       alt="Wildlife Detail"
                       className="w-full h-full object-cover"
                     />
@@ -366,7 +366,7 @@ export default function HomePage() {
                   <FadeIn direction="up" delay={0.6}>
                     <div className="film-frame h-full overflow-hidden shadow-2xl border-4 border-white/10">
                       <img
-                        src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=800&q=80"
+                        src={`${base}/photos/newstock/wildlifeconservation.jpg`}
                         alt="Wildlife Detail"
                         className="w-full h-full object-cover"
                       />
@@ -385,22 +385,22 @@ export default function HomePage() {
           <div className="grid grid-cols-2 gap-3 md:gap-4 pt-6 md:pt-0">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <div className="film-frame aspect-square">
-                <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&q=80" alt="Conservation" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
+                <img src={`${base}/photos/newstock/conservation.jpg`} alt="Conservation" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
               </div>
             </ImageReveal>
             <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-0 md:mt-12">
               <div className="film-frame aspect-square">
-                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" alt="Landscape" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
+                <img src={`${base}/photos/newstock/AfricanLandscape.jpg`} alt="Landscape" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
               </div>
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden mt-0 md:-mt-12">
               <div className="film-frame aspect-square">
-                <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&q=80" alt="Wildlife" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
+                <img src={`${base}/photos/newstock/wildlifeconservation.jpg`} alt="Wildlife" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
               </div>
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
               <div className="film-frame aspect-square">
-                <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&q=80" alt="Community" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
+                <img src={`${base}/photos/newstock/local communities.jpg`} alt="Community" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
               </div>
             </ImageReveal>
           </div>
@@ -436,7 +436,7 @@ export default function HomePage() {
         <FadeIn direction="up" delay={0.4} className="absolute -bottom-24 right-6 md:right-20 hidden md:block w-52 md:w-64 h-72 md:h-80 z-20">
           <div className="relative h-full overflow-hidden shadow-2xl">
             <img
-              src="https://images.unsplash.com/photo-1551085254-e96b210db58a?w=600&q=85"
+              src={`${base}/photos/newstock/cheetah.jpg`}
               alt="East Africa wildlife"
               className="w-full h-full object-cover"
             />
@@ -458,7 +458,7 @@ export default function HomePage() {
       <section className="relative z-0 min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1800&q=90"
+            src={`${base}/photos/newstock/Airportmeet and greet.jpg`}
             alt=""
             className="w-full h-full object-cover object-center scale-[1.06]"
           />

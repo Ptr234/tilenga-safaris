@@ -5,6 +5,8 @@ import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const hotspots = [
   {
     name: "Sossusvlei",
@@ -19,7 +21,7 @@ const hotspots = [
   {
     name: "Skeleton Coast",
     detail: "Shipwrecks, Seals & Desert Lion",
-    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=900&q=85",
+    image: `${base}/photos/newstock/Skeleton Coast.jpg`,
   },
   {
     name: "Fish River Canyon",

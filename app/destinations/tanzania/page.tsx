@@ -5,21 +5,23 @@ import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const hotspots = [
   {
     name: "Serengeti",
     detail: "Endless Plains & the Great Migration",
-    image: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=900&q=85",
+    image: `${base}/photos/newstock/wildanimals.jpg`,
   },
   {
     name: "Ngorongoro Crater",
     detail: "UNESCO World Heritage — Big Five & Black Rhino",
-    image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=900&q=85",
+    image: `${base}/photos/newstock/Ngorongoro Crater.jpg`,
   },
   {
     name: "Zanzibar",
     detail: "Stone Town, Spice Tours & Crystal-Clear Waters",
-    image: "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&q=85",
+    image: `${base}/photos/newstock/Zanzibar Beaches.jpg`,
   },
   {
     name: "Mount Kilimanjaro",
@@ -29,12 +31,12 @@ const hotspots = [
   {
     name: "Ruaha National Park",
     detail: "Tanzania's Largest & Most Wild Park",
-    image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=900&q=85",
+    image: `${base}/photos/newstock/Ruaha National Park.jpg`,
   },
   {
     name: "Tarangire National Park",
     detail: "Baobab Giants & Elephant Herds",
-    image: "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=900&q=85",
+    image: `${base}/photos/newstock/Tarangire National Park.jpg`,
   },
 ];
 
@@ -88,7 +90,7 @@ const packages = [
       "Masai Mara",
       "Amboseli NP",
     ],
-    image: "https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=700&q=85",
+    image: `${base}/photos/newstock/Tarangire National Park2.jpg`,
   },
 ];
 
@@ -184,8 +186,8 @@ export default function TanzaniaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=500&q=80"
-                alt="Mount Kilimanjaro"
+                src={`${base}/photos/newstock/bigelephant.jpg`}
+                alt="Tanzania elephant herd"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
@@ -195,8 +197,8 @@ export default function TanzaniaPage() {
               className="overflow-hidden mt-6"
             >
               <img
-                src="https://images.unsplash.com/photo-1474690870753-1b92efa1f2d8?w=500&q=80"
-                alt="Zanzibar beach"
+                src={`${base}/photos/newstock/Tarangire National Park1.jpg`}
+                alt="Tarangire National Park"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>

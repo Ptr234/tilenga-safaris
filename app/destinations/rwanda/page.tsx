@@ -5,6 +5,8 @@ import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const hotspots = [
   {
     name: "Volcanoes National Park",
@@ -149,7 +151,7 @@ export default function RwandaPage() {
               <div className="bg-white border border-gold/10 overflow-hidden">
                 <div className="relative h-64">
                   <img
-                    src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
+                    src={`${base}/photos/newstock/Gorrilla.jpg`}
                     alt="Rwanda gorilla trekking"
                     className="w-full h-full object-cover"
                   />

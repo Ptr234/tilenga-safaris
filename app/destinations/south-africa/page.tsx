@@ -5,6 +5,8 @@ import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const packages = [
   {
     name: "8-Day South Africa Discovery",
@@ -39,7 +41,7 @@ const hotspots = [
   {
     name: "Cape Town",
     detail: "Table Mountain & the Atlantic Seaboard",
-    image: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=900&q=85",
+    image: `${base}/photos/newstock/Table Mountain.jpg`,
   },
   {
     name: "Drakensberg Mountains",
