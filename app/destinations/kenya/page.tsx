@@ -16,12 +16,12 @@ const hotspots = [
   {
     name: "Great Migration",
     detail: "1.5 Million Wildebeest Crossing",
-    image: `${base}/photos/newstock/greatbeastmigration.jpg`,
+    image: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=900&q=85",
   },
   {
     name: "Amboseli National Park",
     detail: "Elephants Against Kilimanjaro",
-    image: `${base}/photos/newstock/mothernbabyelephant.jpg`,
+    image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=900&q=85",
   },
   {
     name: "Lake Nakuru",
@@ -69,7 +69,7 @@ const packages = [
       "Lake Nakuru flamingoes",
       "Masai Mara safari",
     ],
-    image: `${base}/photos/newstock/safari.jpg`,
+    image: `${base}/photos/newstock/elephantcars.jpg`,
   },
   {
     name: "7-Day Magical Kenya Tour",
@@ -84,7 +84,7 @@ const packages = [
       "Masai Mara",
       "Maasai village visit",
     ],
-    image: `${base}/photos/newstock/elephantcars.jpg`,
+    image: "https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=700&q=85",
   },
   {
     name: "12-Day Kenya & Tanzania Safari",
@@ -99,7 +99,7 @@ const packages = [
       "Masai Mara",
       "Amboseli NP",
     ],
-    image: `${base}/photos/newstock/lioness.jpg`,
+    image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=700&q=85",
   },
 ];
 
@@ -195,8 +195,8 @@ export default function KenyaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=500&q=80"
-                alt="Masai Mara landscape"
+                src={`${base}/photos/newstock/safari.jpg`}
+                alt="Kenya safari landscape"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
@@ -206,8 +206,8 @@ export default function KenyaPage() {
               className="overflow-hidden mt-6"
             >
               <img
-                src="https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=500&q=80"
-                alt="Lion"
+                src={`${base}/photos/newstock/lioness.jpg`}
+                alt="Lioness on the savannah"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
@@ -217,8 +217,8 @@ export default function KenyaPage() {
               className="overflow-hidden -mt-6"
             >
               <img
-                src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=500&q=80"
-                alt="Elephant Amboseli"
+                src={`${base}/photos/newstock/mothernbabyelephant.jpg`}
+                alt="Elephant family, Amboseli"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
@@ -228,8 +228,8 @@ export default function KenyaPage() {
               className="overflow-hidden"
             >
               <img
-                src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=500&q=80"
-                alt="Great Migration wildebeest"
+                src={`${base}/photos/newstock/greatbeastmigration.jpg`}
+                alt="Great wildebeest migration"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
