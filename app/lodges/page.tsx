@@ -1,7 +1,6 @@
 import Link from "next/link";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
-import ImageReveal from "@/components/motion/ImageReveal";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -131,13 +130,13 @@ export default function LodgesPage() {
         >
           {/* Image panel */}
           <div className={`relative min-h-[60vh] md:min-h-0 ${lodge.imageOrder}`}>
-            <ImageReveal direction={lodge.revealDir} className="absolute inset-0 overflow-hidden film-frame m-2">
+            <div className="absolute inset-0 overflow-hidden film-frame m-2">
               <img
                 src={lodge.image}
                 alt={`${lodge.nameA} ${lodge.nameB}`}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1800ms] ease-out hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-[1800ms] ease-out hover:scale-105"
               />
-            </ImageReveal>
+            </div>
 
             {/* Gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/10 via-transparent to-forest-dark/80 pointer-events-none z-[1]" />
