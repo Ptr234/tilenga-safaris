@@ -21,7 +21,7 @@ const lodges = [
       { value: "450+", label: "Bird Species" },
     ],
     amenities: ["Albert Nile Views", "Private Balconies", "Sport Fishing", "Night Game Drives", "Basketry Workshops"],
-    image: `${base}/photos/tilengasafarilodge/entrance.png`,
+    image: `${base}/photos/tilengasafarilodge/tilengasafarislodge%20swimmingpool%20view2.png`,
     href: "/lodges/tilenga-safari-lodge",
     panelBg: "bg-forest-dark",
     imageOrder: "md:order-1",
