@@ -79,7 +79,7 @@ export default function LodgesPage() {
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "url(https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1800&q=85)",
+              `url(${base}/photos/kikorongo_room1.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center 40%",
           }}
@@ -229,7 +229,7 @@ export default function LodgesPage() {
       {/* ── CTA ── */}
       <section className="bg-forest-dark py-32 px-8 md:px-20 relative overflow-hidden text-center">
         <div className="absolute inset-0 opacity-20">
-          <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1800&q=85" alt="CTA bg" className="w-full h-full object-cover" />
+          <img src={`${base}/photos/kikorongo_room1.jpg`} alt="CTA bg" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-forest-dark/80" />
         
