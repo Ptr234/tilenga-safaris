@@ -240,7 +240,7 @@ export default function Footer() {
         <div className="flex flex-col items-center gap-12">
           
           {/* Partners */}
-          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16 opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700">
+          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
             <img src={`${base}/photos/partnerslogo/uganda-tourism-board-logo-25518EC15B-seeklogo.com_.webp`} alt="UTB" className="h-8 md:h-10 w-auto" />
             <img src={`${base}/photos/partnerslogo/autologo-114x114x0x0x114x114x1670356750.webp`} alt="AUTO" className="h-8 md:h-10 w-auto" />
             <img src={`${base}/photos/partnerslogo/ATTAlogo.png`} alt="ATTA" className="h-8 md:h-10 w-auto" />
