@@ -1,50 +1,51 @@
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
-import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
+
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const hotspots = [
   {
     name: "Okavango Delta",
     detail: "World's Largest Inland Delta",
-    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=900&q=85",
+    image: `${base}/photos/newstock/Elephantfamily.jpg`,
   },
   {
     name: "Chobe National Park",
     detail: "Africa's Densest Elephant Population",
-    image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=900&q=85",
+    image: `${base}/photos/newstock/bigelephant.jpg`,
   },
   {
     name: "Moremi Game Reserve",
     detail: "Wild Dogs & Leopard in the Delta",
-    image: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=900&q=85",
+    image: `${base}/photos/newstock/wildlifeconservation.jpg`,
   },
   {
     name: "Makgadikgadi Pans",
     detail: "Salt Flats & Zebra Migration",
-    image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=900&q=85",
+    image: `${base}/photos/newstock/zebras (1).jpg`,
   },
   {
     name: "Linyanti Wetlands",
     detail: "Exclusive Private Concessions",
-    image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=900&q=85",
+    image: `${base}/photos/newstock/wildanimals.jpg`,
   },
   {
     name: "Central Kalahari Reserve",
     detail: "Black-Maned Lions & Meerkats",
-    image: "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=900&q=85",
+    image: `${base}/photos/newstock/lioness.jpg`,
   },
   {
     name: "Okavango Mokoro Safaris",
     detail: "Silent Dugout Canoe Through Lily Pads",
-    image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=900&q=85",
+    image: `${base}/photos/newstock/Boat Safaris08Boat Safaris.jpg`,
   },
   {
     name: "Savuti Channel",
     detail: "Lion vs Elephant — Ancient Battleground",
-    image: "https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=900&q=85",
+    image: `${base}/photos/newstock/elephantcars.jpg`,
   },
 ];
 
@@ -57,7 +58,12 @@ const packages = [
     description:
       "Fly into the heart of the Okavango Delta for an intimate safari by mokoro, motorboat, and game drive — encountering elephant, lion, leopard, and wild dog in Africa's most pristine wilderness.",
     activities: ["Mokoro canoe excursions", "Moremi game drives", "Walking safaris", "Night drives"],
-    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=85",
+    image: `${base}/photos/newstock/Elephantfamily.jpg`,
+    itinerary: [
+      { days: "Days 1–2", desc: "Fly into Maun; light aircraft transfer deep into the Okavango Delta, first mokoro excursion." },
+      { days: "Days 3–5", desc: "Moremi Game Reserve game drives, walking safaris with expert guides, hippo pod encounters." },
+      { days: "Days 6–7", desc: "Night drives for nocturnal predators, farewell sundowner on the floodplains, fly out to Maun." },
+    ],
   },
   {
     name: "10-Day Botswana Highlights",
@@ -67,7 +73,12 @@ const packages = [
     description:
       "Journey from the lush Okavango Delta to Chobe's legendary elephant herds and the vast silence of the Makgadikgadi Pans — one of Africa's greatest wildlife safaris.",
     activities: ["Okavango Delta", "Chobe river cruise", "Makgadikgadi Pans", "Elephant encounters"],
-    image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=700&q=85",
+    image: `${base}/photos/newstock/bigelephant.jpg`,
+    itinerary: [
+      { days: "Days 1–3", desc: "Maun arrival; Okavango Delta — mokoro excursions, game drives, and wild dog tracking." },
+      { days: "Days 4–6", desc: "Chobe NP — sunset river cruise and world-famous elephant encounters at the water's edge." },
+      { days: "Days 7–10", desc: "Makgadikgadi Pans — zebra migration, Kalahari meerkats, and starlit salt flat nights." },
+    ],
   },
   {
     name: "14-Day Botswana & Zimbabwe Combo",
@@ -77,7 +88,13 @@ const packages = [
     description:
       "Combine Botswana's extraordinary wilderness with Zimbabwe's Victoria Falls and Hwange's wildlife for a comprehensive southern Africa adventure that has it all.",
     activities: ["Okavango Delta", "Chobe NP", "Victoria Falls", "Hwange NP"],
-    image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=700&q=85",
+    image: `${base}/photos/newstock/splendifd.jpg`,
+    itinerary: [
+      { days: "Days 1–4", desc: "Fly into Okavango Delta; bush camp, mokoro glides through lily-covered channels." },
+      { days: "Days 5–8", desc: "Chobe NP — boat safaris, massive elephant herds, sunset over the Chobe River." },
+      { days: "Days 9–11", desc: "Cross to Zimbabwe; Victoria Falls rain forest walk and Zambezi sunset cruise." },
+      { days: "Days 12–14", desc: "Hwange NP — wild dog and painted wolf encounters, Big Five game drives, departure." },
+    ],
   },
 ];
 
@@ -89,7 +106,7 @@ export default function BotswanaPage() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage: "url(https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1800&q=80)",
+            backgroundImage: `url(${base}/photos/newstock/Elephantfamily.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -151,28 +168,28 @@ export default function BotswanaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=500&q=80"
+                src={`${base}/photos/newstock/Elephantfamily.jpg`}
                 alt="Okavango Delta"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
             <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-6">
               <img
-                src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=500&q=80"
+                src={`${base}/photos/newstock/bigelephant.jpg`}
                 alt="Chobe elephants"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-6">
               <img
-                src="https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=500&q=80"
+                src={`${base}/photos/newstock/wildlifeconservation.jpg`}
                 alt="Moremi game reserve"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=500&q=80"
+                src={`${base}/photos/newstock/Boat Safaris08Boat Safaris.jpg`}
                 alt="Mokoro safari"
                 className="w-full h-52 object-cover"
               />
@@ -209,41 +226,42 @@ export default function BotswanaPage() {
               Get a Custom Quote
             </Link>
           </FadeIn>
-          <StaggerGrid className="package-grid">
-            {packages.map((pkg, i) => (
-              <StaggerItem key={pkg.name}>
-                <div className="package-card group">
-                  <img src={pkg.image} alt={pkg.name} className="package-card-img" />
-                  <div className="package-card-overlay" />
-                  <span className="package-card-num">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="package-card-duration">{pkg.duration}</span>
-                  <div className="package-card-body">
-                    <p className="package-card-tagline">{pkg.tagline}</p>
-                    <h3 className="package-card-title">{pkg.name}</h3>
-                    <div className="package-card-rule" />
-                    <div className="package-card-description-wrap">
-                      <div><p className="package-description">{pkg.description}</p></div>
-                    </div>
-                    <div className="package-features">
-                      {pkg.activities.map((act) => (
-                        <span key={act} className="package-feature-pill">
-                          <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />
-                          {act}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex items-center justify-between pt-4 border-t border-cream/10">
-                      <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                      <Link href="/plan-a-trip" className="package-cta">
-                        Enquire
-                        <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
-                      </Link>
-                    </div>
+          <div className="space-y-20">
+            {packages.map((pkg) => (
+              <div key={pkg.name} className="grid md:grid-cols-2 gap-12 items-start border-b border-gold/10 pb-20 last:border-0 last:pb-0">
+                <div className="relative overflow-hidden aspect-[4/3]">
+                  <img src={pkg.image} alt={pkg.name} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-transparent to-transparent" />
+                  <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">{pkg.duration}</span>
+                </div>
+                <div>
+                  <p className="section-label mb-2">{pkg.tagline}</p>
+                  <h3 className="font-serif text-3xl text-forest mb-4">{pkg.name}</h3>
+                  <div className="w-10 h-px bg-gold mb-6" />
+                  <p className="text-stone font-sans text-sm leading-relaxed mb-8">{pkg.description}</p>
+                  <div className="space-y-4 mb-8">
+                    {pkg.itinerary.map((item) => (
+                      <div key={item.days} className="flex gap-4 border-t border-gold/10 pt-4">
+                        <span className="text-gold text-[10px] uppercase tracking-widest font-sans w-20 shrink-0 pt-0.5">{item.days}</span>
+                        <span className="text-stone font-sans text-sm leading-relaxed">{item.desc}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {pkg.activities.map((act) => (
+                      <span key={act} className="text-[10px] uppercase tracking-widest font-sans border border-gold/30 text-forest/70 px-3 py-1.5 flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-gold" />{act}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
+                    <Link href="/plan-a-trip" className="btn-primary">Enquire About This Package</Link>
                   </div>
                 </div>
-              </StaggerItem>
+              </div>
             ))}
-          </StaggerGrid>
+          </div>
         </div>
       </section>
 

@@ -30,7 +30,7 @@ const destinations = [
     description: "Vast Serengeti plains, the ancient Ngorongoro Crater, Kilimanjaro, and Zanzibar's crystal shores.",
     hotspots: ["Serengeti NP", "Ngorongoro Crater", "Zanzibar", "Mount Kilimanjaro"],
     bestTime: "Dec–Mar · Jun–Oct",
-    image: `${base}/photos/newstock/SerengetiNationaLPark.jpg`,
+    image: `${base}/photos/newstock/Ngorongoro Crater.jpg`,
     href: "/destinations/tanzania",
     num: "03",
   },
@@ -155,7 +155,10 @@ export default function DestinationsPage() {
                 <div className="absolute bottom-0 left-0 p-8">
                   <div className="w-8 h-px bg-gold mb-3 transition-all duration-500 group-hover:w-16" />
                   <p className="text-gold text-[10px] uppercase tracking-[0.3em] font-sans mb-1">{dest.tag}</p>
-                  <h3 className="font-serif text-3xl md:text-4xl text-cream uppercase tracking-[0.15em]">{dest.name}</h3>
+                  <h3 className="font-serif text-3xl md:text-4xl text-cream uppercase tracking-[0.15em] mb-3">{dest.name}</h3>
+                  <span className="text-gold text-[10px] uppercase tracking-widest font-sans border border-gold/30 px-3 py-1.5 bg-black/20 backdrop-blur-sm">
+                    Best time: {dest.bestTime}
+                  </span>
                 </div>
               </Link>
             ))}
@@ -181,6 +184,9 @@ export default function DestinationsPage() {
                 <div className="w-10 h-px bg-gold mb-3 transition-all duration-500 group-hover:w-20" />
                 <p className="text-gold text-[10px] uppercase tracking-[0.3em] font-sans mb-1">{dest.tag}</p>
                 <h3 className="font-serif text-3xl text-cream mb-3 uppercase tracking-[0.15em]">{dest.name}</h3>
+                <span className="inline-block text-gold text-[10px] uppercase tracking-widest font-sans border border-gold/30 px-3 py-1.5 bg-black/20 backdrop-blur-sm mb-3">
+                  Best time: {dest.bestTime}
+                </span>
                 <p className="text-cream/55 text-sm font-sans leading-relaxed translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                   {dest.description}
                 </p>

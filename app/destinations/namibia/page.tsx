@@ -1,7 +1,6 @@
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
-import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
 
@@ -60,6 +59,11 @@ const packages = [
       "From the towering red dunes of Sossusvlei to Etosha's wildlife-rich salt pan and the raw Atlantic shores of Swakopmund — an epic journey through one of Africa's most dramatic landscapes.",
     activities: ["Sossusvlei dunes", "Etosha game drives", "Swakopmund adventure", "Desert stargazing"],
     image: "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=700&q=85",
+    itinerary: [
+      { days: "Days 1–2", desc: "Arrive Windhoek; drive south to Sossusvlei, sunset view over the ancient red dunes." },
+      { days: "Days 3–5", desc: "Dawn dune climb & Dead Vlei photography; drive to Swakopmund via Walvis Bay lagoon." },
+      { days: "Days 6–8", desc: "Swakopmund — sandboarding and marine safari; Etosha NP game drives, departure Windhoek." },
+    ],
   },
   {
     name: "10-Day Namibia Full Circuit",
@@ -70,6 +74,12 @@ const packages = [
       "Explore Namibia end to end — Skeleton Coast wildlife, Damaraland's desert elephants, the iconic Sossusvlei dunes, and Fish River Canyon — Africa's largest canyon.",
     activities: ["Skeleton Coast", "Damaraland rhino tracking", "Sossusvlei", "Fish River Canyon"],
     image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=85",
+    itinerary: [
+      { days: "Days 1–2", desc: "Arrive Windhoek; drive north to the raw Atlantic shores of the Skeleton Coast." },
+      { days: "Days 3–5", desc: "Damaraland — desert-adapted elephant tracking and black rhino conservation walks." },
+      { days: "Days 6–8", desc: "Sossusvlei dunes and Dead Vlei; Namib Desert night under a billion stars." },
+      { days: "Days 9–10", desc: "Fish River Canyon viewpoints and hiking, return Windhoek, departure." },
+    ],
   },
   {
     name: "14-Day Namibia & Botswana Combo",
@@ -80,6 +90,12 @@ const packages = [
       "Combine Namibia's stark desert beauty with Botswana's lush Okavango Delta for the ultimate southern Africa contrast — from dunes to floodplains, silence to abundance.",
     activities: ["Sossusvlei dunes", "Etosha NP", "Okavango Delta", "Chobe NP"],
     image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=700&q=85",
+    itinerary: [
+      { days: "Days 1–4", desc: "Windhoek arrival; Sossusvlei dunes and Etosha NP — lion and elephant at waterholes." },
+      { days: "Days 5–7", desc: "Skeleton Coast wildlife and Swakopmund adventure activities." },
+      { days: "Days 8–11", desc: "Cross to Botswana; Okavango Delta fly-in camp, mokoro and game drives." },
+      { days: "Days 12–14", desc: "Chobe NP boat safaris, elephant encounters, Victoria Falls excursion, departure." },
+    ],
   },
 ];
 
@@ -91,7 +107,7 @@ export default function NamibiaPage() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage: "url(https://images.unsplash.com/photo-1488197047962-b48492212cda?w=1800&q=80)",
+            backgroundImage: `url(${base}/photos/newstock/Namibia%20Desert.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -153,28 +169,28 @@ export default function NamibiaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1488197047962-b48492212cda?w=500&q=80"
+                src={`${base}/photos/newstock/Namibia Desert.jpg`}
                 alt="Sossusvlei dunes"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
             <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-6">
               <img
-                src="https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=500&q=80"
+                src={`${base}/photos/newstock/Elephantfamily.jpg`}
                 alt="Etosha wildlife"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-6">
               <img
-                src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=500&q=80"
+                src={`${base}/photos/newstock/Skeleton Coast.jpg`}
                 alt="Skeleton Coast"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=500&q=80"
+                src={`${base}/photos/newstock/AfricanLandscape.jpg`}
                 alt="Desert landscape"
                 className="w-full h-52 object-cover"
               />
@@ -211,41 +227,42 @@ export default function NamibiaPage() {
               Get a Custom Quote
             </Link>
           </FadeIn>
-          <StaggerGrid className="package-grid">
-            {packages.map((pkg, i) => (
-              <StaggerItem key={pkg.name}>
-                <div className="package-card group">
-                  <img src={pkg.image} alt={pkg.name} className="package-card-img" />
-                  <div className="package-card-overlay" />
-                  <span className="package-card-num">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="package-card-duration">{pkg.duration}</span>
-                  <div className="package-card-body">
-                    <p className="package-card-tagline">{pkg.tagline}</p>
-                    <h3 className="package-card-title">{pkg.name}</h3>
-                    <div className="package-card-rule" />
-                    <div className="package-card-description-wrap">
-                      <div><p className="package-description">{pkg.description}</p></div>
-                    </div>
-                    <div className="package-features">
-                      {pkg.activities.map((act) => (
-                        <span key={act} className="package-feature-pill">
-                          <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />
-                          {act}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex items-center justify-between pt-4 border-t border-cream/10">
-                      <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                      <Link href="/plan-a-trip" className="package-cta">
-                        Enquire
-                        <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
-                      </Link>
-                    </div>
+          <div className="space-y-20">
+            {packages.map((pkg) => (
+              <div key={pkg.name} className="grid md:grid-cols-2 gap-12 items-start border-b border-gold/10 pb-20 last:border-0 last:pb-0">
+                <div className="relative overflow-hidden aspect-[4/3]">
+                  <img src={pkg.image} alt={pkg.name} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-transparent to-transparent" />
+                  <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">{pkg.duration}</span>
+                </div>
+                <div>
+                  <p className="section-label mb-2">{pkg.tagline}</p>
+                  <h3 className="font-serif text-3xl text-forest mb-4">{pkg.name}</h3>
+                  <div className="w-10 h-px bg-gold mb-6" />
+                  <p className="text-stone font-sans text-sm leading-relaxed mb-8">{pkg.description}</p>
+                  <div className="space-y-4 mb-8">
+                    {pkg.itinerary.map((item) => (
+                      <div key={item.days} className="flex gap-4 border-t border-gold/10 pt-4">
+                        <span className="text-gold text-[10px] uppercase tracking-widest font-sans w-20 shrink-0 pt-0.5">{item.days}</span>
+                        <span className="text-stone font-sans text-sm leading-relaxed">{item.desc}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {pkg.activities.map((act) => (
+                      <span key={act} className="text-[10px] uppercase tracking-widest font-sans border border-gold/30 text-forest/70 px-3 py-1.5 flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-gold" />{act}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
+                    <Link href="/plan-a-trip" className="btn-primary">Enquire About This Package</Link>
                   </div>
                 </div>
-              </StaggerItem>
+              </div>
             ))}
-          </StaggerGrid>
+          </div>
         </div>
       </section>
 

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
-import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
 
@@ -26,7 +25,7 @@ const hotspots = [
   {
     name: "Mount Kilimanjaro",
     detail: "Africa's Rooftop at 5,895m",
-    image: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=900&q=85",
+    image: `${base}/photos/newstock/Mount Kenya.jpg`,
   },
   {
     name: "Ruaha National Park",
@@ -45,52 +44,47 @@ const packages = [
     name: "Zanzibar Beach Holiday",
     tagline: "Indian Ocean beach escape",
     duration: "5 Nights / 6 Days",
-    price: "From $1,200",
-    minPax: "Min. 2 participants",
+    price: "From $1,200 · Min. 2 participants",
     description:
       "Stone Town tour, Prison Island, Safari Blue, snorkeling at Mnemba, and turtle swimming at Nungwi — the perfect Indian Ocean escape with coastal luxury.",
-    activities: [
-      "Stone Town tour",
-      "Prison Island",
-      "Safari Blue",
-      "Mnemba snorkeling",
-      "Turtle swimming",
-    ],
+    activities: ["Stone Town tour", "Prison Island", "Safari Blue", "Mnemba snorkeling", "Turtle swimming"],
     image: "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=700&q=85",
+    itinerary: [
+      { days: "Days 1–2", desc: "Arrive Zanzibar; UNESCO Stone Town walking tour and Prison Island tortoise sanctuary." },
+      { days: "Days 3–4", desc: "Safari Blue sailing trip through mangroves; Mnemba Atoll snorkeling and dolphin watching." },
+      { days: "Days 5–6", desc: "Nungwi turtle swimming sanctuary, beach relaxation and sunset farewell, departure." },
+    ],
   },
   {
     name: "Zanzibar Spice Island Escape",
     tagline: "Spice island and sunset bliss",
     duration: "6 Nights / 7 Days",
-    price: "From $1,200",
-    minPax: "Min. 2 participants",
+    price: "From $1,200 · Min. 2 participants",
     description:
       "Enjoy Stone Town, a Spice Tour, Jozani Forest with red colobus monkeys, and a dolphin swim — then relax on white-sand beaches as the sun sets over the Indian Ocean.",
-    activities: [
-      "Stone Town",
-      "Prison Island",
-      "Spice Tour",
-      "Jozani Forest",
-      "Dolphin swimming",
-    ],
+    activities: ["Stone Town", "Prison Island", "Spice Tour", "Jozani Forest", "Dolphin swimming"],
     image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=700&q=85",
+    itinerary: [
+      { days: "Days 1–2", desc: "Arrive Zanzibar; Stone Town & Prison Island, spice market wander and dhow sunset cruise." },
+      { days: "Days 3–4", desc: "Spice farm tour and Jozani Forest — home to rare red colobus monkeys." },
+      { days: "Days 5–7", desc: "Dolphin swimming excursion, white-sand beach relaxation, farewell dinner, departure." },
+    ],
   },
   {
     name: "12-Day Kenya & Tanzania Safari",
     tagline: "Legendary migration safari",
     duration: "12 Days",
-    price: "From $3,000 / person",
-    minPax: "Min. 4 participants",
+    price: "From $3,000 / person · Min. 4 participants",
     description:
       "A seamless East Africa journey from the Serengeti and Ngorongoro to Kenya’s Masai Mara and Amboseli, designed for epic wildlife viewing and unforgettable landscapes.",
-    activities: [
-      "Serengeti NP",
-      "Ngorongoro Crater",
-      "Lake Nakuru",
-      "Masai Mara",
-      "Amboseli NP",
-    ],
+    activities: ["Serengeti NP", "Ngorongoro Crater", "Lake Nakuru", "Masai Mara", "Amboseli NP"],
     image: `${base}/photos/newstock/Tarangire National Park2.jpg`,
+    itinerary: [
+      { days: "Days 1–3", desc: "Arrive Arusha; Tarangire NP — baobab giants and elephant herds, Serengeti check-in." },
+      { days: "Days 4–6", desc: "Serengeti NP — wildebeest migration circuit and Big Five game drives." },
+      { days: "Days 7–9", desc: "Ngorongoro Crater full-day game drive; cross to Kenya via Lake Nakuru flamingoes." },
+      { days: "Days 10–12", desc: "Maasai Mara wildlife viewing, Amboseli NP with Kilimanjaro views, departure Nairobi." },
+    ],
   },
 ];
 
@@ -103,7 +97,7 @@ export default function TanzaniaPage() {
           className="absolute inset-0 scale-110"
           style={{
             backgroundImage:
-              "url(https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=1800&q=80)",
+              `url(${base}/photos/newstock/SerengetiNationaLPark.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -260,48 +254,42 @@ export default function TanzaniaPage() {
               Get a Custom Quote
             </Link>
           </FadeIn>
-          <StaggerGrid className="package-grid">
-            {packages.map((pkg, i) => (
-              <StaggerItem key={pkg.name}>
-                <div className="package-card group">
-                  <img src={pkg.image} alt={pkg.name} className="package-card-img" />
-                  <div className="package-card-overlay" />
-                  <span className="package-card-num">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="package-card-duration">{pkg.duration}</span>
-
-                  <div className="package-card-body">
-                    <p className="package-card-tagline">{pkg.tagline}</p>
-                    <h3 className="package-card-title">{pkg.name}</h3>
-                    <div className="package-card-rule" />
-
-                    <div className="package-card-description-wrap">
-                      <div><p className="package-description">{pkg.description}</p></div>
-                    </div>
-
-                    <div className="package-features">
-                      {pkg.activities.map((act) => (
-                        <span key={act} className="package-feature-pill">
-                          <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />
-                          {act}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="flex items-center justify-between pt-4 border-t border-cream/10">
-                      <div>
-                        <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                        {pkg.minPax && <p className="text-cream/40 text-[9px] font-sans mt-0.5">{pkg.minPax}</p>}
+          <div className="space-y-20">
+            {packages.map((pkg) => (
+              <div key={pkg.name} className="grid md:grid-cols-2 gap-12 items-start border-b border-gold/10 pb-20 last:border-0 last:pb-0">
+                <div className="relative overflow-hidden aspect-[4/3]">
+                  <img src={pkg.image} alt={pkg.name} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-transparent to-transparent" />
+                  <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">{pkg.duration}</span>
+                </div>
+                <div>
+                  <p className="section-label mb-2">{pkg.tagline}</p>
+                  <h3 className="font-serif text-3xl text-forest mb-4">{pkg.name}</h3>
+                  <div className="w-10 h-px bg-gold mb-6" />
+                  <p className="text-stone font-sans text-sm leading-relaxed mb-8">{pkg.description}</p>
+                  <div className="space-y-4 mb-8">
+                    {pkg.itinerary.map((item) => (
+                      <div key={item.days} className="flex gap-4 border-t border-gold/10 pt-4">
+                        <span className="text-gold text-[10px] uppercase tracking-widest font-sans w-20 shrink-0 pt-0.5">{item.days}</span>
+                        <span className="text-stone font-sans text-sm leading-relaxed">{item.desc}</span>
                       </div>
-                      <Link href="/plan-a-trip" className="package-cta">
-                        Enquire
-                        <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
-                      </Link>
-                    </div>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {pkg.activities.map((act) => (
+                      <span key={act} className="text-[10px] uppercase tracking-widest font-sans border border-gold/30 text-forest/70 px-3 py-1.5 flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-gold" />{act}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
+                    <Link href="/plan-a-trip" className="btn-primary">Enquire About This Package</Link>
                   </div>
                 </div>
-              </StaggerItem>
+              </div>
             ))}
-          </StaggerGrid>
+          </div>
         </div>
       </section>
 

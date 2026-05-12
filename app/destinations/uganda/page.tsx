@@ -1,7 +1,6 @@
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
-import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
 
@@ -60,6 +59,10 @@ const packages = [
       "A compact national park featuring 350 bird species and wildlife including zebras, impalas, buffalos, leopards, and hippos — located 3–4 hours from Kampala. Includes pick-up, bicycle tour, nature walk, and return.",
     activities: ["Pick-up from Kampala", "Bicycle tour", "Nature walk", "Bird watching"],
     image: `${base}/photos/newstock/bufallo.jpg`,
+    itinerary: [
+      { days: "Day 1", desc: "Depart Kampala, arrive Lake Mburo NP; afternoon game drive and bicycle tour along the lakeshore." },
+      { days: "Day 2", desc: "Early morning bird watching (350+ species), nature walk with a ranger, return to Kampala." },
+    ],
   },
   {
     name: "5-Day Wildlife Safari to Murchison Falls & Queen Elizabeth",
@@ -68,14 +71,13 @@ const packages = [
     price: "From $2,000 / person (2+ pax)",
     description:
       "Comprehensive safari combining the world’s most powerful waterfalls with Uganda’s largest national park — game drives, boat cruises, birding, nature walks, and sunset viewing.",
-    activities: [
-      "Waterfall visits",
-      "Game drives",
-      "Boat cruises",
-      "Nature walks",
-      "Sunset viewing",
-    ],
+    activities: ["Waterfall visits", "Game drives", "Boat cruises", "Nature walks", "Sunset viewing"],
     image: `${base}/photos/newstock/Big Five Game Drives.jpg`,
+    itinerary: [
+      { days: "Days 1–2", desc: "Depart Kampala for Murchison Falls; hike to the top of the falls, afternoon game drive." },
+      { days: "Days 3–4", desc: "Boat cruise on the Victoria Nile, drive to Queen Elizabeth NP, Big Four game drives." },
+      { days: "Day 5", desc: "Kazinga Channel boat cruise, Rift Valley sunset viewing, return journey." },
+    ],
   },
   {
     name: "3-Day Gorilla Trekking Experience",
@@ -84,13 +86,13 @@ const packages = [
     price: "From $2,800 (2+ pax)",
     description:
       "Trek into Bwindi Impenetrable National Park — across four sectors (Ruhija, Rushaga, Buhoma, Nkuringo) — for a life-changing hour with mountain gorilla families. Maximum 8 people per gorilla family.",
-    activities: [
-      "Gorilla trekking in Bwindi",
-      "Four sector options",
-      "Forest walk",
-      "Community visit",
-    ],
+    activities: ["Gorilla trekking in Bwindi", "Four sector options", "Forest walk", "Community visit"],
     image: `${base}/photos/newstock/gorrillla.jpg`,
+    itinerary: [
+      { days: "Day 1", desc: "Fly or drive to Bwindi; orientation briefing with ranger team and overnight at forest lodge." },
+      { days: "Day 2", desc: "Morning gorilla trek deep into the impenetrable forest — one unforgettable hour with a gorilla family." },
+      { days: "Day 3", desc: "Batwa cultural community visit and forest walk, return transfer." },
+    ],
   },
   {
     name: "8-Day Trip Around Uganda",
@@ -99,14 +101,14 @@ const packages = [
     price: "From $3,000",
     description:
       "The complete Uganda experience — gorilla trekking, game drives, boat cruises, plus adrenaline adventures on the Nile: white-water rafting, kayaking, bungee jumping, quad biking, and local food tasting.",
-    activities: [
-      "Gorilla trekking",
-      "Game drives & boat cruises",
-      "White-water rafting",
-      "Bungee jumping & quad biking",
-      "Local food tasting",
-    ],
+    activities: ["Gorilla trekking", "Game drives & boat cruises", "White-water rafting", "Bungee jumping & quad biking", "Local food tasting"],
     image: `${base}/photos/newstock/Boat Safaris08Boat Safaris.jpg`,
+    itinerary: [
+      { days: "Days 1–2", desc: "Kampala city tour, drive to Murchison Falls NP; waterfall hike and evening game drive." },
+      { days: "Days 3–4", desc: "Boat cruise on the Nile, drive south to Bwindi; gorilla trekking and cultural village visit." },
+      { days: "Days 5–6", desc: "Drive to Jinja — Source of the Nile; white-water rafting, kayaking, and bungee jumping." },
+      { days: "Days 7–8", desc: "Quad biking, local food tasting tour, farewell dinner in Kampala, departure." },
+    ],
   },
   {
     name: "5-Day Wild Safari Itinerary",
@@ -115,14 +117,13 @@ const packages = [
     price: "From $2,000 / person (2+ pax)",
     description:
       "Visit the thundering Murchison Falls and Queen Elizabeth National Park — encounter the Big Four on game drives, cruise the Kazinga Channel, and watch the sunset over the Rift Valley.",
-    activities: [
-      "Waterfall visits",
-      "Game drives",
-      "Boat cruises",
-      "Nature walks",
-      "Sunset viewing",
-    ],
+    activities: ["Waterfall visits", "Game drives", "Boat cruises", "Nature walks", "Sunset viewing"],
     image: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=700&q=85",
+    itinerary: [
+      { days: "Days 1–2", desc: "Kampala to Murchison Falls; thundering waterfall visit, afternoon Big Four game drive." },
+      { days: "Days 3–4", desc: "Queen Elizabeth NP — game drives and tree-climbing lion spotting." },
+      { days: "Day 5", desc: "Kazinga Channel boat cruise, Rift Valley sunset, return to Kampala." },
+    ],
   },
   {
     name: "10-Day Rwenzori Mountains Trekking",
@@ -131,13 +132,13 @@ const packages = [
     price: "From $2,000",
     description:
       "Trek through varying ecosystems to Margherita Peak — Africa’s third-highest summit. Equatorial glaciers, giant heathers, and breathtaking Albertine Rift Valley panoramas.",
-    activities: [
-      "Multi-day mountain trekking",
-      "Alpine glacier visit",
-      "Diverse ecosystem walk",
-      "Village visit",
-    ],
+    activities: ["Multi-day mountain trekking", "Alpine glacier visit", "Diverse ecosystem walk", "Village visit"],
     image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=85",
+    itinerary: [
+      { days: "Days 1–2", desc: "Arrive Kasese; acclimatization trek through montane forest, ranger briefing." },
+      { days: "Days 3–7", desc: "Ascent through heather, moorland, and alpine bog zones toward the glacial peaks." },
+      { days: "Days 8–10", desc: "Margherita Peak summit attempt, descent through forest, village visit, departure." },
+    ],
   },
   {
     name: "4-Day Gorilla Trekking Experience",
@@ -146,13 +147,13 @@ const packages = [
     price: "From $3,000 (2+ pax)",
     description:
       "An extended gorilla experience with overnight stays in Entebbe and Kisoro — time to explore Bwindi’s forest trails, visit the Batwa trail, and unwind at Lake Bunyonyi.",
-    activities: [
-      "Gorilla trekking in Bwindi",
-      "Batwa trail",
-      "Lake Bunyonyi excursion",
-      "Bird watching",
-    ],
+    activities: ["Gorilla trekking in Bwindi", "Batwa trail", "Lake Bunyonyi excursion", "Bird watching"],
     image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=700&q=85",
+    itinerary: [
+      { days: "Day 1", desc: "Arrive Entebbe; city orientation and overnight rest before the journey south." },
+      { days: "Day 2", desc: "Drive or fly to Kisoro/Bwindi; evening ranger briefing and forest lodge check-in." },
+      { days: "Days 3–4", desc: "Gorilla trek and Batwa cultural trail; Lake Bunyonyi boat excursion, return to Kampala." },
+    ],
   },
 ];
 
@@ -165,7 +166,7 @@ export default function UgandaPage() {
           className="absolute inset-0 scale-110 transition-transform duration-[8000ms]"
           style={{
             backgroundImage:
-              "url(https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=1800&q=80)",
+              `url(${base}/photos/newstock/UgandaDestinationHero.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -322,45 +323,42 @@ export default function UgandaPage() {
               Get a Custom Quote
             </Link>
           </FadeIn>
-          <StaggerGrid className="package-grid">
-            {packages.map((pkg, i) => (
-              <StaggerItem key={pkg.name}>
-                <div className="package-card group">
-                  <img src={pkg.image} alt={pkg.name} className="package-card-img" />
-                  <div className="package-card-overlay" />
-                  <span className="package-card-num">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="package-card-duration">{pkg.duration}</span>
-
-                  <div className="package-card-body">
-                    <p className="package-card-tagline">{pkg.tagline}</p>
-                    <h3 className="package-card-title">{pkg.name}</h3>
-                    <div className="package-card-rule" />
-
-                    <div className="package-card-description-wrap">
-                      <div><p className="package-description">{pkg.description}</p></div>
-                    </div>
-
-                    <div className="package-features">
-                      {pkg.activities.map((act) => (
-                        <span key={act} className="package-feature-pill">
-                          <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />
-                          {act}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="flex items-center justify-between pt-4 border-t border-cream/10">
-                      <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                      <Link href="/plan-a-trip" className="package-cta">
-                        Enquire
-                        <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
-                      </Link>
-                    </div>
+          <div className="space-y-20">
+            {packages.map((pkg) => (
+              <div key={pkg.name} className="grid md:grid-cols-2 gap-12 items-start border-b border-gold/10 pb-20 last:border-0 last:pb-0">
+                <div className="relative overflow-hidden aspect-[4/3]">
+                  <img src={pkg.image} alt={pkg.name} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-transparent to-transparent" />
+                  <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">{pkg.duration}</span>
+                </div>
+                <div>
+                  <p className="section-label mb-2">{pkg.tagline}</p>
+                  <h3 className="font-serif text-3xl text-forest mb-4">{pkg.name}</h3>
+                  <div className="w-10 h-px bg-gold mb-6" />
+                  <p className="text-stone font-sans text-sm leading-relaxed mb-8">{pkg.description}</p>
+                  <div className="space-y-4 mb-8">
+                    {pkg.itinerary.map((item) => (
+                      <div key={item.days} className="flex gap-4 border-t border-gold/10 pt-4">
+                        <span className="text-gold text-[10px] uppercase tracking-widest font-sans w-20 shrink-0 pt-0.5">{item.days}</span>
+                        <span className="text-stone font-sans text-sm leading-relaxed">{item.desc}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {pkg.activities.map((act) => (
+                      <span key={act} className="text-[10px] uppercase tracking-widest font-sans border border-gold/30 text-forest/70 px-3 py-1.5 flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-gold" />{act}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
+                    <Link href="/plan-a-trip" className="btn-primary">Enquire About This Package</Link>
                   </div>
                 </div>
-              </StaggerItem>
+              </div>
             ))}
-          </StaggerGrid>
+          </div>
         </div>
       </section>
 

@@ -23,7 +23,7 @@ const packages = [
       "Apartheid Museum visit",
       "Local food tasting",
     ],
-    image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=700&q=85",
+    image: `${base}/photos/newstock/Table Mountain.jpg`,
     itinerary: [
       { days: "Days 1–2", desc: "Arrival in Johannesburg, transfer to Kruger National Park." },
       { days: "Days 3–5", desc: "Game drives in Kruger; travel to Cape Town and explore Table Mountain." },
@@ -36,7 +36,7 @@ const hotspots = [
   {
     name: "Kruger National Park",
     detail: "Africa's Premier Big Five Safari Reserve",
-    image: "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=900&q=85",
+    image: `${base}/photos/newstock/lioness.jpg`,
   },
   {
     name: "Cape Town",
@@ -46,22 +46,22 @@ const hotspots = [
   {
     name: "Drakensberg Mountains",
     detail: "Stunning Peaks & Dramatic Escarpments",
-    image: "https://images.unsplash.com/photo-1501705388883-4ed8a543392c?w=900&q=85",
+    image: `${base}/photos/newstock/AfricanLandscape.jpg`,
   },
   {
     name: "Johannesburg & Soweto",
     detail: "Apartheid Museum & Living History",
-    image: "https://images.unsplash.com/photo-1595123550441-d377e017de6a?w=900&q=85",
+    image: `${base}/photos/newstock/indianocean.jpg`,
   },
   {
     name: "Cape Peninsula",
     detail: "Boulders Beach & Cape of Good Hope",
-    image: "https://images.unsplash.com/photo-1576085834044-92c469b79d11?w=900&q=85",
+    image: `${base}/photos/newstock/Cape Town.jpg`,
   },
   {
     name: "Cape Winelands",
     detail: "Stellenbosch, Franschhoek & World-Class Wine",
-    image: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=900&q=85",
+    image: `${base}/photos/newstock/Ecoluxury.jpg`,
   },
 ];
 
@@ -73,7 +73,7 @@ export default function SouthAfricaPage() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage: "url(https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1800&q=80)",
+            backgroundImage: `url(${base}/photos/newstock/Cape%20Town.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -130,16 +130,16 @@ export default function SouthAfricaPage() {
 
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=500&q=80" alt="Kruger lion" className="w-full h-52 object-cover" />
+              <img src={`${base}/photos/newstock/lioness.jpg`} alt="Kruger lion" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-6">
-              <img src="https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=500&q=80" alt="Cape Town Table Mountain" className="w-full h-52 object-cover" />
+              <img src={`${base}/photos/newstock/Table Mountain.jpg`} alt="Cape Town Table Mountain" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-6">
-              <img src="https://images.unsplash.com/photo-1595123550441-d377e017de6a?w=500&q=80" alt="Cape Town aerial" className="w-full h-52 object-cover" />
+              <img src={`${base}/photos/newstock/indianocean.jpg`} alt="Cape Town aerial" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1501705388883-4ed8a543392c?w=500&q=80" alt="Kruger elephant" className="w-full h-52 object-cover" />
+              <img src={`${base}/photos/newstock/bigelephant.jpg`} alt="Kruger elephant" className="w-full h-52 object-cover" />
             </ImageReveal>
           </div>
         </div>

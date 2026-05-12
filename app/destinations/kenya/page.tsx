@@ -1,7 +1,6 @@
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
-import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
 
@@ -63,13 +62,13 @@ const packages = [
     price: "From $2,000 / person",
     description:
       "Explore Kenya’s most iconic reserves with game drives, cultural visits, and the Great Migration circuit including Samburu, Lake Nakuru, and Maasai Mara.",
-    activities: [
-      "Nairobi city tour",
-      "Samburu game drives",
-      "Lake Nakuru flamingoes",
-      "Masai Mara safari",
-    ],
+    activities: ["Nairobi city tour", "Samburu game drives", "Lake Nakuru flamingoes", "Masai Mara safari"],
     image: `${base}/photos/newstock/elephantcars.jpg`,
+    itinerary: [
+      { days: "Days 1–2", desc: "Arrive Nairobi; Giraffe Centre & city tour, drive north to Samburu Reserve." },
+      { days: "Days 3–4", desc: "Samburu game drives for rare northern species; drive to Lake Nakuru flamingo circuit." },
+      { days: "Days 5–7", desc: "Maasai Mara — Great Migration viewing, Big Five game drives, farewell dinner, departure." },
+    ],
   },
   {
     name: "7-Day Magical Kenya Tour",
@@ -78,13 +77,13 @@ const packages = [
     price: "From $2,000 / person",
     description:
       "From Amboseli’s legendary elephant herds and Kilimanjaro views to Lake Nakuru and Masai Mara, this itinerary blends wildlife with authentic local culture.",
-    activities: [
-      "Amboseli NP",
-      "Lake Nakuru",
-      "Masai Mara",
-      "Maasai village visit",
-    ],
+    activities: ["Amboseli NP", "Lake Nakuru", "Masai Mara", "Maasai village visit"],
     image: "https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=700&q=85",
+    itinerary: [
+      { days: "Days 1–2", desc: "Arrive Nairobi; drive to Amboseli NP — elephant herds framed by Kilimanjaro at dawn." },
+      { days: "Days 3–4", desc: "Lake Nakuru flamingo lake circuit; game drives for rhino and leopard." },
+      { days: "Days 5–7", desc: "Maasai Mara safari, authentic Maasai village visit, farewell dinner, departure Nairobi." },
+    ],
   },
   {
     name: "12-Day Kenya & Tanzania Safari",
@@ -93,13 +92,14 @@ const packages = [
     price: "From $3,000 / person (group of 4)",
     description:
       "Journey from Kenya’s Amboseli and Masai Mara to Tanzania’s Serengeti and Ngorongoro for a seamless, epic wildlife adventure across two countries.",
-    activities: [
-      "Serengeti NP",
-      "Ngorongoro Crater",
-      "Masai Mara",
-      "Amboseli NP",
-    ],
+    activities: ["Serengeti NP", "Ngorongoro Crater", "Masai Mara", "Amboseli NP"],
     image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=700&q=85",
+    itinerary: [
+      { days: "Days 1–3", desc: "Nairobi arrival; Amboseli NP — Kilimanjaro backdrop and legendary elephant herds." },
+      { days: "Days 4–6", desc: "Maasai Mara — Great Migration viewing, Big Five game drives." },
+      { days: "Days 7–9", desc: "Cross to Tanzania; Serengeti NP plains and wildebeest migration circuit." },
+      { days: "Days 10–12", desc: "Ngorongoro Crater game drive, Lake Manyara, departure from Arusha." },
+    ],
   },
 ];
 
@@ -269,45 +269,42 @@ export default function KenyaPage() {
               Get a Custom Quote
             </Link>
           </FadeIn>
-          <StaggerGrid className="package-grid">
-            {packages.map((pkg, i) => (
-              <StaggerItem key={pkg.name}>
-                <div className="package-card group">
-                  <img src={pkg.image} alt={pkg.name} className="package-card-img" />
-                  <div className="package-card-overlay" />
-                  <span className="package-card-num">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="package-card-duration">{pkg.duration}</span>
-
-                  <div className="package-card-body">
-                    <p className="package-card-tagline">{pkg.tagline}</p>
-                    <h3 className="package-card-title">{pkg.name}</h3>
-                    <div className="package-card-rule" />
-
-                    <div className="package-card-description-wrap">
-                      <div><p className="package-description">{pkg.description}</p></div>
-                    </div>
-
-                    <div className="package-features">
-                      {pkg.activities.map((act) => (
-                        <span key={act} className="package-feature-pill">
-                          <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />
-                          {act}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="flex items-center justify-between pt-4 border-t border-cream/10">
-                      <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                      <Link href="/plan-a-trip" className="package-cta">
-                        Enquire
-                        <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
-                      </Link>
-                    </div>
+          <div className="space-y-20">
+            {packages.map((pkg) => (
+              <div key={pkg.name} className="grid md:grid-cols-2 gap-12 items-start border-b border-gold/10 pb-20 last:border-0 last:pb-0">
+                <div className="relative overflow-hidden aspect-[4/3]">
+                  <img src={pkg.image} alt={pkg.name} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-transparent to-transparent" />
+                  <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">{pkg.duration}</span>
+                </div>
+                <div>
+                  <p className="section-label mb-2">{pkg.tagline}</p>
+                  <h3 className="font-serif text-3xl text-forest mb-4">{pkg.name}</h3>
+                  <div className="w-10 h-px bg-gold mb-6" />
+                  <p className="text-stone font-sans text-sm leading-relaxed mb-8">{pkg.description}</p>
+                  <div className="space-y-4 mb-8">
+                    {pkg.itinerary.map((item) => (
+                      <div key={item.days} className="flex gap-4 border-t border-gold/10 pt-4">
+                        <span className="text-gold text-[10px] uppercase tracking-widest font-sans w-20 shrink-0 pt-0.5">{item.days}</span>
+                        <span className="text-stone font-sans text-sm leading-relaxed">{item.desc}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {pkg.activities.map((act) => (
+                      <span key={act} className="text-[10px] uppercase tracking-widest font-sans border border-gold/30 text-forest/70 px-3 py-1.5 flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-gold" />{act}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
+                    <Link href="/plan-a-trip" className="btn-primary">Enquire About This Package</Link>
                   </div>
                 </div>
-              </StaggerItem>
+              </div>
             ))}
-          </StaggerGrid>
+          </div>
         </div>
       </section>
 
