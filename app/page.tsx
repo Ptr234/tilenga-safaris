@@ -363,7 +363,7 @@ export default function HomePage() {
                 </FadeIn>
 
                 <div className="absolute -bottom-20 -left-16 hidden lg:block w-72 h-96 z-20">
-                  <FadeIn direction="up" delay={0.6}>
+                  <FadeIn direction="up" delay={0.6} className="h-full">
                     <div className="film-frame h-full overflow-hidden shadow-2xl border-4 border-white/10">
                       <img
                         src={`${base}/photos/newstock/wildlifeconservation.jpg`}
