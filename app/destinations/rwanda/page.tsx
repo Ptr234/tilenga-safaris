@@ -26,12 +26,12 @@ const hotspots = [
   {
     name: "Kigali Genocide Memorial",
     detail: "A Powerful Tribute to History & Remembrance",
-    image: "https://images.unsplash.com/photo-1526319238109-56f76eaba7f2?w=900&q=85",
+    image: `${base}/photos/newstock/Kigali Genocide Memorial.png`,
   },
   {
     name: "Kigali",
     detail: "Africa's Cleanest, Most Vibrant Capital",
-    image: "https://images.unsplash.com/photo-1526319238109-56f76eaba7f2?w=900&q=85",
+    image: `${base}/photos/newstock/kigali city.jpg`,
   },
 ];
 
@@ -113,7 +113,7 @@ export default function RwandaPage() {
               <img src="https://images.unsplash.com/photo-1474690870753-1b92efa1f2d8?w=500&q=80" alt="Lake Kivu" className="w-full h-52 object-cover" />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1526319238109-56f76eaba7f2?w=500&q=80" alt="Kigali city" className="w-full h-52 object-cover" />
+              <img src={`${base}/photos/newstock/kigali city.jpg`} alt="Kigali city" className="w-full h-52 object-cover" />
             </ImageReveal>
           </div>
         </div>
