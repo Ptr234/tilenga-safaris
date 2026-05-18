@@ -223,18 +223,35 @@ export default function PlanATripPage() {
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">Destination of Interest *</label>
-                    <select
-                      name="destination"
-                      required
-                      className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors appearance-none"
-                    >
-                      <option value="">Select a destination</option>
-                      {destinations.map((d) => (
-                        <option key={d} value={d}>{d}</option>
-                      ))}
-                    </select>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div>
+                      <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">Destination of Interest *</label>
+                      <select
+                        name="destination"
+                        required
+                        className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors appearance-none"
+                      >
+                        <option value="">Select a destination</option>
+                        {destinations.map((d) => (
+                          <option key={d} value={d}>{d}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-forest text-[10px] uppercase tracking-widest font-sans font-bold mb-3">Estimated Budget per Person *</label>
+                      <select
+                        name="budget"
+                        required
+                        className="w-full border-b border-stone/20 bg-transparent px-0 py-3 text-sm font-sans text-forest focus:outline-none focus:border-gold transition-colors appearance-none"
+                      >
+                        <option value="">Select budget range (USD)</option>
+                        <option value="$1,000 - $3,000">$1,000 - $3,000</option>
+                        <option value="$3,000 - $5,000">$3,000 - $5,000</option>
+                        <option value="$5,000 - $10,000">$5,000 - $10,000</option>
+                        <option value="$10,000+">$10,000+</option>
+                        <option value="Undecided">Undecided</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
 

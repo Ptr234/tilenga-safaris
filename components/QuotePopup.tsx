@@ -184,12 +184,18 @@ export default function QuotePopup() {
                           </select>
                         </div>
                         <div className="space-y-1">
-                          <label className="text-[10px] uppercase tracking-widest text-stone/60 font-bold">Approx. Date</label>
-                          <input 
-                            name="date" 
-                            type="date" 
-                            className="w-full bg-transparent border-b border-stone/20 py-2 text-sm focus:outline-none focus:border-gold transition-colors font-sans"
-                          />
+                          <label className="text-[10px] uppercase tracking-widest text-stone/60 font-bold">Estimated Budget *</label>
+                          <select 
+                            name="budget" 
+                            required 
+                            className="w-full bg-transparent border-b border-stone/20 py-2 text-sm focus:outline-none focus:border-gold transition-colors font-sans appearance-none"
+                          >
+                            <option value="">Select range...</option>
+                            <option value="$1k - $3k">$1k - $3k</option>
+                            <option value="$3k - $5k">$3k - $5k</option>
+                            <option value="$5k - $10k">$5k - $10k</option>
+                            <option value="$10k+">$10k+</option>
+                          </select>
                         </div>
                       </div>
 
