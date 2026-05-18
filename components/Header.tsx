@@ -7,8 +7,10 @@ import { motion, AnimatePresence } from "framer-motion";
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const navItems = [
+  { label: "Home", href: "/", image: `${base}/photos/newstock/AfricanLandscape.jpg` },
+  { label: "Destinations", href: "/destinations", image: `${base}/photos/newstock/Masai Mara.jpg` },
   {
-    label: "Our Stays",
+    label: "Our Lodges",
     href: "/lodges",
     image: `${base}/photos/tilengasafarilodge/entrance.png`,
     children: [
@@ -16,15 +18,8 @@ const navItems = [
       { label: "Kikorongo Safari Lodge", href: "/lodges/kikorongo-safari-lodge", image: `${base}/photos/kikorongo_outside.jpg` },
     ],
   },
-  {
-    label: "Experiences & Activities",
-    href: "/#experiences",
-    image: `${base}/photos/newstock/Big Five Game Drives.jpg`,
-  },
-  { label: "About Us", href: "/about", image: `${base}/photos/newstock/AfricanLandscape.jpg` },
-  { label: "Sustainability & Conservation", href: "/about#conservation", image: `${base}/photos/newstock/conservation.jpg` },
-  { label: "Tilenga Safaris Travel Concierge", href: "/plan-a-trip", image: `${base}/photos/newstock/bespokeitinenarydesign.jpg` },
-  { label: "Our Travel Stories", href: "/destinations", image: `${base}/photos/newstock/Masai Mara.jpg` },
+  { label: "About", href: "/about", image: `${base}/photos/newstock/conservation.jpg` },
+  { label: "Plan a Trip", href: "/plan-a-trip", image: `${base}/photos/newstock/bespokeitinenarydesign.jpg` },
 ];
 
 const bottomNav = [
