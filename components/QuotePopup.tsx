@@ -11,7 +11,7 @@ export default function QuotePopup() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Automatically open after 10 seconds (optional, but good for engagement)
+  // Automatically open after 15 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
       const hasSeenPopup = sessionStorage.getItem("hasSeenQuotePopup");
@@ -19,7 +19,7 @@ export default function QuotePopup() {
         setIsOpen(true);
         sessionStorage.setItem("hasSeenQuotePopup", "true");
       }
-    }, 15000); // 15 seconds
+    }, 15000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -59,16 +59,27 @@ export default function QuotePopup() {
 
   return (
     <>
-      {/* Trigger Button - Floating or Sticky? Let's make it a discrete floating button if not open */}
+      {/* Trigger Button - Horizontal Pill on the Right */}
       {!isOpen && (
         <motion.button
-          initial={{ opacity: 0, x: 20 }}
+          initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
+          whileHover={{ x: -10 }}
           onClick={() => setIsOpen(true)}
-          className="fixed left-0 top-1/2 -translate-y-1/2 z-[60] bg-gold text-forest px-4 py-8 [writing-mode:vertical-lr] rotate-180 flex items-center gap-3 font-sans text-[10px] uppercase tracking-[0.3em] font-bold shadow-2xl hover:bg-forest hover:text-gold transition-colors duration-500 rounded-r-lg"
+          className="fixed right-0 top-1/2 -translate-y-1/2 z-[60] bg-[#07130d] text-cream flex items-center gap-4 pl-4 pr-6 py-3 shadow-[0_10px_40px_rgba(0,0,0,0.3)] rounded-l-full border-l border-y border-gold/40 group transition-all duration-500"
         >
-          Request a Quote
-          <span className="rotate-90">✦</span>
+          <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-gold shrink-0">
+            <img 
+              src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=100&q=80" 
+              alt="Safari" 
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+          </div>
+          <div className="flex flex-col items-start text-left">
+            <span className="text-[9px] uppercase tracking-[0.2em] text-gold font-bold leading-none mb-1">Request a</span>
+            <span className="text-[12px] font-sans tracking-widest uppercase font-black whitespace-nowrap text-white">Free Quote</span>
+          </div>
+          <span className="text-gold text-xs group-hover:translate-x-1 transition-transform duration-500">✦</span>
         </motion.button>
       )}
 
