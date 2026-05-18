@@ -6,6 +6,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InstagramFeed from "@/components/InstagramFeed";
+import QuotePopup from "@/components/QuotePopup";
 import PageTransition from "@/components/motion/PageTransition";
 import SmoothScroll from "@/components/motion/SmoothScroll";
 import ScrollProgress from "@/components/motion/ScrollProgress";
@@ -55,6 +56,7 @@ export default function RootLayout({
             <main>{children}</main>
           </PageTransition>
           <InstagramFeed />
+          <QuotePopup />
           <Footer />
 
           {/* WhatsApp floating button */}
