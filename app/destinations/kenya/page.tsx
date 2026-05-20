@@ -64,6 +64,7 @@ const packages = [
       "Explore Kenya’s most iconic reserves with game drives, cultural visits, and the Great Migration circuit including Samburu, Lake Nakuru, and Maasai Mara.",
     activities: ["Nairobi city tour", "Samburu game drives", "Lake Nakuru flamingoes", "Masai Mara safari"],
     image: `${base}/photos/newstock/elephantcars.jpg`,
+    downloadUrl: `${base}/photos/newstock/7–DAY-KENYA-PRIME-SAFARI-2.pdf`,
     itinerary: [
       { days: "Days 1–2", desc: "Arrive Nairobi; Giraffe Centre & city tour, drive north to Samburu Reserve." },
       { days: "Days 3–4", desc: "Samburu game drives for rare northern species; drive to Lake Nakuru flamingo circuit." },
@@ -79,6 +80,7 @@ const packages = [
       "From Amboseli’s legendary elephant herds and Kilimanjaro views to Lake Nakuru and Masai Mara, this itinerary blends wildlife with authentic local culture.",
     activities: ["Amboseli NP", "Lake Nakuru", "Masai Mara", "Maasai village visit"],
     image: "https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=700&q=85",
+    downloadUrl: `${base}/photos/newstock/7-–-DAY-MAGICAL-KENYA-TOUR-1.pdf`,
     itinerary: [
       { days: "Days 1–2", desc: "Arrive Nairobi; drive to Amboseli NP — elephant herds framed by Kilimanjaro at dawn." },
       { days: "Days 3–4", desc: "Lake Nakuru flamingo lake circuit; game drives for rhino and leopard." },
@@ -94,6 +96,7 @@ const packages = [
       "Journey from Kenya’s Amboseli and Masai Mara to Tanzania’s Serengeti and Ngorongoro for a seamless, epic wildlife adventure across two countries.",
     activities: ["Serengeti NP", "Ngorongoro Crater", "Masai Mara", "Amboseli NP"],
     image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=700&q=85",
+    downloadUrl: `${base}/photos/newstock/12-DAY-SAFARI-TOUR-AROUND-KENYA-AND-TANZANIA-1-.pdf`,
     itinerary: [
       { days: "Days 1–3", desc: "Nairobi arrival; Amboseli NP — Kilimanjaro backdrop and legendary elephant herds." },
       { days: "Days 4–6", desc: "Maasai Mara — Great Migration viewing, Big Five game drives." },
@@ -297,9 +300,20 @@ export default function KenyaPage() {
                       </span>
                     ))}
                   </div>
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-wrap items-center justify-between gap-4">
                     <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                    <Link href="/plan-a-trip" className="btn-primary">Enquire About This Package</Link>
+                    <div className="flex gap-4">
+                      {pkg.downloadUrl && (
+                        <a 
+                          href={pkg.downloadUrl} 
+                          download 
+                          className="btn-outline !px-6 !py-2.5 text-[11px]"
+                        >
+                          Download Itinerary
+                        </a>
+                      )}
+                      <Link href="/plan-a-trip" className="btn-primary !px-6 !py-2.5 text-[11px]">Enquire</Link>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const destinations = ["Uganda", "Kenya", "Tanzania", "Rwanda", "South Africa", "Namibia", "Botswana", "Multiple Destinations"];
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export default function QuotePopup() {
   const [isOpen, setIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -59,27 +61,55 @@ export default function QuotePopup() {
 
   return (
     <>
-      {/* Trigger Button - Horizontal Pill on the Right */}
+      {/* Refined Trigger Button - Floating Luxury Card */}
       {!isOpen && (
         <motion.button
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
-          whileHover={{ x: -10 }}
+          whileHover={{ x: -12 }}
           onClick={() => setIsOpen(true)}
-          className="fixed right-0 top-1/2 -translate-y-1/2 z-[60] bg-[#07130d] text-cream flex items-center gap-4 pl-4 pr-6 py-3 shadow-[0_10px_40px_rgba(0,0,0,0.3)] rounded-l-full border-l border-y border-gold/40 group transition-all duration-500"
+          className="fixed right-4 top-[75%] -translate-y-1/2 z-[60] group"
         >
-          <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-gold shrink-0">
-            <img 
-              src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=100&q=80" 
-              alt="Safari" 
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-            />
+          {/* Main Card */}
+          <div className="relative flex items-center bg-[#07130d]/90 backdrop-blur-xl p-4 shadow-[-20px_20px_60px_rgba(0,0,0,0.5)] border border-gold/30 overflow-hidden">
+            {/* Inner Decorative Border */}
+            <div className="absolute inset-1 border border-gold/10 pointer-events-none" />
+            
+            {/* Image Section - Vintage Film Frame */}
+            <div className="relative w-16 h-16 md:w-20 md:h-20 shrink-0 overflow-hidden border border-gold/40 p-1 bg-black/40">
+              <div className="w-full h-full overflow-hidden">
+                <img 
+                  src={`${base}/photos/newstock/Gorrillahd.jpg`} 
+                  alt="Safari" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-forest/40 to-transparent mix-blend-overlay" />
+            </div>
+            
+            {/* Content Section */}
+            <div className="flex flex-col items-start text-left ml-5 mr-3 relative z-10">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="w-4 h-px bg-gold/60" />
+                <span className="text-[8px] md:text-[9px] uppercase tracking-[0.5em] text-gold font-bold">Bespoke</span>
+              </div>
+              <span className="text-[14px] md:text-[18px] font-serif text-cream leading-none tracking-wide mb-1">
+                Request a <span className="italic text-gold block mt-1">Free Quote</span>
+              </span>
+            </div>
+
+            {/* Floating Detail */}
+            <div className="flex flex-col gap-2 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
+               <span className="text-[10px] text-gold animate-pulse">✦</span>
+               <div className="w-px h-8 bg-gradient-to-b from-transparent via-gold/40 to-transparent" />
+            </div>
+
+            {/* Shimmer Effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
           </div>
-          <div className="flex flex-col items-start text-left">
-            <span className="text-[9px] uppercase tracking-[0.2em] text-gold font-bold leading-none mb-1">Request a</span>
-            <span className="text-[12px] font-sans tracking-widest uppercase font-black whitespace-nowrap text-white">Free Quote</span>
-          </div>
-          <span className="text-gold text-xs group-hover:translate-x-1 transition-transform duration-500">✦</span>
+
+          {/* Background Shadow/Glow */}
+          <div className="absolute -inset-2 bg-gold/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
         </motion.button>
       )}
 

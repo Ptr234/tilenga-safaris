@@ -50,6 +50,22 @@ const packages = [
       { days: "Days 6–8", desc: "Lake Kivu — boat to the islands, cultural village stay, local food tasting, departure." },
     ],
   },
+  {
+    name: "10-Day Rwanda & Uganda Cross-Border",
+    tagline: "The Ultimate Primate Trek",
+    duration: "10 Days",
+    price: "Request a Quote",
+    description:
+      "An epic cross-border journey combining the best of Rwanda's Volcanoes National Park and Uganda's Bwindi and Queen Elizabeth parks for a comprehensive East African experience.",
+    activities: ["Gorilla tracking in two countries", "Kigali tour", "Queen Elizabeth NP game drives", "Boat cruises"],
+    image: `${base}/photos/newstock/AfricanLandscape.jpg`,
+    downloadUrl: `${base}/itineraries/RWANDA  - UGANDA - 10 DAYS  - TILENGA SAFARIS 2026.docx`,
+    itinerary: [
+      { days: "Days 1–3", desc: "Kigali arrival, city tour, and drive to Volcanoes NP for Rwanda gorilla tracking." },
+      { days: "Days 4–6", desc: "Cross to Uganda — Bwindi gorilla trek and Lake Bunyonyi relaxation." },
+      { days: "Days 7–10", desc: "Queen Elizabeth NP wildlife, Kazinga Channel cruise, and return to Kampala/Entebbe." },
+    ],
+  },
 ];
 
 export default function RwandaPage() {
@@ -183,9 +199,20 @@ export default function RwandaPage() {
                       </span>
                     ))}
                   </div>
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-wrap items-center justify-between gap-4">
                     <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                    <Link href="/plan-a-trip" className="btn-primary">Enquire About This Package</Link>
+                    <div className="flex gap-4">
+                      {pkg.downloadUrl && (
+                        <a 
+                          href={pkg.downloadUrl} 
+                          download 
+                          className="btn-outline !px-6 !py-2.5 text-[11px]"
+                        >
+                          Download Itinerary
+                        </a>
+                      )}
+                      <Link href="/plan-a-trip" className="btn-primary !px-6 !py-2.5 text-[11px]">Enquire</Link>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -59,6 +59,7 @@ const packages = [
       "A compact national park featuring 350 bird species and wildlife including zebras, impalas, buffalos, leopards, and hippos — located 3–4 hours from Kampala. Includes pick-up, bicycle tour, nature walk, and return.",
     activities: ["Pick-up from Kampala", "Bicycle tour", "Nature walk", "Bird watching"],
     image: `${base}/photos/newstock/bufallo.jpg`,
+    downloadUrl: `${base}/photos/newstock/LAKE-MBURO-NATIONAL-PARK-EXPERIENCE.pdf`,
     itinerary: [
       { days: "Day 1", desc: "Depart Kampala, arrive Lake Mburo NP; afternoon game drive and bicycle tour along the lakeshore." },
       { days: "Day 2", desc: "Early morning bird watching (350+ species), nature walk with a ranger, return to Kampala." },
@@ -73,6 +74,7 @@ const packages = [
       "Comprehensive safari combining the world’s most powerful waterfalls with Uganda’s largest national park — game drives, boat cruises, birding, nature walks, and sunset viewing.",
     activities: ["Waterfall visits", "Game drives", "Boat cruises", "Nature walks", "Sunset viewing"],
     image: `${base}/photos/newstock/Big Five Game Drives.jpg`,
+    downloadUrl: `${base}/photos/newstock/5-DAY-WILDLIFE-SAFARI-IN-UGANDA-4.pdf`,
     itinerary: [
       { days: "Days 1–2", desc: "Depart Kampala for Murchison Falls; hike to the top of the falls, afternoon game drive." },
       { days: "Days 3–4", desc: "Boat cruise on the Victoria Nile, drive to Queen Elizabeth NP, Big Four game drives." },
@@ -80,7 +82,7 @@ const packages = [
     ],
   },
   {
-    name: "3-Day Gorilla Trekking Experience",
+    name: "3-Day Gorilla Tracking in Uganda",
     tagline: "Mountain gorilla immersion",
     duration: "3 Days",
     price: "From $2,800 (2+ pax)",
@@ -88,6 +90,7 @@ const packages = [
       "Trek into Bwindi Impenetrable National Park — across four sectors (Ruhija, Rushaga, Buhoma, Nkuringo) — for a life-changing hour with mountain gorilla families. Maximum 8 people per gorilla family.",
     activities: ["Gorilla trekking in Bwindi", "Four sector options", "Forest walk", "Community visit"],
     image: `${base}/photos/newstock/gorrillla.jpg`,
+    downloadUrl: `${base}/itineraries/3 DAYS GORILLA TRACKING IN UGANDA -  TILENGA SAFARIS 2026.docx`,
     itinerary: [
       { days: "Day 1", desc: "Fly or drive to Bwindi; orientation briefing with ranger team and overnight at forest lodge." },
       { days: "Day 2", desc: "Morning gorilla trek deep into the impenetrable forest — one unforgettable hour with a gorilla family." },
@@ -95,64 +98,52 @@ const packages = [
     ],
   },
   {
-    name: "8-Day Trip Around Uganda",
-    tagline: "Complete Uganda adventure",
-    duration: "8 Days",
-    price: "From $3,000",
+    name: "9-Day Experience Uganda",
+    tagline: "The Pearl of Africa Tour",
+    duration: "9 Days",
+    price: "From $3,500",
     description:
       "The complete Uganda experience — gorilla trekking, game drives, boat cruises, plus adrenaline adventures on the Nile: white-water rafting, kayaking, bungee jumping, quad biking, and local food tasting.",
     activities: ["Gorilla trekking", "Game drives & boat cruises", "White-water rafting", "Bungee jumping & quad biking", "Local food tasting"],
     image: `${base}/photos/newstock/Boat Safaris08Boat Safaris.jpg`,
+    downloadUrl: `${base}/itineraries/EXPERIENCE UGANDA  - 9 DAYS  - TILENGA SAFARIS 2026.docx`,
     itinerary: [
       { days: "Days 1–2", desc: "Kampala city tour, drive to Murchison Falls NP; waterfall hike and evening game drive." },
       { days: "Days 3–4", desc: "Boat cruise on the Nile, drive south to Bwindi; gorilla trekking and cultural village visit." },
-      { days: "Days 5–6", desc: "Drive to Jinja — Source of the Nile; white-water rafting, kayaking, and bungee jumping." },
-      { days: "Days 7–8", desc: "Quad biking, local food tasting tour, farewell dinner in Kampala, departure." },
+      { days: "Days 5–7", desc: "Drive to Jinja — Source of the Nile; white-water rafting, kayaking, and bungee jumping." },
+      { days: "Days 8–9", desc: "Quad biking, local food tasting tour, farewell dinner in Kampala, departure." },
     ],
   },
   {
-    name: "5-Day Wild Safari Itinerary",
-    tagline: "Murchison & Queen Elizabeth highlights",
-    duration: "5 Days",
-    price: "From $2,000 / person (2+ pax)",
+    name: "Primates Experience",
+    tagline: "Chimpanzees & Gorillas",
+    duration: "7 Days",
+    price: "Request a Quote",
     description:
-      "Visit the thundering Murchison Falls and Queen Elizabeth National Park — encounter the Big Four on game drives, cruise the Kazinga Channel, and watch the sunset over the Rift Valley.",
-    activities: ["Waterfall visits", "Game drives", "Boat cruises", "Nature walks", "Sunset viewing"],
-    image: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=700&q=85",
+      "A specialized primate circuit focusing on the most intimate encounters with chimpanzees in Kibale and gorillas in Bwindi, paired with stunning forest walks.",
+    activities: ["Chimpanzee trekking", "Gorilla tracking", "Forest walks", "Primate research center visit"],
+    image: `${base}/photos/newstock/Gorrillahd.jpg`,
+    downloadUrl: `${base}/itineraries/PRIMATES EXPERIENCE - TILENGA SAFARIS 2026.docx`,
     itinerary: [
-      { days: "Days 1–2", desc: "Kampala to Murchison Falls; thundering waterfall visit, afternoon Big Four game drive." },
-      { days: "Days 3–4", desc: "Queen Elizabeth NP — game drives and tree-climbing lion spotting." },
-      { days: "Day 5", desc: "Kazinga Channel boat cruise, Rift Valley sunset, return to Kampala." },
+      { days: "Days 1–2", desc: "Arrive Entebbe, drive to Kibale Forest — the primate capital of the world." },
+      { days: "Days 3–4", desc: "Chimpanzee tracking and Bigodi swamp walk; drive to Bwindi Impenetrable Forest." },
+      { days: "Days 5–7", desc: "Gorilla tracking experience, Batwa cultural trail, return to Entebbe for departure." },
     ],
   },
   {
-    name: "10-Day Rwenzori Mountains Trekking",
-    tagline: "Legendary mountain trek",
+    name: "10-Day Rwanda & Uganda Cross-Border",
+    tagline: "The Ultimate Primate Trek",
     duration: "10 Days",
-    price: "From $2,000",
+    price: "Request a Quote",
     description:
-      "Trek through varying ecosystems to Margherita Peak — Africa’s third-highest summit. Equatorial glaciers, giant heathers, and breathtaking Albertine Rift Valley panoramas.",
-    activities: ["Multi-day mountain trekking", "Alpine glacier visit", "Diverse ecosystem walk", "Village visit"],
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=85",
+      "An epic cross-border journey combining the best of Rwanda's Volcanoes National Park and Uganda's Bwindi and Queen Elizabeth parks for a comprehensive East African experience.",
+    activities: ["Gorilla tracking in two countries", "Kigali tour", "Queen Elizabeth NP game drives", "Boat cruises"],
+    image: `${base}/photos/newstock/AfricanLandscape.jpg`,
+    downloadUrl: `${base}/itineraries/RWANDA  - UGANDA - 10 DAYS  - TILENGA SAFARIS 2026.docx`,
     itinerary: [
-      { days: "Days 1–2", desc: "Arrive Kasese; acclimatization trek through montane forest, ranger briefing." },
-      { days: "Days 3–7", desc: "Ascent through heather, moorland, and alpine bog zones toward the glacial peaks." },
-      { days: "Days 8–10", desc: "Margherita Peak summit attempt, descent through forest, village visit, departure." },
-    ],
-  },
-  {
-    name: "4-Day Gorilla Trekking Experience",
-    tagline: "Extended gorilla stay",
-    duration: "4 Days",
-    price: "From $3,000 (2+ pax)",
-    description:
-      "An extended gorilla experience with overnight stays in Entebbe and Kisoro — time to explore Bwindi’s forest trails, visit the Batwa trail, and unwind at Lake Bunyonyi.",
-    activities: ["Gorilla trekking in Bwindi", "Batwa trail", "Lake Bunyonyi excursion", "Bird watching"],
-    image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=700&q=85",
-    itinerary: [
-      { days: "Day 1", desc: "Arrive Entebbe; city orientation and overnight rest before the journey south." },
-      { days: "Day 2", desc: "Drive or fly to Kisoro/Bwindi; evening ranger briefing and forest lodge check-in." },
-      { days: "Days 3–4", desc: "Gorilla trek and Batwa cultural trail; Lake Bunyonyi boat excursion, return to Kampala." },
+      { days: "Days 1–3", desc: "Kigali arrival, city tour, and drive to Volcanoes NP for Rwanda gorilla tracking." },
+      { days: "Days 4–6", desc: "Cross to Uganda — Bwindi gorilla trek and Lake Bunyonyi relaxation." },
+      { days: "Days 7–10", desc: "Queen Elizabeth NP wildlife, Kazinga Channel cruise, and return to Kampala/Entebbe." },
     ],
   },
 ];
@@ -351,9 +342,20 @@ export default function UgandaPage() {
                       </span>
                     ))}
                   </div>
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-wrap items-center justify-between gap-4">
                     <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                    <Link href="/plan-a-trip" className="btn-primary">Enquire About This Package</Link>
+                    <div className="flex gap-4">
+                      {pkg.downloadUrl && (
+                        <a 
+                          href={pkg.downloadUrl} 
+                          download 
+                          className="btn-outline !px-6 !py-2.5 text-[11px]"
+                        >
+                          Download PDF
+                        </a>
+                      )}
+                      <Link href="/plan-a-trip" className="btn-primary !px-6 !py-2.5 text-[11px]">Enquire</Link>
+                    </div>
                   </div>
                 </div>
               </div>
