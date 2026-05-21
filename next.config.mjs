@@ -1,13 +1,11 @@
 /** @type {import('next').NextConfig} */
-const basePath = process.env.NODE_ENV === "production" ? "/tilenga-safaris" : "";
 
 const nextConfig = {
-  output: "export",
-  basePath,
-  assetPrefix: basePath ? `${basePath}/` : "",
+  // Removed output: "export" to support API routes (Edge Functions) on Cloudflare Pages
+  // Removed basePath "/tilenga-safaris" as it's likely causing the white page/broken asset paths on your root domain
   trailingSlash: true,
   env: {
-    NEXT_PUBLIC_BASE_PATH: basePath,
+    NEXT_PUBLIC_BASE_PATH: "",
   },
   images: {
     unoptimized: true,
