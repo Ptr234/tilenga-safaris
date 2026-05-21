@@ -2,6 +2,7 @@ import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
 
 export async function POST(req: Request) {
   try {
@@ -55,8 +56,8 @@ export async function POST(req: Request) {
 
     // 1. Send notification to Tilenga Safaris
     await resend.emails.send({
-      from: 'Tilenga Website <onboarding@resend.dev>',
-      to: ['destinations@tilengasafaris.com'],
+      from: `Tilenga Website <${fromEmail}>`,
+      to: ['destinations@tilengasafaris.africa'],
       subject: subject,
       html: emailContent,
       replyTo: email,
@@ -65,7 +66,7 @@ export async function POST(req: Request) {
     // 2. Send confirmation to the Guest
     if (source === 'newsletter') {
       await resend.emails.send({
-        from: 'Tilenga Safaris <onboarding@resend.dev>',
+        from: `Tilenga Safaris <${fromEmail}>`,
         to: [email],
         subject: `Welcome to Tilenga Safaris`,
         html: `
@@ -81,7 +82,7 @@ export async function POST(req: Request) {
       });
     } else {
       await resend.emails.send({
-        from: 'Tilenga Safaris <onboarding@resend.dev>',
+        from: `Tilenga Safaris <${fromEmail}>`,
         to: [email],
         subject: `Enquiry Received - Tilenga Safaris`,
         html: `

@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
 
 const packageFiles: Record<string, string> = {
   // Uganda
@@ -79,13 +80,13 @@ export async function POST(req: Request) {
           <p style="margin: 0;"><strong>Tilenga Safaris</strong></p>
           <p style="margin: 0;">Kampala, Uganda</p>
           <p style="margin: 0;">+256 789 390 350</p>
-          <p style="margin: 0;"><a href="mailto:destinations@tilengasafaris.com" style="color: #c9a96e; text-decoration: none;">destinations@tilengasafaris.com</a></p>
+          <p style="margin: 0;"><a href="mailto:destinations@tilengasafaris.africa" style="color: #c9a96e; text-decoration: none;">destinations@tilengasafaris.africa</a></p>
         </div>
       </div>
     `;
 
     const { data, error } = await resend.emails.send({
-      from: 'Tilenga Safaris <onboarding@resend.dev>',
+      from: `Tilenga Safaris <${fromEmail}>`,
       to: [email],
       subject: `Itinerary: ${packageName} - Tilenga Safaris`,
       html: emailContent,

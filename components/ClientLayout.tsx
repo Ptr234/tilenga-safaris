@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InstagramFeed from "@/components/InstagramFeed";
 import QuotePopup from "@/components/QuotePopup";
+import CookieConsent from "@/components/CookieConsent";
 import PageTransition from "@/components/motion/PageTransition";
 import SmoothScroll from "@/components/motion/SmoothScroll";
 import ScrollProgress from "@/components/motion/ScrollProgress";
@@ -54,6 +55,7 @@ export default function ClientLayout({
       </PageTransition>
       <InstagramFeed />
       <QuotePopup />
+      <CookieConsent />
       <Footer />
 
       {/* WhatsApp floating button */}

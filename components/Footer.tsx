@@ -251,8 +251,8 @@ export default function Footer() {
                   <a href="tel:+256789390350" className="block text-cream/70 text-[13px] font-sans hover:text-gold transition-colors">
                     +256 789 390 350
                   </a>
-                  <a href="mailto:destinations@tilengasafaris.com" className="block text-cream/70 text-[13px] font-sans hover:text-gold transition-colors break-all">
-                    destinations@tilengasafaris.com
+                  <a href="mailto:destinations@tilengasafaris.africa" className="block text-cream/70 text-[13px] font-sans hover:text-gold transition-colors break-all">
+                    destinations@tilengasafaris.africa
                   </a>
                 </div>
                 <div className="border-l border-gold/20 pl-4">
