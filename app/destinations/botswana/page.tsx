@@ -1,8 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
+import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -80,25 +84,17 @@ const packages = [
       { days: "Days 7–10", desc: "Makgadikgadi Pans — zebra migration, Kalahari meerkats, and starlit salt flat nights." },
     ],
   },
-  {
-    name: "14-Day Botswana & Zimbabwe Combo",
-    tagline: "Victoria Falls + ultimate delta",
-    duration: "14 Days",
-    price: "From $6,000 / person",
-    description:
-      "Combine Botswana's extraordinary wilderness with Zimbabwe's Victoria Falls and Hwange's wildlife for a comprehensive southern Africa adventure that has it all.",
-    activities: ["Okavango Delta", "Chobe NP", "Victoria Falls", "Hwange NP"],
-    image: `${base}/photos/newstock/splendifd.jpg`,
-    itinerary: [
-      { days: "Days 1–4", desc: "Fly into Okavango Delta; bush camp, mokoro glides through lily-covered channels." },
-      { days: "Days 5–8", desc: "Chobe NP — boat safaris, massive elephant herds, sunset over the Chobe River." },
-      { days: "Days 9–11", desc: "Cross to Zimbabwe; Victoria Falls rain forest walk and Zambezi sunset cruise." },
-      { days: "Days 12–14", desc: "Hwange NP — wild dog and painted wolf encounters, Big Five game drives, departure." },
-    ],
-  },
 ];
 
 export default function BotswanaPage() {
+  const [isPopupOpen, setIsOpen] = useState(false);
+  const [activePackage, setActivePackage] = useState("");
+
+  const handleDownload = (pkgName: string) => {
+    setActivePackage(pkgName);
+    setIsOpen(true);
+  };
+
   return (
     <>
       {/* Hero */}
@@ -256,12 +252,27 @@ export default function BotswanaPage() {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                    <Link href="/plan-a-trip" className="btn-primary">Enquire About This Package</Link>
+                    <button 
+                      onClick={() => handleDownload(pkg.name)}
+                      className="btn-primary"
+                    >
+                      Download Detailed Itinerary
+                    </button>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
+          <FadeIn className="mt-20 p-8 border border-gold/20 bg-forest-dark/5 text-center">
+            <h4 className="font-serif text-2xl text-forest mb-4">Explore More of Botswana</h4>
+            <p className="text-stone font-sans text-sm mb-6 max-w-2xl mx-auto">
+              We offer several other Botswana itineraries, including combinations with Victoria Falls and specialized birding or photography safaris. All tours can be delivered upon request and fully customized.
+            </p>
+            <Link href="/plan-a-trip" className="text-gold uppercase tracking-widest text-xs font-bold hover:text-forest transition-colors">
+              Request Custom Itinerary &rarr;
+            </Link>
+          </FadeIn>
         </div>
       </section>
 
@@ -275,6 +286,12 @@ export default function BotswanaPage() {
           <Link href="/plan-a-trip" className="btn-outline">Plan My Botswana Safari</Link>
         </FadeIn>
       </section>
+
+      <ItineraryDownloadPopup 
+        isOpen={isPopupOpen} 
+        onClose={() => setIsOpen(false)} 
+        packageName={activePackage} 
+      />
     </>
   );
 }

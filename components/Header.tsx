@@ -19,7 +19,7 @@ const navItems = [
     ],
   },
   { label: "About", href: "/about", image: `${base}/photos/newstock/conservation.jpg` },
-  { label: "Plan a Trip", href: "/plan-a-trip", image: `${base}/photos/newstock/bespokeitinenarydesign.jpg` },
+  { label: "Tailor Your Journey", href: "/plan-a-trip", image: `${base}/photos/newstock/bespokeitinenarydesign.jpg` },
 ];
 
 const bottomNav = [

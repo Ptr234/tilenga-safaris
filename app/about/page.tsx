@@ -150,7 +150,7 @@ export default function AboutPage() {
                 Founded on the principles of passion for travel and a deep understanding of customer needs, we strive to provide exceptional service and curated travel experiences beyond the ordinary.
               </p>
             </div>
-            <Link href="/plan-a-trip" className="btn-primary px-10">Plan Your Safari</Link>
+            <Link href="/plan-a-trip" className="btn-primary px-10">Tailor Your Safari</Link>
           </div>
           <div className="space-y-6">
             <div className="grid grid-cols-2 gap-6">
@@ -528,7 +528,7 @@ export default function AboutPage() {
               Tell us your dream safari and we&apos;ll handle every detail from planning to return.
             </p>
             <Link href="/plan-a-trip" className="btn-outline block border-cream/30 text-cream hover:bg-cream hover:text-forest">
-              Plan a Trip
+              Tailor Your Journey
             </Link>
           </div>
         </div>

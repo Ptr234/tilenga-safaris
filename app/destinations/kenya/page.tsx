@@ -1,8 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
+import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -87,26 +91,17 @@ const packages = [
       { days: "Days 5–7", desc: "Maasai Mara safari, authentic Maasai village visit, farewell dinner, departure Nairobi." },
     ],
   },
-  {
-    name: "12-Day Kenya & Tanzania Safari",
-    tagline: "East Africa grand safari",
-    duration: "12 Days",
-    price: "From $3,000 / person (group of 4)",
-    description:
-      "Journey from Kenya’s Amboseli and Masai Mara to Tanzania’s Serengeti and Ngorongoro for a seamless, epic wildlife adventure across two countries.",
-    activities: ["Serengeti NP", "Ngorongoro Crater", "Masai Mara", "Amboseli NP"],
-    image: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=700&q=85",
-    downloadUrl: `${base}/photos/newstock/12-DAY-SAFARI-TOUR-AROUND-KENYA-AND-TANZANIA-1-.pdf`,
-    itinerary: [
-      { days: "Days 1–3", desc: "Nairobi arrival; Amboseli NP — Kilimanjaro backdrop and legendary elephant herds." },
-      { days: "Days 4–6", desc: "Maasai Mara — Great Migration viewing, Big Five game drives." },
-      { days: "Days 7–9", desc: "Cross to Tanzania; Serengeti NP plains and wildebeest migration circuit." },
-      { days: "Days 10–12", desc: "Ngorongoro Crater game drive, Lake Manyara, departure from Arusha." },
-    ],
-  },
 ];
 
 export default function KenyaPage() {
+  const [isPopupOpen, setIsOpen] = useState(false);
+  const [activePackage, setActivePackage] = useState("");
+
+  const handleDownload = (pkgName: string) => {
+    setActivePackage(pkgName);
+    setIsOpen(true);
+  };
+
   return (
     <>
       {/* Hero */}
@@ -302,23 +297,27 @@ export default function KenyaPage() {
                   </div>
                   <div className="flex flex-wrap items-center justify-between gap-4">
                     <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                    <div className="flex gap-4">
-                      {pkg.downloadUrl && (
-                        <a 
-                          href={pkg.downloadUrl} 
-                          download 
-                          className="btn-outline !px-6 !py-2.5 text-[11px]"
-                        >
-                          Download Itinerary
-                        </a>
-                      )}
-                      <Link href="/plan-a-trip" className="btn-primary !px-6 !py-2.5 text-[11px]">Enquire</Link>
-                    </div>
+                    <button 
+                      onClick={() => handleDownload(pkg.name)}
+                      className="btn-primary !px-6 !py-2.5 text-[11px]"
+                    >
+                      Download Detailed Itinerary
+                    </button>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
+          <FadeIn className="mt-20 p-8 border border-gold/20 bg-forest-dark/5 text-center">
+            <h4 className="font-serif text-2xl text-forest mb-4">Discover More of Kenya</h4>
+            <p className="text-stone font-sans text-sm mb-6 max-w-2xl mx-auto">
+              We offer a wide range of additional Kenya itineraries, including luxury beach retreats in Diani, Mount Kenya climbing expeditions, and multi-country East Africa adventures. All our tours can be delivered upon request.
+            </p>
+            <Link href="/plan-a-trip" className="text-gold uppercase tracking-widest text-xs font-bold hover:text-forest transition-colors">
+              Request Custom Itinerary &rarr;
+            </Link>
+          </FadeIn>
         </div>
       </section>
 
@@ -333,10 +332,16 @@ export default function KenyaPage() {
             Kenya itinerary.
           </p>
           <Link href="/plan-a-trip" className="btn-outline">
-            Plan My Kenya Safari
+            Tailor My Kenya Safari
           </Link>
         </FadeIn>
       </section>
+
+      <ItineraryDownloadPopup 
+        isOpen={isPopupOpen} 
+        onClose={() => setIsOpen(false)} 
+        packageName={activePackage} 
+      />
     </>
   );
 }

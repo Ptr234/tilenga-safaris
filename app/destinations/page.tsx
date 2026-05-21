@@ -224,7 +224,7 @@ export default function DestinationsPage() {
               </Link>
             ))}
           </div>
-          <Link href="/plan-a-trip" className="btn-primary">Plan My Safari</Link>
+          <Link href="/plan-a-trip" className="btn-primary">Tailor My Safari</Link>
         </div>
       </section>
 
@@ -245,7 +245,7 @@ export default function DestinationsPage() {
             Tell us your dates, interests, and budget — we&apos;ll craft a bespoke itinerary
             spanning the best of Africa.
           </p>
-          <Link href="/plan-a-trip" className="btn-outline">Get a Custom Itinerary</Link>
+          <Link href="/plan-a-trip" className="btn-outline">Tailor Your Journey</Link>
         </div>
       </section>
     </>

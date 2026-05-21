@@ -1,74 +1,76 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
+import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const hotspots = [
   {
     name: "Volcanoes National Park",
-    detail: "Mountain Gorilla Trekking in the Virungas",
-    image: "/gorrilas/gorrilas21.jpg",
+    detail: "Home of the Mountain Gorillas",
+    image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=900&q=85",
+  },
+  {
+    name: "Akagera National Park",
+    detail: "Big Five Safari on the Savanna",
+    image: `${base}/photos/newstock/wildanimals.jpg`,
   },
   {
     name: "Nyungwe Forest",
-    detail: "Ancient Canopy & Chimpanzee Sanctuary",
-    image: "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=900&q=85",
+    detail: "Chimpanzee Trekking & Canopy Walk",
+    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=900&q=85",
   },
   {
     name: "Lake Kivu",
-    detail: "Volcanic Crater Lake on Congo Border",
-    image: "https://images.unsplash.com/photo-1474690870753-1b92efa1f2d8?w=900&q=85",
+    detail: "Relaxation on the Inland Sea",
+    image: "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&q=85",
   },
   {
     name: "Kigali Genocide Memorial",
-    detail: "A Powerful Tribute to History & Remembrance",
+    detail: "A Place of Remembrance & Learning",
     image: `${base}/photos/newstock/Kigali Genocide Memorial.png`,
   },
   {
-    name: "Kigali",
-    detail: "Africa's Cleanest, Most Vibrant Capital",
+    name: "Kigali City",
+    detail: "Africa's Cleanest & Safest Capital",
     image: `${base}/photos/newstock/kigali city.jpg`,
   },
 ];
 
 const packages = [
   {
-    name: "8-Day Visit Rwanda Safari",
-    tagline: "Recommended Rwanda experience",
-    duration: "8 Days",
-    price: "Request a Quote",
+    name: "4-Day Remarkable Rwanda",
+    tagline: "Gorillas & golden monkeys",
+    duration: "4 Days",
+    price: "From $3,500 / person",
     description:
-      "The complete Rwanda experience — gorillas, golden monkeys, Kigali's culture, Lake Kivu's tranquility, and the living history of a nation reborn.",
-    activities: ["Gorilla Tracking", "Kigali City Tour", "Genocide Memorial", "Golden Monkey Trek", "Lake Kivu Boat Ride", "Cultural Village", "Local Food Tasting"],
-    image: `${base}/photos/newstock/Gorrilla.jpg`,
+      "A focused immersion into Volcanoes National Park for the ultimate primate experience — including mountain gorilla trekking and golden monkey tracking.",
+    activities: ["Gorilla trekking", "Golden monkey tracking", "Kigali city tour", "Iby’Iwacu cultural village"],
+    image: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=700&q=85",
     itinerary: [
-      { days: "Days 1–2", desc: "Arrive Kigali; Kigali Genocide Memorial, vibrant city markets, and authentic Rwandan cuisine." },
-      { days: "Days 3–5", desc: "Volcanoes NP — gorilla tracking and golden monkey trek in the mist-covered Virunga forests." },
-      { days: "Days 6–8", desc: "Lake Kivu — boat to the islands, cultural village stay, local food tasting, departure." },
-    ],
-  },
-  {
-    name: "10-Day Rwanda & Uganda Cross-Border",
-    tagline: "The Ultimate Primate Trek",
-    duration: "10 Days",
-    price: "Request a Quote",
-    description:
-      "An epic cross-border journey combining the best of Rwanda's Volcanoes National Park and Uganda's Bwindi and Queen Elizabeth parks for a comprehensive East African experience.",
-    activities: ["Gorilla tracking in two countries", "Kigali tour", "Queen Elizabeth NP game drives", "Boat cruises"],
-    image: `${base}/photos/newstock/AfricanLandscape.jpg`,
-    downloadUrl: `${base}/itineraries/RWANDA  - UGANDA - 10 DAYS  - TILENGA SAFARIS 2026.docx`,
-    itinerary: [
-      { days: "Days 1–3", desc: "Kigali arrival, city tour, and drive to Volcanoes NP for Rwanda gorilla tracking." },
-      { days: "Days 4–6", desc: "Cross to Uganda — Bwindi gorilla trek and Lake Bunyonyi relaxation." },
-      { days: "Days 7–10", desc: "Queen Elizabeth NP wildlife, Kazinga Channel cruise, and return to Kampala/Entebbe." },
+      { days: "Day 1", desc: "Arrive Kigali; city tour and transfer to Volcanoes NP at the base of the Virunga volcanoes." },
+      { days: "Day 2", desc: "Life-changing mountain gorilla trekking experience followed by cultural village visit." },
+      { days: "Day 3", desc: "Golden monkey tracking in the bamboo forests or hike to Dian Fossey's original research site." },
+      { days: "Day 4", desc: "Scenic drive back to Kigali, souvenir shopping and airport transfer." },
     ],
   },
 ];
 
 export default function RwandaPage() {
+  const [isPopupOpen, setIsOpen] = useState(false);
+  const [activePackage, setActivePackage] = useState("");
+
+  const handleDownload = (pkgName: string) => {
+    setActivePackage(pkgName);
+    setIsOpen(true);
+  };
+
   return (
     <>
       {/* Hero */}
@@ -76,9 +78,9 @@ export default function RwandaPage() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage: `url(${base}/experinces/Game%20drives.jpg)`,
+            backgroundImage: `url(${base}/photos/newstock/Gorrillahd.jpg)`,
             backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundPosition: "center 40%",
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/20 via-forest-dark/30 to-forest-dark/95" />
@@ -98,10 +100,22 @@ export default function RwandaPage() {
       {/* Quick info */}
       <section className="bg-forest py-6">
         <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-cream/70 text-sm font-sans">
-          <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Best Time</span>May–Oct</div>
-          <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Currency</span>Rwandan Franc</div>
-          <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Time Zone</span>GMT +2</div>
-          <div><span className="block text-gold text-xs uppercase tracking-widest mb-1">Main Airport</span>Kigali (KGL)</div>
+          <div>
+            <span className="block text-gold text-xs uppercase tracking-widest mb-1">Best Time</span>
+            Jun–Sep, Dec–Feb
+          </div>
+          <div>
+            <span className="block text-gold text-xs uppercase tracking-widest mb-1">Currency</span>
+            Rwandan Franc
+          </div>
+          <div>
+            <span className="block text-gold text-xs uppercase tracking-widest mb-1">Time Zone</span>
+            GMT +2
+          </div>
+          <div>
+            <span className="block text-gold text-xs uppercase tracking-widest mb-1">Main Airport</span>
+            Kigali (KGL)
+          </div>
         </div>
       </section>
 
@@ -110,43 +124,53 @@ export default function RwandaPage() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <FadeIn direction="left">
             <p className="section-label mb-3">Destination Overview</p>
-            <h2 className="section-heading mb-6">Where Gorillas Roam the Misty Mountains</h2>
+            <h2 className="section-heading mb-6">The Primate Capital of the World</h2>
             <div className="w-12 h-0.5 bg-gold mb-8" />
             <p className="text-stone font-sans leading-relaxed mb-4">
-              Rwanda is a small but extraordinary country in East Africa whose landscape spans from
-              the lush, rolling hills of its famed &apos;Land of a Thousand Hills&apos; to the breathtaking
-              Volcanoes National Park — home to the endangered mountain gorillas — and the serene
-              waters of Lake Kivu.
+              Rwanda is a resilient and breathtakingly beautiful nation, famously known as the &ldquo;Land of a Thousand Hills.&rdquo; It has emerged as a global leader in sustainable tourism and conservation, particularly for the protection of the endangered mountain gorilla.
             </p>
             <p className="text-stone font-sans leading-relaxed mb-4">
-              Gorilla trekking in Rwanda is widely considered the pinnacle of African wildlife
-              experiences. With only around 1,000 mountain gorillas remaining in the wild,
-              each encounter is profoundly rare and deeply moving.
+              Volcanoes National Park offers the world&apos;s most accessible mountain gorilla trekking, while Nyungwe Forest protects one of Africa&apos;s oldest rainforests — a haven for chimpanzees and 12 other primate species.
             </p>
             <p className="text-stone font-sans leading-relaxed">
-              Rwanda is also one of Africa&apos;s cleanest, safest, and most progressive nations —
-              Kigali regularly ranked among Africa&apos;s most liveable cities.
+              In Akagera National Park, Rwanda offers a classic Big Five savanna safari experience, while the clean, vibrant capital of Kigali provides a sophisticated urban gateway with a deep sense of history and hope.
             </p>
           </FadeIn>
 
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
-              <img src="/gorrilas/gorillar.webp" alt="Mountain Gorillas in mist" className="w-full h-52 object-cover" />
+              <img
+                src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1200&q=80"
+                alt="Rwanda Gorillas"
+                className="w-full h-52 object-cover"
+              />
             </ImageReveal>
             <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-6">
-              <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=500&q=80" alt="Nyungwe forest" className="w-full h-52 object-cover" />
+              <img
+                src={`${base}/photos/newstock/kigali city.jpg`}
+                alt="Kigali City"
+                className="w-full h-52 object-cover"
+              />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-6">
-              <img src="https://images.unsplash.com/photo-1474690870753-1b92efa1f2d8?w=500&q=80" alt="Lake Kivu" className="w-full h-52 object-cover" />
+              <img
+                src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=500&q=80"
+                alt="Nyungwe Forest"
+                className="w-full h-52 object-cover"
+              />
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
-              <img src={`${base}/photos/newstock/kigali city.jpg`} alt="Kigali city" className="w-full h-52 object-cover" />
+              <img
+                src={`${base}/photos/newstock/wildanimals.jpg`}
+                alt="Akagera Wildlife"
+                className="w-full h-52 object-cover"
+              />
             </ImageReveal>
           </div>
         </div>
       </section>
 
-      {/* Hotspot Pictorial Gallery */}
+      {/* Hotspot Gallery */}
       <section className="bg-forest-dark py-20">
         <FadeIn direction="up" className="px-6 md:px-16 mb-10">
           <div className="flex items-center gap-4 mb-4">
@@ -154,23 +178,26 @@ export default function RwandaPage() {
             <p className="section-label text-gold">Rwanda Hot Spots</p>
           </div>
           <h2 className="font-serif text-3xl md:text-4xl text-cream">
-            <SplitText text="A Land That Inspires Awe" by="word" stagger={0.06} />
+            <SplitText text="Hills, Hearts &amp; Heritage" by="word" stagger={0.06} />
           </h2>
         </FadeIn>
         <HotspotGallery hotspots={hotspots} />
       </section>
 
-      {/* Tour Package */}
+      {/* Tour Packages */}
       <section className="bg-cream py-24 px-6 md:px-16">
         <div className="max-w-6xl mx-auto">
           <FadeIn className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 pb-10 border-b border-gold/20">
             <div>
-              <p className="section-label mb-3">Safari Package</p>
-              <h2 className="font-serif text-4xl md:text-5xl text-forest leading-tight">Rwanda Tour Package</h2>
+              <p className="section-label mb-3">Safari Packages</p>
+              <h2 className="font-serif text-4xl md:text-5xl text-forest leading-tight">
+                Rwanda Tour Packages
+              </h2>
             </div>
-            <Link href="/plan-a-trip" className="btn-primary shrink-0 self-start md:self-end">Get a Custom Quote</Link>
+            <Link href="/plan-a-trip" className="btn-primary shrink-0 self-start md:self-end">
+              Get a Custom Quote
+            </Link>
           </FadeIn>
-
           <div className="space-y-20">
             {packages.map((pkg) => (
               <div key={pkg.name} className="grid md:grid-cols-2 gap-12 items-start border-b border-gold/10 pb-20 last:border-0 last:pb-0">
@@ -199,38 +226,48 @@ export default function RwandaPage() {
                       </span>
                     ))}
                   </div>
-                  <div className="flex flex-wrap items-center justify-between gap-4">
+                  <div className="flex items-center justify-between">
                     <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                    <div className="flex gap-4">
-                      {pkg.downloadUrl && (
-                        <a 
-                          href={pkg.downloadUrl} 
-                          download 
-                          className="btn-outline !px-6 !py-2.5 text-[11px]"
-                        >
-                          Download Itinerary
-                        </a>
-                      )}
-                      <Link href="/plan-a-trip" className="btn-primary !px-6 !py-2.5 text-[11px]">Enquire</Link>
-                    </div>
+                    <button 
+                      onClick={() => handleDownload(pkg.name)}
+                      className="btn-primary"
+                    >
+                      Download Detailed Itinerary
+                    </button>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
+          <FadeIn className="mt-20 p-8 border border-gold/20 bg-forest-dark/5 text-center">
+            <h4 className="font-serif text-2xl text-forest mb-4">A Truly Remarkable Journey</h4>
+            <p className="text-stone font-sans text-sm mb-6 max-w-2xl mx-auto">
+              Rwanda is best experienced through a bespoke lens. We offer additional itineraries including Akagera savanna safaris and Nyungwe Forest canopy explorations. Your hills-and-hearts adventure is just a request wait. Let our specialists secure your permits and design your perfect itinerary.
+            </p>
+            <Link href="/plan-a-trip" className="text-gold uppercase tracking-widest text-xs font-bold hover:text-forest transition-colors">
+              Request Custom Itinerary &rarr;
+            </Link>
+          </FadeIn>
         </div>
       </section>
 
       {/* CTA */}
       <section className="bg-forest py-20 px-6 md:px-16 text-center">
         <FadeIn direction="up">
-          <h2 className="font-serif text-3xl md:text-5xl text-cream mb-6">Ready to Meet the Gorillas?</h2>
+          <h2 className="font-serif text-3xl md:text-5xl text-cream mb-6">Ready to Explore Rwanda?</h2>
           <p className="text-cream/60 font-sans max-w-lg mx-auto mb-10">
-            Rwanda&apos;s mountain gorillas await. Let our specialists secure your permits and design your perfect itinerary.
+            From the mist of the Virungas to the shores of Lake Kivu — let us design your remarkable Rwanda journey.
           </p>
-          <Link href="/plan-a-trip" className="btn-outline">Plan My Rwanda Safari</Link>
+          <Link href="/plan-a-trip" className="btn-outline">Tailor My Rwanda Safari</Link>
         </FadeIn>
       </section>
+
+      <ItineraryDownloadPopup 
+        isOpen={isPopupOpen} 
+        onClose={() => setIsOpen(false)} 
+        packageName={activePackage} 
+      />
     </>
   );
 }

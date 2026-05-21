@@ -31,26 +31,33 @@ export default function QuotePopup() {
     setError(null);
 
     const formData = new FormData(event.currentTarget);
-    formData.append("access_key", "370d3a6f-b7ef-47dc-b782-98f868ca3aae");
-    formData.append("from_name", "Tilenga Safaris Quote Request");
-    formData.append("subject", `New Quote Request from ${formData.get("name")}`);
+    const dataObj: any = {
+      source: 'quote'
+    };
+    
+    formData.forEach((value, key) => {
+      dataObj[key] = value;
+    });
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/send-email", {
         method: "POST",
-        body: formData
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dataObj)
       });
 
       const data = await response.json();
 
-      if (data.success) {
+      if (response.ok) {
         setSubmitted(true);
         setTimeout(() => {
           setIsOpen(false);
           setSubmitted(false);
         }, 5000);
       } else {
-        setError(data.message || "Something went wrong. Please try again.");
+        setError(data.error || "Something went wrong. Please try again.");
       }
     } catch (err) {
       setError("Unable to connect. Please check your connection.");

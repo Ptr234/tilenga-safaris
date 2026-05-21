@@ -1,8 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
+import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -70,25 +74,17 @@ const packages = [
       { days: "Days 5–7", desc: "Dolphin swimming excursion, white-sand beach relaxation, farewell dinner, departure." },
     ],
   },
-  {
-    name: "12-Day Kenya & Tanzania Safari",
-    tagline: "Legendary migration safari",
-    duration: "12 Days",
-    price: "From $3,000 / person · Min. 4 participants",
-    description:
-      "A seamless East Africa journey from the Serengeti and Ngorongoro to Kenya’s Masai Mara and Amboseli, designed for epic wildlife viewing and unforgettable landscapes.",
-    activities: ["Serengeti NP", "Ngorongoro Crater", "Lake Nakuru", "Masai Mara", "Amboseli NP"],
-    image: `${base}/photos/newstock/Tarangire National Park2.jpg`,
-    itinerary: [
-      { days: "Days 1–3", desc: "Arrive Arusha; Tarangire NP — baobab giants and elephant herds, Serengeti check-in." },
-      { days: "Days 4–6", desc: "Serengeti NP — wildebeest migration circuit and Big Five game drives." },
-      { days: "Days 7–9", desc: "Ngorongoro Crater full-day game drive; cross to Kenya via Lake Nakuru flamingoes." },
-      { days: "Days 10–12", desc: "Maasai Mara wildlife viewing, Amboseli NP with Kilimanjaro views, departure Nairobi." },
-    ],
-  },
 ];
 
 export default function TanzaniaPage() {
+  const [isPopupOpen, setIsOpen] = useState(false);
+  const [activePackage, setActivePackage] = useState("");
+
+  const handleDownload = (pkgName: string) => {
+    setActivePackage(pkgName);
+    setIsOpen(true);
+  };
+
   return (
     <>
       {/* Hero */}
@@ -284,12 +280,27 @@ export default function TanzaniaPage() {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                    <Link href="/plan-a-trip" className="btn-primary">Enquire About This Package</Link>
+                    <button 
+                      onClick={() => handleDownload(pkg.name)}
+                      className="btn-primary"
+                    >
+                      Download Detailed Itinerary
+                    </button>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
+          <FadeIn className="mt-20 p-8 border border-gold/20 bg-forest-dark/5 text-center">
+            <h4 className="font-serif text-2xl text-forest mb-4">Discover More of Tanzania</h4>
+            <p className="text-stone font-sans text-sm mb-6 max-w-2xl mx-auto">
+              We offer several other Tanzania itineraries, including Mount Kilimanjaro climbing expeditions, multi-country East Africa migrations, and private Serengeti fly-in safaris. All tours can be delivered upon request.
+            </p>
+            <Link href="/plan-a-trip" className="text-gold uppercase tracking-widest text-xs font-bold hover:text-forest transition-colors">
+              Request Custom Itinerary &rarr;
+            </Link>
+          </FadeIn>
         </div>
       </section>
 
@@ -304,10 +315,16 @@ export default function TanzaniaPage() {
             build your perfect Tanzania itinerary.
           </p>
           <Link href="/plan-a-trip" className="btn-outline">
-            Plan My Tanzania Safari
+            Tailor My Tanzania Safari
           </Link>
         </FadeIn>
       </section>
+
+      <ItineraryDownloadPopup 
+        isOpen={isPopupOpen} 
+        onClose={() => setIsOpen(false)} 
+        packageName={activePackage} 
+      />
     </>
   );
 }

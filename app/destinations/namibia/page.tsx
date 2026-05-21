@@ -1,8 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
+import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -81,25 +85,17 @@ const packages = [
       { days: "Days 9–10", desc: "Fish River Canyon viewpoints and hiking, return Windhoek, departure." },
     ],
   },
-  {
-    name: "14-Day Namibia & Botswana Combo",
-    tagline: "Two unmissable wildernesses",
-    duration: "14 Days",
-    price: "From $4,500 / person",
-    description:
-      "Combine Namibia's stark desert beauty with Botswana's lush Okavango Delta for the ultimate southern Africa contrast — from dunes to floodplains, silence to abundance.",
-    activities: ["Sossusvlei dunes", "Etosha NP", "Okavango Delta", "Chobe NP"],
-    image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=700&q=85",
-    itinerary: [
-      { days: "Days 1–4", desc: "Windhoek arrival; Sossusvlei dunes and Etosha NP — lion and elephant at waterholes." },
-      { days: "Days 5–7", desc: "Skeleton Coast wildlife and Swakopmund adventure activities." },
-      { days: "Days 8–11", desc: "Cross to Botswana; Okavango Delta fly-in camp, mokoro and game drives." },
-      { days: "Days 12–14", desc: "Chobe NP boat safaris, elephant encounters, Victoria Falls excursion, departure." },
-    ],
-  },
 ];
 
 export default function NamibiaPage() {
+  const [isPopupOpen, setIsOpen] = useState(false);
+  const [activePackage, setActivePackage] = useState("");
+
+  const handleDownload = (pkgName: string) => {
+    setActivePackage(pkgName);
+    setIsOpen(true);
+  };
+
   return (
     <>
       {/* Hero */}
@@ -257,12 +253,27 @@ export default function NamibiaPage() {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                    <Link href="/plan-a-trip" className="btn-primary">Enquire About This Package</Link>
+                    <button 
+                      onClick={() => handleDownload(pkg.name)}
+                      className="btn-primary"
+                    >
+                      Download Detailed Itinerary
+                    </button>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
+          <FadeIn className="mt-20 p-8 border border-gold/20 bg-forest-dark/5 text-center">
+            <h4 className="font-serif text-2xl text-forest mb-4">Explore More of Namibia</h4>
+            <p className="text-stone font-sans text-sm mb-6 max-w-2xl mx-auto">
+              We offer several other Namibia itineraries, including self-drive adventures, photography workshops in the desert, and multi-country southern Africa expeditions. All tours can be delivered upon request.
+            </p>
+            <Link href="/plan-a-trip" className="text-gold uppercase tracking-widest text-xs font-bold hover:text-forest transition-colors">
+              Request Custom Itinerary &rarr;
+            </Link>
+          </FadeIn>
         </div>
       </section>
 
@@ -276,6 +287,12 @@ export default function NamibiaPage() {
           <Link href="/plan-a-trip" className="btn-outline">Plan My Namibia Safari</Link>
         </FadeIn>
       </section>
+
+      <ItineraryDownloadPopup 
+        isOpen={isPopupOpen} 
+        onClose={() => setIsOpen(false)} 
+        packageName={activePackage} 
+      />
     </>
   );
 }

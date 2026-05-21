@@ -1,8 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
+import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -51,21 +55,6 @@ const hotspots = [
 
 const packages = [
   {
-    name: "Lake Mburo National Park",
-    tagline: "Short safari introduction",
-    duration: "2 Days",
-    price: "From $500 / person (group of 4)",
-    description:
-      "A compact national park featuring 350 bird species and wildlife including zebras, impalas, buffalos, leopards, and hippos — located 3–4 hours from Kampala. Includes pick-up, bicycle tour, nature walk, and return.",
-    activities: ["Pick-up from Kampala", "Bicycle tour", "Nature walk", "Bird watching"],
-    image: `${base}/photos/newstock/bufallo.jpg`,
-    downloadUrl: `${base}/photos/newstock/LAKE-MBURO-NATIONAL-PARK-EXPERIENCE.pdf`,
-    itinerary: [
-      { days: "Day 1", desc: "Depart Kampala, arrive Lake Mburo NP; afternoon game drive and bicycle tour along the lakeshore." },
-      { days: "Day 2", desc: "Early morning bird watching (350+ species), nature walk with a ranger, return to Kampala." },
-    ],
-  },
-  {
     name: "5-Day Wildlife Safari to Murchison Falls & Queen Elizabeth",
     tagline: "Waterfall and wildlife adventure",
     duration: "5 Days",
@@ -97,58 +86,17 @@ const packages = [
       { days: "Day 3", desc: "Batwa cultural community visit and forest walk, return transfer." },
     ],
   },
-  {
-    name: "9-Day Experience Uganda",
-    tagline: "The Pearl of Africa Tour",
-    duration: "9 Days",
-    price: "From $3,500",
-    description:
-      "The complete Uganda experience — gorilla trekking, game drives, boat cruises, plus adrenaline adventures on the Nile: white-water rafting, kayaking, bungee jumping, quad biking, and local food tasting.",
-    activities: ["Gorilla trekking", "Game drives & boat cruises", "White-water rafting", "Bungee jumping & quad biking", "Local food tasting"],
-    image: `${base}/photos/newstock/Boat Safaris08Boat Safaris.jpg`,
-    downloadUrl: `${base}/itineraries/EXPERIENCE UGANDA  - 9 DAYS  - TILENGA SAFARIS 2026.docx`,
-    itinerary: [
-      { days: "Days 1–2", desc: "Kampala city tour, drive to Murchison Falls NP; waterfall hike and evening game drive." },
-      { days: "Days 3–4", desc: "Boat cruise on the Nile, drive south to Bwindi; gorilla trekking and cultural village visit." },
-      { days: "Days 5–7", desc: "Drive to Jinja — Source of the Nile; white-water rafting, kayaking, and bungee jumping." },
-      { days: "Days 8–9", desc: "Quad biking, local food tasting tour, farewell dinner in Kampala, departure." },
-    ],
-  },
-  {
-    name: "Primates Experience",
-    tagline: "Chimpanzees & Gorillas",
-    duration: "7 Days",
-    price: "Request a Quote",
-    description:
-      "A specialized primate circuit focusing on the most intimate encounters with chimpanzees in Kibale and gorillas in Bwindi, paired with stunning forest walks.",
-    activities: ["Chimpanzee trekking", "Gorilla tracking", "Forest walks", "Primate research center visit"],
-    image: `${base}/photos/newstock/Gorrillahd.jpg`,
-    downloadUrl: `${base}/itineraries/PRIMATES EXPERIENCE - TILENGA SAFARIS 2026.docx`,
-    itinerary: [
-      { days: "Days 1–2", desc: "Arrive Entebbe, drive to Kibale Forest — the primate capital of the world." },
-      { days: "Days 3–4", desc: "Chimpanzee tracking and Bigodi swamp walk; drive to Bwindi Impenetrable Forest." },
-      { days: "Days 5–7", desc: "Gorilla tracking experience, Batwa cultural trail, return to Entebbe for departure." },
-    ],
-  },
-  {
-    name: "10-Day Rwanda & Uganda Cross-Border",
-    tagline: "The Ultimate Primate Trek",
-    duration: "10 Days",
-    price: "Request a Quote",
-    description:
-      "An epic cross-border journey combining the best of Rwanda's Volcanoes National Park and Uganda's Bwindi and Queen Elizabeth parks for a comprehensive East African experience.",
-    activities: ["Gorilla tracking in two countries", "Kigali tour", "Queen Elizabeth NP game drives", "Boat cruises"],
-    image: `${base}/photos/newstock/AfricanLandscape.jpg`,
-    downloadUrl: `${base}/itineraries/RWANDA  - UGANDA - 10 DAYS  - TILENGA SAFARIS 2026.docx`,
-    itinerary: [
-      { days: "Days 1–3", desc: "Kigali arrival, city tour, and drive to Volcanoes NP for Rwanda gorilla tracking." },
-      { days: "Days 4–6", desc: "Cross to Uganda — Bwindi gorilla trek and Lake Bunyonyi relaxation." },
-      { days: "Days 7–10", desc: "Queen Elizabeth NP wildlife, Kazinga Channel cruise, and return to Kampala/Entebbe." },
-    ],
-  },
 ];
 
 export default function UgandaPage() {
+  const [isPopupOpen, setIsOpen] = useState(false);
+  const [activePackage, setActivePackage] = useState("");
+
+  const handleDownload = (pkgName: string) => {
+    setActivePackage(pkgName);
+    setIsOpen(true);
+  };
+
   return (
     <>
       {/* Hero */}
@@ -345,22 +293,28 @@ export default function UgandaPage() {
                   <div className="flex flex-wrap items-center justify-between gap-4">
                     <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
                     <div className="flex gap-4">
-                      {pkg.downloadUrl && (
-                        <a 
-                          href={pkg.downloadUrl} 
-                          download 
-                          className="btn-outline !px-6 !py-2.5 text-[11px]"
-                        >
-                          Download PDF
-                        </a>
-                      )}
-                      <Link href="/plan-a-trip" className="btn-primary !px-6 !py-2.5 text-[11px]">Enquire</Link>
+                      <button 
+                        onClick={() => handleDownload(pkg.name)}
+                        className="btn-primary !px-6 !py-2.5 text-[11px]"
+                      >
+                        Download Detailed Itinerary
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
+          <FadeIn className="mt-20 p-8 border border-gold/20 bg-forest-dark/5 text-center">
+            <h4 className="font-serif text-2xl text-forest mb-4">Looking for something else?</h4>
+            <p className="text-stone font-sans text-sm mb-6 max-w-2xl mx-auto">
+              We have a wide range of additional Uganda itineraries, including primate-specific treks, bird-watching tours, and cross-border experiences. All our tours can be delivered upon request and tailored to your specific interests.
+            </p>
+            <Link href="/plan-a-trip" className="text-gold uppercase tracking-widest text-xs font-bold hover:text-forest transition-colors">
+              Request More Itineraries &rarr;
+            </Link>
+          </FadeIn>
         </div>
       </section>
 
@@ -376,7 +330,7 @@ export default function UgandaPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/plan-a-trip" className="btn-outline">
-              Plan My Trip
+              Tailor Your Journey
             </Link>
             <Link href="/lodges" className="btn-ghost">
               Our Uganda Lodges
@@ -384,6 +338,12 @@ export default function UgandaPage() {
           </div>
         </FadeIn>
       </section>
+
+      <ItineraryDownloadPopup 
+        isOpen={isPopupOpen} 
+        onClose={() => setIsOpen(false)} 
+        packageName={activePackage} 
+      />
     </>
   );
 }

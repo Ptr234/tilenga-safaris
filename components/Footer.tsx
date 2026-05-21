@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 
 const destinations = [
@@ -19,7 +20,7 @@ const lodges = [
 
 const company = [
   { label: "About Us", href: "/about" },
-  { label: "Plan a Trip", href: "/plan-a-trip" },
+  { label: "Tailor Your Journey", href: "/plan-a-trip" },
 ];
 
 const socials = [
@@ -54,6 +55,37 @@ const socials = [
 
 export default function Footer() {
   const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, source: 'newsletter' }),
+      });
+
+      if (response.ok) {
+        setSubscribed(true);
+        setEmail("");
+        setTimeout(() => setSubscribed(false), 5000);
+      } else {
+        const data = await response.json();
+        setError(data.error || "Something went wrong.");
+      }
+    } catch (err) {
+      setError("Unable to connect.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <footer className="bg-[#060f09] text-cream overflow-hidden">
@@ -89,7 +121,7 @@ export default function Footer() {
                   href="/plan-a-trip"
                   className="bg-gold hover:bg-[#b8933a] text-[#060f09] px-8 py-4 text-[10px] uppercase tracking-[0.3em] font-bold transition-all duration-300"
                 >
-                  Plan a Trip
+                  Tailor Your Journey
                 </Link>
                 <Link
                   href="/lodges"
@@ -108,19 +140,30 @@ export default function Footer() {
                 </p>
                 <h3 className="font-serif text-2xl md:text-3xl mb-8">Stay Connected</h3>
                 
-                <form className="flex flex-col sm:flex-row gap-0 group">
-                  <input
-                    type="email"
-                    placeholder="Your email address"
-                    className="flex-1 bg-white/5 border border-white/10 px-6 py-4 text-sm focus:outline-none focus:border-gold/50 transition-colors"
-                  />
-                  <button
-                    type="submit"
-                    className="bg-gold hover:bg-[#b8933a] text-[#060f09] px-8 py-4 text-[10px] uppercase tracking-[0.3em] font-bold transition-colors"
-                  >
-                    Subscribe
-                  </button>
-                </form>
+                {subscribed ? (
+                  <div className="bg-white/5 border border-gold/30 p-6 animate-in fade-in slide-in-from-bottom-2">
+                    <p className="text-gold font-serif italic">Thank you for joining our journey. We&apos;ll be in touch soon.</p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-0 group">
+                    <input
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Your email address"
+                      className="flex-1 bg-white/5 border border-white/10 px-6 py-4 text-sm focus:outline-none focus:border-gold/50 transition-colors"
+                    />
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="bg-gold hover:bg-[#b8933a] text-[#060f09] px-8 py-4 text-[10px] uppercase tracking-[0.3em] font-bold transition-colors disabled:opacity-50"
+                    >
+                      {loading ? "..." : "Subscribe"}
+                    </button>
+                  </form>
+                )}
+                {error && <p className="text-red-400 text-xs mt-2 uppercase tracking-widest">{error}</p>}
                 <p className="text-cream/30 text-[10px] mt-4 italic">
                   No spam. Unsubscribe at any time.
                 </p>

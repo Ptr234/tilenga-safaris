@@ -35,24 +35,31 @@ export default function PlanATripPage() {
     setError(null);
 
     const formData = new FormData(event.currentTarget);
-    formData.append("access_key", "370d3a6f-b7ef-47dc-b782-98f868ca3aae");
-    formData.append("selected_interests", selectedInterests.join(", "));
-    formData.append("from_name", "Tilenga Safaris Web Enquiry");
-    formData.append("subject", `New Safari Enquiry from ${formData.get("first_name")} ${formData.get("last_name")}`);
+    const dataObj: any = {
+      source: 'enquiry',
+      selected_interests: selectedInterests.join(", ")
+    };
+    
+    formData.forEach((value, key) => {
+      dataObj[key] = value;
+    });
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/send-email", {
         method: "POST",
-        body: formData
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dataObj)
       });
 
       const data = await response.json();
 
-      if (data.success) {
+      if (response.ok) {
         setSubmitted(true);
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        setError(data.message || "Something went wrong. Please try again.");
+        setError(data.error || "Something went wrong. Please try again.");
       }
     } catch (err) {
       setError("Unable to connect. Please check your internet connection and try again.");
@@ -79,14 +86,14 @@ export default function PlanATripPage() {
             <div className="w-10 h-px bg-gold" />
             <p className="section-label text-gold">Start Your Legacy</p>
           </div>
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-8xl text-cream uppercase tracking-[0.1em] md:tracking-[0.15em] leading-[1.05] md:leading-none">Plan Your<br /> <em className="not-italic text-gold">Safari</em></h1>
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-8xl text-cream uppercase tracking-[0.1em] md:tracking-[0.15em] leading-[1.05] md:leading-none">Tailor Your<br /> <em className="not-italic text-gold">Journey</em></h1>
         </div>
       </section>
 
       {/* Intro */}
       <section className="bg-cream py-10 md:py-20 px-6 md:px-16 text-center">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-serif text-3xl md:text-5xl text-forest uppercase tracking-widest mb-8">Plan A Trip</h2>
+          <h2 className="font-serif text-3xl md:text-5xl text-forest uppercase tracking-widest mb-8">Tailor Your Journey</h2>
           <p className="text-stone font-sans text-base leading-relaxed mb-4 italic">
             Before we can start creating your custom itinerary for your adventure, let us know a little more about what you have in mind so we can build a trip to suit your needs.
           </p>
