@@ -1,36 +1,34 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
 
 const packageFiles: Record<string, string> = {
   // Uganda
-  "5-Day Wildlife Safari to Murchison Falls & Queen Elizabeth": "public/photos/newstock/5-DAY-WILDLIFE-SAFARI-IN-UGANDA-4.pdf",
-  "3-Day Gorilla Tracking in Uganda": "public/itineraries/3 DAYS GORILLA TRACKING IN UGANDA -  TILENGA SAFARIS 2026.docx",
-  "Lake Mburo National Park": "public/photos/newstock/LAKE-MBURO-NATIONAL-PARK-EXPERIENCE.pdf",
-  "8-Day Round Trip Around Uganda": "public/photos/newstock/8-DAY-ROUND-TRIP-AROUND-UGANDA-June.pdf",
+  "5-Day Wildlife Safari to Murchison Falls & Queen Elizabeth": "photos/newstock/5-DAY-WILDLIFE-SAFARI-IN-UGANDA-4.pdf",
+  "3-Day Gorilla Tracking in Uganda": "itineraries/3%20DAYS%20GORILLA%20TRACKING%20IN%20UGANDA%20-%20%20TILENGA%20SAFARIS%202026.docx",
+  "Lake Mburo National Park": "photos/newstock/LAKE-MBURO-NATIONAL-PARK-EXPERIENCE.pdf",
+  "8-Day Round Trip Around Uganda": "photos/newstock/8-DAY-ROUND-TRIP-AROUND-UGANDA-June.pdf",
   
   // Kenya
-  "7-Day Kenya Prime Safari": "public/photos/newstock/7–DAY-KENYA-PRIME-SAFARI-2.pdf",
-  "7-Day Magical Kenya Tour": "public/photos/newstock/7-–-DAY-MAGICAL-KENYA-TOUR-1.pdf",
+  "7-Day Kenya Prime Safari": "photos/newstock/7–DAY-KENYA-PRIME-SAFARI-2.pdf",
+  "7-Day Magical Kenya Tour": "photos/newstock/7-–-DAY-MAGICAL-KENYA-TOUR-1.pdf",
   
   // Tanzania
-  "Zanzibar Beach Holiday": "public/photos/newstock/ZANZIBAR-BEACH-HOLIDAY-6-NIGHTS-AND-7-DAYS-2.pdf",
-  "Zanzibar Spice Island Escape": "public/photos/newstock/ZANZIBAR-BEACH-HOLIDAY-AND-SNORKELING-1.pdf",
-  "12-Day Kenya & Tanzania Safari": "public/photos/newstock/12-DAY-SAFARI-TOUR-AROUND-KENYA-AND-TANZANIA-1-.pdf",
+  "Zanzibar Beach Holiday": "photos/newstock/ZANZIBAR-BEACH-HOLIDAY-6-NIGHTS-AND-7-DAYS-2.pdf",
+  "Zanzibar Spice Island Escape": "photos/newstock/ZANZIBAR-BEACH-HOLIDAY-AND-SNORKELING-1.pdf",
+  "12-Day Kenya & Tanzania Safari": "photos/newstock/12-DAY-SAFARI-TOUR-AROUND-KENYA-AND-TANZANIA-1-.pdf",
   
   // Rwanda
-  "4-Day Remarkable Rwanda": "public/itineraries/RWANDA  - UGANDA - 10 DAYS  - TILENGA SAFARIS 2026.docx",
-  "10-Day Rwanda & Uganda Cross-Border": "public/itineraries/RWANDA  - UGANDA - 10 DAYS  - TILENGA SAFARIS 2026.docx",
+  "4-Day Remarkable Rwanda": "itineraries/RWANDA  - UGANDA - 10 DAYS  - TILENGA SAFARIS 2026.docx",
+  "10-Day Rwanda & Uganda Cross-Border": "itineraries/RWANDA  - UGANDA - 10 DAYS  - TILENGA SAFARIS 2026.docx",
 
-  // South Africa & Botswana (Using generic high-quality itineraries as fallback if specific ones are missing)
-  "7-Day Cape & Kruger Essential": "public/itineraries/EXPERIENCE UGANDA  - 9 DAYS  - TILENGA SAFARIS 2026.docx",
-  "10-Day Garden Route Journey": "public/itineraries/PRIMATES EXPERIENCE - TILENGA SAFARIS 2026.docx",
-  "7-Day Okavango Delta Safari": "public/itineraries/PRIMATES EXPERIENCE - TILENGA SAFARIS 2026.docx",
-  "10-Day Botswana Highlights": "public/itineraries/EXPERIENCE UGANDA  - 9 DAYS  - TILENGA SAFARIS 2026.docx"
+  // South Africa & Botswana
+  "7-Day Cape & Kruger Essential": "itineraries/EXPERIENCE UGANDA  - 9 DAYS  - TILENGA SAFARIS 2026.docx",
+  "10-Day Garden Route Journey": "itineraries/PRIMATES EXPERIENCE - TILENGA SAFARIS 2026.docx",
+  "7-Day Okavango Delta Safari": "itineraries/PRIMATES EXPERIENCE - TILENGA SAFARIS 2026.docx",
+  "10-Day Botswana Highlights": "itineraries/EXPERIENCE UGANDA  - 9 DAYS  - TILENGA SAFARIS 2026.docx"
 };
 
 export async function POST(req: Request) {
@@ -41,19 +39,33 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Missing email or package name' }, { status: 400 });
     }
 
-    const relativeFilePath = packageFiles[packageName];
-    let attachments: { filename: string; content: Buffer }[] = [];
+    const relativePath = packageFiles[packageName];
+    let attachments: any[] = [];
 
-    if (relativeFilePath) {
-      const filePath = path.join(process.cwd(), relativeFilePath);
-      if (fs.existsSync(filePath)) {
-        const fileContent = fs.readFileSync(filePath);
-        attachments = [
-          {
-            filename: path.basename(filePath),
-            content: fileContent,
-          },
-        ];
+    if (relativePath) {
+      // Use the site URL to fetch the public asset
+      const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tilengasafaris.africa';
+      const fileUrl = `${siteUrl}/${relativePath}`;
+      
+      try {
+        const response = await fetch(fileUrl);
+        if (response.ok) {
+          const blob = await response.blob();
+          const buffer = Buffer.from(await blob.arrayBuffer());
+          
+          // Get filename from the path
+          const filename = relativePath.split('/').pop() || 'itinerary.pdf';
+          
+          attachments = [
+            {
+              filename: decodeURIComponent(filename),
+              content: buffer,
+            },
+          ];
+        }
+      } catch (fetchErr) {
+        console.error('Asset fetch error:', fetchErr);
+        // Continue without attachment if fetch fails
       }
     }
 
@@ -94,7 +106,6 @@ export async function POST(req: Request) {
     });
 
     if (error) {
-      console.error('Resend Error:', error);
       return NextResponse.json({ error }, { status: 400 });
     }
 
