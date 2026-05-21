@@ -42,7 +42,7 @@ export async function POST(req: Request) {
     }
 
     const relativeFilePath = packageFiles[packageName];
-    let attachments = [];
+    let attachments: { filename: string; content: Buffer }[] = [];
 
     if (relativeFilePath) {
       const filePath = path.join(process.cwd(), relativeFilePath);
