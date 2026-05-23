@@ -9,9 +9,6 @@ const instagramPosts = [
   { url: "https://www.instagram.com/p/DATBaGooaGm/", captioned: false },
   { url: "https://www.instagram.com/reel/C_NGOdxozw7/", captioned: false },
   { url: "https://www.instagram.com/p/DYcFzVgCHNI/", captioned: false },
-  { url: "https://www.instagram.com/p/DYWu0boCLL1/", captioned: false },
-  { url: "https://www.instagram.com/p/DYRlPcBiMuv/", captioned: false },
-  { url: "https://www.instagram.com/reel/DJ9ZluxINXh/", captioned: false },
 ];
 
 export default function InstagramFeed() {
