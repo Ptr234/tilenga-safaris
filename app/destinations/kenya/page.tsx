@@ -14,7 +14,7 @@ const hotspots = [
   {
     name: "Masai Mara",
     detail: "Kenya's Crown Jewel Reserve",
-    image: `${base}/photos/newstock/Hot Air Balloon.jpg`,
+    image: `${base}/photos/newstock/Hot-Air-Balloon.jpg`,
   },
   {
     name: "Great Migration",
@@ -49,7 +49,7 @@ const hotspots = [
   {
     name: "Mount Kenya",
     detail: "Africa's Second-Highest Peak",
-    image: `${base}/photos/newstock/Mount Kenya.jpg`,
+    image: `${base}/photos/newstock/Mount-Kenya.jpg`,
   },
   {
     name: "Indian Ocean Beaches",

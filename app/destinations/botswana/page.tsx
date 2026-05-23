@@ -29,7 +29,7 @@ const hotspots = [
   {
     name: "Makgadikgadi Pans",
     detail: "Salt Flats & Zebra Migration",
-    image: `${base}/photos/newstock/zebras (1).jpg`,
+    image: `${base}/photos/newstock/zebras-(1).jpg`,
   },
   {
     name: "Linyanti Wetlands",
@@ -44,7 +44,7 @@ const hotspots = [
   {
     name: "Okavango Mokoro Safaris",
     detail: "Silent Dugout Canoe Through Lily Pads",
-    image: `${base}/photos/newstock/Boat Safaris08Boat Safaris.jpg`,
+    image: `${base}/photos/newstock/Boat-Safaris08Boat-Safaris.jpg`,
   },
   {
     name: "Savuti Channel",
@@ -185,7 +185,7 @@ export default function BotswanaPage() {
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
               <img
-                src={`${base}/photos/newstock/Boat Safaris08Boat Safaris.jpg`}
+                src={`${base}/photos/newstock/Boat-Safaris08Boat-Safaris.jpg`}
                 alt="Mokoro safari"
                 className="w-full h-52 object-cover"
               />

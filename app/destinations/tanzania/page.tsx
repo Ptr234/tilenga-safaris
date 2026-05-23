@@ -19,27 +19,27 @@ const hotspots = [
   {
     name: "Ngorongoro Crater",
     detail: "UNESCO World Heritage — Big Five & Black Rhino",
-    image: `${base}/photos/newstock/Ngorongoro Crater.jpg`,
+    image: `${base}/photos/newstock/Ngorongoro-Crater.jpg`,
   },
   {
     name: "Zanzibar",
     detail: "Stone Town, Spice Tours & Crystal-Clear Waters",
-    image: `${base}/photos/newstock/Zanzibar Beaches.jpg`,
+    image: `${base}/photos/newstock/Zanzibar-Beaches.jpg`,
   },
   {
     name: "Mount Kilimanjaro",
     detail: "Africa's Rooftop at 5,895m",
-    image: `${base}/photos/newstock/Mount Kenya.jpg`,
+    image: `${base}/photos/newstock/Mount-Kenya.jpg`,
   },
   {
     name: "Ruaha National Park",
     detail: "Tanzania's Largest & Most Wild Park",
-    image: `${base}/photos/newstock/Ruaha National Park.jpg`,
+    image: `${base}/photos/newstock/Ruaha-National-Park.jpg`,
   },
   {
     name: "Tarangire National Park",
     detail: "Baobab Giants & Elephant Herds",
-    image: `${base}/photos/newstock/Tarangire National Park.jpg`,
+    image: `${base}/photos/newstock/Tarangire-National-Park.jpg`,
   },
 ];
 
@@ -187,7 +187,7 @@ export default function TanzaniaPage() {
               className="overflow-hidden mt-6"
             >
               <img
-                src={`${base}/photos/newstock/Tarangire National Park1.jpg`}
+                src={`${base}/photos/newstock/Tarangire-National-Park1.jpg`}
                 alt="Tarangire National Park"
                 className="w-full h-52 object-cover"
               />

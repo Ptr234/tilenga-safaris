@@ -20,7 +20,7 @@ const hotspots = [
   {
     name: "Cape Town",
     detail: "Table Mountain & Coastal Magic",
-    image: `${base}/photos/newstock/Cape Town.jpg`,
+    image: `${base}/photos/newstock/Cape-Town.jpg`,
   },
   {
     name: "Cape Winelands",
@@ -35,7 +35,7 @@ const hotspots = [
   {
     name: "Table Mountain",
     detail: "Iconic Flat-Top Landmark",
-    image: `${base}/photos/newstock/Table Mountain.jpg`,
+    image: `${base}/photos/newstock/Table-Mountain.jpg`,
   },
   {
     name: "Boulders Beach",
@@ -53,7 +53,7 @@ const packages = [
     description:
       "The perfect South Africa introduction — combine the cosmopolitan flair of Cape Town and the Winelands with the raw adrenaline of a Big Five safari in Kruger.",
     activities: ["Table Mountain cableway", "Cape Point tour", "Kruger game drives", "Winelands tasting"],
-    image: `${base}/photos/newstock/Cape Town.jpg`,
+    image: `${base}/photos/newstock/Cape-Town.jpg`,
     itinerary: [
       { days: "Days 1–3", desc: "Arrive Cape Town; Table Mountain sunset, Cape Peninsula scenic drive and penguin visit." },
       { days: "Day 4", desc: "Full day in the Cape Winelands — estate tastings and historic Stellenbosch wander." },
@@ -155,7 +155,7 @@ export default function SouthAfricaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src={`${base}/photos/newstock/Cape Town.jpg`}
+                src={`${base}/photos/newstock/Cape-Town.jpg`}
                 alt="Cape Town Coast"
                 className="w-full h-52 object-cover"
               />
@@ -169,7 +169,7 @@ export default function SouthAfricaPage() {
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-6">
               <img
-                src={`${base}/photos/newstock/Table Mountain.jpg`}
+                src={`${base}/photos/newstock/Table-Mountain.jpg`}
                 alt="Table Mountain"
                 className="w-full h-52 object-cover"
               />

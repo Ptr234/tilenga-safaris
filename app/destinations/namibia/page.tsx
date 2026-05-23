@@ -24,7 +24,7 @@ const hotspots = [
   {
     name: "Skeleton Coast",
     detail: "Shipwrecks, Seals & Desert Lion",
-    image: `${base}/photos/newstock/Skeleton Coast.jpg`,
+    image: `${base}/photos/newstock/Skeleton-Coast.jpg`,
   },
   {
     name: "Fish River Canyon",
@@ -165,7 +165,7 @@ export default function NamibiaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src={`${base}/photos/newstock/Namibia Desert.jpg`}
+                src={`${base}/photos/newstock/Namibia-Desert.jpg`}
                 alt="Sossusvlei dunes"
                 className="w-full h-52 object-cover"
               />
@@ -179,7 +179,7 @@ export default function NamibiaPage() {
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-6">
               <img
-                src={`${base}/photos/newstock/Skeleton Coast.jpg`}
+                src={`${base}/photos/newstock/Skeleton-Coast.jpg`}
                 alt="Skeleton Coast"
                 className="w-full h-52 object-cover"
               />

@@ -24,22 +24,22 @@ const hotspots = [
   {
     name: "Queen Elizabeth NP",
     detail: "Kazinga Channel & Tree-Climbing Lions",
-    image: `${base}/photos/newstock/Queen Elizabeth NP.jpg`,
+    image: `${base}/photos/newstock/Queen-Elizabeth-NP.jpg`,
   },
   {
     name: "Mt. Rwenzori",
     detail: "Mountains of the Moon — Africa's Third-Highest Peak",
-    image: `${base}/photos/newstock/Mountain Climbing06Mountain Climbing.jpg`,
+    image: `${base}/photos/newstock/Mountain-Climbing06Mountain-Climbing.jpg`,
   },
   {
     name: "Source of the Nile",
     detail: "Jinja — White Water Rafting & Bungee Jumping",
-    image: `${base}/photos/newstock/Source of the Nile.jpg`,
+    image: `${base}/photos/newstock/Source-of-the-Nile.jpg`,
   },
   {
     name: "Lake Mburo National Park",
     detail: "Zebras, Hippos & 350 Bird Species",
-    image: `${base}/photos/newstock/zebras (1).jpg`,
+    image: `${base}/photos/newstock/zebras-(1).jpg`,
   },
   {
     name: "Kibale Forest",
@@ -62,7 +62,7 @@ const packages = [
     description:
       "Comprehensive safari combining the world’s most powerful waterfalls with Uganda’s largest national park — game drives, boat cruises, birding, nature walks, and sunset viewing.",
     activities: ["Waterfall visits", "Game drives", "Boat cruises", "Nature walks", "Sunset viewing"],
-    image: `${base}/photos/newstock/Big Five Game Drives.jpg`,
+    image: `${base}/photos/newstock/Big-Five-Game-Drives.jpg`,
     downloadUrl: `${base}/photos/newstock/5-DAY-WILDLIFE-SAFARI-IN-UGANDA-4.pdf`,
     itinerary: [
       { days: "Days 1–2", desc: "Depart Kampala for Murchison Falls; hike to the top of the falls, afternoon game drive." },
@@ -199,7 +199,7 @@ export default function UgandaPage() {
               className="overflow-hidden mt-6"
             >
               <img
-                src={`${base}/photos/newstock/Source of the Nile2.jpg`}
+                src={`${base}/photos/newstock/Source-of-the-Nile2.jpg`}
                 alt="Source of the Nile, Uganda"
                 className="w-full h-52 object-cover"
               />

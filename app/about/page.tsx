@@ -50,7 +50,7 @@ const team = [
     role: "Community Liaisons",
     tag: "Culture & Conservation",
     desc: "Local partners who connect guests with authentic cultural experiences while actively supporting community livelihoods and conservation.",
-    image: `${base}/photos/newstock/local communities.jpg`,
+    image: `${base}/photos/newstock/local-communities.jpg`,
   },
 ];
 
@@ -59,7 +59,7 @@ const services = [
     num: "01",
     title: "Airport Meet & Greet",
     desc: "Seamless arrivals — our team meets you on landing, handles your luggage, and transfers you comfortably to your first destination.",
-    image: `${base}/photos/newstock/Airportmeet and greet.jpg`,
+    image: `${base}/photos/newstock/Airportmeet-and-greet.jpg`,
     tag: "Logistics"
   },
   {
@@ -87,7 +87,7 @@ const services = [
     num: "05",
     title: "Airport Transportation",
     desc: "Punctual, professional airport transfers coordinated precisely with your flight schedule — day or night.",
-    image: `${base}/photos/newstock/Airport transportation.jpg`,
+    image: `${base}/photos/newstock/Airport-transportation.jpg`,
     tag: "Logistics"
   },
   {

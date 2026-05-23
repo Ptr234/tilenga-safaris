@@ -34,12 +34,12 @@ const hotspots = [
   {
     name: "Kigali Genocide Memorial",
     detail: "A Place of Remembrance & Learning",
-    image: `${base}/photos/newstock/Kigali Genocide Memorial.png`,
+    image: `${base}/photos/newstock/Kigali-Genocide-Memorial.png`,
   },
   {
     name: "Kigali City",
     detail: "Africa's Cleanest & Safest Capital",
-    image: `${base}/photos/newstock/kigali city.jpg`,
+    image: `${base}/photos/newstock/kigali-city.jpg`,
   },
 ];
 
@@ -147,7 +147,7 @@ export default function RwandaPage() {
             </ImageReveal>
             <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-6">
               <img
-                src={`${base}/photos/newstock/kigali city.jpg`}
+                src={`${base}/photos/newstock/kigali-city.jpg`}
                 alt="Kigali City"
                 className="w-full h-52 object-cover"
               />

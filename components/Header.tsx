@@ -8,7 +8,7 @@ const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const navItems = [
   { label: "Home", href: "/", image: `${base}/photos/newstock/AfricanLandscape.jpg` },
-  { label: "Destinations", href: "/destinations", image: `${base}/photos/newstock/Masai Mara.jpg` },
+  { label: "Destinations", href: "/destinations", image: `${base}/photos/newstock/Masai-Mara.jpg` },
   {
     label: "Our Lodges",
     href: "/lodges",

@@ -388,8 +388,8 @@ export default function TilengaSafariLodgePage() {
           {[
             { src: `${base}/photos/tilengasafarilodge/insideview.png`,                           alt: "Cottage Interior",      label: "Inside the Cottage",   sub: "Light · Space · Rest" },
             { src: `${base}/photos/tilengasafarilodge/cottage3.png`,                              alt: "Cottage Wildlife View", label: "Wildlife at Your Door", sub: "From the balcony" },
-            { src: `${base}/photos/tilengasafarilodge/tilengasafarislodge lunch close setup.png`, alt: "Lunch Detail",          label: "Culinary Details",     sub: "Crafted with care" },
-            { src: `${base}/photos/tilengasafarilodge/tilengasafarislodge swimmingpool view2.png`,alt: "Pool View",             label: "The Blue Hour",        sub: "Pool · Afternoon" },
+            { src: `${base}/photos/tilengasafarilodge/tilengasafarislodge-lunch-close-setup.png`, alt: "Lunch Detail",          label: "Culinary Details",     sub: "Crafted with care" },
+            { src: `${base}/photos/tilengasafarilodge/tilengasafarislodge-swimmingpool-view2.png`,alt: "Pool View",             label: "The Blue Hour",        sub: "Pool · Afternoon" },
           ].map((item, i) => (
             <FadeIn key={item.alt} direction="up" delay={i * 0.12}>
               <div className="relative group overflow-hidden">
@@ -474,7 +474,7 @@ export default function TilengaSafariLodgePage() {
           {/* Right: Full tall cottage night image */}
           <FadeIn direction="right" className="md:col-span-3 relative overflow-hidden group min-h-[60vh] order-1 md:order-2">
             <img
-              src={`${base}/photos/tilengasafarilodge/tilengasafarislodge cottage night.png`}
+              src={`${base}/photos/tilengasafarilodge/tilengasafarislodge-cottage-night.png`}
               alt="Cottage at Night"
               className="w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-105"
             />

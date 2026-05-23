@@ -37,24 +37,24 @@ const lodges = [
 const experiences = [
   { title: "Gorilla Tracking", description: "Face-to-face with endangered mountain gorillas in the misty highlands of Bwindi.", image: `${base}/photos/newstock/Gorrillahd.jpg` },
   { title: "Great Beast Migration", description: "Witness the world's most spectacular wildlife event as millions cross the savannah.", image: `${base}/photos/newstock/greatbeastmigration.jpg` },
-  { title: "Culture - Masai mara", description: "Connect with the living heritage and ancient traditions of the iconic Maasai people.", image: `${base}/photos/newstock/Masai Mara.jpg` },
-  { title: "Game drives for the big 5", description: "Expert-guided dawn and dusk drives in search of the legendary African Big Five.", image: `${base}/photos/newstock/Big Five Game Drives.jpg` },
-  { title: "Hot airballoon", description: "Soar above the golden plains at sunrise for a breathtaking bird's-eye view of the wild.", image: `${base}/photos/newstock/Hot Air Balloon.jpg` },
-  { title: "Mt Rwenzori climbing", description: "Summit the legendary 'Mountains of the Moon' for an epic alpine adventure at the Equator.", image: `${base}/photos/newstock/Mountain Climbing06Mountain Climbing.jpg` },
-  { title: "Zanzibar", description: "Unwind on turquoise shores where spice-scented breezes meet ancient Stone Town culture.", image: `${base}/photos/newstock/Zanzibar Beaches.jpg` },
-  { title: "Boat Safaris", description: "Glide the Albert Nile or Kazinga Channel for incredible hippo, croc, and bird sightings.", image: `${base}/photos/newstock/Boat Safaris08Boat Safaris.jpg` },
-  { title: "Namibia Desert", description: "Explore the ancient, towering red dunes of Sossusvlei and the dramatic Skeleton Coast.", image: `${base}/photos/newstock/Namibia Desert.jpg` },
+  { title: "Culture - Masai mara", description: "Connect with the living heritage and ancient traditions of the iconic Maasai people.", image: `${base}/photos/newstock/Masai-Mara.jpg` },
+  { title: "Game drives for the big 5", description: "Expert-guided dawn and dusk drives in search of the legendary African Big Five.", image: `${base}/photos/newstock/Big-Five-Game-Drives.jpg` },
+  { title: "Hot airballoon", description: "Soar above the golden plains at sunrise for a breathtaking bird's-eye view of the wild.", image: `${base}/photos/newstock/Hot-Air-Balloon.jpg` },
+  { title: "Mt Rwenzori climbing", description: "Summit the legendary 'Mountains of the Moon' for an epic alpine adventure at the Equator.", image: `${base}/photos/newstock/Mountain-Climbing06Mountain-Climbing.jpg` },
+  { title: "Zanzibar", description: "Unwind on turquoise shores where spice-scented breezes meet ancient Stone Town culture.", image: `${base}/photos/newstock/Zanzibar-Beaches.jpg` },
+  { title: "Boat Safaris", description: "Glide the Albert Nile or Kazinga Channel for incredible hippo, croc, and bird sightings.", image: `${base}/photos/newstock/Boat-Safaris08Boat-Safaris.jpg` },
+  { title: "Namibia Desert", description: "Explore the ancient, towering red dunes of Sossusvlei and the dramatic Skeleton Coast.", image: `${base}/photos/newstock/Namibia-Desert.jpg` },
   { title: "Elephants in Botswana", description: "Encounter massive herds in the lush Okavango Delta, a true sanctuary for giants.", image: `${base}/photos/newstock/Elephantfamily.jpg` },
 ];
 
 const destinations = [
   { name: "Uganda", tag: "Pearl of Africa", description: "Known as the Pearl of Africa, Uganda offers a tapestry of landscapes — from the thundering Murchison Falls to the legendary mountain gorillas of Bwindi.", image: `${base}/photos/newstock/UgandaDestinationHero.jpg`, href: "/destinations/uganda" },
-  { name: "Kenya", tag: "Iconic Maasai Mara", description: "Witness the Great Migration and the golden savannahs of the Maasai Mara, home to Africa's most legendary wildlife encounters.", image: `${base}/photos/newstock/Masai Mara.jpg`, href: "/destinations/kenya" },
+  { name: "Kenya", tag: "Iconic Maasai Mara", description: "Witness the Great Migration and the golden savannahs of the Maasai Mara, home to Africa's most legendary wildlife encounters.", image: `${base}/photos/newstock/Masai-Mara.jpg`, href: "/destinations/kenya" },
   { name: "Tanzania", tag: "Serengeti & Zanzibar", description: "From the endless plains of the Serengeti to the turquoise waters of Zanzibar, Tanzania is a land of breathtaking contrasts.", image: `${base}/photos/newstock/SerengetiNationaLPark.jpg`, href: "/destinations/tanzania" },
   { name: "Rwanda", tag: "Land of a Thousand Hills", description: "Discover a land of mist-covered volcanoes and rare mountain gorillas in the Heart of Africa.", image: `${base}/photos/newstock/Gorrillahd.jpg`, href: "/destinations/rwanda" },
-  { name: "Namibia", tag: "Desert & Dunes", description: "Explore the ancient Namib Desert, where towering red dunes meet the haunting Skeleton Coast.", image: `${base}/photos/newstock/Namibia Desert.jpg`, href: "/destinations/namibia" },
+  { name: "Namibia", tag: "Desert & Dunes", description: "Explore the ancient Namib Desert, where towering red dunes meet the haunting Skeleton Coast.", image: `${base}/photos/newstock/Namibia-Desert.jpg`, href: "/destinations/namibia" },
   { name: "Botswana", tag: "Okavango Delta", description: "Glide through the crystal-clear channels of the Okavango Delta, a sanctuary for Africa's most diverse wildlife.", image: `${base}/photos/newstock/Elephantfamily.jpg`, href: "/destinations/botswana" },
-  { name: "South Africa", tag: "Cape & Kruger", description: "Experience the vibrant culture of Cape Town and the world-class safari circuits of Kruger National Park.", image: `${base}/photos/newstock/Cape Town.jpg`, href: "/destinations/south-africa" },
+  { name: "South Africa", tag: "Cape & Kruger", description: "Experience the vibrant culture of Cape Town and the world-class safari circuits of Kruger National Park.", image: `${base}/photos/newstock/Cape-Town.jpg`, href: "/destinations/south-africa" },
 ];
 
 const stats = [
@@ -400,7 +400,7 @@ export default function HomePage() {
             </ImageReveal>
             <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
               <div className="film-frame aspect-square">
-                <img src={`${base}/photos/newstock/local communities.jpg`} alt="Community" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
+                <img src={`${base}/photos/newstock/local-communities.jpg`} alt="Community" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
               </div>
             </ImageReveal>
           </div>
@@ -458,7 +458,7 @@ export default function HomePage() {
       <section className="relative z-0 min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={`${base}/photos/newstock/Airportmeet and greet.jpg`}
+            src={`${base}/photos/newstock/Airportmeet-and-greet.jpg`}
             alt=""
             className="w-full h-full object-cover object-center scale-[1.06]"
           />
