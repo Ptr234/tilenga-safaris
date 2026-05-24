@@ -11,27 +11,27 @@ const rooms = [
     name: "Premium Tented Cottages",
     count: "13 Units",
     description:
-      "Named in the Lukhonzo language of Kasese — Kambere, Thembo, Busomungu — each tented cottage is positioned at the highest point of the escarpment on Mpondwe road, divided into sunrise and sunset wings. Wide views of both Lake Kikorongo and Lake George, surrounded by maintained bush.",
-    features: ["Lake Kikorongo & George views", "Sunrise & sunset wings", "Private terrace", "Rwenzori Mountain panorama", "En suite facilities"],
+      "Our Luxury cottages are located at the highest point of the Kikorongo escarpment on Mpondwe road. Named in the Lukhonzo language — Kambere, Thembo, Busomungu — each is positioned to capture wide views of Lake Kikorongo, Lake George, and the vast greenery of Queen Elizabeth National Park. Divided into sunrise and sunset wings, each cottage is surrounded by well-maintained bush for a customized, private experience. Ideal for honeymooners, families, photographers, and writers.",
+    features: ["Highest escarpment point", "Lake Kikorongo & George views", "Sunrise & sunset wings", "Lukhonzo named cottages", "Ideal for photographers"],
     image: `${base}/photos/kikorongo_room2.jpg`,
   },
   {
     name: "Intimate Cottages",
     count: "5 Units",
     description:
-      "Situated at the landscape edges, these smaller cottages are ideal for those who prefer a compact, quieter retreat. Striking sunrise views over both lakes make them a favourite for birders, couples, writers, and photographers.",
-    features: ["Ground-level access", "Lake views", "Striking sunrises", "Indoor bathroom", "Ideal for birders & photographers"],
+      "Situated at the edge of the landscape, these smaller cottages are ideal for guests who prefer more intimate spaces and ground-level access. The balconies offer glorious sunrise views over Lake Kikorongo and Lake George. A favorite for birders, with chances to spot Shoebill storks and Saddle-billed storks right from the deck. Perfect for couples, writers, and travelers who prefer not to hike to their accommodation.",
+    features: ["Edge-of-landscape setting", "Glorious sunrise views", "Ground-level access", "Ideal for bird watching", "Intimate, quiet spaces"],
     image: `${base}/photos/kikorongo_room1.jpg`,
   },
 ];
 
 const activities = [
-  { name: "Kazinga Channel Cruise", desc: "Sail the 40km channel between Lake Edward and Lake George — home to the world's greatest concentration of hippos, Nile crocodiles, and 600+ bird species." },
-  { name: "Game Drives", desc: "Track lions, elephants, buffaloes, leopards, and the famous tree-climbing lions of Ishasha sector on guided morning and evening drives." },
-  { name: "Bird Watching", desc: "Over 600 bird species — including shoebill storks, African skimmers, and the rare martial eagle — right on the lodge doorstep." },
-  { name: "Rwenzori Climbing", desc: "The legendary Mountains of the Moon — Africa's third-highest peak with equatorial glaciers, giant heathers, and stunning Albertine Rift views." },
-  { name: "Lake Kikorongo Sunset", desc: "Evening boat cruises on Lake Kikorongo with spectacular sunsets over the Rwenzori Mountains and prolific birdlife." },
-  { name: "Chimpanzee Tracking", desc: "Kibale National Park, just 3 hours away, offers one of Africa's finest chimpanzee tracking experiences." },
+  { name: "Bird Watching", desc: "Spot the rare Shoebill stork, Saddle-billed stork, and hundreds of other species right from the lodge escarpment." },
+  { name: "Rwenzori Climbing", desc: "The legendary Mountains of the Moon — Africa's third-highest peak with equatorial glaciers and stunning Albertine Rift views." },
+  { name: "Kazinga Channel Safari", desc: "Experience one of the world's largest concentrations of hippos and numerous Nile crocodiles on this famous waterway." },
+  { name: "Boat Cruise", desc: "Guided boat safaris offering spectacular wildlife viewing and sunsets over the lakes." },
+  { name: "Game Drives", desc: "Explore Queen Elizabeth National Park's diverse ecosystems, tracking lions, leopards, and elephants." },
+  { name: "Cultural Experiences", desc: "Connect with the Kasese region's heritage and the traditions of the Rwenzururu Kingdom." },
 ];
 
 const quickFacts = [
@@ -42,11 +42,11 @@ const quickFacts = [
 ];
 
 const locationDistances = [
+  { place: "Kasese, Mpondwe Road", distance: "Location" },
+  { place: "Kampala", distance: "370 km" },
   { place: "Kasese Town", distance: "~10 min" },
   { place: "Kasese Airstrip", distance: "~15 min" },
   { place: "Kazinga Channel", distance: "~20 min" },
-  { place: "Queen Elizabeth NP Gate", distance: "~25 min" },
-  { place: "Kampala", distance: "~5 hrs" },
 ];
 
 export default function KikorongoSafariLodgePage() {
@@ -113,17 +113,13 @@ export default function KikorongoSafariLodgePage() {
             </h2>
             <div className="w-10 h-px bg-gold mb-8" />
             <p className="text-stone font-sans leading-relaxed mb-4 text-sm">
-              Situated directly on the Equator on a steep hill in Kasese, Kikorongo Safari Lodge looks
-              out over the glistening waters of Lake George and Lake Kikorongo — with the snow-capped
-              Rwenzori Mountains on the horizon.
+              The Lodge sits directly at the Equator and it is strategically located on one of the steep hills in Kasese beautifully overlooking both Lake George and Lake Kikorongo. Surrounded by the Rwenzori Mountains, Queen Elizabeth National Park, and the famous Kazinga channel, it offers the perfect platform to experience all that QENP has to offer.
             </p>
             <p className="text-stone font-sans leading-relaxed mb-4 text-sm">
-              The lodge is the perfect base for exploring all that Queen Elizabeth NP has to offer — from
-              the legendary Kazinga Channel boat safari to tracking tree-climbing lions in Ishasha.
+              Quieter, more secluded and with personalized services, the lodge is ideal for families, couples, or groups who wish to enjoy the very best of an African safari near the park gate.
             </p>
             <p className="text-stone font-sans leading-relaxed mb-10 text-sm">
-              Guests describe a profoundly peaceful atmosphere — morning bird song, cool mountain air,
-              and the lakes shimmering gold at sunset from their private terrace.
+              The area attracts a varied range of animals and birds, featuring one of the world&apos;s largest concentrations of hippos and numerous Nile crocodiles within the surrounding ecosystems.
             </p>
 
             {/* Stats row */}
@@ -219,9 +215,9 @@ export default function KikorongoSafariLodgePage() {
                 </h2>
                 <div className="w-12 h-px bg-gold mb-10" />
                 <p className="text-stone font-sans text-base leading-relaxed mb-10">
-                  From tracking lions across the savannah to watching hippos from a private boat 
-                  on the Kazinga Channel, Kikorongo provides an unfiltered gateway to Uganda&apos;s 
-                  most diverse ecosystem.
+                  From climbing the Rwenzori Mountains to watching hippos from a boat safari 
+                  on the Kazinga Channel, Kikorongo provides a secluded gateway to Uganda&apos;s 
+                  most famous wildlife ecosystems.
                 </p>
                 <Link href="/destinations/uganda" className="btn-primary">Explore Region</Link>
               </FadeIn>
@@ -488,26 +484,77 @@ export default function KikorongoSafariLodgePage() {
 
       {/* ── LOCATION ── */}
       <section id="booking" className="bg-cream py-20 md:py-28 px-5 md:px-16 border-t border-gold/10">
-        <div className="max-w-4xl mx-auto">
-          <FadeIn direction="left">
-            <h3 className="font-serif text-3xl text-forest mb-10">Getting There</h3>
-            <div className="space-y-6">
-              {locationDistances.map((loc) => (
-                <div key={loc.place} className="flex items-center justify-between border-b border-gold/15 pb-4">
-                  <span className="font-sans text-xs uppercase tracking-widest text-stone">{loc.place}</span>
-                  <span className="font-serif italic text-forest">{loc.distance}</span>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-20 items-start">
+            <FadeIn direction="left">
+              <h3 className="font-serif text-3xl text-forest mb-10">Getting There</h3>
+              <div className="space-y-6">
+                {locationDistances.map((loc) => (
+                  <div key={loc.place} className="flex items-center justify-between border-b border-gold/15 pb-4">
+                    <span className="font-sans text-xs uppercase tracking-widest text-stone">{loc.place}</span>
+                    <span className="font-serif italic text-forest">{loc.distance}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-12 bg-forest-dark p-8 text-cream">
+                <p className="font-serif text-lg text-gold mb-4">Location Note</p>
+                <p className="font-sans text-sm leading-relaxed text-cream/60">
+                  Kikorongo Safari Lodge is perched on a high ridge on Mpondwe Road. While the views are unmatched, the paths to some premium cottages can be steep. Our Intimate Cottages offer ground-level access for those who prefer not to hike.
+                </p>
+              </div>
+            </FadeIn>
+
+            <FadeIn direction="up" delay={0.2}>
+              <div className="bg-forest-dark p-10 md:p-16 border border-gold/20 shadow-2xl relative group">
+                <div className="space-y-12 relative z-10">
+                  <div className="grid sm:grid-cols-2 gap-10">
+                    <div>
+                      <p className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold mb-4">Phone</p>
+                      <a href="tel:+256789390350" className="font-serif text-xl md:text-2xl text-cream hover:text-gold transition-colors block leading-none">
+                        +256 789 390 350
+                      </a>
+                    </div>
+                    <div>
+                      <p className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold mb-4">Phone 2</p>
+                      <a href="tel:+256775692334" className="font-serif text-xl md:text-2xl text-cream hover:text-gold transition-colors block leading-none">
+                        +256 775 692 334
+                      </a>
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold mb-4">Email</p>
+                    <a href="mailto:bookings@kikorongosafarilodge.com" className="font-serif text-xl md:text-2xl text-cream hover:text-gold transition-colors block break-all leading-none">
+                      bookings@kikorongosafarilodge.com
+                    </a>
+                  </div>
+
+                  <div>
+                    <p className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold mb-4">Location</p>
+                    <p className="font-sans text-cream/70 text-sm leading-relaxed">
+                      Kasese, Mpondwe Road, Uganda (At the Equator)
+                    </p>
+                  </div>
+
+                  <div className="pt-8 border-t border-white/10">
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <Link href="/plan-a-trip" className="btn-primary flex-1 text-center">
+                        Plan a Full Itinerary
+                      </Link>
+                      <a 
+                        href="https://wa.me/256789390350" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="btn-outline flex-1 text-center border-white/20 text-cream hover:bg-white hover:text-forest"
+                      >
+                        WhatsApp Us
+                      </a>
+                    </div>
+                  </div>
                 </div>
-              ))}
-            </div>
-            <div className="mt-12 bg-forest-dark p-8 text-cream">
-              <p className="font-serif text-lg text-gold mb-4">Location Note</p>
-              <p className="font-sans text-sm leading-relaxed text-cream/60">
-                Kikorongo Safari Lodge is perched on a high ridge. While the views are unmatched,
-                the paths between cottages can be steep. Please inform us if you require
-                a cottage with easier access.
-              </p>
-            </div>
-          </FadeIn>
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
@@ -523,7 +570,7 @@ export default function KikorongoSafariLodgePage() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
            <Link href="/lodges/tilenga-safari-lodge" className="group flex items-center gap-6">
               <div className="text-right">
-                <p className="text-gold/40 text-[9px] uppercase tracking-widest mb-1">Previous Sanctuary</p>
+                <p className="text-gold/40 text-[9px] uppercase tracking-widest mb-1">Other Sanctuary</p>
                 <p className="text-cream font-serif text-xl group-hover:text-gold transition-colors">Tilenga Safari Lodge</p>
               </div>
               <div className="w-12 h-12 rounded-full border border-gold/20 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-forest transition-all">

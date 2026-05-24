@@ -11,27 +11,27 @@ const rooms = [
     name: "Premium Cottages",
     count: "15 Units",
     description:
-      "Located at the property edge with stunning sunrise and sunset views over the Albert Nile. Each cottage features a wide private balcony, indoor bathroom, and electric mosquito repellent — a perfect blend of bush comfort and contemporary style.",
-    features: ["River Nile views", "Private balcony", "Indoor bathroom", "Electric mosquito repellent", "Daily housekeeping"],
+      "Our premium cottages are uniquely located at the edge of the property with beautiful sunrise and sunset views over River Nile and a wide view of Murchsion Falls National Park. All cottages have wide private balconies and a private indoor bathroom. Guests are usually surprised by the elephants that cross over from the park and that is always a spectacle to behold upclose.",
+    features: ["River Nile views", "Private balcony", "Indoor bathroom", "Sunrise & Sunset views", "Daily housekeeping"],
     image: `${base}/photos/tilengasafarilodge/cottage1.png`,
   },
   {
     name: "Executive Cottages",
     count: "11 Units",
     description:
-      "Designed for families and groups — 3-in-1 cottages with twin and single beds, and balconies large enough to seat up to 8 people. Ideal for group gatherings at sunrise over the Nile.",
-    features: ["Twin & single beds", "Family / group layout", "Large balcony seats 8", "Indoor bathroom", "Bush view"],
+      "Our Executive cottages are a perfect match for families and big groups that would like to stay relatively close to each other. These cottages are 3 in 1 with both twin and single beds in the cottages. All cottages have wide private balconies that can sit upto 8 people and beautiful views of River Nile and Murchsion Falls National Park.",
+    features: ["Twin & single beds", "Family / group layout", "Large balcony seats 8", "Indoor bathroom", "River Nile views"],
     image: `${base}/photos/tilengasafarilodge/cottage2.png`,
   },
 ];
 
 const activities = [
-  { name: "Game Drives", desc: "Guided morning and evening drives through Murchison Falls NP — elephants, giraffes, lions, buffaloes, and hippos." },
-  { name: "Murchison Falls Hike", desc: "Trek to the top of Africa's most powerful waterfall — 45 metres of the Nile squeezed through a 7-metre gorge." },
-  { name: "Nile Boat Safari", desc: "3-hour boat safari to the base of Murchison Falls, with hippos, crocodiles, and over 450 bird species." },
+  { name: "Fishing", desc: "Experience the thrill of fishing in the Albert Nile, home to a variety of fish species." },
   { name: "Sport Fishing", desc: "Cast for Nile perch and tiger fish in the Albert Nile with experienced local guides and all equipment." },
+  { name: "Basketry with Locals", desc: "Connect with local artisans and learn traditional basket weaving — a meaningful community experience." },
   { name: "Night Game Drives", desc: "Spot nocturnal creatures — civets, genets, bush babies, and African wild cats — under the stars." },
-  { name: "Basketry Workshops", desc: "Connect with local artisans and learn traditional basket weaving — a meaningful community experience." },
+  { name: "Day Game Drives", desc: "Guided morning and evening drives through Murchison Falls NP — elephants, giraffes, lions, and buffaloes." },
+  { name: "Nile Boat Safari", desc: "3-hour boat safari to the base of Murchison Falls, with hippos, crocodiles, and over 450 bird species." },
 ];
 
 const quickFacts = [
@@ -43,10 +43,10 @@ const quickFacts = [
 
 const locationDistances = [
   { place: "Tangi Gate (Murchison Falls NP)", distance: "1.7 km" },
+  { place: "Kampala", distance: "361 km" },
   { place: "Pakuba Airstrip", distance: "~30 min" },
   { place: "Murchison Falls Top", distance: "~45 min" },
   { place: "Gulu City", distance: "~2.5 hrs" },
-  { place: "Kampala", distance: "4.5 – 5 hrs" },
 ];
 
 export default function TilengaSafariLodgePage() {
@@ -115,6 +115,7 @@ export default function TilengaSafariLodgePage() {
             <p className="text-stone font-sans leading-relaxed mb-4 text-sm">
               Positioned at the northern park boundary of Murchison Falls National Park, Tilenga Safari Lodge
               offers panoramic views over the Albert Nile River — with wildlife encounters beginning at your doorstep.
+              One has to watch out for its signpost a few kilometers before the Pakwach Bridge to not miss the magnificence of a place that looks out on the majestic Albert Nile.
             </p>
             <p className="text-stone font-sans leading-relaxed mb-4 text-sm">
               Wake to elephants grazing below your balcony. Watch giraffes moving through acacia woodland
