@@ -102,6 +102,7 @@ export async function POST(req: Request) {
     const { data, error } = await resend.emails.send({
       from: `Tilenga Safaris <${fromEmail}>`,
       to: [email],
+      bcc: ['destinations@tilengasafaris.com'],
       subject: `Itinerary: ${packageName} - Tilenga Safaris`,
       html: emailContent,
       attachments: attachments,

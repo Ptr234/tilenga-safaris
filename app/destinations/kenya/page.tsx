@@ -7,6 +7,7 @@ import FadeIn from "@/components/motion/FadeIn";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
 import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
+import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -94,12 +95,18 @@ const packages = [
 ];
 
 export default function KenyaPage() {
-  const [isPopupOpen, setIsOpen] = useState(false);
+  const [isDownloadOpen, setIsDownloadOpen] = useState(false);
+  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [activePackage, setActivePackage] = useState("");
 
   const handleDownload = (pkgName: string) => {
     setActivePackage(pkgName);
-    setIsOpen(true);
+    setIsDownloadOpen(true);
+  };
+
+  const handleEnquiry = (pkgName: string) => {
+    setActivePackage(pkgName);
+    setIsEnquiryOpen(true);
   };
 
   return (
@@ -297,12 +304,20 @@ export default function KenyaPage() {
                   </div>
                   <div className="flex flex-wrap items-center justify-between gap-4">
                     <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
-                    <button 
-                      onClick={() => handleDownload(pkg.name)}
-                      className="btn-primary !px-6 !py-2.5 text-[11px]"
-                    >
-                      Download Detailed Itinerary
-                    </button>
+                    <div className="flex gap-4">
+                      <button 
+                        onClick={() => handleDownload(pkg.name)}
+                        className="btn-outline !px-6 !py-2.5 text-[11px]"
+                      >
+                        Download Detailed Itinerary
+                      </button>
+                      <button 
+                        onClick={() => handleEnquiry(pkg.name)}
+                        className="btn-primary !px-6 !py-2.5 text-[11px]"
+                      >
+                        Enquire About This Package
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -338,8 +353,14 @@ export default function KenyaPage() {
       </section>
 
       <ItineraryDownloadPopup 
-        isOpen={isPopupOpen} 
-        onClose={() => setIsOpen(false)} 
+        isOpen={isDownloadOpen} 
+        onClose={() => setIsDownloadOpen(false)} 
+        packageName={activePackage} 
+      />
+
+      <PackageEnquiryPopup 
+        isOpen={isEnquiryOpen} 
+        onClose={() => setIsEnquiryOpen(false)} 
         packageName={activePackage} 
       />
     </>

@@ -1,20 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 
 export interface Hotspot {
   name: string;
   detail?: string;
   image: string;
 }
-
-const KEN_BURNS = [
-  { animate: { x: ["-2%", "2%", "-2%"], scale: [1.1, 1.14, 1.1] } },
-  { animate: { x: ["2%", "-2%", "2%"], scale: [1.12, 1.08, 1.12] } },
-  { animate: { y: ["-1.5%", "1.5%", "-1.5%"], scale: [1.1, 1.13, 1.1] } },
-  { animate: { x: ["-1%", "1.5%", "-1%"], y: ["-1%", "0.5%", "-1%"], scale: [1.1, 1.12, 1.1] } },
-];
 
 export default function HotspotGallery({ hotspots }: { hotspots: Hotspot[] }) {
   const [paused, setPaused] = useState(false);
@@ -38,25 +30,17 @@ export default function HotspotGallery({ hotspots }: { hotspots: Hotspot[] }) {
         className={`flex gap-3 py-4 w-max ${paused ? "hotspot-track hotspot-track-paused" : "hotspot-track"}`}
       >
         {items.map((spot, i) => {
-          const kb = KEN_BURNS[i % KEN_BURNS.length];
           return (
             <div
               key={`${spot.name}-${i}`}
               className="relative shrink-0 w-[76vw] sm:w-[44vw] md:w-[28vw] lg:w-[22vw] xl:w-[18vw] aspect-[3/4] overflow-hidden group cursor-default"
             >
-              {/* Ken Burns image — continues even while track is paused */}
-              <motion.img
+              {/* Static image — much lighter for performance */}
+              <img
                 src={spot.image}
                 alt={spot.name}
                 draggable={false}
-                className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                animate={kb.animate}
-                transition={{
-                  duration: 14 + (i % 4) * 3,
-                  ease: "easeInOut",
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                }}
+                className="absolute inset-0 w-full h-full object-cover pointer-events-none group-hover:scale-110 transition-transform duration-[2000ms] ease-out"
               />
 
               {/* Gradient overlay */}

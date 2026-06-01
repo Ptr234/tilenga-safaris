@@ -225,8 +225,8 @@
     z-index: -1;
   }
   .btn-outline:hover {
-    @apply text-forest;
-    box-shadow: 0 0 0 1px var(--gold);
+    @apply bg-gold text-forest;
+    box-shadow: 0 8px 30px rgba(201, 169, 110, 0.3);
   }
   .btn-outline:hover::before {
     transform: scaleX(1);
