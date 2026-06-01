@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 export const runtime = 'edge';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
+const fromEmail = process.env.RESEND_FROM_EMAIL || 'info@tilengasafaris.africa';
 
 export async function POST(req: Request) {
   try {
@@ -59,7 +59,7 @@ export async function POST(req: Request) {
     // 1. Send notification to Tilenga Safaris
     await resend.emails.send({
       from: `Tilenga Website <${fromEmail}>`,
-      to: ['destinations@tilengasafaris.africa'],
+      to: ['destinations@tilengasafaris.com'],
       subject: subject,
       html: emailContent,
       replyTo: email,

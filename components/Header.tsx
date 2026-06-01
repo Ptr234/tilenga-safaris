@@ -122,7 +122,7 @@ export default function Header() {
                   className="h-24 md:h-40 w-auto mb-10 drop-shadow-2xl" 
                 />
                 <div className="space-y-3 opacity-90 font-sans text-[10px] tracking-[0.3em] uppercase font-bold">
-                  <p>destinations@tilengasafaris.africa</p>
+                  <p>destinations@tilengasafaris.com</p>
                   <p>+256 789 390 350</p>
                 </div>
               </div>

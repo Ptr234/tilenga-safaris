@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 export const runtime = 'edge';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
+const fromEmail = process.env.RESEND_FROM_EMAIL || 'info@tilengasafaris.africa';
 
 const packageFiles: Record<string, string> = {
   // Uganda
@@ -94,7 +94,7 @@ export async function POST(req: Request) {
           <p style="margin: 0;"><strong>Tilenga Safaris</strong></p>
           <p style="margin: 0;">Kampala, Uganda</p>
           <p style="margin: 0;">+256 789 390 350</p>
-          <p style="margin: 0;"><a href="mailto:destinations@tilengasafaris.africa" style="color: #c9a96e; text-decoration: none;">destinations@tilengasafaris.africa</a></p>
+          <p style="margin: 0;"><a href="mailto:destinations@tilengasafaris.com" style="color: #c9a96e; text-decoration: none;">destinations@tilengasafaris.com</a></p>
         </div>
       </div>
     `;

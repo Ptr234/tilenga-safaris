@@ -242,7 +242,7 @@ export default function LodgesPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/plan-a-trip" className="btn-primary px-10">Plan My Safari</Link>
-            <a href="mailto:destinations@tilengasafaris.africa" className="btn-ghost px-10">Speak to an Expert</a>
+            <a href="mailto:destinations@tilengasafaris.com" className="btn-ghost px-10">Speak to an Expert</a>
           </div>
         </FadeIn>
       </section>
