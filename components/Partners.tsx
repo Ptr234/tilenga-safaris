@@ -45,7 +45,7 @@ export default function Partners() {
               viewport={{ once: true }}
               className="flex flex-col items-center group cursor-pointer"
             >
-              <div className="relative w-24 h-24 md:w-32 md:h-32 flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-110">
+              <div className="relative w-32 h-32 md:w-44 md:h-44 flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-110">
                 <Image
                   src={p.logo}
                   alt={p.name}

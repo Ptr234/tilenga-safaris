@@ -22,20 +22,9 @@ export default function HeroVideo() {
         <div className="absolute inset-0 bg-black/30" />
       </div>
 
-      {/* Centered Logo */}
+      {/* Centered Content Removed */}
       <div className="relative z-10 h-full flex items-center justify-center px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
-          className="flex flex-col items-center"
-        >
-          <img 
-            src={`${base}/tilenga-logo-light.svg`} 
-            alt="Tilenga Safaris" 
-            className="h-32 md:h-56 lg:h-72 w-auto drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]" 
-          />
-        </motion.div>
+        {/* Logo has been removed from landing page per request */}
       </div>
     </section>
   );
