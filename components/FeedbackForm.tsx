@@ -59,6 +59,8 @@ export default function FeedbackForm() {
     
     if (step === 1) {
       if (!formData.name.trim()) newErrors.push("name");
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!formData.email.trim() || !emailRegex.test(formData.email)) newErrors.push("email");
     }
     if (step === 2) {
       if (!formData.overall_rating) newErrors.push("overall_rating");
@@ -77,9 +79,15 @@ export default function FeedbackForm() {
       if (!formData.guide_rating) newErrors.push("guide_rating");
       if (!formData.safety) newErrors.push("safety");
     }
+    if (step === 6) {
+      if (!formData.improve.trim() || formData.improve.length < 5) newErrors.push("improve");
+    }
     if (step === 7) {
       if (!formData.travel_again) newErrors.push("travel_again");
       if (!formData.recommend) newErrors.push("recommend");
+    }
+    if (step === 8) {
+      if (!formData.final.trim() || formData.final.length < 3) newErrors.push("final");
     }
 
     setErrors(newErrors);
@@ -112,6 +120,9 @@ export default function FeedbackForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (step < totalSteps) return;
+
     if (!validateStep()) return;
     
     setIsSubmitting(true);
@@ -267,14 +278,15 @@ export default function FeedbackForm() {
 
                 <form onSubmit={handleSubmit} className="relative z-10 flex-1 flex flex-col p-8 md:p-16">
                   <div className="flex-1 min-h-[380px] md:min-h-[420px]">
-                    <AnimatePresence mode="popLayout" initial={false}>
-                      <motion.div
-                        key={step}
-                        initial={{ opacity: 0, x: 20, filter: "blur(10px)" }}
-                        animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                        exit={{ opacity: 0, x: -20, filter: "blur(10px)" }}
-                        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                      >
+                    <AnimatePresence mode="wait" initial={false}>
+                      <div key={step} onClick={(e) => e.stopPropagation()}>
+                        <motion.div
+                          key={step}
+                          initial={{ opacity: 0, x: 20, filter: "blur(10px)" }}
+                          animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                          exit={{ opacity: 0, x: -20, filter: "blur(10px)" }}
+                          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                        >
                         {step === 1 && (
                           <div className="space-y-12">
                             <motion.div 
@@ -295,17 +307,27 @@ export default function FeedbackForm() {
                                 {errors.includes("name") && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-red-400/60 text-[9px] uppercase tracking-[0.2em] font-bold italic">Log entry required to proceed</motion.p>}
                               </div>
                             </motion.div>
-                            <div className="group">
-                              <label className="block text-[9px] uppercase tracking-[0.4em] text-gold mb-6 font-bold group-focus-within:text-gold-light transition-colors">Communication Link (Optional)</label>
+                            <motion.div 
+                              animate={errors.includes("email") ? { x: [-4, 4, -4, 4, 0] } : {}}
+                              className="group"
+                            >
+                              <label className={`block text-[9px] uppercase tracking-[0.4em] mb-6 font-bold transition-colors ${errors.includes("email") ? 'text-red-400' : 'text-gold group-focus-within:text-gold-light'}`}>Email Address</label>
                               <input
                                 type="email"
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
+                                onKeyDown={(e) => {
+                                  if (e.key === 'Enter') e.preventDefault();
+                                }}
+                                autoComplete="off"
                                 placeholder="you@example.com"
-                                className="w-full bg-transparent border-b border-white/10 py-6 outline-none transition-all font-serif text-2xl md:text-4xl text-cream placeholder:text-white/5 focus:border-gold/40"
+                                className={`w-full bg-transparent border-b py-6 outline-none transition-all font-serif text-2xl md:text-4xl placeholder:text-white/5 ${errors.includes("email") ? 'border-red-500/50 text-red-100' : 'border-white/10 focus:border-gold/40 text-cream'}`}
                               />
-                            </div>
+                              <div className="h-8 pt-2">
+                                {errors.includes("email") && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-red-400/60 text-[9px] uppercase tracking-[0.2em] font-bold italic">Valid email required</motion.p>}
+                              </div>
+                            </motion.div>
                           </div>
                         )}
 
@@ -497,14 +519,17 @@ export default function FeedbackForm() {
 
                         {step === 6 && (
                           <div className="space-y-8">
-                            <label className="block text-[9px] uppercase tracking-[0.4em] text-gold font-bold italic">Honest Feedback for Growth</label>
-                            <textarea
-                              name="improve"
-                              value={formData.improve}
-                              onChange={handleChange}
-                              placeholder="Where can we sharpen our service?"
-                              className="w-full bg-transparent border border-white/5 focus:border-gold/20 p-10 outline-none transition-all font-serif text-2xl text-cream placeholder:text-white/5 min-h-[320px] rounded-2xl"
-                            />
+                            <motion.div animate={errors.includes("improve") ? { x: [-4, 4, -4, 4, 0] } : {}}>
+                              <label className={`block text-[9px] uppercase tracking-[0.4em] font-bold italic ${errors.includes("improve") ? 'text-red-400' : 'text-gold'}`}>Honest Feedback for Growth</label>
+                              <textarea
+                                name="improve"
+                                value={formData.improve}
+                                onChange={handleChange}
+                                placeholder="Where can we sharpen our service?"
+                                className={`w-full bg-transparent border p-10 outline-none transition-all font-serif text-2xl placeholder:text-white/5 min-h-[320px] rounded-2xl ${errors.includes("improve") ? 'border-red-500/30 text-red-50' : 'border-white/5 focus:border-gold/20 text-cream'}`}
+                              />
+                              {errors.includes("improve") && <p className="text-red-400/60 text-[9px] uppercase tracking-[0.2em] font-bold italic mt-4">A brief reflection is required</p>}
+                            </motion.div>
                           </div>
                         )}
 
@@ -565,6 +590,9 @@ export default function FeedbackForm() {
                                 name="next_dest"
                                 value={formData.next_dest}
                                 onChange={handleChange}
+                                onKeyDown={(e) => {
+                                  if (e.key === 'Enter') e.preventDefault();
+                                }}
                                 placeholder="Serengeti, Victoria Falls, Okavango..."
                                 className="w-full bg-transparent border-b border-white/10 focus:border-gold/50 py-6 outline-none transition-all font-serif text-3xl text-cream placeholder:text-white/5"
                               />
@@ -574,17 +602,21 @@ export default function FeedbackForm() {
 
                         {step === 8 && (
                           <div className="space-y-8">
-                            <label className="block text-[9px] uppercase tracking-[0.4em] text-gold font-bold italic">One Last Entry</label>
-                            <textarea
-                              name="final"
-                              value={formData.final}
-                              onChange={handleChange}
-                              placeholder="Any last reflections on your Tilenga adventure?"
-                              className="w-full bg-transparent border border-white/5 focus:border-gold/20 p-10 outline-none transition-all font-serif text-2xl text-cream placeholder:text-white/5 min-h-[320px] rounded-2xl"
-                            />
+                            <motion.div animate={errors.includes("final") ? { x: [-4, 4, -4, 4, 0] } : {}}>
+                              <label className={`block text-[9px] uppercase tracking-[0.4em] font-bold italic ${errors.includes("final") ? 'text-red-400' : 'text-gold'}`}>One Last Entry</label>
+                              <textarea
+                                name="final"
+                                value={formData.final}
+                                onChange={handleChange}
+                                placeholder="Any last reflections on your Tilenga adventure?"
+                                className={`w-full bg-transparent border p-10 outline-none transition-all font-serif text-2xl placeholder:text-white/5 min-h-[320px] rounded-2xl ${errors.includes("final") ? 'border-red-500/30 text-red-50' : 'border-white/5 focus:border-gold/20 text-cream'}`}
+                              />
+                              {errors.includes("final") && <p className="text-red-400/60 text-[9px] uppercase tracking-[0.2em] font-bold italic mt-4">One last thought to seal your journal</p>}
+                            </motion.div>
                           </div>
                         )}
                       </motion.div>
+                      </div>
                     </AnimatePresence>
                   </div>
 
