@@ -18,7 +18,8 @@ export default function ClientLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const isFeedbackPage = pathname === "/feedback";
+  const isFeedbackPage = pathname.startsWith("/feedback");
+  const isHomePage = pathname === "/";
   const [isWhatsAppVisible, setIsWhatsAppVisible] = useState(true);
 
   useEffect(() => {
@@ -56,7 +57,7 @@ export default function ClientLayout({
       <PageTransition>
         <main>{children}</main>
       </PageTransition>
-      {!isFeedbackPage && <InstagramFeed />}
+      {isHomePage && <InstagramFeed />}
       {!isFeedbackPage && <QuotePopup />}
       {!isFeedbackPage && <CookieConsent />}
       {!isFeedbackPage && <Footer />}
