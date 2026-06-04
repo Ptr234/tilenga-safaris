@@ -50,7 +50,7 @@ export default function FeedbackForm() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 2200);
     return () => clearTimeout(timer);
   }, []);
 
@@ -107,17 +107,20 @@ export default function FeedbackForm() {
   };
 
   return (
-    <div className="min-h-screen bg-forest-dark text-cream font-sans selection:bg-gold/30 relative flex flex-col items-center">
-      {/* Immersive Background */}
-      <div className="fixed inset-0 z-0">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+    <div className="min-h-screen bg-[#060f09] text-cream font-sans selection:bg-gold/30 relative flex flex-col items-center overflow-x-hidden">
+      {/* Immersive Background Layered for depth */}
+      <div className="fixed inset-0 z-0 overflow-hidden">
+        <motion.div 
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 10, ease: "easeOut" }}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 grayscale-[20%]"
           style={{ backgroundImage: 'url("/photos/newstock/AfricanLandscape.jpg")' }}
         />
-        <div className="absolute inset-0 bg-forest-dark/85 backdrop-blur-[2px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/40 via-transparent to-forest-dark" />
-        {/* Grain Overlay */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none grain-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#060f09]/95 via-[#060f09]/80 to-[#060f09]" />
+        
+        {/* Animated Particles/Dust for atmosphere */}
+        <div className="absolute inset-0 opacity-[0.05] pointer-events-none grain-overlay" />
       </div>
 
       <AnimatePresence>
@@ -125,128 +128,155 @@ export default function FeedbackForm() {
           <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-[9999] bg-forest-dark flex flex-col items-center justify-center"
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-[9999] bg-[#060f09] flex flex-col items-center justify-center"
           >
-            <div className="text-center w-full max-w-xs">
-              <motion.img 
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                src="/tilenga-logo-light.svg" 
-                alt="Tilenga Safaris" 
-                className="w-40 mx-auto mb-12" 
-              />
-              <div className="w-full h-px bg-gold/10 relative overflow-hidden">
+            <div className="text-center w-full max-w-sm px-10">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1 }}
+              >
+                <img 
+                  src="/tilenga-logo-light.svg" 
+                  alt="Tilenga Safaris" 
+                  className="w-44 mx-auto mb-16" 
+                />
+              </motion.div>
+              
+              <div className="relative w-full h-[1px] bg-white/5 mb-8">
                 <motion.div 
-                  animate={{ left: ["-100%", "100%"] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute top-0 h-full w-1/2 bg-gold/40"
+                  initial={{ width: "0%", left: "0%" }}
+                  animate={{ 
+                    width: ["0%", "100%", "0%"],
+                    left: ["0%", "0%", "100%"]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute top-0 h-full bg-gold/50 shadow-[0_0_15px_rgba(253,183,23,0.5)]"
                 />
               </div>
-              <p className="font-serif italic text-gold/40 text-sm mt-6 tracking-widest uppercase">Opening Journal...</p>
+              
+              <motion.p 
+                animate={{ opacity: [0.3, 0.6, 0.3] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="font-serif italic text-gold/60 text-xs tracking-[0.4em] uppercase"
+              >
+                Opening Safari Journal
+              </motion.p>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
       <div className="relative z-10 w-full max-w-4xl px-6 py-12 md:py-20 flex flex-col items-center">
-        {/* Return Button */}
-        <div className="absolute top-8 left-8 md:top-12 md:left-12 z-20">
-           <Link href="/" className="flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-gold/40 hover:text-gold transition-all duration-300 group">
-              <span className="group-hover:-translate-x-1 transition-transform duration-300">←</span>
-              <span>Return to Website</span>
-           </Link>
-        </div>
-
-        {/* Header */}
-        <FadeIn direction="fade" className="mb-12 md:mb-20 text-center">
-          <Link href="/">
-            <img src="/tilenga-logo-light.svg" alt="Tilenga Safaris" className="w-32 md:w-44 mx-auto mb-8 hover:scale-105 transition-transform duration-500" />
+        {/* Navigation / Return */}
+        <div className="w-full max-w-2xl flex justify-between items-center mb-16">
+          <Link href="/" className="group flex items-center gap-3 py-2">
+            <div className="w-8 h-8 rounded-full border border-white/5 flex items-center justify-center group-hover:border-gold/30 transition-all duration-500">
+              <span className="text-[10px] group-hover:-translate-x-0.5 transition-transform duration-300">←</span>
+            </div>
+            <span className="text-[9px] uppercase tracking-[0.4em] text-gold/40 group-hover:text-gold transition-colors duration-500 font-bold">Return to Website</span>
           </Link>
-          <div className="w-12 h-px bg-gold/30 mx-auto" />
-        </FadeIn>
+          
+          <div className="hidden md:flex items-center gap-2">
+             <div className="w-2 h-2 rounded-full bg-gold/20 animate-pulse" />
+             <span className="text-[8px] uppercase tracking-[0.3em] text-gold/30 font-bold">Live Explorer Log</span>
+          </div>
+        </div>
 
         <div className="w-full max-w-2xl">
           {!isSubmitted ? (
             <div className="relative">
-              {/* Progress Indicator */}
-              <div className="mb-12">
-                <div className="flex justify-between items-end mb-4">
-                  <div>
-                    <p className="text-[10px] uppercase tracking-[0.3em] text-gold/60 mb-1 font-bold">Safari Log</p>
-                    <h3 className="font-serif text-2xl text-cream tracking-wide">{titles[step - 1]}</h3>
+              {/* Journal Title Header */}
+              <div className="mb-16 text-center">
+                <motion.div
+                  key={step}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="space-y-4"
+                >
+                  <p className="text-[10px] uppercase tracking-[0.5em] text-gold/50 font-bold">Chapter {step}</p>
+                  <h1 className="font-serif text-3xl md:text-5xl text-cream tracking-tight leading-tight">
+                    {titles[step - 1]}
+                  </h1>
+                  <div className="flex justify-center items-center gap-4 pt-2">
+                    <div className="h-px w-8 bg-gold/20" />
+                    <span className="text-[9px] uppercase tracking-[0.3em] text-gold/30 font-bold">{step} of {totalSteps}</span>
+                    <div className="h-px w-8 bg-gold/20" />
                   </div>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-gold/40 font-bold">Step {step} / {totalSteps}</span>
-                </div>
-                <div className="h-0.5 bg-white/5 relative">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    animate={{ width: `${(step / totalSteps) * 100}%` }}
-                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                    className="h-full bg-gold/60 shadow-[0_0_10px_rgba(253,183,23,0.3)]"
-                  />
-                </div>
+                </motion.div>
               </div>
 
-              {/* Form Card */}
+              {/* Progress Sidebar (Desktop Only) */}
+              <div className="hidden lg:block fixed left-12 top-1/2 -translate-y-1/2 space-y-4">
+                {titles.map((_, i) => (
+                  <div key={i} className="flex items-center gap-4 group cursor-help">
+                    <div className={`w-1 h-1 rounded-full transition-all duration-500 ${step > i ? 'bg-gold' : step === i + 1 ? 'bg-gold scale-[2] shadow-[0_0_10px_rgba(253,183,23,0.5)]' : 'bg-white/10'}`} />
+                    <span className={`text-[8px] uppercase tracking-widest transition-all duration-500 opacity-0 group-hover:opacity-100 ${step === i + 1 ? 'text-gold' : 'text-white/20'}`}>{titles[i]}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Main Journal Card */}
               <motion.div 
                 layout
-                className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-sm p-8 md:p-12 shadow-2xl relative overflow-hidden group min-h-[580px] flex flex-col"
+                className="bg-[#0c1a12]/40 backdrop-blur-3xl border border-white/5 rounded-2xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] relative overflow-hidden flex flex-col transition-all duration-700 hover:border-white/10"
               >
-                {/* Accent Corner */}
-                <div className="absolute top-0 right-0 w-20 h-20 overflow-hidden pointer-events-none">
-                  <div className="absolute top-0 right-0 w-[1px] h-10 bg-gold/20" />
-                  <div className="absolute top-0 right-0 h-[1px] w-10 bg-gold/20" />
+                {/* Visual Textures */}
+                <div className="absolute inset-0 pointer-events-none">
+                   <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-gold/[0.03] to-transparent" />
+                   <div className="absolute bottom-0 right-0 w-64 h-64 bg-gold/[0.02] rounded-full blur-[100px]" />
                 </div>
 
-                <form onSubmit={handleSubmit} className="flex-1 flex flex-col">
-                  <div className="flex-1 min-h-[300px]">
+                <form onSubmit={handleSubmit} className="relative z-10 flex-1 flex flex-col p-8 md:p-16">
+                  <div className="flex-1 min-h-[380px] md:min-h-[420px]">
                     <AnimatePresence mode="popLayout" initial={false}>
                       <motion.div
                         key={step}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                        initial={{ opacity: 0, x: 20, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                        exit={{ opacity: 0, x: -20, filter: "blur(10px)" }}
+                        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                       >
                         {step === 1 && (
-                          <div className="space-y-10">
-                            <div className="relative">
-                              <label className="block text-[10px] uppercase tracking-[0.3em] text-gold/60 mb-4 font-bold">Your full name *</label>
+                          <div className="space-y-12">
+                            <div className="group">
+                              <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 mb-6 font-bold group-focus-within:text-gold/70 transition-colors">Explorer Name</label>
                               <input
                                 type="text"
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
                                 placeholder="Jane Nakato"
-                                className={`w-full bg-transparent border-b-2 py-4 outline-none transition-all font-serif text-2xl placeholder:text-white/10 ${nameError ? 'border-red-500/50 text-red-200' : 'border-white/10 focus:border-gold/50 text-cream'}`}
+                                className={`w-full bg-transparent border-b border-white/10 py-6 outline-none transition-all font-serif text-2xl md:text-4xl placeholder:text-white/5 ${nameError ? 'border-red-500/30 text-red-100' : 'focus:border-gold/40 text-cream'}`}
+                                autoFocus
                               />
-                              <div className="h-6"> {/* Reserved space for error */}
-                                {nameError && <p className="text-red-400 text-[10px] uppercase tracking-widest mt-3 font-bold">Entry Required</p>}
+                              <div className="h-8 pt-2">
+                                {nameError && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-red-400/60 text-[9px] uppercase tracking-[0.2em] font-bold">Log entry required to proceed</motion.p>}
                               </div>
                             </div>
-                            <div className="relative">
-                              <label className="block text-[10px] uppercase tracking-[0.3em] text-gold/60 mb-4 font-bold">Email address (optional)</label>
+                            <div className="group">
+                              <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 mb-6 font-bold group-focus-within:text-gold/70 transition-colors">Communication Link (Optional)</label>
                               <input
                                 type="email"
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
                                 placeholder="you@example.com"
-                                className="w-full bg-transparent border-b-2 border-white/10 focus:border-gold/50 py-4 outline-none transition-all font-serif text-2xl text-cream placeholder:text-white/10"
+                                className="w-full bg-transparent border-b border-white/10 py-6 outline-none transition-all font-serif text-2xl md:text-4xl text-cream placeholder:text-white/5 focus:border-gold/40"
                               />
                             </div>
                           </div>
                         )}
 
                         {step === 2 && (
-                          <div className="space-y-12">
-                            <div>
-                              <label className="block text-[10px] uppercase tracking-[0.3em] text-gold/60 mb-8 font-bold text-center">How would you rate the experience?</label>
-                              <div className="flex flex-row-reverse justify-center gap-4">
+                          <div className="space-y-16">
+                            <div className="text-center">
+                              <label className="block text-[9px] uppercase tracking-[0.5em] text-gold/50 mb-10 font-bold">Overall Impression</label>
+                              <div className="flex flex-row-reverse justify-center gap-2 md:gap-6">
                                 {[5, 4, 3, 2, 1].map((num) => (
-                                  <label key={num} className="cursor-pointer group/star">
+                                  <label key={num} className="cursor-pointer group/star relative">
                                     <input
                                       type="radio"
                                       name="overall_rating"
@@ -255,14 +285,21 @@ export default function FeedbackForm() {
                                       onChange={handleChange}
                                       checked={formData.overall_rating === num.toString()}
                                     />
-                                    <span className={`text-4xl md:text-5xl transition-all duration-300 ${formData.overall_rating >= num.toString() ? 'text-gold drop-shadow-[0_0_8px_rgba(253,183,23,0.4)] scale-110' : 'text-white/10 hover:text-gold/40'}`}>★</span>
+                                    <motion.span 
+                                      whileHover={{ scale: 1.2 }}
+                                      whileTap={{ scale: 0.9 }}
+                                      className={`text-5xl md:text-7xl transition-all duration-500 ${formData.overall_rating >= num.toString() ? 'text-gold drop-shadow-[0_0_15px_rgba(253,183,23,0.4)]' : 'text-white/5 hover:text-gold/20'}`}
+                                    >
+                                      ★
+                                    </motion.span>
                                   </label>
                                 ))}
                               </div>
                             </div>
-                            <div className="pt-8 border-t border-white/5">
-                              <label className="block text-[10px] uppercase tracking-[0.3em] text-gold/60 mb-6 font-bold">Did the trip meet your expectations?</label>
-                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            
+                            <div className="pt-12 border-t border-white/5">
+                              <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 mb-8 font-bold text-center">Met expectations?</label>
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
                                 {["Exceeded Expectations", "Met Expectations", "Partially Met", "Did Not Meet"].map((opt) => (
                                   <label key={opt} className="cursor-pointer">
                                     <input
@@ -273,9 +310,13 @@ export default function FeedbackForm() {
                                       onChange={handleChange}
                                       checked={formData.expectations === opt}
                                     />
-                                    <span className={`px-6 py-4 border text-center text-xs uppercase tracking-widest font-bold transition-all block ${formData.expectations === opt ? 'bg-gold text-forest-dark border-gold shadow-[0_0_20px_rgba(253,183,23,0.2)]' : 'bg-transparent border-white/10 text-cream/40 hover:border-white/30'}`}>
+                                    <motion.span 
+                                      whileHover={{ y: -2 }}
+                                      whileTap={{ scale: 0.98 }}
+                                      className={`px-8 py-5 border text-center text-[10px] uppercase tracking-[0.3em] font-bold transition-all duration-500 block rounded-lg ${formData.expectations === opt ? 'bg-gold text-[#060f09] border-gold shadow-[0_15px_30px_-10px_rgba(253,183,23,0.4)]' : 'bg-white/[0.02] border-white/5 text-white/30 hover:border-white/20'}`}
+                                    >
                                       {opt}
-                                    </span>
+                                    </motion.span>
                                   </label>
                                 ))}
                               </div>
@@ -285,32 +326,32 @@ export default function FeedbackForm() {
 
                         {step === 3 && (
                           <div className="space-y-12">
-                            <div className="relative">
-                              <label className="block text-[10px] uppercase tracking-[0.3em] text-gold/60 mb-4 font-bold">What was the highlight of your trip?</label>
+                            <div className="space-y-6">
+                              <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 font-bold">The Defining Moment</label>
                               <textarea
                                 name="highlight"
                                 value={formData.highlight}
                                 onChange={handleChange}
-                                placeholder="The dawn mist over Bwindi..."
-                                className="w-full bg-transparent border border-white/10 focus:border-gold/40 p-6 outline-none transition-all font-serif text-xl text-cream placeholder:text-white/5 min-h-[140px] rounded-sm"
+                                placeholder="A close encounter, a hidden valley, the evening sun..."
+                                className="w-full bg-transparent border border-white/5 focus:border-gold/20 p-8 outline-none transition-all font-serif text-xl md:text-2xl text-cream placeholder:text-white/5 min-h-[160px] rounded-xl"
                               />
                             </div>
-                            <div className="relative">
-                              <label className="block text-[10px] uppercase tracking-[0.3em] text-gold/60 mb-4 font-bold">What did you love about the itinerary?</label>
+                            <div className="space-y-6">
+                              <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 font-bold">Itinerary Reflections</label>
                               <textarea
                                 name="itinerary_love"
                                 value={formData.itinerary_love}
                                 onChange={handleChange}
-                                placeholder="Seamless transfers and the evening boat cruise..."
-                                className="w-full bg-transparent border border-white/10 focus:border-gold/40 p-6 outline-none transition-all font-serif text-xl text-cream placeholder:text-white/5 min-h-[140px] rounded-sm"
+                                placeholder="What parts of the rhythm worked best for you?"
+                                className="w-full bg-transparent border border-white/5 focus:border-gold/20 p-8 outline-none transition-all font-serif text-xl md:text-2xl text-cream placeholder:text-white/5 min-h-[160px] rounded-xl"
                               />
                             </div>
                           </div>
                         )}
 
                         {step === 4 && (
-                          <div className="space-y-6">
-                            <p className="text-[10px] uppercase tracking-[0.3em] text-gold/40 mb-8 font-bold italic text-center">— Satisfaction Scores —</p>
+                          <div className="space-y-4">
+                            <p className="text-[10px] uppercase tracking-[0.4em] text-gold/30 mb-10 font-bold italic text-center">— Service Quality —</p>
                             {[
                               { label: "Accommodation", name: "sat_acc" },
                               { label: "Transportation", name: "sat_trans" },
@@ -318,9 +359,9 @@ export default function FeedbackForm() {
                               { label: "Trip Organization", name: "sat_org" },
                               { label: "Activities", name: "sat_act" },
                             ].map((field) => (
-                              <div key={field.name} className="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-white/5 last:border-0 group/row">
-                                <span className="text-[11px] uppercase tracking-[0.2em] text-cream/70 font-bold mb-4 md:mb-0 group-hover/row:text-gold transition-colors">{field.label}</span>
-                                <div className="flex gap-1">
+                              <div key={field.name} className="flex flex-col sm:flex-row sm:items-center justify-between py-6 border-b border-white/5 last:border-0 group/row">
+                                <span className="text-[11px] uppercase tracking-[0.2em] text-white/50 font-bold mb-5 sm:mb-0 group-hover/row:text-gold transition-colors">{field.label}</span>
+                                <div className="flex gap-2">
                                   {["Very Sat.", "Satisfied", "Neutral", "Unsat."].map((opt) => (
                                     <label key={opt} className="cursor-pointer">
                                       <input
@@ -331,9 +372,12 @@ export default function FeedbackForm() {
                                         onChange={handleChange}
                                         checked={formData[field.name as keyof typeof formData] === opt}
                                       />
-                                      <span className={`px-3 py-2 text-[9px] uppercase tracking-widest font-bold border transition-all block ${formData[field.name as keyof typeof formData] === opt ? 'bg-gold text-forest-dark border-gold' : 'bg-transparent border-white/5 text-cream/30 hover:border-white/20'}`}>
+                                      <motion.span 
+                                        whileTap={{ scale: 0.9 }}
+                                        className={`px-3 md:px-5 py-2.5 text-[8px] md:text-[9px] uppercase tracking-widest font-bold border transition-all duration-500 rounded-md block ${formData[field.name as keyof typeof formData] === opt ? 'bg-gold/80 text-[#060f09] border-gold' : 'bg-transparent border-white/5 text-white/20 hover:border-white/10 hover:text-white/40'}`}
+                                      >
                                         {opt}
-                                      </span>
+                                      </motion.span>
                                     </label>
                                   ))}
                                 </div>
@@ -343,10 +387,10 @@ export default function FeedbackForm() {
                         )}
 
                         {step === 5 && (
-                          <div className="space-y-12">
-                            <div>
-                              <label className="block text-[10px] uppercase tracking-[0.3em] text-gold/60 mb-8 font-bold text-center">Rate your Guide/Host Experience</label>
-                              <div className="flex flex-row-reverse justify-center gap-4">
+                          <div className="space-y-16">
+                            <div className="text-center">
+                              <label className="block text-[9px] uppercase tracking-[0.5em] text-gold/50 mb-10 font-bold">The Guide's Expertise</label>
+                              <div className="flex flex-row-reverse justify-center gap-2 md:gap-6">
                                 {[5, 4, 3, 2, 1].map((num) => (
                                   <label key={num} className="cursor-pointer group/star">
                                     <input
@@ -357,14 +401,19 @@ export default function FeedbackForm() {
                                       onChange={handleChange}
                                       checked={formData.guide_rating === num.toString()}
                                     />
-                                    <span className={`text-4xl md:text-5xl transition-all duration-300 ${formData.guide_rating >= num.toString() ? 'text-gold drop-shadow-[0_0_8px_rgba(253,183,23,0.4)] scale-110' : 'text-white/10 hover:text-gold/40'}`}>★</span>
+                                    <motion.span 
+                                      whileHover={{ scale: 1.2 }}
+                                      className={`text-5xl md:text-7xl transition-all duration-500 ${formData.guide_rating >= num.toString() ? 'text-gold drop-shadow-[0_0_15px_rgba(253,183,23,0.4)]' : 'text-white/5 hover:text-gold/20'}`}
+                                    >
+                                      ★
+                                    </motion.span>
                                   </label>
                                 ))}
                               </div>
                             </div>
-                            <div className="pt-8 border-t border-white/5">
-                              <label className="block text-[10px] uppercase tracking-[0.3em] text-gold/60 mb-6 font-bold">Did you feel safe & well taken care of?</label>
-                              <div className="grid grid-cols-2 gap-3">
+                            <div className="pt-12 border-t border-white/5">
+                              <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 mb-8 font-bold text-center">Safety & Security Feelings</label>
+                              <div className="grid grid-cols-2 gap-4">
                                 {["Yes, Absolutely", "Mostly Yes", "Neutral", "No"].map((opt) => (
                                   <label key={opt} className="cursor-pointer">
                                     <input
@@ -375,9 +424,12 @@ export default function FeedbackForm() {
                                       onChange={handleChange}
                                       checked={formData.safety === opt}
                                     />
-                                    <span className={`px-6 py-4 border text-center text-[10px] uppercase tracking-widest font-bold transition-all block ${formData.safety === opt ? 'bg-gold text-forest-dark border-gold shadow-[0_0_20px_rgba(253,183,23,0.2)]' : 'bg-transparent border-white/10 text-cream/40 hover:border-white/30'}`}>
+                                    <motion.span 
+                                      whileHover={{ y: -2 }}
+                                      className={`px-6 py-5 border text-center text-[10px] uppercase tracking-[0.3em] font-bold transition-all duration-500 block rounded-lg ${formData.safety === opt ? 'bg-gold text-[#060f09] border-gold shadow-[0_15px_30px_-10px_rgba(253,183,23,0.4)]' : 'bg-white/[0.02] border-white/5 text-white/30 hover:border-white/20'}`}
+                                    >
                                       {opt}
-                                    </span>
+                                    </motion.span>
                                   </label>
                                 ))}
                               </div>
@@ -386,26 +438,26 @@ export default function FeedbackForm() {
                         )}
 
                         {step === 6 && (
-                          <div className="space-y-6">
-                            <label className="block text-[10px] uppercase tracking-[0.3em] text-gold/60 mb-4 font-bold">What could we improve?</label>
+                          <div className="space-y-8">
+                            <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 font-bold italic">Honest Feedback for Growth</label>
                             <textarea
                               name="improve"
                               value={formData.improve}
                               onChange={handleChange}
-                              placeholder="Tell us honestly, we want to grow..."
-                              className="w-full bg-transparent border border-white/10 focus:border-gold/40 p-6 outline-none transition-all font-serif text-xl text-cream placeholder:text-white/5 min-h-[220px] rounded-sm"
+                              placeholder="Where can we sharpen our service?"
+                              className="w-full bg-transparent border border-white/5 focus:border-gold/20 p-10 outline-none transition-all font-serif text-2xl text-cream placeholder:text-white/5 min-h-[320px] rounded-2xl"
                             />
                           </div>
                         )}
 
                         {step === 7 && (
-                          <div className="space-y-12">
-                            <div className="grid md:grid-cols-2 gap-10">
-                              <div>
-                                <label className="block text-[10px] uppercase tracking-[0.3em] text-gold/60 mb-6 font-bold">Travel with us again?</label>
-                                <div className="flex flex-col gap-2">
+                          <div className="space-y-16">
+                            <div className="grid md:grid-cols-2 gap-12">
+                              <div className="space-y-8">
+                                <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 font-bold">Future Travels?</label>
+                                <div className="space-y-3">
                                   {["Definitely", "Maybe", "Unlikely"].map((opt) => (
-                                    <label key={opt} className="cursor-pointer">
+                                    <label key={opt} className="cursor-pointer block">
                                       <input
                                         type="radio"
                                         name="travel_again"
@@ -414,18 +466,18 @@ export default function FeedbackForm() {
                                         onChange={handleChange}
                                         checked={formData.travel_again === opt}
                                       />
-                                      <span className={`px-4 py-3 border text-xs uppercase tracking-widest font-bold transition-all block ${formData.travel_again === opt ? 'bg-gold text-forest-dark border-gold' : 'bg-transparent border-white/10 text-cream/40 hover:border-white/30'}`}>
+                                      <span className={`px-6 py-4 border text-[10px] uppercase tracking-widest font-bold transition-all duration-500 block rounded-lg ${formData.travel_again === opt ? 'bg-gold text-[#060f09] border-gold' : 'bg-white/[0.02] border-white/5 text-white/30'}`}>
                                         {opt}
                                       </span>
                                     </label>
                                   ))}
                                 </div>
                               </div>
-                              <div>
-                                <label className="block text-[10px] uppercase tracking-[0.3em] text-gold/60 mb-6 font-bold">Recommend to others?</label>
-                                <div className="flex flex-col gap-2">
+                              <div className="space-y-8">
+                                <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 font-bold">Recommendation?</label>
+                                <div className="space-y-3">
                                   {["Yes, Highly", "Likely", "No"].map((opt) => (
-                                    <label key={opt} className="cursor-pointer">
+                                    <label key={opt} className="cursor-pointer block">
                                       <input
                                         type="radio"
                                         name="recommend"
@@ -434,7 +486,7 @@ export default function FeedbackForm() {
                                         onChange={handleChange}
                                         checked={formData.recommend === opt}
                                       />
-                                      <span className={`px-4 py-3 border text-xs uppercase tracking-widest font-bold transition-all block ${formData.recommend === opt ? 'bg-gold text-forest-dark border-gold' : 'bg-transparent border-white/10 text-cream/40 hover:border-white/30'}`}>
+                                      <span className={`px-6 py-4 border text-[10px] uppercase tracking-widest font-bold transition-all duration-500 block rounded-lg ${formData.recommend === opt ? 'bg-gold text-[#060f09] border-gold' : 'bg-white/[0.02] border-white/5 text-white/30'}`}>
                                         {opt}
                                       </span>
                                     </label>
@@ -442,29 +494,29 @@ export default function FeedbackForm() {
                                 </div>
                               </div>
                             </div>
-                            <div className="pt-8 border-t border-white/5">
-                              <label className="block text-[10px] uppercase tracking-[0.3em] text-gold/60 mb-4 font-bold">Next Dream Destination?</label>
+                            <div className="pt-12 border-t border-white/5">
+                              <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 mb-6 font-bold">Next Dream Destination?</label>
                               <input
                                 type="text"
                                 name="next_dest"
                                 value={formData.next_dest}
                                 onChange={handleChange}
-                                placeholder="Serengeti, Victoria Falls, etc."
-                                className="w-full bg-transparent border-b-2 border-white/10 focus:border-gold/50 py-4 outline-none transition-all font-serif text-2xl text-cream placeholder:text-white/10"
+                                placeholder="Serengeti, Victoria Falls, Okavango..."
+                                className="w-full bg-transparent border-b border-white/10 focus:border-gold/50 py-6 outline-none transition-all font-serif text-3xl text-cream placeholder:text-white/5"
                               />
                             </div>
                           </div>
                         )}
 
                         {step === 8 && (
-                          <div className="space-y-6">
-                            <label className="block text-[10px] uppercase tracking-[0.3em] text-gold/60 mb-4 font-bold">Final thoughts or a memorable moment?</label>
+                          <div className="space-y-8">
+                            <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 font-bold italic">One Last Entry</label>
                             <textarea
                               name="final"
                               value={formData.final}
                               onChange={handleChange}
-                              placeholder="Share one last story from your journey..."
-                              className="w-full bg-transparent border border-white/10 focus:border-gold/40 p-6 outline-none transition-all font-serif text-xl text-cream placeholder:text-white/5 min-h-[220px] rounded-sm"
+                              placeholder="Any last reflections on your Tilenga adventure?"
+                              className="w-full bg-transparent border border-white/5 focus:border-gold/20 p-10 outline-none transition-all font-serif text-2xl text-cream placeholder:text-white/5 min-h-[320px] rounded-2xl"
                             />
                           </div>
                         )}
@@ -472,66 +524,81 @@ export default function FeedbackForm() {
                     </AnimatePresence>
                   </div>
 
-                  {/* Navigation */}
-                  <div className="flex items-center gap-6 mt-12 pt-8 border-t border-white/10">
+                  {/* Navigation Bar */}
+                  <div className="flex items-center gap-8 mt-16 pt-10 border-t border-white/5">
                     {step > 1 && (
-                      <button
+                      <motion.button
                         type="button"
+                        whileHover={{ x: -3 }}
                         onClick={handleBack}
-                        className="text-[10px] uppercase tracking-[0.3em] text-cream/40 hover:text-gold transition-colors duration-300 flex items-center gap-2 group"
+                        className="text-[9px] uppercase tracking-[0.4em] text-white/30 hover:text-gold transition-colors duration-500 flex items-center gap-3 font-bold"
                       >
-                        <span className="group-hover:-translate-x-1 transition-transform">←</span> Back
-                      </button>
+                        <span>←</span> Back
+                      </motion.button>
                     )}
                     
                     {step < totalSteps ? (
-                      <button
+                      <motion.button
                         type="button"
+                        whileHover={{ y: -4, boxShadow: "0 20px 40px rgba(253,183,23,0.3)" }}
+                        whileTap={{ scale: 0.98 }}
                         onClick={handleNext}
-                        className="flex-1 bg-gold hover:bg-gold-light text-forest-dark py-5 px-8 text-xs uppercase tracking-[0.3em] font-bold transition-all duration-500 shadow-xl"
+                        className="flex-1 bg-gold text-[#060f09] py-6 px-10 text-[10px] uppercase tracking-[0.5em] font-black transition-all duration-500 rounded-xl shadow-[0_10px_30px_-5px_rgba(253,183,23,0.4)]"
                       >
                         Next Chapter
-                      </button>
+                      </motion.button>
                     ) : (
-                      <button
+                      <motion.button
                         type="submit"
+                        whileHover={{ y: -4, boxShadow: "0 20px 40px rgba(253,183,23,0.3)" }}
+                        whileTap={{ scale: 0.98 }}
                         disabled={isSubmitting}
-                        className="flex-1 bg-gold hover:bg-gold-light text-forest-dark py-5 px-8 text-xs uppercase tracking-[0.3em] font-bold transition-all duration-500 shadow-xl disabled:opacity-50"
+                        className="flex-1 bg-gold text-[#060f09] py-6 px-10 text-[10px] uppercase tracking-[0.5em] font-black transition-all duration-500 rounded-xl shadow-[0_10px_30px_-5px_rgba(253,183,23,0.4)] disabled:opacity-50"
                       >
-                        {isSubmitting ? "Preserving Log..." : "Complete Journal"}
-                      </button>
+                        {isSubmitting ? "Preserving Log..." : "Seal & Complete"}
+                      </motion.button>
                     )}
                   </div>
-                  {error && <p className="text-red-400 text-center mt-6 text-[10px] uppercase tracking-widest font-bold">{error}</p>}
+                  {error && <p className="text-red-400/80 text-center mt-8 text-[9px] uppercase tracking-widest font-bold">{error}</p>}
                 </form>
               </motion.div>
             </div>
           ) : (
             <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="text-center bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-sm p-12 md:p-20 shadow-2xl relative overflow-hidden"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="text-center bg-[#0c1a12]/60 backdrop-blur-3xl border border-gold/10 rounded-3xl p-16 md:p-24 shadow-2xl relative overflow-hidden"
             >
-              <div className="w-16 h-16 bg-gold text-forest-dark rounded-full flex items-center justify-center mx-auto mb-10 text-2xl shadow-[0_0_30px_rgba(253,183,23,0.3)]">✓</div>
-              <h2 className="font-serif text-4xl md:text-5xl text-cream mb-6 uppercase tracking-widest leading-tight">Asante <br /><em className="text-gold not-italic italic">Sana</em></h2>
-              <div className="w-12 h-px bg-gold/30 mx-auto mb-8" />
-              <p className="text-cream/50 text-sm md:text-base mb-12 max-w-sm mx-auto leading-relaxed">
-                Thank you for traveling with Tilenga Safaris. Your feedback helps us
-                preserve the magic of the wild for future explorers.
+              <motion.div 
+                initial={{ scale: 0, rotate: -45 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 0.4, type: "spring", damping: 12 }}
+                className="w-20 h-20 bg-gold text-[#060f09] rounded-full flex items-center justify-center mx-auto mb-12 text-3xl shadow-[0_0_40px_rgba(253,183,23,0.4)]"
+              >
+                ✓
+              </motion.div>
+              
+              <h2 className="font-serif text-5xl md:text-7xl text-cream mb-8 uppercase tracking-widest leading-none">Asante <br /><em className="text-gold italic not-italic">Sana</em></h2>
+              <div className="w-16 h-px bg-gold/30 mx-auto mb-10" />
+              
+              <p className="text-cream/50 text-base md:text-lg mb-16 max-w-sm mx-auto leading-relaxed font-serif italic">
+                Thank you for contributing to the Tilenga legacy. Your story is now part of our history.
               </p>
               
-              <div className="flex flex-col gap-4 max-w-xs mx-auto">
-                <a
+              <div className="flex flex-col gap-6 max-w-xs mx-auto">
+                <motion.a
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   href="https://www.tripadvisor.com/Attraction_Review-g293841-d32809885-Reviews-Tilenga_Safaris-Kampala_Central_Region.html"
-                  className="bg-gold text-forest-dark py-4 px-8 text-[10px] uppercase tracking-[0.2em] font-bold transition-all hover:bg-gold-light shadow-lg"
+                  className="bg-gold text-[#060f09] py-5 px-10 text-[10px] uppercase tracking-[0.3em] font-black rounded-xl shadow-lg transition-all"
                   target="_blank"
                 >
-                  ⭐ Review on TripAdvisor
-                </a>
+                  ⭐ TripAdvisor Review
+                </motion.a>
                 <Link
                   href="/"
-                  className="border border-white/10 hover:border-white/30 text-cream py-4 px-8 text-[10px] uppercase tracking-[0.2em] font-bold transition-all"
+                  className="border border-white/5 hover:border-gold/30 text-white/30 hover:text-gold py-5 px-10 text-[10px] uppercase tracking-[0.3em] font-bold rounded-xl transition-all duration-500"
                 >
                   Return to Home
                 </Link>
@@ -541,9 +608,13 @@ export default function FeedbackForm() {
         </div>
       </div>
       
-      {/* Footer Branding */}
-      <footer className="relative z-10 mt-auto py-10 opacity-30 text-[10px] uppercase tracking-[0.4em] text-cream">
-        Tilenga Safaris — The Spirit of Discovery
+      {/* Immersive Footer */}
+      <footer className="relative z-10 mt-auto py-12 text-center">
+        <div className="flex items-center justify-center gap-6 mb-4">
+           <div className="w-8 h-px bg-gold/10" />
+           <p className="text-[9px] uppercase tracking-[0.6em] text-gold/20 font-light">The Spirit of Discovery</p>
+           <div className="w-8 h-px bg-gold/10" />
+        </div>
       </footer>
     </div>
   );
