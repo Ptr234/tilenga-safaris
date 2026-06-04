@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { client } from "@/lib/sanity.client";
 import { groq } from "next-sanity";
 
+export const runtime = "edge";
+
 const siteImagesQuery = groq`*[_type == "siteImage"] | order(_createdAt asc) {
   _id,
   key,

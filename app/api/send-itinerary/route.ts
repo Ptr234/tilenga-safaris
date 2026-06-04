@@ -21,6 +21,7 @@ const itineraryQuery = groq`*[_type == "itinerary" && packageName == $packageNam
 export async function POST(req: Request) {
   try {
     const { email, packageName } = await req.json();
+    console.log(`[Itinerary Request] Package: ${packageName}, Email: ${email}`);
 
     if (!email || !packageName) {
       return NextResponse.json(
@@ -33,16 +34,28 @@ export async function POST(req: Request) {
     let attachments: any[] = [];
 
     if (itinerary?.file?.asset?.url) {
-      const filename =
-        itinerary.file.asset.originalFilename || `${packageName}.pdf`;
+      console.log(`[Itinerary Request] Found PDF asset: ${itinerary.file.asset.url}`);
+      try {
+        const response = await fetch(itinerary.file.asset.url);
+        if (!response.ok) throw new Error(`Failed to fetch PDF: ${response.statusText}`);
+        
+        const arrayBuffer = await response.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+        
+        const filename = itinerary.file.asset.originalFilename || `${packageName.replace(/[^a-z0-9]/gi, '_')}.pdf`;
 
-      attachments = [
-        {
-          filename: decodeURIComponent(filename),
-          path: itinerary.file.asset.url,
-          contentType: "application/pdf",
-        },
-      ];
+        attachments = [
+          {
+            filename: filename,
+            content: buffer.toString('base64'),
+          },
+        ];
+        console.log(`[Itinerary Request] PDF attached successfully.`);
+      } catch (attachError) {
+        console.error(`[Itinerary Request] Failed to attach PDF, sending email without it:`, attachError);
+      }
+    } else {
+      console.log(`[Itinerary Request] No PDF asset found for this package.`);
     }
 
     const emailContent = `
@@ -85,6 +98,7 @@ export async function POST(req: Request) {
     });
 
     if (firstSendResponse.error) {
+      console.error("[Itinerary Request] Resend Error:", firstSendResponse.error);
       return NextResponse.json(
         { error: firstSendResponse.error },
         { status: 400 },
