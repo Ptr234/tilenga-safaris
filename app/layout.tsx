@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: 'Tilenga Safaris',
     images: [
       {
-        url: 'https://tilengasafaris.africa/photos/og-image.jpg',
+        url: 'https://tilengasafaris.africa/photos/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Tilenga Safaris',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Tilenga Safaris',
     description: 'Discover Africa\'s finest safari experiences — expertly crafted journeys across East and Southern Africa.',
-    images: ['https://tilengasafaris.africa/photos/og-image.jpg'],
+    images: ['https://tilengasafaris.africa/photos/og-image.png'],
   },
 };
 
