@@ -169,51 +169,49 @@ export async function POST(req: Request) {
     );
 
     // 2. Send confirmation to the Guest
-    if (source === 'newsletter' && email) {
+    if (email) {
+      const isNewsletter = source === 'newsletter';
+      const confirmationSubject = isNewsletter 
+        ? `Welcome to Tilenga Safaris` 
+        : source === 'feedback' 
+          ? `Feedback Received - Tilenga Safaris` 
+          : `Enquiry Received - Tilenga Safaris`;
+
+      const confirmationHtml = `
+        <div style="font-family: serif; color: #060f09; max-width: 600px; margin: 0 auto; padding: 40px; background-color: #fcfaf6; border: 1px solid #c9a96e;">
+          <div style="text-align: center; margin-bottom: 30px;">
+            <h1 style="color: #2d3a28; text-transform: uppercase; letter-spacing: 0.2em; border-bottom: 2px solid #c9a96e; padding-bottom: 20px;">
+              ${isNewsletter ? 'Welcome Along' : 'Thank You'}
+            </h1>
+          </div>
+          <p style="font-size: 18px; line-height: 1.6;">Dear ${displayName},</p>
+          <p style="font-size: 16px; line-height: 1.6;">
+            ${isNewsletter 
+              ? "Thank you for subscribing to our newsletter. You'll now be the first to receive safari inspiration, exclusive offers, and wildlife stories from the heart of Africa." 
+              : `Thank you for reaching out to Tilenga Safaris. We have received your ${source === 'quote' ? 'quote request' : source === 'feedback' ? 'feedback' : 'enquiry'} and our specialist team is already reviewing the details.`}
+          </p>
+          ${!isNewsletter ? `
+          <p style="font-size: 16px; line-height: 1.6;">
+            ${source === 'feedback' 
+              ? 'Your feedback is invaluable to us as we strive to create exceptional African journeys.' 
+              : 'You can expect a personalized response from our experts within the next 24 hours.'}
+          </p>
+          ` : ''}
+          
+          <div style="border-top: 1px solid #ddd; margin-top: 40px; padding-top: 20px; font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.8;">
+            <p style="margin: 0;"><strong>Tilenga Safaris</strong></p>
+            <p style="margin: 0;">Kampala, Uganda</p>
+            <p style="margin: 0;"><a href="https://tilengasafaris.africa" style="color: #c9a96e; text-decoration: none;">www.tilengasafaris.africa</a></p>
+          </div>
+        </div>
+      `;
+
       emailPromises.push(
         resend.emails.send({
           from: `Tilenga Safaris <${fromEmail}>`,
           to: [email],
-          subject: `Welcome to Tilenga Safaris`,
-          html: `
-            <div style="font-family: serif; color: #060f09; max-width: 600px; margin: 0 auto; padding: 40px; background-color: #fcfaf6; border: 1px solid #c9a96e;">
-              <div style="text-align: center; margin-bottom: 30px;">
-                <h1 style="color: #2d3a28; text-transform: uppercase; letter-spacing: 0.2em; border-bottom: 2px solid #c9a96e; padding-bottom: 20px;">Welcome Along</h1>
-              </div>
-              <p style="font-size: 18px; line-height: 1.6;">Thank you for subscribing to our newsletter.</p>
-              <p style="font-size: 16px; line-height: 1.6;">You'll now be the first to receive safari inspiration, exclusive offers, and wildlife stories from the heart of Africa.</p>
-              
-              <div style="border-top: 1px solid #ddd; margin-top: 40px; padding-top: 20px; font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.8;">
-                <p style="margin: 0;"><strong>Tilenga Safaris</strong></p>
-                <p style="margin: 0;">Kampala, Uganda</p>
-                <p style="margin: 0;"><a href="https://tilengasafaris.africa" style="color: #c9a96e; text-decoration: none;">www.tilengasafaris.africa</a></p>
-              </div>
-            </div>
-          `,
-        })
-      );
-    } else if (email) {
-      emailPromises.push(
-        resend.emails.send({
-          from: `Tilenga Safaris <${fromEmail}>`,
-          to: [email],
-          subject: source === 'feedback' ? `Feedback Received - Tilenga Safaris` : `Enquiry Received - Tilenga Safaris`,
-          html: `
-            <div style="font-family: serif; color: #060f09; max-width: 600px; margin: 0 auto; padding: 40px; background-color: #fcfaf6; border: 1px solid #c9a96e;">
-              <div style="text-align: center; margin-bottom: 30px;">
-                <h1 style="color: #2d3a28; text-transform: uppercase; letter-spacing: 0.2em; border-bottom: 2px solid #c9a96e; padding-bottom: 20px;">Thank You</h1>
-              </div>
-              <p style="font-size: 18px; line-height: 1.6;">Dear ${displayName},</p>
-              <p style="font-size: 16px; line-height: 1.6;">Thank you for reaching out to Tilenga Safaris. We have received your ${source === 'quote' ? 'quote request' : source === 'feedback' ? 'feedback' : 'enquiry'} and our specialist team is already reviewing the details.</p>
-              <p style="font-size: 16px; line-height: 1.6;">${source === 'feedback' ? 'Your feedback is invaluable to us as we strive to create exceptional African journeys.' : 'You can expect a personalized response from us within the next 24 hours.'}</p>
-              
-              <div style="border-top: 1px solid #ddd; margin-top: 40px; padding-top: 20px; font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.8;">
-                <p style="margin: 0;"><strong>Tilenga Safaris</strong></p>
-                <p style="margin: 0;">Kampala, Uganda</p>
-                <p style="margin: 0;"><a href="https://tilengasafaris.africa" style="color: #c9a96e; text-decoration: none;">www.tilengasafaris.africa</a></p>
-              </div>
-            </div>
-          `,
+          subject: confirmationSubject,
+          html: confirmationHtml,
         })
       );
     }

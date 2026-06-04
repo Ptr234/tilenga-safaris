@@ -108,6 +108,29 @@ export async function POST(req: Request) {
       attachments: attachments,
     });
 
+    // Send a separate warm acknowledgement
+    await resend.emails.send({
+      from: `Tilenga Safaris <${fromEmail}>`,
+      to: [email],
+      subject: `Thank You for Exploring Our Itineraries`,
+      html: `
+        <div style="font-family: serif; color: #060f09; max-width: 600px; margin: 0 auto; padding: 40px; background-color: #fcfaf6; border: 1px solid #c9a96e;">
+          <div style="text-align: center; margin-bottom: 30px;">
+            <h1 style="color: #2d3a28; text-transform: uppercase; letter-spacing: 0.2em; border-bottom: 2px solid #c9a96e; padding-bottom: 20px;">Thank You</h1>
+          </div>
+          <p style="font-size: 18px; line-height: 1.6;">Hello,</p>
+          <p style="font-size: 16px; line-height: 1.6;">Thank you for downloading the <strong>${packageName}</strong> itinerary. We hope this inspires your next African adventure.</p>
+          <p style="font-size: 16px; line-height: 1.6;">Our specialist team is available if you have any questions or would like to begin customizing this journey to your preferences. You can expect us to reach out briefly within the next 24 hours to see how we can assist you further.</p>
+          
+          <div style="border-top: 1px solid #ddd; margin-top: 40px; padding-top: 20px; font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.8;">
+            <p style="margin: 0;"><strong>Tilenga Safaris</strong></p>
+            <p style="margin: 0;">Kampala, Uganda</p>
+            <p style="margin: 0;"><a href="https://tilengasafaris.africa" style="color: #c9a96e; text-decoration: none;">www.tilengasafaris.africa</a></p>
+          </div>
+        </div>
+      `,
+    });
+
     if (error) {
       return NextResponse.json({ error }, { status: 400 });
     }
