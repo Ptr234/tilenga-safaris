@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 export const runtime = 'edge';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const fromEmail = process.env.RESEND_FROM_EMAIL || 'info@tilengasafaris.africa';
+const fromEmail = 'noreply@tilengasafaris.africa';
 
 export async function POST(req: Request) {
   try {
@@ -161,13 +161,10 @@ export async function POST(req: Request) {
     emailPromises.push(
       resend.emails.send({
         from: `Tilenga Website <${fromEmail}>`,
-        to: ['petergr38@gmail.com'],
+        to: ['destinations@tilengasafaris.com'],
         subject: subject,
         html: emailContent,
         replyTo: email || fromEmail,
-      }).then(res => {
-        console.log('Notification email sent:', res);
-        return res;
       })
     );
 
@@ -193,9 +190,6 @@ export async function POST(req: Request) {
               </div>
             </div>
           `,
-        }).then(res => {
-          console.log('Newsletter confirmation sent:', res);
-          return res;
         })
       );
     } else if (email) {
@@ -220,9 +214,6 @@ export async function POST(req: Request) {
               </div>
             </div>
           `,
-        }).then(res => {
-          console.log('Confirmation email sent:', res);
-          return res;
         })
       );
     }
