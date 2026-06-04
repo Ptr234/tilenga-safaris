@@ -21,6 +21,7 @@ const lodges = [
 const company = [
   { label: "About Us", href: "/about" },
   { label: "Tailor Your Journey", href: "/plan-a-trip" },
+  { label: "Safari Feedback", href: "/feedback" },
 ];
 
 const socials = [

@@ -3,27 +3,19 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+interface Partner {
+  name: string;
+  logo: string;
+  link: string;
+}
 
-const partners = [
-  { 
-    name: "Uganda Tourism Board", 
-    logo: `${base}/photos/partnerslogo/uganda-tourism-board-logo-25518EC15B-seeklogo.com_.webp`,
-    link: "https://utb.go.ug/"
-  },
-  { 
-    name: "Association of Uganda Tour Operators", 
-    logo: `${base}/photos/partnerslogo/autologo-114x114x0x0x114x114x1670356750.webp`,
-    link: "https://auto.ug/"
-  },
-  { 
-    name: "Adventure Travel Trade Association", 
-    logo: `${base}/photos/partnerslogo/ATTAlogo.png`,
-    link: "https://www.adventuretravel.biz/"
-  },
-];
+interface PartnersProps {
+  partners: Partner[];
+}
 
-export default function Partners() {
+export default function Partners({ partners }: PartnersProps) {
+  if (!partners || partners.length === 0) return null;
+
   return (
     <section className="bg-white py-12 md:py-20 border-t border-gold/10">
       <div className="max-w-7xl mx-auto px-6 md:px-16">
