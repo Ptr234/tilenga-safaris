@@ -1,22 +1,11 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
-import { client } from "@/lib/sanity.client";
-import { groq } from "next-sanity";
 
 export const runtime = "edge";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const fromEmail = "noreply@tilengasafaris.africa";
-
-const itineraryQuery = groq`*[_type == "itinerary" && packageName == $packageName][0]{
-  packageName,
-  file {
-    asset->{
-      url
-      originalFilename,
-    }
-  }
-}`;
+const projectId = "tm51vlpn";
 
 export async function POST(req: Request) {
   try {
@@ -30,24 +19,35 @@ export async function POST(req: Request) {
       );
     }
 
-    const itinerary = await client.fetch(itineraryQuery, { packageName });
+    // Direct Sanity API call to avoid @sanity/client Edge compatibility issues
+    const query = encodeURIComponent(`*[_type == "itinerary" && packageName == "${packageName}"][0]{ "fileUrl": file.asset->url, "filename": file.asset->originalFilename }`);
+    const sanityRes = await fetch(`https://${projectId}.api.sanity.io/v2024-01-01/data/query/production?query=${query}`);
+    const { result } = await sanityRes.json();
+    
     let attachments: any[] = [];
 
-    if (itinerary?.file?.asset?.url) {
-      console.log(`[Itinerary Request] Found PDF asset: ${itinerary.file.asset.url}`);
+    if (result?.fileUrl) {
+      console.log(`[Itinerary Request] Found PDF asset: ${result.fileUrl}`);
       try {
-        const response = await fetch(itinerary.file.asset.url);
+        const response = await fetch(result.fileUrl);
         if (!response.ok) throw new Error(`Failed to fetch PDF: ${response.statusText}`);
         
+        // Edge-compatible base64 conversion (avoids Buffer)
         const arrayBuffer = await response.arrayBuffer();
-        const buffer = Buffer.from(arrayBuffer);
+        const uint8Array = new Uint8Array(arrayBuffer);
+        let binary = '';
+        const len = uint8Array.byteLength;
+        for (let i = 0; i < len; i++) {
+            binary += String.fromCharCode(uint8Array[i]);
+        }
+        const base64 = btoa(binary);
         
-        const filename = itinerary.file.asset.originalFilename || `${packageName.replace(/[^a-z0-9]/gi, '_')}.pdf`;
+        const filename = result.filename || `${packageName.replace(/[^a-z0-9]/gi, '_')}.pdf`;
 
         attachments = [
           {
             filename: filename,
-            content: buffer.toString('base64'),
+            content: base64,
           },
         ];
         console.log(`[Itinerary Request] PDF attached successfully.`);
@@ -129,10 +129,10 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ success: true, result: firstSendResponse });
-  } catch (err) {
+  } catch (err: any) {
     console.error("Internal Error:", err);
     return NextResponse.json(
-      { error: "Internal Server Error" },
+      { error: "Internal Server Error", message: err.message },
       { status: 500 },
     );
   }
