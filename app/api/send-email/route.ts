@@ -157,7 +157,7 @@ export async function POST(req: Request) {
     // 1. Send notification to Tilenga Safaris
     await resend.emails.send({
       from: `Tilenga Website <${fromEmail}>`,
-      to: ['destinations@tilengasafaris.com'],
+      to: ['petergr38@gmail.com'],
       subject: subject,
       html: emailContent,
       replyTo: email || fromEmail,
