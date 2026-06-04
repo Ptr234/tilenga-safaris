@@ -103,7 +103,8 @@ export async function POST(req: Request) {
 
     const emailContent = `
       <div style="font-family: serif; color: #060f09; max-width: 600px; margin: 0 auto; padding: 40px; background-color: #fcfaf6; border: 1px solid #c9a96e;">
-        <div style="text-align: center; margin-bottom: 40px;">
+        <div style="text-align: center; margin-bottom: 30px;">
+          <img src="https://tilengasafaris.africa/tilenga-logo.svg" alt="Tilenga Safaris" style="width: 180px; height: auto; margin-bottom: 20px;" />
           <h1 style="color: #2d3a28; text-transform: uppercase; letter-spacing: 0.2em; border-bottom: 2px solid #c9a96e; padding-bottom: 20px; margin: 0;">
             ${source === 'quote' ? 'Quote Request' : source === 'newsletter' ? 'Newsletter Signup' : source === 'feedback' ? 'Safari Feedback' : 'Safari Enquiry'}
           </h1>
@@ -180,6 +181,7 @@ export async function POST(req: Request) {
       const confirmationHtml = `
         <div style="font-family: serif; color: #060f09; max-width: 600px; margin: 0 auto; padding: 40px; background-color: #fcfaf6; border: 1px solid #c9a96e;">
           <div style="text-align: center; margin-bottom: 30px;">
+            <img src="https://tilengasafaris.africa/tilenga-logo.svg" alt="Tilenga Safaris" style="width: 150px; height: auto; margin-bottom: 20px;" />
             <h1 style="color: #2d3a28; text-transform: uppercase; letter-spacing: 0.2em; border-bottom: 2px solid #c9a96e; padding-bottom: 20px;">
               ${isNewsletter ? 'Welcome Along' : 'Thank You'}
             </h1>
