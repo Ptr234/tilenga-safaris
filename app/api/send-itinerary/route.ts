@@ -1,74 +1,48 @@
-import { Resend } from 'resend';
-import { NextResponse } from 'next/server';
+import { Resend } from "resend";
+import { NextResponse } from "next/server";
+import { client } from "@/lib/sanity.client";
+import { groq } from "next-sanity";
 
-export const runtime = 'edge';
+export const runtime = "edge";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const fromEmail = 'noreply@tilengasafaris.africa';
+const fromEmail = "noreply@tilengasafaris.africa";
 
-const packageFiles: Record<string, string> = {
-  // Uganda
-  "5-Day Wildlife Safari to Murchison Falls & Queen Elizabeth": "photos/newstock/5-DAY-WILDLIFE-SAFARI-IN-UGANDA-4.pdf",
-  "3-Day Gorilla Tracking in Uganda": "itineraries/3%20DAYS%20GORILLA%20TRACKING%20IN%20UGANDA%20-%20%20TILENGA%20SAFARIS%202026.docx",
-  "Lake Mburo National Park": "photos/newstock/LAKE-MBURO-NATIONAL-PARK-EXPERIENCE.pdf",
-  "8-Day Round Trip Around Uganda": "photos/newstock/8-DAY-ROUND-TRIP-AROUND-UGANDA-June.pdf",
-  
-  // Kenya
-  "7-Day Kenya Prime Safari": "photos/newstock/7–DAY-KENYA-PRIME-SAFARI-2.pdf",
-  "7-Day Magical Kenya Tour": "photos/newstock/7-–-DAY-MAGICAL-KENYA-TOUR-1.pdf",
-  
-  // Tanzania
-  "Zanzibar Beach Holiday": "photos/newstock/ZANZIBAR-BEACH-HOLIDAY-6-NIGHTS-AND-7-DAYS-2.pdf",
-  "Zanzibar Spice Island Escape": "photos/newstock/ZANZIBAR-BEACH-HOLIDAY-AND-SNORKELING-1.pdf",
-  "12-Day Kenya & Tanzania Safari": "photos/newstock/12-DAY-SAFARI-TOUR-AROUND-KENYA-AND-TANZANIA-1-.pdf",
-  
-  // Rwanda
-  "4-Day Remarkable Rwanda": "itineraries/RWANDA  - UGANDA - 10 DAYS  - TILENGA SAFARIS 2026.docx",
-  "10-Day Rwanda & Uganda Cross-Border": "itineraries/RWANDA  - UGANDA - 10 DAYS  - TILENGA SAFARIS 2026.docx",
-
-  // South Africa & Botswana
-  "7-Day Cape & Kruger Essential": "itineraries/EXPERIENCE UGANDA  - 9 DAYS  - TILENGA SAFARIS 2026.docx",
-  "10-Day Garden Route Journey": "itineraries/PRIMATES EXPERIENCE - TILENGA SAFARIS 2026.docx",
-  "7-Day Okavango Delta Safari": "itineraries/PRIMATES EXPERIENCE - TILENGA SAFARIS 2026.docx",
-  "10-Day Botswana Highlights": "itineraries/EXPERIENCE UGANDA  - 9 DAYS  - TILENGA SAFARIS 2026.docx"
-};
+const itineraryQuery = groq`*[_type == "itinerary" && packageName == $packageName][0]{
+  packageName,
+  file {
+    asset->{
+      url
+      originalFilename,
+    }
+  }
+}`;
 
 export async function POST(req: Request) {
   try {
     const { email, packageName } = await req.json();
 
     if (!email || !packageName) {
-      return NextResponse.json({ error: 'Missing email or package name' }, { status: 400 });
+      return NextResponse.json(
+        { error: "Missing email or package name" },
+        { status: 400 },
+      );
     }
 
-    const relativePath = packageFiles[packageName];
+    const itinerary = await client.fetch(itineraryQuery, { packageName });
     let attachments: any[] = [];
 
-    if (relativePath) {
-      // Use the site URL to fetch the public asset
-      const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tilengasafaris.africa';
-      const fileUrl = `${siteUrl}/${relativePath}`;
-      
-      try {
-        const response = await fetch(fileUrl);
-        if (response.ok) {
-          const blob = await response.blob();
-          const buffer = Buffer.from(await blob.arrayBuffer());
-          
-          // Get filename from the path
-          const filename = relativePath.split('/').pop() || 'itinerary.pdf';
-          
-          attachments = [
-            {
-              filename: decodeURIComponent(filename),
-              content: buffer,
-            },
-          ];
-        }
-      } catch (fetchErr) {
-        console.error('Asset fetch error:', fetchErr);
-        // Continue without attachment if fetch fails
-      }
+    if (itinerary?.file?.asset?.url) {
+      const filename =
+        itinerary.file.asset.originalFilename || `${packageName}.pdf`;
+
+      attachments = [
+        {
+          filename: decodeURIComponent(filename),
+          path: itinerary.file.asset.url,
+          contentType: "application/pdf",
+        },
+      ];
     }
 
     const emailContent = `
@@ -76,20 +50,22 @@ export async function POST(req: Request) {
         <div style="text-align: center; margin-bottom: 30px;">
           <h1 style="color: #2d3a28; text-transform: uppercase; letter-spacing: 0.2em; border-bottom: 2px solid #c9a96e; padding-bottom: 20px;">Your Safari Itinerary</h1>
         </div>
-        
+
         <p style="font-size: 18px; line-height: 1.6;">Thank you for your interest in exploring Africa with Tilenga Safaris.</p>
-        
+
         <p style="font-size: 16px; line-height: 1.6;">We are pleased to provide you with the full, detailed itinerary for:</p>
         <h2 style="color: #c9a96e; font-style: italic; font-size: 24px;">${packageName}</h2>
-        
+
         <p style="font-size: 16px; line-height: 1.6; margin-top: 30px;">
-          ${attachments.length > 0 
-            ? "The complete document has been attached to this email for your convenience." 
-            : "Our specialists are finalizing the latest version of this specific itinerary. In the meantime, we have received your request and will follow up with the full document within the next few hours."}
+          ${
+            attachments.length > 0
+              ? "The complete document has been attached to this email for your convenience."
+              : "Our specialists are finalizing the latest version of this specific itinerary. In the meantime, we have received your request and will follow up with the full document within the next few hours."
+          }
         </p>
-        
+
         <p style="font-size: 16px; line-height: 1.6; margin-top: 40px;">If you have any questions or would like to start tailoring this journey to your specific needs, please simply reply to this email.</p>
-        
+
         <div style="border-top: 1px solid #ddd; margin-top: 40px; padding-top: 20px; font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.8;">
           <p style="margin: 0;"><strong>Tilenga Safaris</strong></p>
           <p style="margin: 0;">Kampala, Uganda</p>
@@ -99,14 +75,21 @@ export async function POST(req: Request) {
       </div>
     `;
 
-    const { data, error } = await resend.emails.send({
+    const firstSendResponse = await resend.emails.send({
       from: `Tilenga Safaris <${fromEmail}>`,
       to: [email],
-      bcc: ['destinations@tilengasafaris.com'],
+      bcc: ["destinations@tilengasafaris.com"],
       subject: `Itinerary: ${packageName} - Tilenga Safaris`,
       html: emailContent,
       attachments: attachments,
     });
+
+    if (firstSendResponse.error) {
+      return NextResponse.json(
+        { error: firstSendResponse.error },
+        { status: 400 },
+      );
+    }
 
     // Send a separate warm acknowledgement
     await resend.emails.send({
@@ -121,7 +104,7 @@ export async function POST(req: Request) {
           <p style="font-size: 18px; line-height: 1.6;">Hello,</p>
           <p style="font-size: 16px; line-height: 1.6;">Thank you for downloading the <strong>${packageName}</strong> itinerary. We hope this inspires your next African adventure.</p>
           <p style="font-size: 16px; line-height: 1.6;">Our specialist team is available if you have any questions or would like to begin customizing this journey to your preferences. You can expect us to reach out briefly within the next 24 hours to see how we can assist you further.</p>
-          
+
           <div style="border-top: 1px solid #ddd; margin-top: 40px; padding-top: 20px; font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.8;">
             <p style="margin: 0;"><strong>Tilenga Safaris</strong></p>
             <p style="margin: 0;">Kampala, Uganda</p>
@@ -131,13 +114,12 @@ export async function POST(req: Request) {
       `,
     });
 
-    if (error) {
-      return NextResponse.json({ error }, { status: 400 });
-    }
-
-    return NextResponse.json({ success: true, data });
+    return NextResponse.json({ success: true, result: firstSendResponse });
   } catch (err) {
-    console.error('Internal Error:', err);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    console.error("Internal Error:", err);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 },
+    );
   }
 }

@@ -1,7 +1,7 @@
 export interface SanityImage {
-  _type: 'image';
+  _type: "image";
   asset: {
-    _type: 'reference';
+    _type: "reference";
     _ref: string;
   };
 }
@@ -38,4 +38,27 @@ export interface Partner {
   name: string;
   logo: SanityImage;
   link: string;
+}
+
+export interface SiteImage {
+  _id: string;
+  key: string;
+  category?: string;
+  title?: string;
+  altText?: string;
+  image: SanityImage;
+}
+
+export interface Itinerary {
+  _id: string;
+  packageName: string;
+  category?: string;
+  description?: string;
+  file: {
+    _type: "file";
+    asset: {
+      _type: "reference";
+      _ref: string;
+    };
+  };
 }

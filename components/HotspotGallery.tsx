@@ -1,15 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import { urlForImage } from "@/lib/sanity.image";
+import useSiteImages from "@/lib/useSiteImages";
 
 export interface Hotspot {
   name: string;
   detail?: string;
-  image: string;
+  image?: string;
+  imageKey?: string;
 }
 
 export default function HotspotGallery({ hotspots }: { hotspots: Hotspot[] }) {
   const [paused, setPaused] = useState(false);
+  const siteImages = useSiteImages();
 
   /* Double the list so the CSS loop is seamless — scroll covers exactly -50% */
   const items = [...hotspots, ...hotspots];
@@ -35,9 +39,13 @@ export default function HotspotGallery({ hotspots }: { hotspots: Hotspot[] }) {
               key={`${spot.name}-${i}`}
               className="relative shrink-0 w-[76vw] sm:w-[44vw] md:w-[28vw] lg:w-[22vw] xl:w-[18vw] aspect-[3/4] overflow-hidden group cursor-default"
             >
-              {/* Static image — much lighter for performance */}
+              {/* Static image or Sanity-backed image if available */}
               <img
-                src={spot.image}
+                src={
+                  spot.imageKey && siteImages[spot.imageKey]
+                    ? urlForImage(siteImages[spot.imageKey].image).url()
+                    : (spot.image ?? "")
+                }
                 alt={spot.name}
                 draggable={false}
                 className="absolute inset-0 w-full h-full object-cover pointer-events-none group-hover:scale-110 transition-transform duration-[2000ms] ease-out"
@@ -71,7 +79,9 @@ export default function HotspotGallery({ hotspots }: { hotspots: Hotspot[] }) {
         <div className="pointer-events-none absolute bottom-6 right-8 z-20 flex items-center gap-2 opacity-60">
           <div className="w-px h-3 bg-gold/60" />
           <div className="w-px h-3 bg-gold/60" />
-          <span className="text-[9px] uppercase tracking-[0.25em] text-gold/60 font-sans ml-1">Paused</span>
+          <span className="text-[9px] uppercase tracking-[0.25em] text-gold/60 font-sans ml-1">
+            Paused
+          </span>
         </div>
       )}
     </div>

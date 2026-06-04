@@ -8,6 +8,8 @@ import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
 import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
+import useSiteImages from "@/lib/useSiteImages";
+import { getSiteImageUrl } from "@/lib/siteImageHelpers";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -20,17 +22,20 @@ const hotspots = [
   {
     name: "Great Migration",
     detail: "1.5 Million Wildebeest Crossing",
-    image: "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=900&q=85",
+    image:
+      "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=900&q=85",
   },
   {
     name: "Amboseli National Park",
     detail: "Elephants Against Kilimanjaro",
-    image: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=900&q=85",
+    image:
+      "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=900&q=85",
   },
   {
     name: "Lake Nakuru",
     detail: "Flamingo-Lined Soda Lake",
-    image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=900&q=85",
+    image:
+      "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=900&q=85",
   },
   {
     name: "Samburu Reserve",
@@ -67,13 +72,27 @@ const packages = [
     price: "From $2,000 / person",
     description:
       "Explore Kenya’s most iconic reserves with game drives, cultural visits, and the Great Migration circuit including Samburu, Lake Nakuru, and Maasai Mara.",
-    activities: ["Nairobi city tour", "Samburu game drives", "Lake Nakuru flamingoes", "Masai Mara safari"],
+    activities: [
+      "Nairobi city tour",
+      "Samburu game drives",
+      "Lake Nakuru flamingoes",
+      "Masai Mara safari",
+    ],
     image: `${base}/photos/newstock/elephantcars.jpg`,
     downloadUrl: `${base}/photos/newstock/7–DAY-KENYA-PRIME-SAFARI-2.pdf`,
     itinerary: [
-      { days: "Days 1–2", desc: "Arrive Nairobi; Giraffe Centre & city tour, drive north to Samburu Reserve." },
-      { days: "Days 3–4", desc: "Samburu game drives for rare northern species; drive to Lake Nakuru flamingo circuit." },
-      { days: "Days 5–7", desc: "Maasai Mara — Great Migration viewing, Big Five game drives, farewell dinner, departure." },
+      {
+        days: "Days 1–2",
+        desc: "Arrive Nairobi; Giraffe Centre & city tour, drive north to Samburu Reserve.",
+      },
+      {
+        days: "Days 3–4",
+        desc: "Samburu game drives for rare northern species; drive to Lake Nakuru flamingo circuit.",
+      },
+      {
+        days: "Days 5–7",
+        desc: "Maasai Mara — Great Migration viewing, Big Five game drives, farewell dinner, departure.",
+      },
     ],
   },
   {
@@ -83,18 +102,37 @@ const packages = [
     price: "From $2,000 / person",
     description:
       "From Amboseli’s legendary elephant herds and Kilimanjaro views to Lake Nakuru and Masai Mara, this itinerary blends wildlife with authentic local culture.",
-    activities: ["Amboseli NP", "Lake Nakuru", "Masai Mara", "Maasai village visit"],
-    image: "https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=700&q=85",
+    activities: [
+      "Amboseli NP",
+      "Lake Nakuru",
+      "Masai Mara",
+      "Maasai village visit",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=700&q=85",
     downloadUrl: `${base}/photos/newstock/7-–-DAY-MAGICAL-KENYA-TOUR-1.pdf`,
     itinerary: [
-      { days: "Days 1–2", desc: "Arrive Nairobi; drive to Amboseli NP — elephant herds framed by Kilimanjaro at dawn." },
-      { days: "Days 3–4", desc: "Lake Nakuru flamingo lake circuit; game drives for rhino and leopard." },
-      { days: "Days 5–7", desc: "Maasai Mara safari, authentic Maasai village visit, farewell dinner, departure Nairobi." },
+      {
+        days: "Days 1–2",
+        desc: "Arrive Nairobi; drive to Amboseli NP — elephant herds framed by Kilimanjaro at dawn.",
+      },
+      {
+        days: "Days 3–4",
+        desc: "Lake Nakuru flamingo lake circuit; game drives for rhino and leopard.",
+      },
+      {
+        days: "Days 5–7",
+        desc: "Maasai Mara safari, authentic Maasai village visit, farewell dinner, departure Nairobi.",
+      },
     ],
   },
 ];
 
 export default function KenyaPage() {
+  const siteImages = useSiteImages();
+  const getSiteImageUrlLocal = (key: string, fallback: string) =>
+    getSiteImageUrl(siteImages, key, fallback);
+
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [activePackage, setActivePackage] = useState("");
@@ -116,8 +154,7 @@ export default function KenyaPage() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage:
-              `url(${base}/photos/newstock/splendifd.jpg)`,
+            backgroundImage: `url('${getSiteImageUrlLocal("destinationKenyaHero", `${base}/photos/newstock/splendifd.jpg`)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -200,7 +237,10 @@ export default function KenyaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src={`${base}/photos/newstock/safari.jpg`}
+                src={getSiteImageUrlLocal(
+                  "destinationKenyaSafari",
+                  `${base}/photos/newstock/safari.jpg`,
+                )}
                 alt="Kenya safari landscape"
                 className="w-full h-52 object-cover"
               />
@@ -211,7 +251,10 @@ export default function KenyaPage() {
               className="overflow-hidden mt-6"
             >
               <img
-                src={`${base}/photos/newstock/lioness.jpg`}
+                src={getSiteImageUrlLocal(
+                  "destinationKenyaLioness",
+                  `${base}/photos/newstock/lioness.jpg`,
+                )}
                 alt="Lioness on the savannah"
                 className="w-full h-52 object-cover"
               />
@@ -222,7 +265,10 @@ export default function KenyaPage() {
               className="overflow-hidden -mt-6"
             >
               <img
-                src={`${base}/photos/newstock/mothernbabyelephant.jpg`}
+                src={getSiteImageUrlLocal(
+                  "destinationKenyaElephantFamily",
+                  `${base}/photos/newstock/mothernbabyelephant.jpg`,
+                )}
                 alt="Elephant family, Amboseli"
                 className="w-full h-52 object-cover"
               />
@@ -233,7 +279,10 @@ export default function KenyaPage() {
               className="overflow-hidden"
             >
               <img
-                src={`${base}/photos/newstock/greatbeastmigration.jpg`}
+                src={getSiteImageUrlLocal(
+                  "destinationKenyaMigration",
+                  `${base}/photos/newstock/greatbeastmigration.jpg`,
+                )}
                 alt="Great wildebeest migration"
                 className="w-full h-52 object-cover"
               />
@@ -270,48 +319,77 @@ export default function KenyaPage() {
                 Kenya Tour Packages
               </h2>
             </div>
-            <Link href="/plan-a-trip" className="btn-primary shrink-0 self-start md:self-end">
+            <Link
+              href="/plan-a-trip"
+              className="btn-primary shrink-0 self-start md:self-end"
+            >
               Get a Custom Quote
             </Link>
           </FadeIn>
           <div className="space-y-20">
             {packages.map((pkg) => (
-              <div key={pkg.name} className="grid md:grid-cols-2 gap-12 items-start border-b border-gold/10 pb-20 last:border-0 last:pb-0">
+              <div
+                key={pkg.name}
+                className="grid md:grid-cols-2 gap-12 items-start border-b border-gold/10 pb-20 last:border-0 last:pb-0"
+              >
                 <div className="relative overflow-hidden aspect-[4/3]">
-                  <img src={pkg.image} alt={pkg.name} className="w-full h-full object-cover" />
+                  <img
+                    src={pkg.image}
+                    alt={pkg.name}
+                    className="w-full h-full object-cover"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-transparent to-transparent" />
-                  <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">{pkg.duration}</span>
+                  <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">
+                    {pkg.duration}
+                  </span>
                 </div>
                 <div>
                   <p className="section-label mb-2">{pkg.tagline}</p>
-                  <h3 className="font-serif text-3xl text-forest mb-4">{pkg.name}</h3>
+                  <h3 className="font-serif text-3xl text-forest mb-4">
+                    {pkg.name}
+                  </h3>
                   <div className="w-10 h-px bg-gold mb-6" />
-                  <p className="text-stone font-sans text-sm leading-relaxed mb-8">{pkg.description}</p>
+                  <p className="text-stone font-sans text-sm leading-relaxed mb-8">
+                    {pkg.description}
+                  </p>
                   <div className="space-y-4 mb-8">
                     {pkg.itinerary.map((item) => (
-                      <div key={item.days} className="flex gap-4 border-t border-gold/10 pt-4">
-                        <span className="text-gold text-[10px] uppercase tracking-widest font-sans w-20 shrink-0 pt-0.5">{item.days}</span>
-                        <span className="text-stone font-sans text-sm leading-relaxed">{item.desc}</span>
+                      <div
+                        key={item.days}
+                        className="flex gap-4 border-t border-gold/10 pt-4"
+                      >
+                        <span className="text-gold text-[10px] uppercase tracking-widest font-sans w-20 shrink-0 pt-0.5">
+                          {item.days}
+                        </span>
+                        <span className="text-stone font-sans text-sm leading-relaxed">
+                          {item.desc}
+                        </span>
                       </div>
                     ))}
                   </div>
                   <div className="flex flex-wrap gap-2 mb-8">
                     {pkg.activities.map((act) => (
-                      <span key={act} className="text-[10px] uppercase tracking-widest font-sans border border-gold/30 text-forest/70 px-3 py-1.5 flex items-center gap-2">
-                        <span className="w-1 h-1 rounded-full bg-gold" />{act}
+                      <span
+                        key={act}
+                        className="text-[10px] uppercase tracking-widest font-sans border border-gold/30 text-forest/70 px-3 py-1.5 flex items-center gap-2"
+                      >
+                        <span className="w-1 h-1 rounded-full bg-gold" />
+                        {act}
                       </span>
                     ))}
                   </div>
                   <div className="flex flex-wrap items-center justify-between gap-4">
-                    <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
+                    <span className="font-serif italic text-gold text-sm">
+                      {pkg.price}
+                    </span>
                     <div className="flex gap-4">
-                      <button 
+                      <button
                         onClick={() => handleDownload(pkg.name)}
                         className="btn-outline !px-6 !py-2.5 text-[11px]"
                       >
                         Download Detailed Itinerary
                       </button>
-                      <button 
+                      <button
                         onClick={() => handleEnquiry(pkg.name)}
                         className="btn-primary !px-6 !py-2.5 text-[11px]"
                       >
@@ -325,11 +403,19 @@ export default function KenyaPage() {
           </div>
 
           <FadeIn className="mt-20 p-8 border border-gold/20 bg-forest-dark/5 text-center">
-            <h4 className="font-serif text-2xl text-forest mb-4">Discover More of Kenya</h4>
+            <h4 className="font-serif text-2xl text-forest mb-4">
+              Discover More of Kenya
+            </h4>
             <p className="text-stone font-sans text-sm mb-6 max-w-2xl mx-auto">
-              We offer a wide range of additional Kenya itineraries, including luxury beach retreats in Diani, Mount Kenya climbing expeditions, and multi-country East Africa adventures. All our tours can be delivered upon request.
+              We offer a wide range of additional Kenya itineraries, including
+              luxury beach retreats in Diani, Mount Kenya climbing expeditions,
+              and multi-country East Africa adventures. All our tours can be
+              delivered upon request.
             </p>
-            <Link href="/plan-a-trip" className="text-gold uppercase tracking-widest text-xs font-bold hover:text-forest transition-colors">
+            <Link
+              href="/plan-a-trip"
+              className="text-gold uppercase tracking-widest text-xs font-bold hover:text-forest transition-colors"
+            >
               Request Custom Itinerary &rarr;
             </Link>
           </FadeIn>
@@ -352,16 +438,16 @@ export default function KenyaPage() {
         </FadeIn>
       </section>
 
-      <ItineraryDownloadPopup 
-        isOpen={isDownloadOpen} 
-        onClose={() => setIsDownloadOpen(false)} 
-        packageName={activePackage} 
+      <ItineraryDownloadPopup
+        isOpen={isDownloadOpen}
+        onClose={() => setIsDownloadOpen(false)}
+        packageName={activePackage}
       />
 
-      <PackageEnquiryPopup 
-        isOpen={isEnquiryOpen} 
-        onClose={() => setIsEnquiryOpen(false)} 
-        packageName={activePackage} 
+      <PackageEnquiryPopup
+        isOpen={isEnquiryOpen}
+        onClose={() => setIsEnquiryOpen(false)}
+        packageName={activePackage}
       />
     </>
   );

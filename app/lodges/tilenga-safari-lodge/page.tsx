@@ -3,35 +3,80 @@ import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import ResNovaWidget from "@/components/ResNovaWidget";
+import { urlForImage } from "@/lib/sanity.image";
+import { client } from "@/lib/sanity.client";
+import { siteImagesQuery } from "@/lib/sanity.queries";
+import type { SiteImage } from "@/types/sanity";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-const rooms = [
+interface RoomCard {
+  name: string;
+  count: string;
+  description: string;
+  features: string[];
+  imageKey: string;
+  fallback: string;
+}
+
+const rooms: RoomCard[] = [
   {
     name: "Premium Cottages",
     count: "15 Units",
     description:
       "Our premium cottages are uniquely located at the edge of the property with beautiful sunrise and sunset views over River Nile and a wide view of Murchsion Falls National Park. All cottages have wide private balconies and a private indoor bathroom. Guests are usually surprised by the elephants that cross over from the park and that is always a spectacle to behold upclose.",
-    features: ["River Nile views", "Private balcony", "Indoor bathroom", "Sunrise & Sunset views", "Daily housekeeping"],
-    image: `${base}/photos/tilengasafarilodge/cottage1.png`,
+    features: [
+      "River Nile views",
+      "Private balcony",
+      "Indoor bathroom",
+      "Sunrise & Sunset views",
+      "Daily housekeeping",
+    ],
+    imageKey: "lodgeTilengaHero",
+    fallback: `${base}/photos/tilengasafarilodge/cottage1.png`,
   },
   {
     name: "Executive Cottages",
     count: "11 Units",
     description:
       "Our Executive cottages are a perfect match for families and big groups that would like to stay relatively close to each other. These cottages are 3 in 1 with both twin and single beds in the cottages. All cottages have wide private balconies that can sit upto 8 people and beautiful views of River Nile and Murchsion Falls National Park.",
-    features: ["Twin & single beds", "Family / group layout", "Large balcony seats 8", "Indoor bathroom", "River Nile views"],
-    image: `${base}/photos/tilengasafarilodge/cottage2.png`,
+    features: [
+      "Twin & single beds",
+      "Family / group layout",
+      "Large balcony seats 8",
+      "Indoor bathroom",
+      "River Nile views",
+    ],
+    imageKey: "lodgeTilengaCottage3",
+    fallback: `${base}/photos/tilengasafarilodge/cottage2.png`,
   },
 ];
 
 const activities = [
-  { name: "Fishing", desc: "Experience the thrill of fishing in the Albert Nile, home to a variety of fish species." },
-  { name: "Sport Fishing", desc: "Cast for Nile perch and tiger fish in the Albert Nile with experienced local guides and all equipment." },
-  { name: "Basketry with Locals", desc: "Connect with local artisans and learn traditional basket weaving — a meaningful community experience." },
-  { name: "Night Game Drives", desc: "Spot nocturnal creatures — civets, genets, bush babies, and African wild cats — under the stars." },
-  { name: "Day Game Drives", desc: "Guided morning and evening drives through Murchison Falls NP — elephants, giraffes, lions, and buffaloes." },
-  { name: "Nile Boat Safari", desc: "3-hour boat safari to the base of Murchison Falls, with hippos, crocodiles, and over 450 bird species." },
+  {
+    name: "Fishing",
+    desc: "Experience the thrill of fishing in the Albert Nile, home to a variety of fish species.",
+  },
+  {
+    name: "Sport Fishing",
+    desc: "Cast for Nile perch and tiger fish in the Albert Nile with experienced local guides and all equipment.",
+  },
+  {
+    name: "Basketry with Locals",
+    desc: "Connect with local artisans and learn traditional basket weaving — a meaningful community experience.",
+  },
+  {
+    name: "Night Game Drives",
+    desc: "Spot nocturnal creatures — civets, genets, bush babies, and African wild cats — under the stars.",
+  },
+  {
+    name: "Day Game Drives",
+    desc: "Guided morning and evening drives through Murchison Falls NP — elephants, giraffes, lions, and buffaloes.",
+  },
+  {
+    name: "Nile Boat Safari",
+    desc: "3-hour boat safari to the base of Murchison Falls, with hippos, crocodiles, and over 450 bird species.",
+  },
 ];
 
 const quickFacts = [
@@ -49,7 +94,20 @@ const locationDistances = [
   { place: "Gulu City", distance: "~2.5 hrs" },
 ];
 
-export default function TilengaSafariLodgePage() {
+type SiteImageMap = Record<string, SiteImage>;
+
+async function loadSiteImages(): Promise<SiteImageMap> {
+  const images = await client.fetch<SiteImage[]>(siteImagesQuery);
+  return Object.fromEntries(images.map((image) => [image.key, image]));
+}
+
+export default async function TilengaSafariLodgePage() {
+  const siteImages = await loadSiteImages();
+  const getSiteImageUrl = (key: string, fallback: string) => {
+    const image = siteImages[key]?.image;
+    return image ? urlForImage(image).url() : fallback;
+  };
+
   return (
     <>
       {/* ── HERO ── */}
@@ -57,7 +115,7 @@ export default function TilengaSafariLodgePage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `url('${base}/photos/tilengasafarilodge/entrance.png')`,
+            backgroundImage: `url('${getSiteImageUrl("lodgeTilengaEntrance", `${base}/photos/tilengasafarilodge/entrance.png`)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -74,16 +132,21 @@ export default function TilengaSafariLodgePage() {
           </FadeIn>
           <FadeIn direction="up" delay={0.25}>
             <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-cream leading-none mb-4">
-              Tilenga<br /><em className="italic text-gold">Safari Lodge</em>
+              Tilenga
+              <br />
+              <em className="italic text-gold">Safari Lodge</em>
             </h1>
           </FadeIn>
           <FadeIn direction="up" delay={0.42}>
             <p className="text-cream/60 font-sans text-sm mb-8 leading-relaxed max-w-md">
-              Where the Nile Meets the Wild — Murchison Falls National Park, 1.7km from Tangi Gate
+              Where the Nile Meets the Wild — Murchison Falls National Park,
+              1.7km from Tangi Gate
             </p>
           </FadeIn>
           <FadeIn direction="up" delay={0.56}>
-            <Link href="#booking" className="btn-ghost">Book a Stay</Link>
+            <Link href="#booking" className="btn-ghost">
+              Book a Stay
+            </Link>
           </FadeIn>
         </div>
 
@@ -94,7 +157,9 @@ export default function TilengaSafariLodgePage() {
               {quickFacts.map((f) => (
                 <div key={f.label} className="text-center">
                   <p className="font-serif text-2xl text-gold">{f.value}</p>
-                  <p className="text-cream/40 text-[10px] uppercase tracking-widest font-sans mt-0.5">{f.label}</p>
+                  <p className="text-cream/40 text-[10px] uppercase tracking-widest font-sans mt-0.5">
+                    {f.label}
+                  </p>
                 </div>
               ))}
             </div>
@@ -103,27 +168,37 @@ export default function TilengaSafariLodgePage() {
       </section>
 
       {/* ── LODGE OVERVIEW ── */}
-      <section className="grid md:grid-cols-2 overflow-hidden" style={{ minHeight: "75vh" }}>
+      <section
+        className="grid md:grid-cols-2 overflow-hidden"
+        style={{ minHeight: "75vh" }}
+      >
         {/* Text */}
         <div className="bg-cream flex flex-col justify-center px-6 md:px-16 py-12 md:py-20 order-2 md:order-1">
           <FadeIn direction="left">
             <p className="section-label mb-3">Lodge Overview</p>
             <h2 className="font-serif text-4xl md:text-5xl text-forest leading-tight mb-6">
-              A Haven of<br />Comfort &amp; Serenity
+              A Haven of
+              <br />
+              Comfort &amp; Serenity
             </h2>
             <div className="w-10 h-px bg-gold mb-8" />
             <p className="text-stone font-sans leading-relaxed mb-4 text-sm">
-              Positioned at the northern park boundary of Murchison Falls National Park, Tilenga Safari Lodge
-              offers panoramic views over the Albert Nile River — with wildlife encounters beginning at your doorstep.
-              One has to watch out for its signpost a few kilometers before the Pakwach Bridge to not miss the magnificence of a place that looks out on the majestic Albert Nile.
+              Positioned at the northern park boundary of Murchison Falls
+              National Park, Tilenga Safari Lodge offers panoramic views over
+              the Albert Nile River — with wildlife encounters beginning at your
+              doorstep. One has to watch out for its signpost a few kilometers
+              before the Pakwach Bridge to not miss the magnificence of a place
+              that looks out on the majestic Albert Nile.
             </p>
             <p className="text-stone font-sans leading-relaxed mb-4 text-sm">
-              Wake to elephants grazing below your balcony. Watch giraffes moving through acacia woodland
-              as the Nile glitters in the morning light.
+              Wake to elephants grazing below your balcony. Watch giraffes
+              moving through acacia woodland as the Nile glitters in the morning
+              light.
             </p>
             <p className="text-stone font-sans leading-relaxed mb-10 text-sm">
-              Guests rave about the spacious rooms, extraordinarily friendly staff, and the lodge chef whose
-              cuisine blends Ugandan flavours with international cooking — all with a sunset Nile view.
+              Guests rave about the spacious rooms, extraordinarily friendly
+              staff, and the lodge chef whose cuisine blends Ugandan flavours
+              with international cooking — all with a sunset Nile view.
             </p>
 
             {/* Stats row */}
@@ -134,24 +209,41 @@ export default function TilengaSafariLodgePage() {
                 { value: "450+", label: "Bird Species" },
               ].map((s) => (
                 <div key={s.label}>
-                  <p className="font-serif text-2xl text-gold mb-1">{s.value}</p>
-                  <p className="text-stone/60 text-[10px] uppercase tracking-widest font-sans">{s.label}</p>
+                  <p className="font-serif text-2xl text-gold mb-1">
+                    {s.value}
+                  </p>
+                  <p className="text-stone/60 text-[10px] uppercase tracking-widest font-sans">
+                    {s.label}
+                  </p>
                 </div>
               ))}
             </div>
 
             <div className="flex gap-4">
-              <Link href="#booking" className="btn-primary">Book a Stay</Link>
-              <a href="mailto:booking@tilengasafarilodge.com" className="btn-outline">Email Lodge</a>
+              <Link href="#booking" className="btn-primary">
+                Book a Stay
+              </Link>
+              <a
+                href="mailto:booking@tilengasafarilodge.com"
+                className="btn-outline"
+              >
+                Email Lodge
+              </a>
             </div>
           </FadeIn>
         </div>
 
         {/* Single large image */}
         <div className="relative min-h-[50vh] md:min-h-0 order-1 md:order-2">
-          <ImageReveal direction="right" className="absolute inset-0 overflow-hidden">
+          <ImageReveal
+            direction="right"
+            className="absolute inset-0 overflow-hidden"
+          >
             <img
-              src={`${base}/photos/tilengasafarilodge/cottage3.png`}
+              src={getSiteImageUrl(
+                "lodgeTilengaCottage3",
+                `${base}/photos/tilengasafarilodge/cottage3.png`,
+              )}
               alt="Tilenga Safari Lodge wildlife view"
               className="absolute inset-0 w-full h-full object-cover"
             />
@@ -159,7 +251,11 @@ export default function TilengaSafariLodgePage() {
           <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-forest-dark/20 pointer-events-none z-[1]" />
 
           {/* Floating caption */}
-          <FadeIn direction="up" delay={0.5} className="absolute bottom-8 left-8 z-10 max-w-[220px]">
+          <FadeIn
+            direction="up"
+            delay={0.5}
+            className="absolute bottom-8 left-8 z-10 max-w-[220px]"
+          >
             <div className="bg-forest-dark/85 backdrop-blur-sm px-5 py-4 border-l-2 border-gold">
               <p className="font-serif italic text-cream/80 text-sm leading-relaxed">
                 &ldquo;Wildlife begins at your balcony door.&rdquo;
@@ -176,10 +272,13 @@ export default function TilengaSafariLodgePage() {
             <div className="flex items-end justify-between">
               <div>
                 <p className="section-label text-gold mb-3">Where You Sleep</p>
-                <h2 className="font-serif text-4xl md:text-5xl text-cream leading-tight">Accommodation</h2>
+                <h2 className="font-serif text-4xl md:text-5xl text-cream leading-tight">
+                  Accommodation
+                </h2>
               </div>
               <p className="hidden md:block text-cream/40 font-sans text-sm max-w-xs leading-relaxed">
-                26 cottages — each positioned to maximise the Nile views and the surrounding bushveld.
+                26 cottages — each positioned to maximise the Nile views and the
+                surrounding bushveld.
               </p>
             </div>
           </FadeIn>
@@ -192,9 +291,13 @@ export default function TilengaSafariLodgePage() {
               className={`grid md:grid-cols-2 min-h-[420px] ${i % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""}`}
             >
               <div className="relative overflow-hidden h-64 md:min-h-[420px] group">
-                <ImageReveal direction={i % 2 === 0 ? "left" : "right"} margin="0px" className="absolute inset-0 overflow-hidden">
+                <ImageReveal
+                  direction={i % 2 === 0 ? "left" : "right"}
+                  margin="0px"
+                  className="absolute inset-0 overflow-hidden"
+                >
                   <img
-                    src={room.image}
+                    src={getSiteImageUrl(room.imageKey, room.fallback)}
                     alt={room.name}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
                   />
@@ -207,14 +310,25 @@ export default function TilengaSafariLodgePage() {
                 </span>
               </div>
 
-              <FadeIn direction={i % 2 === 0 ? "right" : "left"} className="bg-cream flex flex-col justify-center px-5 md:px-14 py-8 md:py-12">
+              <FadeIn
+                direction={i % 2 === 0 ? "right" : "left"}
+                className="bg-cream flex flex-col justify-center px-5 md:px-14 py-8 md:py-12"
+              >
                 <div className="w-8 h-px bg-gold mb-5" />
-                <h3 className="font-serif text-3xl md:text-4xl text-forest mb-4">{room.name}</h3>
-                <p className="text-stone font-sans text-sm leading-relaxed mb-7">{room.description}</p>
+                <h3 className="font-serif text-3xl md:text-4xl text-forest mb-4">
+                  {room.name}
+                </h3>
+                <p className="text-stone font-sans text-sm leading-relaxed mb-7">
+                  {room.description}
+                </p>
                 <ul className="space-y-2">
                   {room.features.map((f) => (
-                    <li key={f} className="flex items-center gap-3 text-stone text-sm font-sans">
-                      <span className="w-1 h-1 rounded-full bg-gold shrink-0" />{f}
+                    <li
+                      key={f}
+                      className="flex items-center gap-3 text-stone text-sm font-sans"
+                    >
+                      <span className="w-1 h-1 rounded-full bg-gold shrink-0" />
+                      {f}
                     </li>
                   ))}
                 </ul>
@@ -231,11 +345,16 @@ export default function TilengaSafariLodgePage() {
             <div>
               <p className="section-label mb-3">Things to Do</p>
               <h2 className="font-serif text-4xl md:text-5xl text-forest leading-tight">
-                Activities &amp;<br />Experiences
+                Activities &amp;
+                <br />
+                Experiences
               </h2>
             </div>
             <div className="flex-1 h-px bg-gold/20 mb-3 hidden md:block" />
-            <Link href="/plan-a-trip" className="hidden md:inline-block btn-primary shrink-0">
+            <Link
+              href="/plan-a-trip"
+              className="hidden md:inline-block btn-primary shrink-0"
+            >
               Plan Your Stay
             </Link>
           </FadeIn>
@@ -250,7 +369,9 @@ export default function TilengaSafariLodgePage() {
                   <h3 className="font-serif text-xl text-forest mb-2 group-hover:text-forest-light transition-colors duration-300">
                     {act.name}
                   </h3>
-                  <p className="text-stone font-sans text-sm leading-relaxed">{act.desc}</p>
+                  <p className="text-stone font-sans text-sm leading-relaxed">
+                    {act.desc}
+                  </p>
                 </div>
               </StaggerItem>
             ))}
@@ -260,30 +381,36 @@ export default function TilengaSafariLodgePage() {
 
       {/* ── LODGE LIFE — A Day at Tilenga ── */}
       <section className="bg-forest-dark overflow-hidden">
-
         {/* Section Header */}
         <div className="relative px-6 md:px-16 pt-20 md:pt-32 pb-16 md:pb-24">
           <div className="absolute inset-0 grain-overlay opacity-[0.07] pointer-events-none" />
           <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row md:items-end justify-between gap-10 relative z-10">
             <FadeIn>
               <div className="flex items-center gap-4 mb-6">
-                <span className="text-gold text-[10px] uppercase tracking-[0.8em] font-bold">Tilenga Field Journal</span>
+                <span className="text-gold text-[10px] uppercase tracking-[0.8em] font-bold">
+                  Tilenga Field Journal
+                </span>
                 <div className="w-20 h-px bg-gold/30" />
               </div>
               <h2 className="font-serif text-5xl sm:text-6xl md:text-[10rem] text-cream leading-[0.75] uppercase tracking-tighter">
                 Lodge <br />
-                <span className="italic text-gold lowercase tracking-normal pl-8 sm:pl-12 md:pl-32 block">Life</span>
+                <span className="italic text-gold lowercase tracking-normal pl-8 sm:pl-12 md:pl-32 block">
+                  Life
+                </span>
               </h2>
             </FadeIn>
             <FadeIn direction="up" delay={0.2} className="max-w-[320px]">
               <div className="space-y-4 border-l border-gold/20 pl-8 py-2">
-                <p className="text-[10px] uppercase tracking-[0.4em] text-cream/40 font-mono">Archive No. 044</p>
+                <p className="text-[10px] uppercase tracking-[0.4em] text-cream/40 font-mono">
+                  Archive No. 044
+                </p>
                 <p className="text-gold font-mono text-xs leading-relaxed uppercase tracking-widest">
                   Murchison Falls Boundary <br />
                   2° 14' 54.6" N · 31° 31' 44.4" E
                 </p>
                 <p className="text-cream/50 font-serif italic text-lg leading-relaxed">
-                  "The rhythm of the Nile is felt in every quiet corner of the lodge."
+                  "The rhythm of the Nile is felt in every quiet corner of the
+                  lodge."
                 </p>
               </div>
             </FadeIn>
@@ -294,7 +421,10 @@ export default function TilengaSafariLodgePage() {
         <FadeIn>
           <div className="relative h-[70vh] md:h-[88vh] overflow-hidden group">
             <img
-              src={`${base}/photos/tilengasafarilodge/lunch.png`}
+              src={getSiteImageUrl(
+                "lodgeTilengaLunch",
+                `${base}/photos/tilengasafarilodge/lunch.png`,
+              )}
               alt="Tilenga Safari Lodge Experience"
               className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105"
             />
@@ -302,17 +432,25 @@ export default function TilengaSafariLodgePage() {
             <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/50 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16 lg:p-24">
               <div className="max-w-2xl">
-                <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-5">I · The Arrival</p>
+                <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-5">
+                  I · The Arrival
+                </p>
                 <h3 className="font-serif text-3xl md:text-5xl lg:text-6xl text-cream leading-tight mb-5">
-                  Every stay begins with<br /><em className="italic text-gold">the same quiet wonder.</em>
+                  Every stay begins with
+                  <br />
+                  <em className="italic text-gold">the same quiet wonder.</em>
                 </h3>
                 <p className="text-cream/50 font-sans text-sm leading-relaxed max-w-lg">
-                  A pause at the gate. The Nile glittering through the acacia canopy. Elephants moving slowly along the ridge. Before a single bag is unpacked, Tilenga has already said everything.
+                  A pause at the gate. The Nile glittering through the acacia
+                  canopy. Elephants moving slowly along the ridge. Before a
+                  single bag is unpacked, Tilenga has already said everything.
                 </p>
               </div>
             </div>
             <div className="absolute top-8 right-8 md:top-12 md:right-14">
-              <span className="font-serif text-cream/10 text-8xl leading-none select-none">I</span>
+              <span className="font-serif text-cream/10 text-8xl leading-none select-none">
+                I
+              </span>
             </div>
           </div>
         </FadeIn>
@@ -320,40 +458,61 @@ export default function TilengaSafariLodgePage() {
         {/* ── ACT II: Morning Ritual ── */}
         <div className="grid md:grid-cols-2">
           {/* Left: Breakfast image — tall, cinematic */}
-          <FadeIn direction="left" className="relative overflow-hidden group min-h-[55vh]">
+          <FadeIn
+            direction="left"
+            className="relative overflow-hidden group min-h-[55vh]"
+          >
             <img
-              src={`${base}/photos/tilengasafarilodge/breakfast.png`}
+              src={getSiteImageUrl(
+                "lodgeTilengaBreakfast",
+                `${base}/photos/tilengasafarilodge/breakfast.png`,
+              )}
               alt="Al Fresco Breakfast at Tilenga"
               className="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/75 via-transparent to-transparent" />
             <div className="absolute bottom-8 left-8">
-              <p className="font-mono text-[10px] text-gold/60 uppercase tracking-[0.4em] mb-2">06:30 hrs</p>
-              <h4 className="font-serif italic text-cream text-2xl md:text-3xl">Al Fresco Mornings</h4>
+              <p className="font-mono text-[10px] text-gold/60 uppercase tracking-[0.4em] mb-2">
+                06:30 hrs
+              </p>
+              <h4 className="font-serif italic text-cream text-2xl md:text-3xl">
+                Al Fresco Mornings
+              </h4>
             </div>
           </FadeIn>
 
           {/* Right: Copy + Nile Safari image */}
           <div className="bg-[#0c1c11] flex flex-col justify-between p-10 md:p-14 lg:p-20">
             <FadeIn direction="right">
-              <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-8">II · Morning Ritual</p>
+              <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-8">
+                II · Morning Ritual
+              </p>
               <p className="font-serif italic text-cream/90 text-2xl md:text-3xl leading-relaxed mb-8">
-                "Breakfast arrives with the wildlife — elephants at the riverbank, ibis crossing the dawn sky."
+                "Breakfast arrives with the wildlife — elephants at the
+                riverbank, ibis crossing the dawn sky."
               </p>
               <p className="text-cream/40 font-sans text-sm leading-relaxed">
-                Every morning at Tilenga is staged by nature. The table is set as the Albert Nile catches its first gold. Meals here are never just meals — they are a front-row seat to the daily theatre of the African bush.
+                Every morning at Tilenga is staged by nature. The table is set
+                as the Albert Nile catches its first gold. Meals here are never
+                just meals — they are a front-row seat to the daily theatre of
+                the African bush.
               </p>
             </FadeIn>
             <FadeIn direction="up" delay={0.3} className="mt-10">
               <div className="relative overflow-hidden group">
                 <img
-                  src={`${base}/photos/tilengasafarilodge/watersafari.png`}
+                  src={getSiteImageUrl(
+                    "lodgeTilengaWaterSafari",
+                    `${base}/photos/tilengasafarilodge/watersafari.png`,
+                  )}
                   alt="Nile Boat Safari at Dawn"
                   className="w-full aspect-[16/8] object-cover transition-transform duration-[4s] group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/60 to-transparent" />
                 <div className="absolute bottom-4 right-5">
-                  <span className="text-[9px] text-cream/40 font-mono uppercase tracking-widest">Nile Expeditions · Dawn</span>
+                  <span className="text-[9px] text-cream/40 font-mono uppercase tracking-widest">
+                    Nile Expeditions · Dawn
+                  </span>
                 </div>
               </div>
             </FadeIn>
@@ -364,22 +523,33 @@ export default function TilengaSafariLodgePage() {
         <FadeIn>
           <div className="relative h-[60vh] md:h-[80vh] overflow-hidden group">
             <img
-              src={`${base}/photos/tilengasafarilodge/pool.png`}
+              src={getSiteImageUrl(
+                "lodgeTilengaPool",
+                `${base}/photos/tilengasafarilodge/pool.png`,
+              )}
               alt="Lodge Swimming Pool"
               className="w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-forest-dark/35 group-hover:bg-forest-dark/20 transition-colors duration-1000" />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-              <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-6">III · The Midday Retreat</p>
+              <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-6">
+                III · The Midday Retreat
+              </p>
               <h3 className="font-serif italic text-cream text-4xl md:text-6xl lg:text-7xl max-w-3xl leading-tight">
-                Afternoons drift between<br />the pool and the horizon.
+                Afternoons drift between
+                <br />
+                the pool and the horizon.
               </h3>
             </div>
             <div className="absolute bottom-6 right-8 md:bottom-10 md:right-14">
-              <span className="text-cream/20 font-mono text-[9px] uppercase tracking-widest">The Pool · Murchison Falls NP</span>
+              <span className="text-cream/20 font-mono text-[9px] uppercase tracking-widest">
+                The Pool · Murchison Falls NP
+              </span>
             </div>
             <div className="absolute top-8 right-8">
-              <span className="font-serif text-cream/8 text-8xl leading-none select-none">III</span>
+              <span className="font-serif text-cream/8 text-8xl leading-none select-none">
+                III
+              </span>
             </div>
           </div>
         </FadeIn>
@@ -387,25 +557,55 @@ export default function TilengaSafariLodgePage() {
         {/* ── ACT IV: Interiors & Details ── */}
         <div className="grid grid-cols-2 md:grid-cols-4">
           {[
-            { src: `${base}/photos/tilengasafarilodge/insideview.png`,                           alt: "Cottage Interior",      label: "Inside the Cottage",   sub: "Light · Space · Rest" },
-            { src: `${base}/photos/tilengasafarilodge/cottage3.png`,                              alt: "Cottage Wildlife View", label: "Wildlife at Your Door", sub: "From the balcony" },
-            { src: `${base}/photos/tilengasafarilodge/tilengasafarislodge-lunch-close-setup.png`, alt: "Lunch Detail",          label: "Culinary Details",     sub: "Crafted with care" },
-            { src: `${base}/photos/tilengasafarilodge/tilengasafarislodge-swimmingpool-view2.png`,alt: "Pool View",             label: "The Blue Hour",        sub: "Pool · Afternoon" },
+            {
+              imageKey: "lodgeTilengaInside",
+              imageFallback: `${base}/photos/tilengasafarilodge/insideview.png`,
+              alt: "Cottage Interior",
+              label: "Inside the Cottage",
+              sub: "Light · Space · Rest",
+            },
+            {
+              imageKey: "lodgeTilengaCottage3",
+              imageFallback: `${base}/photos/tilengasafarilodge/cottage3.png`,
+              alt: "Cottage Wildlife View",
+              label: "Wildlife at Your Door",
+              sub: "From the balcony",
+            },
+            {
+              imageKey: "lodgeTilengaLunchDetail",
+              imageFallback: `${base}/photos/tilengasafarilodge/tilengasafarislodge-lunch-close-setup.png`,
+              alt: "Lunch Detail",
+              label: "Culinary Details",
+              sub: "Crafted with care",
+            },
+            {
+              imageKey: "lodgeTilengaPoolView",
+              imageFallback: `${base}/photos/tilengasafarilodge/tilengasafarislodge-swimmingpool-view2.png`,
+              alt: "Pool View",
+              label: "The Blue Hour",
+              sub: "Pool · Afternoon",
+            },
           ].map((item, i) => (
             <FadeIn key={item.alt} direction="up" delay={i * 0.12}>
               <div className="relative group overflow-hidden">
                 <img
-                  src={item.src}
+                  src={getSiteImageUrl(item.imageKey, item.imageFallback)}
                   alt={item.alt}
                   className="w-full aspect-[3/4] md:aspect-[4/5] object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-[1200ms] group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                  <h4 className="font-serif italic text-gold text-base mb-1">{item.label}</h4>
-                  <p className="text-cream/50 text-[9px] uppercase tracking-widest font-mono">{item.sub}</p>
+                  <h4 className="font-serif italic text-gold text-base mb-1">
+                    {item.label}
+                  </h4>
+                  <p className="text-cream/50 text-[9px] uppercase tracking-widest font-mono">
+                    {item.sub}
+                  </p>
                 </div>
                 <div className="absolute top-4 left-4">
-                  <span className="font-serif text-cream/8 text-5xl leading-none select-none">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-serif text-cream/8 text-5xl leading-none select-none">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                 </div>
               </div>
             </FadeIn>
@@ -415,9 +615,15 @@ export default function TilengaSafariLodgePage() {
         {/* ── ACT V: Dining ── */}
         <div className="grid md:grid-cols-5">
           {/* Left: Large lunch image */}
-          <FadeIn direction="left" className="md:col-span-3 relative overflow-hidden group min-h-[50vh]">
+          <FadeIn
+            direction="left"
+            className="md:col-span-3 relative overflow-hidden group min-h-[50vh]"
+          >
             <img
-              src={`${base}/photos/tilengasafarilodge/lunch.png`}
+              src={getSiteImageUrl(
+                "lodgeTilengaLunch",
+                `${base}/photos/tilengasafarilodge/lunch.png`,
+              )}
               alt="Lunch at Tilenga"
               className="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105"
             />
@@ -427,18 +633,28 @@ export default function TilengaSafariLodgePage() {
           {/* Right: Editorial copy */}
           <div className="md:col-span-2 bg-[#0c1c11] flex flex-col justify-center p-10 md:p-14">
             <FadeIn direction="right">
-              <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-6">V · At the Table</p>
+              <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-6">
+                V · At the Table
+              </p>
               <h3 className="font-serif text-3xl md:text-4xl text-cream leading-tight mb-6">
-                A kitchen shaped<br /><em className="italic text-gold">by the wild.</em>
+                A kitchen shaped
+                <br />
+                <em className="italic text-gold">by the wild.</em>
               </h3>
               <div className="w-8 h-px bg-gold/40 mb-6" />
               <p className="text-cream/40 font-sans text-sm leading-relaxed mb-8">
-                Our chef draws from Ugandan flavour and international craft — working with what the land offers and what the Nile inspires. Meals unfold with the sun, each one a conversation between plate and panorama.
+                Our chef draws from Ugandan flavour and international craft —
+                working with what the land offers and what the Nile inspires.
+                Meals unfold with the sun, each one a conversation between plate
+                and panorama.
               </p>
               <p className="font-serif italic text-cream/30 text-lg leading-relaxed">
-                "The best meals we have ever had — and we have eaten everywhere."
+                "The best meals we have ever had — and we have eaten
+                everywhere."
               </p>
-              <p className="text-cream/20 font-mono text-[9px] uppercase tracking-widest mt-3">— A Tilenga Guest, 2024</p>
+              <p className="text-cream/20 font-mono text-[9px] uppercase tracking-widest mt-3">
+                — A Tilenga Guest, 2024
+              </p>
             </FadeIn>
           </div>
         </div>
@@ -448,41 +664,63 @@ export default function TilengaSafariLodgePage() {
           {/* Left: Editorial copy + small night image */}
           <div className="md:col-span-2 bg-[#060f09] flex flex-col justify-center p-10 md:p-14 order-2 md:order-1">
             <FadeIn direction="left">
-              <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-6">VI · Nightfall</p>
+              <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-6">
+                VI · Nightfall
+              </p>
               <h3 className="font-serif text-3xl md:text-5xl text-cream leading-tight mb-6">
-                Starlit<br /><em className="italic text-gold">Sanctuary</em>
+                Starlit
+                <br />
+                <em className="italic text-gold">Sanctuary</em>
               </h3>
               <div className="w-8 h-px bg-gold/40 mb-6" />
               <p className="text-cream/40 font-sans text-sm leading-relaxed mb-10">
-                When darkness falls over Murchison Falls, the bush takes on a new voice. Crickets fill the air, the Nile murmurs below, and your cottage glows warmly against the infinite African sky. This is the hour the lodge belongs entirely to you.
+                When darkness falls over Murchison Falls, the bush takes on a
+                new voice. Crickets fill the air, the Nile murmurs below, and
+                your cottage glows warmly against the infinite African sky. This
+                is the hour the lodge belongs entirely to you.
               </p>
             </FadeIn>
             <FadeIn direction="up" delay={0.3}>
               <div className="relative overflow-hidden group">
                 <img
-                  src={`${base}/photos/tilengasafarilodge/night.png`}
+                  src={getSiteImageUrl(
+                    "lodgeTilengaNight",
+                    `${base}/photos/tilengasafarilodge/night.png`,
+                  )}
                   alt="Lodge at Night"
                   className="w-full aspect-[4/3] object-cover transition-transform duration-[4s] group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 to-transparent" />
                 <div className="absolute bottom-4 left-5">
-                  <span className="font-mono text-[9px] text-cream/40 uppercase tracking-widest">21:47 hrs · The Quiet Hours</span>
+                  <span className="font-mono text-[9px] text-cream/40 uppercase tracking-widest">
+                    21:47 hrs · The Quiet Hours
+                  </span>
                 </div>
               </div>
             </FadeIn>
           </div>
 
           {/* Right: Full tall cottage night image */}
-          <FadeIn direction="right" className="md:col-span-3 relative overflow-hidden group min-h-[60vh] order-1 md:order-2">
+          <FadeIn
+            direction="right"
+            className="md:col-span-3 relative overflow-hidden group min-h-[60vh] order-1 md:order-2"
+          >
             <img
-              src={`${base}/photos/tilengasafarilodge/tilengasafarislodge-cottage-night.png`}
+              src={getSiteImageUrl(
+                "lodgeTilengaNight2",
+                `${base}/photos/tilengasafarilodge/tilengasafarislodge-cottage-night.png`,
+              )}
               alt="Cottage at Night"
               className="w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#060f09]/60" />
             <div className="absolute top-8 right-8 text-right">
-              <p className="font-serif italic text-gold/60 text-xl">Starlit Sanctuary</p>
-              <p className="font-mono text-[9px] text-cream/25 uppercase tracking-widest mt-1">Murchison Falls NP</p>
+              <p className="font-serif italic text-gold/60 text-xl">
+                Starlit Sanctuary
+              </p>
+              <p className="font-mono text-[9px] text-cream/25 uppercase tracking-widest mt-1">
+                Murchison Falls NP
+              </p>
             </div>
           </FadeIn>
         </div>
@@ -491,25 +729,33 @@ export default function TilengaSafariLodgePage() {
         <FadeIn>
           <div className="relative h-[60vh] md:h-[70vh] overflow-hidden group">
             <img
-              src={`${base}/photos/tilengasafarilodge/travel.png`}
+              src={getSiteImageUrl(
+                "lodgeTilengaTravel",
+                `${base}/photos/tilengasafarilodge/travel.png`,
+              )}
               alt="Safari Game Drive"
               className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/90 via-forest-dark/30 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16 lg:p-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
               <div className="max-w-xl">
-                <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-5">VII · On Safari</p>
+                <p className="text-gold font-mono text-[10px] uppercase tracking-[0.5em] mb-5">
+                  VII · On Safari
+                </p>
                 <h3 className="font-serif text-3xl md:text-5xl text-cream leading-tight">
-                  Beyond the lodge,<br /><em className="italic text-gold">Africa is waiting.</em>
+                  Beyond the lodge,
+                  <br />
+                  <em className="italic text-gold">Africa is waiting.</em>
                 </h3>
               </div>
               <div className="shrink-0">
-                <Link href="/plan-a-trip" className="btn-primary">Experience It Yourself</Link>
+                <Link href="/plan-a-trip" className="btn-primary">
+                  Experience It Yourself
+                </Link>
               </div>
             </div>
           </div>
         </FadeIn>
-
       </section>
 
       {/* ── LOCATION & ACCESS ── */}
@@ -518,19 +764,42 @@ export default function TilengaSafariLodgePage() {
           <FadeIn direction="left">
             <p className="section-label mb-3">Find Us</p>
             <h2 className="font-serif text-4xl md:text-5xl text-forest leading-tight mb-6">
-              Location &amp;<br />Getting Here
+              Location &amp;
+              <br />
+              Getting Here
             </h2>
             <div className="w-10 h-px bg-gold mb-8" />
             <div className="space-y-3 mb-8">
               {[
-                { label: "Address", value: "1.7km from Tangi Gate, Karuma–Pakwach Road, Murchison Falls NP" },
-                { label: "Nearest City", value: "Gulu (~2.5 hrs) · Kampala (~4.5–5 hrs)" },
-                { label: "By Air", value: "Pakuba Airstrip — charter flights from Kampala" },
-                { label: "By Road", value: "Well-tarmacked to Tangi Gate; 4WD recommended within the park" },
+                {
+                  label: "Address",
+                  value:
+                    "1.7km from Tangi Gate, Karuma–Pakwach Road, Murchison Falls NP",
+                },
+                {
+                  label: "Nearest City",
+                  value: "Gulu (~2.5 hrs) · Kampala (~4.5–5 hrs)",
+                },
+                {
+                  label: "By Air",
+                  value: "Pakuba Airstrip — charter flights from Kampala",
+                },
+                {
+                  label: "By Road",
+                  value:
+                    "Well-tarmacked to Tangi Gate; 4WD recommended within the park",
+                },
               ].map((item) => (
-                <div key={item.label} className="flex gap-4 text-sm pt-4 border-t border-gold/10">
-                  <span className="text-gold/70 uppercase tracking-widest text-[10px] font-sans w-24 shrink-0 pt-0.5">{item.label}</span>
-                  <span className="text-stone font-sans leading-relaxed">{item.value}</span>
+                <div
+                  key={item.label}
+                  className="flex gap-4 text-sm pt-4 border-t border-gold/10"
+                >
+                  <span className="text-gold/70 uppercase tracking-widest text-[10px] font-sans w-24 shrink-0 pt-0.5">
+                    {item.label}
+                  </span>
+                  <span className="text-stone font-sans leading-relaxed">
+                    {item.value}
+                  </span>
                 </div>
               ))}
             </div>
@@ -538,7 +807,9 @@ export default function TilengaSafariLodgePage() {
 
           <FadeIn direction="right" delay={0.2}>
             <div className="bg-forest-dark p-8">
-              <p className="section-label text-gold mb-6">Distances from Lodge</p>
+              <p className="section-label text-gold mb-6">
+                Distances from Lodge
+              </p>
               <div className="space-y-0">
                 {locationDistances.map((d, i) => (
                   <div
@@ -549,15 +820,20 @@ export default function TilengaSafariLodgePage() {
                       <span className="font-serif text-gold/30 text-lg leading-none w-6 shrink-0">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span className="text-cream/70 font-sans text-sm">{d.place}</span>
+                      <span className="text-cream/70 font-sans text-sm">
+                        {d.place}
+                      </span>
                     </div>
-                    <span className="text-gold font-serif text-base shrink-0 ml-4">{d.distance}</span>
+                    <span className="text-gold font-serif text-base shrink-0 ml-4">
+                      {d.distance}
+                    </span>
                   </div>
                 ))}
               </div>
               <div className="mt-8 pt-6 border-t border-white/10">
                 <p className="text-cream/40 font-sans text-xs leading-relaxed">
-                  Transfer arrangements from Kampala or Gulu available on request. Contact us to arrange.
+                  Transfer arrangements from Kampala or Gulu available on
+                  request. Contact us to arrange.
                 </p>
               </div>
             </div>
@@ -566,12 +842,14 @@ export default function TilengaSafariLodgePage() {
       </section>
 
       {/* ── BOOKING & CONTACT ── */}
-      <section id="booking" className="bg-[#0c1c11] py-24 md:py-40 px-6 md:px-16 overflow-hidden relative">
+      <section
+        id="booking"
+        className="bg-[#0c1c11] py-24 md:py-40 px-6 md:px-16 overflow-hidden relative"
+      >
         <div className="absolute inset-0 grain-overlay opacity-[0.03] pointer-events-none" />
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-20 lg:gap-32 items-center">
-            
             {/* Left: Narrative & Branding */}
             <FadeIn direction="left">
               <div className="flex items-center gap-4 mb-8">
@@ -580,18 +858,24 @@ export default function TilengaSafariLodgePage() {
               </div>
               <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl text-cream leading-[0.9] uppercase tracking-tighter mb-10">
                 Book Tilenga <br />
-                <span className="italic text-gold lowercase tracking-normal pl-8 md:pl-20">Safari Lodge</span>
+                <span className="italic text-gold lowercase tracking-normal pl-8 md:pl-20">
+                  Safari Lodge
+                </span>
               </h2>
               <div className="space-y-6 text-cream/50 font-sans text-base md:text-lg leading-relaxed max-w-lg mb-12">
                 <p>
-                  Experience the thundering energy of Murchison Falls and the quiet rhythm of the Nile. Our reservations team is ready to assist you in securing your sanctuary at the park&apos;s edge.
+                  Experience the thundering energy of Murchison Falls and the
+                  quiet rhythm of the Nile. Our reservations team is ready to
+                  assist you in securing your sanctuary at the park&apos;s edge.
                 </p>
               </div>
-              
+
               {/* Feature Pill */}
               <div className="inline-flex items-center gap-4 bg-white/5 border border-white/10 px-6 py-4 backdrop-blur-sm">
                 <span className="text-gold text-xl">✦</span>
-                <p className="text-cream text-[10px] uppercase tracking-[0.3em] font-bold">In-Park Professional Guiding Available</p>
+                <p className="text-cream text-[10px] uppercase tracking-[0.3em] font-bold">
+                  In-Park Professional Guiding Available
+                </p>
               </div>
             </FadeIn>
 
@@ -600,32 +884,49 @@ export default function TilengaSafariLodgePage() {
               <div className="bg-forest-dark p-10 md:p-16 border border-gold/20 shadow-2xl relative group">
                 {/* Decorative Elements */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gold/[0.03] rounded-full -mr-16 -mt-16 group-hover:scale-110 transition-transform duration-1000" />
-                
+
                 <div className="space-y-12 relative z-10">
                   <div className="grid sm:grid-cols-2 gap-10">
                     <div>
-                      <p className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold mb-4">Phone</p>
-                      <a href="tel:+256789390350" className="font-serif text-xl md:text-2xl text-cream hover:text-gold transition-colors block leading-none">
+                      <p className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold mb-4">
+                        Phone
+                      </p>
+                      <a
+                        href="tel:+256789390350"
+                        className="font-serif text-xl md:text-2xl text-cream hover:text-gold transition-colors block leading-none"
+                      >
                         +256 789 390 350
                       </a>
                     </div>
                     <div>
-                      <p className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold mb-4">Phone 2</p>
-                      <a href="tel:+256703999688" className="font-serif text-xl md:text-2xl text-cream hover:text-gold transition-colors block leading-none">
+                      <p className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold mb-4">
+                        Phone 2
+                      </p>
+                      <a
+                        href="tel:+256703999688"
+                        className="font-serif text-xl md:text-2xl text-cream hover:text-gold transition-colors block leading-none"
+                      >
                         +256 703 999 688
                       </a>
                     </div>
                   </div>
 
                   <div>
-                    <p className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold mb-4">Email</p>
-                    <a href="mailto:booking@tilengasafarilodge.com" className="font-serif text-xl md:text-2xl text-cream hover:text-gold transition-colors block break-all leading-none">
+                    <p className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold mb-4">
+                      Email
+                    </p>
+                    <a
+                      href="mailto:booking@tilengasafarilodge.com"
+                      className="font-serif text-xl md:text-2xl text-cream hover:text-gold transition-colors block break-all leading-none"
+                    >
                       booking@tilengasafarilodge.com
                     </a>
                   </div>
 
                   <div>
-                    <p className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold mb-4">Location</p>
+                    <p className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold mb-4">
+                      Location
+                    </p>
                     <p className="font-sans text-cream/70 text-sm leading-relaxed">
                       Northern park boundary, Murchison Falls NP, Uganda
                     </p>
@@ -633,12 +934,15 @@ export default function TilengaSafariLodgePage() {
 
                   <div className="pt-8 border-t border-white/10">
                     <div className="flex flex-col sm:flex-row gap-4">
-                      <Link href="/plan-a-trip" className="btn-primary flex-1 text-center">
+                      <Link
+                        href="/plan-a-trip"
+                        className="btn-primary flex-1 text-center"
+                      >
                         Plan a Full Itinerary
                       </Link>
-                      <a 
-                        href="https://wa.me/256789390350" 
-                        target="_blank" 
+                      <a
+                        href="https://wa.me/256789390350"
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="btn-outline flex-1 text-center border-white/20 text-cream hover:bg-white hover:text-forest"
                       >
@@ -649,7 +953,6 @@ export default function TilengaSafariLodgePage() {
                 </div>
               </div>
             </FadeIn>
-
           </div>
         </div>
       </section>

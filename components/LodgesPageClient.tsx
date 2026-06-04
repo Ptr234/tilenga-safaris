@@ -4,6 +4,7 @@ import Link from "next/link";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { urlForImage } from "@/lib/sanity.image";
+import useSiteImages from "@/lib/useSiteImages";
 import { Lodge } from "@/types/sanity";
 
 interface LodgesPageClientProps {
@@ -29,6 +30,12 @@ const pillars = [
 ];
 
 export default function LodgesPageClient({ lodges }: LodgesPageClientProps) {
+  const siteImages = useSiteImages();
+  const getSiteImageUrl = (key: string, fallback: string) => {
+    const image = siteImages?.[key]?.image;
+    return image ? urlForImage(image).url() : fallback;
+  };
+
   return (
     <>
       {/* ── HERO ── */}
@@ -36,7 +43,7 @@ export default function LodgesPageClient({ lodges }: LodgesPageClientProps) {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url(/photos/kikorongo_room1.jpg)",
+            backgroundImage: `url('${getSiteImageUrl("lodgeKikorongoHero", "/photos/kikorongo_room1.jpg")}')`,
             backgroundSize: "cover",
             backgroundPosition: "center 40%",
           }}
@@ -53,18 +60,25 @@ export default function LodgesPageClient({ lodges }: LodgesPageClientProps) {
           </FadeIn>
           <FadeIn direction="up" delay={0.25}>
             <h1 className="font-serif text-6xl md:text-8xl lg:text-[7.5rem] text-cream leading-[0.9] mb-6 uppercase tracking-[0.15em]">
-              Our<br /><em className="not-italic text-gold">Lodges</em>
+              Our
+              <br />
+              <em className="not-italic text-gold">Lodges</em>
             </h1>
           </FadeIn>
           <FadeIn direction="up" delay={0.42}>
             <p className="text-cream/55 font-sans text-base md:text-lg leading-relaxed max-w-md mb-12">
-              Two iconic sanctuaries. Positioned at the entrance gates of Uganda&apos;s most spectacular wilderness.
+              Two iconic sanctuaries. Positioned at the entrance gates of
+              Uganda&apos;s most spectacular wilderness.
             </p>
           </FadeIn>
           <FadeIn direction="up" delay={0.56}>
             <div className="flex flex-col sm:flex-row gap-6">
               {lodges.map((lodge) => (
-                <Link key={lodge.name} href={lodge.href} className="btn-primary px-10">
+                <Link
+                  key={lodge.name}
+                  href={lodge.href}
+                  className="btn-primary px-10"
+                >
                   {lodge.name}
                 </Link>
               ))}
@@ -74,7 +88,9 @@ export default function LodgesPageClient({ lodges }: LodgesPageClientProps) {
 
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 pointer-events-none">
           <div className="w-px h-10 bg-gold/35 animate-pulse" />
-          <p className="text-gold/35 text-[9px] uppercase tracking-widest font-sans">Scroll</p>
+          <p className="text-gold/35 text-[9px] uppercase tracking-widest font-sans">
+            Scroll
+          </p>
         </div>
       </section>
 
@@ -84,7 +100,7 @@ export default function LodgesPageClient({ lodges }: LodgesPageClientProps) {
         const nameParts = lodge.name.split(" ");
         const nameA = nameParts[0];
         const nameB = nameParts.slice(1).join(" ");
-        
+
         return (
           <section
             key={lodge.name}
@@ -92,7 +108,9 @@ export default function LodgesPageClient({ lodges }: LodgesPageClientProps) {
             style={{ minHeight: "90vh" }}
           >
             {/* Image panel */}
-            <div className={`relative min-h-[60vh] md:min-h-0 ${isEven ? "md:order-1" : "md:order-2"}`}>
+            <div
+              className={`relative min-h-[60vh] md:min-h-0 ${isEven ? "md:order-1" : "md:order-2"}`}
+            >
               <div className="absolute inset-0 overflow-hidden film-frame m-2">
                 <img
                   src={urlForImage(lodge.image).url()}
@@ -105,7 +123,11 @@ export default function LodgesPageClient({ lodges }: LodgesPageClientProps) {
               <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/10 via-transparent to-forest-dark/80 pointer-events-none z-[1]" />
 
               {/* Park badge */}
-              <FadeIn direction="down" delay={0.5} className="absolute top-10 left-10 z-10">
+              <FadeIn
+                direction="down"
+                delay={0.5}
+                className="absolute top-10 left-10 z-10"
+              >
                 <span className="bg-gold text-forest-dark text-[10px] uppercase tracking-[0.25em] font-sans font-bold px-5 py-2.5">
                   {lodge.location}
                 </span>
@@ -113,12 +135,23 @@ export default function LodgesPageClient({ lodges }: LodgesPageClientProps) {
 
               {/* Stats bar */}
               {lodge.stats && (
-                <FadeIn direction="fade" delay={0.7} className="absolute bottom-6 left-6 right-6 z-10">
+                <FadeIn
+                  direction="fade"
+                  delay={0.7}
+                  className="absolute bottom-6 left-6 right-6 z-10"
+                >
                   <div className="flex divide-x divide-white/10 bg-forest-dark/90 backdrop-blur-md border border-white/5 shadow-2xl">
                     {lodge.stats.map((stat) => (
-                      <div key={stat.label} className="flex-1 px-6 py-6 text-center">
-                        <p className="font-serif text-2xl md:text-3xl text-gold">{stat.value}</p>
-                        <p className="text-cream/40 text-[9px] uppercase tracking-widest font-sans mt-2">{stat.label}</p>
+                      <div
+                        key={stat.label}
+                        className="flex-1 px-6 py-6 text-center"
+                      >
+                        <p className="font-serif text-2xl md:text-3xl text-gold">
+                          {stat.value}
+                        </p>
+                        <p className="text-cream/40 text-[9px] uppercase tracking-widest font-sans mt-2">
+                          {stat.label}
+                        </p>
                       </div>
                     ))}
                   </div>
@@ -127,11 +160,14 @@ export default function LodgesPageClient({ lodges }: LodgesPageClientProps) {
             </div>
 
             {/* Content panel */}
-            <div className={`${isEven ? "bg-forest-dark" : "bg-forest"} flex flex-col justify-center px-12 md:px-20 py-20 md:py-24 ${isEven ? "md:order-2" : "md:order-1"}`}>
+            <div
+              className={`${isEven ? "bg-forest-dark" : "bg-forest"} flex flex-col justify-center px-12 md:px-20 py-20 md:py-24 ${isEven ? "md:order-2" : "md:order-1"}`}
+            >
               <FadeIn direction={isEven ? "right" : "left"} delay={0.2}>
                 <p className="section-label text-gold mb-6">{lodge.tag}</p>
                 <h2 className="font-serif text-5xl md:text-7xl text-cream leading-[0.95] uppercase tracking-[0.15em]">
-                  {nameA}<br />
+                  {nameA}
+                  <br />
                   <em className="not-italic text-gold">{nameB}</em>
                 </h2>
                 <div className="w-16 h-px bg-gold my-10" />
@@ -157,7 +193,9 @@ export default function LodgesPageClient({ lodges }: LodgesPageClientProps) {
                   className="inline-flex items-center gap-4 text-cream/80 hover:text-gold font-sans text-xs uppercase tracking-[0.25em] transition-colors duration-300 group self-start border-b border-cream/20 hover:border-gold pb-3"
                 >
                   Explore Sanctuary
-                  <span className="transition-transform duration-300 group-hover:translate-x-2">→</span>
+                  <span className="transition-transform duration-300 group-hover:translate-x-2">
+                    →
+                  </span>
                 </Link>
               </FadeIn>
             </div>
@@ -184,9 +222,13 @@ export default function LodgesPageClient({ lodges }: LodgesPageClientProps) {
               <p className="font-serif text-7xl text-gold/10 group-hover:text-gold/25 transition-colors duration-500 leading-none mb-8">
                 {p.number}
               </p>
-              <h3 className="font-serif text-2xl text-forest mb-5 uppercase tracking-wide">{p.title}</h3>
+              <h3 className="font-serif text-2xl text-forest mb-5 uppercase tracking-wide">
+                {p.title}
+              </h3>
               <div className="w-10 h-px bg-gold/40 mb-6 group-hover:w-16 transition-all duration-500" />
-              <p className="text-stone font-sans text-base leading-relaxed">{p.desc}</p>
+              <p className="text-stone font-sans text-base leading-relaxed">
+                {p.desc}
+              </p>
             </StaggerItem>
           ))}
         </StaggerGrid>
@@ -195,21 +237,38 @@ export default function LodgesPageClient({ lodges }: LodgesPageClientProps) {
       {/* ── CTA ── */}
       <section className="bg-forest-dark py-32 px-8 md:px-20 relative overflow-hidden text-center">
         <div className="absolute inset-0 opacity-20">
-          <img src="/photos/kikorongo_room1.jpg" alt="CTA bg" className="w-full h-full object-cover" />
+          <img
+            src={getSiteImageUrl(
+              "lodgeKikorongoHero",
+              "/photos/kikorongo_room1.jpg",
+            )}
+            alt="CTA background"
+            className="w-full h-full object-cover"
+          />
         </div>
         <div className="absolute inset-0 bg-forest-dark/80" />
-        
+
         <FadeIn className="relative z-10 max-w-2xl mx-auto text-center">
           <div className="w-16 h-px bg-gold/40 mx-auto mb-10" />
           <h2 className="font-serif text-4xl md:text-6xl text-cream leading-tight mb-6 uppercase tracking-[0.15em]">
-            Ready to Book<br />Your Sanctuary?
+            Ready to Book
+            <br />
+            Your Sanctuary?
           </h2>
           <p className="text-cream/50 font-sans text-base leading-relaxed mb-12 max-w-sm mx-auto">
-            Contact our specialists for availability, private camp arrangements, or to bundle your stay into a full safari.
+            Contact our specialists for availability, private camp arrangements,
+            or to bundle your stay into a full safari.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link href="/plan-a-trip" className="btn-primary px-10">Plan My Safari</Link>
-            <a href="mailto:destinations@tilengasafaris.com" className="btn-ghost px-10">Speak to an Expert</a>
+            <Link href="/plan-a-trip" className="btn-primary px-10">
+              Plan My Safari
+            </Link>
+            <a
+              href="mailto:destinations@tilengasafaris.com"
+              className="btn-ghost px-10"
+            >
+              Speak to an Expert
+            </a>
           </div>
         </FadeIn>
       </section>

@@ -8,6 +8,8 @@ import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
 import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
+import useSiteImages from "@/lib/useSiteImages";
+import { getSiteImageUrl } from "@/lib/siteImageHelpers";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -52,12 +54,28 @@ const packages = [
     price: "From $1,200 · Min. 2 participants",
     description:
       "Stone Town tour, Prison Island, Safari Blue, snorkeling at Mnemba, and turtle swimming at Nungwi — the perfect Indian Ocean escape with coastal luxury.",
-    activities: ["Stone Town tour", "Prison Island", "Safari Blue", "Mnemba snorkeling", "Turtle swimming"],
-    image: "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=700&q=85",
+    activities: [
+      "Stone Town tour",
+      "Prison Island",
+      "Safari Blue",
+      "Mnemba snorkeling",
+      "Turtle swimming",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=700&q=85",
     itinerary: [
-      { days: "Days 1–2", desc: "Arrive Zanzibar; UNESCO Stone Town walking tour and Prison Island tortoise sanctuary." },
-      { days: "Days 3–4", desc: "Safari Blue sailing trip through mangroves; Mnemba Atoll snorkeling and dolphin watching." },
-      { days: "Days 5–6", desc: "Nungwi turtle swimming sanctuary, beach relaxation and sunset farewell, departure." },
+      {
+        days: "Days 1–2",
+        desc: "Arrive Zanzibar; UNESCO Stone Town walking tour and Prison Island tortoise sanctuary.",
+      },
+      {
+        days: "Days 3–4",
+        desc: "Safari Blue sailing trip through mangroves; Mnemba Atoll snorkeling and dolphin watching.",
+      },
+      {
+        days: "Days 5–6",
+        desc: "Nungwi turtle swimming sanctuary, beach relaxation and sunset farewell, departure.",
+      },
     ],
   },
   {
@@ -67,17 +85,37 @@ const packages = [
     price: "From $1,200 · Min. 2 participants",
     description:
       "Enjoy Stone Town, a Spice Tour, Jozani Forest with red colobus monkeys, and a dolphin swim — then relax on white-sand beaches as the sun sets over the Indian Ocean.",
-    activities: ["Stone Town", "Prison Island", "Spice Tour", "Jozani Forest", "Dolphin swimming"],
-    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=700&q=85",
+    activities: [
+      "Stone Town",
+      "Prison Island",
+      "Spice Tour",
+      "Jozani Forest",
+      "Dolphin swimming",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=700&q=85",
     itinerary: [
-      { days: "Days 1–2", desc: "Arrive Zanzibar; Stone Town & Prison Island, spice market wander and dhow sunset cruise." },
-      { days: "Days 3–4", desc: "Spice farm tour and Jozani Forest — home to rare red colobus monkeys." },
-      { days: "Days 5–7", desc: "Dolphin swimming excursion, white-sand beach relaxation, farewell dinner, departure." },
+      {
+        days: "Days 1–2",
+        desc: "Arrive Zanzibar; Stone Town & Prison Island, spice market wander and dhow sunset cruise.",
+      },
+      {
+        days: "Days 3–4",
+        desc: "Spice farm tour and Jozani Forest — home to rare red colobus monkeys.",
+      },
+      {
+        days: "Days 5–7",
+        desc: "Dolphin swimming excursion, white-sand beach relaxation, farewell dinner, departure.",
+      },
     ],
   },
 ];
 
 export default function TanzaniaPage() {
+  const siteImages = useSiteImages();
+  const getSiteImageUrlLocal = (key: string, fallback: string) =>
+    getSiteImageUrl(siteImages, key, fallback);
+
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [activePackage, setActivePackage] = useState("");
@@ -99,8 +137,7 @@ export default function TanzaniaPage() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage:
-              `url(${base}/photos/newstock/SerengetiNationaLPark.jpg)`,
+            backgroundImage: `url('${getSiteImageUrlLocal("destinationTanzaniaHero", `${base}/photos/newstock/SerengetiNationaLPark.jpg`)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -183,7 +220,10 @@ export default function TanzaniaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src={`${base}/photos/newstock/bigelephant.jpg`}
+                src={getSiteImageUrlLocal(
+                  "destinationTanzaniaElephantHerd",
+                  `${base}/photos/newstock/bigelephant.jpg`,
+                )}
                 alt="Tanzania elephant herd"
                 className="w-full h-52 object-cover"
               />
@@ -194,7 +234,10 @@ export default function TanzaniaPage() {
               className="overflow-hidden mt-6"
             >
               <img
-                src={`${base}/photos/newstock/Tarangire-National-Park1.jpg`}
+                src={getSiteImageUrlLocal(
+                  "destinationTanzaniaTarangire",
+                  `${base}/photos/newstock/Tarangire-National-Park1.jpg`,
+                )}
                 alt="Tarangire National Park"
                 className="w-full h-52 object-cover"
               />
@@ -253,48 +296,77 @@ export default function TanzaniaPage() {
                 Tanzania Tour Packages
               </h2>
             </div>
-            <Link href="/plan-a-trip" className="btn-primary shrink-0 self-start md:self-end">
+            <Link
+              href="/plan-a-trip"
+              className="btn-primary shrink-0 self-start md:self-end"
+            >
               Get a Custom Quote
             </Link>
           </FadeIn>
           <div className="space-y-20">
             {packages.map((pkg) => (
-              <div key={pkg.name} className="grid md:grid-cols-2 gap-12 items-start border-b border-gold/10 pb-20 last:border-0 last:pb-0">
+              <div
+                key={pkg.name}
+                className="grid md:grid-cols-2 gap-12 items-start border-b border-gold/10 pb-20 last:border-0 last:pb-0"
+              >
                 <div className="relative overflow-hidden aspect-[4/3]">
-                  <img src={pkg.image} alt={pkg.name} className="w-full h-full object-cover" />
+                  <img
+                    src={pkg.image}
+                    alt={pkg.name}
+                    className="w-full h-full object-cover"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-transparent to-transparent" />
-                  <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">{pkg.duration}</span>
+                  <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">
+                    {pkg.duration}
+                  </span>
                 </div>
                 <div>
                   <p className="section-label mb-2">{pkg.tagline}</p>
-                  <h3 className="font-serif text-3xl text-forest mb-4">{pkg.name}</h3>
+                  <h3 className="font-serif text-3xl text-forest mb-4">
+                    {pkg.name}
+                  </h3>
                   <div className="w-10 h-px bg-gold mb-6" />
-                  <p className="text-stone font-sans text-sm leading-relaxed mb-8">{pkg.description}</p>
+                  <p className="text-stone font-sans text-sm leading-relaxed mb-8">
+                    {pkg.description}
+                  </p>
                   <div className="space-y-4 mb-8">
                     {pkg.itinerary.map((item) => (
-                      <div key={item.days} className="flex gap-4 border-t border-gold/10 pt-4">
-                        <span className="text-gold text-[10px] uppercase tracking-widest font-sans w-20 shrink-0 pt-0.5">{item.days}</span>
-                        <span className="text-stone font-sans text-sm leading-relaxed">{item.desc}</span>
+                      <div
+                        key={item.days}
+                        className="flex gap-4 border-t border-gold/10 pt-4"
+                      >
+                        <span className="text-gold text-[10px] uppercase tracking-widest font-sans w-20 shrink-0 pt-0.5">
+                          {item.days}
+                        </span>
+                        <span className="text-stone font-sans text-sm leading-relaxed">
+                          {item.desc}
+                        </span>
                       </div>
                     ))}
                   </div>
                   <div className="flex flex-wrap gap-2 mb-8">
                     {pkg.activities.map((act) => (
-                      <span key={act} className="text-[10px] uppercase tracking-widest font-sans border border-gold/30 text-forest/70 px-3 py-1.5 flex items-center gap-2">
-                        <span className="w-1 h-1 rounded-full bg-gold" />{act}
+                      <span
+                        key={act}
+                        className="text-[10px] uppercase tracking-widest font-sans border border-gold/30 text-forest/70 px-3 py-1.5 flex items-center gap-2"
+                      >
+                        <span className="w-1 h-1 rounded-full bg-gold" />
+                        {act}
                       </span>
                     ))}
                   </div>
                   <div className="flex flex-wrap items-center justify-between gap-4">
-                    <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
+                    <span className="font-serif italic text-gold text-sm">
+                      {pkg.price}
+                    </span>
                     <div className="flex gap-4">
-                      <button 
+                      <button
                         onClick={() => handleDownload(pkg.name)}
                         className="btn-outline !px-6 !py-2.5 text-[11px]"
                       >
                         Download Detailed Itinerary
                       </button>
-                      <button 
+                      <button
                         onClick={() => handleEnquiry(pkg.name)}
                         className="btn-primary !px-6 !py-2.5 text-[11px]"
                       >
@@ -308,11 +380,19 @@ export default function TanzaniaPage() {
           </div>
 
           <FadeIn className="mt-20 p-8 border border-gold/20 bg-forest-dark/5 text-center">
-            <h4 className="font-serif text-2xl text-forest mb-4">Discover More of Tanzania</h4>
+            <h4 className="font-serif text-2xl text-forest mb-4">
+              Discover More of Tanzania
+            </h4>
             <p className="text-stone font-sans text-sm mb-6 max-w-2xl mx-auto">
-              We offer several other Tanzania itineraries, including Mount Kilimanjaro climbing expeditions, multi-country East Africa migrations, and private Serengeti fly-in safaris. All tours can be delivered upon request.
+              We offer several other Tanzania itineraries, including Mount
+              Kilimanjaro climbing expeditions, multi-country East Africa
+              migrations, and private Serengeti fly-in safaris. All tours can be
+              delivered upon request.
             </p>
-            <Link href="/plan-a-trip" className="text-gold uppercase tracking-widest text-xs font-bold hover:text-forest transition-colors">
+            <Link
+              href="/plan-a-trip"
+              className="text-gold uppercase tracking-widest text-xs font-bold hover:text-forest transition-colors"
+            >
               Request Custom Itinerary &rarr;
             </Link>
           </FadeIn>
@@ -335,16 +415,16 @@ export default function TanzaniaPage() {
         </FadeIn>
       </section>
 
-      <ItineraryDownloadPopup 
-        isOpen={isDownloadOpen} 
-        onClose={() => setIsDownloadOpen(false)} 
-        packageName={activePackage} 
+      <ItineraryDownloadPopup
+        isOpen={isDownloadOpen}
+        onClose={() => setIsDownloadOpen(false)}
+        packageName={activePackage}
       />
 
-      <PackageEnquiryPopup 
-        isOpen={isEnquiryOpen} 
-        onClose={() => setIsEnquiryOpen(false)} 
-        packageName={activePackage} 
+      <PackageEnquiryPopup
+        isOpen={isEnquiryOpen}
+        onClose={() => setIsEnquiryOpen(false)}
+        packageName={activePackage}
       />
     </>
   );

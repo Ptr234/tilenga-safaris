@@ -8,6 +8,8 @@ import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
 import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
+import useSiteImages from "@/lib/useSiteImages";
+import { getSiteImageUrl } from "@/lib/siteImageHelpers";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -20,7 +22,8 @@ const hotspots = [
   {
     name: "Murchison Falls",
     detail: "The World's Most Powerful Waterfall",
-    image: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=900&q=85",
+    image:
+      "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=900&q=85",
   },
   {
     name: "Queen Elizabeth NP",
@@ -62,13 +65,28 @@ const packages = [
     price: "From $2,000 / person (2+ pax)",
     description:
       "Comprehensive safari combining the world’s most powerful waterfalls with Uganda’s largest national park — game drives, boat cruises, birding, nature walks, and sunset viewing.",
-    activities: ["Waterfall visits", "Game drives", "Boat cruises", "Nature walks", "Sunset viewing"],
+    activities: [
+      "Waterfall visits",
+      "Game drives",
+      "Boat cruises",
+      "Nature walks",
+      "Sunset viewing",
+    ],
     image: `${base}/photos/newstock/Big-Five-Game-Drives.jpg`,
     downloadUrl: `${base}/photos/newstock/5-DAY-WILDLIFE-SAFARI-IN-UGANDA-4.pdf`,
     itinerary: [
-      { days: "Days 1–2", desc: "Depart Kampala for Murchison Falls; hike to the top of the falls, afternoon game drive." },
-      { days: "Days 3–4", desc: "Boat cruise on the Victoria Nile, drive to Queen Elizabeth NP, Big Four game drives." },
-      { days: "Day 5", desc: "Kazinga Channel boat cruise, Rift Valley sunset viewing, return journey." },
+      {
+        days: "Days 1–2",
+        desc: "Depart Kampala for Murchison Falls; hike to the top of the falls, afternoon game drive.",
+      },
+      {
+        days: "Days 3–4",
+        desc: "Boat cruise on the Victoria Nile, drive to Queen Elizabeth NP, Big Four game drives.",
+      },
+      {
+        days: "Day 5",
+        desc: "Kazinga Channel boat cruise, Rift Valley sunset viewing, return journey.",
+      },
     ],
   },
   {
@@ -78,18 +96,36 @@ const packages = [
     price: "From $2,800 (2+ pax)",
     description:
       "Trek into Bwindi Impenetrable National Park — across four sectors (Ruhija, Rushaga, Buhoma, Nkuringo) — for a life-changing hour with mountain gorilla families. Maximum 8 people per gorilla family.",
-    activities: ["Gorilla trekking in Bwindi", "Four sector options", "Forest walk", "Community visit"],
+    activities: [
+      "Gorilla trekking in Bwindi",
+      "Four sector options",
+      "Forest walk",
+      "Community visit",
+    ],
     image: `${base}/photos/newstock/gorrillla.jpg`,
     downloadUrl: `${base}/itineraries/3 DAYS GORILLA TRACKING IN UGANDA -  TILENGA SAFARIS 2026.docx`,
     itinerary: [
-      { days: "Day 1", desc: "Fly or drive to Bwindi; orientation briefing with ranger team and overnight at forest lodge." },
-      { days: "Day 2", desc: "Morning gorilla trek deep into the impenetrable forest — one unforgettable hour with a gorilla family." },
-      { days: "Day 3", desc: "Batwa cultural community visit and forest walk, return transfer." },
+      {
+        days: "Day 1",
+        desc: "Fly or drive to Bwindi; orientation briefing with ranger team and overnight at forest lodge.",
+      },
+      {
+        days: "Day 2",
+        desc: "Morning gorilla trek deep into the impenetrable forest — one unforgettable hour with a gorilla family.",
+      },
+      {
+        days: "Day 3",
+        desc: "Batwa cultural community visit and forest walk, return transfer.",
+      },
     ],
   },
 ];
 
 export default function UgandaPage() {
+  const siteImages = useSiteImages();
+  const getSiteImageUrlLocal = (key: string, fallback: string) =>
+    getSiteImageUrl(siteImages, key, fallback);
+
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [activePackage, setActivePackage] = useState("");
@@ -111,8 +147,7 @@ export default function UgandaPage() {
         <div
           className="absolute inset-0 scale-110 transition-transform duration-[8000ms]"
           style={{
-            backgroundImage:
-              `url(${base}/photos/newstock/UgandaDestinationHero.jpg)`,
+            backgroundImage: `url('${getSiteImageUrlLocal("destinationUgandaHero", `${base}/photos/newstock/UgandaDestinationHero.jpg`)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -206,7 +241,10 @@ export default function UgandaPage() {
               className="overflow-hidden mt-6"
             >
               <img
-                src={`${base}/photos/newstock/Source-of-the-Nile2.jpg`}
+                src={getSiteImageUrlLocal(
+                  "destinationUgandaSourceOfNile2",
+                  `${base}/photos/newstock/Source-of-the-Nile2.jpg`,
+                )}
                 alt="Source of the Nile, Uganda"
                 className="w-full h-52 object-cover"
               />
@@ -265,48 +303,77 @@ export default function UgandaPage() {
                 Uganda Tour Packages
               </h2>
             </div>
-            <Link href="/plan-a-trip" className="btn-primary shrink-0 self-start md:self-end">
+            <Link
+              href="/plan-a-trip"
+              className="btn-primary shrink-0 self-start md:self-end"
+            >
               Get a Custom Quote
             </Link>
           </FadeIn>
           <div className="space-y-20">
             {packages.map((pkg) => (
-              <div key={pkg.name} className="grid md:grid-cols-2 gap-12 items-start border-b border-gold/10 pb-20 last:border-0 last:pb-0">
+              <div
+                key={pkg.name}
+                className="grid md:grid-cols-2 gap-12 items-start border-b border-gold/10 pb-20 last:border-0 last:pb-0"
+              >
                 <div className="relative overflow-hidden aspect-[4/3]">
-                  <img src={pkg.image} alt={pkg.name} className="w-full h-full object-cover" />
+                  <img
+                    src={pkg.image}
+                    alt={pkg.name}
+                    className="w-full h-full object-cover"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-transparent to-transparent" />
-                  <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">{pkg.duration}</span>
+                  <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">
+                    {pkg.duration}
+                  </span>
                 </div>
                 <div>
                   <p className="section-label mb-2">{pkg.tagline}</p>
-                  <h3 className="font-serif text-3xl text-forest mb-4">{pkg.name}</h3>
+                  <h3 className="font-serif text-3xl text-forest mb-4">
+                    {pkg.name}
+                  </h3>
                   <div className="w-10 h-px bg-gold mb-6" />
-                  <p className="text-stone font-sans text-sm leading-relaxed mb-8">{pkg.description}</p>
+                  <p className="text-stone font-sans text-sm leading-relaxed mb-8">
+                    {pkg.description}
+                  </p>
                   <div className="space-y-4 mb-8">
                     {pkg.itinerary.map((item) => (
-                      <div key={item.days} className="flex gap-4 border-t border-gold/10 pt-4">
-                        <span className="text-gold text-[10px] uppercase tracking-widest font-sans w-20 shrink-0 pt-0.5">{item.days}</span>
-                        <span className="text-stone font-sans text-sm leading-relaxed">{item.desc}</span>
+                      <div
+                        key={item.days}
+                        className="flex gap-4 border-t border-gold/10 pt-4"
+                      >
+                        <span className="text-gold text-[10px] uppercase tracking-widest font-sans w-20 shrink-0 pt-0.5">
+                          {item.days}
+                        </span>
+                        <span className="text-stone font-sans text-sm leading-relaxed">
+                          {item.desc}
+                        </span>
                       </div>
                     ))}
                   </div>
                   <div className="flex flex-wrap gap-2 mb-8">
                     {pkg.activities.map((act) => (
-                      <span key={act} className="text-[10px] uppercase tracking-widest font-sans border border-gold/30 text-forest/70 px-3 py-1.5 flex items-center gap-2">
-                        <span className="w-1 h-1 rounded-full bg-gold" />{act}
+                      <span
+                        key={act}
+                        className="text-[10px] uppercase tracking-widest font-sans border border-gold/30 text-forest/70 px-3 py-1.5 flex items-center gap-2"
+                      >
+                        <span className="w-1 h-1 rounded-full bg-gold" />
+                        {act}
                       </span>
                     ))}
                   </div>
                   <div className="flex flex-wrap items-center justify-between gap-4">
-                    <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
+                    <span className="font-serif italic text-gold text-sm">
+                      {pkg.price}
+                    </span>
                     <div className="flex gap-4">
-                      <button 
+                      <button
                         onClick={() => handleDownload(pkg.name)}
                         className="btn-outline !px-6 !py-2.5 text-[11px]"
                       >
                         Download Detailed Itinerary
                       </button>
-                      <button 
+                      <button
                         onClick={() => handleEnquiry(pkg.name)}
                         className="btn-primary !px-6 !py-2.5 text-[11px]"
                       >
@@ -320,11 +387,19 @@ export default function UgandaPage() {
           </div>
 
           <FadeIn className="mt-20 p-8 border border-gold/20 bg-forest-dark/5 text-center">
-            <h4 className="font-serif text-2xl text-forest mb-4">Looking for something else?</h4>
+            <h4 className="font-serif text-2xl text-forest mb-4">
+              Looking for something else?
+            </h4>
             <p className="text-stone font-sans text-sm mb-6 max-w-2xl mx-auto">
-              We have a wide range of additional Uganda itineraries, including primate-specific treks, bird-watching tours, and cross-border experiences. All our tours can be delivered upon request and tailored to your specific interests.
+              We have a wide range of additional Uganda itineraries, including
+              primate-specific treks, bird-watching tours, and cross-border
+              experiences. All our tours can be delivered upon request and
+              tailored to your specific interests.
             </p>
-            <Link href="/plan-a-trip" className="text-gold uppercase tracking-widest text-xs font-bold hover:text-forest transition-colors">
+            <Link
+              href="/plan-a-trip"
+              className="text-gold uppercase tracking-widest text-xs font-bold hover:text-forest transition-colors"
+            >
               Request More Itineraries &rarr;
             </Link>
           </FadeIn>
@@ -352,16 +427,16 @@ export default function UgandaPage() {
         </FadeIn>
       </section>
 
-      <ItineraryDownloadPopup 
-        isOpen={isDownloadOpen} 
-        onClose={() => setIsDownloadOpen(false)} 
-        packageName={activePackage} 
+      <ItineraryDownloadPopup
+        isOpen={isDownloadOpen}
+        onClose={() => setIsDownloadOpen(false)}
+        packageName={activePackage}
       />
 
-      <PackageEnquiryPopup 
-        isOpen={isEnquiryOpen} 
-        onClose={() => setIsEnquiryOpen(false)} 
-        packageName={activePackage} 
+      <PackageEnquiryPopup
+        isOpen={isEnquiryOpen}
+        onClose={() => setIsEnquiryOpen(false)}
+        packageName={activePackage}
       />
     </>
   );

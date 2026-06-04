@@ -8,6 +8,8 @@ import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
 import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
+import useSiteImages from "@/lib/useSiteImages";
+import { getSiteImageUrl } from "@/lib/siteImageHelpers";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -62,12 +64,26 @@ const packages = [
     price: "From $4,000 / person",
     description:
       "Fly into the heart of the Okavango Delta for an intimate safari by mokoro, motorboat, and game drive — encountering elephant, lion, leopard, and wild dog in Africa's most pristine wilderness.",
-    activities: ["Mokoro canoe excursions", "Moremi game drives", "Walking safaris", "Night drives"],
+    activities: [
+      "Mokoro canoe excursions",
+      "Moremi game drives",
+      "Walking safaris",
+      "Night drives",
+    ],
     image: `${base}/photos/newstock/Elephantfamily.jpg`,
     itinerary: [
-      { days: "Days 1–2", desc: "Fly into Maun; light aircraft transfer deep into the Okavango Delta, first mokoro excursion." },
-      { days: "Days 3–5", desc: "Moremi Game Reserve game drives, walking safaris with expert guides, hippo pod encounters." },
-      { days: "Days 6–7", desc: "Night drives for nocturnal predators, farewell sundowner on the floodplains, fly out to Maun." },
+      {
+        days: "Days 1–2",
+        desc: "Fly into Maun; light aircraft transfer deep into the Okavango Delta, first mokoro excursion.",
+      },
+      {
+        days: "Days 3–5",
+        desc: "Moremi Game Reserve game drives, walking safaris with expert guides, hippo pod encounters.",
+      },
+      {
+        days: "Days 6–7",
+        desc: "Night drives for nocturnal predators, farewell sundowner on the floodplains, fly out to Maun.",
+      },
     ],
   },
   {
@@ -77,17 +93,35 @@ const packages = [
     price: "From $5,500 / person",
     description:
       "Journey from the lush Okavango Delta to Chobe's legendary elephant herds and the vast silence of the Makgadikgadi Pans — one of Africa's greatest wildlife safaris.",
-    activities: ["Okavango Delta", "Chobe river cruise", "Makgadikgadi Pans", "Elephant encounters"],
+    activities: [
+      "Okavango Delta",
+      "Chobe river cruise",
+      "Makgadikgadi Pans",
+      "Elephant encounters",
+    ],
     image: `${base}/photos/newstock/bigelephant.jpg`,
     itinerary: [
-      { days: "Days 1–3", desc: "Maun arrival; Okavango Delta — mokoro excursions, game drives, and wild dog tracking." },
-      { days: "Days 4–6", desc: "Chobe NP — sunset river cruise and world-famous elephant encounters at the water's edge." },
-      { days: "Days 7–10", desc: "Makgadikgadi Pans — zebra migration, Kalahari meerkats, and starlit salt flat nights." },
+      {
+        days: "Days 1–3",
+        desc: "Maun arrival; Okavango Delta — mokoro excursions, game drives, and wild dog tracking.",
+      },
+      {
+        days: "Days 4–6",
+        desc: "Chobe NP — sunset river cruise and world-famous elephant encounters at the water's edge.",
+      },
+      {
+        days: "Days 7–10",
+        desc: "Makgadikgadi Pans — zebra migration, Kalahari meerkats, and starlit salt flat nights.",
+      },
     ],
   },
 ];
 
 export default function BotswanaPage() {
+  const siteImages = useSiteImages();
+  const getSiteImageUrlLocal = (key: string, fallback: string) =>
+    getSiteImageUrl(siteImages, key, fallback);
+
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [activePackage, setActivePackage] = useState("");
@@ -109,7 +143,7 @@ export default function BotswanaPage() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage: `url(${base}/photos/newstock/Elephantfamily.jpg)`,
+            backgroundImage: `url('${getSiteImageUrlLocal("destinationBotswanaHero", `${base}/photos/newstock/Elephantfamily.jpg`)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -123,7 +157,9 @@ export default function BotswanaPage() {
             <SplitText text="Botswana" by="char" stagger={0.04} delay={0.2} />
           </h1>
           <FadeIn direction="up" delay={0.5}>
-            <p className="font-serif italic text-2xl text-gold">Okavango Delta</p>
+            <p className="font-serif italic text-2xl text-gold">
+              Okavango Delta
+            </p>
           </FadeIn>
         </div>
       </section>
@@ -132,19 +168,27 @@ export default function BotswanaPage() {
       <section className="bg-forest py-6">
         <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-cream/70 text-sm font-sans">
           <div>
-            <span className="block text-gold text-xs uppercase tracking-widest mb-1">Best Time</span>
+            <span className="block text-gold text-xs uppercase tracking-widest mb-1">
+              Best Time
+            </span>
             Apr–Oct
           </div>
           <div>
-            <span className="block text-gold text-xs uppercase tracking-widest mb-1">Currency</span>
+            <span className="block text-gold text-xs uppercase tracking-widest mb-1">
+              Currency
+            </span>
             Botswana Pula
           </div>
           <div>
-            <span className="block text-gold text-xs uppercase tracking-widest mb-1">Time Zone</span>
+            <span className="block text-gold text-xs uppercase tracking-widest mb-1">
+              Time Zone
+            </span>
             GMT +2
           </div>
           <div>
-            <span className="block text-gold text-xs uppercase tracking-widest mb-1">Main Airport</span>
+            <span className="block text-gold text-xs uppercase tracking-widest mb-1">
+              Main Airport
+            </span>
             Maun (MUB)
           </div>
         </div>
@@ -155,44 +199,81 @@ export default function BotswanaPage() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <FadeIn direction="left">
             <p className="section-label mb-3">Destination Overview</p>
-            <h2 className="section-heading mb-6">Africa&apos;s Last Great Wilderness</h2>
+            <h2 className="section-heading mb-6">
+              Africa&apos;s Last Great Wilderness
+            </h2>
             <div className="w-12 h-0.5 bg-gold mb-8" />
             <p className="text-stone font-sans leading-relaxed mb-4">
-              Botswana is synonymous with exclusivity — a country that has chosen low-volume, high-value tourism to protect its extraordinary natural heritage. The result is an Africa that feels untouched, wild, and genuinely remote.
+              Botswana is synonymous with exclusivity — a country that has
+              chosen low-volume, high-value tourism to protect its extraordinary
+              natural heritage. The result is an Africa that feels untouched,
+              wild, and genuinely remote.
             </p>
             <p className="text-stone font-sans leading-relaxed mb-4">
-              The Okavango Delta — a UNESCO World Heritage Site and one of Africa&apos;s Seven Natural Wonders — is an inland sea of crystal channels, papyrus islands, and floodplains teeming with elephant, buffalo, lion, leopard, and wild dog. Glide silently through its waterways by mokoro or explore on foot with expert guides.
+              The Okavango Delta — a UNESCO World Heritage Site and one of
+              Africa&apos;s Seven Natural Wonders — is an inland sea of crystal
+              channels, papyrus islands, and floodplains teeming with elephant,
+              buffalo, lion, leopard, and wild dog. Glide silently through its
+              waterways by mokoro or explore on foot with expert guides.
             </p>
             <p className="text-stone font-sans leading-relaxed">
-              Chobe National Park hosts Africa&apos;s greatest elephant concentration — over 120,000 individuals. The Makgadikgadi Pans host the second-largest zebra migration on the continent, and the Central Kalahari shelters Africa&apos;s magnificent black-maned lions.
+              Chobe National Park hosts Africa&apos;s greatest elephant
+              concentration — over 120,000 individuals. The Makgadikgadi Pans
+              host the second-largest zebra migration on the continent, and the
+              Central Kalahari shelters Africa&apos;s magnificent black-maned
+              lions.
             </p>
           </FadeIn>
 
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <img
-                src={`${base}/photos/newstock/Elephantfamily.jpg`}
+                src={getSiteImageUrlLocal(
+                  "destinationBotswanaElephantFamily",
+                  `${base}/photos/newstock/Elephantfamily.jpg`,
+                )}
                 alt="Okavango Delta"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
-            <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-6">
+            <ImageReveal
+              direction="top"
+              delay={0.12}
+              className="overflow-hidden mt-6"
+            >
               <img
-                src={`${base}/photos/newstock/bigelephant.jpg`}
+                src={getSiteImageUrlLocal(
+                  "destinationBotswanaBigElephant",
+                  `${base}/photos/newstock/bigelephant.jpg`,
+                )}
                 alt="Chobe elephants"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
-            <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden -mt-6">
+            <ImageReveal
+              direction="bottom"
+              delay={0.06}
+              className="overflow-hidden -mt-6"
+            >
               <img
-                src={`${base}/photos/newstock/wildlifeconservation.jpg`}
+                src={getSiteImageUrlLocal(
+                  "destinationBotswanaWildlifeConservation",
+                  `${base}/photos/newstock/wildlifeconservation.jpg`,
+                )}
                 alt="Moremi game reserve"
                 className="w-full h-52 object-cover"
               />
             </ImageReveal>
-            <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
+            <ImageReveal
+              direction="bottom"
+              delay={0.18}
+              className="overflow-hidden"
+            >
               <img
-                src={`${base}/photos/newstock/Boat-Safaris08Boat-Safaris.jpg`}
+                src={getSiteImageUrlLocal(
+                  "destinationBotswanaBoatSafari",
+                  `${base}/photos/newstock/Boat-Safaris08Boat-Safaris.jpg`,
+                )}
                 alt="Mokoro safari"
                 className="w-full h-52 object-cover"
               />
@@ -209,7 +290,11 @@ export default function BotswanaPage() {
             <p className="section-label text-gold">Botswana Hot Spots</p>
           </div>
           <h2 className="font-serif text-3xl md:text-4xl text-cream">
-            <SplitText text="Where Wilderness Remains Wild" by="word" stagger={0.06} />
+            <SplitText
+              text="Where Wilderness Remains Wild"
+              by="word"
+              stagger={0.06}
+            />
           </h2>
         </FadeIn>
         <HotspotGallery hotspots={hotspots} />
@@ -225,48 +310,77 @@ export default function BotswanaPage() {
                 Botswana Tour Packages
               </h2>
             </div>
-            <Link href="/plan-a-trip" className="btn-primary shrink-0 self-start md:self-end">
+            <Link
+              href="/plan-a-trip"
+              className="btn-primary shrink-0 self-start md:self-end"
+            >
               Get a Custom Quote
             </Link>
           </FadeIn>
           <div className="space-y-20">
             {packages.map((pkg) => (
-              <div key={pkg.name} className="grid md:grid-cols-2 gap-12 items-start border-b border-gold/10 pb-20 last:border-0 last:pb-0">
+              <div
+                key={pkg.name}
+                className="grid md:grid-cols-2 gap-12 items-start border-b border-gold/10 pb-20 last:border-0 last:pb-0"
+              >
                 <div className="relative overflow-hidden aspect-[4/3]">
-                  <img src={pkg.image} alt={pkg.name} className="w-full h-full object-cover" />
+                  <img
+                    src={pkg.image}
+                    alt={pkg.name}
+                    className="w-full h-full object-cover"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-transparent to-transparent" />
-                  <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">{pkg.duration}</span>
+                  <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">
+                    {pkg.duration}
+                  </span>
                 </div>
                 <div>
                   <p className="section-label mb-2">{pkg.tagline}</p>
-                  <h3 className="font-serif text-3xl text-forest mb-4">{pkg.name}</h3>
+                  <h3 className="font-serif text-3xl text-forest mb-4">
+                    {pkg.name}
+                  </h3>
                   <div className="w-10 h-px bg-gold mb-6" />
-                  <p className="text-stone font-sans text-sm leading-relaxed mb-8">{pkg.description}</p>
+                  <p className="text-stone font-sans text-sm leading-relaxed mb-8">
+                    {pkg.description}
+                  </p>
                   <div className="space-y-4 mb-8">
                     {pkg.itinerary.map((item) => (
-                      <div key={item.days} className="flex gap-4 border-t border-gold/10 pt-4">
-                        <span className="text-gold text-[10px] uppercase tracking-widest font-sans w-20 shrink-0 pt-0.5">{item.days}</span>
-                        <span className="text-stone font-sans text-sm leading-relaxed">{item.desc}</span>
+                      <div
+                        key={item.days}
+                        className="flex gap-4 border-t border-gold/10 pt-4"
+                      >
+                        <span className="text-gold text-[10px] uppercase tracking-widest font-sans w-20 shrink-0 pt-0.5">
+                          {item.days}
+                        </span>
+                        <span className="text-stone font-sans text-sm leading-relaxed">
+                          {item.desc}
+                        </span>
                       </div>
                     ))}
                   </div>
                   <div className="flex flex-wrap gap-2 mb-8">
                     {pkg.activities.map((act) => (
-                      <span key={act} className="text-[10px] uppercase tracking-widest font-sans border border-gold/30 text-forest/70 px-3 py-1.5 flex items-center gap-2">
-                        <span className="w-1 h-1 rounded-full bg-gold" />{act}
+                      <span
+                        key={act}
+                        className="text-[10px] uppercase tracking-widest font-sans border border-gold/30 text-forest/70 px-3 py-1.5 flex items-center gap-2"
+                      >
+                        <span className="w-1 h-1 rounded-full bg-gold" />
+                        {act}
                       </span>
                     ))}
                   </div>
                   <div className="flex flex-wrap items-center justify-between gap-4">
-                    <span className="font-serif italic text-gold text-sm">{pkg.price}</span>
+                    <span className="font-serif italic text-gold text-sm">
+                      {pkg.price}
+                    </span>
                     <div className="flex gap-4">
-                      <button 
+                      <button
                         onClick={() => handleDownload(pkg.name)}
                         className="btn-outline !px-6 !py-2.5 text-[11px]"
                       >
                         Download Detailed Itinerary
                       </button>
-                      <button 
+                      <button
                         onClick={() => handleEnquiry(pkg.name)}
                         className="btn-primary !px-6 !py-2.5 text-[11px]"
                       >
@@ -280,11 +394,19 @@ export default function BotswanaPage() {
           </div>
 
           <FadeIn className="mt-20 p-8 border border-gold/20 bg-forest-dark/5 text-center">
-            <h4 className="font-serif text-2xl text-forest mb-4">Explore More of Botswana</h4>
+            <h4 className="font-serif text-2xl text-forest mb-4">
+              Explore More of Botswana
+            </h4>
             <p className="text-stone font-sans text-sm mb-6 max-w-2xl mx-auto">
-              We offer several other Botswana itineraries, including combinations with Victoria Falls and specialized birding or photography safaris. All tours can be delivered upon request and fully customized.
+              We offer several other Botswana itineraries, including
+              combinations with Victoria Falls and specialized birding or
+              photography safaris. All tours can be delivered upon request and
+              fully customized.
             </p>
-            <Link href="/plan-a-trip" className="text-gold uppercase tracking-widest text-xs font-bold hover:text-forest transition-colors">
+            <Link
+              href="/plan-a-trip"
+              className="text-gold uppercase tracking-widest text-xs font-bold hover:text-forest transition-colors"
+            >
               Request Custom Itinerary &rarr;
             </Link>
           </FadeIn>
@@ -294,24 +416,29 @@ export default function BotswanaPage() {
       {/* CTA */}
       <section className="bg-forest py-20 px-6 md:px-16 text-center">
         <FadeIn direction="up">
-          <h2 className="font-serif text-3xl md:text-5xl text-cream mb-6">Ready to Explore Botswana?</h2>
+          <h2 className="font-serif text-3xl md:text-5xl text-cream mb-6">
+            Ready to Explore Botswana?
+          </h2>
           <p className="text-cream/60 font-sans max-w-lg mx-auto mb-10">
-            From the Okavango Delta to Chobe&apos;s elephants — let us craft your ultimate Botswana safari.
+            From the Okavango Delta to Chobe&apos;s elephants — let us craft
+            your ultimate Botswana safari.
           </p>
-          <Link href="/plan-a-trip" className="btn-outline">Plan My Botswana Safari</Link>
+          <Link href="/plan-a-trip" className="btn-outline">
+            Plan My Botswana Safari
+          </Link>
         </FadeIn>
       </section>
 
-      <ItineraryDownloadPopup 
-        isOpen={isDownloadOpen} 
-        onClose={() => setIsDownloadOpen(false)} 
-        packageName={activePackage} 
+      <ItineraryDownloadPopup
+        isOpen={isDownloadOpen}
+        onClose={() => setIsDownloadOpen(false)}
+        packageName={activePackage}
       />
 
-      <PackageEnquiryPopup 
-        isOpen={isEnquiryOpen} 
-        onClose={() => setIsEnquiryOpen(false)} 
-        packageName={activePackage} 
+      <PackageEnquiryPopup
+        isOpen={isEnquiryOpen}
+        onClose={() => setIsEnquiryOpen(false)}
+        packageName={activePackage}
       />
     </>
   );

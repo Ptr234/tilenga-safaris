@@ -1,8 +1,8 @@
-import createImageUrlBuilder from '@sanity/image-url';
-import { dataset, projectId } from './sanity.client';
+import { createImageUrlBuilder } from "@sanity/image-url";
+import { dataset, projectId } from "./sanity.client";
 
 const imageBuilder = createImageUrlBuilder({ projectId, dataset });
 
 export const urlForImage = (source: any) => {
-  return imageBuilder.image(source).auto('format').fit('max');
+  return imageBuilder.image(source).auto("format").fit("max");
 };

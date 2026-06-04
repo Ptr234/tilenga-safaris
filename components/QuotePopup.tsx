@@ -2,12 +2,29 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import useSiteImages from "@/lib/useSiteImages";
+import { getSiteImageUrl } from "@/lib/siteImageHelpers";
 
-const destinations = ["Uganda", "Kenya", "Tanzania", "Rwanda", "South Africa", "Namibia", "Botswana", "Multiple Destinations"];
+const destinations = [
+  "Uganda",
+  "Kenya",
+  "Tanzania",
+  "Rwanda",
+  "South Africa",
+  "Namibia",
+  "Botswana",
+  "Multiple Destinations",
+];
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export default function QuotePopup() {
+  const siteImages = useSiteImages();
+  const getSiteImageUrlLocal = (key: string, fallback: string) => {
+    const image = siteImages?.[key]?.image;
+    return image ? getSiteImageUrl(siteImages, key, fallback) : fallback;
+  };
+
   const [isOpen, setIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -32,9 +49,9 @@ export default function QuotePopup() {
 
     const formData = new FormData(event.currentTarget);
     const dataObj: any = {
-      source: 'quote'
+      source: "quote",
     };
-    
+
     formData.forEach((value, key) => {
       dataObj[key] = value;
     });
@@ -45,7 +62,7 @@ export default function QuotePopup() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(dataObj)
+        body: JSON.stringify(dataObj),
       });
 
       const data = await response.json();
@@ -81,34 +98,40 @@ export default function QuotePopup() {
           <div className="relative flex items-center bg-[#07130d]/90 backdrop-blur-xl p-4 shadow-[-20px_20px_60px_rgba(0,0,0,0.5)] border border-gold/30 overflow-hidden">
             {/* Inner Decorative Border */}
             <div className="absolute inset-1 border border-gold/10 pointer-events-none" />
-            
+
             {/* Image Section - Vintage Film Frame */}
             <div className="relative w-16 h-16 md:w-20 md:h-20 shrink-0 overflow-hidden border border-gold/40 p-1 bg-black/40">
               <div className="w-full h-full overflow-hidden">
-                <img 
-                  src={`${base}/photos/newstock/Gorrillahd.jpg`} 
-                  alt="Safari" 
+                <img
+                  src={getSiteImageUrlLocal(
+                    "quotePopupHero",
+                    `${base}/photos/newstock/Gorrillahd.jpg`,
+                  )}
+                  alt="Safari"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-tr from-forest/40 to-transparent mix-blend-overlay" />
             </div>
-            
+
             {/* Content Section */}
             <div className="flex flex-col items-start text-left ml-5 mr-3 relative z-10">
               <div className="flex items-center gap-2 mb-1">
                 <span className="w-4 h-px bg-gold/60" />
-                <span className="text-[8px] md:text-[9px] uppercase tracking-[0.5em] text-gold font-bold">Bespoke</span>
+                <span className="text-[8px] md:text-[9px] uppercase tracking-[0.5em] text-gold font-bold">
+                  Bespoke
+                </span>
               </div>
               <span className="text-[14px] md:text-[18px] font-serif text-cream leading-none tracking-wide mb-1">
-                Request a <span className="italic text-gold block mt-1">Free Quote</span>
+                Request a{" "}
+                <span className="italic text-gold block mt-1">Free Quote</span>
               </span>
             </div>
 
             {/* Floating Detail */}
             <div className="flex flex-col gap-2 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
-               <span className="text-[10px] text-gold animate-pulse">✦</span>
-               <div className="w-px h-8 bg-gradient-to-b from-transparent via-gold/40 to-transparent" />
+              <span className="text-[10px] text-gold animate-pulse">✦</span>
+              <div className="w-px h-8 bg-gradient-to-b from-transparent via-gold/40 to-transparent" />
             </div>
 
             {/* Shimmer Effect */}
@@ -140,25 +163,35 @@ export default function QuotePopup() {
               className="relative w-full max-w-2xl bg-cream overflow-hidden shadow-2xl flex flex-col md:flex-row"
             >
               {/* Close Button */}
-              <button 
+              <button
                 onClick={() => setIsOpen(false)}
                 className="absolute top-4 right-4 z-10 text-stone/40 hover:text-forest transition-colors"
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
                   <path d="M18 6L6 18M6 6l12 12" />
                 </svg>
               </button>
 
               {/* Side Panel - Cinematic Image */}
               <div className="hidden md:block w-1/3 relative overflow-hidden bg-forest">
-                <img 
-                  src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80" 
+                <img
+                  src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80"
                   alt="Safari"
                   className="absolute inset-0 w-full h-full object-cover opacity-60"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-transparent to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">
-                  <p className="font-serif text-2xl text-cream leading-tight">Start Your <br /><span className="text-gold italic">Adventure</span></p>
+                  <p className="font-serif text-2xl text-cream leading-tight">
+                    Start Your <br />
+                    <span className="text-gold italic">Adventure</span>
+                  </p>
                 </div>
               </div>
 
@@ -167,42 +200,69 @@ export default function QuotePopup() {
                 {submitted ? (
                   <div className="h-full flex flex-col items-center justify-center text-center space-y-6 animate-in fade-in zoom-in duration-500">
                     <div className="w-16 h-16 rounded-full border border-gold flex items-center justify-center">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path
+                          d="M5 13l4 4L19 7"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
                       </svg>
                     </div>
-                    <h3 className="font-serif text-3xl text-forest uppercase tracking-widest">Enquiry Received</h3>
+                    <h3 className="font-serif text-3xl text-forest uppercase tracking-widest">
+                      Enquiry Received
+                    </h3>
                     <p className="text-stone font-sans text-sm leading-relaxed">
-                      A safari specialist will contact you shortly with your bespoke quote.
+                      A safari specialist will contact you shortly with your
+                      bespoke quote.
                     </p>
                   </div>
                 ) : (
                   <div className="space-y-8">
                     <div>
-                      <span className="section-label mb-2">Tailored Just For You</span>
-                      <h3 className="font-serif text-3xl text-forest uppercase tracking-widest leading-none">Request a <br />Free Quote</h3>
+                      <span className="section-label mb-2">
+                        Tailored Just For You
+                      </span>
+                      <h3 className="font-serif text-3xl text-forest uppercase tracking-widest leading-none">
+                        Request a <br />
+                        Free Quote
+                      </h3>
                       <div className="w-12 h-px bg-gold mt-6" />
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-5">
-                      {error && <p className="text-red-500 text-[10px] uppercase font-bold">{error}</p>}
-                      
+                      {error && (
+                        <p className="text-red-500 text-[10px] uppercase font-bold">
+                          {error}
+                        </p>
+                      )}
+
                       <div className="grid grid-cols-2 gap-6">
                         <div className="space-y-1">
-                          <label className="text-[10px] uppercase tracking-widest text-stone/60 font-bold">Full Name</label>
-                          <input 
-                            name="name" 
-                            required 
-                            type="text" 
+                          <label className="text-[10px] uppercase tracking-widest text-stone/60 font-bold">
+                            Full Name
+                          </label>
+                          <input
+                            name="name"
+                            required
+                            type="text"
                             className="w-full bg-transparent border-b border-stone/20 py-2 text-sm focus:outline-none focus:border-gold transition-colors font-sans"
                           />
                         </div>
                         <div className="space-y-1">
-                          <label className="text-[10px] uppercase tracking-widest text-stone/60 font-bold">Email Address</label>
-                          <input 
-                            name="email" 
-                            required 
-                            type="email" 
+                          <label className="text-[10px] uppercase tracking-widest text-stone/60 font-bold">
+                            Email Address
+                          </label>
+                          <input
+                            name="email"
+                            required
+                            type="email"
                             className="w-full bg-transparent border-b border-stone/20 py-2 text-sm focus:outline-none focus:border-gold transition-colors font-sans"
                           />
                         </div>
@@ -210,21 +270,29 @@ export default function QuotePopup() {
 
                       <div className="grid grid-cols-2 gap-6">
                         <div className="space-y-1">
-                          <label className="text-[10px] uppercase tracking-widest text-stone/60 font-bold">Destination</label>
-                          <select 
-                            name="destination" 
-                            required 
+                          <label className="text-[10px] uppercase tracking-widest text-stone/60 font-bold">
+                            Destination
+                          </label>
+                          <select
+                            name="destination"
+                            required
                             className="w-full bg-transparent border-b border-stone/20 py-2 text-sm focus:outline-none focus:border-gold transition-colors font-sans appearance-none"
                           >
                             <option value="">Select...</option>
-                            {destinations.map(d => <option key={d} value={d}>{d}</option>)}
+                            {destinations.map((d) => (
+                              <option key={d} value={d}>
+                                {d}
+                              </option>
+                            ))}
                           </select>
                         </div>
                         <div className="space-y-1">
-                          <label className="text-[10px] uppercase tracking-widest text-stone/60 font-bold">Estimated Budget *</label>
-                          <select 
-                            name="budget" 
-                            required 
+                          <label className="text-[10px] uppercase tracking-widest text-stone/60 font-bold">
+                            Estimated Budget *
+                          </label>
+                          <select
+                            name="budget"
+                            required
                             className="w-full bg-transparent border-b border-stone/20 py-2 text-sm focus:outline-none focus:border-gold transition-colors font-sans appearance-none"
                           >
                             <option value="">Select range...</option>
@@ -237,17 +305,19 @@ export default function QuotePopup() {
                       </div>
 
                       <div className="space-y-1">
-                        <label className="text-[10px] uppercase tracking-widest text-stone/60 font-bold">Your Message</label>
-                        <textarea 
-                          name="message" 
-                          rows={2} 
+                        <label className="text-[10px] uppercase tracking-widest text-stone/60 font-bold">
+                          Your Message
+                        </label>
+                        <textarea
+                          name="message"
+                          rows={2}
                           placeholder="Tell us about your dream trip..."
                           className="w-full bg-transparent border-b border-stone/20 py-2 text-sm focus:outline-none focus:border-gold transition-colors font-sans resize-none"
                         />
                       </div>
 
-                      <button 
-                        type="submit" 
+                      <button
+                        type="submit"
                         disabled={loading}
                         className="w-full btn-primary py-4 mt-4 disabled:opacity-50"
                       >

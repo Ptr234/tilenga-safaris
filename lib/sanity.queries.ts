@@ -1,4 +1,4 @@
-import { groq } from 'next-sanity';
+import { groq } from "next-sanity";
 
 export const lodgesQuery = groq`*[_type == "lodge"] | order(_createdAt asc) {
   name,
@@ -32,4 +32,21 @@ export const partnersQuery = groq`*[_type == "partner"] | order(_createdAt asc) 
   name,
   logo,
   link
+}`;
+
+export const siteImagesQuery = groq`*[_type == "siteImage"] | order(_createdAt asc) {
+  _id,
+  key,
+  category,
+  title,
+  altText,
+  image
+}`;
+
+export const itinerariesQuery = groq`*[_type == "itinerary"] | order(_createdAt asc) {
+  _id,
+  packageName,
+  category,
+  description,
+  file
 }`;
