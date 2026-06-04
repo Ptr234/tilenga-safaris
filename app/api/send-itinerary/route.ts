@@ -61,7 +61,7 @@ export async function POST(req: Request) {
     const emailContent = `
       <div style="font-family: serif; color: #060f09; max-width: 600px; margin: 0 auto; padding: 40px; background-color: #fcfaf6; border: 1px solid #c9a96e;">
         <div style="text-align: center; margin-bottom: 30px;">
-          <img src="https://tilengasafaris.africa/tilenga-logo.svg" alt="Tilenga Safaris" style="width: 150px; height: auto; margin-bottom: 20px;" />
+          <img src="https://tilengasafaris.africa/tilenga-logo.png" alt="Tilenga Safaris" style="width: 180px; height: auto; margin-bottom: 20px;" />
           <h1 style="color: #2d3a28; text-transform: uppercase; letter-spacing: 0.2em; border-bottom: 2px solid #c9a96e; padding-bottom: 20px;">Your Safari Itinerary</h1>
         </div>
 
@@ -116,7 +116,7 @@ export async function POST(req: Request) {
       html: `
         <div style="font-family: serif; color: #060f09; max-width: 600px; margin: 0 auto; padding: 40px; background-color: #fcfaf6; border: 1px solid #c9a96e;">
           <div style="text-align: center; margin-bottom: 30px;">
-            <img src="https://tilengasafaris.africa/tilenga-logo.svg" alt="Tilenga Safaris" style="width: 150px; height: auto; margin-bottom: 20px;" />
+            <img src="https://tilengasafaris.africa/tilenga-logo.png" alt="Tilenga Safaris" style="width: 180px; height: auto; margin-bottom: 20px;" />
             <h1 style="color: #2d3a28; text-transform: uppercase; letter-spacing: 0.2em; border-bottom: 2px solid #c9a96e; padding-bottom: 20px;">Thank You</h1>
           </div>
           <p style="font-size: 18px; line-height: 1.6;">Hello,</p>
