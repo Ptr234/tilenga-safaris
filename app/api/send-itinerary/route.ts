@@ -92,6 +92,7 @@ export async function POST(req: Request) {
       from: `Tilenga Safaris <${fromEmail}>`,
       to: [email],
       bcc: ["destinations@tilengasafaris.com"],
+      replyTo: "destinations@tilengasafaris.com",
       subject: `Itinerary: ${packageName} - Tilenga Safaris`,
       html: emailContent,
       attachments: attachments,
@@ -109,6 +110,7 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: `Tilenga Safaris <${fromEmail}>`,
       to: [email],
+      replyTo: "destinations@tilengasafaris.com",
       subject: `Thank You for Exploring Our Itineraries`,
       html: `
         <div style="font-family: serif; color: #060f09; max-width: 600px; margin: 0 auto; padding: 40px; background-color: #fcfaf6; border: 1px solid #c9a96e;">
