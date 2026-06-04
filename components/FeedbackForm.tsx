@@ -45,7 +45,7 @@ export default function FeedbackForm() {
     final: "",
   });
 
-  const [nameError, setNameError] = useState(false);
+  const [errors, setErrors] = useState<string[]>([]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -54,18 +54,48 @@ export default function FeedbackForm() {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleNext = () => {
-    if (step === 1 && !formData.name.trim()) {
-      setNameError(true);
-      return;
+  const validateStep = () => {
+    const newErrors: string[] = [];
+    
+    if (step === 1) {
+      if (!formData.name.trim()) newErrors.push("name");
     }
-    setNameError(false);
-    if (step < totalSteps) {
-      setStep(step + 1);
+    if (step === 2) {
+      if (!formData.overall_rating) newErrors.push("overall_rating");
+      if (!formData.expectations) newErrors.push("expectations");
+    }
+    if (step === 3) {
+      if (!formData.highlight.trim()) newErrors.push("highlight");
+    }
+    if (step === 4) {
+      const required = ["sat_acc", "sat_trans", "sat_serv", "sat_org", "sat_act"];
+      required.forEach(field => {
+        if (!formData[field]) newErrors.push(field);
+      });
+    }
+    if (step === 5) {
+      if (!formData.guide_rating) newErrors.push("guide_rating");
+      if (!formData.safety) newErrors.push("safety");
+    }
+    if (step === 7) {
+      if (!formData.travel_again) newErrors.push("travel_again");
+      if (!formData.recommend) newErrors.push("recommend");
+    }
+
+    setErrors(newErrors);
+    return newErrors.length === 0;
+  };
+
+  const handleNext = () => {
+    if (validateStep()) {
+      if (step < totalSteps) {
+        setStep(step + 1);
+      }
     }
   };
 
   const handleBack = () => {
+    setErrors([]);
     if (step > 1) {
       setStep(step - 1);
     }
@@ -74,10 +104,16 @@ export default function FeedbackForm() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev: any) => ({ ...prev, [name]: value }));
+    // Clear error for this field when user starts typing/selecting
+    if (errors.includes(name)) {
+      setErrors(prev => prev.filter(err => err !== name));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validateStep()) return;
+    
     setIsSubmitting(true);
     setError(null);
 
@@ -241,21 +277,24 @@ export default function FeedbackForm() {
                       >
                         {step === 1 && (
                           <div className="space-y-12">
-                            <div className="group">
-                              <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 mb-6 font-bold group-focus-within:text-gold/70 transition-colors">Explorer Name</label>
+                            <motion.div 
+                              animate={errors.includes("name") ? { x: [-4, 4, -4, 4, 0] } : {}}
+                              className="group"
+                            >
+                              <label className={`block text-[9px] uppercase tracking-[0.4em] mb-6 font-bold transition-colors ${errors.includes("name") ? 'text-red-400' : 'text-gold/40 group-focus-within:text-gold/70'}`}>Explorer Name</label>
                               <input
                                 type="text"
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
                                 placeholder="Jane Nakato"
-                                className={`w-full bg-transparent border-b border-white/10 py-6 outline-none transition-all font-serif text-2xl md:text-4xl placeholder:text-white/5 ${nameError ? 'border-red-500/30 text-red-100' : 'focus:border-gold/40 text-cream'}`}
+                                className={`w-full bg-transparent border-b py-6 outline-none transition-all font-serif text-2xl md:text-4xl placeholder:text-white/5 ${errors.includes("name") ? 'border-red-500/50 text-red-100' : 'border-white/10 focus:border-gold/40 text-cream'}`}
                                 autoFocus
                               />
                               <div className="h-8 pt-2">
-                                {nameError && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-red-400/60 text-[9px] uppercase tracking-[0.2em] font-bold">Log entry required to proceed</motion.p>}
+                                {errors.includes("name") && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-red-400/60 text-[9px] uppercase tracking-[0.2em] font-bold italic">Log entry required to proceed</motion.p>}
                               </div>
-                            </div>
+                            </motion.div>
                             <div className="group">
                               <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 mb-6 font-bold group-focus-within:text-gold/70 transition-colors">Communication Link (Optional)</label>
                               <input
@@ -272,8 +311,11 @@ export default function FeedbackForm() {
 
                         {step === 2 && (
                           <div className="space-y-16">
-                            <div className="text-center">
-                              <label className="block text-[9px] uppercase tracking-[0.5em] text-gold/50 mb-10 font-bold">Overall Impression</label>
+                            <motion.div 
+                              animate={errors.includes("overall_rating") ? { x: [-4, 4, -4, 4, 0] } : {}}
+                              className="text-center"
+                            >
+                              <label className={`block text-[9px] uppercase tracking-[0.5em] mb-10 font-bold ${errors.includes("overall_rating") ? 'text-red-400' : 'text-gold/50'}`}>Overall Impression</label>
                               <div className="flex flex-row-reverse justify-center gap-2 md:gap-6">
                                 {[5, 4, 3, 2, 1].map((num) => (
                                   <label key={num} className="cursor-pointer group/star relative">
@@ -288,17 +330,20 @@ export default function FeedbackForm() {
                                     <motion.span 
                                       whileHover={{ scale: 1.2 }}
                                       whileTap={{ scale: 0.9 }}
-                                      className={`text-5xl md:text-7xl transition-all duration-500 ${formData.overall_rating >= num.toString() ? 'text-gold drop-shadow-[0_0_15px_rgba(253,183,23,0.4)]' : 'text-white/5 hover:text-gold/20'}`}
+                                      className={`text-5xl md:text-7xl transition-all duration-500 ${formData.overall_rating >= num.toString() ? 'text-gold drop-shadow-[0_0_15px_rgba(253,183,23,0.4)]' : errors.includes("overall_rating") ? 'text-red-900/30' : 'text-white/5 hover:text-gold/20'}`}
                                     >
                                       ★
                                     </motion.span>
                                   </label>
                                 ))}
                               </div>
-                            </div>
+                            </motion.div>
                             
-                            <div className="pt-12 border-t border-white/5">
-                              <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 mb-8 font-bold text-center">Met expectations?</label>
+                            <motion.div 
+                              animate={errors.includes("expectations") ? { x: [-4, 4, -4, 4, 0] } : {}}
+                              className="pt-12 border-t border-white/5"
+                            >
+                              <label className={`block text-[9px] uppercase tracking-[0.4em] mb-8 font-bold text-center ${errors.includes("expectations") ? 'text-red-400' : 'text-gold/40'}`}>Met expectations?</label>
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
                                 {["Exceeded Expectations", "Met Expectations", "Partially Met", "Did Not Meet"].map((opt) => (
                                   <label key={opt} className="cursor-pointer">
@@ -313,29 +358,32 @@ export default function FeedbackForm() {
                                     <motion.span 
                                       whileHover={{ y: -2 }}
                                       whileTap={{ scale: 0.98 }}
-                                      className={`px-8 py-5 border text-center text-[10px] uppercase tracking-[0.3em] font-bold transition-all duration-500 block rounded-lg ${formData.expectations === opt ? 'bg-gold text-[#060f09] border-gold shadow-[0_15px_30px_-10px_rgba(253,183,23,0.4)]' : 'bg-white/[0.02] border-white/5 text-white/30 hover:border-white/20'}`}
+                                      className={`px-8 py-5 border text-center text-[10px] uppercase tracking-[0.3em] font-bold transition-all duration-500 block rounded-lg ${formData.expectations === opt ? 'bg-gold text-[#060f09] border-gold shadow-[0_15px_30px_-10px_rgba(253,183,23,0.4)]' : errors.includes("expectations") ? 'bg-red-900/10 border-red-500/20 text-red-200/40' : 'bg-white/[0.02] border-white/5 text-white/30 hover:border-white/20'}`}
                                     >
                                       {opt}
                                     </motion.span>
                                   </label>
                                 ))}
                               </div>
-                            </div>
+                            </motion.div>
                           </div>
                         )}
 
                         {step === 3 && (
                           <div className="space-y-12">
-                            <div className="space-y-6">
-                              <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 font-bold">The Defining Moment</label>
+                            <motion.div 
+                              animate={errors.includes("highlight") ? { x: [-4, 4, -4, 4, 0] } : {}}
+                              className="space-y-6"
+                            >
+                              <label className={`block text-[9px] uppercase tracking-[0.4em] font-bold ${errors.includes("highlight") ? 'text-red-400' : 'text-gold/40'}`}>The Defining Moment</label>
                               <textarea
                                 name="highlight"
                                 value={formData.highlight}
                                 onChange={handleChange}
                                 placeholder="A close encounter, a hidden valley, the evening sun..."
-                                className="w-full bg-transparent border border-white/5 focus:border-gold/20 p-8 outline-none transition-all font-serif text-xl md:text-2xl text-cream placeholder:text-white/5 min-h-[160px] rounded-xl"
+                                className={`w-full bg-transparent border p-8 outline-none transition-all font-serif text-xl md:text-2xl placeholder:text-white/5 min-h-[160px] rounded-xl ${errors.includes("highlight") ? 'border-red-500/30 text-red-50' : 'border-white/5 focus:border-gold/20 text-cream'}`}
                               />
-                            </div>
+                            </motion.div>
                             <div className="space-y-6">
                               <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 font-bold">Itinerary Reflections</label>
                               <textarea
@@ -359,8 +407,12 @@ export default function FeedbackForm() {
                               { label: "Trip Organization", name: "sat_org" },
                               { label: "Activities", name: "sat_act" },
                             ].map((field) => (
-                              <div key={field.name} className="flex flex-col sm:flex-row sm:items-center justify-between py-6 border-b border-white/5 last:border-0 group/row">
-                                <span className="text-[11px] uppercase tracking-[0.2em] text-white/50 font-bold mb-5 sm:mb-0 group-hover/row:text-gold transition-colors">{field.label}</span>
+                              <motion.div 
+                                key={field.name}
+                                animate={errors.includes(field.name) ? { x: [-2, 2, -2, 2, 0] } : {}}
+                                className="flex flex-col sm:flex-row sm:items-center justify-between py-6 border-b border-white/5 last:border-0 group/row"
+                              >
+                                <span className={`text-[11px] uppercase tracking-[0.2em] font-bold mb-5 sm:mb-0 transition-colors ${errors.includes(field.name) ? 'text-red-400' : 'text-white/50 group-hover/row:text-gold'}`}>{field.label}</span>
                                 <div className="flex gap-2">
                                   {["Very Sat.", "Satisfied", "Neutral", "Unsat."].map((opt) => (
                                     <label key={opt} className="cursor-pointer">
@@ -374,22 +426,25 @@ export default function FeedbackForm() {
                                       />
                                       <motion.span 
                                         whileTap={{ scale: 0.9 }}
-                                        className={`px-3 md:px-5 py-2.5 text-[8px] md:text-[9px] uppercase tracking-widest font-bold border transition-all duration-500 rounded-md block ${formData[field.name as keyof typeof formData] === opt ? 'bg-gold/80 text-[#060f09] border-gold' : 'bg-transparent border-white/5 text-white/20 hover:border-white/10 hover:text-white/40'}`}
+                                        className={`px-3 md:px-5 py-2.5 text-[8px] md:text-[9px] uppercase tracking-widest font-bold border transition-all duration-500 rounded-md block ${formData[field.name as keyof typeof formData] === opt ? 'bg-gold/80 text-[#060f09] border-gold' : errors.includes(field.name) ? 'bg-red-900/10 border-red-500/20 text-red-200/20' : 'bg-transparent border-white/5 text-white/20 hover:border-white/10 hover:text-white/40'}`}
                                       >
                                         {opt}
                                       </motion.span>
                                     </label>
                                   ))}
                                 </div>
-                              </div>
+                              </motion.div>
                             ))}
                           </div>
                         )}
 
                         {step === 5 && (
                           <div className="space-y-16">
-                            <div className="text-center">
-                              <label className="block text-[9px] uppercase tracking-[0.5em] text-gold/50 mb-10 font-bold">The Guide's Expertise</label>
+                            <motion.div 
+                              animate={errors.includes("guide_rating") ? { x: [-4, 4, -4, 4, 0] } : {}}
+                              className="text-center"
+                            >
+                              <label className={`block text-[9px] uppercase tracking-[0.5em] mb-10 font-bold ${errors.includes("guide_rating") ? 'text-red-400' : 'text-gold/50'}`}>The Guide's Expertise</label>
                               <div className="flex flex-row-reverse justify-center gap-2 md:gap-6">
                                 {[5, 4, 3, 2, 1].map((num) => (
                                   <label key={num} className="cursor-pointer group/star">
@@ -403,16 +458,19 @@ export default function FeedbackForm() {
                                     />
                                     <motion.span 
                                       whileHover={{ scale: 1.2 }}
-                                      className={`text-5xl md:text-7xl transition-all duration-500 ${formData.guide_rating >= num.toString() ? 'text-gold drop-shadow-[0_0_15px_rgba(253,183,23,0.4)]' : 'text-white/5 hover:text-gold/20'}`}
+                                      className={`text-5xl md:text-7xl transition-all duration-500 ${formData.guide_rating >= num.toString() ? 'text-gold drop-shadow-[0_0_15px_rgba(253,183,23,0.4)]' : errors.includes("guide_rating") ? 'text-red-900/30' : 'text-white/5 hover:text-gold/20'}`}
                                     >
                                       ★
                                     </motion.span>
                                   </label>
                                 ))}
                               </div>
-                            </div>
-                            <div className="pt-12 border-t border-white/5">
-                              <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 mb-8 font-bold text-center">Safety & Security Feelings</label>
+                            </motion.div>
+                            <motion.div 
+                              animate={errors.includes("safety") ? { x: [-4, 4, -4, 4, 0] } : {}}
+                              className="pt-12 border-t border-white/5"
+                            >
+                              <label className={`block text-[9px] uppercase tracking-[0.4em] mb-8 font-bold text-center ${errors.includes("safety") ? 'text-red-400' : 'text-gold/40'}`}>Safety & Security Feelings</label>
                               <div className="grid grid-cols-2 gap-4">
                                 {["Yes, Absolutely", "Mostly Yes", "Neutral", "No"].map((opt) => (
                                   <label key={opt} className="cursor-pointer">
@@ -426,14 +484,14 @@ export default function FeedbackForm() {
                                     />
                                     <motion.span 
                                       whileHover={{ y: -2 }}
-                                      className={`px-6 py-5 border text-center text-[10px] uppercase tracking-[0.3em] font-bold transition-all duration-500 block rounded-lg ${formData.safety === opt ? 'bg-gold text-[#060f09] border-gold shadow-[0_15px_30px_-10px_rgba(253,183,23,0.4)]' : 'bg-white/[0.02] border-white/5 text-white/30 hover:border-white/20'}`}
+                                      className={`px-6 py-5 border text-center text-[10px] uppercase tracking-[0.3em] font-bold transition-all duration-500 block rounded-lg ${formData.safety === opt ? 'bg-gold text-[#060f09] border-gold shadow-[0_15px_30px_-10px_rgba(253,183,23,0.4)]' : errors.includes("safety") ? 'bg-red-900/10 border-red-500/20 text-red-200/40' : 'bg-white/[0.02] border-white/5 text-white/30 hover:border-white/20'}`}
                                     >
                                       {opt}
                                     </motion.span>
                                   </label>
                                 ))}
                               </div>
-                            </div>
+                            </motion.div>
                           </div>
                         )}
 
@@ -453,8 +511,11 @@ export default function FeedbackForm() {
                         {step === 7 && (
                           <div className="space-y-16">
                             <div className="grid md:grid-cols-2 gap-12">
-                              <div className="space-y-8">
-                                <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 font-bold">Future Travels?</label>
+                              <motion.div 
+                                animate={errors.includes("travel_again") ? { x: [-4, 4, -4, 4, 0] } : {}}
+                                className="space-y-8"
+                              >
+                                <label className={`block text-[9px] uppercase tracking-[0.4em] font-bold ${errors.includes("travel_again") ? 'text-red-400' : 'text-gold/40'}`}>Future Travels?</label>
                                 <div className="space-y-3">
                                   {["Definitely", "Maybe", "Unlikely"].map((opt) => (
                                     <label key={opt} className="cursor-pointer block">
@@ -466,15 +527,18 @@ export default function FeedbackForm() {
                                         onChange={handleChange}
                                         checked={formData.travel_again === opt}
                                       />
-                                      <span className={`px-6 py-4 border text-[10px] uppercase tracking-widest font-bold transition-all duration-500 block rounded-lg ${formData.travel_again === opt ? 'bg-gold text-[#060f09] border-gold' : 'bg-white/[0.02] border-white/5 text-white/30'}`}>
+                                      <span className={`px-6 py-4 border text-[10px] uppercase tracking-widest font-bold transition-all duration-500 block rounded-lg ${formData.travel_again === opt ? 'bg-gold text-[#060f09] border-gold' : errors.includes("travel_again") ? 'bg-red-900/10 border-red-500/20 text-red-200/40' : 'bg-white/[0.02] border-white/5 text-white/30'}`}>
                                         {opt}
                                       </span>
                                     </label>
                                   ))}
                                 </div>
-                              </div>
-                              <div className="space-y-8">
-                                <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 font-bold">Recommendation?</label>
+                              </motion.div>
+                              <motion.div 
+                                animate={errors.includes("recommend") ? { x: [-4, 4, -4, 4, 0] } : {}}
+                                className="space-y-8"
+                              >
+                                <label className={`block text-[9px] uppercase tracking-[0.4em] font-bold ${errors.includes("recommend") ? 'text-red-400' : 'text-gold/40'}`}>Recommendation?</label>
                                 <div className="space-y-3">
                                   {["Yes, Highly", "Likely", "No"].map((opt) => (
                                     <label key={opt} className="cursor-pointer block">
@@ -486,13 +550,13 @@ export default function FeedbackForm() {
                                         onChange={handleChange}
                                         checked={formData.recommend === opt}
                                       />
-                                      <span className={`px-6 py-4 border text-[10px] uppercase tracking-widest font-bold transition-all duration-500 block rounded-lg ${formData.recommend === opt ? 'bg-gold text-[#060f09] border-gold' : 'bg-white/[0.02] border-white/5 text-white/30'}`}>
+                                      <span className={`px-6 py-4 border text-[10px] uppercase tracking-widest font-bold transition-all duration-500 block rounded-lg ${formData.recommend === opt ? 'bg-gold text-[#060f09] border-gold' : errors.includes("recommend") ? 'bg-red-900/10 border-red-500/20 text-red-200/40' : 'bg-white/[0.02] border-white/5 text-white/30'}`}>
                                         {opt}
                                       </span>
                                     </label>
                                   ))}
                                 </div>
-                              </div>
+                              </motion.div>
                             </div>
                             <div className="pt-12 border-t border-white/5">
                               <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 mb-6 font-bold">Next Dream Destination?</label>
