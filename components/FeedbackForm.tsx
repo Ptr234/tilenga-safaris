@@ -267,6 +267,18 @@ export default function FeedbackForm() {
               {/* Journal Title Header */}
               <div className="mb-16 text-center">
                 <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 1 }}
+                  className="mb-10"
+                >
+                  <img
+                    src="/tilenga-logo-light.svg"
+                    alt="Tilenga Safaris"
+                    className="w-32 mx-auto"
+                  />
+                </motion.div>
+                <motion.div
                   key={step}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
