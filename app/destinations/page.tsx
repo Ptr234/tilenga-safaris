@@ -3,7 +3,7 @@ import { destinationsQuery } from "@/lib/sanity.queries";
 import DestinationsPageClient from "@/components/DestinationsPageClient";
 import { Destination } from "@/types/sanity";
 
-export const runtime = 'edge';
+export const dynamic = 'force-static';
 
 export default async function DestinationsPage() {
   const destinations = await client.fetch<Destination[]>(destinationsQuery);
