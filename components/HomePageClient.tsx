@@ -294,7 +294,12 @@ export default function HomePageClient({
       </section>
 
       {/* Heritage — narrative approach with parallax anchor */}
-      <section className="pt-10 pb-14 md:py-40 px-6 md:px-16 bg-cream-dark relative z-10">
+      <section className="pt-10 pb-14 md:py-40 px-6 md:px-16 bg-cream-dark relative z-10 overflow-hidden">
+        {/* Faint Background Pattern */}
+        <div className="absolute top-0 right-0 w-[40%] h-full opacity-[0.03] pointer-events-none">
+           <img src="/photos/newstock/wildanimals.jpg" className="w-full h-full object-cover" alt="" />
+        </div>
+
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid md:grid-cols-12 gap-10 md:gap-20 items-center">
             <div className="md:col-span-5 order-2 md:order-1">
@@ -333,10 +338,107 @@ export default function HomePageClient({
                     />
                   </div>
                 </ImageReveal>
+
+                {/* Mobile-only secondary detail */}
+                <FadeIn direction="up" delay={0.4} className="mt-4 lg:hidden">
+                  <div className="film-frame aspect-video overflow-hidden shadow-xl">
+                    <img
+                      src="/photos/newstock/wildlifeconservation.jpg"
+                      alt="Wildlife Detail"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </FadeIn>
+
+                {/* Desktop-only floating detail */}
+                <div className="absolute -bottom-20 -left-16 hidden lg:block w-72 h-96 z-20">
+                  <FadeIn direction="up" delay={0.6} className="h-full">
+                    <div className="film-frame h-full overflow-hidden shadow-2xl border-4 border-white/10">
+                      <img
+                        src="/photos/newstock/wildlifeconservation.jpg"
+                        alt="Wildlife Detail"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </FadeIn>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Sustainability — restored section with missing images */}
+      <section className="py-14 md:py-28 px-6 md:px-16 bg-cream relative z-[5] lg:pt-24">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-20 items-center">
+          <div className="grid grid-cols-2 gap-3 md:gap-4 pt-6 md:pt-0">
+            <ImageReveal direction="top" delay={0} className="overflow-hidden">
+              <div className="film-frame aspect-square">
+                <img src="/photos/newstock/conservation.jpg" alt="Conservation" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
+              </div>
+            </ImageReveal>
+            <ImageReveal direction="top" delay={0.12} className="overflow-hidden mt-0 md:mt-12">
+              <div className="film-frame aspect-square">
+                <img src="/photos/newstock/AfricanLandscape.jpg" alt="Landscape" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
+              </div>
+            </ImageReveal>
+            <ImageReveal direction="bottom" delay={0.06} className="overflow-hidden mt-0 md:-mt-12">
+              <div className="film-frame aspect-square">
+                <img src="/photos/newstock/wildlifeconservation.jpg" alt="Wildlife" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
+              </div>
+            </ImageReveal>
+            <ImageReveal direction="bottom" delay={0.18} className="overflow-hidden">
+              <div className="film-frame aspect-square">
+                <img src="/photos/newstock/local-communities.jpg" alt="Community" className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700" />
+              </div>
+            </ImageReveal>
+          </div>
+
+          <FadeIn direction="right">
+            <p className="section-label">Responsible Travel</p>
+            <h2 className="section-heading mb-4 md:mb-10 !text-2xl md:!text-4xl lg:!text-5xl">A Commitment to<br />Communities &amp; Conservation</h2>
+            <div className="w-16 h-px bg-gold mb-4 md:mb-10" />
+            <div className="space-y-4 md:space-y-8 body-text mb-6 md:mb-12">
+              <p>
+                Sustainability is woven into how we operate. We work closely with local communities,
+                support indigenous culture preservation, and partner with conservation-focused lodges across East Africa.
+              </p>
+              <p>
+                When you travel with Tilenga Safaris, your journey contributes to the livelihoods
+                of local guides, hospitality staff, and community artisans.
+              </p>
+            </div>
+            <StaggerGrid className="space-y-3 mb-10">
+              {sustainabilityItems.map((item) => (
+                <StaggerItem key={item}>
+                  <div className="flex items-start gap-4 text-stone font-sans text-[15px] leading-relaxed">
+                    <span className="text-gold mt-1 shrink-0 text-xs">✦</span>
+                    {item}
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerGrid>
+            <Link href="/about" className="btn-primary">Learn More</Link>
+          </FadeIn>
+        </div>
+
+        {/* Floating Detail Image */}
+        <FadeIn direction="up" delay={0.4} className="absolute -bottom-24 right-6 md:right-20 hidden md:block w-52 md:w-64 h-72 md:h-80 z-20">
+          <div className="relative h-full overflow-hidden shadow-2xl">
+            <img
+              src="/photos/newstock/cheetah.jpg"
+              alt="East Africa wildlife"
+              className="w-full h-full object-cover"
+            />
+            <span className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-gold/70" />
+            <span className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-gold/70" />
+            <div className="absolute bottom-4 left-4 right-4">
+              <span className="font-sans text-[9px] tracking-[0.3em] uppercase text-cream/70 bg-forest-dark/60 backdrop-blur-sm px-2 py-1">
+                East Africa
+              </span>
+            </div>
+          </div>
+        </FadeIn>
       </section>
 
       {/* Partners */}

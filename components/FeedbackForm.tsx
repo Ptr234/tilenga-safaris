@@ -281,7 +281,7 @@ export default function FeedbackForm() {
                               animate={errors.includes("name") ? { x: [-4, 4, -4, 4, 0] } : {}}
                               className="group"
                             >
-                              <label className={`block text-[9px] uppercase tracking-[0.4em] mb-6 font-bold transition-colors ${errors.includes("name") ? 'text-red-400' : 'text-gold/40 group-focus-within:text-gold/70'}`}>Explorer Name</label>
+                              <label className={`block text-[9px] uppercase tracking-[0.4em] mb-6 font-bold transition-colors ${errors.includes("name") ? 'text-red-400' : 'text-gold group-focus-within:text-gold-light'}`}>Explorer Name</label>
                               <input
                                 type="text"
                                 name="name"
@@ -296,7 +296,7 @@ export default function FeedbackForm() {
                               </div>
                             </motion.div>
                             <div className="group">
-                              <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 mb-6 font-bold group-focus-within:text-gold/70 transition-colors">Communication Link (Optional)</label>
+                              <label className="block text-[9px] uppercase tracking-[0.4em] text-gold mb-6 font-bold group-focus-within:text-gold-light transition-colors">Communication Link (Optional)</label>
                               <input
                                 type="email"
                                 name="email"
@@ -315,7 +315,7 @@ export default function FeedbackForm() {
                               animate={errors.includes("overall_rating") ? { x: [-4, 4, -4, 4, 0] } : {}}
                               className="text-center"
                             >
-                              <label className={`block text-[9px] uppercase tracking-[0.5em] mb-10 font-bold ${errors.includes("overall_rating") ? 'text-red-400' : 'text-gold/50'}`}>Overall Impression</label>
+                              <label className={`block text-[9px] uppercase tracking-[0.5em] mb-10 font-bold ${errors.includes("overall_rating") ? 'text-red-400' : 'text-gold'}`}>Overall Impression</label>
                               <div className="flex flex-row-reverse justify-center gap-2 md:gap-6">
                                 {[5, 4, 3, 2, 1].map((num) => (
                                   <label key={num} className="cursor-pointer group/star relative">
@@ -343,7 +343,7 @@ export default function FeedbackForm() {
                               animate={errors.includes("expectations") ? { x: [-4, 4, -4, 4, 0] } : {}}
                               className="pt-12 border-t border-white/5"
                             >
-                              <label className={`block text-[9px] uppercase tracking-[0.4em] mb-8 font-bold text-center ${errors.includes("expectations") ? 'text-red-400' : 'text-gold/40'}`}>Met expectations?</label>
+                              <label className={`block text-[9px] uppercase tracking-[0.4em] mb-8 font-bold text-center ${errors.includes("expectations") ? 'text-red-400' : 'text-gold'}`}>Met expectations?</label>
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
                                 {["Exceeded Expectations", "Met Expectations", "Partially Met", "Did Not Meet"].map((opt) => (
                                   <label key={opt} className="cursor-pointer">
@@ -375,7 +375,7 @@ export default function FeedbackForm() {
                               animate={errors.includes("highlight") ? { x: [-4, 4, -4, 4, 0] } : {}}
                               className="space-y-6"
                             >
-                              <label className={`block text-[9px] uppercase tracking-[0.4em] font-bold ${errors.includes("highlight") ? 'text-red-400' : 'text-gold/40'}`}>The Defining Moment</label>
+                              <label className={`block text-[9px] uppercase tracking-[0.4em] font-bold ${errors.includes("highlight") ? 'text-red-400' : 'text-gold'}`}>The Defining Moment</label>
                               <textarea
                                 name="highlight"
                                 value={formData.highlight}
@@ -385,7 +385,7 @@ export default function FeedbackForm() {
                               />
                             </motion.div>
                             <div className="space-y-6">
-                              <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 font-bold">Itinerary Reflections</label>
+                              <label className="block text-[9px] uppercase tracking-[0.4em] text-gold font-bold">Itinerary Reflections</label>
                               <textarea
                                 name="itinerary_love"
                                 value={formData.itinerary_love}
@@ -399,7 +399,7 @@ export default function FeedbackForm() {
 
                         {step === 4 && (
                           <div className="space-y-4">
-                            <p className="text-[10px] uppercase tracking-[0.4em] text-gold/30 mb-10 font-bold italic text-center">— Service Quality —</p>
+                            <p className="text-[10px] uppercase tracking-[0.4em] text-gold mb-10 font-bold italic text-center">— Service Quality —</p>
                             {[
                               { label: "Accommodation", name: "sat_acc" },
                               { label: "Transportation", name: "sat_trans" },
@@ -412,7 +412,7 @@ export default function FeedbackForm() {
                                 animate={errors.includes(field.name) ? { x: [-2, 2, -2, 2, 0] } : {}}
                                 className="flex flex-col sm:flex-row sm:items-center justify-between py-6 border-b border-white/5 last:border-0 group/row"
                               >
-                                <span className={`text-[11px] uppercase tracking-[0.2em] font-bold mb-5 sm:mb-0 transition-colors ${errors.includes(field.name) ? 'text-red-400' : 'text-white/50 group-hover/row:text-gold'}`}>{field.label}</span>
+                                <span className={`text-[11px] uppercase tracking-[0.2em] font-bold mb-5 sm:mb-0 transition-colors ${errors.includes(field.name) ? 'text-red-400' : 'text-cream/70 group-hover/row:text-gold'}`}>{field.label}</span>
                                 <div className="flex gap-2">
                                   {["Very Sat.", "Satisfied", "Neutral", "Unsat."].map((opt) => (
                                     <label key={opt} className="cursor-pointer">
@@ -444,7 +444,7 @@ export default function FeedbackForm() {
                               animate={errors.includes("guide_rating") ? { x: [-4, 4, -4, 4, 0] } : {}}
                               className="text-center"
                             >
-                              <label className={`block text-[9px] uppercase tracking-[0.5em] mb-10 font-bold ${errors.includes("guide_rating") ? 'text-red-400' : 'text-gold/50'}`}>The Guide's Expertise</label>
+                              <label className={`block text-[9px] uppercase tracking-[0.5em] mb-10 font-bold ${errors.includes("guide_rating") ? 'text-red-400' : 'text-gold'}`}>The Guide's Expertise</label>
                               <div className="flex flex-row-reverse justify-center gap-2 md:gap-6">
                                 {[5, 4, 3, 2, 1].map((num) => (
                                   <label key={num} className="cursor-pointer group/star">
@@ -470,7 +470,7 @@ export default function FeedbackForm() {
                               animate={errors.includes("safety") ? { x: [-4, 4, -4, 4, 0] } : {}}
                               className="pt-12 border-t border-white/5"
                             >
-                              <label className={`block text-[9px] uppercase tracking-[0.4em] mb-8 font-bold text-center ${errors.includes("safety") ? 'text-red-400' : 'text-gold/40'}`}>Safety & Security Feelings</label>
+                              <label className={`block text-[9px] uppercase tracking-[0.4em] mb-8 font-bold text-center ${errors.includes("safety") ? 'text-red-400' : 'text-gold'}`}>Safety & Security Feelings</label>
                               <div className="grid grid-cols-2 gap-4">
                                 {["Yes, Absolutely", "Mostly Yes", "Neutral", "No"].map((opt) => (
                                   <label key={opt} className="cursor-pointer">
@@ -497,7 +497,7 @@ export default function FeedbackForm() {
 
                         {step === 6 && (
                           <div className="space-y-8">
-                            <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 font-bold italic">Honest Feedback for Growth</label>
+                            <label className="block text-[9px] uppercase tracking-[0.4em] text-gold font-bold italic">Honest Feedback for Growth</label>
                             <textarea
                               name="improve"
                               value={formData.improve}
@@ -515,7 +515,7 @@ export default function FeedbackForm() {
                                 animate={errors.includes("travel_again") ? { x: [-4, 4, -4, 4, 0] } : {}}
                                 className="space-y-8"
                               >
-                                <label className={`block text-[9px] uppercase tracking-[0.4em] font-bold ${errors.includes("travel_again") ? 'text-red-400' : 'text-gold/40'}`}>Future Travels?</label>
+                                <label className={`block text-[9px] uppercase tracking-[0.4em] font-bold ${errors.includes("travel_again") ? 'text-red-400' : 'text-gold'}`}>Future Travels?</label>
                                 <div className="space-y-3">
                                   {["Definitely", "Maybe", "Unlikely"].map((opt) => (
                                     <label key={opt} className="cursor-pointer block">
@@ -538,7 +538,7 @@ export default function FeedbackForm() {
                                 animate={errors.includes("recommend") ? { x: [-4, 4, -4, 4, 0] } : {}}
                                 className="space-y-8"
                               >
-                                <label className={`block text-[9px] uppercase tracking-[0.4em] font-bold ${errors.includes("recommend") ? 'text-red-400' : 'text-gold/40'}`}>Recommendation?</label>
+                                <label className={`block text-[9px] uppercase tracking-[0.4em] font-bold ${errors.includes("recommend") ? 'text-red-400' : 'text-gold'}`}>Recommendation?</label>
                                 <div className="space-y-3">
                                   {["Yes, Highly", "Likely", "No"].map((opt) => (
                                     <label key={opt} className="cursor-pointer block">
@@ -559,7 +559,7 @@ export default function FeedbackForm() {
                               </motion.div>
                             </div>
                             <div className="pt-12 border-t border-white/5">
-                              <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 mb-6 font-bold">Next Dream Destination?</label>
+                              <label className="block text-[9px] uppercase tracking-[0.4em] text-gold mb-6 font-bold">Next Dream Destination?</label>
                               <input
                                 type="text"
                                 name="next_dest"
@@ -574,7 +574,7 @@ export default function FeedbackForm() {
 
                         {step === 8 && (
                           <div className="space-y-8">
-                            <label className="block text-[9px] uppercase tracking-[0.4em] text-gold/40 font-bold italic">One Last Entry</label>
+                            <label className="block text-[9px] uppercase tracking-[0.4em] text-gold font-bold italic">One Last Entry</label>
                             <textarea
                               name="final"
                               value={formData.final}
