@@ -179,12 +179,12 @@ export default function FeedbackForm() {
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
           transition={{ duration: 10, ease: "easeOut" }}
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 grayscale-[20%]"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-90"
           style={{
-            backgroundImage: `url('${getSiteImageUrlLocal("feedbackBackground", "/photos/newstock/AfricanLandscape.jpg")}')`,
+            backgroundImage: `url('${getSiteImageUrlLocal("feedbackBackground", "/photos/tilengasafarilodge/travel-bg.jpg")}')`,
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#060f09]/95 via-[#060f09]/80 to-[#060f09]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#060f09]/70 via-[#060f09]/45 to-[#060f09]/85" />
 
         {/* Animated Particles/Dust for atmosphere */}
         <div className="absolute inset-0 opacity-[0.05] pointer-events-none grain-overlay" />
