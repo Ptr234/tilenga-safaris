@@ -2,21 +2,26 @@ import FeedbackForm from "@/components/FeedbackForm";
 import { Metadata } from "next";
 
 const ogImage = "https://tilengasafaris.africa/experinces/game-drives-og.jpg";
+const pageUrl = "https://tilengasafaris.africa/feedback";
+const title = "Share Your Safari Experience — Tilenga Safaris";
+const description =
+  "Your journey matters to us. Share your experience with Tilenga Safaris and help us craft even more extraordinary safaris across East and Southern Africa.";
 
 export const metadata: Metadata = {
-  title: "Safari Feedback — Tilenga Safaris",
-  description: "We value your feedback. Tell us about your safari experience with Tilenga Safaris.",
+  title,
+  description,
+  alternates: { canonical: pageUrl },
   openGraph: {
-    title: "Safari Feedback — Tilenga Safaris",
-    description: "We value your feedback. Tell us about your safari experience with Tilenga Safaris.",
-    url: "https://tilengasafaris.africa/feedback",
+    title,
+    description,
+    url: pageUrl,
     siteName: "Tilenga Safaris",
     images: [
       {
         url: ogImage,
         width: 1200,
         height: 811,
-        alt: "Tilenga Safaris — Game Drives",
+        alt: "A Tilenga Safaris game drive across the African savannah",
       },
     ],
     locale: "en_US",
@@ -24,8 +29,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Safari Feedback — Tilenga Safaris",
-    description: "We value your feedback. Tell us about your safari experience with Tilenga Safaris.",
+    title,
+    description,
     images: [ogImage],
   },
 };
