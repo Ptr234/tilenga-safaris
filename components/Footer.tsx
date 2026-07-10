@@ -49,6 +49,12 @@ const partners = [
     imageKey: "partnerATTA",
     fallback: "/photos/partnerslogo/ATTAlogo.png",
   },
+  {
+    name: "SafariGo",
+    href: "https://www.safarigo.com/",
+    imageKey: "partnerSafariGo",
+    fallback: "/photos/partnerslogo/safarigo-logo.png",
+  },
 ];
 
 const socials = [
