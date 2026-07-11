@@ -18,7 +18,7 @@ import {
 const siteImageCategories: {title: string; category: string}[] = [
   {title: 'Homepage', category: 'homepage'},
   {title: 'About', category: 'about'},
-  {title: 'Destinations', category: 'destinations'},
+  {title: 'Destination Overview & Hero Images', category: 'destinations'},
   {title: 'Destination Hotspots', category: 'hotspots'},
   {title: 'Lodges', category: 'lodges'},
   {title: 'Navigation', category: 'navigation'},
