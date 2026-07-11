@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
@@ -233,60 +234,68 @@ export default function SouthAfricaPage() {
           </FadeIn>
 
           <div className="grid grid-cols-2 gap-2">
-            <ImageReveal direction="top" delay={0} className="overflow-hidden">
-              <img
+            <ImageReveal direction="top" delay={0} className="relative h-52 overflow-hidden">
+              <Image
                 src={getSiteImageUrlLocal(
                   "destinationSouthAfricaCapeTown",
                   `${base}/photos/newstock/Cape-Town.jpg`,
                   LANDSCAPE_4_3,
                 )}
                 alt="Cape Town Coast"
-                className="w-full h-52 object-cover"
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover"
               />
             </ImageReveal>
             <ImageReveal
               direction="top"
               delay={0.12}
-              className="overflow-hidden mt-6"
+              className="relative h-52 overflow-hidden mt-6"
             >
-              <img
+              <Image
                 src={getSiteImageUrlLocal(
                   "destinationSouthAfricaWildanimals",
                   `${base}/photos/newstock/wildanimals.jpg`,
                   LANDSCAPE_4_3,
                 )}
                 alt="Safari in Kruger"
-                className="w-full h-52 object-cover"
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover"
               />
             </ImageReveal>
             <ImageReveal
               direction="bottom"
               delay={0.06}
-              className="overflow-hidden -mt-6"
+              className="relative h-52 overflow-hidden -mt-6"
             >
-              <img
+              <Image
                 src={getSiteImageUrlLocal(
                   "destinationSouthAfricaTableMountain",
                   `${base}/photos/newstock/Table-Mountain.jpg`,
                   LANDSCAPE_4_3,
                 )}
                 alt="Table Mountain"
-                className="w-full h-52 object-cover"
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover"
               />
             </ImageReveal>
             <ImageReveal
               direction="bottom"
               delay={0.18}
-              className="overflow-hidden"
+              className="relative h-52 overflow-hidden"
             >
-              <img
+              <Image
                 src={getSiteImageUrlLocal(
                   "destinationSouthAfricaSplendifd",
                   `${base}/photos/newstock/splendifd.jpg`,
                   LANDSCAPE_4_3,
                 )}
                 alt="Winelands Estate"
-                className="w-full h-52 object-cover"
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover"
               />
             </ImageReveal>
           </div>
@@ -335,10 +344,12 @@ export default function SouthAfricaPage() {
                 className="grid md:grid-cols-2 gap-12 items-start border-b border-gold/10 pb-20 last:border-0 last:pb-0"
               >
                 <div className="relative overflow-hidden aspect-[4/3]">
-                  <img
+                  <Image
                     src={pkg.image}
                     alt={pkg.name}
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-transparent to-transparent" />
                   <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">

@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Destination {
   name: string;
@@ -112,10 +113,12 @@ export default function DestinationSwitcher({ destinations }: DestinationSwitche
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               className="absolute inset-0"
             >
-              <img
+              <Image
                 src={destinations[index].image}
                 alt={destinations[index].name}
-                className="w-full h-full object-cover"
+                fill
+                sizes="(max-width: 768px) 100vw, 58vw"
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
             </motion.div>

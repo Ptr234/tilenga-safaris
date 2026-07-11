@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import useSiteImages from "@/lib/useSiteImages";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
@@ -166,10 +167,12 @@ export default function Header() {
                   transition={{ duration: 0.8 }}
                   className="absolute inset-0"
                 >
-                  <img
+                  <Image
                     src={hoveredImage}
                     alt=""
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 45vw"
+                    className="object-cover"
                   />
                   <div className="absolute inset-0 bg-black/30" />
                 </motion.div>

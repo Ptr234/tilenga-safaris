@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import useSiteImages from "@/lib/useSiteImages";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
@@ -108,15 +109,17 @@ export default function QuotePopup() {
 
             {/* Image Section - Vintage Film Frame */}
             <div className="relative w-16 h-16 md:w-20 md:h-20 shrink-0 overflow-hidden border border-gold/40 p-1 bg-black/40">
-              <div className="w-full h-full overflow-hidden">
-                <img
+              <div className="relative w-full h-full overflow-hidden">
+                <Image
                   src={getSiteImageUrlLocal(
                     "quotePopupHero",
                     `${base}/photos/newstock/Gorrillahd.jpg`,
                     SQUARE,
                   )}
                   alt="Safari"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                  fill
+                  sizes="80px"
+                  className="object-cover group-hover:scale-110 transition-transform duration-1000"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-tr from-forest/40 to-transparent mix-blend-overlay" />
@@ -189,10 +192,12 @@ export default function QuotePopup() {
 
               {/* Side Panel - Cinematic Image */}
               <div className="hidden md:block w-1/3 relative overflow-hidden bg-forest">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80"
                   alt="Safari"
-                  className="absolute inset-0 w-full h-full object-cover opacity-60"
+                  fill
+                  sizes="33vw"
+                  className="object-cover opacity-60"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-transparent to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">

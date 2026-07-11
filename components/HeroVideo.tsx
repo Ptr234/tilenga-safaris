@@ -6,19 +6,27 @@ import { motion, AnimatePresence } from "framer-motion";
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export default function HeroVideo() {
+  // Defer the video request until after hydration so the 7MB file doesn't
+  // compete with critical JS/CSS/font requests for bandwidth on first load.
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []);
+
   return (
     <section className="relative h-screen w-full overflow-hidden bg-stone-900">
       {/* Background Media - Always Video */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source src={`${base}/homevideo/tilenga.mp4`} type="video/mp4" />
-        </video>
+        {ready && (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover"
+          >
+            <source src={`${base}/homevideo/tilenga.mp4`} type="video/mp4" />
+          </video>
+        )}
         <div className="absolute inset-0 bg-black/30" />
       </div>
 

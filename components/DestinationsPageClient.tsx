@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { urlForImage } from "@/lib/sanity.image";
 import useSiteImages from "@/lib/useSiteImages";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
@@ -75,10 +76,13 @@ export default function DestinationsPageClient({
             href={uganda.href}
             className="lg:col-span-2 group relative overflow-hidden h-[85vh] min-h-[500px] block"
           >
-            <img
+            <Image
               src={urlForImage(uganda.image, WIDE_16_9).url()}
               alt={uganda.name}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+              fill
+              sizes="(max-width: 1024px) 100vw, 66vw"
+              priority
+              className="object-cover transition-transform duration-[1600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-dark/20 to-transparent" />
             {/* Large number */}
@@ -110,10 +114,12 @@ export default function DestinationsPageClient({
                 href={dest.href}
                 className="group relative overflow-hidden flex-1 min-h-[300px] block"
               >
-                <img
+                <Image
                   src={urlForImage(dest.image, PORTRAIT_4_5).url()}
                   alt={dest.name}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/90 via-forest-dark/20 to-transparent" />
                 <span className="absolute top-6 right-8 font-serif text-cream/10 text-7xl leading-none select-none uppercase">
@@ -144,10 +150,12 @@ export default function DestinationsPageClient({
               href={dest.href}
               className="group relative overflow-hidden h-[65vh] min-h-[400px] block"
             >
-              <img
+              <Image
                 src={urlForImage(dest.image, PORTRAIT_3_4).url()}
                 alt={dest.name}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-dark/30 to-transparent" />
               <span className="absolute top-6 left-6 font-serif text-cream/10 text-7xl leading-none select-none uppercase">

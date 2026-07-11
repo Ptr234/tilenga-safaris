@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Experience {
@@ -94,10 +95,13 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
             className="absolute w-full h-full"
           >
             <div className="relative w-full h-full overflow-hidden group shadow-2xl">
-              <img
+              <Image
                 src={experiences[index].image}
                 alt={experiences[index].title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-110"
+                fill
+                sizes="(max-width: 768px) 100vw, 1400px"
+                priority={index === 0}
+                className="object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-110"
               />
               {/* Cinematic gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-dark/20 to-transparent" />

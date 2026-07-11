@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { client } from "@/lib/sanity.client";
@@ -206,37 +207,43 @@ export default async function AboutPage() {
           <div className="space-y-6">
             <div className="grid grid-cols-2 gap-6">
               <div className="film-frame h-56">
-                <img
+                <Image
                   src={getSiteImageUrlLocal(
                     "aboutGorilla",
                     `${base}/photos/newstock/Gorrilla.jpg`,
                     LANDSCAPE_4_3,
                   )}
                   alt="Uganda gorilla"
-                  className="w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover"
                 />
               </div>
               <div className="film-frame h-56 mt-12">
-                <img
+                <Image
                   src={getSiteImageUrlLocal(
                     "aboutHero1",
                     `${base}/photos/newstock/wildanimals.jpg`,
                     LANDSCAPE_4_3,
                   )}
                   alt="Murchison Falls"
-                  className="w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover"
                 />
               </div>
             </div>
             <div className="film-frame h-64">
-              <img
+              <Image
                 src={getSiteImageUrlLocal(
                   "aboutGorillaHigh",
                   `${base}/photos/newstock/gorrillahigh.jpg`,
                   WIDE_16_9,
                 )}
                 alt="Gorillas in mist"
-                className="w-full h-full object-cover"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
               />
             </div>
           </div>
@@ -420,14 +427,16 @@ export default async function AboutPage() {
             <div className="md:col-span-8 md:row-span-2">
               <FadeIn direction="up">
                 <div className="group relative aspect-[16/10] md:aspect-auto md:h-[80vh] overflow-hidden">
-                  <img
+                  <Image
                     src={getSiteImageUrlLocal(
                       services[0].imageKey,
                       services[0].image,
                       WIDE_16_9,
                     )}
                     alt={services[0].title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 66vw"
+                    className="object-cover transition-transform duration-[2000ms] group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-forest-dark/40 group-hover:bg-forest-dark/20 transition-colors duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-transparent to-transparent opacity-80" />
@@ -457,14 +466,16 @@ export default async function AboutPage() {
             <div className="md:col-span-4 md:row-span-2">
               <FadeIn direction="up" delay={0.2}>
                 <div className="group relative aspect-[4/5] md:h-[80vh] overflow-hidden">
-                  <img
+                  <Image
                     src={getSiteImageUrlLocal(
                       services[1].imageKey,
                       services[1].image,
                       PORTRAIT_4_5,
                     )}
                     alt={services[1].title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-[2000ms] group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-forest-dark/50 group-hover:bg-forest-dark/30 transition-colors duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-transparent to-transparent" />
@@ -492,14 +503,16 @@ export default async function AboutPage() {
             <div className="md:col-span-5">
               <FadeIn direction="up">
                 <div className="group relative aspect-square md:aspect-[4/3] overflow-hidden border border-white/5">
-                  <img
+                  <Image
                     src={getSiteImageUrlLocal(
                       services[2].imageKey,
                       services[2].image,
                       LANDSCAPE_4_3,
                     )}
                     alt={services[2].title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-110"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    className="object-cover transition-transform duration-[1500ms] group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-forest-dark/60 group-hover:bg-forest-dark/40 transition-colors duration-700" />
                   <div className="absolute inset-0 flex items-center justify-center p-10 text-center">
@@ -523,14 +536,16 @@ export default async function AboutPage() {
             <div className="md:col-span-7">
               <FadeIn direction="up" delay={0.2}>
                 <div className="group relative aspect-video md:aspect-auto md:h-full overflow-hidden border border-white/5">
-                  <img
+                  <Image
                     src={getSiteImageUrlLocal(
                       services[3].imageKey,
                       services[3].image,
                       WIDE_16_9,
                     )}
                     alt={services[3].title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-110"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 58vw"
+                    className="object-cover transition-transform duration-[1500ms] group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-forest-dark/20" />
                   <div className="absolute inset-0 bg-gradient-to-r from-forest-dark via-forest-dark/40 to-transparent" />
@@ -554,14 +569,16 @@ export default async function AboutPage() {
               <div key={s.num} className="md:col-span-3">
                 <FadeIn direction="up" delay={0.1 * i}>
                   <div className="group relative aspect-[3/4] overflow-hidden border border-white/5">
-                    <img
+                    <Image
                       src={getSiteImageUrlLocal(
                         s.imageKey,
                         s.image,
                         PORTRAIT_3_4,
                       )}
                       alt={s.title}
-                      className="absolute inset-0 w-full h-full object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-[1500ms]"
+                      fill
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                      className="object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-[1500ms]"
                     />
                     <div className="absolute inset-0 bg-forest-dark/70 group-hover:bg-forest-dark/40 transition-all duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-transparent to-transparent" />
@@ -644,14 +661,16 @@ export default async function AboutPage() {
               <FadeIn key={t.role} direction="up" delay={i * 0.1}>
                 <div className="group block">
                   <div className="relative aspect-[4/5] overflow-hidden mb-8 shadow-sm border border-gold/5">
-                    <img
+                    <Image
                       src={getSiteImageUrlLocal(
                         t.imageKey,
                         t.image,
                         PORTRAIT_4_5,
                       )}
                       alt={t.role}
-                      className="absolute inset-0 w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-[1500ms] ease-out group-hover:scale-105"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-[1500ms] ease-out group-hover:scale-105"
                     />
                     {/* Elegant overlay on hover */}
                     <div className="absolute inset-0 bg-forest-dark/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />

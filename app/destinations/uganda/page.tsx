@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import ImageReveal from "@/components/motion/ImageReveal";
@@ -240,48 +241,56 @@ export default function UgandaPage() {
           </FadeIn>
 
           <div className="grid grid-cols-2 gap-2">
-            <ImageReveal direction="top" delay={0} className="overflow-hidden">
-              <img
+            <ImageReveal direction="top" delay={0} className="relative h-52 overflow-hidden">
+              <Image
                 src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1200&q=80"
                 alt="Mountain Gorillas"
-                className="w-full h-52 object-cover hover:scale-110 transition-transform duration-700"
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover hover:scale-110 transition-transform duration-700"
               />
             </ImageReveal>
             <ImageReveal
               direction="top"
               delay={0.12}
-              className="overflow-hidden mt-6"
+              className="relative h-52 overflow-hidden mt-6"
             >
-              <img
+              <Image
                 src={getSiteImageUrlLocal(
                   "destinationUgandaSourceOfNile2",
                   `${base}/photos/newstock/Source-of-the-Nile2.jpg`,
                   LANDSCAPE_4_3,
                 )}
                 alt="Source of the Nile, Uganda"
-                className="w-full h-52 object-cover"
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover"
               />
             </ImageReveal>
             <ImageReveal
               direction="bottom"
               delay={0.06}
-              className="overflow-hidden -mt-6"
+              className="relative h-52 overflow-hidden -mt-6"
             >
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=500&q=80"
                 alt="Wildlife"
-                className="w-full h-52 object-cover"
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover"
               />
             </ImageReveal>
             <ImageReveal
               direction="bottom"
               delay={0.18}
-              className="overflow-hidden"
+              className="relative h-52 overflow-hidden"
             >
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=500&q=80"
                 alt="Game drive"
-                className="w-full h-52 object-cover"
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover"
               />
             </ImageReveal>
           </div>
@@ -330,10 +339,12 @@ export default function UgandaPage() {
                 className="grid md:grid-cols-2 gap-12 items-start border-b border-gold/10 pb-20 last:border-0 last:pb-0"
               >
                 <div className="relative overflow-hidden aspect-[4/3]">
-                  <img
+                  <Image
                     src={pkg.image}
                     alt={pkg.name}
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-transparent to-transparent" />
                   <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">

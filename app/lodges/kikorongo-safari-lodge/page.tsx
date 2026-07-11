@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
@@ -246,14 +247,16 @@ export default async function KikorongoSafariLodgePage() {
         {/* Image */}
         <div className="relative min-h-[50vh] md:min-h-0 order-1 md:order-2 overflow-hidden">
           <ImageReveal direction="right" className="absolute inset-0">
-            <img
+            <Image
               src={getSiteImageUrl(
                 "lodgeKikorongoCottage1",
                 `${base}/photos/kikorongo_cottage1.jpg`,
                 PORTRAIT_3_4,
               )}
               alt="Kikorongo Safari Lodge lake view"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 hover:scale-110"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover transition-transform duration-1000 hover:scale-110"
             />
           </ImageReveal>
         </div>
@@ -277,14 +280,16 @@ export default async function KikorongoSafariLodgePage() {
               <StaggerItem key={room.name}>
                 <div className="group bg-white/5 border border-white/10 overflow-hidden flex flex-col h-full">
                   <div className="relative h-64 overflow-hidden">
-                    <img
+                    <Image
                       src={getSiteImageUrl(
                         room.imageKey,
                         room.fallback,
                         LANDSCAPE_4_3,
                       )}
                       alt={room.name}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute top-4 left-4">
                       <span className="bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">
@@ -401,14 +406,16 @@ export default async function KikorongoSafariLodgePage() {
         {/* ── ACT I: The Escarpment ── */}
         <FadeIn>
           <div className="relative h-[70vh] md:h-[88vh] overflow-hidden group">
-            <img
+            <Image
               src={getSiteImageUrl(
                 "lodgeKikorongoOutside",
                 `${base}/photos/kikorongo_outside.jpg`,
                 WIDE_16_9,
               )}
               alt="Kikorongo Safari Lodge on the Equator"
-              className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105"
+              fill
+              sizes="100vw"
+              className="object-cover transition-transform duration-[6s] group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/85 via-forest-dark/20 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/50 to-transparent" />
@@ -446,14 +453,16 @@ export default async function KikorongoSafariLodgePage() {
             direction="left"
             className="relative overflow-hidden group min-h-[55vh]"
           >
-            <img
+            <Image
               src={getSiteImageUrl(
                 "lodgeKikorongoCottage1",
                 `${base}/photos/kikorongo_cottage1.jpg`,
                 PORTRAIT_3_4,
               )}
               alt="Cottage with Lake View at Dawn"
-              className="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover transition-transform duration-[4s] group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-transparent to-transparent" />
             <div className="absolute bottom-8 left-8">
@@ -485,15 +494,17 @@ export default async function KikorongoSafariLodgePage() {
               </p>
             </FadeIn>
             <FadeIn direction="up" delay={0.3} className="mt-10">
-              <div className="relative overflow-hidden group">
-                <img
+              <div className="relative overflow-hidden group aspect-[16/8]">
+                <Image
                   src={getSiteImageUrl(
                     "lodgeKikorongoRoom2",
                     `${base}/photos/kikorongo_cottage2.jpg`,
                     WIDE_2_1,
                   )}
                   alt="Horizon View from the Escarpment"
-                  className="w-full aspect-[16/8] object-cover transition-transform duration-[4s] group-hover:scale-105"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="object-cover transition-transform duration-[4s] group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/50 to-transparent" />
                 <div className="absolute bottom-4 right-5">
@@ -528,15 +539,17 @@ export default async function KikorongoSafariLodgePage() {
               </p>
             </FadeIn>
             <FadeIn direction="up" delay={0.3}>
-              <div className="relative overflow-hidden group">
-                <img
+              <div className="relative overflow-hidden group aspect-[4/3]">
+                <Image
                   src={getSiteImageUrl(
                     "lodgeKikorongoTourist",
                     `${base}/photos/kikorongo_tourist.jpg`,
                     LANDSCAPE_4_3,
                   )}
                   alt="Guests in the Wild"
-                  className="w-full aspect-[4/3] object-cover transition-transform duration-[4s] group-hover:scale-110"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="object-cover transition-transform duration-[4s] group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/60 to-transparent" />
                 <div className="absolute bottom-4 left-5">
@@ -553,14 +566,16 @@ export default async function KikorongoSafariLodgePage() {
             direction="right"
             className="md:col-span-3 relative overflow-hidden group min-h-[60vh]"
           >
-            <img
+            <Image
               src={getSiteImageUrl(
                 "lodgeKikorongoRanger",
                 `${base}/photos/kikorongo_ranger.jpg`,
                 PORTRAIT_3_4,
               )}
               alt="Kikorongo Safari Ranger"
-              className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 transition-all duration-[1500ms] group-hover:scale-105"
+              fill
+              sizes="(max-width: 768px) 100vw, 60vw"
+              className="object-cover grayscale-[10%] group-hover:grayscale-0 transition-all duration-[1500ms] group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#091510]/60" />
             <div className="absolute top-8 right-8 text-right">
@@ -595,15 +610,17 @@ export default async function KikorongoSafariLodgePage() {
             },
           ].map((item) => (
             <FadeIn key={item.alt} direction="up" delay={item.delay}>
-              <div className="relative group overflow-hidden">
-                <img
+              <div className="relative group overflow-hidden aspect-[4/3] md:aspect-[16/10]">
+                <Image
                   src={getSiteImageUrl(
                     item.imageKey,
                     item.imageFallback,
                     WIDE_16_9,
                   )}
                   alt={item.alt}
-                  className="w-full aspect-[4/3] md:aspect-[16/10] object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-[1200ms] group-hover:scale-105"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-[1200ms] group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 <div className="absolute bottom-0 left-0 right-0 p-8 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
@@ -627,14 +644,16 @@ export default async function KikorongoSafariLodgePage() {
         {/* ── ACT V: On Safari ── */}
         <FadeIn>
           <div className="relative h-[55vh] md:h-[70vh] overflow-hidden group">
-            <img
+            <Image
               src={getSiteImageUrl(
                 "lodgeKikorongoTravel",
                 `${base}/photos/kikorongo_travel.jpg`,
                 WIDE_16_9,
               )}
               alt="Game Drive in Queen Elizabeth NP"
-              className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105"
+              fill
+              sizes="100vw"
+              className="object-cover transition-transform duration-[6s] group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-forest-dark/35 group-hover:bg-forest-dark/20 transition-colors duration-1000" />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
@@ -662,14 +681,16 @@ export default async function KikorongoSafariLodgePage() {
             direction="left"
             className="relative overflow-hidden group min-h-[55vh]"
           >
-            <img
+            <Image
               src={getSiteImageUrl(
                 "lodgeKikorongoFireplace",
                 `${base}/photos/kikorongo_fireplace.jpg`,
                 PORTRAIT_3_4,
               )}
               alt="Evening Fireplace at Kikorongo"
-              className="w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-105"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover transition-transform duration-[5s] group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#060e09]/60" />
             <div className="absolute bottom-8 left-8">

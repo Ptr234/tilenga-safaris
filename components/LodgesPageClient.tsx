@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { urlForImage } from "@/lib/sanity.image";
@@ -117,10 +118,13 @@ export default function LodgesPageClient({ lodges }: LodgesPageClientProps) {
               className={`relative min-h-[60vh] md:min-h-0 ${isEven ? "md:order-1" : "md:order-2"}`}
             >
               <div className="absolute inset-0 overflow-hidden film-frame m-2">
-                <img
+                <Image
                   src={urlForImage(lodge.image, PORTRAIT_3_4).url()}
                   alt={lodge.name}
-                  className="w-full h-full object-cover transition-transform duration-[1800ms] ease-out hover:scale-105"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 58vw"
+                  priority={index === 0}
+                  className="object-cover transition-transform duration-[1800ms] ease-out hover:scale-105"
                 />
               </div>
 
@@ -242,14 +246,16 @@ export default function LodgesPageClient({ lodges }: LodgesPageClientProps) {
       {/* ── CTA ── */}
       <section className="bg-forest-dark py-32 px-8 md:px-20 relative overflow-hidden text-center">
         <div className="absolute inset-0 opacity-20">
-          <img
+          <Image
             src={getSiteImageUrl(
               "lodgeKikorongoHero",
               "/photos/kikorongo_room1.jpg",
               WIDE_16_9,
             )}
             alt="CTA background"
-            className="w-full h-full object-cover"
+            fill
+            sizes="100vw"
+            className="object-cover"
           />
         </div>
         <div className="absolute inset-0 bg-forest-dark/80" />

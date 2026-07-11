@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import ImageReveal from "@/components/motion/ImageReveal";
@@ -249,60 +250,68 @@ export default function NamibiaPage() {
           </FadeIn>
 
           <div className="grid grid-cols-2 gap-2">
-            <ImageReveal direction="top" delay={0} className="overflow-hidden">
-              <img
+            <ImageReveal direction="top" delay={0} className="relative h-52 overflow-hidden">
+              <Image
                 src={getSiteImageUrlLocal(
                   "destinationNamibiaDesert",
                   `${base}/photos/newstock/Namibia-Desert.jpg`,
                   LANDSCAPE_4_3,
                 )}
                 alt="Sossusvlei dunes"
-                className="w-full h-52 object-cover"
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover"
               />
             </ImageReveal>
             <ImageReveal
               direction="top"
               delay={0.12}
-              className="overflow-hidden mt-6"
+              className="relative h-52 overflow-hidden mt-6"
             >
-              <img
+              <Image
                 src={getSiteImageUrlLocal(
                   "destinationNamibiaElephantFamily",
                   `${base}/photos/newstock/Elephantfamily.jpg`,
                   LANDSCAPE_4_3,
                 )}
                 alt="Etosha wildlife"
-                className="w-full h-52 object-cover"
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover"
               />
             </ImageReveal>
             <ImageReveal
               direction="bottom"
               delay={0.06}
-              className="overflow-hidden -mt-6"
+              className="relative h-52 overflow-hidden -mt-6"
             >
-              <img
+              <Image
                 src={getSiteImageUrlLocal(
                   "destinationNamibiaSkeletonCoast",
                   `${base}/photos/newstock/Skeleton-Coast.jpg`,
                   LANDSCAPE_4_3,
                 )}
                 alt="Skeleton Coast"
-                className="w-full h-52 object-cover"
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover"
               />
             </ImageReveal>
             <ImageReveal
               direction="bottom"
               delay={0.18}
-              className="overflow-hidden"
+              className="relative h-52 overflow-hidden"
             >
-              <img
+              <Image
                 src={getSiteImageUrlLocal(
                   "destinationNamibiaAfricanLandscape",
                   `${base}/photos/newstock/AfricanLandscape.jpg`,
                   LANDSCAPE_4_3,
                 )}
                 alt="Desert landscape"
-                className="w-full h-52 object-cover"
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover"
               />
             </ImageReveal>
           </div>
@@ -351,10 +360,12 @@ export default function NamibiaPage() {
                 className="grid md:grid-cols-2 gap-12 items-start border-b border-gold/10 pb-20 last:border-0 last:pb-0"
               >
                 <div className="relative overflow-hidden aspect-[4/3]">
-                  <img
+                  <Image
                     src={pkg.image}
                     alt={pkg.name}
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-transparent to-transparent" />
                   <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">

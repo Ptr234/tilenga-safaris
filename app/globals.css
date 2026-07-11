@@ -471,6 +471,7 @@ button {
 
 /* Cottar's-style vintage film frame */
 .film-frame {
+  position: relative;
   border: 3px solid #1a1a1a;
   background: #111;
   padding: 5px;

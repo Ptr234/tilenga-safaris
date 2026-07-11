@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { urlForImage } from "@/lib/sanity.image";
 import useSiteImages from "@/lib/useSiteImages";
 import { PORTRAIT_3_4 } from "@/lib/imageDimensions";
@@ -41,7 +42,7 @@ export default function HotspotGallery({ hotspots }: { hotspots: Hotspot[] }) {
               className="relative shrink-0 w-[76vw] sm:w-[44vw] md:w-[28vw] lg:w-[22vw] xl:w-[18vw] aspect-[3/4] overflow-hidden group cursor-default"
             >
               {/* Static image or Sanity-backed image if available */}
-              <img
+              <Image
                 src={
                   spot.imageKey && siteImages[spot.imageKey]
                     ? urlForImage(
@@ -52,7 +53,9 @@ export default function HotspotGallery({ hotspots }: { hotspots: Hotspot[] }) {
                 }
                 alt={spot.name}
                 draggable={false}
-                className="absolute inset-0 w-full h-full object-cover pointer-events-none group-hover:scale-110 transition-transform duration-[2000ms] ease-out"
+                fill
+                sizes="(max-width: 640px) 76vw, (max-width: 768px) 44vw, (max-width: 1024px) 28vw, 18vw"
+                className="object-cover pointer-events-none group-hover:scale-110 transition-transform duration-[2000ms] ease-out"
               />
 
               {/* Gradient overlay */}

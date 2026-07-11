@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import HeroVideo from "@/components/HeroVideo";
 import FadeIn from "@/components/motion/FadeIn";
@@ -152,13 +153,15 @@ export default function HomePageClient({
                     >
                       <Link href={initialDestinations[activeIdx].href}>
                         <div className="relative aspect-[4/3] md:aspect-[14/11] overflow-hidden mb-6 md:mb-8 shadow-sm">
-                          <img
+                          <Image
                             src={urlForImage(
                               initialDestinations[activeIdx].image,
                               LANDSCAPE_4_3,
                             ).url()}
                             alt={initialDestinations[activeIdx].name}
-                            className="absolute inset-0 w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-[1500ms] ease-out group-hover:scale-105"
+                            fill
+                            sizes="(max-width: 768px) 100vw, 60vw"
+                            className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-[1500ms] ease-out group-hover:scale-105"
                           />
                         </div>
                         <div className="max-w-lg">
@@ -204,13 +207,15 @@ export default function HomePageClient({
                   className="group block"
                 >
                   <div className="relative aspect-square md:aspect-[4/5] overflow-hidden mb-6 md:mb-8 shadow-sm">
-                    <img
+                    <Image
                       src={urlForImage(
                         initialDestinations[0].image,
                         PORTRAIT_4_5,
                       ).url()}
                       alt={initialDestinations[0].name}
-                      className="absolute inset-0 w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-[1500ms] group-hover:scale-105"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 40vw"
+                      className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-[1500ms] group-hover:scale-105"
                     />
                   </div>
                   <div>
@@ -232,10 +237,12 @@ export default function HomePageClient({
                 <FadeIn key={dest.name} direction="up" delay={0.1 * i}>
                   <Link href={dest.href} className="group block">
                     <div className="relative aspect-[4/5] overflow-hidden mb-4 md:mb-6 shadow-sm border border-gold/5">
-                      <img
+                      <Image
                         src={urlForImage(dest.image, PORTRAIT_4_5).url()}
                         alt={dest.name}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        fill
+                        sizes="(max-width: 768px) 50vw, 16vw"
+                        className="object-cover transition-transform duration-1000 group-hover:scale-110"
                       />
                     </div>
                     <div className="text-center">
@@ -292,10 +299,12 @@ export default function HomePageClient({
                 href={lodge.href}
                 className="group block relative overflow-hidden h-[62vh] md:h-[85vh] min-h-[420px]"
               >
-                <img
+                <Image
                   src={urlForImage(lodge.image, PORTRAIT_3_4).url()}
                   alt={lodge.name}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-dark/30 to-transparent transition-opacity duration-700 group-hover:opacity-90" />
                 <span className="absolute top-6 left-6 text-[10px] uppercase tracking-[0.25em] font-sans text-gold border border-gold/40 px-3 py-1 bg-forest-dark/40 backdrop-blur-sm">
@@ -375,13 +384,15 @@ export default function HomePageClient({
       <section className="pt-10 pb-14 md:py-40 px-6 md:px-16 bg-cream-dark relative z-10 overflow-hidden">
         {/* Faint Background Pattern */}
         <div className="absolute top-0 right-0 w-[40%] h-full opacity-[0.03] pointer-events-none">
-          <img
+          <Image
             src={getSiteImageUrl(
               "homeHeritageBackground",
               "/photos/newstock/wildanimals.jpg",
               WIDE_16_9,
             )}
-            className="w-full h-full object-cover"
+            fill
+            sizes="40vw"
+            className="object-cover"
             alt=""
           />
         </div>
@@ -428,14 +439,16 @@ export default function HomePageClient({
               <div className="relative">
                 <ImageReveal direction="left" delay={0.3}>
                   <div className="film-frame aspect-[16/11] overflow-hidden shadow-2xl">
-                    <img
+                    <Image
                       src={getSiteImageUrl(
                         "homeHeritageMain",
                         "/photos/newstock/AfricanLandscape.jpg",
                         WIDE_16_11,
                       )}
                       alt="The Spirit of Safari"
-                      className="w-full h-full object-cover"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 58vw"
+                      className="object-cover"
                     />
                   </div>
                 </ImageReveal>
@@ -443,14 +456,16 @@ export default function HomePageClient({
                 {/* Mobile-only secondary detail */}
                 <FadeIn direction="up" delay={0.4} className="mt-4 lg:hidden">
                   <div className="film-frame aspect-video overflow-hidden shadow-xl">
-                    <img
+                    <Image
                       src={getSiteImageUrl(
                         "homeHeritageDetail",
                         "/photos/newstock/wildlifeconservation.jpg",
                         WIDE_16_9,
                       )}
                       alt="Wildlife Detail"
-                      className="w-full h-full object-cover"
+                      fill
+                      sizes="100vw"
+                      className="object-cover"
                     />
                   </div>
                 </FadeIn>
@@ -459,14 +474,16 @@ export default function HomePageClient({
                 <div className="absolute -bottom-20 -left-16 hidden lg:block w-72 h-96 z-20">
                   <FadeIn direction="up" delay={0.6} className="h-full">
                     <div className="film-frame h-full overflow-hidden shadow-2xl border-4 border-white/10">
-                      <img
+                      <Image
                         src={getSiteImageUrl(
                           "homeHeritageDetail",
                           "/photos/newstock/wildlifeconservation.jpg",
                           PORTRAIT_3_4,
                         )}
                         alt="Wildlife Detail"
-                        className="w-full h-full object-cover"
+                        fill
+                        sizes="288px"
+                        className="object-cover"
                       />
                     </div>
                   </FadeIn>
@@ -483,14 +500,16 @@ export default function HomePageClient({
           <div className="grid grid-cols-2 gap-3 md:gap-4 pt-6 md:pt-0">
             <ImageReveal direction="top" delay={0} className="overflow-hidden">
               <div className="film-frame aspect-square">
-                <img
+                <Image
                   src={getSiteImageUrl(
                     "homeSustainabilityConservation",
                     "/photos/newstock/conservation.jpg",
                     SQUARE,
                   )}
                   alt="Conservation"
-                  className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700"
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover hover:scale-[1.05] transition-transform duration-700"
                 />
               </div>
             </ImageReveal>
@@ -500,14 +519,16 @@ export default function HomePageClient({
               className="overflow-hidden mt-0 md:mt-12"
             >
               <div className="film-frame aspect-square">
-                <img
+                <Image
                   src={getSiteImageUrl(
                     "homeSustainabilityLandscape",
                     "/photos/newstock/AfricanLandscape.jpg",
                     SQUARE,
                   )}
                   alt="Landscape"
-                  className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700"
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover hover:scale-[1.05] transition-transform duration-700"
                 />
               </div>
             </ImageReveal>
@@ -517,14 +538,16 @@ export default function HomePageClient({
               className="overflow-hidden mt-0 md:-mt-12"
             >
               <div className="film-frame aspect-square">
-                <img
+                <Image
                   src={getSiteImageUrl(
                     "homeSustainabilityWildlife",
                     "/photos/newstock/wildlifeconservation.jpg",
                     SQUARE,
                   )}
                   alt="Wildlife"
-                  className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700"
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover hover:scale-[1.05] transition-transform duration-700"
                 />
               </div>
             </ImageReveal>
@@ -534,14 +557,16 @@ export default function HomePageClient({
               className="overflow-hidden"
             >
               <div className="film-frame aspect-square">
-                <img
+                <Image
                   src={getSiteImageUrl(
                     "homeSustainabilityCommunity",
                     "/photos/newstock/local-communities.jpg",
                     SQUARE,
                   )}
                   alt="Community"
-                  className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700"
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover hover:scale-[1.05] transition-transform duration-700"
                 />
               </div>
             </ImageReveal>
@@ -590,14 +615,16 @@ export default function HomePageClient({
           className="absolute -bottom-24 right-6 md:right-20 hidden md:block w-52 md:w-64 h-72 md:h-80 z-20"
         >
           <div className="relative h-full overflow-hidden shadow-2xl">
-            <img
+            <Image
               src={getSiteImageUrl(
                 "homeFeatureCheetah",
                 "/photos/newstock/cheetah.jpg",
                 PORTRAIT_4_5,
               )}
               alt="East Africa wildlife"
-              className="w-full h-full object-cover"
+              fill
+              sizes="(max-width: 768px) 208px, 256px"
+              className="object-cover"
             />
             <span className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-gold/70" />
             <span className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-gold/70" />
@@ -616,14 +643,16 @@ export default function HomePageClient({
       {/* Testimonials */}
       <section className="relative z-0 min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <Image
             src={getSiteImageUrl(
               "homeTestimonialsBg",
               "/photos/newstock/Airportmeet-and-greet.jpg",
               WIDE_16_9,
             )}
             alt=""
-            className="w-full h-full object-cover object-center scale-[1.06]"
+            fill
+            sizes="100vw"
+            className="object-cover object-center scale-[1.06]"
           />
           <div className="absolute inset-0 bg-[#050f08]/80" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#050f08] via-transparent to-[#050f08]/70" />
