@@ -10,7 +10,9 @@ import SplitText from "@/components/motion/SplitText";
 import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
 import useSiteImages from "@/lib/useSiteImages";
+import useDestinationGallery from "@/lib/useDestinationGallery";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
+import { urlForImage } from "@/lib/sanity.image";
 import { LANDSCAPE_4_3, WIDE_16_9 } from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -142,11 +144,21 @@ const packages = [
 
 export default function NamibiaPage() {
   const siteImages = useSiteImages();
+  const overviewGallery = useDestinationGallery("Namibia");
   const getSiteImageUrlLocal = (
     key: string,
     fallback: string,
     dimensions?: { width: number; height: number },
   ) => getSiteImageUrl(siteImages, key, fallback, dimensions);
+
+  const overviewImage = (
+    index: number,
+    fallback: string,
+    dimensions?: { width: number; height: number },
+  ) => {
+    const img = overviewGallery?.[index];
+    return img ? urlForImage(img, dimensions).url() : fallback;
+  };
 
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
@@ -252,9 +264,13 @@ export default function NamibiaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="relative h-52 overflow-hidden">
               <Image
-                src={getSiteImageUrlLocal(
-                  "destinationNamibiaDesert",
-                  `${base}/photos/newstock/Namibia-Desert.jpg`,
+                src={overviewImage(
+                  0,
+                  getSiteImageUrlLocal(
+                    "destinationNamibiaDesert",
+                    `${base}/photos/newstock/Namibia-Desert.jpg`,
+                    LANDSCAPE_4_3,
+                  ),
                   LANDSCAPE_4_3,
                 )}
                 alt="Sossusvlei dunes"
@@ -269,9 +285,13 @@ export default function NamibiaPage() {
               className="relative h-52 overflow-hidden mt-6"
             >
               <Image
-                src={getSiteImageUrlLocal(
-                  "destinationNamibiaElephantFamily",
-                  `${base}/photos/newstock/Elephantfamily.jpg`,
+                src={overviewImage(
+                  1,
+                  getSiteImageUrlLocal(
+                    "destinationNamibiaElephantFamily",
+                    `${base}/photos/newstock/Elephantfamily.jpg`,
+                    LANDSCAPE_4_3,
+                  ),
                   LANDSCAPE_4_3,
                 )}
                 alt="Etosha wildlife"
@@ -286,9 +306,13 @@ export default function NamibiaPage() {
               className="relative h-52 overflow-hidden -mt-6"
             >
               <Image
-                src={getSiteImageUrlLocal(
-                  "destinationNamibiaSkeletonCoast",
-                  `${base}/photos/newstock/Skeleton-Coast.jpg`,
+                src={overviewImage(
+                  2,
+                  getSiteImageUrlLocal(
+                    "destinationNamibiaSkeletonCoast",
+                    `${base}/photos/newstock/Skeleton-Coast.jpg`,
+                    LANDSCAPE_4_3,
+                  ),
                   LANDSCAPE_4_3,
                 )}
                 alt="Skeleton Coast"
@@ -303,9 +327,13 @@ export default function NamibiaPage() {
               className="relative h-52 overflow-hidden"
             >
               <Image
-                src={getSiteImageUrlLocal(
-                  "destinationNamibiaAfricanLandscape",
-                  `${base}/photos/newstock/AfricanLandscape.jpg`,
+                src={overviewImage(
+                  3,
+                  getSiteImageUrlLocal(
+                    "destinationNamibiaAfricanLandscape",
+                    `${base}/photos/newstock/AfricanLandscape.jpg`,
+                    LANDSCAPE_4_3,
+                  ),
                   LANDSCAPE_4_3,
                 )}
                 alt="Desert landscape"

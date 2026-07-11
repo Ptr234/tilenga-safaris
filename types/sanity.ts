@@ -32,6 +32,7 @@ export interface Destination {
   num?: string;
   bestTime?: string;
   hotspots?: string[];
+  overviewGallery?: (SanityImage & { alt?: string })[];
 }
 
 export interface Partner {

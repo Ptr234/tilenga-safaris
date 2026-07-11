@@ -67,6 +67,27 @@ export const destination = defineType({
       of: [defineArrayMember({type: 'string'})],
       options: {layout: 'tags'},
     }),
+    defineField({
+      name: 'overviewGallery',
+      title: 'Overview Gallery',
+      description:
+        'Up to 4 images shown in the "Destination Overview" photo grid on this destination\'s detail page.',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'image',
+          options: {hotspot: true},
+          fields: [
+            defineField({
+              name: 'alt',
+              title: 'Alt Text',
+              type: 'string',
+            }),
+          ],
+        }),
+      ],
+      validation: (Rule) => Rule.max(4),
+    }),
   ],
   preview: {
     select: {title: 'name', subtitle: 'tag', media: 'image'},

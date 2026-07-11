@@ -10,7 +10,9 @@ import SplitText from "@/components/motion/SplitText";
 import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
 import useSiteImages from "@/lib/useSiteImages";
+import useDestinationGallery from "@/lib/useDestinationGallery";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
+import { urlForImage } from "@/lib/sanity.image";
 import { LANDSCAPE_4_3, WIDE_16_9 } from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -129,11 +131,21 @@ const packages = [
 
 export default function BotswanaPage() {
   const siteImages = useSiteImages();
+  const overviewGallery = useDestinationGallery("Botswana");
   const getSiteImageUrlLocal = (
     key: string,
     fallback: string,
     dimensions?: { width: number; height: number },
   ) => getSiteImageUrl(siteImages, key, fallback, dimensions);
+
+  const overviewImage = (
+    index: number,
+    fallback: string,
+    dimensions?: { width: number; height: number },
+  ) => {
+    const img = overviewGallery?.[index];
+    return img ? urlForImage(img, dimensions).url() : fallback;
+  };
 
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
@@ -241,9 +253,13 @@ export default function BotswanaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="relative h-52 overflow-hidden">
               <Image
-                src={getSiteImageUrlLocal(
-                  "destinationBotswanaElephantFamily",
-                  `${base}/photos/newstock/Elephantfamily.jpg`,
+                src={overviewImage(
+                  0,
+                  getSiteImageUrlLocal(
+                    "destinationBotswanaElephantFamily",
+                    `${base}/photos/newstock/Elephantfamily.jpg`,
+                    LANDSCAPE_4_3,
+                  ),
                   LANDSCAPE_4_3,
                 )}
                 alt="Okavango Delta"
@@ -258,9 +274,13 @@ export default function BotswanaPage() {
               className="relative h-52 overflow-hidden mt-6"
             >
               <Image
-                src={getSiteImageUrlLocal(
-                  "destinationBotswanaBigElephant",
-                  `${base}/photos/newstock/bigelephant.jpg`,
+                src={overviewImage(
+                  1,
+                  getSiteImageUrlLocal(
+                    "destinationBotswanaBigElephant",
+                    `${base}/photos/newstock/bigelephant.jpg`,
+                    LANDSCAPE_4_3,
+                  ),
                   LANDSCAPE_4_3,
                 )}
                 alt="Chobe elephants"
@@ -275,9 +295,13 @@ export default function BotswanaPage() {
               className="relative h-52 overflow-hidden -mt-6"
             >
               <Image
-                src={getSiteImageUrlLocal(
-                  "destinationBotswanaWildlifeConservation",
-                  `${base}/photos/newstock/wildlifeconservation.jpg`,
+                src={overviewImage(
+                  2,
+                  getSiteImageUrlLocal(
+                    "destinationBotswanaWildlifeConservation",
+                    `${base}/photos/newstock/wildlifeconservation.jpg`,
+                    LANDSCAPE_4_3,
+                  ),
                   LANDSCAPE_4_3,
                 )}
                 alt="Moremi game reserve"
@@ -292,9 +316,13 @@ export default function BotswanaPage() {
               className="relative h-52 overflow-hidden"
             >
               <Image
-                src={getSiteImageUrlLocal(
-                  "destinationBotswanaBoatSafari",
-                  `${base}/photos/newstock/Boat-Safaris08Boat-Safaris.jpg`,
+                src={overviewImage(
+                  3,
+                  getSiteImageUrlLocal(
+                    "destinationBotswanaBoatSafari",
+                    `${base}/photos/newstock/Boat-Safaris08Boat-Safaris.jpg`,
+                    LANDSCAPE_4_3,
+                  ),
                   LANDSCAPE_4_3,
                 )}
                 alt="Mokoro safari"

@@ -25,7 +25,8 @@ export const destinationsQuery = groq`*[_type == "destination"] | order(_created
   href,
   num,
   bestTime,
-  hotspots
+  hotspots,
+  overviewGallery
 }`;
 
 export const partnersQuery = groq`*[_type == "partner"] | order(_createdAt asc) {

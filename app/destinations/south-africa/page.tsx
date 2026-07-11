@@ -11,7 +11,9 @@ import SplitText from "@/components/motion/SplitText";
 import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
 import useSiteImages from "@/lib/useSiteImages";
+import useDestinationGallery from "@/lib/useDestinationGallery";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
+import { urlForImage } from "@/lib/sanity.image";
 import { LANDSCAPE_4_3, WIDE_16_9 } from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -121,11 +123,21 @@ const packages = [
 
 export default function SouthAfricaPage() {
   const siteImages = useSiteImages();
+  const overviewGallery = useDestinationGallery("South Africa");
   const getSiteImageUrlLocal = (
     key: string,
     fallback: string,
     dimensions?: { width: number; height: number },
   ) => getSiteImageUrl(siteImages, key, fallback, dimensions);
+
+  const overviewImage = (
+    index: number,
+    fallback: string,
+    dimensions?: { width: number; height: number },
+  ) => {
+    const img = overviewGallery?.[index];
+    return img ? urlForImage(img, dimensions).url() : fallback;
+  };
 
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
@@ -236,9 +248,13 @@ export default function SouthAfricaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="relative h-52 overflow-hidden">
               <Image
-                src={getSiteImageUrlLocal(
-                  "destinationSouthAfricaCapeTown",
-                  `${base}/photos/newstock/Cape-Town.jpg`,
+                src={overviewImage(
+                  0,
+                  getSiteImageUrlLocal(
+                    "destinationSouthAfricaCapeTown",
+                    `${base}/photos/newstock/Cape-Town.jpg`,
+                    LANDSCAPE_4_3,
+                  ),
                   LANDSCAPE_4_3,
                 )}
                 alt="Cape Town Coast"
@@ -253,9 +269,13 @@ export default function SouthAfricaPage() {
               className="relative h-52 overflow-hidden mt-6"
             >
               <Image
-                src={getSiteImageUrlLocal(
-                  "destinationSouthAfricaWildanimals",
-                  `${base}/photos/newstock/wildanimals.jpg`,
+                src={overviewImage(
+                  1,
+                  getSiteImageUrlLocal(
+                    "destinationSouthAfricaWildanimals",
+                    `${base}/photos/newstock/wildanimals.jpg`,
+                    LANDSCAPE_4_3,
+                  ),
                   LANDSCAPE_4_3,
                 )}
                 alt="Safari in Kruger"
@@ -270,9 +290,13 @@ export default function SouthAfricaPage() {
               className="relative h-52 overflow-hidden -mt-6"
             >
               <Image
-                src={getSiteImageUrlLocal(
-                  "destinationSouthAfricaTableMountain",
-                  `${base}/photos/newstock/Table-Mountain.jpg`,
+                src={overviewImage(
+                  2,
+                  getSiteImageUrlLocal(
+                    "destinationSouthAfricaTableMountain",
+                    `${base}/photos/newstock/Table-Mountain.jpg`,
+                    LANDSCAPE_4_3,
+                  ),
                   LANDSCAPE_4_3,
                 )}
                 alt="Table Mountain"
@@ -287,9 +311,13 @@ export default function SouthAfricaPage() {
               className="relative h-52 overflow-hidden"
             >
               <Image
-                src={getSiteImageUrlLocal(
-                  "destinationSouthAfricaSplendifd",
-                  `${base}/photos/newstock/splendifd.jpg`,
+                src={overviewImage(
+                  3,
+                  getSiteImageUrlLocal(
+                    "destinationSouthAfricaSplendifd",
+                    `${base}/photos/newstock/splendifd.jpg`,
+                    LANDSCAPE_4_3,
+                  ),
                   LANDSCAPE_4_3,
                 )}
                 alt="Winelands Estate"

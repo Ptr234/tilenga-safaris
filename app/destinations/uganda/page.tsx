@@ -10,7 +10,9 @@ import SplitText from "@/components/motion/SplitText";
 import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
 import useSiteImages from "@/lib/useSiteImages";
+import useDestinationGallery from "@/lib/useDestinationGallery";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
+import { urlForImage } from "@/lib/sanity.image";
 import { LANDSCAPE_4_3, WIDE_16_9 } from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -133,11 +135,21 @@ const packages = [
 
 export default function UgandaPage() {
   const siteImages = useSiteImages();
+  const overviewGallery = useDestinationGallery("Uganda");
   const getSiteImageUrlLocal = (
     key: string,
     fallback: string,
     dimensions?: { width: number; height: number },
   ) => getSiteImageUrl(siteImages, key, fallback, dimensions);
+
+  const overviewImage = (
+    index: number,
+    fallback: string,
+    dimensions?: { width: number; height: number },
+  ) => {
+    const img = overviewGallery?.[index];
+    return img ? urlForImage(img, dimensions).url() : fallback;
+  };
 
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
@@ -243,7 +255,11 @@ export default function UgandaPage() {
           <div className="grid grid-cols-2 gap-2">
             <ImageReveal direction="top" delay={0} className="relative h-52 overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1200&q=80"
+                src={overviewImage(
+                  0,
+                  "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1200&q=80",
+                  LANDSCAPE_4_3,
+                )}
                 alt="Mountain Gorillas"
                 fill
                 sizes="(max-width: 768px) 50vw, 25vw"
@@ -256,9 +272,13 @@ export default function UgandaPage() {
               className="relative h-52 overflow-hidden mt-6"
             >
               <Image
-                src={getSiteImageUrlLocal(
-                  "destinationUgandaSourceOfNile2",
-                  `${base}/photos/newstock/Source-of-the-Nile2.jpg`,
+                src={overviewImage(
+                  1,
+                  getSiteImageUrlLocal(
+                    "destinationUgandaSourceOfNile2",
+                    `${base}/photos/newstock/Source-of-the-Nile2.jpg`,
+                    LANDSCAPE_4_3,
+                  ),
                   LANDSCAPE_4_3,
                 )}
                 alt="Source of the Nile, Uganda"
@@ -273,7 +293,11 @@ export default function UgandaPage() {
               className="relative h-52 overflow-hidden -mt-6"
             >
               <Image
-                src="https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=500&q=80"
+                src={overviewImage(
+                  2,
+                  "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=500&q=80",
+                  LANDSCAPE_4_3,
+                )}
                 alt="Wildlife"
                 fill
                 sizes="(max-width: 768px) 50vw, 25vw"
@@ -286,7 +310,11 @@ export default function UgandaPage() {
               className="relative h-52 overflow-hidden"
             >
               <Image
-                src="https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=500&q=80"
+                src={overviewImage(
+                  3,
+                  "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=500&q=80",
+                  LANDSCAPE_4_3,
+                )}
                 alt="Game drive"
                 fill
                 sizes="(max-width: 768px) 50vw, 25vw"
