@@ -4,6 +4,7 @@ import DestinationsPageClient from "@/components/DestinationsPageClient";
 import { Destination } from "@/types/sanity";
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 export default async function DestinationsPage() {
   const destinations = await client.fetch<Destination[]>(destinationsQuery);

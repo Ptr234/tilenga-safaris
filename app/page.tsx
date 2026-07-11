@@ -4,6 +4,7 @@ import HomePageClient from "@/components/HomePageClient";
 import { Lodge, Experience, Destination, Partner } from "@/types/sanity";
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 // Fallback data for when Sanity is empty or during initial setup
 const fallbackLodges = [

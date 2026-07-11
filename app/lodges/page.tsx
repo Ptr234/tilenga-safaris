@@ -4,6 +4,7 @@ import LodgesPageClient from "@/components/LodgesPageClient";
 import { Lodge } from "@/types/sanity";
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 export default async function LodgesPage() {
   const lodges = await client.fetch<Lodge[]>(lodgesQuery);
