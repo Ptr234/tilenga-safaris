@@ -8,6 +8,7 @@ const destinationsQuery = groq`*[_type == "destination"] | order(_createdAt asc)
   name,
   href,
   overviewGallery,
+  hotspots,
 }`;
 
 export async function GET() {

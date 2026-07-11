@@ -14,11 +14,11 @@ import useSiteImages from "@/lib/useSiteImages";
 import useDestinationGallery from "@/lib/useDestinationGallery";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
 import { urlForImage } from "@/lib/sanity.image";
-import { LANDSCAPE_4_3, WIDE_16_9 } from "@/lib/imageDimensions";
+import { LANDSCAPE_4_3, WIDE_16_9, PORTRAIT_3_4 } from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-const hotspots = [
+const fallbackHotspots = [
   {
     name: "Kruger National Park",
     detail: "Ultimate Big Five Territory",
@@ -123,12 +123,22 @@ const packages = [
 
 export default function SouthAfricaPage() {
   const siteImages = useSiteImages();
-  const overviewGallery = useDestinationGallery("South Africa");
+  const { overviewGallery, hotspots: sanityHotspots } =
+    useDestinationGallery("South Africa");
   const getSiteImageUrlLocal = (
     key: string,
     fallback: string,
     dimensions?: { width: number; height: number },
   ) => getSiteImageUrl(siteImages, key, fallback, dimensions);
+
+  const hotspots =
+    sanityHotspots && sanityHotspots.length > 0
+      ? sanityHotspots.map((h) => ({
+          name: h.name,
+          detail: h.detail,
+          image: h.image ? urlForImage(h.image, PORTRAIT_3_4).url() : undefined,
+        }))
+      : fallbackHotspots;
 
   const overviewImage = (
     index: number,

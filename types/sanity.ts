@@ -23,6 +23,12 @@ export interface Experience {
   image: SanityImage;
 }
 
+export interface DestinationHotspot {
+  name: string;
+  detail?: string;
+  image?: SanityImage;
+}
+
 export interface Destination {
   name: string;
   tag: string;
@@ -31,7 +37,7 @@ export interface Destination {
   href: string;
   num?: string;
   bestTime?: string;
-  hotspots?: string[];
+  hotspots?: DestinationHotspot[];
   overviewGallery?: (SanityImage & { alt?: string })[];
 }
 

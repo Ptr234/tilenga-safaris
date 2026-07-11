@@ -62,10 +62,38 @@ export const destination = defineType({
     }),
     defineField({
       name: 'hotspots',
-      title: 'Hotspots',
+      title: 'Hotspot Gallery',
+      description:
+        'The scrolling photo gallery of key attractions shown on this destination\'s detail page.',
       type: 'array',
-      of: [defineArrayMember({type: 'string'})],
-      options: {layout: 'tags'},
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'hotspot',
+          fields: [
+            defineField({
+              name: 'name',
+              title: 'Name',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'detail',
+              title: 'Detail',
+              type: 'string',
+            }),
+            defineField({
+              name: 'image',
+              title: 'Image',
+              type: 'image',
+              options: {hotspot: true},
+            }),
+          ],
+          preview: {
+            select: {title: 'name', subtitle: 'detail', media: 'image'},
+          },
+        }),
+      ],
     }),
     defineField({
       name: 'overviewGallery',

@@ -13,11 +13,11 @@ import useSiteImages from "@/lib/useSiteImages";
 import useDestinationGallery from "@/lib/useDestinationGallery";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
 import { urlForImage } from "@/lib/sanity.image";
-import { LANDSCAPE_4_3, WIDE_16_9 } from "@/lib/imageDimensions";
+import { LANDSCAPE_4_3, WIDE_16_9, PORTRAIT_3_4 } from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-const hotspots = [
+const fallbackHotspots = [
   {
     name: "Mountain Gorillas",
     detail: "Bwindi Impenetrable Forest",
@@ -135,7 +135,8 @@ const packages = [
 
 export default function UgandaPage() {
   const siteImages = useSiteImages();
-  const overviewGallery = useDestinationGallery("Uganda");
+  const { overviewGallery, hotspots: sanityHotspots } =
+    useDestinationGallery("Uganda");
   const getSiteImageUrlLocal = (
     key: string,
     fallback: string,
@@ -150,6 +151,15 @@ export default function UgandaPage() {
     const img = overviewGallery?.[index];
     return img ? urlForImage(img, dimensions).url() : fallback;
   };
+
+  const hotspots =
+    sanityHotspots && sanityHotspots.length > 0
+      ? sanityHotspots.map((h) => ({
+          name: h.name,
+          detail: h.detail,
+          image: h.image ? urlForImage(h.image, PORTRAIT_3_4).url() : undefined,
+        }))
+      : fallbackHotspots;
 
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);

@@ -3,10 +3,13 @@
 import { useEffect, useState } from "react";
 import type { Destination } from "@/types/sanity";
 
-type DestinationGalleryMap = Record<string, Destination["overviewGallery"]>;
+type DestinationExtras = Pick<Destination, "overviewGallery" | "hotspots">;
+type DestinationExtrasMap = Record<string, DestinationExtras>;
+
+const EMPTY: DestinationExtras = {};
 
 export default function useDestinationGallery(name: string) {
-  const [gallery, setGallery] = useState<DestinationGalleryMap>({});
+  const [data, setData] = useState<DestinationExtrasMap>({});
 
   useEffect(() => {
     let mounted = true;
@@ -15,10 +18,15 @@ export default function useDestinationGallery(name: string) {
       try {
         const res = await fetch("/api/destinations");
         if (!res.ok) return;
-        const data: Destination[] = await res.json();
+        const list: Destination[] = await res.json();
         if (!mounted) return;
-        setGallery(
-          Object.fromEntries(data.map((d) => [d.name, d.overviewGallery])),
+        setData(
+          Object.fromEntries(
+            list.map((d) => [
+              d.name,
+              { overviewGallery: d.overviewGallery, hotspots: d.hotspots },
+            ]),
+          ),
         );
       } catch (error) {
         console.warn("Unable to load destination gallery from Sanity", error);
@@ -32,5 +40,5 @@ export default function useDestinationGallery(name: string) {
     };
   }, []);
 
-  return gallery[name];
+  return data[name] ?? EMPTY;
 }
