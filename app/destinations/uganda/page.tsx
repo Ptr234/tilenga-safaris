@@ -253,7 +253,7 @@ export default function UgandaPage() {
           </FadeIn>
 
           <div className="grid grid-cols-2 gap-2">
-            <ImageReveal direction="top" delay={0} className="relative h-52 overflow-hidden">
+            <ImageReveal direction="top" delay={0} className="relative h-72 overflow-hidden">
               <Image
                 src={overviewImage(
                   0,
@@ -269,7 +269,7 @@ export default function UgandaPage() {
             <ImageReveal
               direction="top"
               delay={0.12}
-              className="relative h-52 overflow-hidden mt-6"
+              className="relative h-72 overflow-hidden mt-6"
             >
               <Image
                 src={overviewImage(
@@ -290,7 +290,7 @@ export default function UgandaPage() {
             <ImageReveal
               direction="bottom"
               delay={0.06}
-              className="relative h-52 overflow-hidden -mt-6"
+              className="relative h-72 overflow-hidden -mt-6"
             >
               <Image
                 src={overviewImage(
@@ -307,7 +307,7 @@ export default function UgandaPage() {
             <ImageReveal
               direction="bottom"
               delay={0.18}
-              className="relative h-52 overflow-hidden"
+              className="relative h-72 overflow-hidden"
             >
               <Image
                 src={overviewImage(
