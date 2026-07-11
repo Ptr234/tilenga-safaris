@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import useSiteImages from "@/lib/useSiteImages";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
+import { WIDE_16_9 } from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -78,7 +79,7 @@ export default function Header() {
 
   const getImageSrc = (item: HeaderNavItem) => {
     return item.imageKey
-      ? getSiteImageUrl(siteImages, item.imageKey, item.fallback)
+      ? getSiteImageUrl(siteImages, item.imageKey, item.fallback, WIDE_16_9)
       : item.fallback;
   };
 

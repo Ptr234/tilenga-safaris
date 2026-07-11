@@ -6,6 +6,7 @@ import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { urlForImage } from "@/lib/sanity.image";
 import useSiteImages from "@/lib/useSiteImages";
 import { Lodge } from "@/types/sanity";
+import { PORTRAIT_3_4, WIDE_16_9 } from "@/lib/imageDimensions";
 
 interface LodgesPageClientProps {
   lodges: Lodge[];
@@ -31,9 +32,13 @@ const pillars = [
 
 export default function LodgesPageClient({ lodges }: LodgesPageClientProps) {
   const siteImages = useSiteImages();
-  const getSiteImageUrl = (key: string, fallback: string) => {
+  const getSiteImageUrl = (
+    key: string,
+    fallback: string,
+    dimensions?: { width: number; height: number },
+  ) => {
     const image = siteImages?.[key]?.image;
-    return image ? urlForImage(image).url() : fallback;
+    return image ? urlForImage(image, dimensions).url() : fallback;
   };
 
   return (
@@ -43,7 +48,7 @@ export default function LodgesPageClient({ lodges }: LodgesPageClientProps) {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `url('${getSiteImageUrl("lodgeKikorongoHero", "/photos/kikorongo_room1.jpg")}')`,
+            backgroundImage: `url('${getSiteImageUrl("lodgeKikorongoHero", "/photos/kikorongo_room1.jpg", WIDE_16_9)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center 40%",
           }}
@@ -113,7 +118,7 @@ export default function LodgesPageClient({ lodges }: LodgesPageClientProps) {
             >
               <div className="absolute inset-0 overflow-hidden film-frame m-2">
                 <img
-                  src={urlForImage(lodge.image).url()}
+                  src={urlForImage(lodge.image, PORTRAIT_3_4).url()}
                   alt={lodge.name}
                   className="w-full h-full object-cover transition-transform duration-[1800ms] ease-out hover:scale-105"
                 />
@@ -241,6 +246,7 @@ export default function LodgesPageClient({ lodges }: LodgesPageClientProps) {
             src={getSiteImageUrl(
               "lodgeKikorongoHero",
               "/photos/kikorongo_room1.jpg",
+              WIDE_16_9,
             )}
             alt="CTA background"
             className="w-full h-full object-cover"

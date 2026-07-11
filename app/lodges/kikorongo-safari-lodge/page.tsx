@@ -7,6 +7,12 @@ import { urlForImage } from "@/lib/sanity.image";
 import { client } from "@/lib/sanity.client";
 import { siteImagesQuery } from "@/lib/sanity.queries";
 import type { SiteImage } from "@/types/sanity";
+import {
+  PORTRAIT_3_4,
+  LANDSCAPE_4_3,
+  WIDE_16_9,
+  WIDE_2_1,
+} from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -103,9 +109,13 @@ async function loadSiteImages(): Promise<SiteImageMap> {
 
 export default async function KikorongoSafariLodgePage() {
   const siteImages = await loadSiteImages();
-  const getSiteImageUrl = (key: string, fallback: string) => {
+  const getSiteImageUrl = (
+    key: string,
+    fallback: string,
+    dimensions?: { width: number; height: number },
+  ) => {
     const image = siteImages[key]?.image;
-    return image ? urlForImage(image).url() : fallback;
+    return image ? urlForImage(image, dimensions).url() : fallback;
   };
 
   return (
@@ -115,7 +125,7 @@ export default async function KikorongoSafariLodgePage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `url('${getSiteImageUrl("lodgeKikorongoOutside", `${base}/photos/kikorongo_outside.jpg`)}')`,
+            backgroundImage: `url('${getSiteImageUrl("lodgeKikorongoOutside", `${base}/photos/kikorongo_outside.jpg`, WIDE_16_9)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -240,6 +250,7 @@ export default async function KikorongoSafariLodgePage() {
               src={getSiteImageUrl(
                 "lodgeKikorongoCottage1",
                 `${base}/photos/kikorongo_cottage1.jpg`,
+                PORTRAIT_3_4,
               )}
               alt="Kikorongo Safari Lodge lake view"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 hover:scale-110"
@@ -267,7 +278,11 @@ export default async function KikorongoSafariLodgePage() {
                 <div className="group bg-white/5 border border-white/10 overflow-hidden flex flex-col h-full">
                   <div className="relative h-64 overflow-hidden">
                     <img
-                      src={getSiteImageUrl(room.imageKey, room.fallback)}
+                      src={getSiteImageUrl(
+                        room.imageKey,
+                        room.fallback,
+                        LANDSCAPE_4_3,
+                      )}
                       alt={room.name}
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
@@ -390,6 +405,7 @@ export default async function KikorongoSafariLodgePage() {
               src={getSiteImageUrl(
                 "lodgeKikorongoOutside",
                 `${base}/photos/kikorongo_outside.jpg`,
+                WIDE_16_9,
               )}
               alt="Kikorongo Safari Lodge on the Equator"
               className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105"
@@ -434,6 +450,7 @@ export default async function KikorongoSafariLodgePage() {
               src={getSiteImageUrl(
                 "lodgeKikorongoCottage1",
                 `${base}/photos/kikorongo_cottage1.jpg`,
+                PORTRAIT_3_4,
               )}
               alt="Cottage with Lake View at Dawn"
               className="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105"
@@ -473,6 +490,7 @@ export default async function KikorongoSafariLodgePage() {
                   src={getSiteImageUrl(
                     "lodgeKikorongoRoom2",
                     `${base}/photos/kikorongo_cottage2.jpg`,
+                    WIDE_2_1,
                   )}
                   alt="Horizon View from the Escarpment"
                   className="w-full aspect-[16/8] object-cover transition-transform duration-[4s] group-hover:scale-105"
@@ -515,6 +533,7 @@ export default async function KikorongoSafariLodgePage() {
                   src={getSiteImageUrl(
                     "lodgeKikorongoTourist",
                     `${base}/photos/kikorongo_tourist.jpg`,
+                    LANDSCAPE_4_3,
                   )}
                   alt="Guests in the Wild"
                   className="w-full aspect-[4/3] object-cover transition-transform duration-[4s] group-hover:scale-110"
@@ -538,6 +557,7 @@ export default async function KikorongoSafariLodgePage() {
               src={getSiteImageUrl(
                 "lodgeKikorongoRanger",
                 `${base}/photos/kikorongo_ranger.jpg`,
+                PORTRAIT_3_4,
               )}
               alt="Kikorongo Safari Ranger"
               className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 transition-all duration-[1500ms] group-hover:scale-105"
@@ -577,7 +597,11 @@ export default async function KikorongoSafariLodgePage() {
             <FadeIn key={item.alt} direction="up" delay={item.delay}>
               <div className="relative group overflow-hidden">
                 <img
-                  src={getSiteImageUrl(item.imageKey, item.imageFallback)}
+                  src={getSiteImageUrl(
+                    item.imageKey,
+                    item.imageFallback,
+                    WIDE_16_9,
+                  )}
                   alt={item.alt}
                   className="w-full aspect-[4/3] md:aspect-[16/10] object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-[1200ms] group-hover:scale-105"
                 />
@@ -607,6 +631,7 @@ export default async function KikorongoSafariLodgePage() {
               src={getSiteImageUrl(
                 "lodgeKikorongoTravel",
                 `${base}/photos/kikorongo_travel.jpg`,
+                WIDE_16_9,
               )}
               alt="Game Drive in Queen Elizabeth NP"
               className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105"
@@ -641,6 +666,7 @@ export default async function KikorongoSafariLodgePage() {
               src={getSiteImageUrl(
                 "lodgeKikorongoFireplace",
                 `${base}/photos/kikorongo_fireplace.jpg`,
+                PORTRAIT_3_4,
               )}
               alt="Evening Fireplace at Kikorongo"
               className="w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-105"

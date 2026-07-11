@@ -11,6 +11,7 @@ import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
 import useSiteImages from "@/lib/useSiteImages";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
+import { LANDSCAPE_4_3, WIDE_16_9 } from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -18,32 +19,38 @@ const hotspots = [
   {
     name: "Kruger National Park",
     detail: "Ultimate Big Five Territory",
+    imageKey: "hotspotSouthAfricaKrugerNP",
     image: `${base}/photos/newstock/wildanimals.jpg`,
   },
   {
     name: "Cape Town",
     detail: "Table Mountain & Coastal Magic",
+    imageKey: "hotspotSouthAfricaCapeTown",
     image: `${base}/photos/newstock/Cape-Town.jpg`,
   },
   {
     name: "Cape Winelands",
     detail: "Stellenbosch & Franschhoek Vineyards",
+    imageKey: "hotspotSouthAfricaCapeWinelands",
     image: `${base}/photos/newstock/splendifd.jpg`,
   },
   {
     name: "Garden Route",
     detail: "Scenic Cliffs & Whale Watching",
+    imageKey: "hotspotSouthAfricaGardenRoute",
     image:
       "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=900&q=85",
   },
   {
     name: "Table Mountain",
     detail: "Iconic Flat-Top Landmark",
+    imageKey: "hotspotSouthAfricaTableMountain",
     image: `${base}/photos/newstock/Table-Mountain.jpg`,
   },
   {
     name: "Boulders Beach",
     detail: "African Penguin Colony",
+    imageKey: "hotspotSouthAfricaBouldersBeach",
     image:
       "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=900&q=85",
   },
@@ -113,8 +120,11 @@ const packages = [
 
 export default function SouthAfricaPage() {
   const siteImages = useSiteImages();
-  const getSiteImageUrlLocal = (key: string, fallback: string) =>
-    getSiteImageUrl(siteImages, key, fallback);
+  const getSiteImageUrlLocal = (
+    key: string,
+    fallback: string,
+    dimensions?: { width: number; height: number },
+  ) => getSiteImageUrl(siteImages, key, fallback, dimensions);
 
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
@@ -137,7 +147,7 @@ export default function SouthAfricaPage() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage: `url('${getSiteImageUrlLocal("destinationSouthAfricaHero", `${base}/photos/newstock/Table%20Mountain.jpg`)}')`,
+            backgroundImage: `url('${getSiteImageUrlLocal("destinationSouthAfricaHero", `${base}/photos/newstock/Table%20Mountain.jpg`, WIDE_16_9)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center 40%",
           }}
@@ -228,6 +238,7 @@ export default function SouthAfricaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationSouthAfricaCapeTown",
                   `${base}/photos/newstock/Cape-Town.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Cape Town Coast"
                 className="w-full h-52 object-cover"
@@ -242,6 +253,7 @@ export default function SouthAfricaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationSouthAfricaWildanimals",
                   `${base}/photos/newstock/wildanimals.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Safari in Kruger"
                 className="w-full h-52 object-cover"
@@ -256,6 +268,7 @@ export default function SouthAfricaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationSouthAfricaTableMountain",
                   `${base}/photos/newstock/Table-Mountain.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Table Mountain"
                 className="w-full h-52 object-cover"
@@ -270,6 +283,7 @@ export default function SouthAfricaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationSouthAfricaSplendifd",
                   `${base}/photos/newstock/splendifd.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Winelands Estate"
                 className="w-full h-52 object-cover"

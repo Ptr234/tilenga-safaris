@@ -6,6 +6,7 @@ import Link from "next/link";
 import FadeIn from "@/components/motion/FadeIn";
 import useSiteImages from "@/lib/useSiteImages";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
+import { WIDE_16_9 } from "@/lib/imageDimensions";
 
 const titles = [
   "Your Details",
@@ -49,9 +50,15 @@ export default function FeedbackForm() {
 
   const [errors, setErrors] = useState<string[]>([]);
   const siteImages = useSiteImages();
-  const getSiteImageUrlLocal = (key: string, fallback: string) => {
+  const getSiteImageUrlLocal = (
+    key: string,
+    fallback: string,
+    dimensions?: { width: number; height: number },
+  ) => {
     const image = siteImages?.[key]?.image;
-    return image ? getSiteImageUrl(siteImages, key, fallback) : fallback;
+    return image
+      ? getSiteImageUrl(siteImages, key, fallback, dimensions)
+      : fallback;
   };
 
   useEffect(() => {
@@ -181,7 +188,7 @@ export default function FeedbackForm() {
           transition={{ duration: 10, ease: "easeOut" }}
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-90"
           style={{
-            backgroundImage: `url('${getSiteImageUrlLocal("feedbackBackground", "/photos/tilengasafarilodge/travel-bg.jpg")}')`,
+            backgroundImage: `url('${getSiteImageUrlLocal("feedbackBackground", "/photos/tilengasafarilodge/travel-bg.jpg", WIDE_16_9)}')`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#060f09]/70 via-[#060f09]/45 to-[#060f09]/85" />

@@ -7,6 +7,13 @@ import { urlForImage } from "@/lib/sanity.image";
 import { client } from "@/lib/sanity.client";
 import { siteImagesQuery } from "@/lib/sanity.queries";
 import type { SiteImage } from "@/types/sanity";
+import {
+  PORTRAIT_4_5,
+  PORTRAIT_3_4,
+  LANDSCAPE_4_3,
+  WIDE_16_9,
+  WIDE_2_1,
+} from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -103,9 +110,13 @@ async function loadSiteImages(): Promise<SiteImageMap> {
 
 export default async function TilengaSafariLodgePage() {
   const siteImages = await loadSiteImages();
-  const getSiteImageUrl = (key: string, fallback: string) => {
+  const getSiteImageUrl = (
+    key: string,
+    fallback: string,
+    dimensions?: { width: number; height: number },
+  ) => {
     const image = siteImages[key]?.image;
-    return image ? urlForImage(image).url() : fallback;
+    return image ? urlForImage(image, dimensions).url() : fallback;
   };
 
   return (
@@ -115,7 +126,7 @@ export default async function TilengaSafariLodgePage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `url('${getSiteImageUrl("lodgeTilengaEntrance", `${base}/photos/tilengasafarilodge/entrance.png`)}')`,
+            backgroundImage: `url('${getSiteImageUrl("lodgeTilengaEntrance", `${base}/photos/tilengasafarilodge/entrance.png`, WIDE_16_9)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -243,6 +254,7 @@ export default async function TilengaSafariLodgePage() {
               src={getSiteImageUrl(
                 "lodgeTilengaCottage3",
                 `${base}/photos/tilengasafarilodge/cottage3.png`,
+                PORTRAIT_3_4,
               )}
               alt="Tilenga Safari Lodge wildlife view"
               className="absolute inset-0 w-full h-full object-cover"
@@ -297,7 +309,11 @@ export default async function TilengaSafariLodgePage() {
                   className="absolute inset-0 overflow-hidden"
                 >
                   <img
-                    src={getSiteImageUrl(room.imageKey, room.fallback)}
+                    src={getSiteImageUrl(
+                      room.imageKey,
+                      room.fallback,
+                      LANDSCAPE_4_3,
+                    )}
                     alt={room.name}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
                   />
@@ -424,6 +440,7 @@ export default async function TilengaSafariLodgePage() {
               src={getSiteImageUrl(
                 "lodgeTilengaLunch",
                 `${base}/photos/tilengasafarilodge/lunch.png`,
+                WIDE_16_9,
               )}
               alt="Tilenga Safari Lodge Experience"
               className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105"
@@ -466,6 +483,7 @@ export default async function TilengaSafariLodgePage() {
               src={getSiteImageUrl(
                 "lodgeTilengaBreakfast",
                 `${base}/photos/tilengasafarilodge/breakfast.png`,
+                PORTRAIT_3_4,
               )}
               alt="Al Fresco Breakfast at Tilenga"
               className="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105"
@@ -504,6 +522,7 @@ export default async function TilengaSafariLodgePage() {
                   src={getSiteImageUrl(
                     "lodgeTilengaWaterSafari",
                     `${base}/photos/tilengasafarilodge/watersafari.png`,
+                    WIDE_2_1,
                   )}
                   alt="Nile Boat Safari at Dawn"
                   className="w-full aspect-[16/8] object-cover transition-transform duration-[4s] group-hover:scale-105"
@@ -526,6 +545,7 @@ export default async function TilengaSafariLodgePage() {
               src={getSiteImageUrl(
                 "lodgeTilengaPool",
                 `${base}/photos/tilengasafarilodge/pool.png`,
+                WIDE_16_9,
               )}
               alt="Lodge Swimming Pool"
               className="w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-105"
@@ -589,7 +609,11 @@ export default async function TilengaSafariLodgePage() {
             <FadeIn key={item.alt} direction="up" delay={i * 0.12}>
               <div className="relative group overflow-hidden">
                 <img
-                  src={getSiteImageUrl(item.imageKey, item.imageFallback)}
+                  src={getSiteImageUrl(
+                    item.imageKey,
+                    item.imageFallback,
+                    PORTRAIT_4_5,
+                  )}
                   alt={item.alt}
                   className="w-full aspect-[3/4] md:aspect-[4/5] object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-[1200ms] group-hover:scale-105"
                 />
@@ -623,6 +647,7 @@ export default async function TilengaSafariLodgePage() {
               src={getSiteImageUrl(
                 "lodgeTilengaLunch",
                 `${base}/photos/tilengasafarilodge/lunch.png`,
+                LANDSCAPE_4_3,
               )}
               alt="Lunch at Tilenga"
               className="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105"
@@ -686,6 +711,7 @@ export default async function TilengaSafariLodgePage() {
                   src={getSiteImageUrl(
                     "lodgeTilengaNight",
                     `${base}/photos/tilengasafarilodge/night.png`,
+                    LANDSCAPE_4_3,
                   )}
                   alt="Lodge at Night"
                   className="w-full aspect-[4/3] object-cover transition-transform duration-[4s] group-hover:scale-110"
@@ -709,6 +735,7 @@ export default async function TilengaSafariLodgePage() {
               src={getSiteImageUrl(
                 "lodgeTilengaNight2",
                 `${base}/photos/tilengasafarilodge/tilengasafarislodge-cottage-night.png`,
+                PORTRAIT_3_4,
               )}
               alt="Cottage at Night"
               className="w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-105"
@@ -732,6 +759,7 @@ export default async function TilengaSafariLodgePage() {
               src={getSiteImageUrl(
                 "lodgeTilengaTravel",
                 `${base}/photos/tilengasafarilodge/travel.png`,
+                WIDE_16_9,
               )}
               alt="Safari Game Drive"
               className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105"

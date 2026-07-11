@@ -10,6 +10,7 @@ import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
 import useSiteImages from "@/lib/useSiteImages";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
+import { LANDSCAPE_4_3, WIDE_16_9 } from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -17,47 +18,55 @@ const hotspots = [
   {
     name: "Sossusvlei",
     detail: "World's Highest Red Sand Dunes",
+    imageKey: "hotspotNamibiaSossusvlei",
     image:
       "https://images.unsplash.com/photo-1488197047962-b48492212cda?w=900&q=85",
   },
   {
     name: "Etosha National Park",
     detail: "Big Five on the Salt Pan",
+    imageKey: "hotspotNamibiaEtoshaNP",
     image:
       "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=900&q=85",
   },
   {
     name: "Skeleton Coast",
     detail: "Shipwrecks, Seals & Desert Lion",
+    imageKey: "hotspotNamibiaSkeletonCoast",
     image: `${base}/photos/newstock/Skeleton-Coast.jpg`,
   },
   {
     name: "Fish River Canyon",
     detail: "Africa's Largest Canyon",
+    imageKey: "hotspotNamibiaFishRiverCanyon",
     image:
       "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=900&q=85",
   },
   {
     name: "Damaraland",
     detail: "Desert-Adapted Elephant & Rhino",
+    imageKey: "hotspotNamibiaDamaraland",
     image:
       "https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=900&q=85",
   },
   {
     name: "Namib Desert",
     detail: "Earth's Oldest Desert — Star Trails",
+    imageKey: "hotspotNamibiaNamibDesert",
     image:
       "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=900&q=85",
   },
   {
     name: "Swakopmund",
     detail: "Desert Meets Ocean — Adventure Hub",
+    imageKey: "hotspotNamibiaSwakopmund",
     image:
       "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=900&q=85",
   },
   {
     name: "Himba Villages",
     detail: "Ancient Culture of the Kaokoveld",
+    imageKey: "hotspotNamibiaHimbaVillages",
     image:
       "https://images.unsplash.com/photo-1535941339077-2dd1c7963098?w=900&q=85",
   },
@@ -132,8 +141,11 @@ const packages = [
 
 export default function NamibiaPage() {
   const siteImages = useSiteImages();
-  const getSiteImageUrlLocal = (key: string, fallback: string) =>
-    getSiteImageUrl(siteImages, key, fallback);
+  const getSiteImageUrlLocal = (
+    key: string,
+    fallback: string,
+    dimensions?: { width: number; height: number },
+  ) => getSiteImageUrl(siteImages, key, fallback, dimensions);
 
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
@@ -156,7 +168,7 @@ export default function NamibiaPage() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage: `url('${getSiteImageUrlLocal("destinationNamibiaHero", `${base}/photos/newstock/Namibia%20Desert.jpg`)}')`,
+            backgroundImage: `url('${getSiteImageUrlLocal("destinationNamibiaHero", `${base}/photos/newstock/Namibia%20Desert.jpg`, WIDE_16_9)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -242,6 +254,7 @@ export default function NamibiaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationNamibiaDesert",
                   `${base}/photos/newstock/Namibia-Desert.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Sossusvlei dunes"
                 className="w-full h-52 object-cover"
@@ -256,6 +269,7 @@ export default function NamibiaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationNamibiaElephantFamily",
                   `${base}/photos/newstock/Elephantfamily.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Etosha wildlife"
                 className="w-full h-52 object-cover"
@@ -270,6 +284,7 @@ export default function NamibiaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationNamibiaSkeletonCoast",
                   `${base}/photos/newstock/Skeleton-Coast.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Skeleton Coast"
                 className="w-full h-52 object-cover"
@@ -284,6 +299,7 @@ export default function NamibiaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationNamibiaAfricanLandscape",
                   `${base}/photos/newstock/AfricanLandscape.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Desert landscape"
                 className="w-full h-52 object-cover"

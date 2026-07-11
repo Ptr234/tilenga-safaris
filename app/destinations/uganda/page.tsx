@@ -10,6 +10,7 @@ import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
 import useSiteImages from "@/lib/useSiteImages";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
+import { LANDSCAPE_4_3, WIDE_16_9 } from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -17,42 +18,50 @@ const hotspots = [
   {
     name: "Mountain Gorillas",
     detail: "Bwindi Impenetrable Forest",
+    imageKey: "hotspotUgandaMountainGorillas",
     image: `${base}/photos/newstock/Gorrillahd.jpg`,
   },
   {
     name: "Murchison Falls",
     detail: "The World's Most Powerful Waterfall",
+    imageKey: "hotspotUgandaMurchisonFalls",
     image:
       "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=900&q=85",
   },
   {
     name: "Queen Elizabeth NP",
     detail: "Kazinga Channel & Tree-Climbing Lions",
+    imageKey: "hotspotUgandaQueenElizabethNP",
     image: `${base}/photos/newstock/Queen-Elizabeth-NP.jpg`,
   },
   {
     name: "Mt. Rwenzori",
     detail: "Mountains of the Moon — Africa's Third-Highest Peak",
+    imageKey: "hotspotUgandaMtRwenzori",
     image: `${base}/photos/newstock/Mountain-Climbing06Mountain-Climbing.jpg`,
   },
   {
     name: "Source of the Nile",
     detail: "Jinja — White Water Rafting & Bungee Jumping",
+    imageKey: "hotspotUgandaSourceOfTheNile",
     image: `${base}/photos/newstock/Source-of-the-Nile.jpg`,
   },
   {
     name: "Lake Mburo National Park",
     detail: "Zebras, Hippos & 350 Bird Species",
+    imageKey: "hotspotUgandaLakeMburoNP",
     image: `${base}/photos/newstock/zebras-(1).jpg`,
   },
   {
     name: "Kibale Forest",
     detail: "Chimpanzee Trekking Capital of the World",
+    imageKey: "hotspotUgandaKibaleForest",
     image: `${base}/photos/newstock/touristsmovinginforest.jpg`,
   },
   {
     name: "Buganda Kingdom",
     detail: "Uganda's Rich Cultural Heritage",
+    imageKey: "hotspotUgandaBugandaKingdom",
     image: `${base}/photos/newstock/BugandaKingdom.png`,
   },
 ];
@@ -123,8 +132,11 @@ const packages = [
 
 export default function UgandaPage() {
   const siteImages = useSiteImages();
-  const getSiteImageUrlLocal = (key: string, fallback: string) =>
-    getSiteImageUrl(siteImages, key, fallback);
+  const getSiteImageUrlLocal = (
+    key: string,
+    fallback: string,
+    dimensions?: { width: number; height: number },
+  ) => getSiteImageUrl(siteImages, key, fallback, dimensions);
 
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
@@ -147,7 +159,7 @@ export default function UgandaPage() {
         <div
           className="absolute inset-0 scale-110 transition-transform duration-[8000ms]"
           style={{
-            backgroundImage: `url('${getSiteImageUrlLocal("destinationUgandaHero", `${base}/photos/newstock/UgandaDestinationHero.jpg`)}')`,
+            backgroundImage: `url('${getSiteImageUrlLocal("destinationUgandaHero", `${base}/photos/newstock/UgandaDestinationHero.jpg`, WIDE_16_9)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -244,6 +256,7 @@ export default function UgandaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationUgandaSourceOfNile2",
                   `${base}/photos/newstock/Source-of-the-Nile2.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Source of the Nile, Uganda"
                 className="w-full h-52 object-cover"

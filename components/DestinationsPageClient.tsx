@@ -5,6 +5,11 @@ import { urlForImage } from "@/lib/sanity.image";
 import useSiteImages from "@/lib/useSiteImages";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
 import { Destination } from "@/types/sanity";
+import {
+  PORTRAIT_4_5,
+  PORTRAIT_3_4,
+  WIDE_16_9,
+} from "@/lib/imageDimensions";
 
 interface DestinationsPageClientProps {
   destinations: Destination[];
@@ -17,8 +22,11 @@ export default function DestinationsPageClient({
 
   if (!destinations || destinations.length === 0) return null;
 
-  const getSiteImageUrlLocal = (key: string, fallback: string) =>
-    getSiteImageUrl(siteImages, key, fallback);
+  const getSiteImageUrlLocal = (
+    key: string,
+    fallback: string,
+    dimensions?: { width: number; height: number },
+  ) => getSiteImageUrl(siteImages, key, fallback, dimensions);
 
   // Split destinations for the layout
   const uganda =
@@ -34,7 +42,7 @@ export default function DestinationsPageClient({
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `url('${getSiteImageUrlLocal("destinationsHero", "/photos/newstock/AfricanLandscape.jpg")}')`,
+            backgroundImage: `url('${getSiteImageUrlLocal("destinationsHero", "/photos/newstock/AfricanLandscape.jpg", WIDE_16_9)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center 35%",
           }}
@@ -68,7 +76,7 @@ export default function DestinationsPageClient({
             className="lg:col-span-2 group relative overflow-hidden h-[85vh] min-h-[500px] block"
           >
             <img
-              src={urlForImage(uganda.image).url()}
+              src={urlForImage(uganda.image, WIDE_16_9).url()}
               alt={uganda.name}
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
             />
@@ -103,7 +111,7 @@ export default function DestinationsPageClient({
                 className="group relative overflow-hidden flex-1 min-h-[300px] block"
               >
                 <img
-                  src={urlForImage(dest.image).url()}
+                  src={urlForImage(dest.image, PORTRAIT_4_5).url()}
                   alt={dest.name}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
                 />
@@ -137,7 +145,7 @@ export default function DestinationsPageClient({
               className="group relative overflow-hidden h-[65vh] min-h-[400px] block"
             >
               <img
-                src={urlForImage(dest.image).url()}
+                src={urlForImage(dest.image, PORTRAIT_3_4).url()}
                 alt={dest.name}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
               />
@@ -206,7 +214,7 @@ export default function DestinationsPageClient({
         <div
           className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: `url('${getSiteImageUrlLocal("destinationsBottomCta", "/photos/newstock/wildlifeconservation.jpg")}')`,
+            backgroundImage: `url('${getSiteImageUrlLocal("destinationsBottomCta", "/photos/newstock/wildlifeconservation.jpg", WIDE_16_9)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

@@ -5,6 +5,12 @@ import { client } from "@/lib/sanity.client";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
 import { siteImagesQuery } from "@/lib/sanity.queries";
 import type { SiteImage } from "@/types/sanity";
+import {
+  PORTRAIT_4_5,
+  PORTRAIT_3_4,
+  LANDSCAPE_4_3,
+  WIDE_16_9,
+} from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -138,8 +144,11 @@ async function loadSiteImages(): Promise<SiteImageMap> {
 
 export default async function AboutPage() {
   const siteImages = await loadSiteImages();
-  const getSiteImageUrlLocal = (key: string, fallback: string) =>
-    getSiteImageUrl(siteImages, key, fallback);
+  const getSiteImageUrlLocal = (
+    key: string,
+    fallback: string,
+    dimensions?: { width: number; height: number },
+  ) => getSiteImageUrl(siteImages, key, fallback, dimensions);
   return (
     <>
       {/* Hero */}
@@ -147,7 +156,7 @@ export default async function AboutPage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `url('${getSiteImageUrlLocal("aboutGreatBeast", `${base}/photos/newstock/greatbeastmigration.jpg`)}')`,
+            backgroundImage: `url('${getSiteImageUrlLocal("aboutGreatBeast", `${base}/photos/newstock/greatbeastmigration.jpg`, WIDE_16_9)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center 30%",
           }}
@@ -201,6 +210,7 @@ export default async function AboutPage() {
                   src={getSiteImageUrlLocal(
                     "aboutGorilla",
                     `${base}/photos/newstock/Gorrilla.jpg`,
+                    LANDSCAPE_4_3,
                   )}
                   alt="Uganda gorilla"
                   className="w-full h-full object-cover"
@@ -211,6 +221,7 @@ export default async function AboutPage() {
                   src={getSiteImageUrlLocal(
                     "aboutHero1",
                     `${base}/photos/newstock/wildanimals.jpg`,
+                    LANDSCAPE_4_3,
                   )}
                   alt="Murchison Falls"
                   className="w-full h-full object-cover"
@@ -222,6 +233,7 @@ export default async function AboutPage() {
                 src={getSiteImageUrlLocal(
                   "aboutGorillaHigh",
                   `${base}/photos/newstock/gorrillahigh.jpg`,
+                  WIDE_16_9,
                 )}
                 alt="Gorillas in mist"
                 className="w-full h-full object-cover"
@@ -412,6 +424,7 @@ export default async function AboutPage() {
                     src={getSiteImageUrlLocal(
                       services[0].imageKey,
                       services[0].image,
+                      WIDE_16_9,
                     )}
                     alt={services[0].title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110"
@@ -448,6 +461,7 @@ export default async function AboutPage() {
                     src={getSiteImageUrlLocal(
                       services[1].imageKey,
                       services[1].image,
+                      PORTRAIT_4_5,
                     )}
                     alt={services[1].title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110"
@@ -482,6 +496,7 @@ export default async function AboutPage() {
                     src={getSiteImageUrlLocal(
                       services[2].imageKey,
                       services[2].image,
+                      LANDSCAPE_4_3,
                     )}
                     alt={services[2].title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-110"
@@ -512,6 +527,7 @@ export default async function AboutPage() {
                     src={getSiteImageUrlLocal(
                       services[3].imageKey,
                       services[3].image,
+                      WIDE_16_9,
                     )}
                     alt={services[3].title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-110"
@@ -539,7 +555,11 @@ export default async function AboutPage() {
                 <FadeIn direction="up" delay={0.1 * i}>
                   <div className="group relative aspect-[3/4] overflow-hidden border border-white/5">
                     <img
-                      src={getSiteImageUrlLocal(s.imageKey, s.image)}
+                      src={getSiteImageUrlLocal(
+                        s.imageKey,
+                        s.image,
+                        PORTRAIT_3_4,
+                      )}
                       alt={s.title}
                       className="absolute inset-0 w-full h-full object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-[1500ms]"
                     />
@@ -625,7 +645,11 @@ export default async function AboutPage() {
                 <div className="group block">
                   <div className="relative aspect-[4/5] overflow-hidden mb-8 shadow-sm border border-gold/5">
                     <img
-                      src={getSiteImageUrlLocal(t.imageKey, t.image)}
+                      src={getSiteImageUrlLocal(
+                        t.imageKey,
+                        t.image,
+                        PORTRAIT_4_5,
+                      )}
                       alt={t.role}
                       className="absolute inset-0 w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-[1500ms] ease-out group-hover:scale-105"
                     />

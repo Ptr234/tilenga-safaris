@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { urlForImage } from "@/lib/sanity.image";
 import useSiteImages from "@/lib/useSiteImages";
+import { PORTRAIT_3_4 } from "@/lib/imageDimensions";
 
 export interface Hotspot {
   name: string;
@@ -43,7 +44,10 @@ export default function HotspotGallery({ hotspots }: { hotspots: Hotspot[] }) {
               <img
                 src={
                   spot.imageKey && siteImages[spot.imageKey]
-                    ? urlForImage(siteImages[spot.imageKey].image).url()
+                    ? urlForImage(
+                        siteImages[spot.imageKey].image,
+                        PORTRAIT_3_4,
+                      ).url()
                     : (spot.image ?? "")
                 }
                 alt={spot.name}

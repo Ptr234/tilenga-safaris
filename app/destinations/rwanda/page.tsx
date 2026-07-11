@@ -10,6 +10,7 @@ import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
 import useSiteImages from "@/lib/useSiteImages";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
+import { LANDSCAPE_4_3, WIDE_16_9 } from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -17,34 +18,40 @@ const hotspots = [
   {
     name: "Volcanoes National Park",
     detail: "Home of the Mountain Gorillas",
+    imageKey: "hotspotRwandaVolcanoesNP",
     image:
       "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=900&q=85",
   },
   {
     name: "Akagera National Park",
     detail: "Big Five Safari on the Savanna",
+    imageKey: "hotspotRwandaAkageraNP",
     image: `${base}/photos/newstock/wildanimals.jpg`,
   },
   {
     name: "Nyungwe Forest",
     detail: "Chimpanzee Trekking & Canopy Walk",
+    imageKey: "hotspotRwandaNyungweForest",
     image:
       "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=900&q=85",
   },
   {
     name: "Lake Kivu",
     detail: "Relaxation on the Inland Sea",
+    imageKey: "hotspotRwandaLakeKivu",
     image:
       "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&q=85",
   },
   {
     name: "Kigali Genocide Memorial",
     detail: "A Place of Remembrance & Learning",
+    imageKey: "hotspotRwandaKigaliGenocideMemorial",
     image: `${base}/photos/newstock/Kigali-Genocide-Memorial.png`,
   },
   {
     name: "Kigali City",
     detail: "Africa's Cleanest & Safest Capital",
+    imageKey: "hotspotRwandaKigaliCity",
     image: `${base}/photos/newstock/kigali-city.jpg`,
   },
 ];
@@ -88,8 +95,11 @@ const packages = [
 
 export default function RwandaPage() {
   const siteImages = useSiteImages();
-  const getSiteImageUrlLocal = (key: string, fallback: string) =>
-    getSiteImageUrl(siteImages, key, fallback);
+  const getSiteImageUrlLocal = (
+    key: string,
+    fallback: string,
+    dimensions?: { width: number; height: number },
+  ) => getSiteImageUrl(siteImages, key, fallback, dimensions);
 
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
@@ -112,7 +122,7 @@ export default function RwandaPage() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage: `url('${getSiteImageUrlLocal("destinationRwandaHero", `${base}/photos/newstock/Gorrillahd.jpg`)}')`,
+            backgroundImage: `url('${getSiteImageUrlLocal("destinationRwandaHero", `${base}/photos/newstock/Gorrillahd.jpg`, WIDE_16_9)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center 40%",
           }}
@@ -210,6 +220,7 @@ export default function RwandaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationRwandaKigaliCity",
                   `${base}/photos/newstock/kigali-city.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Kigali City"
                 className="w-full h-52 object-cover"
@@ -235,6 +246,7 @@ export default function RwandaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationRwandaWildanimals",
                   `${base}/photos/newstock/wildanimals.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Akagera Wildlife"
                 className="w-full h-52 object-cover"

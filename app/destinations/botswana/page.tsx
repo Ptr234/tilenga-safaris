@@ -10,6 +10,7 @@ import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
 import useSiteImages from "@/lib/useSiteImages";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
+import { LANDSCAPE_4_3, WIDE_16_9 } from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -17,41 +18,49 @@ const hotspots = [
   {
     name: "Okavango Delta",
     detail: "World's Largest Inland Delta",
+    imageKey: "hotspotBotswanaOkavangoDelta",
     image: `${base}/photos/newstock/Elephantfamily.jpg`,
   },
   {
     name: "Chobe National Park",
     detail: "Africa's Densest Elephant Population",
+    imageKey: "hotspotBotswanaChoboNP",
     image: `${base}/photos/newstock/bigelephant.jpg`,
   },
   {
     name: "Moremi Game Reserve",
     detail: "Wild Dogs & Leopard in the Delta",
+    imageKey: "hotspotBotswanaMoremiGameReserve",
     image: `${base}/photos/newstock/wildlifeconservation.jpg`,
   },
   {
     name: "Makgadikgadi Pans",
     detail: "Salt Flats & Zebra Migration",
+    imageKey: "hotspotBotswanaMakgadikgadiPans",
     image: `${base}/photos/newstock/zebras-(1).jpg`,
   },
   {
     name: "Linyanti Wetlands",
     detail: "Exclusive Private Concessions",
+    imageKey: "hotspotBotswanaLinyantiWetlands",
     image: `${base}/photos/newstock/wildanimals.jpg`,
   },
   {
     name: "Central Kalahari Reserve",
     detail: "Black-Maned Lions & Meerkats",
+    imageKey: "hotspotBotswanaCentralKalahariReserve",
     image: `${base}/photos/newstock/lioness.jpg`,
   },
   {
     name: "Okavango Mokoro Safaris",
     detail: "Silent Dugout Canoe Through Lily Pads",
+    imageKey: "hotspotBotswanaOkavangoMokoroSafaris",
     image: `${base}/photos/newstock/Boat-Safaris08Boat-Safaris.jpg`,
   },
   {
     name: "Savuti Channel",
     detail: "Lion vs Elephant — Ancient Battleground",
+    imageKey: "hotspotBotswanaSavutiChannel",
     image: `${base}/photos/newstock/elephantcars.jpg`,
   },
 ];
@@ -119,8 +128,11 @@ const packages = [
 
 export default function BotswanaPage() {
   const siteImages = useSiteImages();
-  const getSiteImageUrlLocal = (key: string, fallback: string) =>
-    getSiteImageUrl(siteImages, key, fallback);
+  const getSiteImageUrlLocal = (
+    key: string,
+    fallback: string,
+    dimensions?: { width: number; height: number },
+  ) => getSiteImageUrl(siteImages, key, fallback, dimensions);
 
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
@@ -143,7 +155,7 @@ export default function BotswanaPage() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage: `url('${getSiteImageUrlLocal("destinationBotswanaHero", `${base}/photos/newstock/Elephantfamily.jpg`)}')`,
+            backgroundImage: `url('${getSiteImageUrlLocal("destinationBotswanaHero", `${base}/photos/newstock/Elephantfamily.jpg`, WIDE_16_9)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -231,6 +243,7 @@ export default function BotswanaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationBotswanaElephantFamily",
                   `${base}/photos/newstock/Elephantfamily.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Okavango Delta"
                 className="w-full h-52 object-cover"
@@ -245,6 +258,7 @@ export default function BotswanaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationBotswanaBigElephant",
                   `${base}/photos/newstock/bigelephant.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Chobe elephants"
                 className="w-full h-52 object-cover"
@@ -259,6 +273,7 @@ export default function BotswanaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationBotswanaWildlifeConservation",
                   `${base}/photos/newstock/wildlifeconservation.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Moremi game reserve"
                 className="w-full h-52 object-cover"
@@ -273,6 +288,7 @@ export default function BotswanaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationBotswanaBoatSafari",
                   `${base}/photos/newstock/Boat-Safaris08Boat-Safaris.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Mokoro safari"
                 className="w-full h-52 object-cover"

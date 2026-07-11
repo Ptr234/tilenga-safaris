@@ -10,6 +10,7 @@ import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
 import useSiteImages from "@/lib/useSiteImages";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
+import { LANDSCAPE_4_3, WIDE_16_9 } from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -17,49 +18,58 @@ const hotspots = [
   {
     name: "Masai Mara",
     detail: "Kenya's Crown Jewel Reserve",
+    imageKey: "hotspotKenyaMasaiMara",
     image: `${base}/photos/newstock/Hot-Air-Balloon.jpg`,
   },
   {
     name: "Great Migration",
     detail: "1.5 Million Wildebeest Crossing",
+    imageKey: "hotspotKenyaGreatMigration",
     image:
       "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=900&q=85",
   },
   {
     name: "Amboseli National Park",
     detail: "Elephants Against Kilimanjaro",
+    imageKey: "hotspotKenyaAmboseliNP",
     image:
       "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=900&q=85",
   },
   {
     name: "Lake Nakuru",
     detail: "Flamingo-Lined Soda Lake",
+    imageKey: "hotspotKenyaLakeNakuru",
     image:
       "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=900&q=85",
   },
   {
     name: "Samburu Reserve",
     detail: "Rare Northern Species",
+    imageKey: "hotspotKenyaSamburuReserve",
     image: `${base}/photos/newstock/cheetah.jpg`,
   },
   {
     name: "Hells Gate National Park",
     detail: "Gorges, Geysers & Cycling Safaris",
+    imageKey: "hotspotKenyaHellsGateNP",
     image: `${base}/photos/newstock/zebras.jpg`,
   },
   {
     name: "Giraffe Centre",
     detail: "Nairobi — Endangered Rothschild's Giraffe",
+    imageKey: "hotspotKenyaGiraffeCentre",
     image: `${base}/photos/newstock/girrafe.jpg`,
   },
   {
     name: "Mount Kenya",
     detail: "Africa's Second-Highest Peak",
+    imageKey: "hotspotKenyaMountKenya",
     image: `${base}/photos/newstock/Mount-Kenya.jpg`,
   },
   {
     name: "Indian Ocean Beaches",
     detail: "Diani & Mombasa — Pristine Coastline",
+    imageKey: "hotspotKenyaIndianOceanBeaches",
     image: `${base}/photos/newstock/indianocean.jpg`,
   },
 ];
@@ -130,8 +140,11 @@ const packages = [
 
 export default function KenyaPage() {
   const siteImages = useSiteImages();
-  const getSiteImageUrlLocal = (key: string, fallback: string) =>
-    getSiteImageUrl(siteImages, key, fallback);
+  const getSiteImageUrlLocal = (
+    key: string,
+    fallback: string,
+    dimensions?: { width: number; height: number },
+  ) => getSiteImageUrl(siteImages, key, fallback, dimensions);
 
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
@@ -154,7 +167,7 @@ export default function KenyaPage() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage: `url('${getSiteImageUrlLocal("destinationKenyaHero", `${base}/photos/newstock/splendifd.jpg`)}')`,
+            backgroundImage: `url('${getSiteImageUrlLocal("destinationKenyaHero", `${base}/photos/newstock/splendifd.jpg`, WIDE_16_9)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -240,6 +253,7 @@ export default function KenyaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationKenyaSafari",
                   `${base}/photos/newstock/safari.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Kenya safari landscape"
                 className="w-full h-52 object-cover"
@@ -254,6 +268,7 @@ export default function KenyaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationKenyaLioness",
                   `${base}/photos/newstock/lioness.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Lioness on the savannah"
                 className="w-full h-52 object-cover"
@@ -268,6 +283,7 @@ export default function KenyaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationKenyaElephantFamily",
                   `${base}/photos/newstock/mothernbabyelephant.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Elephant family, Amboseli"
                 className="w-full h-52 object-cover"
@@ -282,6 +298,7 @@ export default function KenyaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationKenyaMigration",
                   `${base}/photos/newstock/greatbeastmigration.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Great wildebeest migration"
                 className="w-full h-52 object-cover"

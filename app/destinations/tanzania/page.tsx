@@ -10,6 +10,7 @@ import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
 import useSiteImages from "@/lib/useSiteImages";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
+import { LANDSCAPE_4_3, WIDE_16_9 } from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -17,31 +18,37 @@ const hotspots = [
   {
     name: "Serengeti",
     detail: "Endless Plains & the Great Migration",
+    imageKey: "hotspotTanzaniaSerengeti",
     image: `${base}/photos/newstock/wildanimals.jpg`,
   },
   {
     name: "Ngorongoro Crater",
     detail: "UNESCO World Heritage — Big Five & Black Rhino",
+    imageKey: "hotspotTanzaniaNgorongoroCrater",
     image: `${base}/photos/newstock/Ngorongoro-Crater.jpg`,
   },
   {
     name: "Zanzibar",
     detail: "Stone Town, Spice Tours & Crystal-Clear Waters",
+    imageKey: "hotspotTanzaniaZanzibar",
     image: `${base}/photos/newstock/Zanzibar-Beaches.jpg`,
   },
   {
     name: "Mount Kilimanjaro",
     detail: "Africa's Rooftop at 5,895m",
+    imageKey: "hotspotTanzaniaMountKilimanjaro",
     image: `${base}/photos/newstock/Mount-Kenya.jpg`,
   },
   {
     name: "Ruaha National Park",
     detail: "Tanzania's Largest & Most Wild Park",
+    imageKey: "hotspotTanzaniaRuahaNP",
     image: `${base}/photos/newstock/Ruaha-National-Park.jpg`,
   },
   {
     name: "Tarangire National Park",
     detail: "Baobab Giants & Elephant Herds",
+    imageKey: "hotspotTanzaniaTarangireNP",
     image: `${base}/photos/newstock/Tarangire-National-Park.jpg`,
   },
 ];
@@ -113,8 +120,11 @@ const packages = [
 
 export default function TanzaniaPage() {
   const siteImages = useSiteImages();
-  const getSiteImageUrlLocal = (key: string, fallback: string) =>
-    getSiteImageUrl(siteImages, key, fallback);
+  const getSiteImageUrlLocal = (
+    key: string,
+    fallback: string,
+    dimensions?: { width: number; height: number },
+  ) => getSiteImageUrl(siteImages, key, fallback, dimensions);
 
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
@@ -137,7 +147,7 @@ export default function TanzaniaPage() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage: `url('${getSiteImageUrlLocal("destinationTanzaniaHero", `${base}/photos/newstock/SerengetiNationaLPark.jpg`)}')`,
+            backgroundImage: `url('${getSiteImageUrlLocal("destinationTanzaniaHero", `${base}/photos/newstock/SerengetiNationaLPark.jpg`, WIDE_16_9)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -223,6 +233,7 @@ export default function TanzaniaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationTanzaniaElephantHerd",
                   `${base}/photos/newstock/bigelephant.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Tanzania elephant herd"
                 className="w-full h-52 object-cover"
@@ -237,6 +248,7 @@ export default function TanzaniaPage() {
                 src={getSiteImageUrlLocal(
                   "destinationTanzaniaTarangire",
                   `${base}/photos/newstock/Tarangire-National-Park1.jpg`,
+                  LANDSCAPE_4_3,
                 )}
                 alt="Tarangire National Park"
                 className="w-full h-52 object-cover"

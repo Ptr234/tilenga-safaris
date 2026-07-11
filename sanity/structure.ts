@@ -10,6 +10,22 @@ import {
 } from '@sanity/icons'
 
 /**
+ * Site Images are one flat document type but carry a `category` field
+ * (homepage, about, destinations, lodges, navigation, meta). Group them
+ * into sub-folders here so editors can find e.g. "Destinations" images
+ * without scrolling through every site image.
+ */
+const siteImageCategories: {title: string; category: string}[] = [
+  {title: 'Homepage', category: 'homepage'},
+  {title: 'About', category: 'about'},
+  {title: 'Destinations', category: 'destinations'},
+  {title: 'Destination Hotspots', category: 'hotspots'},
+  {title: 'Lodges', category: 'lodges'},
+  {title: 'Navigation', category: 'navigation'},
+  {title: 'Meta', category: 'meta'},
+]
+
+/**
  * Professional, grouped desk layout.
  * Editorial content sits at the top; site-wide settings are tucked
  * into their own folder so the sidebar stays clean.
@@ -30,7 +46,27 @@ export const structure: StructureResolver = (S) =>
           S.list()
             .title('Site Settings')
             .items([
-              S.documentTypeListItem('siteImage').title('Site Images').icon(ImagesIcon),
+              S.listItem()
+                .title('Site Images')
+                .icon(ImagesIcon)
+                .child(
+                  S.list()
+                    .title('Site Images')
+                    .items([
+                      ...siteImageCategories.map(({title, category}) =>
+                        S.listItem()
+                          .title(title)
+                          .child(
+                            S.documentTypeList('siteImage')
+                              .title(title)
+                              .filter('_type == "siteImage" && category == $category')
+                              .params({category}),
+                          ),
+                      ),
+                      S.divider(),
+                      S.documentTypeListItem('siteImage').title('All Site Images'),
+                    ]),
+                ),
               S.documentTypeListItem('partner').title('Partners').icon(UsersIcon),
             ]),
         ),

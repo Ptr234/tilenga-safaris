@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import useSiteImages from "@/lib/useSiteImages";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
+import { SQUARE } from "@/lib/imageDimensions";
 
 const destinations = [
   "Uganda",
@@ -20,9 +21,15 @@ const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export default function QuotePopup() {
   const siteImages = useSiteImages();
-  const getSiteImageUrlLocal = (key: string, fallback: string) => {
+  const getSiteImageUrlLocal = (
+    key: string,
+    fallback: string,
+    dimensions?: { width: number; height: number },
+  ) => {
     const image = siteImages?.[key]?.image;
-    return image ? getSiteImageUrl(siteImages, key, fallback) : fallback;
+    return image
+      ? getSiteImageUrl(siteImages, key, fallback, dimensions)
+      : fallback;
   };
 
   const [isOpen, setIsOpen] = useState(false);
@@ -106,6 +113,7 @@ export default function QuotePopup() {
                   src={getSiteImageUrlLocal(
                     "quotePopupHero",
                     `${base}/photos/newstock/Gorrillahd.jpg`,
+                    SQUARE,
                   )}
                   alt="Safari"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"

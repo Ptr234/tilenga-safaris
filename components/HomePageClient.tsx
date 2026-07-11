@@ -15,6 +15,14 @@ import Partners from "@/components/Partners";
 import { Lodge, Experience, Destination, Partner } from "@/types/sanity";
 import { urlForImage } from "@/lib/sanity.image";
 import useSiteImages from "@/lib/useSiteImages";
+import {
+  SQUARE,
+  PORTRAIT_4_5,
+  PORTRAIT_3_4,
+  LANDSCAPE_4_3,
+  WIDE_16_9,
+  WIDE_16_11,
+} from "@/lib/imageDimensions";
 
 interface HomePageClientProps {
   lodges: Lodge[];
@@ -46,9 +54,13 @@ export default function HomePageClient({
   const [activeIdx, setActiveIdx] = useState(0);
   const siteImages = useSiteImages();
 
-  const getSiteImageUrl = (key: string, fallback: string) => {
+  const getSiteImageUrl = (
+    key: string,
+    fallback: string,
+    dimensions?: { width: number; height: number },
+  ) => {
     const image = siteImages?.[key]?.image;
-    return image ? urlForImage(image).url() : fallback;
+    return image ? urlForImage(image, dimensions).url() : fallback;
   };
 
   useEffect(() => {
@@ -63,7 +75,7 @@ export default function HomePageClient({
   const transformedExperiences = initialExperiences.map((exp) => ({
     title: exp.title,
     description: exp.description,
-    image: urlForImage(exp.image).url(),
+    image: urlForImage(exp.image, WIDE_16_9).url(),
   }));
 
   const transformedPartners = initialPartners.map((p) => ({
@@ -143,6 +155,7 @@ export default function HomePageClient({
                           <img
                             src={urlForImage(
                               initialDestinations[activeIdx].image,
+                              LANDSCAPE_4_3,
                             ).url()}
                             alt={initialDestinations[activeIdx].name}
                             className="absolute inset-0 w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-[1500ms] ease-out group-hover:scale-105"
@@ -192,7 +205,10 @@ export default function HomePageClient({
                 >
                   <div className="relative aspect-square md:aspect-[4/5] overflow-hidden mb-6 md:mb-8 shadow-sm">
                     <img
-                      src={urlForImage(initialDestinations[0].image).url()}
+                      src={urlForImage(
+                        initialDestinations[0].image,
+                        PORTRAIT_4_5,
+                      ).url()}
                       alt={initialDestinations[0].name}
                       className="absolute inset-0 w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-[1500ms] group-hover:scale-105"
                     />
@@ -217,7 +233,7 @@ export default function HomePageClient({
                   <Link href={dest.href} className="group block">
                     <div className="relative aspect-[4/5] overflow-hidden mb-4 md:mb-6 shadow-sm border border-gold/5">
                       <img
-                        src={urlForImage(dest.image).url()}
+                        src={urlForImage(dest.image, PORTRAIT_4_5).url()}
                         alt={dest.name}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                       />
@@ -277,7 +293,7 @@ export default function HomePageClient({
                 className="group block relative overflow-hidden h-[62vh] md:h-[85vh] min-h-[420px]"
               >
                 <img
-                  src={urlForImage(lodge.image).url()}
+                  src={urlForImage(lodge.image, PORTRAIT_3_4).url()}
                   alt={lodge.name}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
                 />
@@ -363,6 +379,7 @@ export default function HomePageClient({
             src={getSiteImageUrl(
               "homeHeritageBackground",
               "/photos/newstock/wildanimals.jpg",
+              WIDE_16_9,
             )}
             className="w-full h-full object-cover"
             alt=""
@@ -415,6 +432,7 @@ export default function HomePageClient({
                       src={getSiteImageUrl(
                         "homeHeritageMain",
                         "/photos/newstock/AfricanLandscape.jpg",
+                        WIDE_16_11,
                       )}
                       alt="The Spirit of Safari"
                       className="w-full h-full object-cover"
@@ -429,6 +447,7 @@ export default function HomePageClient({
                       src={getSiteImageUrl(
                         "homeHeritageDetail",
                         "/photos/newstock/wildlifeconservation.jpg",
+                        WIDE_16_9,
                       )}
                       alt="Wildlife Detail"
                       className="w-full h-full object-cover"
@@ -444,6 +463,7 @@ export default function HomePageClient({
                         src={getSiteImageUrl(
                           "homeHeritageDetail",
                           "/photos/newstock/wildlifeconservation.jpg",
+                          PORTRAIT_3_4,
                         )}
                         alt="Wildlife Detail"
                         className="w-full h-full object-cover"
@@ -467,6 +487,7 @@ export default function HomePageClient({
                   src={getSiteImageUrl(
                     "homeSustainabilityConservation",
                     "/photos/newstock/conservation.jpg",
+                    SQUARE,
                   )}
                   alt="Conservation"
                   className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700"
@@ -483,6 +504,7 @@ export default function HomePageClient({
                   src={getSiteImageUrl(
                     "homeSustainabilityLandscape",
                     "/photos/newstock/AfricanLandscape.jpg",
+                    SQUARE,
                   )}
                   alt="Landscape"
                   className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700"
@@ -499,6 +521,7 @@ export default function HomePageClient({
                   src={getSiteImageUrl(
                     "homeSustainabilityWildlife",
                     "/photos/newstock/wildlifeconservation.jpg",
+                    SQUARE,
                   )}
                   alt="Wildlife"
                   className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700"
@@ -515,6 +538,7 @@ export default function HomePageClient({
                   src={getSiteImageUrl(
                     "homeSustainabilityCommunity",
                     "/photos/newstock/local-communities.jpg",
+                    SQUARE,
                   )}
                   alt="Community"
                   className="w-full h-full object-cover hover:scale-[1.05] transition-transform duration-700"
@@ -570,6 +594,7 @@ export default function HomePageClient({
               src={getSiteImageUrl(
                 "homeFeatureCheetah",
                 "/photos/newstock/cheetah.jpg",
+                PORTRAIT_4_5,
               )}
               alt="East Africa wildlife"
               className="w-full h-full object-cover"
@@ -595,6 +620,7 @@ export default function HomePageClient({
             src={getSiteImageUrl(
               "homeTestimonialsBg",
               "/photos/newstock/Airportmeet-and-greet.jpg",
+              WIDE_16_9,
             )}
             alt=""
             className="w-full h-full object-cover object-center scale-[1.06]"

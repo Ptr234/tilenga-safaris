@@ -5,7 +5,8 @@ export function getSiteImageUrl(
   siteImages: Record<string, SiteImage> | undefined,
   key: string,
   fallback: string,
+  dimensions?: { width: number; height: number },
 ) {
   const image = siteImages?.[key]?.image;
-  return image ? urlForImage(image).url() : fallback;
+  return image ? urlForImage(image, dimensions).url() : fallback;
 }
