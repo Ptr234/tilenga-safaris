@@ -3,7 +3,7 @@ import { lodgesQuery, experiencesQuery, destinationsQuery, partnersQuery } from 
 import HomePageClient from "@/components/HomePageClient";
 import { Lodge, Experience, Destination, Partner } from "@/types/sanity";
 
-export const dynamic = 'force-static';
+export const dynamic = 'force-dynamic';
 
 // Fallback data for when Sanity is empty or during initial setup
 const fallbackLodges = [

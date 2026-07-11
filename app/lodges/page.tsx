@@ -3,7 +3,7 @@ import { lodgesQuery } from "@/lib/sanity.queries";
 import LodgesPageClient from "@/components/LodgesPageClient";
 import { Lodge } from "@/types/sanity";
 
-export const dynamic = 'force-static';
+export const dynamic = 'force-dynamic';
 
 export default async function LodgesPage() {
   const lodges = await client.fetch<Lodge[]>(lodgesQuery);
