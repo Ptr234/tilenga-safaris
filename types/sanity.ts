@@ -56,6 +56,15 @@ export interface SiteImage {
   image: SanityImage;
 }
 
+export interface Review {
+  _id: string;
+  name: string;
+  rating: number;
+  quote: string;
+  tag?: string;
+  _createdAt: string;
+}
+
 export interface Itinerary {
   _id: string;
   packageName: string;

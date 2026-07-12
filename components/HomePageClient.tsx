@@ -13,7 +13,7 @@ import LineReveal from "@/components/motion/LineReveal";
 
 import ExperienceCarousel from "@/components/ExperienceCarousel";
 import Partners from "@/components/Partners";
-import { Lodge, Experience, Destination, Partner } from "@/types/sanity";
+import { Lodge, Experience, Destination, Partner, Review } from "@/types/sanity";
 import { urlForImage } from "@/lib/sanity.image";
 import useSiteImages from "@/lib/useSiteImages";
 import {
@@ -30,6 +30,34 @@ interface HomePageClientProps {
   experiences: Experience[];
   destinations: Destination[];
   partners: Partner[];
+  reviews: Review[];
+}
+
+const fallbackReviews = [
+  {
+    quote:
+      "From the beginning, Tilenga Safaris handled every detail with precision and care. They booked us into high-end accommodations with the best views and paired us with a top-tier safari guide. When our original agency failed to plan anything for our arrival day, Tilenga Safaris immediately stepped in and went above and beyond — in every sense of the word.",
+    name: "Faycal A.",
+    tag: "Uganda Circuit",
+    date: "12 months ago",
+  },
+  {
+    quote:
+      "Coming face-to-face with a silverback and his family in Bwindi Impenetrable Forest was surreal. Tilenga handled everything seamlessly — permits, accommodations, transportation. We felt safe, well cared for, and truly immersed in Uganda's wild beauty. If you're considering gorilla trekking, look no further.",
+    name: "Martina N.",
+    tag: "Gorilla Trekking",
+    date: "1 year ago",
+  },
+];
+
+function timeAgo(dateString: string) {
+  const months = Math.max(
+    1,
+    Math.round((Date.now() - new Date(dateString).getTime()) / (1000 * 60 * 60 * 24 * 30)),
+  );
+  if (months < 12) return `${months} month${months === 1 ? "" : "s"} ago`;
+  const years = Math.round(months / 12);
+  return `${years} year${years === 1 ? "" : "s"} ago`;
 }
 
 const stats = [
@@ -51,7 +79,17 @@ export default function HomePageClient({
   experiences: initialExperiences,
   destinations: initialDestinations,
   partners: initialPartners,
+  reviews,
 }: HomePageClientProps) {
+  const displayedReviews =
+    reviews && reviews.length > 0
+      ? reviews.map((r) => ({
+          quote: r.quote,
+          name: r.name,
+          tag: r.tag,
+          date: timeAgo(r._createdAt),
+        }))
+      : fallbackReviews;
   const [activeIdx, setActiveIdx] = useState(0);
   const siteImages = useSiteImages();
 
@@ -695,32 +733,19 @@ export default function HomePageClient({
               </FadeIn>
 
               <StaggerGrid className="flex flex-col gap-0">
-                {[
-                  {
-                    quote:
-                      "From the beginning, Tilenga Safaris handled every detail with precision and care. They booked us into high-end accommodations with the best views and paired us with a top-tier safari guide. When our original agency failed to plan anything for our arrival day, Tilenga Safaris immediately stepped in and went above and beyond — in every sense of the word.",
-                    name: "Faycal A.",
-                    date: "12 months ago",
-                    tag: "Uganda Circuit",
-                  },
-                  {
-                    quote:
-                      "Coming face-to-face with a silverback and his family in Bwindi Impenetrable Forest was surreal. Tilenga handled everything seamlessly — permits, accommodations, transportation. We felt safe, well cared for, and truly immersed in Uganda's wild beauty. If you're considering gorilla trekking, look no further.",
-                    name: "Martina N.",
-                    date: "1 year ago",
-                    tag: "Gorilla Trekking",
-                  },
-                ].map((t, i) => (
+                {displayedReviews.map((t, i) => (
                   <StaggerItem key={i}>
                     <div
-                      className={`relative group py-10 md:py-12 px-0 ${i === 0 ? "border-b border-gold/20" : ""}`}
+                      className={`relative group py-10 md:py-12 px-0 ${i < displayedReviews.length - 1 ? "border-b border-gold/20" : ""}`}
                     >
                       <span className="absolute right-0 top-6 font-serif text-[9rem] leading-none text-gold/[0.06] select-none pointer-events-none group-hover:text-gold/[0.1] transition-colors duration-700">
                         &rdquo;
                       </span>
-                      <span className="inline-block font-sans text-[9px] tracking-[0.35em] uppercase text-gold/60 border border-gold/20 px-3 py-1 mb-6">
-                        {t.tag}
-                      </span>
+                      {t.tag && (
+                        <span className="inline-block font-sans text-[9px] tracking-[0.35em] uppercase text-gold/60 border border-gold/20 px-3 py-1 mb-6">
+                          {t.tag}
+                        </span>
+                      )}
                       <p className="font-serif italic text-cream/80 text-base md:text-2xl lg:text-[1.6rem] leading-[1.7] mb-6 md:mb-8 group-hover:text-cream transition-colors duration-500 relative z-10">
                         &ldquo;{t.quote}&rdquo;
                       </p>

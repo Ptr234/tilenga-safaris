@@ -4,6 +4,7 @@ import { experience } from "./experience";
 import { partner } from "./partner";
 import { siteImage } from "./siteImage";
 import { itinerary } from "./itinerary";
+import { review } from "./review";
 
 export const schemaTypes = [
   lodge,
@@ -12,4 +13,5 @@ export const schemaTypes = [
   partner,
   siteImage,
   itinerary,
+  review,
 ];

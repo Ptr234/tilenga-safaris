@@ -46,6 +46,7 @@ export default function FeedbackForm() {
     recommend: "",
     next_dest: "",
     final: "",
+    consent: false,
   });
 
   const [errors, setErrors] = useState<string[]>([]);
@@ -168,6 +169,20 @@ export default function FeedbackForm() {
       if (res.ok) {
         setIsSubmitted(true);
         window.scrollTo({ top: 0, behavior: "smooth" });
+
+        // Best-effort: publish as a public review if the guest consented
+        // and the feedback qualifies. Never blocks the thank-you screen.
+        fetch("/api/submit-review", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.name,
+            overall_rating: formData.overall_rating,
+            highlight: formData.highlight,
+            final: formData.final,
+            consent: formData.consent,
+          }),
+        }).catch(() => {});
       } else {
         throw new Error("Failed to send feedback");
       }
@@ -861,6 +876,27 @@ export default function FeedbackForm() {
                                   </p>
                                 )}
                               </motion.div>
+
+                              <label className="flex items-start gap-4 cursor-pointer group">
+                                <input
+                                  type="checkbox"
+                                  name="consent"
+                                  checked={formData.consent}
+                                  onChange={(e) =>
+                                    setFormData((prev: any) => ({
+                                      ...prev,
+                                      consent: e.target.checked,
+                                    }))
+                                  }
+                                  className="mt-1 w-4 h-4 accent-gold shrink-0"
+                                />
+                                <span className="text-cream/50 text-xs leading-relaxed group-hover:text-cream/70 transition-colors">
+                                  I&apos;m happy for Tilenga Safaris to feature my
+                                  name and this feedback as a public review on
+                                  the website (only shown if rated 4 stars or
+                                  higher).
+                                </span>
+                              </label>
                             </div>
                           )}
                         </motion.div>

@@ -1,7 +1,7 @@
 import { client } from "@/lib/sanity.client";
-import { lodgesQuery, experiencesQuery, destinationsQuery, partnersQuery } from "@/lib/sanity.queries";
+import { lodgesQuery, experiencesQuery, destinationsQuery, partnersQuery, reviewsQuery } from "@/lib/sanity.queries";
 import HomePageClient from "@/components/HomePageClient";
-import { Lodge, Experience, Destination, Partner } from "@/types/sanity";
+import { Lodge, Experience, Destination, Partner, Review } from "@/types/sanity";
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
@@ -19,11 +19,12 @@ const fallbackLodges = [
 ];
 
 export default async function HomePage() {
-  const [lodges, experiences, destinations, partners] = await Promise.all([
+  const [lodges, experiences, destinations, partners, reviews] = await Promise.all([
     client.fetch<Lodge[]>(lodgesQuery),
     client.fetch<Experience[]>(experiencesQuery),
     client.fetch<Destination[]>(destinationsQuery),
     client.fetch<Partner[]>(partnersQuery),
+    client.fetch<Review[]>(reviewsQuery),
   ]);
 
   // If no data is found in Sanity, we could either show an empty state or use some default content.
@@ -31,11 +32,12 @@ export default async function HomePage() {
   // If destinations are empty, we might want to show a message or redirect to admin.
 
   return (
-    <HomePageClient 
-      lodges={lodges.length > 0 ? lodges : []} 
-      experiences={experiences.length > 0 ? experiences : []} 
+    <HomePageClient
+      lodges={lodges.length > 0 ? lodges : []}
+      experiences={experiences.length > 0 ? experiences : []}
       destinations={destinations.length > 0 ? destinations : []}
       partners={partners.length > 0 ? partners : []}
+      reviews={reviews}
     />
   );
 }

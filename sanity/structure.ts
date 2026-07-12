@@ -38,6 +38,7 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem('destination').title('Destinations').icon(EarthGlobeIcon),
       S.documentTypeListItem('experience').title('Experiences').icon(StarIcon),
       S.documentTypeListItem('itinerary').title('Itineraries').icon(DocumentPdfIcon),
+      S.documentTypeListItem('review').title('Reviews').icon(StarIcon),
       S.divider(),
       S.listItem()
         .title('Site Settings')

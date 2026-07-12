@@ -51,3 +51,12 @@ export const itinerariesQuery = groq`*[_type == "itinerary"] | order(_createdAt 
   description,
   file
 }`;
+
+export const reviewsQuery = groq`*[_type == "review" && published == true] | order(_createdAt desc) [0...6] {
+  _id,
+  name,
+  rating,
+  quote,
+  tag,
+  _createdAt
+}`;
