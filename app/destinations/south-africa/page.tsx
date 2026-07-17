@@ -123,13 +123,16 @@ const packages = [
 
 export default function SouthAfricaPage() {
   const siteImages = useSiteImages();
-  const { overviewGallery, hotspots: sanityHotspots } =
+  const { image: heroImage, overviewGallery, hotspots: sanityHotspots } =
     useDestinationGallery("South Africa");
   const getSiteImageUrlLocal = (
     key: string,
     fallback: string,
     dimensions?: { width: number; height: number },
   ) => getSiteImageUrl(siteImages, key, fallback, dimensions);
+  const heroImageUrl = heroImage
+    ? urlForImage(heroImage, WIDE_16_9).url()
+    : `${base}/photos/newstock/Table%20Mountain.jpg`;
 
   const hotspots =
     sanityHotspots && sanityHotspots.length > 0
@@ -170,7 +173,7 @@ export default function SouthAfricaPage() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage: `url('${getSiteImageUrlLocal("destinationSouthAfricaHero", `${base}/photos/newstock/Table%20Mountain.jpg`, WIDE_16_9)}')`,
+            backgroundImage: `url('${heroImageUrl}')`,
             backgroundSize: "cover",
             backgroundPosition: "center 40%",
           }}

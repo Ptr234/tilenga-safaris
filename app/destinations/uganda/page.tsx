@@ -135,13 +135,16 @@ const packages = [
 
 export default function UgandaPage() {
   const siteImages = useSiteImages();
-  const { overviewGallery, hotspots: sanityHotspots } =
+  const { image: heroImage, overviewGallery, hotspots: sanityHotspots } =
     useDestinationGallery("Uganda");
   const getSiteImageUrlLocal = (
     key: string,
     fallback: string,
     dimensions?: { width: number; height: number },
   ) => getSiteImageUrl(siteImages, key, fallback, dimensions);
+  const heroImageUrl = heroImage
+    ? urlForImage(heroImage, WIDE_16_9).url()
+    : `${base}/photos/newstock/UgandaDestinationHero.jpg`;
 
   const overviewImage = (
     index: number,
@@ -182,7 +185,7 @@ export default function UgandaPage() {
         <div
           className="absolute inset-0 scale-110 transition-transform duration-[8000ms]"
           style={{
-            backgroundImage: `url('${getSiteImageUrlLocal("destinationUgandaHero", `${base}/photos/newstock/UgandaDestinationHero.jpg`, WIDE_16_9)}')`,
+            backgroundImage: `url('${heroImageUrl}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

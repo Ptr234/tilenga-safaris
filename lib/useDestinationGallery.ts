@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import type { Destination } from "@/types/sanity";
 
-type DestinationExtras = Pick<Destination, "overviewGallery" | "hotspots">;
+type DestinationExtras = Partial<Pick<Destination, "image">> &
+  Pick<Destination, "overviewGallery" | "hotspots">;
 type DestinationExtrasMap = Record<string, DestinationExtras>;
 
 const EMPTY: DestinationExtras = {};
@@ -24,7 +25,11 @@ export default function useDestinationGallery(name: string) {
           Object.fromEntries(
             list.map((d) => [
               d.name,
-              { overviewGallery: d.overviewGallery, hotspots: d.hotspots },
+              {
+                image: d.image,
+                overviewGallery: d.overviewGallery,
+                hotspots: d.hotspots,
+              },
             ]),
           ),
         );

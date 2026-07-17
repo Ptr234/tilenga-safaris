@@ -7,6 +7,7 @@ export const runtime = "edge";
 const destinationsQuery = groq`*[_type == "destination"] | order(_createdAt asc) {
   name,
   href,
+  image,
   overviewGallery,
   hotspots,
 }`;

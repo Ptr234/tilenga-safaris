@@ -123,13 +123,16 @@ const packages = [
 
 export default function TanzaniaPage() {
   const siteImages = useSiteImages();
-  const { overviewGallery, hotspots: sanityHotspots } =
+  const { image: heroImage, overviewGallery, hotspots: sanityHotspots } =
     useDestinationGallery("Tanzania");
   const getSiteImageUrlLocal = (
     key: string,
     fallback: string,
     dimensions?: { width: number; height: number },
   ) => getSiteImageUrl(siteImages, key, fallback, dimensions);
+  const heroImageUrl = heroImage
+    ? urlForImage(heroImage, WIDE_16_9).url()
+    : `${base}/photos/newstock/SerengetiNationaLPark.jpg`;
 
   const hotspots =
     sanityHotspots && sanityHotspots.length > 0
@@ -170,7 +173,7 @@ export default function TanzaniaPage() {
         <div
           className="absolute inset-0 scale-110"
           style={{
-            backgroundImage: `url('${getSiteImageUrlLocal("destinationTanzaniaHero", `${base}/photos/newstock/SerengetiNationaLPark.jpg`, WIDE_16_9)}')`,
+            backgroundImage: `url('${heroImageUrl}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
