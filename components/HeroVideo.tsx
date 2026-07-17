@@ -24,7 +24,7 @@ export default function HeroVideo() {
             preload="auto"
             className="w-full h-full object-cover"
           >
-            <source src={`${base}/homevideo/tilenga.mp4`} type="video/mp4" />
+            <source src={`${base}/homevideo/bwindi.mp4`} type="video/mp4" />
           </video>
         )}
         <div className="absolute inset-0 bg-black/30" />
