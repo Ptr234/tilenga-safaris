@@ -5,16 +5,23 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
+const posterSrc = `${base}/homevideo/bwindi-poster.jpg`;
+
 export default function HeroVideo() {
-  // Defer the video request until after hydration so the 7MB file doesn't
+  // Defer the video request until after hydration so the file doesn't
   // compete with critical JS/CSS/font requests for bandwidth on first load.
   const [ready, setReady] = useState(false);
   useEffect(() => setReady(true), []);
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-stone-900">
-      {/* Background Media - Always Video */}
+      {/* Background Media - poster shows instantly, video takes over once ready */}
       <div className="absolute inset-0 z-0">
+        <img
+          src={posterSrc}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+        />
         {ready && (
           <video
             autoPlay
@@ -22,7 +29,8 @@ export default function HeroVideo() {
             loop
             playsInline
             preload="auto"
-            className="w-full h-full object-cover"
+            poster={posterSrc}
+            className="absolute inset-0 w-full h-full object-cover"
           >
             <source src={`${base}/homevideo/bwindi.mp4`} type="video/mp4" />
           </video>
