@@ -345,14 +345,14 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 md:px-16 py-12">
         <div className="flex flex-col items-center gap-12">
           {/* Partners */}
-          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
+          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
             {partners.map((partner) => (
               <a
                 key={partner.name}
                 href={partner.href}
                 target="_blank"
                 rel="noreferrer"
-                className="h-8 md:h-10 w-auto"
+                className="flex items-center justify-center h-14 md:h-16 px-6 md:px-8 bg-cream rounded-lg shadow-sm transition-transform duration-300 hover:scale-105"
               >
                 <img
                   src={getSiteImageUrl(
@@ -361,7 +361,7 @@ export default function Footer() {
                     partner.fallback,
                   )}
                   alt={partner.name}
-                  className="h-8 md:h-10 w-auto"
+                  className="h-8 md:h-10 w-auto max-w-[120px] object-contain"
                 />
               </a>
             ))}
