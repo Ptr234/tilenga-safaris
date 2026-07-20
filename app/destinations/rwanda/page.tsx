@@ -7,7 +7,6 @@ import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
-import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
 import useSiteImages from "@/lib/useSiteImages";
 import useDestinationGallery from "@/lib/useDestinationGallery";
@@ -94,6 +93,76 @@ const packages = [
       },
     ],
   },
+  {
+    name: "4-Day Rwanda Gorilla & Cultural Encounter",
+    tagline: "Gorillas, golden monkeys & Kigali heritage",
+    duration: "4 Days",
+    price: "From $2,743 / person (6 pax)",
+    description:
+      "Trek into Volcanoes National Park for an unforgettable gorilla encounter, track playful golden monkeys through bamboo forests, visit the Dian Fossey Museum, and explore Kigali's moving Genocide Memorial and vibrant city culture.",
+    activities: [
+      "Gorilla tracking",
+      "Golden monkey tracking",
+      "Dian Fossey Museum",
+      "Kigali Genocide Memorial",
+      "Kigali city tour",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=700&q=85",
+    itinerary: [
+      {
+        days: "Day 1",
+        desc: "Arrive Kigali; Genocide Memorial visit, lunch in the city, scenic transfer to Volcanoes National Park.",
+      },
+      {
+        days: "Day 2",
+        desc: "Morning gorilla tracking deep into the misty Virunga volcanoes — one life-changing hour with a gorilla family.",
+      },
+      {
+        days: "Day 3",
+        desc: "Golden monkey tracking in the bamboo forests, followed by the Dian Fossey Museum visit.",
+      },
+      {
+        days: "Day 4",
+        desc: "Transfer to Kigali for a city tour, lunch, and airport departure.",
+      },
+    ],
+  },
+  {
+    name: "7-Day Rwanda Grand Tour",
+    tagline: "Rainforests, chimps & gorillas",
+    duration: "7 Days",
+    price: "From $11,500 / person (5 pax)",
+    description:
+      "The ultimate Rwanda experience spanning three national parks — from chimpanzee trekking and colobus monkeys in Nyungwe's ancient rainforest to gorilla tracking in the Virunga volcanoes. Includes luxury lodges and a return flight over the Land of a Thousand Hills.",
+    activities: [
+      "Chimpanzee trekking",
+      "Colobus monkey tracking",
+      "Gorilla tracking",
+      "Nyungwe nature walk",
+      "Kigali city tour",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=700&q=85",
+    itinerary: [
+      {
+        days: "Days 1–2",
+        desc: "Arrive Kigali; Genocide Memorial visit, fly to Kamembe, Nyungwe Forest nature walk.",
+      },
+      {
+        days: "Days 3–4",
+        desc: "Chimpanzee trekking and colobus monkey tracking in Nyungwe National Park's ancient rainforest.",
+      },
+      {
+        days: "Days 5–6",
+        desc: "Transfer to Volcanoes NP; gorilla tracking through the misty Virunga volcanoes.",
+      },
+      {
+        days: "Day 7",
+        desc: "Drive back to Kigali for a mini city tour and airport departure.",
+      },
+    ],
+  },
 ];
 
 export default function RwandaPage() {
@@ -127,14 +196,9 @@ export default function RwandaPage() {
     return img ? urlForImage(img, dimensions).url() : fallback;
   };
 
-  const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [activePackage, setActivePackage] = useState("");
 
-  const handleDownload = (pkgName: string) => {
-    setActivePackage(pkgName);
-    setIsDownloadOpen(true);
-  };
 
   const handleEnquiry = (pkgName: string) => {
     setActivePackage(pkgName);
@@ -401,12 +465,6 @@ export default function RwandaPage() {
                     </span>
                     <div className="flex gap-4">
                       <button
-                        onClick={() => handleDownload(pkg.name)}
-                        className="btn-outline !px-6 !py-2.5 text-[11px]"
-                      >
-                        Download Detailed Itinerary
-                      </button>
-                      <button
                         onClick={() => handleEnquiry(pkg.name)}
                         className="btn-primary !px-6 !py-2.5 text-[11px]"
                       >
@@ -456,11 +514,6 @@ export default function RwandaPage() {
         </FadeIn>
       </section>
 
-      <ItineraryDownloadPopup
-        isOpen={isDownloadOpen}
-        onClose={() => setIsDownloadOpen(false)}
-        packageName={activePackage}
-      />
 
       <PackageEnquiryPopup
         isOpen={isEnquiryOpen}

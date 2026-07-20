@@ -7,7 +7,6 @@ import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
-import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
 import useSiteImages from "@/lib/useSiteImages";
 import useDestinationGallery from "@/lib/useDestinationGallery";
@@ -119,6 +118,41 @@ const packages = [
       },
     ],
   },
+  {
+    name: "8-Day Rwanda & Tanzania Safari",
+    tagline: "Gorillas, Serengeti & Ngorongoro",
+    duration: "8 Days",
+    price: "Contact for pricing (2+ pax)",
+    description:
+      "A cross-border adventure combining gorilla tracking in Rwanda's Volcanoes National Park with Tanzania's legendary northern circuit — Lake Manyara, the Ngorongoro Crater, and the vast plains of the Serengeti.",
+    activities: [
+      "Gorilla tracking",
+      "Ngorongoro Crater game drive",
+      "Serengeti game drives",
+      "Lake Manyara",
+      "Dian Fossey Museum",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=85",
+    itinerary: [
+      {
+        days: "Days 1–2",
+        desc: "Arrive Kigali; Genocide Memorial visit, transfer to Volcanoes NP for gorilla tracking.",
+      },
+      {
+        days: "Day 3",
+        desc: "Dian Fossey Museum visit, transfer to Kigali and fly to Arusha, Tanzania.",
+      },
+      {
+        days: "Days 4–5",
+        desc: "Lake Manyara game drive, Ngorongoro Crater — a full-day descent into the world's largest intact caldera.",
+      },
+      {
+        days: "Days 6–8",
+        desc: "Central Serengeti game drives across endless plains, departure from Seronera airstrip.",
+      },
+    ],
+  },
 ];
 
 export default function TanzaniaPage() {
@@ -152,14 +186,9 @@ export default function TanzaniaPage() {
     return img ? urlForImage(img, dimensions).url() : fallback;
   };
 
-  const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [activePackage, setActivePackage] = useState("");
 
-  const handleDownload = (pkgName: string) => {
-    setActivePackage(pkgName);
-    setIsDownloadOpen(true);
-  };
 
   const handleEnquiry = (pkgName: string) => {
     setActivePackage(pkgName);
@@ -425,12 +454,6 @@ export default function TanzaniaPage() {
                     </span>
                     <div className="flex gap-4">
                       <button
-                        onClick={() => handleDownload(pkg.name)}
-                        className="btn-outline !px-6 !py-2.5 text-[11px]"
-                      >
-                        Download Detailed Itinerary
-                      </button>
-                      <button
                         onClick={() => handleEnquiry(pkg.name)}
                         className="btn-primary !px-6 !py-2.5 text-[11px]"
                       >
@@ -479,11 +502,6 @@ export default function TanzaniaPage() {
         </FadeIn>
       </section>
 
-      <ItineraryDownloadPopup
-        isOpen={isDownloadOpen}
-        onClose={() => setIsDownloadOpen(false)}
-        packageName={activePackage}
-      />
 
       <PackageEnquiryPopup
         isOpen={isEnquiryOpen}

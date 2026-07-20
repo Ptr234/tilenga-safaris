@@ -8,7 +8,6 @@ import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
-import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
 import useSiteImages from "@/lib/useSiteImages";
 import useDestinationGallery from "@/lib/useDestinationGallery";
@@ -152,14 +151,9 @@ export default function SouthAfricaPage() {
     return img ? urlForImage(img, dimensions).url() : fallback;
   };
 
-  const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [activePackage, setActivePackage] = useState("");
 
-  const handleDownload = (pkgName: string) => {
-    setActivePackage(pkgName);
-    setIsDownloadOpen(true);
-  };
 
   const handleEnquiry = (pkgName: string) => {
     setActivePackage(pkgName);
@@ -438,12 +432,6 @@ export default function SouthAfricaPage() {
                     </span>
                     <div className="flex gap-4">
                       <button
-                        onClick={() => handleDownload(pkg.name)}
-                        className="btn-outline !px-6 !py-2.5 text-[11px]"
-                      >
-                        Download Detailed Itinerary
-                      </button>
-                      <button
                         onClick={() => handleEnquiry(pkg.name)}
                         className="btn-primary !px-6 !py-2.5 text-[11px]"
                       >
@@ -492,11 +480,6 @@ export default function SouthAfricaPage() {
         </FadeIn>
       </section>
 
-      <ItineraryDownloadPopup
-        isOpen={isDownloadOpen}
-        onClose={() => setIsDownloadOpen(false)}
-        packageName={activePackage}
-      />
 
       <PackageEnquiryPopup
         isOpen={isEnquiryOpen}

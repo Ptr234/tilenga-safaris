@@ -7,7 +7,6 @@ import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
-import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
 import useSiteImages from "@/lib/useSiteImages";
 import useDestinationGallery from "@/lib/useDestinationGallery";
@@ -85,7 +84,6 @@ const packages = [
       "Sunset viewing",
     ],
     image: `${base}/photos/newstock/Big-Five-Game-Drives.jpg`,
-    downloadUrl: `${base}/photos/newstock/5-DAY-WILDLIFE-SAFARI-IN-UGANDA-4.pdf`,
     itinerary: [
       {
         days: "Days 1–2",
@@ -115,7 +113,6 @@ const packages = [
       "Community visit",
     ],
     image: `${base}/photos/newstock/gorrillla.jpg`,
-    downloadUrl: `${base}/itineraries/3 DAYS GORILLA TRACKING IN UGANDA -  TILENGA SAFARIS 2026.docx`,
     itinerary: [
       {
         days: "Day 1",
@@ -128,6 +125,41 @@ const packages = [
       {
         days: "Day 3",
         desc: "Batwa cultural community visit and forest walk, return transfer.",
+      },
+    ],
+  },
+  {
+    name: "12-Day Uganda & Rwanda Experience",
+    tagline: "The ultimate East Africa journey",
+    duration: "12 Days",
+    price: "Contact for pricing (2+ pax)",
+    description:
+      "An epic cross-border safari from Kigali to Entebbe — combining Rwanda's Genocide Memorial and Akagera National Park with Uganda's shoebill tracking, Murchison Falls, chimpanzees in Kibale, Queen Elizabeth NP, and gorilla trekking in Bwindi Impenetrable Forest.",
+    activities: [
+      "Gorilla trekking",
+      "Chimpanzee tracking",
+      "Shoebill tracking",
+      "Game drives",
+      "Nile boat cruise",
+      "Cultural encounters",
+    ],
+    image: `${base}/photos/newstock/Gorrillahd.jpg`,
+    itinerary: [
+      {
+        days: "Days 1–3",
+        desc: "Arrive Kigali; Genocide Memorial, Akagera NP game drives and Lake Ihema boat cruise, Kigali city tour, fly to Entebbe.",
+      },
+      {
+        days: "Days 4–6",
+        desc: "Shoebill tracking at Mabamba Swamp, transfer to Murchison Falls NP — game drives and Nile boat cruise to the base of the falls.",
+      },
+      {
+        days: "Days 7–8",
+        desc: "Kibale Forest chimpanzee tracking, Bigodi community walk, transfer to Queen Elizabeth NP.",
+      },
+      {
+        days: "Days 9–12",
+        desc: "Bwindi gorilla trekking, Batwa community visit, transfer to Kampala for cultural experiences, departure from Entebbe.",
       },
     ],
   },
@@ -164,14 +196,9 @@ export default function UgandaPage() {
         }))
       : fallbackHotspots;
 
-  const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [activePackage, setActivePackage] = useState("");
 
-  const handleDownload = (pkgName: string) => {
-    setActivePackage(pkgName);
-    setIsDownloadOpen(true);
-  };
 
   const handleEnquiry = (pkgName: string) => {
     setActivePackage(pkgName);
@@ -433,12 +460,6 @@ export default function UgandaPage() {
                     </span>
                     <div className="flex gap-4">
                       <button
-                        onClick={() => handleDownload(pkg.name)}
-                        className="btn-outline !px-6 !py-2.5 text-[11px]"
-                      >
-                        Download Detailed Itinerary
-                      </button>
-                      <button
                         onClick={() => handleEnquiry(pkg.name)}
                         className="btn-primary !px-6 !py-2.5 text-[11px]"
                       >
@@ -492,11 +513,6 @@ export default function UgandaPage() {
         </FadeIn>
       </section>
 
-      <ItineraryDownloadPopup
-        isOpen={isDownloadOpen}
-        onClose={() => setIsDownloadOpen(false)}
-        packageName={activePackage}
-      />
 
       <PackageEnquiryPopup
         isOpen={isEnquiryOpen}

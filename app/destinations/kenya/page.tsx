@@ -7,7 +7,6 @@ import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
-import ItineraryDownloadPopup from "@/components/ItineraryDownloadPopup";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
 import useSiteImages from "@/lib/useSiteImages";
 import useDestinationGallery from "@/lib/useDestinationGallery";
@@ -92,7 +91,6 @@ const packages = [
       "Masai Mara safari",
     ],
     image: `${base}/photos/newstock/elephantcars.jpg`,
-    downloadUrl: `${base}/photos/newstock/7–DAY-KENYA-PRIME-SAFARI-2.pdf`,
     itinerary: [
       {
         days: "Days 1–2",
@@ -123,7 +121,6 @@ const packages = [
     ],
     image:
       "https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=700&q=85",
-    downloadUrl: `${base}/photos/newstock/7-–-DAY-MAGICAL-KENYA-TOUR-1.pdf`,
     itinerary: [
       {
         days: "Days 1–2",
@@ -136,6 +133,35 @@ const packages = [
       {
         days: "Days 5–7",
         desc: "Maasai Mara safari, authentic Maasai village visit, farewell dinner, departure Nairobi.",
+      },
+    ],
+  },
+  {
+    name: "5-Day Masai Mara Safari",
+    tagline: "Kenya's most prestigious reserve",
+    duration: "5 Days",
+    price: "From $2,510 / person (2 pax)",
+    description:
+      "An immersive journey into Kenya's most famous wildlife reserve — the Masai Mara. Experience superb scenery, authentic Maasai culture, full-day game drives across the dotted plains, and an optional hot-air balloon flight at sunrise.",
+    activities: [
+      "Masai Mara game drives",
+      "Maasai village visit",
+      "Optional balloon safari",
+      "Wildlife photography",
+    ],
+    image: `${base}/photos/newstock/elephantcars.jpg`,
+    itinerary: [
+      {
+        days: "Day 1",
+        desc: "Arrive Nairobi; airport transfer and overnight at Hilton Garden Inn.",
+      },
+      {
+        days: "Days 2–4",
+        desc: "Drive to Masai Mara; full-day game drives searching for the Big Five, Maasai village visit, optional balloon flight at dawn.",
+      },
+      {
+        days: "Day 5",
+        desc: "Final morning game drive; depart through Narok and the Great Rift Valley escarpment back to Nairobi airport.",
       },
     ],
   },
@@ -172,14 +198,9 @@ export default function KenyaPage() {
     return img ? urlForImage(img, dimensions).url() : fallback;
   };
 
-  const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [activePackage, setActivePackage] = useState("");
 
-  const handleDownload = (pkgName: string) => {
-    setActivePackage(pkgName);
-    setIsDownloadOpen(true);
-  };
 
   const handleEnquiry = (pkgName: string) => {
     setActivePackage(pkgName);
@@ -453,12 +474,6 @@ export default function KenyaPage() {
                     </span>
                     <div className="flex gap-4">
                       <button
-                        onClick={() => handleDownload(pkg.name)}
-                        className="btn-outline !px-6 !py-2.5 text-[11px]"
-                      >
-                        Download Detailed Itinerary
-                      </button>
-                      <button
                         onClick={() => handleEnquiry(pkg.name)}
                         className="btn-primary !px-6 !py-2.5 text-[11px]"
                       >
@@ -507,11 +522,6 @@ export default function KenyaPage() {
         </FadeIn>
       </section>
 
-      <ItineraryDownloadPopup
-        isOpen={isDownloadOpen}
-        onClose={() => setIsDownloadOpen(false)}
-        packageName={activePackage}
-      />
 
       <PackageEnquiryPopup
         isOpen={isEnquiryOpen}
