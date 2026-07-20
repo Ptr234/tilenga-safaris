@@ -70,13 +70,13 @@ export default function ItineraryRequestPopup({ isOpen, onClose, destination }: 
           />
 
           {/* Scroll container with head/foot room */}
-          <div className="min-h-full flex items-center justify-center py-10 md:py-16 px-4 md:px-10">
-          {/* Popup Card */}
+          <div className="min-h-full flex items-center justify-center py-12 md:py-20 px-4 md:px-10">
+          {/* Popup Card — large square shape */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-lg bg-cream border border-gold/20 shadow-2xl p-6 md:p-10 text-center"
+            className="relative w-full max-w-2xl bg-cream border border-gold/20 shadow-2xl p-10 md:p-14 text-center"
           >
             {/* Close Button */}
             <button
