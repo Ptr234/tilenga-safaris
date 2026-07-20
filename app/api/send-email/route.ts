@@ -9,18 +9,19 @@ const fromEmail = 'noreply@tilengasafaris.africa';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { source, email, name, first_name, last_name, ...details } = body;
+    const { source, email, name, first_name, last_name, package_name, ...details } = body;
 
     if (!email && source !== 'feedback') {
       return NextResponse.json({ error: 'Missing email' }, { status: 400 });
     }
 
     const displayName = name || (first_name ? `${first_name} ${last_name}` : 'Valued Guest');
-    
+
     let subject = "";
     if (source === 'quote') subject = `Free Quote Request from ${displayName}`;
     else if (source === 'newsletter') subject = `New Newsletter Subscriber: ${email}`;
     else if (source === 'feedback') subject = `New Safari Feedback from ${displayName}`;
+    else if (source === 'package_enquiry' && package_name) subject = `Package Enquiry: ${package_name} — ${displayName}`;
     else subject = `New Safari Enquiry from ${displayName}`;
 
     // Specific formatting for Feedback source
@@ -90,12 +91,26 @@ export async function POST(req: Request) {
           </div>
         </div>
       `).join('');
+    } else if (source === 'package_enquiry' && package_name) {
+      // Package enquiry — highlight the package prominently
+      mainContentHtml = `
+        <div style="background-color: #2d3a28; padding: 20px 25px; margin-bottom: 25px; text-align: center;">
+          <div style="color: #c9a96e; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 8px;">Package of Interest</div>
+          <div style="color: #fcfaf6; font-size: 22px; font-family: serif; line-height: 1.4;">${package_name}</div>
+        </div>
+        ${details.message ? `
+        <div style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+          <strong style="text-transform: capitalize; color: #c9a96e; font-size: 12px; letter-spacing: 0.05em;">Guest Message</strong>
+          <div style="color: #2d3a28; margin-top: 4px; font-size: 16px; line-height: 1.5;">${details.message}</div>
+        </div>
+        ` : ''}
+      `;
     } else {
       // Default formatting for other sources
       mainContentHtml = Object.entries(details)
         .map(([key, value]) => `
           <div style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
-            <strong style="text-transform: capitalize; color: #c9a96e; font-size: 12px; letter-spacing: 0.05em;">${key.replace(/_/g, ' ')}</strong> 
+            <strong style="text-transform: capitalize; color: #c9a96e; font-size: 12px; letter-spacing: 0.05em;">${key.replace(/_/g, ' ')}</strong>
             <div style="color: #2d3a28; margin-top: 4px; font-size: 16px; line-height: 1.5;">${value}</div>
           </div>
         `).join('');
@@ -172,11 +187,13 @@ export async function POST(req: Request) {
     // 2. Send confirmation to the Guest
     if (email) {
       const isNewsletter = source === 'newsletter';
-      const confirmationSubject = isNewsletter 
-        ? `Welcome to Tilenga Safaris` 
-        : source === 'feedback' 
-          ? `Feedback Received - Tilenga Safaris` 
-          : `Enquiry Received - Tilenga Safaris`;
+      const confirmationSubject = isNewsletter
+        ? `Welcome to Tilenga Safaris`
+        : source === 'feedback'
+          ? `Feedback Received - Tilenga Safaris`
+          : source === 'package_enquiry' && package_name
+            ? `Your Enquiry for ${package_name} - Tilenga Safaris`
+            : `Enquiry Received - Tilenga Safaris`;
 
       const confirmationHtml = `
         <div style="font-family: serif; color: #060f09; max-width: 600px; margin: 0 auto; padding: 40px; background-color: #fcfaf6; border: 1px solid #c9a96e;">
@@ -187,18 +204,34 @@ export async function POST(req: Request) {
             </h1>
           </div>
           <p style="font-size: 18px; line-height: 1.6;">Dear ${displayName},</p>
+          ${source === 'package_enquiry' && package_name ? `
           <p style="font-size: 16px; line-height: 1.6;">
-            ${isNewsletter 
-              ? "Thank you for subscribing to our newsletter. You'll now be the first to receive safari inspiration, exclusive offers, and wildlife stories from the heart of Africa." 
+            Thank you for your interest in <strong>${package_name}</strong>. We are delighted that this safari experience has caught your attention.
+          </p>
+          <div style="background-color: #2d3a28; padding: 18px 25px; margin: 25px 0; text-align: center;">
+            <div style="color: #c9a96e; font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 6px;">Your Selected Package</div>
+            <div style="color: #fcfaf6; font-size: 20px; font-family: serif;">${package_name}</div>
+          </div>
+          <p style="font-size: 16px; line-height: 1.6;">
+            Your enquiry has been received and assigned to one of our dedicated safari specialists. They will carefully review your requirements and reach out to you personally within the next 24 hours with a tailored response, including detailed pricing, availability, and any customisation options.
+          </p>
+          <p style="font-size: 16px; line-height: 1.6;">
+            In the meantime, should you have any urgent questions, please do not hesitate to contact us directly at <a href="mailto:destinations@tilengasafaris.com" style="color: #c9a96e; text-decoration: none;">destinations@tilengasafaris.com</a>.
+          </p>
+          ` : `
+          <p style="font-size: 16px; line-height: 1.6;">
+            ${isNewsletter
+              ? "Thank you for subscribing to our newsletter. You'll now be the first to receive safari inspiration, exclusive offers, and wildlife stories from the heart of Africa."
               : `Thank you for reaching out to Tilenga Safaris. We have received your ${source === 'quote' ? 'quote request' : source === 'feedback' ? 'feedback' : 'enquiry'} and our specialist team is already reviewing the details.`}
           </p>
           ${!isNewsletter ? `
           <p style="font-size: 16px; line-height: 1.6;">
-            ${source === 'feedback' 
-              ? 'Your feedback is invaluable to us as we strive to create exceptional African journeys.' 
+            ${source === 'feedback'
+              ? 'Your feedback is invaluable to us as we strive to create exceptional African journeys.'
               : 'You can expect a personalized response from our experts within the next 24 hours.'}
           </p>
           ` : ''}
+          `}
           
           <div style="border-top: 1px solid #ddd; margin-top: 40px; padding-top: 20px; font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.8;">
             <p style="margin: 0;"><strong>Tilenga Safaris</strong></p>
