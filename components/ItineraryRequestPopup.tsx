@@ -59,7 +59,7 @@ export default function ItineraryRequestPopup({ isOpen, onClose, destination }: 
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[120] flex items-center justify-center p-6 md:p-10">
+        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 md:p-10 overflow-y-auto">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -74,7 +74,7 @@ export default function ItineraryRequestPopup({ isOpen, onClose, destination }: 
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-lg bg-cream border border-gold/20 overflow-hidden shadow-2xl p-8 md:p-12 text-center"
+            className="relative w-full max-w-lg bg-cream border border-gold/20 overflow-y-auto max-h-[95vh] shadow-2xl p-6 md:p-10 text-center my-auto"
           >
             {/* Close Button */}
             <button
@@ -99,7 +99,7 @@ export default function ItineraryRequestPopup({ isOpen, onClose, destination }: 
                 </p>
               </div>
             ) : (
-              <div className="space-y-8">
+              <div className="space-y-6">
                 <div>
                   <span className="text-gold text-[10px] uppercase tracking-[0.4em] font-bold block mb-4">Custom Itinerary Request</span>
                   <h3 className="font-serif text-3xl text-forest uppercase tracking-tight leading-tight mb-4">
@@ -111,7 +111,7 @@ export default function ItineraryRequestPopup({ isOpen, onClose, destination }: 
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-5 text-left">
+                <form onSubmit={handleSubmit} className="space-y-4 text-left">
                   {error && <p className="text-red-500 text-[10px] uppercase font-bold text-center">{error}</p>}
 
                   <div className="space-y-1">
@@ -121,7 +121,7 @@ export default function ItineraryRequestPopup({ isOpen, onClose, destination }: 
                       required
                       type="text"
                       placeholder="Your Name"
-                      className="w-full bg-white border border-stone/10 px-6 py-4 text-sm focus:outline-none focus:border-gold transition-colors font-sans"
+                      className="w-full bg-white border border-stone/10 px-5 py-3 text-sm focus:outline-none focus:border-gold transition-colors font-sans"
                     />
                   </div>
 
@@ -132,7 +132,7 @@ export default function ItineraryRequestPopup({ isOpen, onClose, destination }: 
                       required
                       type="email"
                       placeholder="Your Email"
-                      className="w-full bg-white border border-stone/10 px-6 py-4 text-sm focus:outline-none focus:border-gold transition-colors font-sans"
+                      className="w-full bg-white border border-stone/10 px-5 py-3 text-sm focus:outline-none focus:border-gold transition-colors font-sans"
                     />
                   </div>
 
@@ -142,7 +142,7 @@ export default function ItineraryRequestPopup({ isOpen, onClose, destination }: 
                       name="travel_dates"
                       type="text"
                       placeholder="e.g. July 2026, flexible dates"
-                      className="w-full bg-white border border-stone/10 px-6 py-4 text-sm focus:outline-none focus:border-gold transition-colors font-sans"
+                      className="w-full bg-white border border-stone/10 px-5 py-3 text-sm focus:outline-none focus:border-gold transition-colors font-sans"
                     />
                   </div>
 
@@ -152,7 +152,7 @@ export default function ItineraryRequestPopup({ isOpen, onClose, destination }: 
                       name="travellers"
                       type="text"
                       placeholder="e.g. 2 adults, 1 child"
-                      className="w-full bg-white border border-stone/10 px-6 py-4 text-sm focus:outline-none focus:border-gold transition-colors font-sans"
+                      className="w-full bg-white border border-stone/10 px-5 py-3 text-sm focus:outline-none focus:border-gold transition-colors font-sans"
                     />
                   </div>
 
@@ -160,7 +160,7 @@ export default function ItineraryRequestPopup({ isOpen, onClose, destination }: 
                     <label className="text-[10px] uppercase tracking-widest text-stone/60 font-bold ml-1">Budget Per Person (Optional)</label>
                     <select
                       name="budget"
-                      className="w-full bg-white border border-stone/10 px-6 py-4 text-sm focus:outline-none focus:border-gold transition-colors font-sans text-stone"
+                      className="w-full bg-white border border-stone/10 px-5 py-3 text-sm focus:outline-none focus:border-gold transition-colors font-sans text-stone"
                     >
                       <option value="">Select your budget range</option>
                       <option value="Under $1,500">Under $1,500</option>
@@ -178,14 +178,14 @@ export default function ItineraryRequestPopup({ isOpen, onClose, destination }: 
                       name="message"
                       rows={3}
                       placeholder="e.g. gorilla trekking, beach extension, honeymoon, family adventure..."
-                      className="w-full bg-white border border-stone/10 px-6 py-4 text-sm focus:outline-none focus:border-gold transition-colors font-sans resize-none"
+                      className="w-full bg-white border border-stone/10 px-5 py-3 text-sm focus:outline-none focus:border-gold transition-colors font-sans resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full btn-primary py-5 uppercase tracking-[0.2em] text-xs font-bold disabled:opacity-50"
+                    className="w-full btn-primary py-4 uppercase tracking-[0.2em] text-xs font-bold disabled:opacity-50"
                   >
                     {loading ? "Sending Request..." : "Request Custom Itinerary"}
                   </button>
