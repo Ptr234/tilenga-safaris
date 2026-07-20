@@ -111,6 +111,12 @@ export async function POST(req: Request) {
           <div style="color: #2d3a28; margin-top: 4px; font-size: 16px; line-height: 1.5;">${details.travellers}</div>
         </div>
         ` : ''}
+        ${details.budget ? `
+        <div style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+          <strong style="text-transform: capitalize; color: #c9a96e; font-size: 12px; letter-spacing: 0.05em;">Budget Per Person</strong>
+          <div style="color: #2d3a28; margin-top: 4px; font-size: 16px; line-height: 1.5;">${details.budget}</div>
+        </div>
+        ` : ''}
         ${details.message ? `
         <div style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
           <strong style="text-transform: capitalize; color: #c9a96e; font-size: 12px; letter-spacing: 0.05em;">Interests &amp; Preferences</strong>

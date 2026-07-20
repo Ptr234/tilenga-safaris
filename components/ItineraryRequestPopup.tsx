@@ -157,6 +157,22 @@ export default function ItineraryRequestPopup({ isOpen, onClose, destination }: 
                   </div>
 
                   <div className="space-y-1">
+                    <label className="text-[10px] uppercase tracking-widest text-stone/60 font-bold ml-1">Budget Per Person (Optional)</label>
+                    <select
+                      name="budget"
+                      className="w-full bg-white border border-stone/10 px-6 py-4 text-sm focus:outline-none focus:border-gold transition-colors font-sans text-stone"
+                    >
+                      <option value="">Select your budget range</option>
+                      <option value="Under $1,500">Under $1,500</option>
+                      <option value="$1,500 – $3,000">$1,500 – $3,000</option>
+                      <option value="$3,000 – $5,000">$3,000 – $5,000</option>
+                      <option value="$5,000 – $10,000">$5,000 – $10,000</option>
+                      <option value="$10,000+">$10,000+</option>
+                      <option value="Flexible">Flexible / Open</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-1">
                     <label className="text-[10px] uppercase tracking-widest text-stone/60 font-bold ml-1">What Are You Interested In?</label>
                     <textarea
                       name="message"
