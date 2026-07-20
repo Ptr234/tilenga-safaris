@@ -70,6 +70,7 @@ export interface Itinerary {
   packageName: string;
   category?: string;
   description?: string;
+  image?: SanityImage;
   file: {
     _type: "file";
     asset: {

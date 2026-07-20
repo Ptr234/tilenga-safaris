@@ -49,6 +49,7 @@ export const itinerariesQuery = groq`*[_type == "itinerary"] | order(_createdAt 
   packageName,
   category,
   description,
+  image,
   file
 }`;
 
