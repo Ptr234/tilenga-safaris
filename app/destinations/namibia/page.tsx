@@ -8,6 +8,7 @@ import FadeIn from "@/components/motion/FadeIn";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
 import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
+import ItineraryRequestPopup from "@/components/ItineraryRequestPopup";
 import useSiteImages from "@/lib/useSiteImages";
 import useDestinationGallery from "@/lib/useDestinationGallery";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
@@ -174,6 +175,7 @@ export default function NamibiaPage() {
 
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [activePackage, setActivePackage] = useState("");
+  const [isItineraryRequestOpen, setIsItineraryRequestOpen] = useState(false);
 
 
   const handleEnquiry = (pkgName: string) => {
@@ -470,12 +472,12 @@ export default function NamibiaPage() {
               southern Africa expeditions. All tours can be delivered upon
               request.
             </p>
-            <Link
-              href="/plan-a-trip"
+            <button
+              onClick={() => setIsItineraryRequestOpen(true)}
               className="text-gold uppercase tracking-widest text-xs font-bold hover:text-forest transition-colors"
             >
               Request Custom Itinerary &rarr;
-            </Link>
+            </button>
           </FadeIn>
         </div>
       </section>
@@ -501,6 +503,12 @@ export default function NamibiaPage() {
         isOpen={isEnquiryOpen}
         onClose={() => setIsEnquiryOpen(false)}
         packageName={activePackage}
+      />
+
+      <ItineraryRequestPopup
+        isOpen={isItineraryRequestOpen}
+        onClose={() => setIsItineraryRequestOpen(false)}
+        destination="Namibia"
       />
     </>
   );

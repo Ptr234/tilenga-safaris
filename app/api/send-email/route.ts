@@ -9,7 +9,7 @@ const fromEmail = 'noreply@tilengasafaris.africa';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { source, email, name, first_name, last_name, package_name, ...details } = body;
+    const { source, email, name, first_name, last_name, package_name, destination, ...details } = body;
 
     if (!email && source !== 'feedback') {
       return NextResponse.json({ error: 'Missing email' }, { status: 400 });
@@ -22,6 +22,7 @@ export async function POST(req: Request) {
     else if (source === 'newsletter') subject = `New Newsletter Subscriber: ${email}`;
     else if (source === 'feedback') subject = `New Safari Feedback from ${displayName}`;
     else if (source === 'package_enquiry' && package_name) subject = `Package Enquiry: ${package_name} — ${displayName}`;
+    else if (source === 'itinerary_request' && destination) subject = `Custom Itinerary Request: ${destination} — ${displayName}`;
     else subject = `New Safari Enquiry from ${displayName}`;
 
     // Specific formatting for Feedback source
@@ -91,6 +92,32 @@ export async function POST(req: Request) {
           </div>
         </div>
       `).join('');
+    } else if (source === 'itinerary_request' && destination) {
+      // Custom itinerary request — highlight the destination
+      mainContentHtml = `
+        <div style="background-color: #2d3a28; padding: 20px 25px; margin-bottom: 25px; text-align: center;">
+          <div style="color: #c9a96e; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 8px;">Custom Itinerary Request</div>
+          <div style="color: #fcfaf6; font-size: 22px; font-family: serif; line-height: 1.4;">${destination}</div>
+        </div>
+        ${details.travel_dates ? `
+        <div style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+          <strong style="text-transform: capitalize; color: #c9a96e; font-size: 12px; letter-spacing: 0.05em;">Travel Dates</strong>
+          <div style="color: #2d3a28; margin-top: 4px; font-size: 16px; line-height: 1.5;">${details.travel_dates}</div>
+        </div>
+        ` : ''}
+        ${details.travellers ? `
+        <div style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+          <strong style="text-transform: capitalize; color: #c9a96e; font-size: 12px; letter-spacing: 0.05em;">Number of Travellers</strong>
+          <div style="color: #2d3a28; margin-top: 4px; font-size: 16px; line-height: 1.5;">${details.travellers}</div>
+        </div>
+        ` : ''}
+        ${details.message ? `
+        <div style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+          <strong style="text-transform: capitalize; color: #c9a96e; font-size: 12px; letter-spacing: 0.05em;">Interests &amp; Preferences</strong>
+          <div style="color: #2d3a28; margin-top: 4px; font-size: 16px; line-height: 1.5;">${details.message}</div>
+        </div>
+        ` : ''}
+      `;
     } else if (source === 'package_enquiry' && package_name) {
       // Package enquiry — highlight the package prominently
       mainContentHtml = `
@@ -193,7 +220,9 @@ export async function POST(req: Request) {
           ? `Feedback Received - Tilenga Safaris`
           : source === 'package_enquiry' && package_name
             ? `Your Enquiry for ${package_name} - Tilenga Safaris`
-            : `Enquiry Received - Tilenga Safaris`;
+            : source === 'itinerary_request' && destination
+              ? `Your Custom ${destination} Itinerary Request - Tilenga Safaris`
+              : `Enquiry Received - Tilenga Safaris`;
 
       const confirmationHtml = `
         <div style="font-family: serif; color: #060f09; max-width: 600px; margin: 0 auto; padding: 40px; background-color: #fcfaf6; border: 1px solid #c9a96e;">
@@ -204,7 +233,21 @@ export async function POST(req: Request) {
             </h1>
           </div>
           <p style="font-size: 18px; line-height: 1.6;">Dear ${displayName},</p>
-          ${source === 'package_enquiry' && package_name ? `
+          ${source === 'itinerary_request' && destination ? `
+          <p style="font-size: 16px; line-height: 1.6;">
+            Thank you for your interest in exploring <strong>${destination}</strong> with Tilenga Safaris.
+          </p>
+          <div style="background-color: #2d3a28; padding: 18px 25px; margin: 25px 0; text-align: center;">
+            <div style="color: #c9a96e; font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 6px;">Custom Itinerary Request</div>
+            <div style="color: #fcfaf6; font-size: 20px; font-family: serif;">${destination}</div>
+          </div>
+          <p style="font-size: 16px; line-height: 1.6;">
+            Your request has been received and one of our dedicated ${destination} specialists is now reviewing your preferences. They will personally reach out to you within 24 hours with a selection of tailored itinerary options designed around your interests, travel dates, and group size.
+          </p>
+          <p style="font-size: 16px; line-height: 1.6;">
+            Should you have any urgent questions in the meantime, please do not hesitate to contact us directly at <a href="mailto:destinations@tilengasafaris.com" style="color: #c9a96e; text-decoration: none;">destinations@tilengasafaris.com</a>.
+          </p>
+          ` : source === 'package_enquiry' && package_name ? `
           <p style="font-size: 16px; line-height: 1.6;">
             Thank you for your interest in <strong>${package_name}</strong>. We are delighted that this safari experience has caught your attention.
           </p>
