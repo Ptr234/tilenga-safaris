@@ -25,6 +25,15 @@ export const itinerary = defineType({
       rows: 4,
     }),
     defineField({
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      description: 'Cover image for this itinerary package.',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: 'file',
       title: 'File',
       type: 'file',
@@ -33,12 +42,12 @@ export const itinerary = defineType({
     }),
   ],
   preview: {
-    select: {title: 'packageName', subtitle: 'category'},
-    prepare({title, subtitle}) {
+    select: {title: 'packageName', subtitle: 'category', media: 'image'},
+    prepare({title, subtitle, media}) {
       return {
         title: title || 'Untitled itinerary',
         subtitle: subtitle || 'Itinerary',
-        media: DocumentPdfIcon,
+        media: media || DocumentPdfIcon,
       }
     },
   },
