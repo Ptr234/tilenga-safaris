@@ -59,22 +59,24 @@ export default function ItineraryRequestPopup({ isOpen, onClose, destination }: 
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 md:p-10 overflow-y-auto">
+        <div className="fixed inset-0 z-[120] overflow-y-auto">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-[#060f09]/95 backdrop-blur-md"
+            className="fixed inset-0 bg-[#060f09]/95 backdrop-blur-md"
           />
 
+          {/* Scroll container with head/foot room */}
+          <div className="min-h-full flex items-center justify-center py-10 md:py-16 px-4 md:px-10">
           {/* Popup Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-lg bg-cream border border-gold/20 overflow-y-auto max-h-[95vh] shadow-2xl p-6 md:p-10 text-center my-auto"
+            className="relative w-full max-w-lg bg-cream border border-gold/20 shadow-2xl p-6 md:p-10 text-center"
           >
             {/* Close Button */}
             <button
@@ -193,6 +195,7 @@ export default function ItineraryRequestPopup({ isOpen, onClose, destination }: 
               </div>
             )}
           </motion.div>
+          </div>
         </div>
       )}
     </AnimatePresence>
