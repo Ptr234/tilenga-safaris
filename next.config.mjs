@@ -7,6 +7,18 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_BASE_PATH: "",
   },
+  async redirects() {
+    return [
+      // Google still has this indexed from a previous version of the site;
+      // it 404s today. Rwenzori trekking is a Uganda activity, so send it
+      // to the closest current equivalent instead of a dead end.
+      {
+        source: "/ts-trips/8-day-rwenzori-mountains-trekking-experience",
+        destination: "/destinations/uganda/",
+        permanent: true,
+      },
+    ]
+  },
   images: {
     unoptimized: true,
     remotePatterns: [
