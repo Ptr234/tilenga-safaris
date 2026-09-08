@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import FadeIn from "@/components/motion/FadeIn";
@@ -16,6 +17,34 @@ import {
 } from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+const pageTitle = "Kikorongo Safari Lodge";
+const fullTitle = "Kikorongo Safari Lodge | Tilenga Safaris";
+const pageDescription =
+  "Luxury cottages on the Kikorongo escarpment overlooking Queen Elizabeth National Park, Lake Kikorongo, and Lake George — minutes from the Kazinga Channel.";
+const pageUrl = "https://tilengasafaris.africa/lodges/kikorongo-safari-lodge/";
+const ogImage = "https://tilengasafaris.africa/photos/kikorongo_outside.jpg";
+
+export const metadata: Metadata = {
+  title: pageTitle,
+  description: pageDescription,
+  alternates: { canonical: pageUrl },
+  openGraph: {
+    title: fullTitle,
+    description: pageDescription,
+    url: pageUrl,
+    siteName: "Tilenga Safaris",
+    images: [{ url: ogImage, width: 1200, height: 800, alt: "Kikorongo Safari Lodge" }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: fullTitle,
+    description: pageDescription,
+    images: [ogImage],
+  },
+};
 
 interface RoomCard {
   name: string;

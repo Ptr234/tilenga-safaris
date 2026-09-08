@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import FadeIn from "@/components/motion/FadeIn";
@@ -17,6 +18,34 @@ import {
 } from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+const pageTitle = "Tilenga Safari Lodge";
+const fullTitle = "Tilenga Safari Lodge | Tilenga Safaris";
+const pageDescription =
+  "A haven of comfort overlooking the Albert Nile at Murchison Falls National Park — 26 cottages with private balconies, wildlife encounters, and a world-class chef.";
+const pageUrl = "https://tilengasafaris.africa/lodges/tilenga-safari-lodge/";
+const ogImage = "https://tilengasafaris.africa/photos/tilengasafarilodge/night.png";
+
+export const metadata: Metadata = {
+  title: pageTitle,
+  description: pageDescription,
+  alternates: { canonical: pageUrl },
+  openGraph: {
+    title: fullTitle,
+    description: pageDescription,
+    url: pageUrl,
+    siteName: "Tilenga Safaris",
+    images: [{ url: ogImage, width: 1200, height: 800, alt: "Tilenga Safari Lodge" }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: fullTitle,
+    description: pageDescription,
+    images: [ogImage],
+  },
+};
 
 interface RoomCard {
   name: string;

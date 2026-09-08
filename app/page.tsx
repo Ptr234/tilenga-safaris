@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { client } from "@/lib/sanity.client";
 import { lodgesQuery, experiencesQuery, destinationsQuery, partnersQuery, reviewsQuery } from "@/lib/sanity.queries";
 import HomePageClient from "@/components/HomePageClient";
@@ -5,6 +6,10 @@ import { Lodge, Experience, Destination, Partner, Review } from "@/types/sanity"
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
+
+export const metadata: Metadata = {
+  alternates: { canonical: "https://tilengasafaris.africa/" },
+};
 
 // Fallback data for when Sanity is empty or during initial setup
 const fallbackLodges = [

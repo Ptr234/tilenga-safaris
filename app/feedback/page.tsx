@@ -3,7 +3,8 @@ import { Metadata } from "next";
 
 const ogImage = "https://tilengasafaris.africa/experinces/game-drives-og.jpg";
 const pageUrl = "https://tilengasafaris.africa/feedback";
-const title = "Share Your Safari Experience — Tilenga Safaris";
+const title = "Share Your Safari Experience";
+const fullTitle = "Share Your Safari Experience | Tilenga Safaris";
 const description =
   "Your journey matters to us. Share your experience with Tilenga Safaris and help us craft even more extraordinary safaris across East and Southern Africa.";
 
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: pageUrl },
   openGraph: {
-    title,
+    title: fullTitle,
     description,
     url: pageUrl,
     siteName: "Tilenga Safaris",
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title,
+    title: fullTitle,
     description,
     images: [ogImage],
   },

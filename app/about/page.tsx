@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import FadeIn from "@/components/motion/FadeIn";
@@ -14,6 +15,34 @@ import {
 } from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+const pageTitle = "About Us";
+const fullTitle = "About Us | Tilenga Safaris";
+const pageDescription =
+  "Meet Tilenga Safaris — a Kampala-based tour operator built on passion for travel and a deep understanding of customer needs, crafting bespoke safaris across East and Southern Africa.";
+const pageUrl = "https://tilengasafaris.africa/about/";
+const ogImage = "https://tilengasafaris.africa/photos/og-image.png";
+
+export const metadata: Metadata = {
+  title: pageTitle,
+  description: pageDescription,
+  alternates: { canonical: pageUrl },
+  openGraph: {
+    title: fullTitle,
+    description: pageDescription,
+    url: pageUrl,
+    siteName: "Tilenga Safaris",
+    images: [{ url: ogImage, width: 1200, height: 630, alt: "Tilenga Safaris" }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: fullTitle,
+    description: pageDescription,
+    images: [ogImage],
+  },
+};
 
 const values = [
   {
