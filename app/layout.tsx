@@ -5,9 +5,11 @@ import ClientLayout from "@/components/ClientLayout";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// Both optional and unset by default. Neither renders anything until its
-// env var is set — no fabricated IDs shipped here.
-const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
+// GA4 measurement IDs aren't secret — they're visible in every page's source
+// regardless — so this one ships as a plain fallback, like the Sanity project
+// id elsewhere in this codebase. Search Console verification stays opt-in
+// only, since there's no default for it.
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-8LJWTBKB2G";
 const gscVerification = process.env.NEXT_PUBLIC_GSC_VERIFICATION ?? "";
 
 export const metadata: Metadata = {
