@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import useSiteImages from "@/lib/useSiteImages";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
-import { SQUARE } from "@/lib/imageDimensions";
+import { SQUARE, PORTRAIT_3_4 } from "@/lib/imageDimensions";
 
 const destinations = [
   "Uganda",
@@ -193,7 +193,11 @@ export default function QuotePopup() {
               {/* Side Panel - Cinematic Image */}
               <div className="hidden md:block w-1/3 relative overflow-hidden bg-forest">
                 <Image
-                  src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80"
+                  src={getSiteImageUrlLocal(
+                    "quotePopupSidePanel",
+                    "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80",
+                    PORTRAIT_3_4,
+                  )}
                   alt="Safari"
                   fill
                   sizes="33vw"
