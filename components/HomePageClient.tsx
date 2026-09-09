@@ -119,7 +119,7 @@ export default function HomePageClient({
 
   const transformedPartners = initialPartners.map((p) => ({
     name: p.name,
-    logo: urlForImage(p.logo).url(),
+    logo: urlForImage(p.logo, SQUARE).url(),
     link: p.link,
   }));
 
