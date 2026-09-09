@@ -124,7 +124,7 @@ function AlbumCard({ item, index }: { item: AlbumItem; index: number }) {
         marginTop: index % 2 === 0 ? '-2rem' : '2rem'
       }}
     >
-      <div className="absolute inset-0 overflow-hidden film-frame border border-white/5">
+      <div className="!absolute inset-0 overflow-hidden film-frame border border-white/5">
         <motion.img
           src={item.src}
           alt={item.alt}

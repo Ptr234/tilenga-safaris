@@ -117,7 +117,7 @@ export default function LodgesPageClient({ lodges }: LodgesPageClientProps) {
             <div
               className={`relative min-h-[60vh] md:min-h-0 ${isEven ? "md:order-1" : "md:order-2"}`}
             >
-              <div className="absolute inset-0 overflow-hidden film-frame m-2">
+              <div className="!absolute inset-0 overflow-hidden film-frame m-2">
                 <Image
                   src={urlForImage(lodge.image, PORTRAIT_3_4).url()}
                   alt={lodge.name}
