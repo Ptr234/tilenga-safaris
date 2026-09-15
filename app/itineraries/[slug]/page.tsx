@@ -1,17 +1,26 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { client } from "@/lib/sanity.client";
-import { itineraryBySlugQuery } from "@/lib/sanity.queries";
+import { itineraryBySlugQuery, itinerarySlugsQuery } from "@/lib/sanity.queries";
 import { urlForImage } from "@/lib/sanity.image";
 import { WIDE_16_9 } from "@/lib/imageDimensions";
 import ItineraryDetailClient from "@/components/ItineraryDetailClient";
 import type { Itinerary } from "@/types/sanity";
 
-export const dynamic = "force-dynamic";
-export const runtime = "edge";
-
+// Statically generated (not edge/force-dynamic): this is the only bracket
+// dynamic route ([slug]) in the app, and Cloudflare Pages' Next.js routing
+// only creates a real route for it when it has literal paths to build from
+// generateStaticParams — force-dynamic left it resolving to a broken
+// `/itineraries/[slug]/?nxtPslug=...` redirect in production (confirmed
+// working correctly under plain `next start`, so this was a deployment
+// routing gap, not an app bug). New itineraries need a redeploy to appear.
 const siteUrl = "https://tilengasafaris.africa";
 const fallbackOgImage = `${siteUrl}/photos/og-image.png`;
+
+export async function generateStaticParams() {
+  const slugs = await client.fetch<string[]>(itinerarySlugsQuery);
+  return slugs.map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({
   params,
