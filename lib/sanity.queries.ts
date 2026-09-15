@@ -44,13 +44,39 @@ export const siteImagesQuery = groq`*[_type == "siteImage"] | order(_createdAt a
   image
 }`;
 
-export const itinerariesQuery = groq`*[_type == "itinerary"] | order(_createdAt asc) {
+export const itinerariesQuery = groq`*[_type == "itinerary" && published != false] | order(_createdAt asc) {
   _id,
-  packageName,
-  category,
-  description,
-  image,
+  title,
+  slug,
+  tagline,
+  destinations[]->{name, href},
+  duration,
+  price,
+  summary,
+  heroImage,
+  activities,
   file
+}`;
+
+export const itinerarySlugsQuery = groq`*[_type == "itinerary" && published != false && defined(slug.current)].slug.current`;
+
+export const itineraryBySlugQuery = groq`*[_type == "itinerary" && slug.current == $slug && published != false][0] {
+  _id,
+  title,
+  slug,
+  tagline,
+  destinations[]->{name, href},
+  duration,
+  price,
+  priceFrom,
+  summary,
+  heroImage,
+  days,
+  activities,
+  seoTitle,
+  seoDescription,
+  file,
+  relatedItineraries[]->{title, slug, heroImage, duration, price}
 }`;
 
 export const reviewsQuery = groq`*[_type == "review" && published == true] | order(_createdAt desc) [0...6] {

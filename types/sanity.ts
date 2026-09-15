@@ -65,17 +65,53 @@ export interface Review {
   _createdAt: string;
 }
 
+export interface SanityFile {
+  _type: "file";
+  asset: {
+    _type: "reference";
+    _ref: string;
+  };
+}
+
+export interface SanitySlug {
+  _type: "slug";
+  current: string;
+}
+
+export interface ItineraryDestinationRef {
+  name: string;
+  href: string;
+}
+
+export interface ItineraryDay {
+  dayLabel: string;
+  title?: string;
+  body: string;
+}
+
+export interface ItineraryRelated {
+  title: string;
+  slug: SanitySlug;
+  heroImage?: SanityImage;
+  duration?: string;
+  price?: string;
+}
+
 export interface Itinerary {
   _id: string;
-  packageName: string;
-  category?: string;
-  description?: string;
-  image?: SanityImage;
-  file: {
-    _type: "file";
-    asset: {
-      _type: "reference";
-      _ref: string;
-    };
-  };
+  title: string;
+  slug: SanitySlug;
+  tagline?: string;
+  destinations: ItineraryDestinationRef[];
+  duration: string;
+  price: string;
+  priceFrom?: number;
+  summary: string;
+  heroImage?: SanityImage;
+  days?: ItineraryDay[];
+  activities?: string[];
+  seoTitle?: string;
+  seoDescription?: string;
+  file?: SanityFile;
+  relatedItineraries?: ItineraryRelated[];
 }

@@ -7,13 +7,12 @@ import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
-import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
 import ItineraryRequestPopup from "@/components/ItineraryRequestPopup";
 import useSiteImages from "@/lib/useSiteImages";
 import useDestinationGallery from "@/lib/useDestinationGallery";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
 import { urlForImage } from "@/lib/sanity.image";
-import useItineraryImages from "@/lib/useItineraryImages";
+import useItinerariesForDestination from "@/lib/useItinerariesForDestination";
 import { LANDSCAPE_4_3, WIDE_16_9, PORTRAIT_3_4 } from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -78,102 +77,12 @@ const fallbackHotspots = [
   },
 ];
 
-const packages = [
-  {
-    name: "7-Day Kenya Prime Safari",
-    tagline: "Classic wildlife first-timer",
-    duration: "7 Days",
-    price: "From $2,000 / person",
-    description:
-      "Explore Kenya’s most iconic reserves with game drives, cultural visits, and the Great Migration circuit including Samburu, Lake Nakuru, and Maasai Mara.",
-    activities: [
-      "Nairobi city tour",
-      "Samburu game drives",
-      "Lake Nakuru flamingoes",
-      "Masai Mara safari",
-    ],
-    image: `${base}/photos/newstock/elephantcars.jpg`,
-    itinerary: [
-      {
-        days: "Days 1–2",
-        desc: "Arrive Nairobi; Giraffe Centre & city tour, drive north to Samburu Reserve.",
-      },
-      {
-        days: "Days 3–4",
-        desc: "Samburu game drives for rare northern species; drive to Lake Nakuru flamingo circuit.",
-      },
-      {
-        days: "Days 5–7",
-        desc: "Maasai Mara — Great Migration viewing, Big Five game drives, farewell dinner, departure.",
-      },
-    ],
-  },
-  {
-    name: "7-Day Magical Kenya Tour",
-    tagline: "Big five & cultural highlights",
-    duration: "7 Days",
-    price: "From $2,000 / person",
-    description:
-      "From Amboseli’s legendary elephant herds and Kilimanjaro views to Lake Nakuru and Masai Mara, this itinerary blends wildlife with authentic local culture.",
-    activities: [
-      "Amboseli NP",
-      "Lake Nakuru",
-      "Masai Mara",
-      "Maasai village visit",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1526319238109-524eecb9b913?w=700&q=85",
-    itinerary: [
-      {
-        days: "Days 1–2",
-        desc: "Arrive Nairobi; drive to Amboseli NP — elephant herds framed by Kilimanjaro at dawn.",
-      },
-      {
-        days: "Days 3–4",
-        desc: "Lake Nakuru flamingo lake circuit; game drives for rhino and leopard.",
-      },
-      {
-        days: "Days 5–7",
-        desc: "Maasai Mara safari, authentic Maasai village visit, farewell dinner, departure Nairobi.",
-      },
-    ],
-  },
-  {
-    name: "5-Day Masai Mara Safari",
-    tagline: "Kenya's most prestigious reserve",
-    duration: "5 Days",
-    price: "From $2,510 / person (2 pax)",
-    description:
-      "An immersive journey into Kenya's most famous wildlife reserve — the Masai Mara. Experience superb scenery, authentic Maasai culture, full-day game drives across the dotted plains, and an optional hot-air balloon flight at sunrise.",
-    activities: [
-      "Masai Mara game drives",
-      "Maasai village visit",
-      "Optional balloon safari",
-      "Wildlife photography",
-    ],
-    image: `${base}/photos/newstock/elephantcars.jpg`,
-    itinerary: [
-      {
-        days: "Day 1",
-        desc: "Arrive Nairobi; airport transfer and overnight at Hilton Garden Inn.",
-      },
-      {
-        days: "Days 2–4",
-        desc: "Drive to Masai Mara; full-day game drives searching for the Big Five, Maasai village visit, optional balloon flight at dawn.",
-      },
-      {
-        days: "Day 5",
-        desc: "Final morning game drive; depart through Narok and the Great Rift Valley escarpment back to Nairobi airport.",
-      },
-    ],
-  },
-];
 
 export default function KenyaPage() {
   const siteImages = useSiteImages();
   const { image: heroImage, overviewGallery, hotspots: sanityHotspots } =
     useDestinationGallery("Kenya");
-  const itineraryImages = useItineraryImages("Kenya");
+  const itineraries = useItinerariesForDestination("Kenya");
   const getSiteImageUrlLocal = (
     key: string,
     fallback: string,
@@ -201,15 +110,7 @@ export default function KenyaPage() {
     return img ? urlForImage(img, dimensions).url() : fallback;
   };
 
-  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
-  const [activePackage, setActivePackage] = useState("");
   const [isItineraryRequestOpen, setIsItineraryRequestOpen] = useState(false);
-
-
-  const handleEnquiry = (pkgName: string) => {
-    setActivePackage(pkgName);
-    setIsEnquiryOpen(true);
-  };
 
   return (
     <>
@@ -419,70 +320,61 @@ export default function KenyaPage() {
             </Link>
           </FadeIn>
           <div className="space-y-20">
-            {packages.map((pkg) => (
+            {itineraries.map((it) => (
               <div
-                key={pkg.name}
+                key={it.slug.current}
                 className="grid md:grid-cols-2 gap-12 items-start border-b border-gold/10 pb-20 last:border-0 last:pb-0"
               >
-                <div className="relative overflow-hidden aspect-[4/3]">
-                  <Image
-                    src={itineraryImages[pkg.name] ? urlForImage(itineraryImages[pkg.name]!, LANDSCAPE_4_3).url() : pkg.image}
-                    alt={pkg.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
-                  />
+                <Link href={`/itineraries/${it.slug.current}/`} className="relative overflow-hidden aspect-[4/3] block group">
+                  {it.heroImage && (
+                    <Image
+                      src={urlForImage(it.heroImage, LANDSCAPE_4_3).url()}
+                      alt={it.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-transparent to-transparent" />
                   <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">
-                    {pkg.duration}
+                    {it.duration}
                   </span>
-                </div>
+                </Link>
                 <div>
-                  <p className="section-label mb-2">{pkg.tagline}</p>
+                  <p className="section-label mb-2">{it.tagline}</p>
                   <h3 className="font-serif text-3xl text-forest mb-4">
-                    {pkg.name}
+                    <Link href={`/itineraries/${it.slug.current}/`} className="hover:text-gold transition-colors">
+                      {it.title}
+                    </Link>
                   </h3>
                   <div className="w-10 h-px bg-gold mb-6" />
                   <p className="text-stone font-sans text-sm leading-relaxed mb-8">
-                    {pkg.description}
+                    {it.summary}
                   </p>
-                  <div className="space-y-4 mb-8">
-                    {pkg.itinerary.map((item) => (
-                      <div
-                        key={item.days}
-                        className="flex gap-4 border-t border-gold/10 pt-4"
-                      >
-                        <span className="text-gold text-[10px] uppercase tracking-widest font-sans w-20 shrink-0 pt-0.5">
-                          {item.days}
+                  {it.activities && it.activities.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {it.activities.map((act) => (
+                        <span
+                          key={act}
+                          className="text-[10px] uppercase tracking-widest font-sans border border-gold/30 text-forest/70 px-3 py-1.5 flex items-center gap-2"
+                        >
+                          <span className="w-1 h-1 rounded-full bg-gold" />
+                          {act}
                         </span>
-                        <span className="text-stone font-sans text-sm leading-relaxed">
-                          {item.desc}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    {pkg.activities.map((act) => (
-                      <span
-                        key={act}
-                        className="text-[10px] uppercase tracking-widest font-sans border border-gold/30 text-forest/70 px-3 py-1.5 flex items-center gap-2"
-                      >
-                        <span className="w-1 h-1 rounded-full bg-gold" />
-                        {act}
-                      </span>
-                    ))}
-                  </div>
+                      ))}
+                    </div>
+                  )}
                   <div className="flex flex-wrap items-center justify-between gap-4">
                     <span className="font-serif italic text-gold text-sm">
-                      {pkg.price}
+                      {it.price}
                     </span>
                     <div className="flex gap-4">
-                      <button
-                        onClick={() => handleEnquiry(pkg.name)}
+                      <Link
+                        href={`/itineraries/${it.slug.current}/`}
                         className="btn-primary !px-6 !py-2.5 text-[11px]"
                       >
-                        Enquire About This Package
-                      </button>
+                        View Full Itinerary
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -526,12 +418,6 @@ export default function KenyaPage() {
         </FadeIn>
       </section>
 
-
-      <PackageEnquiryPopup
-        isOpen={isEnquiryOpen}
-        onClose={() => setIsEnquiryOpen(false)}
-        packageName={activePackage}
-      />
 
       <ItineraryRequestPopup
         isOpen={isItineraryRequestOpen}

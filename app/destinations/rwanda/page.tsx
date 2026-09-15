@@ -7,13 +7,12 @@ import HotspotGallery from "@/components/HotspotGallery";
 import FadeIn from "@/components/motion/FadeIn";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
-import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
 import ItineraryRequestPopup from "@/components/ItineraryRequestPopup";
 import useSiteImages from "@/lib/useSiteImages";
 import useDestinationGallery from "@/lib/useDestinationGallery";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
 import { urlForImage } from "@/lib/sanity.image";
-import useItineraryImages from "@/lib/useItineraryImages";
+import useItinerariesForDestination from "@/lib/useItinerariesForDestination";
 import { LANDSCAPE_4_3, WIDE_16_9, PORTRAIT_3_4 } from "@/lib/imageDimensions";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -60,118 +59,12 @@ const fallbackHotspots = [
   },
 ];
 
-const packages = [
-  {
-    name: "4-Day Remarkable Rwanda",
-    tagline: "Gorillas & golden monkeys",
-    duration: "4 Days",
-    price: "From $3,500 / person",
-    description:
-      "A focused immersion into Volcanoes National Park for the ultimate primate experience — including mountain gorilla trekking and golden monkey tracking.",
-    activities: [
-      "Gorilla trekking",
-      "Golden monkey tracking",
-      "Kigali city tour",
-      "Iby’Iwacu cultural village",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=700&q=85",
-    itinerary: [
-      {
-        days: "Day 1",
-        desc: "Arrive Kigali; city tour and transfer to Volcanoes NP at the base of the Virunga volcanoes.",
-      },
-      {
-        days: "Day 2",
-        desc: "Life-changing mountain gorilla trekking experience followed by cultural village visit.",
-      },
-      {
-        days: "Day 3",
-        desc: "Golden monkey tracking in the bamboo forests or hike to Dian Fossey's original research site.",
-      },
-      {
-        days: "Day 4",
-        desc: "Scenic drive back to Kigali, souvenir shopping and airport transfer.",
-      },
-    ],
-  },
-  {
-    name: "4-Day Rwanda Gorilla & Cultural Encounter",
-    tagline: "Gorillas, golden monkeys & Kigali heritage",
-    duration: "4 Days",
-    price: "From $2,743 / person (6 pax)",
-    description:
-      "Trek into Volcanoes National Park for an unforgettable gorilla encounter, track playful golden monkeys through bamboo forests, visit the Dian Fossey Museum, and explore Kigali's moving Genocide Memorial and vibrant city culture.",
-    activities: [
-      "Gorilla tracking",
-      "Golden monkey tracking",
-      "Dian Fossey Museum",
-      "Kigali Genocide Memorial",
-      "Kigali city tour",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=700&q=85",
-    itinerary: [
-      {
-        days: "Day 1",
-        desc: "Arrive Kigali; Genocide Memorial visit, lunch in the city, scenic transfer to Volcanoes National Park.",
-      },
-      {
-        days: "Day 2",
-        desc: "Morning gorilla tracking deep into the misty Virunga volcanoes — one life-changing hour with a gorilla family.",
-      },
-      {
-        days: "Day 3",
-        desc: "Golden monkey tracking in the bamboo forests, followed by the Dian Fossey Museum visit.",
-      },
-      {
-        days: "Day 4",
-        desc: "Transfer to Kigali for a city tour, lunch, and airport departure.",
-      },
-    ],
-  },
-  {
-    name: "7-Day Rwanda Grand Tour",
-    tagline: "Rainforests, chimps & gorillas",
-    duration: "7 Days",
-    price: "From $11,500 / person (5 pax)",
-    description:
-      "The ultimate Rwanda experience spanning three national parks — from chimpanzee trekking and colobus monkeys in Nyungwe's ancient rainforest to gorilla tracking in the Virunga volcanoes. Includes luxury lodges and a return flight over the Land of a Thousand Hills.",
-    activities: [
-      "Chimpanzee trekking",
-      "Colobus monkey tracking",
-      "Gorilla tracking",
-      "Nyungwe nature walk",
-      "Kigali city tour",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=700&q=85",
-    itinerary: [
-      {
-        days: "Days 1–2",
-        desc: "Arrive Kigali; Genocide Memorial visit, fly to Kamembe, Nyungwe Forest nature walk.",
-      },
-      {
-        days: "Days 3–4",
-        desc: "Chimpanzee trekking and colobus monkey tracking in Nyungwe National Park's ancient rainforest.",
-      },
-      {
-        days: "Days 5–6",
-        desc: "Transfer to Volcanoes NP; gorilla tracking through the misty Virunga volcanoes.",
-      },
-      {
-        days: "Day 7",
-        desc: "Drive back to Kigali for a mini city tour and airport departure.",
-      },
-    ],
-  },
-];
 
 export default function RwandaPage() {
   const siteImages = useSiteImages();
   const { image: heroImage, overviewGallery, hotspots: sanityHotspots } =
     useDestinationGallery("Rwanda");
-  const itineraryImages = useItineraryImages("Rwanda");
+  const itineraries = useItinerariesForDestination("Rwanda");
   const getSiteImageUrlLocal = (
     key: string,
     fallback: string,
@@ -199,15 +92,7 @@ export default function RwandaPage() {
     return img ? urlForImage(img, dimensions).url() : fallback;
   };
 
-  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
-  const [activePackage, setActivePackage] = useState("");
   const [isItineraryRequestOpen, setIsItineraryRequestOpen] = useState(false);
-
-
-  const handleEnquiry = (pkgName: string) => {
-    setActivePackage(pkgName);
-    setIsEnquiryOpen(true);
-  };
 
   return (
     <>
@@ -410,70 +295,61 @@ export default function RwandaPage() {
             </Link>
           </FadeIn>
           <div className="space-y-20">
-            {packages.map((pkg) => (
+            {itineraries.map((it) => (
               <div
-                key={pkg.name}
+                key={it.slug.current}
                 className="grid md:grid-cols-2 gap-12 items-start border-b border-gold/10 pb-20 last:border-0 last:pb-0"
               >
-                <div className="relative overflow-hidden aspect-[4/3]">
-                  <Image
-                    src={itineraryImages[pkg.name] ? urlForImage(itineraryImages[pkg.name]!, LANDSCAPE_4_3).url() : pkg.image}
-                    alt={pkg.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
-                  />
+                <Link href={`/itineraries/${it.slug.current}/`} className="relative overflow-hidden aspect-[4/3] block group">
+                  {it.heroImage && (
+                    <Image
+                      src={urlForImage(it.heroImage, LANDSCAPE_4_3).url()}
+                      alt={it.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/70 via-transparent to-transparent" />
                   <span className="absolute top-4 left-4 bg-gold text-forest-dark text-[9px] font-bold uppercase tracking-widest px-3 py-1.5">
-                    {pkg.duration}
+                    {it.duration}
                   </span>
-                </div>
+                </Link>
                 <div>
-                  <p className="section-label mb-2">{pkg.tagline}</p>
+                  <p className="section-label mb-2">{it.tagline}</p>
                   <h3 className="font-serif text-3xl text-forest mb-4">
-                    {pkg.name}
+                    <Link href={`/itineraries/${it.slug.current}/`} className="hover:text-gold transition-colors">
+                      {it.title}
+                    </Link>
                   </h3>
                   <div className="w-10 h-px bg-gold mb-6" />
                   <p className="text-stone font-sans text-sm leading-relaxed mb-8">
-                    {pkg.description}
+                    {it.summary}
                   </p>
-                  <div className="space-y-4 mb-8">
-                    {pkg.itinerary.map((item) => (
-                      <div
-                        key={item.days}
-                        className="flex gap-4 border-t border-gold/10 pt-4"
-                      >
-                        <span className="text-gold text-[10px] uppercase tracking-widest font-sans w-20 shrink-0 pt-0.5">
-                          {item.days}
+                  {it.activities && it.activities.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {it.activities.map((act) => (
+                        <span
+                          key={act}
+                          className="text-[10px] uppercase tracking-widest font-sans border border-gold/30 text-forest/70 px-3 py-1.5 flex items-center gap-2"
+                        >
+                          <span className="w-1 h-1 rounded-full bg-gold" />
+                          {act}
                         </span>
-                        <span className="text-stone font-sans text-sm leading-relaxed">
-                          {item.desc}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    {pkg.activities.map((act) => (
-                      <span
-                        key={act}
-                        className="text-[10px] uppercase tracking-widest font-sans border border-gold/30 text-forest/70 px-3 py-1.5 flex items-center gap-2"
-                      >
-                        <span className="w-1 h-1 rounded-full bg-gold" />
-                        {act}
-                      </span>
-                    ))}
-                  </div>
+                      ))}
+                    </div>
+                  )}
                   <div className="flex flex-wrap items-center justify-between gap-4">
                     <span className="font-serif italic text-gold text-sm">
-                      {pkg.price}
+                      {it.price}
                     </span>
                     <div className="flex gap-4">
-                      <button
-                        onClick={() => handleEnquiry(pkg.name)}
+                      <Link
+                        href={`/itineraries/${it.slug.current}/`}
                         className="btn-primary !px-6 !py-2.5 text-[11px]"
                       >
-                        Enquire About This Package
-                      </button>
+                        View Full Itinerary
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -518,12 +394,6 @@ export default function RwandaPage() {
         </FadeIn>
       </section>
 
-
-      <PackageEnquiryPopup
-        isOpen={isEnquiryOpen}
-        onClose={() => setIsEnquiryOpen(false)}
-        packageName={activePackage}
-      />
 
       <ItineraryRequestPopup
         isOpen={isItineraryRequestOpen}
