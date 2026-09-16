@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { client } from "@/lib/sanity.client";
-import { lodgesQuery, experiencesQuery, destinationsQuery, partnersQuery, reviewsQuery } from "@/lib/sanity.queries";
+import { destinationsQuery } from "@/lib/sanity.queries";
 import HomePageClient from "@/components/HomePageClient";
-import { Lodge, Experience, Destination, Partner, Review } from "@/types/sanity";
+import { Destination } from "@/types/sanity";
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
@@ -11,38 +11,13 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://tilengasafaris.africa/" },
 };
 
-// Fallback data for when Sanity is empty or during initial setup
-const fallbackLodges = [
-  {
-    name: "Tilenga Safari Lodge",
-    location: "Murchison Falls National Park, Uganda",
-    description: "A haven of comfort overlooking the Albert Nile. 26 cottages with private balconies, wildlife encounters, and a world-class chef.",
-    image: { _type: 'image', asset: { _type: 'reference', _ref: 'image-placeholder' } },
-    href: "/lodges/tilenga-safari-lodge",
-    tag: "Murchison Falls",
-  },
-];
-
 export default async function HomePage() {
-  const [lodges, experiences, destinations, partners, reviews] = await Promise.all([
-    client.fetch<Lodge[]>(lodgesQuery),
-    client.fetch<Experience[]>(experiencesQuery),
-    client.fetch<Destination[]>(destinationsQuery),
-    client.fetch<Partner[]>(partnersQuery),
-    client.fetch<Review[]>(reviewsQuery),
-  ]);
+  // Only destinations gates the hero carousel's initial render, so only it
+  // is awaited here — everything else below the fold (lodges, experiences,
+  // partners, reviews) is fetched client-side by HomePageClient once
+  // mounted, so this page doesn't wait on 5 separate Sanity queries before
+  // it can respond (was adding ~2.5s of pure TTFB).
+  const destinations = await client.fetch<Destination[]>(destinationsQuery);
 
-  // If no data is found in Sanity, we could either show an empty state or use some default content.
-  // For a "finished to the detail" setup, we expect the user to populate Sanity.
-  // If destinations are empty, we might want to show a message or redirect to admin.
-
-  return (
-    <HomePageClient
-      lodges={lodges.length > 0 ? lodges : []}
-      experiences={experiences.length > 0 ? experiences : []}
-      destinations={destinations.length > 0 ? destinations : []}
-      partners={partners.length > 0 ? partners : []}
-      reviews={reviews}
-    />
-  );
+  return <HomePageClient destinations={destinations.length > 0 ? destinations : []} />;
 }

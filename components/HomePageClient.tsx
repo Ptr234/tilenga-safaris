@@ -26,11 +26,7 @@ import {
 } from "@/lib/imageDimensions";
 
 interface HomePageClientProps {
-  lodges: Lodge[];
-  experiences: Experience[];
   destinations: Destination[];
-  partners: Partner[];
-  reviews: Review[];
 }
 
 const fallbackReviews = [
@@ -75,12 +71,41 @@ const sustainabilityItems = [
 ];
 
 export default function HomePageClient({
-  lodges: initialLodges,
-  experiences: initialExperiences,
   destinations: initialDestinations,
-  partners: initialPartners,
-  reviews,
 }: HomePageClientProps) {
+  // Below-the-fold content (lodges, experiences, partners, reviews) is
+  // fetched client-side after mount rather than awaited server-side, so the
+  // home page's initial response doesn't wait on 5 separate Sanity queries.
+  // Each has a graceful empty/fallback state, so there's nothing to show
+  // until these resolve — which happens well before a visitor scrolls down.
+  const [initialLodges, setLodges] = useState<Lodge[]>([]);
+  const [initialExperiences, setExperiences] = useState<Experience[]>([]);
+  const [initialPartners, setPartners] = useState<Partner[]>([]);
+  const [reviews, setReviews] = useState<Review[]>([]);
+
+  useEffect(() => {
+    let mounted = true;
+    fetch("/api/lodges")
+      .then((res) => (res.ok ? res.json() : []))
+      .then((data) => mounted && setLodges(data))
+      .catch(() => {});
+    fetch("/api/experiences")
+      .then((res) => (res.ok ? res.json() : []))
+      .then((data) => mounted && setExperiences(data))
+      .catch(() => {});
+    fetch("/api/partners")
+      .then((res) => (res.ok ? res.json() : []))
+      .then((data) => mounted && setPartners(data))
+      .catch(() => {});
+    fetch("/api/reviews")
+      .then((res) => (res.ok ? res.json() : []))
+      .then((data) => mounted && setReviews(data))
+      .catch(() => {});
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
   const displayedReviews =
     reviews && reviews.length > 0
       ? reviews.map((r) => ({
