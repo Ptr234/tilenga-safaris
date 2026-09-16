@@ -8,7 +8,12 @@ import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
 import SplitText from "@/components/motion/SplitText";
-import ItineraryRequestPopup from "@/components/ItineraryRequestPopup";
+import dynamic from "next/dynamic";
+// Only ever rendered after a user clicks "Request Itinerary" — no reason
+// its code needs to be part of this page's initial bundle.
+const ItineraryRequestPopup = dynamic(() => import("@/components/ItineraryRequestPopup"), {
+  ssr: false,
+});
 import useSiteImages from "@/lib/useSiteImages";
 import useDestinationGallery from "@/lib/useDestinationGallery";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";

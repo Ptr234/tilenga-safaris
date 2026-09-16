@@ -5,8 +5,15 @@ import Link from "next/link";
 import Image from "next/image";
 import FadeIn from "@/components/motion/FadeIn";
 import SplitText from "@/components/motion/SplitText";
-import PackageEnquiryPopup from "@/components/PackageEnquiryPopup";
-import ItineraryRequestPopup from "@/components/ItineraryRequestPopup";
+import dynamic from "next/dynamic";
+// Only ever rendered after a user opens one of the enquiry forms — no
+// reason their code needs to be part of this page's initial bundle.
+const PackageEnquiryPopup = dynamic(() => import("@/components/PackageEnquiryPopup"), {
+  ssr: false,
+});
+const ItineraryRequestPopup = dynamic(() => import("@/components/ItineraryRequestPopup"), {
+  ssr: false,
+});
 import { urlForImage } from "@/lib/sanity.image";
 import { WIDE_16_9, LANDSCAPE_4_3 } from "@/lib/imageDimensions";
 import type { Itinerary } from "@/types/sanity";
