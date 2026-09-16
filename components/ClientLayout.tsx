@@ -1,16 +1,25 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import InstagramFeed from "@/components/InstagramFeed";
-import QuotePopup from "@/components/QuotePopup";
 import CookieConsent from "@/components/CookieConsent";
 import PageTransition from "@/components/motion/PageTransition";
 import SmoothScroll from "@/components/motion/SmoothScroll";
 import ScrollProgress from "@/components/motion/ScrollProgress";
+
+// Code-split below-the-fold / delayed-entry components so their (largely
+// framer-motion-driven) JS isn't part of the bundle the browser must parse
+// and execute before it can hydrate and paint the initial view. SSR stays on
+// (the next/dynamic default) so Footer's nav links are still in the HTML for
+// crawlers — this only defers the JS, not the markup.
+const Footer = dynamic(() => import("@/components/Footer"));
+const InstagramFeed = dynamic(() => import("@/components/InstagramFeed"));
+// QuotePopup shows itself no earlier than 15s after mount (see its own
+// internal timer), so there's no reason its code needs to load any sooner.
+const QuotePopup = dynamic(() => import("@/components/QuotePopup"), { ssr: false });
 
 export default function ClientLayout({
   children,
