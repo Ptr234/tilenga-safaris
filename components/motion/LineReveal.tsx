@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { m, Variants } from "framer-motion";
 import { ReactNode } from "react";
 
 // Each line rises from beneath its overflow-hidden container — Cottars' primary heading animation
@@ -32,7 +32,7 @@ export default function LineReveal({
   };
 
   return (
-    <motion.div
+    <m.div
       className={className}
       initial="hidden"
       whileInView="visible"
@@ -41,9 +41,9 @@ export default function LineReveal({
     >
       {lines.map((line, i) => (
         <div key={i} className={`overflow-hidden ${lineClassName}`}>
-          <motion.div variants={lineVariant}>{line}</motion.div>
+          <m.div variants={lineVariant}>{line}</m.div>
         </div>
       ))}
-    </motion.div>
+    </m.div>
   );
 }

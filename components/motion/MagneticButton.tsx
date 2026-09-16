@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, ReactNode } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { m, useMotionValue, useSpring } from "framer-motion";
 
 export default function MagneticButton({
   children,
@@ -31,7 +31,7 @@ export default function MagneticButton({
   };
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       style={{ x: springX, y: springY }}
       onMouseMove={handleMouseMove}
@@ -40,6 +40,6 @@ export default function MagneticButton({
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

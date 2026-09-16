@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ReactNode } from "react";
 
 // Cottars signature easing — very slow, deliberate luxury reveal
@@ -35,7 +35,7 @@ export default function ImageReveal({
   const { hidden, visible } = clipMap[direction];
 
   return (
-    <motion.div
+    <m.div
       className={className}
       initial={{ clipPath: hidden }}
       whileInView={{ clipPath: visible }}
@@ -43,6 +43,6 @@ export default function ImageReveal({
       transition={{ duration, delay, ease: EASE }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

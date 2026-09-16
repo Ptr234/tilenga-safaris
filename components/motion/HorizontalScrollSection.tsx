@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, ReactNode } from "react";
-import { useScroll, useTransform, motion } from "framer-motion";
+import { useScroll, useTransform, m } from "framer-motion";
 
 interface HorizontalScrollSectionProps {
   children: ReactNode;
@@ -28,12 +28,12 @@ export default function HorizontalScrollSection({
   return (
     <div ref={containerRef} style={{ height: scrollHeight }} className="relative">
       <div className="sticky top-0 h-screen overflow-hidden">
-        <motion.div
+        <m.div
           style={{ x }}
           className={`flex h-full will-change-transform ${className}`}
         >
           {children}
-        </motion.div>
+        </m.div>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, ReactNode } from "react";
-import { useScroll, useTransform, motion } from "framer-motion";
+import { useScroll, useTransform, m } from "framer-motion";
 
 interface ParallaxSectionProps {
   imageUrl: string;
@@ -27,7 +27,7 @@ export default function ParallaxSection({
 
   return (
     <div ref={ref} className={`relative overflow-hidden ${className}`}>
-      <motion.div
+      <m.div
         style={{
           y,
           backgroundImage: `url(${imageUrl})`,

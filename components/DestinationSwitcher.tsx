@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -46,7 +46,7 @@ export default function DestinationSwitcher({ destinations }: DestinationSwitche
         {/* Left Side: Text Content */}
         <div className="md:col-span-5 order-2 md:order-1">
           <AnimatePresence mode="wait">
-            <motion.div
+            <m.div
               key={index}
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -84,7 +84,7 @@ export default function DestinationSwitcher({ destinations }: DestinationSwitche
                   </div>
                 </Link>
               </div>
-            </motion.div>
+            </m.div>
           </AnimatePresence>
 
           {/* Navigation Dots */}
@@ -105,7 +105,7 @@ export default function DestinationSwitcher({ destinations }: DestinationSwitche
         {/* Right Side: Image Showcase */}
         <div className="md:col-span-7 order-1 md:order-2 relative aspect-[4/3] md:aspect-[16/10] overflow-hidden shadow-2xl">
           <AnimatePresence mode="wait">
-            <motion.div
+            <m.div
               key={index}
               initial={{ scale: 1.1, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -121,7 +121,7 @@ export default function DestinationSwitcher({ destinations }: DestinationSwitche
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
-            </motion.div>
+            </m.div>
           </AnimatePresence>
           
           {/* Subtle Overlay Controls */}

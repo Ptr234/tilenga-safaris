@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import HeroVideo from "@/components/HeroVideo";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
@@ -207,7 +207,7 @@ export default function HomePageClient({
               <FadeIn direction="up">
                 <div className="relative group block cursor-pointer">
                   <AnimatePresence mode="wait">
-                    <motion.div
+                    <m.div
                       key={activeIdx}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
@@ -245,12 +245,12 @@ export default function HomePageClient({
                           </span>
                         </div>
                       </Link>
-                    </motion.div>
+                    </m.div>
                   </AnimatePresence>
 
                   {/* Subtle Progress Bar */}
                   <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gold/10 overflow-hidden hidden md:block">
-                    <motion.div
+                    <m.div
                       key={`progress-${activeIdx}`}
                       initial={{ x: "-100%" }}
                       animate={{ x: "0%" }}

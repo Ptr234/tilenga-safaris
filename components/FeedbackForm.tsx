@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import FadeIn from "@/components/motion/FadeIn";
 import useSiteImages from "@/lib/useSiteImages";
@@ -197,7 +197,7 @@ export default function FeedbackForm() {
     <div className="min-h-screen bg-[#060f09] text-cream font-sans selection:bg-gold/30 relative flex flex-col items-center overflow-x-hidden">
       {/* Immersive Background Layered for depth */}
       <div className="fixed inset-0 z-0 overflow-hidden">
-        <motion.div
+        <m.div
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
           transition={{ duration: 10, ease: "easeOut" }}
@@ -214,14 +214,14 @@ export default function FeedbackForm() {
 
       <AnimatePresence>
         {loading && (
-          <motion.div
+          <m.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 z-[9999] bg-[#060f09] flex flex-col items-center justify-center"
           >
             <div className="text-center w-full max-w-sm px-10">
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1 }}
@@ -231,10 +231,10 @@ export default function FeedbackForm() {
                   alt="Tilenga Safaris"
                   className="w-44 mx-auto mb-16"
                 />
-              </motion.div>
+              </m.div>
 
               <div className="relative w-full h-[1px] bg-white/5 mb-8">
-                <motion.div
+                <m.div
                   initial={{ width: "0%", left: "0%" }}
                   animate={{
                     width: ["0%", "100%", "0%"],
@@ -249,15 +249,15 @@ export default function FeedbackForm() {
                 />
               </div>
 
-              <motion.p
+              <m.p
                 animate={{ opacity: [0.3, 0.6, 0.3] }}
                 transition={{ duration: 2, repeat: Infinity }}
                 className="font-serif italic text-gold/60 text-xs tracking-[0.4em] uppercase"
               >
                 Opening Safari Journal
-              </motion.p>
+              </m.p>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 
@@ -288,7 +288,7 @@ export default function FeedbackForm() {
             <div className="relative">
               {/* Journal Title Header */}
               <div className="mb-16 text-center">
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1 }}
@@ -299,8 +299,8 @@ export default function FeedbackForm() {
                     alt="Tilenga Safaris"
                     className="w-32 mx-auto"
                   />
-                </motion.div>
-                <motion.div
+                </m.div>
+                <m.div
                   key={step}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -320,7 +320,7 @@ export default function FeedbackForm() {
                     </span>
                     <div className="h-px w-8 bg-gold/20" />
                   </div>
-                </motion.div>
+                </m.div>
               </div>
 
               {/* Progress Sidebar (Desktop Only) */}
@@ -343,7 +343,7 @@ export default function FeedbackForm() {
               </div>
 
               {/* Main Journal Card */}
-              <motion.div
+              <m.div
                 layout
                 className="bg-[#0c1a12]/40 backdrop-blur-3xl border border-white/5 rounded-2xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] relative overflow-hidden flex flex-col transition-all duration-700 hover:border-white/10"
               >
@@ -360,7 +360,7 @@ export default function FeedbackForm() {
                   <div className="flex-1 min-h-[380px] md:min-h-[420px]">
                     <AnimatePresence mode="wait" initial={false}>
                       <div key={step} onClick={(e) => e.stopPropagation()}>
-                        <motion.div
+                        <m.div
                           key={step}
                           initial={{ opacity: 0, x: 20, filter: "blur(10px)" }}
                           animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
@@ -372,7 +372,7 @@ export default function FeedbackForm() {
                         >
                           {step === 1 && (
                             <div className="space-y-12">
-                              <motion.div
+                              <m.div
                                 animate={
                                   errors.includes("name")
                                     ? { x: [-4, 4, -4, 4, 0] }
@@ -396,17 +396,17 @@ export default function FeedbackForm() {
                                 />
                                 <div className="h-8 pt-2">
                                   {errors.includes("name") && (
-                                    <motion.p
+                                    <m.p
                                       initial={{ opacity: 0 }}
                                       animate={{ opacity: 1 }}
                                       className="text-red-400/60 text-[9px] uppercase tracking-[0.2em] font-bold italic"
                                     >
                                       Log entry required to proceed
-                                    </motion.p>
+                                    </m.p>
                                   )}
                                 </div>
-                              </motion.div>
-                              <motion.div
+                              </m.div>
+                              <m.div
                                 animate={
                                   errors.includes("email")
                                     ? { x: [-4, 4, -4, 4, 0] }
@@ -433,22 +433,22 @@ export default function FeedbackForm() {
                                 />
                                 <div className="h-8 pt-2">
                                   {errors.includes("email") && (
-                                    <motion.p
+                                    <m.p
                                       initial={{ opacity: 0 }}
                                       animate={{ opacity: 1 }}
                                       className="text-red-400/60 text-[9px] uppercase tracking-[0.2em] font-bold italic"
                                     >
                                       Valid email required
-                                    </motion.p>
+                                    </m.p>
                                   )}
                                 </div>
-                              </motion.div>
+                              </m.div>
                             </div>
                           )}
 
                           {step === 2 && (
                             <div className="space-y-16">
-                              <motion.div
+                              <m.div
                                 animate={
                                   errors.includes("overall_rating")
                                     ? { x: [-4, 4, -4, 4, 0] }
@@ -478,19 +478,19 @@ export default function FeedbackForm() {
                                           num.toString()
                                         }
                                       />
-                                      <motion.span
+                                      <m.span
                                         whileHover={{ scale: 1.2 }}
                                         whileTap={{ scale: 0.9 }}
                                         className={`text-5xl md:text-7xl transition-all duration-500 ${formData.overall_rating >= num.toString() ? "text-gold drop-shadow-[0_0_15px_rgba(253,183,23,0.4)]" : errors.includes("overall_rating") ? "text-red-900/30" : "text-white/5 hover:text-gold/20"}`}
                                       >
                                         ★
-                                      </motion.span>
+                                      </m.span>
                                     </label>
                                   ))}
                                 </div>
-                              </motion.div>
+                              </m.div>
 
-                              <motion.div
+                              <m.div
                                 animate={
                                   errors.includes("expectations")
                                     ? { x: [-4, 4, -4, 4, 0] }
@@ -519,23 +519,23 @@ export default function FeedbackForm() {
                                         onChange={handleChange}
                                         checked={formData.expectations === opt}
                                       />
-                                      <motion.span
+                                      <m.span
                                         whileHover={{ y: -2 }}
                                         whileTap={{ scale: 0.98 }}
                                         className={`px-8 py-5 border text-center text-[10px] uppercase tracking-[0.3em] font-bold transition-all duration-500 block rounded-lg ${formData.expectations === opt ? "bg-gold text-[#060f09] border-gold shadow-[0_15px_30px_-10px_rgba(253,183,23,0.4)]" : errors.includes("expectations") ? "bg-red-900/10 border-red-500/20 text-red-200/40" : "bg-white/[0.02] border-white/5 text-white/30 hover:border-white/20"}`}
                                       >
                                         {opt}
-                                      </motion.span>
+                                      </m.span>
                                     </label>
                                   ))}
                                 </div>
-                              </motion.div>
+                              </m.div>
                             </div>
                           )}
 
                           {step === 3 && (
                             <div className="space-y-12">
-                              <motion.div
+                              <m.div
                                 animate={
                                   errors.includes("highlight")
                                     ? { x: [-4, 4, -4, 4, 0] }
@@ -555,7 +555,7 @@ export default function FeedbackForm() {
                                   placeholder="A close encounter, a hidden valley, the evening sun..."
                                   className={`w-full bg-transparent border p-8 outline-none transition-all font-serif text-xl md:text-2xl placeholder:text-white/5 min-h-[160px] rounded-xl ${errors.includes("highlight") ? "border-red-500/30 text-red-50" : "border-white/5 focus:border-gold/20 text-cream"}`}
                                 />
-                              </motion.div>
+                              </m.div>
                               <div className="space-y-6">
                                 <label className="block text-[9px] uppercase tracking-[0.4em] text-gold font-bold">
                                   Itinerary Reflections
@@ -583,7 +583,7 @@ export default function FeedbackForm() {
                                 { label: "Trip Organization", name: "sat_org" },
                                 { label: "Activities", name: "sat_act" },
                               ].map((field) => (
-                                <motion.div
+                                <m.div
                                   key={field.name}
                                   animate={
                                     errors.includes(field.name)
@@ -620,23 +620,23 @@ export default function FeedbackForm() {
                                             ] === opt
                                           }
                                         />
-                                        <motion.span
+                                        <m.span
                                           whileTap={{ scale: 0.9 }}
                                           className={`px-3 md:px-5 py-2.5 text-[8px] md:text-[9px] uppercase tracking-widest font-bold border transition-all duration-500 rounded-md block ${formData[field.name as keyof typeof formData] === opt ? "bg-gold/80 text-[#060f09] border-gold" : errors.includes(field.name) ? "bg-red-900/10 border-red-500/20 text-red-200/20" : "bg-transparent border-white/5 text-white/20 hover:border-white/10 hover:text-white/40"}`}
                                         >
                                           {opt}
-                                        </motion.span>
+                                        </m.span>
                                       </label>
                                     ))}
                                   </div>
-                                </motion.div>
+                                </m.div>
                               ))}
                             </div>
                           )}
 
                           {step === 5 && (
                             <div className="space-y-16">
-                              <motion.div
+                              <m.div
                                 animate={
                                   errors.includes("guide_rating")
                                     ? { x: [-4, 4, -4, 4, 0] }
@@ -666,17 +666,17 @@ export default function FeedbackForm() {
                                           num.toString()
                                         }
                                       />
-                                      <motion.span
+                                      <m.span
                                         whileHover={{ scale: 1.2 }}
                                         className={`text-5xl md:text-7xl transition-all duration-500 ${formData.guide_rating >= num.toString() ? "text-gold drop-shadow-[0_0_15px_rgba(253,183,23,0.4)]" : errors.includes("guide_rating") ? "text-red-900/30" : "text-white/5 hover:text-gold/20"}`}
                                       >
                                         ★
-                                      </motion.span>
+                                      </m.span>
                                     </label>
                                   ))}
                                 </div>
-                              </motion.div>
-                              <motion.div
+                              </m.div>
+                              <m.div
                                 animate={
                                   errors.includes("safety")
                                     ? { x: [-4, 4, -4, 4, 0] }
@@ -705,22 +705,22 @@ export default function FeedbackForm() {
                                         onChange={handleChange}
                                         checked={formData.safety === opt}
                                       />
-                                      <motion.span
+                                      <m.span
                                         whileHover={{ y: -2 }}
                                         className={`px-6 py-5 border text-center text-[10px] uppercase tracking-[0.3em] font-bold transition-all duration-500 block rounded-lg ${formData.safety === opt ? "bg-gold text-[#060f09] border-gold shadow-[0_15px_30px_-10px_rgba(253,183,23,0.4)]" : errors.includes("safety") ? "bg-red-900/10 border-red-500/20 text-red-200/40" : "bg-white/[0.02] border-white/5 text-white/30 hover:border-white/20"}`}
                                       >
                                         {opt}
-                                      </motion.span>
+                                      </m.span>
                                     </label>
                                   ))}
                                 </div>
-                              </motion.div>
+                              </m.div>
                             </div>
                           )}
 
                           {step === 6 && (
                             <div className="space-y-8">
-                              <motion.div
+                              <m.div
                                 animate={
                                   errors.includes("improve")
                                     ? { x: [-4, 4, -4, 4, 0] }
@@ -744,14 +744,14 @@ export default function FeedbackForm() {
                                     A brief reflection is required
                                   </p>
                                 )}
-                              </motion.div>
+                              </m.div>
                             </div>
                           )}
 
                           {step === 7 && (
                             <div className="space-y-16">
                               <div className="grid md:grid-cols-2 gap-12">
-                                <motion.div
+                                <m.div
                                   animate={
                                     errors.includes("travel_again")
                                       ? { x: [-4, 4, -4, 4, 0] }
@@ -790,8 +790,8 @@ export default function FeedbackForm() {
                                       ),
                                     )}
                                   </div>
-                                </motion.div>
-                                <motion.div
+                                </m.div>
+                                <m.div
                                   animate={
                                     errors.includes("recommend")
                                       ? { x: [-4, 4, -4, 4, 0] }
@@ -828,7 +828,7 @@ export default function FeedbackForm() {
                                       ),
                                     )}
                                   </div>
-                                </motion.div>
+                                </m.div>
                               </div>
                               <div className="pt-12 border-t border-white/5">
                                 <label className="block text-[9px] uppercase tracking-[0.4em] text-gold mb-6 font-bold">
@@ -851,7 +851,7 @@ export default function FeedbackForm() {
 
                           {step === 8 && (
                             <div className="space-y-8">
-                              <motion.div
+                              <m.div
                                 animate={
                                   errors.includes("final")
                                     ? { x: [-4, 4, -4, 4, 0] }
@@ -875,7 +875,7 @@ export default function FeedbackForm() {
                                     One last thought to seal your journal
                                   </p>
                                 )}
-                              </motion.div>
+                              </m.div>
 
                               <label className="flex items-start gap-4 cursor-pointer group">
                                 <input
@@ -899,7 +899,7 @@ export default function FeedbackForm() {
                               </label>
                             </div>
                           )}
-                        </motion.div>
+                        </m.div>
                       </div>
                     </AnimatePresence>
                   </div>
@@ -907,18 +907,18 @@ export default function FeedbackForm() {
                   {/* Navigation Bar */}
                   <div className="flex items-center gap-8 mt-16 pt-10 border-t border-white/5">
                     {step > 1 && (
-                      <motion.button
+                      <m.button
                         type="button"
                         whileHover={{ x: -3 }}
                         onClick={handleBack}
                         className="text-[9px] uppercase tracking-[0.4em] text-white/30 hover:text-gold transition-colors duration-500 flex items-center gap-3 font-bold"
                       >
                         <span>←</span> Back
-                      </motion.button>
+                      </m.button>
                     )}
 
                     {step < totalSteps ? (
-                      <motion.button
+                      <m.button
                         type="button"
                         whileHover={{
                           y: -4,
@@ -929,9 +929,9 @@ export default function FeedbackForm() {
                         className="flex-1 bg-gold text-[#060f09] py-6 px-10 text-[10px] uppercase tracking-[0.5em] font-black transition-all duration-500 rounded-xl shadow-[0_10px_30px_-5px_rgba(253,183,23,0.4)]"
                       >
                         Next Chapter
-                      </motion.button>
+                      </m.button>
                     ) : (
-                      <motion.button
+                      <m.button
                         type="submit"
                         whileHover={{
                           y: -4,
@@ -942,7 +942,7 @@ export default function FeedbackForm() {
                         className="flex-1 bg-gold text-[#060f09] py-6 px-10 text-[10px] uppercase tracking-[0.5em] font-black transition-all duration-500 rounded-xl shadow-[0_10px_30px_-5px_rgba(253,183,23,0.4)] disabled:opacity-50"
                       >
                         {isSubmitting ? "Preserving Log..." : "Seal & Complete"}
-                      </motion.button>
+                      </m.button>
                     )}
                   </div>
                   {error && (
@@ -951,23 +951,23 @@ export default function FeedbackForm() {
                     </p>
                   )}
                 </form>
-              </motion.div>
+              </m.div>
             </div>
           ) : (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               className="text-center bg-[#0c1a12]/60 backdrop-blur-3xl border border-gold/10 rounded-3xl p-16 md:p-24 shadow-2xl relative overflow-hidden"
             >
-              <motion.div
+              <m.div
                 initial={{ scale: 0, rotate: -45 }}
                 animate={{ scale: 1, rotate: 0 }}
                 transition={{ delay: 0.4, type: "spring", damping: 12 }}
                 className="w-20 h-20 bg-gold text-[#060f09] rounded-full flex items-center justify-center mx-auto mb-12 text-3xl shadow-[0_0_40px_rgba(253,183,23,0.4)]"
               >
                 ✓
-              </motion.div>
+              </m.div>
 
               <h2 className="font-serif text-5xl md:text-7xl text-cream mb-8 uppercase tracking-widest leading-none">
                 Asante <br />
@@ -981,7 +981,7 @@ export default function FeedbackForm() {
               </p>
 
               <div className="flex flex-col gap-6 max-w-xs mx-auto">
-                <motion.a
+                <m.a
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   href="https://www.tripadvisor.com/Attraction_Review-g293841-d32809885-Reviews-Tilenga_Safaris-Kampala_Central_Region.html"
@@ -989,7 +989,7 @@ export default function FeedbackForm() {
                   target="_blank"
                 >
                   ⭐ TripAdvisor Review
-                </motion.a>
+                </m.a>
                 <Link
                   href="/"
                   className="border border-white/5 hover:border-gold/30 text-white/30 hover:text-gold py-5 px-10 text-[10px] uppercase tracking-[0.3em] font-bold rounded-xl transition-all duration-500"
@@ -997,7 +997,7 @@ export default function FeedbackForm() {
                   Return to Home
                 </Link>
               </div>
-            </motion.div>
+            </m.div>
           )}
         </div>
       </div>

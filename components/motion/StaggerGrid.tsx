@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { m, Variants } from "framer-motion";
 import { ReactNode } from "react";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -32,7 +32,7 @@ export function StaggerGrid({
   };
 
   return (
-    <motion.div
+    <m.div
       className={className}
       initial="hidden"
       whileInView="visible"
@@ -40,7 +40,7 @@ export function StaggerGrid({
       variants={containerV}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -52,8 +52,8 @@ export function StaggerItem({
   className?: string;
 }) {
   return (
-    <motion.div className={className} variants={itemVariants}>
+    <m.div className={className} variants={itemVariants}>
       {children}
-    </motion.div>
+    </m.div>
   );
 }

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import useSiteImages from "@/lib/useSiteImages";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
 import { WIDE_16_9 } from "@/lib/imageDimensions";
@@ -100,7 +100,7 @@ export default function Header() {
 
   return (
     <>
-      <motion.header
+      <m.header
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 px-6 md:px-12 py-6 md:py-8 ${
@@ -144,12 +144,12 @@ export default function Header() {
             </button>
           </div>
         </div>
-      </motion.header>
+      </m.header>
 
       {/* Full-screen Split Menu */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -159,7 +159,7 @@ export default function Header() {
             {/* Left: Image & Brand */}
             <div className="relative w-full md:w-[45%] h-[40vh] md:h-full overflow-hidden">
               <AnimatePresence mode="wait">
-                <motion.div
+                <m.div
                   key={hoveredImage}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -175,12 +175,12 @@ export default function Header() {
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-black/30" />
-                </motion.div>
+                </m.div>
               </AnimatePresence>
 
               {/* Logo Overlay on Image */}
               <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center text-cream">
-                <motion.img
+                <m.img
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   src={`${base}/tilenga-logo-light.svg`}
@@ -229,7 +229,7 @@ export default function Header() {
               <div className="flex-1 flex flex-col justify-center px-10 md:px-20 lg:px-32 py-24 overflow-y-auto">
                 <nav className="space-y-4 md:space-y-8">
                   {navItems.map((item, i) => (
-                    <motion.div
+                    <m.div
                       key={item.label}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -264,7 +264,7 @@ export default function Header() {
                           ))}
                         </div>
                       )}
-                    </motion.div>
+                    </m.div>
                   ))}
                 </nav>
               </div>
@@ -323,7 +323,7 @@ export default function Header() {
                 <path d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>

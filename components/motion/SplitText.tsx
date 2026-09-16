@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { m, Variants } from "framer-motion";
 
 // Cottars tempo: each word/char settles slowly and deliberately
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -33,7 +33,7 @@ export default function SplitText({
   };
 
   return (
-    <motion.span
+    <m.span
       className={`inline-block ${className ?? ""}`}
       initial="hidden"
       whileInView="visible"
@@ -43,12 +43,12 @@ export default function SplitText({
     >
       {units.map((unit, i) => (
         <span key={i} className="inline-block overflow-hidden leading-none">
-          <motion.span className="inline-block" variants={itemVariants}>
+          <m.span className="inline-block" variants={itemVariants}>
             {unit === " " ? " " : unit}
             {by === "word" && i < units.length - 1 ? " " : ""}
-          </motion.span>
+          </m.span>
         </span>
       ))}
-    </motion.span>
+    </m.span>
   );
 }

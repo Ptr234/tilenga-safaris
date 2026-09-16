@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { m, Variants } from "framer-motion";
 import { ReactNode } from "react";
 
 // Cottars-style: very slow settle, minimal motion — the content drifts in, not rushes
@@ -68,7 +68,7 @@ export default function FadeIn({
   };
 
   return (
-    <motion.div
+    <m.div
       className={className}
       initial="hidden"
       whileInView="visible"
@@ -76,6 +76,6 @@ export default function FadeIn({
       variants={customV}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

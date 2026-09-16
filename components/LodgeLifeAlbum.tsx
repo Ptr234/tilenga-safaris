@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import HorizontalScrollSection from "./motion/HorizontalScrollSection";
 import FadeIn from "./motion/FadeIn";
 
@@ -125,7 +125,7 @@ function AlbumCard({ item, index }: { item: AlbumItem; index: number }) {
       }}
     >
       <div className="!absolute inset-0 overflow-hidden film-frame border border-white/5">
-        <motion.img
+        <m.img
           src={item.src}
           alt={item.alt}
           className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import useSiteImages from "@/lib/useSiteImages";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
 import { SQUARE, PORTRAIT_3_4 } from "@/lib/imageDimensions";
@@ -95,7 +95,7 @@ export default function QuotePopup() {
     <>
       {/* Refined Trigger Button - Floating Luxury Card */}
       {!isOpen && (
-        <motion.button
+        <m.button
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           whileHover={{ x: -12 }}
@@ -151,14 +151,14 @@ export default function QuotePopup() {
 
           {/* Background Shadow/Glow */}
           <div className="absolute -inset-2 bg-gold/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-        </motion.button>
+        </m.button>
       )}
 
       <AnimatePresence>
         {isOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 md:p-10">
             {/* Backdrop */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -167,7 +167,7 @@ export default function QuotePopup() {
             />
 
             {/* Popup Card */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -344,7 +344,7 @@ export default function QuotePopup() {
                   </div>
                 )}
               </div>
-            </motion.div>
+            </m.div>
           </div>
         )}
       </AnimatePresence>

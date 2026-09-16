@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 
 interface PackageEnquiryPopupProps {
   isOpen: boolean;
@@ -61,7 +61,7 @@ export default function PackageEnquiryPopup({ isOpen, onClose, packageName }: Pa
       {isOpen && (
         <div className="fixed inset-0 z-[120] flex items-center justify-center p-6 md:p-10">
           {/* Backdrop */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -70,7 +70,7 @@ export default function PackageEnquiryPopup({ isOpen, onClose, packageName }: Pa
           />
 
           {/* Popup Card */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -156,7 +156,7 @@ export default function PackageEnquiryPopup({ isOpen, onClose, packageName }: Pa
                 </form>
               </div>
             )}
-          </motion.div>
+          </m.div>
         </div>
       )}
     </AnimatePresence>

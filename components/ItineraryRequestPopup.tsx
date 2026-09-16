@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 
 interface ItineraryRequestPopupProps {
   isOpen: boolean;
@@ -71,7 +71,7 @@ export default function ItineraryRequestPopup({ isOpen, onClose, destination }: 
       {isOpen && (
         <div className="fixed inset-0 z-[120] flex items-center justify-center" onWheel={(e) => e.stopPropagation()} onTouchMove={(e) => e.stopPropagation()}>
           {/* Backdrop */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -80,7 +80,7 @@ export default function ItineraryRequestPopup({ isOpen, onClose, destination }: 
           />
 
           {/* Popup Card — large square shape, scrolls internally */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -202,7 +202,7 @@ export default function ItineraryRequestPopup({ isOpen, onClose, destination }: 
                 </form>
               </div>
             )}
-          </motion.div>
+          </m.div>
         </div>
       )}
     </AnimatePresence>

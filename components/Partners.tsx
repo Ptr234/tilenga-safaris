@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 
 interface Partner {
@@ -27,7 +27,7 @@ export default function Partners({ partners }: PartnersProps) {
         
         <div className="flex flex-wrap items-center justify-center gap-12 md:gap-24">
           {partners.map((p) => (
-            <motion.a 
+            <m.a 
               key={p.name}
               href={p.link}
               target="_blank"
@@ -48,7 +48,7 @@ export default function Partners({ partners }: PartnersProps) {
               <span className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-sans text-stone/80 text-center max-w-[150px] group-hover:text-gold transition-colors duration-300">
                 {p.name}
               </span>
-            </motion.a>
+            </m.a>
           ))}
         </div>
       </div>

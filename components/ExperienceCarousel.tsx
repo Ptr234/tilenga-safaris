@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 
 interface Experience {
   title: string;
@@ -68,7 +68,7 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
     <div className="relative w-full max-w-[1400px] mx-auto overflow-hidden px-4 md:px-12">
       <div className="relative h-[450px] sm:h-[550px] md:h-[700px] w-full flex items-center justify-center">
         <AnimatePresence initial={false} custom={direction}>
-          <motion.div
+          <m.div
             key={index}
             custom={direction}
             variants={variants}
@@ -108,7 +108,7 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
               
               {/* Overlay content */}
               <div className="absolute inset-0 flex flex-col items-center justify-end pb-12 sm:pb-16 px-6 sm:px-8 text-center max-w-3xl mx-auto">
-                 <motion.div 
+                 <m.div 
                    initial={{ scaleX: 0 }}
                    animate={{ scaleX: 1 }}
                    transition={{ delay: 0.4, duration: 0.8 }}
@@ -129,7 +129,7 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
                  </span>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </AnimatePresence>
       </div>
 

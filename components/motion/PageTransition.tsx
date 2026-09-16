@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 
@@ -12,7 +12,7 @@ export default function PageTransition({ children }: { children: ReactNode }) {
 
   return (
     <AnimatePresence mode="wait">
-      <motion.div
+      <m.div
         key={pathname}
         // Content fades in AFTER the curtain has opened (0.75s delay matches curtain duration)
         initial={{ opacity: 0 }}
@@ -33,7 +33,7 @@ export default function PageTransition({ children }: { children: ReactNode }) {
              → page is revealed from top downward as the curtain retreats
           4. Page content fades in (0.5 s, starts at 0.75 s delay)
         */}
-        <motion.div
+        <m.div
           className="fixed inset-0 z-[300] bg-forest-dark pointer-events-none"
           initial={{ scaleY: 1 }}
           animate={{
@@ -42,7 +42,7 @@ export default function PageTransition({ children }: { children: ReactNode }) {
           }}
           style={{ transformOrigin: "top" }}
         />
-      </motion.div>
+      </m.div>
     </AnimatePresence>
   );
 }

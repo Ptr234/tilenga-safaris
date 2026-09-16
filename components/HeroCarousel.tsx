@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, type Variants } from "framer-motion";
+import { m, AnimatePresence, type Variants } from "framer-motion";
 
 const slides = [
   {
@@ -53,7 +53,7 @@ function WordReveal({ text, delay = 0, className = "" }: { text: string; delay?:
     <span className={`flex flex-wrap justify-center gap-x-[0.3em] ${className}`}>
       {words.map((word, i) => (
         <span key={i} className="overflow-hidden inline-block">
-          <motion.span
+          <m.span
             className="inline-block"
             initial={{ y: "110%", opacity: 0 }}
             animate={{ y: "0%", opacity: 1 }}
@@ -61,7 +61,7 @@ function WordReveal({ text, delay = 0, className = "" }: { text: string; delay?:
             transition={{ duration: 0.9, delay: delay + i * 0.1, ease: EASE_OUT }}
           >
             {word}
-          </motion.span>
+          </m.span>
         </span>
       ))}
     </span>
@@ -89,7 +89,7 @@ export default function HeroCarousel() {
     <section className="grain-overlay relative h-[100dvh] min-h-[640px] overflow-hidden bg-forest-dark">
       {/* Background */}
       <AnimatePresence mode="sync">
-        <motion.div
+        <m.div
           key={`bg-${current}`}
           variants={imageVariants}
           initial="enter"
@@ -109,7 +109,7 @@ export default function HeroCarousel() {
         <AnimatePresence mode="wait">
           <div key={`content-${current}`} className="flex flex-col items-center">
             {/* Region label */}
-            <motion.div
+            <m.div
               className="flex items-center gap-3 mb-5"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -119,7 +119,7 @@ export default function HeroCarousel() {
               <div className="w-8 h-px bg-gold" />
               <span className="text-gold text-xs uppercase tracking-[0.45em] font-sans">{slide.region}</span>
               <div className="w-8 h-px bg-gold" />
-            </motion.div>
+            </m.div>
 
             {/* Main heading — word-by-word reveal */}
             <h1 className="section-heading !text-cream text-4xl sm:text-5xl md:text-7xl lg:text-[7.5rem] mb-5 md:mb-8 leading-[0.9] md:leading-[0.85]">
@@ -128,7 +128,7 @@ export default function HeroCarousel() {
 
             {/* Italic subtitle */}
             <div className="overflow-hidden mb-5 md:mb-8">
-              <motion.p
+              <m.p
                 className="editorial-italic text-xl sm:text-2xl md:text-3xl"
                 initial={{ y: "100%", opacity: 0 }}
                 animate={{ y: "0%", opacity: 1 }}
@@ -136,11 +136,11 @@ export default function HeroCarousel() {
                 transition={{ duration: 0.8, delay: 0.55, ease: EASE_OUT }}
               >
                 {slide.sub}
-              </motion.p>
+              </m.p>
             </div>
 
             {/* Body */}
-            <motion.p
+            <m.p
               className="text-cream/70 font-sans text-sm md:text-lg max-w-md mb-8 md:mb-12 leading-relaxed"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -148,10 +148,10 @@ export default function HeroCarousel() {
               transition={{ duration: 0.7, delay: 0.7, ease: "easeOut" }}
             >
               {slide.body}
-            </motion.p>
+            </m.p>
 
             {/* CTAs */}
-            <motion.div
+            <m.div
               className="flex flex-col sm:flex-row gap-4 justify-center"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -160,13 +160,13 @@ export default function HeroCarousel() {
             >
               <Link href="/plan-a-trip" className="btn-primary">Plan Your Safari</Link>
               <Link href="/destinations" className="btn-ghost">Explore Destinations</Link>
-            </motion.div>
+            </m.div>
           </div>
         </AnimatePresence>
       </div>
 
       {/* Slide counter — bottom left */}
-      <motion.div
+      <m.div
         className="absolute bottom-8 left-8 md:left-20 z-10 hidden md:flex items-center gap-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -175,7 +175,7 @@ export default function HeroCarousel() {
         <span className="font-serif text-gold text-2xl">{String(current + 1).padStart(2, "0")}</span>
         <div className="w-px h-6 bg-cream/20" />
         <span className="text-cream/30 text-xs font-sans">{String(slides.length).padStart(2, "0")}</span>
-      </motion.div>
+      </m.div>
 
       {/* Prev / Next arrows */}
       <div className="absolute bottom-6 right-8 md:right-16 z-10 flex items-center gap-4">
@@ -202,7 +202,7 @@ export default function HeroCarousel() {
       {/* Dot indicators */}
       <div className="absolute right-6 top-1/2 -translate-y-1/2 z-10 hidden md:flex flex-col gap-3">
         {slides.map((_, i) => (
-          <motion.button
+          <m.button
             key={i}
             onClick={() => go(i)}
             animate={{
@@ -217,19 +217,19 @@ export default function HeroCarousel() {
       </div>
 
       {/* Scroll hint */}
-      <motion.div
+      <m.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.8 }}
       >
-        <motion.div
+        <m.div
           className="w-px h-12 bg-gradient-to-b from-cream/40 to-transparent"
           style={{ originY: 0 }}
           animate={{ scaleY: [1, 0.2, 1] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         />
-      </motion.div>
+      </m.div>
     </section>
   );
 }
