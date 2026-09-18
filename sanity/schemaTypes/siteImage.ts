@@ -12,7 +12,18 @@ export const siteImage = defineType({
       title: 'Key',
       type: 'string',
       description: 'Unique identifier the website uses to load this image (e.g., hero-home).',
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().custom(async (key, context) => {
+          if (!key) return true
+          const {document, getClient} = context
+          const client = getClient({apiVersion: '2023-05-03'})
+          const id = document?._id.replace(/^drafts\./, '')
+          const isUnique = await client.fetch(
+            `!defined(*[_type == "siteImage" && !(_id in [$draft, $published]) && key == $key][0]._id)`,
+            {draft: `drafts.${id}`, published: id, key},
+          )
+          return isUnique || 'This key is already used by another site image — the site looks images up by key, so the newer one will silently replace the older one everywhere it is used.'
+        }),
     }),
     defineField({
       name: 'category',

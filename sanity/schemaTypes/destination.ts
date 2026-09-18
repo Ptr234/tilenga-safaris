@@ -14,17 +14,6 @@ export const destination = defineType({
       validation: (Rule) => Rule.required().min(2).max(120),
     }),
     defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      description: 'Auto-generated from the name. Used in the page URL.',
-      options: {
-        source: 'name',
-        maxLength: 96,
-      },
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
       name: 'tag',
       title: 'Tag',
       type: 'string',
@@ -47,7 +36,13 @@ export const destination = defineType({
       name: 'href',
       title: 'Internal Link (HREF)',
       type: 'string',
-      description: 'Internal link path (e.g., /destinations/murchison-falls)',
+      description:
+        'The page URL for this destination (e.g., /destinations/uganda). This site\'s destination pages are hand-built per country, not auto-routed — this must match an existing page exactly or the link will 404.',
+      validation: (Rule) =>
+        Rule.required().regex(/^\/[a-z0-9/-]+$/, {
+          name: 'internal path',
+          invert: false,
+        }).error('Must be an internal path starting with / (e.g. /destinations/uganda)'),
     }),
     defineField({
       name: 'num',

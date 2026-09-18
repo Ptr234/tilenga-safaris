@@ -1,18 +1,46 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
+import { isRateLimited } from '@/lib/rateLimit';
 
 export const runtime = 'edge';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const fromEmail = 'noreply@tilengasafaris.africa';
 
+// Every field below comes straight from an unauthenticated public form
+// submission and gets spliced into raw HTML email strings -- escape it so a
+// guest can't inject markup/links into the email staff read (or their own
+// confirmation email).
+function escapeHtml(value: unknown): string {
+  if (value === null || value === undefined) return '';
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { source, email, name, first_name, last_name, package_name, destination, ...details } = body;
+    if (isRateLimited(req, 'send-email', 8, 15 * 60 * 1000)) {
+      return NextResponse.json({ error: 'Too many requests, please try again later' }, { status: 429 });
+    }
 
-    if (!email && source !== 'feedback') {
+    const body = await req.json();
+    const { source, email: rawEmail, name, first_name, last_name, package_name, destination, ...details } = body;
+
+    if (!rawEmail && source !== 'feedback') {
       return NextResponse.json({ error: 'Missing email' }, { status: 400 });
+    }
+
+    // Reject/ignore a malformed or multi-line email rather than let it flow
+    // into the replyTo/to headers or the HTML body unchecked.
+    const email = typeof rawEmail === 'string' && EMAIL_RE.test(rawEmail.trim()) ? rawEmail.trim() : '';
+    if (rawEmail && !email && source !== 'feedback') {
+      return NextResponse.json({ error: 'Invalid email' }, { status: 400 });
     }
 
     const displayName = name || (first_name ? `${first_name} ${last_name}` : 'Valued Guest');
@@ -32,47 +60,47 @@ export async function POST(req: Request) {
         {
           title: "Experience",
           fields: [
-            { label: "Overall Rating", value: `${body.overall_rating}/5 ★` },
-            { label: "Expectations", value: body.expectations }
+            { label: "Overall Rating", value: `${escapeHtml(body.overall_rating)}/5 ★` },
+            { label: "Expectations", value: escapeHtml(body.expectations) }
           ]
         },
         {
           title: "Highlights",
           fields: [
-            { label: "Trip Highlight", value: body.highlight },
-            { label: "Loved about Itinerary", value: body.itinerary_love }
+            { label: "Trip Highlight", value: escapeHtml(body.highlight) },
+            { label: "Loved about Itinerary", value: escapeHtml(body.itinerary_love) }
           ]
         },
         {
           title: "Logistics & Service Scores",
           fields: [
-            { label: "Accommodation", value: body.sat_acc },
-            { label: "Transportation", value: body.sat_trans },
-            { label: "Customer Service", value: body.sat_serv },
-            { label: "Trip Organization", value: body.sat_org },
-            { label: "Activities", value: body.sat_act }
+            { label: "Accommodation", value: escapeHtml(body.sat_acc) },
+            { label: "Transportation", value: escapeHtml(body.sat_trans) },
+            { label: "Customer Service", value: escapeHtml(body.sat_serv) },
+            { label: "Trip Organization", value: escapeHtml(body.sat_org) },
+            { label: "Activities", value: escapeHtml(body.sat_act) }
           ]
         },
         {
           title: "Guide & Safety",
           fields: [
-            { label: "Guide/Host Rating", value: `${body.guide_rating}/5 ★` },
-            { label: "Felt Safe & Cared for", value: body.safety }
+            { label: "Guide/Host Rating", value: `${escapeHtml(body.guide_rating)}/5 ★` },
+            { label: "Felt Safe & Cared for", value: escapeHtml(body.safety) }
           ]
         },
         {
           title: "Future & Growth",
           fields: [
-            { label: "Improvements Needed", value: body.improve },
-            { label: "Travel Again", value: body.travel_again },
-            { label: "Recommend to Others", value: body.recommend },
-            { label: "Next Destination", value: body.next_dest }
+            { label: "Improvements Needed", value: escapeHtml(body.improve) },
+            { label: "Travel Again", value: escapeHtml(body.travel_again) },
+            { label: "Recommend to Others", value: escapeHtml(body.recommend) },
+            { label: "Next Destination", value: escapeHtml(body.next_dest) }
           ]
         },
         {
           title: "Final Reflections",
           fields: [
-            { label: "Additional Comments", value: body.final }
+            { label: "Additional Comments", value: escapeHtml(body.final) }
           ]
         }
       ];
@@ -97,30 +125,30 @@ export async function POST(req: Request) {
       mainContentHtml = `
         <div style="background-color: #2d3a28; padding: 20px 25px; margin-bottom: 25px; text-align: center;">
           <div style="color: #c9a96e; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 8px;">Custom Itinerary Request</div>
-          <div style="color: #fcfaf6; font-size: 22px; font-family: serif; line-height: 1.4;">${destination}</div>
+          <div style="color: #fcfaf6; font-size: 22px; font-family: serif; line-height: 1.4;">${escapeHtml(destination)}</div>
         </div>
         ${details.travel_dates ? `
         <div style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
           <strong style="text-transform: capitalize; color: #c9a96e; font-size: 12px; letter-spacing: 0.05em;">Travel Dates</strong>
-          <div style="color: #2d3a28; margin-top: 4px; font-size: 16px; line-height: 1.5;">${details.travel_dates}</div>
+          <div style="color: #2d3a28; margin-top: 4px; font-size: 16px; line-height: 1.5;">${escapeHtml(details.travel_dates)}</div>
         </div>
         ` : ''}
         ${details.travellers ? `
         <div style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
           <strong style="text-transform: capitalize; color: #c9a96e; font-size: 12px; letter-spacing: 0.05em;">Number of Travellers</strong>
-          <div style="color: #2d3a28; margin-top: 4px; font-size: 16px; line-height: 1.5;">${details.travellers}</div>
+          <div style="color: #2d3a28; margin-top: 4px; font-size: 16px; line-height: 1.5;">${escapeHtml(details.travellers)}</div>
         </div>
         ` : ''}
         ${details.budget ? `
         <div style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
           <strong style="text-transform: capitalize; color: #c9a96e; font-size: 12px; letter-spacing: 0.05em;">Budget Per Person</strong>
-          <div style="color: #2d3a28; margin-top: 4px; font-size: 16px; line-height: 1.5;">${details.budget}</div>
+          <div style="color: #2d3a28; margin-top: 4px; font-size: 16px; line-height: 1.5;">${escapeHtml(details.budget)}</div>
         </div>
         ` : ''}
         ${details.message ? `
         <div style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
           <strong style="text-transform: capitalize; color: #c9a96e; font-size: 12px; letter-spacing: 0.05em;">Interests &amp; Preferences</strong>
-          <div style="color: #2d3a28; margin-top: 4px; font-size: 16px; line-height: 1.5;">${details.message}</div>
+          <div style="color: #2d3a28; margin-top: 4px; font-size: 16px; line-height: 1.5;">${escapeHtml(details.message)}</div>
         </div>
         ` : ''}
       `;
@@ -129,12 +157,12 @@ export async function POST(req: Request) {
       mainContentHtml = `
         <div style="background-color: #2d3a28; padding: 20px 25px; margin-bottom: 25px; text-align: center;">
           <div style="color: #c9a96e; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 8px;">Package of Interest</div>
-          <div style="color: #fcfaf6; font-size: 22px; font-family: serif; line-height: 1.4;">${package_name}</div>
+          <div style="color: #fcfaf6; font-size: 22px; font-family: serif; line-height: 1.4;">${escapeHtml(package_name)}</div>
         </div>
         ${details.message ? `
         <div style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
           <strong style="text-transform: capitalize; color: #c9a96e; font-size: 12px; letter-spacing: 0.05em;">Guest Message</strong>
-          <div style="color: #2d3a28; margin-top: 4px; font-size: 16px; line-height: 1.5;">${details.message}</div>
+          <div style="color: #2d3a28; margin-top: 4px; font-size: 16px; line-height: 1.5;">${escapeHtml(details.message)}</div>
         </div>
         ` : ''}
       `;
@@ -143,8 +171,8 @@ export async function POST(req: Request) {
       mainContentHtml = Object.entries(details)
         .map(([key, value]) => `
           <div style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
-            <strong style="text-transform: capitalize; color: #c9a96e; font-size: 12px; letter-spacing: 0.05em;">${key.replace(/_/g, ' ')}</strong>
-            <div style="color: #2d3a28; margin-top: 4px; font-size: 16px; line-height: 1.5;">${value}</div>
+            <strong style="text-transform: capitalize; color: #c9a96e; font-size: 12px; letter-spacing: 0.05em;">${escapeHtml(key.replace(/_/g, ' '))}</strong>
+            <div style="color: #2d3a28; margin-top: 4px; font-size: 16px; line-height: 1.5;">${escapeHtml(value)}</div>
           </div>
         `).join('');
     }
@@ -169,19 +197,19 @@ export async function POST(req: Request) {
               ${displayName !== 'Valued Guest' ? `
               <tr>
                 <td style="padding: 8px 0; color: #666; font-size: 13px; width: 100px;">Name:</td>
-                <td style="padding: 8px 0; color: #2d3a28; font-size: 15px; font-weight: bold;">${displayName}</td>
+                <td style="padding: 8px 0; color: #2d3a28; font-size: 15px; font-weight: bold;">${escapeHtml(displayName)}</td>
               </tr>
               ` : ''}
               ${email ? `
               <tr>
                 <td style="padding: 8px 0; color: #666; font-size: 13px;">Email:</td>
-                <td style="padding: 8px 0; color: #2d3a28; font-size: 15px;">${email}</td>
+                <td style="padding: 8px 0; color: #2d3a28; font-size: 15px;">${escapeHtml(email)}</td>
               </tr>
               ` : ''}
               ${body.phone ? `
               <tr>
                 <td style="padding: 8px 0; color: #666; font-size: 13px;">Phone:</td>
-                <td style="padding: 8px 0; color: #2d3a28; font-size: 15px;">${body.phone}</td>
+                <td style="padding: 8px 0; color: #2d3a28; font-size: 15px;">${escapeHtml(body.phone)}</td>
               </tr>
               ` : ''}
               <tr>
@@ -238,28 +266,28 @@ export async function POST(req: Request) {
               ${isNewsletter ? 'Welcome Along' : 'Thank You'}
             </h1>
           </div>
-          <p style="font-size: 18px; line-height: 1.6;">Dear ${displayName},</p>
+          <p style="font-size: 18px; line-height: 1.6;">Dear ${escapeHtml(displayName)},</p>
           ${source === 'itinerary_request' && destination ? `
           <p style="font-size: 16px; line-height: 1.6;">
-            Thank you for your interest in exploring <strong>${destination}</strong> with Tilenga Safaris.
+            Thank you for your interest in exploring <strong>${escapeHtml(destination)}</strong> with Tilenga Safaris.
           </p>
           <div style="background-color: #2d3a28; padding: 18px 25px; margin: 25px 0; text-align: center;">
             <div style="color: #c9a96e; font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 6px;">Custom Itinerary Request</div>
-            <div style="color: #fcfaf6; font-size: 20px; font-family: serif;">${destination}</div>
+            <div style="color: #fcfaf6; font-size: 20px; font-family: serif;">${escapeHtml(destination)}</div>
           </div>
           <p style="font-size: 16px; line-height: 1.6;">
-            Your request has been received and one of our dedicated ${destination} specialists is now reviewing your preferences. They will personally reach out to you within 24 hours with a selection of tailored itinerary options designed around your interests, travel dates, and group size.
+            Your request has been received and one of our dedicated ${escapeHtml(destination)} specialists is now reviewing your preferences. They will personally reach out to you within 24 hours with a selection of tailored itinerary options designed around your interests, travel dates, and group size.
           </p>
           <p style="font-size: 16px; line-height: 1.6;">
             Should you have any urgent questions in the meantime, please do not hesitate to contact us directly at <a href="mailto:destinations@tilengasafaris.com" style="color: #c9a96e; text-decoration: none;">destinations@tilengasafaris.com</a>.
           </p>
           ` : source === 'package_enquiry' && package_name ? `
           <p style="font-size: 16px; line-height: 1.6;">
-            Thank you for your interest in <strong>${package_name}</strong>. We are delighted that this safari experience has caught your attention.
+            Thank you for your interest in <strong>${escapeHtml(package_name)}</strong>. We are delighted that this safari experience has caught your attention.
           </p>
           <div style="background-color: #2d3a28; padding: 18px 25px; margin: 25px 0; text-align: center;">
             <div style="color: #c9a96e; font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 6px;">Your Selected Package</div>
-            <div style="color: #fcfaf6; font-size: 20px; font-family: serif;">${package_name}</div>
+            <div style="color: #fcfaf6; font-size: 20px; font-family: serif;">${escapeHtml(package_name)}</div>
           </div>
           <p style="font-size: 16px; line-height: 1.6;">
             Your enquiry has been received and assigned to one of our dedicated safari specialists. They will carefully review your requirements and reach out to you personally within the next 24 hours with a tailored response, including detailed pricing, availability, and any customisation options.

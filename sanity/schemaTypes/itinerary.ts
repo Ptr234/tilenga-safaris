@@ -22,7 +22,18 @@ export const itinerary = defineType({
         source: 'title',
         maxLength: 96,
       },
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().custom(async (slug, context) => {
+          if (!slug?.current) return true
+          const {document, getClient} = context
+          const client = getClient({apiVersion: '2023-05-03'})
+          const id = document?._id.replace(/^drafts\./, '')
+          const isUnique = await client.fetch(
+            `!defined(*[_type == "itinerary" && !(_id in [$draft, $published]) && slug.current == $slug][0]._id)`,
+            {draft: `drafts.${id}`, published: id, slug: slug.current},
+          )
+          return isUnique || 'This slug is already used by another itinerary — page routing takes the first match and the other becomes unreachable.'
+        }),
     }),
     defineField({
       name: 'tagline',

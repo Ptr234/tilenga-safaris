@@ -14,17 +14,6 @@ export const lodge = defineType({
       validation: (Rule) => Rule.required().min(2).max(120),
     }),
     defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      description: 'Auto-generated from the name. Used in the page URL.',
-      options: {
-        source: 'name',
-        maxLength: 96,
-      },
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
       name: 'location',
       title: 'Location',
       type: 'string',
@@ -52,7 +41,13 @@ export const lodge = defineType({
       name: 'href',
       title: 'Internal Link (HREF)',
       type: 'string',
-      description: 'Internal link path (e.g., /lodges/tilenga-safari-lodge)',
+      description:
+        'The page URL for this lodge (e.g., /lodges/tilenga-safari-lodge). This site\'s lodge pages are hand-built, not auto-routed — this must match an existing page exactly or the link will 404.',
+      validation: (Rule) =>
+        Rule.required().regex(/^\/[a-z0-9/-]+$/, {
+          name: 'internal path',
+          invert: false,
+        }).error('Must be an internal path starting with / (e.g. /lodges/tilenga-safari-lodge)'),
     }),
     defineField({
       name: 'stats',
