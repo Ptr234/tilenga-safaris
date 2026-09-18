@@ -1,7 +1,7 @@
 "use client";
 
-import { m } from "framer-motion";
 import Image from "next/image";
+import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 
 interface Partner {
   name: string;
@@ -25,32 +25,30 @@ export default function Partners({ partners }: PartnersProps) {
           <div className="w-12 h-px bg-gold mx-auto mt-4" />
         </div>
         
-        <div className="flex flex-wrap items-center justify-center gap-12 md:gap-24">
+        <StaggerGrid className="flex flex-wrap items-center justify-center gap-12 md:gap-24">
           {partners.map((p) => (
-            <m.a 
-              key={p.name}
-              href={p.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="flex flex-col items-center group cursor-pointer"
-            >
-              <div className="relative w-32 h-32 md:w-44 md:h-44 flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-110">
-                <Image
-                  src={p.logo}
-                  alt={p.name}
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <span className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-sans text-stone/80 text-center max-w-[150px] group-hover:text-gold transition-colors duration-300">
-                {p.name}
-              </span>
-            </m.a>
+            <StaggerItem key={p.name}>
+              <a
+                href={p.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center group cursor-pointer"
+              >
+                <div className="relative w-32 h-32 md:w-44 md:h-44 flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-110">
+                  <Image
+                    src={p.logo}
+                    alt={p.name}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <span className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-sans text-stone/80 text-center max-w-[150px] group-hover:text-gold transition-colors duration-300">
+                  {p.name}
+                </span>
+              </a>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGrid>
       </div>
     </section>
   );

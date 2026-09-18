@@ -1,7 +1,7 @@
 "use client";
 
 import { m, Variants } from "framer-motion";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 // Cottars-style: very slow settle, minimal motion — the content drifts in, not rushes
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -54,6 +54,19 @@ export default function FadeIn({
   className,
   once = true,
 }: FadeInProps) {
+  // Safety net: `whileInView`'s reveal depends on an IntersectionObserver
+  // that, in practice, can fail to ever report "in view" for a given
+  // element (races with the async LazyMotion feature bundle, interaction
+  // with the Lenis smooth-scroll wrapper, etc.), leaving content stuck at
+  // its hidden `initial` state forever. If nothing has revealed this
+  // element shortly after mount, force it visible rather than risk a
+  // permanently blank section.
+  const [forceVisible, setForceVisible] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setForceVisible(true), 1200);
+    return () => clearTimeout(timer);
+  }, []);
+
   const v = variants[direction];
   const customV: Variants = {
     hidden: v.hidden,
@@ -71,7 +84,9 @@ export default function FadeIn({
     <m.div
       className={className}
       initial="hidden"
+      animate={forceVisible ? "visible" : undefined}
       whileInView="visible"
+      onViewportEnter={() => setForceVisible(true)}
       viewport={{ once, margin: "-80px" }}
       variants={customV}
     >

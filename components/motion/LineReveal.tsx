@@ -1,7 +1,7 @@
 "use client";
 
 import { m, Variants } from "framer-motion";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 // Each line rises from beneath its overflow-hidden container — Cottars' primary heading animation
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -31,11 +31,23 @@ export default function LineReveal({
     visible: { transition: { staggerChildren: stagger, delayChildren: delay } },
   };
 
+  // Safety net: see FadeIn/ImageReveal -- `whileInView` can fail to ever
+  // fire for a given element, which here would leave these heading lines
+  // permanently hidden. Force a reveal shortly after mount if scrolling
+  // hasn't already triggered one.
+  const [forceVisible, setForceVisible] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setForceVisible(true), 1200);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <m.div
       className={className}
       initial="hidden"
+      animate={forceVisible ? "visible" : undefined}
       whileInView="visible"
+      onViewportEnter={() => setForceVisible(true)}
       viewport={{ once: true, margin: "-80px" }}
       variants={container}
     >
