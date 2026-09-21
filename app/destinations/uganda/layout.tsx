@@ -3,10 +3,10 @@ import { client } from "@/lib/sanity.client";
 import { urlForImage } from "@/lib/sanity.image";
 import { WIDE_16_9 } from "@/lib/imageDimensions";
 
-const pageTitle = "Uganda Safaris — The Pearl of Africa";
-const fullTitle = "Uganda Safaris — The Pearl of Africa | Tilenga Safaris";
+const pageTitle = "Uganda Safari Tours & Gorilla Trekking Packages";
+const fullTitle = "Uganda Safari Tours & Gorilla Trekking Packages | Tilenga Safaris";
 const pageDescription =
-  "Trek mountain gorillas in Bwindi, cruise the Nile at Murchison Falls, and spot tree-climbing lions in Queen Elizabeth National Park on a tailor-made Uganda safari.";
+  "Tailor-made Uganda safaris: gorilla trekking in Bwindi, Murchison Falls cruises & Queen Elizabeth game drives. Private, luxury, honeymoon & family packages.";
 const pageUrl = "https://tilengasafaris.africa/destinations/uganda/";
 const ogImage = "https://tilengasafaris.africa/photos/newstock/UgandaDestinationHero.jpg";
 

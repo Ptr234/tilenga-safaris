@@ -3,10 +3,10 @@ import { client } from "@/lib/sanity.client";
 import { urlForImage } from "@/lib/sanity.image";
 import { WIDE_16_9 } from "@/lib/imageDimensions";
 
-const pageTitle = "Rwanda Safaris — Land of a Thousand Hills";
-const fullTitle = "Rwanda Safaris — Land of a Thousand Hills | Tilenga Safaris";
+const pageTitle = "Rwanda Safari Tours & Gorilla Trekking Packages";
+const fullTitle = "Rwanda Safari Tours & Gorilla Trekking Packages | Tilenga Safaris";
 const pageDescription =
-  "Track mountain gorillas in Volcanoes National Park, explore Nyungwe Forest, and discover Kigali's culture and history on a tailor-made Rwanda safari.";
+  "Tailor-made Rwanda safaris: gorilla trekking in Volcanoes NP, chimpanzee trekking in Nyungwe, Big Five drives in Akagera. Private, luxury & honeymoon packages.";
 const pageUrl = "https://tilengasafaris.africa/destinations/rwanda/";
 const ogImage = "https://tilengasafaris.africa/photos/newstock/kigali-city.jpg";
 
