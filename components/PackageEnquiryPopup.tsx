@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { m, AnimatePresence } from "framer-motion";
+import { trackContactConversion } from "@/lib/gtag";
 
 interface PackageEnquiryPopupProps {
   isOpen: boolean;
@@ -42,6 +43,7 @@ export default function PackageEnquiryPopup({ isOpen, onClose, packageName }: Pa
 
       if (response.ok) {
         setSubmitted(true);
+        trackContactConversion();
         setTimeout(() => {
           onClose();
           setSubmitted(false);

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { m, AnimatePresence } from "framer-motion";
+import { trackContactConversion } from "@/lib/gtag";
 
 interface ItineraryRequestPopupProps {
   isOpen: boolean;
@@ -52,6 +53,7 @@ export default function ItineraryRequestPopup({ isOpen, onClose, destination }: 
 
       if (response.ok) {
         setSubmitted(true);
+        trackContactConversion();
         setTimeout(() => {
           onClose();
           setSubmitted(false);

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackContactConversion } from "@/lib/gtag";
 
 const destinations = ["Uganda", "Kenya", "Tanzania", "Rwanda", "South Africa", "Namibia", "Botswana", "Multiple Destinations"];
 const interestsList = [
@@ -57,6 +58,7 @@ export default function PlanATripPage() {
 
       if (response.ok) {
         setSubmitted(true);
+        trackContactConversion();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         setError(data.error || "Something went wrong. Please try again.");

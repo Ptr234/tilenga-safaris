@@ -11,6 +11,11 @@ const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 // only, since there's no default for it.
 const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-8LJWTBKB2G";
 const gscVerification = process.env.NEXT_PUBLIC_GSC_VERIFICATION ?? "";
+// Google Ads conversion ID isn't secret either — same reasoning as the GA4 id
+// above. Shares the GA4 gtag.js loader below rather than loading a second
+// copy, per Google's own instructions for sites that already have a Google
+// tag installed.
+const googleAdsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID ?? "AW-18336677114";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://tilengasafaris.africa'),
@@ -95,7 +100,7 @@ export default function RootLayout({
           <>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`} strategy="afterInteractive" />
             <Script id="ga4-init" strategy="afterInteractive">
-              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${gaMeasurementId}');`}
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${gaMeasurementId}');gtag('config','${googleAdsId}');`}
             </Script>
           </>
         )}

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { m, AnimatePresence } from "framer-motion";
+import { trackContactConversion } from "@/lib/gtag";
 import useSiteImages from "@/lib/useSiteImages";
 import { getSiteImageUrl } from "@/lib/siteImageHelpers";
 import { SQUARE, PORTRAIT_3_4 } from "@/lib/imageDimensions";
@@ -77,6 +78,7 @@ export default function QuotePopup() {
 
       if (response.ok) {
         setSubmitted(true);
+        trackContactConversion();
         setTimeout(() => {
           setIsOpen(false);
           setSubmitted(false);
