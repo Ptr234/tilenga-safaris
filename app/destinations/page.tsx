@@ -7,8 +7,8 @@ import { Destination } from "@/types/sanity";
 export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
 
-const pageTitle = "African Safari Destinations";
-const fullTitle = "African Safari Destinations | Tilenga Safaris";
+const pageTitle = "Uganda, Kenya, Tanzania & Rwanda Safari Destinations";
+const fullTitle = "Uganda, Kenya, Tanzania & Rwanda Safari Destinations | Tilenga Safaris";
 const pageDescription =
   "Explore safari destinations across Uganda, Kenya, Tanzania, Rwanda, South Africa, Namibia, and Botswana — gorilla trekking, the Maasai Mara, Serengeti, Okavango Delta, and more.";
 const pageUrl = "https://tilengasafaris.africa/destinations/";

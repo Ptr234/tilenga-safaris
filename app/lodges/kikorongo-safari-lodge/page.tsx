@@ -18,8 +18,8 @@ import {
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-const pageTitle = "Kikorongo Safari Lodge";
-const fullTitle = "Kikorongo Safari Lodge | Tilenga Safaris";
+const pageTitle = "Kikorongo Safari Lodge — Queen Elizabeth National Park, Uganda";
+const fullTitle = "Kikorongo Safari Lodge — Queen Elizabeth National Park, Uganda | Tilenga Safaris";
 const pageDescription =
   "Luxury cottages on the Kikorongo escarpment overlooking Queen Elizabeth National Park, Lake Kikorongo, and Lake George — minutes from the Kazinga Channel.";
 const pageUrl = "https://tilengasafaris.africa/lodges/kikorongo-safari-lodge/";

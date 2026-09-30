@@ -11,6 +11,7 @@ import CookieConsent from "@/components/CookieConsent";
 import PageTransition from "@/components/motion/PageTransition";
 import SmoothScroll from "@/components/motion/SmoothScroll";
 import ScrollProgress from "@/components/motion/ScrollProgress";
+import { trackEvent } from "@/lib/gtag";
 
 // Code-split below-the-fold / delayed-entry components so their (largely
 // framer-motion-driven) JS isn't part of the bundle the browser must parse
@@ -59,6 +60,24 @@ export default function ClientLayout({
       clearInterval(interval);
       clearTimeout(hideTimeout);
     };
+  }, []);
+
+  // Delegated from the document root rather than wired per-link, so every
+  // tel:/wa.me link on the site is covered — the floating WhatsApp button,
+  // Footer, and every page's contact links — without touching each one.
+  useEffect(() => {
+    const handleClick = (event: MouseEvent) => {
+      const link = (event.target as HTMLElement).closest("a[href]");
+      const href = link?.getAttribute("href");
+      if (!href) return;
+      if (href.startsWith("tel:")) {
+        trackEvent("phone_click", { link_url: href });
+      } else if (href.includes("wa.me")) {
+        trackEvent("whatsapp_click", { link_url: href });
+      }
+    };
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
   }, []);
 
   return (

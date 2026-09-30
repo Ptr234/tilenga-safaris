@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { trackEvent } from "@/lib/gtag";
 
 const SCRIPT_SRC = "https://resnova.resrequest.com/widget/js/app.js";
 
@@ -34,5 +35,11 @@ export default function ResNovaWidget({ widgetId }: Props) {
     };
   }, [widgetId]);
 
-  return <div ref={containerRef} className="w-full" />;
+  // The widget is a third-party custom element with no JS event API exposed
+  // here, so this can't tell an actual availability search from any other
+  // click inside it — it's a coarse "interacted with the widget" signal,
+  // not a confirmed search or booking.
+  const handleClick = () => trackEvent("availability_widget_click", { widget_id: widgetId });
+
+  return <div ref={containerRef} className="w-full" onClick={handleClick} />;
 }

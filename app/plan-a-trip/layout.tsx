@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
-const pageTitle = "Plan a Trip";
-const fullTitle = "Plan a Trip | Tilenga Safaris";
+const pageTitle = "Plan Your Africa Safari — Free Custom Itinerary";
+const fullTitle = "Plan Your Africa Safari — Free Custom Itinerary | Tilenga Safaris";
 const pageDescription =
-  "Tell us your dream destination, travel dates, and interests, and Tilenga Safaris will craft a tailor-made itinerary across East and Southern Africa.";
+  "Tell us your dream destination, travel dates and interests — get a tailor-made Uganda, Kenya, Tanzania or Rwanda safari itinerary from Tilenga Safaris within 24 hours.";
 const pageUrl = "https://tilengasafaris.africa/plan-a-trip/";
 const ogImage = "https://tilengasafaris.africa/photos/og-image.png";
 
