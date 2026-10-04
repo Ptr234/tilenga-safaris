@@ -72,7 +72,10 @@ export default function ClientLayout({
       if (!href) return;
       if (href.startsWith("tel:")) {
         trackEvent("phone_click", { link_url: href });
-      } else if (href.includes("wa.me")) {
+      } else if (href.startsWith("mailto:")) {
+        // Address left out on purpose — the event only records that a click happened.
+        trackEvent("click_email");
+      } else if (href.includes("wa.me") || href.includes("api.whatsapp.com")) {
         trackEvent("whatsapp_click", { link_url: href });
       }
     };
