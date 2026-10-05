@@ -13,6 +13,6 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: token ? false : process.env.NODE_ENV === 'production',
+  useCdn: false,
   token,
 });
