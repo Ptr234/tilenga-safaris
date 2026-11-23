@@ -4,7 +4,6 @@ import Image from "next/image";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
-import ResNovaWidget from "@/components/ResNovaWidget";
 import { urlForImage } from "@/lib/sanity.image";
 import { client } from "@/lib/sanity.client";
 import { siteImagesQuery } from "@/lib/sanity.queries";
@@ -1037,12 +1036,6 @@ export default async function TilengaSafariLodgePage() {
         </div>
       </section>
 
-      {/* ── RESNOVA WIDGET ── */}
-      <section className="bg-white py-12 px-6 md:px-24 lg:px-48">
-        <div className="max-w-2xl mx-auto">
-          <ResNovaWidget widgetId="a145daf2-9f0a-48ef-bb89-89c56187884b" />
-        </div>
-      </section>
     </>
   );
 }

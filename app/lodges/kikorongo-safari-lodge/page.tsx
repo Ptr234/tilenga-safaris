@@ -4,7 +4,6 @@ import Image from "next/image";
 import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ImageReveal from "@/components/motion/ImageReveal";
-import ResNovaWidget from "@/components/ResNovaWidget";
 import { urlForImage } from "@/lib/sanity.image";
 import { client } from "@/lib/sanity.client";
 import { siteImagesQuery } from "@/lib/sanity.queries";
@@ -875,13 +874,6 @@ export default async function KikorongoSafariLodgePage() {
               </div>
             </FadeIn>
           </div>
-        </div>
-      </section>
-
-      {/* ── RESNOVA WIDGET ── */}
-      <section className="bg-cream py-12 px-6 md:px-24 lg:px-48">
-        <div className="max-w-2xl mx-auto">
-          <ResNovaWidget widgetId="a145c6a5-916b-4db3-b2e4-b15a19e60992" />
         </div>
       </section>
 
